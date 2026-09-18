@@ -359,8 +359,8 @@ Google Forms' default error text is *"Please enter a valid response"*, which tel
 
 | Field | Rule | Custom error text |
 |---|---|---|
-| Telephone | Regular expression `^[\d\s\+\(\)\-]{10,20}$` | "Please use numbers only, like 07825 736940 or 01392 833471." |
-| Experience text | Minimum 15 characters | "Please write a few more words — what did they do for you?" |
+| Telephone | ~~Regular expression `^[\d\s\+\(\)\-]{10,20}$`~~ SUPERSEDED 2026-09-18 → **an eleven-digit rule**. **REPORTED by the owner, not measured** — he changed it in Google on 2026-09-18 and nobody here can see the form's settings. The old rule counted *characters* (10–20) rather than digits, which is why a mistyped twelve-digit number passed it. | "Please use numbers only, like 07825 736940 or 01392 833471." |
+| Experience text | Minimum ~~15~~ **7 characters** [SUPERSEDED 2026-09-18 — owner's ruling, see §7.4] | "Please write a few more words — what did they do for you?" |
 
 Two name fields — first and last, **both required** — rather than one field with a regex.
 Google Forms' own "This is a required question" is clearer than any custom message. Help text
@@ -383,7 +383,7 @@ The four verdicts are written in plain English, for a human reading a phone scre
 | `NEW` | Number not seen before | Publish as a new tradesperson |
 | `ALREADY ON SITE — row 12` | Same number, same person | Their words become another recommendation |
 | `SAME NAME, DIFFERENT NUMBER` | Probably a changed mobile | Needs a look |
-| `CHECK THIS` | Surname **or business** reads "Not Known", or the experience text is very short | Needs a look |
+| `CHECK THIS` | Surname **or business** reads "Not Known", or the experience text is **under 7 characters** (~~15~~ SUPERSEDED 2026-09-18 by the owner's ruling — see §7.4) | Needs a look |
 
 ### 7.3 Validation layer 3 — the owner is the gate
 
@@ -396,7 +396,7 @@ spreadsheet dropdown rather than a queue or an admin interface (§11).
 - Error messages appear as **plain text under the box**, never colour alone.
 - An error **never clears what the villager typed**.
 - "Your name" is optional; blank becomes **"a villager"**.
-- "What did they do for you?" is required, minimum 15 characters.
+- "What did they do for you?" is required, minimum ~~15~~ **7 characters** [SUPERSEDED 2026-09-18]. **Owner's ruling 2026-09-18 (~18:26Z), verbatim:** *"I think we can change the check to 7 characters. As they can't really put in a sentence without more than that "Fixed Gate" is about as short as you can get."* His ruling outranks this design, which is downstream of it. Rationale worth keeping: a small job honestly described in two words — *"Fixed gate"* — is a good answer, and a higher minimum turns away the villager it was meant to help while burying the rows that genuinely need attention. Seven still catches an accidental `ok`, `yes` or stray keypress. The same seven applies to the sheet's `CHECK THIS` trigger (§7.2) so the page and the sheet agree.
 
 ### 7.5 The vote mechanism
 

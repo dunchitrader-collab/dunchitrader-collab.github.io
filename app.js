@@ -34,9 +34,14 @@
      updated here — see apps-script/DEPLOY.md. */
   var VOTES_ENDPOINT = "https://script.google.com/macros/s/AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec";
 
-  /* "What did they do for you?" is required, minimum 15 characters —
-     solution design §7.4, matching the Google Form's own rule. */
-  var MIN_WORDS = 15;
+  /* "What did they do for you?" is required, minimum 7 CHARACTERS (the name
+     says WORDS but it has always been a character count) — solution design
+     §7.4, and the same seven the sheet's CHECK THIS trigger uses.
+
+     Seven, not fifteen: the owner ruled on 2026-09-18 that "Fixed gate" is
+     about as short as a real answer gets, and fifteen turned away the villager
+     describing a small job honestly. Seven still catches a stray "ok". */
+  var MIN_WORDS = 7;
 
   var PEOPLE = [];         // one entry per tradesperson
   var state = "loading";   // loading | ready | empty | unreachable | badfeed
@@ -262,7 +267,7 @@
       var why = ta.value.trim();
 
       if (why.length < MIN_WORDS){
-        err.textContent = "Please write a few more words — what did they do for you?";
+        err.textContent = "Please add a word or two more — even “Fixed gate” is enough.";
         err.hidden = false;
         ta.setAttribute("aria-invalid","true");
         ta.focus();

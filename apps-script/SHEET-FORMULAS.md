@@ -136,7 +136,7 @@ arrives.
 **Click cell `L2` and paste this:**
 
 ```
-=ARRAYFORMULA(IF($F$2:$F="","",IF((REGEXMATCH(LOWER(TRIM(TO_TEXT($E$2:$E))),"^not ?known$"))+(REGEXMATCH(LOWER(TRIM(TO_TEXT($G$2:$G))),"^not ?known$"))+(LEN(TRIM(TO_TEXT($H$2:$H)))<15),"CHECK THIS",IF(COUNTIF(Published!$I$2:$I,$J$2:$J)>0,"ALREADY ON SITE — row "&IFERROR(MATCH($J$2:$J,Published!$I$2:$I,0)+1,""),IF(COUNTIF(Published!$J$2:$J,$K$2:$K)>0,"SAME NAME, DIFFERENT NUMBER","NEW")))))
+=ARRAYFORMULA(IF($F$2:$F="","",IF((REGEXMATCH(LOWER(TRIM(TO_TEXT($E$2:$E))),"^not ?known$"))+(REGEXMATCH(LOWER(TRIM(TO_TEXT($G$2:$G))),"^not ?known$"))+(LEN(TRIM(TO_TEXT($H$2:$H)))<7),"CHECK THIS",IF(COUNTIF(Published!$I$2:$I,$J$2:$J)>0,"ALREADY ON SITE — row "&IFERROR(MATCH($J$2:$J,Published!$I$2:$I,0)+1,""),IF(COUNTIF(Published!$J$2:$J,$K$2:$K)>0,"SAME NAME, DIFFERENT NUMBER","NEW")))))
 ```
 
 ---
@@ -161,7 +161,12 @@ arrives.
 | **NEW** | That phone number has never been on the list | Choose **Publish**. Add them to the Published tab with the next free ID. |
 | **ALREADY ON SITE — row 12** | Same number, so the same person | Choose **Add to T0xx**. Their words become a second recommendation for somebody already listed. |
 | **SAME NAME, DIFFERENT NUMBER** | Same name, new number — probably they changed mobile | Have a look. Usually you update the number on the existing row. |
-| **CHECK THIS** | The last name or the business says "Not Known", or they wrote barely anything | Have a look. You may need to ask on the village chat who it is. |
+| **CHECK THIS** | The last name or the business says "Not Known", or the experience text is **under seven characters** | Have a look. You may need to ask on the village chat who it is. |
+
+> **Why seven and not more.** Seven is deliberately low. *"Fixed gate"* is a perfectly good
+> answer for a small job, and a longer minimum would flag honest short replies as suspect and
+> bury the rows that genuinely need your attention. Seven catches the accidental `ok`, `yes`
+> or a stray keypress, and lets a real short answer through.
 
 **CHECK THIS beats everything else.** If a row would be both `CHECK THIS` and
 `ALREADY ON SITE`, it says `CHECK THIS`, because a row you need to look at
