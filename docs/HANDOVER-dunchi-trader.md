@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T18:21:15Z
+last-updated: 2026-09-18T18:34:46Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T18:21:15Z**
+**Last updated: 2026-09-18T18:34:46Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ SUPERSEDED 2026-09-18T17:48Z → **54 of 77 effort (70.1%)**, 11 of 15 rows done. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ SUPERSEDED 2026-09-18T18:30Z → **56 of 79 effort (70.9%)**, 12 of 16 rows done. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -121,8 +121,8 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 4.2 needs a vote FROM A REAL PHONE.** The script and its numbered steps are committed. Follow [PATH] `apps-script/DEPLOY.md` while signed in as `dunchitrader@gmail.com`. … the owner has deployed it and the endpoint is now wired in `app.js` at `4d67c15` and verified served live. What remains is only the closing evidence: the owner opens the live site on his phone, taps a trade, taps "I recommend them too", fills both boxes, taps "Add my recommendation", then opens the Votes tab and sees the row. Closes on that.~~ RESOLVED 2026-09-18T17:48Z — **Owner confirmation 2026-09-18 (~17:47Z), verbatim:** *"the vote populated"*. He placed the vote from his phone on the live site and confirmed the row reached the Votes tab. Build Plan row 4.2 is `done`. His FIRST attempt at ~17:25Z did not reach the sheet and he retried on a cache-busted URL — see the stale-page `[BUG]` in Layer 3; the endpoint was provably working throughout. |
 | 2026-09-18 | HIGH | no | **Delete the TWO non-villager rows from the Votes tab before launch.** The tab now holds two rows that are not a villager's recommendation, and they are different things: **(1) the automated test row** from Build Plan row 4.3's cross-origin measurement — `id` `T001`, `name` `TEST - Claude Code 2026-09-18 - please delete`, `text` beginning `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` **(2) the owner's own test vote** from ~17:47Z, the one that closed row 4.2 — whatever name and words he typed, against whichever tradesperson he tapped. Only he knows its content; it is the row whose arrival he confirmed. **Both should go before launch**, so the tally on each card counts only real villagers. Deleting rows from the Votes tab is safe and affects nothing else — the site never reads that tab. **Do NOT delete anything from the Published tab in the process**; that is the list itself. His first ~17:25Z attempt produced no row at all, so there is nothing to remove for that one. |
 | 2026-09-18 | MEDIUM | no | **Row 5.1 needs the formulas pasted.** ~~Paste-ready in [PATH] `apps-script/SHEET-FORMULAS.md`.~~ SUPERSEDED 2026-09-18T18:20Z → **the previously committed formulas were WRONG against the real sheet and would have written nonsense into every row.** They assumed phone in E, name in D+J, experience text in G and business in J; the real layout is phone **F**, first name **D**, last name **E**, business **G**, experience text **H**, trade **C**, with **J** the first free column. Rewritten and re-simulated at `bd3f42a` against the owner's three real rows plus nine constructed ones. **They now go in `J2`, `K2`, `L2` on Form responses, with two helper columns in `I2`/`J2` on Published** — the cells changed, so any earlier note about K/L/M/N is superseded. NOT RUN IN GOOGLE SHEETS. Closes when one sample row of each of the four verdicts shows correctly in the real sheet. |
-| 2026-09-18 | HIGH | no | **Form email collection is still ON.** Evidence, REPORTED by the owner: the third real response row carries `gsamwell@deverse.co.uk` in column B. This contradicts decision 3 and the design's own reasoning — requiring a Google sign-in is exactly what stops an elderly villager at the first step. **Settings → Responses → Collect email addresses → Off.** Only the owner can change it; nobody here can touch the Google Form. |
-| 2026-09-18 | MEDIUM | no | **The telephone validation rule is too loose to catch a typo, and may also be absent.** Evidence, REPORTED by the owner: the third row's number is `078853335434` — twelve digits, one too many for a UK mobile. **Measured this session:** that value **passes** the documented rule `^[\d\s\+\(\)\-]{10,20}$`, which permits 10–20 characters, so its presence is NOT proof the rule is missing — the rule as designed simply allows it. Whether the rule is actually installed remains UNKNOWN and is already carried as a separate outstanding item. Recommendation: tighten the rule so it counts digits rather than characters, and add the custom error text. This is the owner's to change on the form. |
+| ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Form email collection is still ON.** Evidence, REPORTED by the owner: the third real response row carries `gsamwell@deverse.co.uk` in column B. This contradicts decision 3 … **Settings → Responses → Collect email addresses → Off.** Only the owner can change it; nobody here can touch the Google Form.~~ RESOLVED 2026-09-18T18:30Z — **REPORTED BY THE OWNER, NOT MEASURED HERE.** He reports having turned email collection off in Google on 2026-09-18. Nobody in this session can verify it: the form's settings are visible only while signed in and editing the form, and the responses tab is not published. It will become observable the first time a new submission arrives with column B empty — worth a glance then, and until then it stands on his report alone. |
+| ~~2026-09-18~~ | ~~MEDIUM~~ | ~~no~~ | ~~**The telephone validation rule is too loose to catch a typo, and may also be absent.** … Recommendation: tighten the rule so it counts digits rather than characters.~~ RESOLVED 2026-09-18T18:30Z — **REPORTED BY THE OWNER, NOT MEASURED HERE.** He reports having installed an **eleven-digit** phone validation rule in Google on 2026-09-18, which is the digit-counting form recommended. Same limitation as the row above: form settings cannot be seen from outside the account, so this stands on his report. The measured finding it replaces is preserved in the record: the old documented rule `^[\d\s\+\(\)\-]{10,20}$` counted *characters*, which is why the twelve-digit `078853335434` passed it — that was never evidence the rule was missing. Solution design §7.1 updated to the new rule, marked REPORTED. |
 | 2026-09-18 | MEDIUM | no | **Row 6.1 needs the runbook WALKED.** [PATH] `docs/RESTORE-dunchi-trader.md` is written and was **reconciled to the deployed state on 2026-09-18T17:40Z at `983525f`** so the walk is not wasted on stale instructions — it had been written before the Apps Script was deployed. It now carries a **walk-through tick list** at the end, one line per step naming what should be seen, usable on a phone beside a laptop. The walk itself needs the Form, Sheet, Apps Script and Pages under the two logins and is the owner's; nothing in the build can substitute for it. **Two steps are honestly marked as not confirmable from outside the Google account** — step 3's email-collection and response-validation settings — with an incognito test given for what can be checked. |
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 3.1 needs Gavin's sighting.**~~ RESOLVED 2026-09-18T15:13:20Z — same sighting. Every clause of row 3.1 is visible without data, so the sighting covers it in full. Row 3.1 is `done`. |
 | ~~2026-09-18~~ | ~~**CRITICAL**~~ | ~~**YES**~~ | ~~**The published CSV serves the WRONG TAB.**~~ RESOLVED 2026-09-18T15:20:38Z — the owner republished from the Published tab (gid `1915382769`) and seeded four test rows. `app.js` switched at commit `0267ef3` and verified live. The feed now returns the agreed eight-column header. |
@@ -274,6 +274,27 @@ The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file a
 # LAYER 3 — KNOWN ISSUES AND GOTCHAS
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
+
+**[BUG] 2026-09-18 — trade headings are grouped case-SENSITIVELY, so `Plumber` and `plumber` become two separate headings**
+
+Root cause: the site has no fixed trade vocabulary — headings are built from whatever text sits in the Published tab's `trade` and `extra_trade` columns. `app.js` line 139 trims every cell (`function cell(name){ return (r[index[name]] || "").trim(); }`) and line 141 lower-cases `status` before comparing it, **but nothing lower-cases the trade**, so the grouping key is the trimmed string with its original capitalisation intact.
+
+**MEASURED 2026-09-18T18:29Z** by driving the LIVE site in a real browser at 320px with a feed fixture substituted at the network layer — the owner's sheet was never touched:
+
+| Two rows carrying… | Headings rendered | What they read |
+|---|---|---|
+| `Plumber` and `plumber` | **TWO** | `Plumber` (1 person), `plumber` (1 person) |
+| `Plumber` and `Plumber ` (trailing space) | **ONE** | `Plumber` (2 people) |
+| `Plumber` and ` Plumber` (leading space) | **ONE** | `Plumber` (2 people) |
+| all four spellings together | **TWO** | `Plumber` (3 people), `plumber` (1 person) |
+
+So **whitespace is forgiven and capitalisation is not.** The trailing- and leading-space cases are safe because of the `.trim()`; the case difference is not, and it is the more likely mistake when somebody types a trade by hand.
+
+Impact, and it is quiet rather than loud: a villager tapping `Plumber` sees only the people filed under that exact spelling. Somebody typed in as `plumber` sits under a second heading further down the list with one person under it, and is invisible to anyone who taps the first. Nothing errors and nothing looks broken. The form's own dropdown protects the responses tab, but **the owner retypes the trade when he copies a row across to Published, and that retyping is unprotected** — which is exactly where the mistake would enter.
+
+Fix applied: **none.** This is a behaviour change to a closed row and is the owner's ruling to make; it is recorded as a recommendation in Layer 5 rather than implemented. The cheap mitigation, already in place, is that `docs/PROCESS-seeding-and-launch-dunchi-trader.md` tells him to copy and paste trade names from its list rather than retyping them.
+
+Diagnosis: if somebody is missing from the site under the trade you expect, scroll the whole trade list before suspecting anything else — look for a second heading differing only in capitalisation. Then correct the spelling in the Published tab; it takes effect within the five-minute republish lag.
 
 **[BUG] 2026-09-18 — the committed sheet formulas were written against a GUESSED responses-tab layout and recorded as tested against the real one**
 
@@ -449,11 +470,11 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 # LAYER 4 — OUTSTANDING WORK
 
-**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
-**Turn form email collection OFF.** Evidence, REPORTED by the owner from his own sheet: the third real response row carries `gsamwell@deverse.co.uk` in column B. It contradicts decision 3, and requiring a Google sign-in is exactly the barrier that stops an elderly villager at the first step. **Settings → Responses → Collect email addresses → Off.** Only he can do it; nobody here can touch the Google Form. Note this also means villagers' email addresses are currently landing in the responses tab — they never reach the site, because the site reads only the Published tab, but they are being collected without need.
+~~**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**~~ RESOLVED 2026-09-18T18:30Z — **REPORTED by the owner, not measured here.** He turned email collection off in Google on 2026-09-18. Form settings cannot be seen from outside the account, so this stands on his report; it becomes observable the first time a new submission arrives with column B empty.
+~~**Turn form email collection OFF.** Evidence, REPORTED by the owner from his own sheet: the third real response row carries `gsamwell@deverse.co.uk` in column B. It contradicts decision 3, and requiring a Google sign-in is exactly the barrier that stops an elderly villager at the first step. **Settings → Responses → Collect email addresses → Off.** Only he can do it; nobody here can touch the Google Form. Note this also means villagers' email addresses are currently landing in the responses tab — they never reach the site, because the site reads only the Published tab, but they are being collected without need.~~
 
-**[OUTSTANDING] 2026-09-18 | MEDIUM | Blocking: no**
-**Tighten the telephone validation rule, and confirm it is installed.** Evidence, REPORTED: the third row's number is `078853335434`, twelve digits — one too many for a UK mobile. **Measured this session, and it corrects the obvious reading:** that value **passes** the documented rule `^[\d\s\+\(\)\-]{10,20}$`, because the rule counts *characters* (10–20) rather than digits. Its presence is therefore NOT evidence the rule is missing or unenforced — a correctly installed rule would also have let it through. Whether the rule is actually installed is still UNKNOWN and is carried separately below. Recommendation, for the owner to rule on: change the rule to count digits, so a mistyped number is caught at the point a villager types it rather than discovered weeks later when somebody rings a stranger.
+~~**[OUTSTANDING] 2026-09-18 | MEDIUM | Blocking: no**~~ RESOLVED 2026-09-18T18:30Z — **REPORTED by the owner, not measured here.** He installed an **eleven-digit** phone validation rule in Google on 2026-09-18, which is the digit-counting form recommended below. Form settings are not visible from outside the account, so this stands on his report. Solution design §7.1 updated and marked REPORTED.
+~~**Tighten the telephone validation rule, and confirm it is installed.** Evidence, REPORTED: the third row's number is `078853335434`, twelve digits — one too many for a UK mobile. **Measured this session, and it corrects the obvious reading:** that value **passes** the documented rule `^[\d\s\+\(\)\-]{10,20}$`, because the rule counts *characters* (10–20) rather than digits. Its presence is therefore NOT evidence the rule is missing or unenforced — a correctly installed rule would also have let it through. Whether the rule is actually installed is still UNKNOWN and is carried separately below. Recommendation, for the owner to rule on: change the rule to count digits, so a mistyped number is caught at the point a villager types it rather than discovered weeks later when somebody rings a stranger.~~
 
 **[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**
 **The form's first-name box is collecting full names — and the recommendation is to leave it alone.** Evidence, REPORTED: two of the three real rows carry `Bob Samwell` and `Ben Franks` in the first-name column with the last-name column blank; the third, `Helen` / `Smith`, is split properly. **Judgement asked for and given: this is simply how people fill in forms, not a form defect and not a formula defect.** Reasons: the form's two boxes are correctly labelled and correctly required, so there is nothing to fix there short of merging them into one box — which would lose the split for the villagers who do use it properly, and which the Published tab's own `first_name`/`last_name` columns want. And it is **not a formula defect because the rewritten `name_key` already handles it**: the formula concatenates first and last *before* stripping non-letters, so `"Bob Samwell"` + `""` and `"Bob"` + `"Samwell"` both collapse to `bobsamwell` and match. **Verified by simulation this session**, along with differing capitals, doubled spaces, apostrophes and hyphens. The one case it cannot handle is a name typed back to front (`Samwell` then `Bob`), which is recorded as a stated limitation in `apps-script/SHEET-FORMULAS.md` rather than papered over. **No action recommended.** It is recorded so that a future session does not "fix" the form and break the split for people who use it correctly.
@@ -744,6 +765,28 @@ The first draft of `PLAN-DUNCHI-TRADER-V1` carried **90 sub-tasks and 231 effort
 **[DECISION]** The `name_key` limitation is stated in the document rather than hidden.
 
 **Rationale:** the formula genuinely solves the case that matters — two of the owner's three real rows carry a full name in the first-name box, and the concatenate-then-strip order makes those match a properly split Published row, which was verified by simulation rather than asserted. It cannot match a reversed name order, and that is inherent to concatenation rather than fixable by a cleverer regex. A document that implies completeness it does not have is worse than one that names its edge, because the owner would trust a `NEW` verdict that was wrong. The limitation and the second one — that the formula compares against the site rather than against other form answers — are both written into the document in plain English under a heading saying so.
+
+### 2026-09-18 — Seven characters, on both surfaces; trade normalisation measured and put to the owner
+
+**[DECISION]** The minimum length of the experience text becomes **seven characters**, on the website and in the sheet verdict alike.
+
+**Owner's ruling 2026-09-18 (~18:26Z), verbatim:** *"I think we can change the check to 7 characters. As they can't really put in a sentence without more than that "Fixed Gate" is about as short as you can get."*
+
+**Rationale:** his ruling, and it outranks the solution design, which is downstream of it — where the design said fifteen, the design is what changed. The reasoning is worth keeping because it is a product judgement rather than a threshold preference: the site exists for villagers describing ordinary small jobs, and *"Fixed gate"* is a complete and honest answer to *"what did they do for you?"*. Fifteen turned that villager away at the last step, and it also buried the sheet's `CHECK THIS` signal under rows that were merely brief rather than suspect. Seven still catches the accidental `ok`, `yes` or stray keypress. **Both surfaces moved together deliberately** — the page and the sheet asking different questions of the same text would be a defect waiting to be discovered.
+
+**Alternatives considered:** removing the check entirely — not what he ruled, and it would let an empty-ish note through. Changing only the page and leaving the sheet at fifteen — rejected; the sheet would then flag rows the page had just accepted.
+
+**[DECISION]** The refusal message was rewritten, not merely the number.
+
+**Rationale:** *"Please write a few more words — what did they do for you?"* stopped being true the moment the limit moved. Seven characters is about two words, not "a few more", and the old text never told the villager what would be enough — it asked them to guess, which for an elderly reader who has just been refused is the point at which they give up. The new text, **"Please add a word or two more — even "Fixed gate" is enough."**, names a length they can picture and uses the owner's own example so the page and his ruling say the same thing. A message that survives a threshold change unaltered is usually a message that was never specific enough.
+
+**[DECISION]** The change was entered as **new build plan row 4.5** rather than folded into the closed row 4.1.
+
+**Rationale:** 4.1 is `done` and its evidence describes behaviour observed on a particular day. This alters shipped behaviour on a rendered surface, so it needs its own evidence from the served page — which it now has — rather than quietly invalidating a closed row's record. 4.1's own wording says "a too-short entry shows a plain-text error" without naming a number, so it remains true; but the principle holds regardless. `[PATTERN CANDIDATE: behaviour-change-gets-a-row]`
+
+**[DECISION]** Trade-name normalisation is **measured, recommended, and deliberately NOT implemented** — it awaits the owner's ruling.
+
+**Rationale:** the question left open by the previous session was how close two spellings must be before they merge. **Now measured** (Layer 3): whitespace is forgiven, capitalisation is not, so `Plumber` and `plumber` produce two headings while `Plumber ` and ` Plumber` merge correctly. That makes the risk concrete rather than theoretical, and it lands precisely where the owner works — he retypes the trade when copying a row to Published. The case for lower-casing the grouping key is therefore strong, and the fix is small. It is not implemented here for two reasons: this prompt asked for a recommendation, and it is a behaviour change on a closed row (2.1) that would need its own row and its own served-page evidence, exactly as 4.5 did. **Recommended shape if he rules for it:** group by the lower-cased trade while displaying the first spelling encountered, so `Plumber`/`plumber` merge under one heading without changing what anyone sees. The mitigation already in place is procedural — `docs/PROCESS-seeding-and-launch-dunchi-trader.md` tells him to copy trade names from its list rather than retype them. `[PATTERN CANDIDATE: free-text-key-needs-a-vocabulary-check]`
 
 ---
 
@@ -2130,3 +2173,162 @@ What changed is that the formulas would now work. The committed ones would have 
 Four rows remain, all the owner's: **6.1** (9, walk the runbook), **7.1** (5, full journey — needs seeding), **5.1** (6, paste these formulas), **7.2** (3, seed to 12–15 across ≥6 trades). Two Votes-tab rows still need deleting before launch, and the launch message stays a draft.
 
 **Effort per prompt for the plan, cumulative: 54 effort done ÷ 15 prompts sent = 3.6.** Both figures recorded, not only the ratio.
+
+### 2026-09-18T18:33:23Z — Seven-character minimum on both surfaces; trade grouping measured
+
+**Source:** Claude Code
+**Started:** 2026-09-18T18:27:00Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH
+**Repos touched this session:** `gsamwell-lang/dunchi-trader` (origin), `dunchitrader-collab/dunchitrader-collab.github.io` (collab). No other repository was read or written.
+
+**Prompt received:**
+
+> Target repo: dunchi-trader
+>
+> Comply with the loaded global CLAUDE.md and the loaded project CLAUDE.md. Both auto-load — do NOT Read either.
+>
+> MODE: IMPLEMENTATION. Package tier (a) hard/ambiguous, model claude-opus-5, effort high.
+>
+> ## CONTEXT TRANSFER BRIEF
+>
+> Same conversation as prompts 2665, 2667, 2670, 2671 and 2673: https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH. You landed 2673 at 18:22Z. Repo re-read by me at 18:26:39Z: HEAD 2169da1020d9d70c266d3972d622d8b831e76266, master, tree clean, 0 ahead / 0 behind. Composed against that HEAD. Plan at 54/77 = 70.1%, 11 of 15 rows done.
+>
+> MISSION: re-read at source in task 0 and name it back.
+>
+> ## REQUIREMENT AS STATED
+>
+> The Owner has ruled on the minimum length of the experience text. His words, verbatim, 2026-09-18 ~18:26Z:
+>
+> "I think we can change the check to 7 characters. As they can't really put in a sentence without more than that "Fixed Gate" is about as short as you can get."
+>
+> Fifteen becomes SEVEN. Not removed — seven. This is his ruling and it outranks the solution design, which is downstream of it; where the design says fifteen, the design is what changes.
+>
+> He has also reported two form changes he made himself, in Google, which nobody here can verify: email collection is now OFF, and an eleven-digit phone validation rule is in. Record both as REPORTED by the Owner, not measured, and close their Layer 4 items on that basis, saying it is his report.
+>
+> ## TASK 0 — GUARDS
+>
+> Confirm HEAD 2169da10, master, clean, 0/0. Re-read the MISSION block at source and state it back. Read row 5.1's wording, row 4.1's wording, and the current CHECK THIS rule in apps-script/SHEET-FORMULAS.md. Read the minimum-length check in app.js and quote the line.
+>
+> ## TASK 1 — seven characters in the sheet verdict
+>
+> Change the CHECK THIS trigger in the verdict formula from fifteen characters to seven. Leave the two "not known" triggers alone — surname and business — and leave the precedence of CHECK THIS over ALREADY ON SITE alone.
+>
+> Re-run your twelve-case simulation and report the full table again, calling out every verdict that CHANGES as a result. In particular say what the Owner's three real rows now produce: "top blokes" is ten characters and "Lovely people" thirteen, so both should stop being flagged.
+>
+> Update apps-script/SHEET-FORMULAS.md with the corrected formula, keeping the layout check you added at its start. Correct solution design §7.3 where it states fifteen.
+>
+> Row 5.1 does NOT close. It closes when the Owner has pasted the formulas and seen one sample row of each verdict come out right in his own sheet.
+>
+> ## TASK 2 — seven characters on the website, as an appended plan row
+>
+> The recommend panel in app.js currently refuses a note under fifteen characters. That is a change to shipped behaviour on a closed row, so it gets its own row rather than being slipped in.
+>
+> Append ONE new sub-task to step 4 at the next free number — appended, never inserted, nothing renumbered — full STD-00009 §5.1 row grammar and delivery fields, status new, effort 2, Owner 222b34c4-7d05-48f4-9d23-cfb47e96d9de. Its outcome is that a villager describing a small job in a few words is not turned away. Record its provenance as unplanned work entered this session in Layer 6.
+>
+> Then do it: the minimum becomes seven characters, and the error message changes to match what it now asks for — read the current message and rewrite it so it is truthful about the new limit and still in the page's own voice for an elderly reader. Do not change anything else about the panel.
+>
+> This is a rendered surface. Close the row only on evidence from the SERVED page, driven in a real browser: a six-character note is refused with the new message visible, a seven-character note is accepted, and the message's colour still equals the body colour so colour alone carries no meaning. If any of that cannot be shown, leave the row open and say which part.
+>
+> ## TASK 3 — measure the trade-heading question
+>
+> Your own 2673 reply established that the site has no fixed trade list and that headings come from whatever text sits in the Published tab's trade column. What is NOT established is how close two spellings have to be before they merge.
+>
+> MEASURE it against the live site in a real browser, using a feed fixture rather than touching the Owner's sheet: does "Plumber" group with "plumber", with "Plumber " carrying a trailing space, and with " Plumber" carrying a leading one? Report exactly what happens in each case — one heading or two, and what each heading reads as.
+>
+> Then say plainly what it means for him when he types a trade into Published, and recommend whether the site should normalise trade names before grouping. RECOMMEND ONLY — do not implement it. That is his ruling to make, and it is a behaviour change that would need its own row.
+>
+> ## TASK 4 — record and land
+>
+> Handover Layer 6 entry citing my conversation reference; Layer 1 current facts; close the two Layer 4 form items on the Owner's report, marked as reported; record the trade-normalisation recommendation as a decision awaiting his ruling. Update the plan for the new row and for row 5.1's evidence. Commit and push BOTH remotes — GITHUB_TOKEN= is needed for origin. Run the validator and report its exit code AND its reported sub-task count against the rows the document actually holds.
+>
+> ## RETURN
+>
+> - A detailed written summary.
+> - The corrected verdict formula in its own fenced block with its cell named, ready for the Owner to copy.
+> - The twelve-case table, with changed verdicts called out.
+> - The trade-heading measurement, case by case.
+> - A formatted table of what was tested and each result, measured values not assertions, including the served-page evidence for the new row.
+> - The plan's new completion position: effort done, effort total, percentage, and how much of the movement is the new row changing the denominator.
+> - The end-of-session summary and any recommended follow-on prompt as a single copy-paste-ready fenced code block.
+> - State the model and effort this session ran on.
+
+**What was done:**
+
+**Task 0 — guards passed, MISSION re-read at source, all four reads done.** HEAD `2169da1020d9d70c266d3972d622d8b831e76266`, master, clean, `0 0`. The quoted line from `app.js` was **line 264**, `if (why.length < MIN_WORDS){`, with `var MIN_WORDS = 15;` at line 39 and the message at line 265. Row 5.1's wording, row 4.1's wording and the `CHECK THIS` rule were all read before any change. **Row 4.1 turned out to matter:** it is `done` and says *"a too-short entry shows a plain-text error"* **without naming a number**, so lowering the threshold does not falsify its recorded evidence — which is a point in favour of the new row rather than against it.
+
+**Task 1 — the sheet verdict moved to seven.** Only the length clause changed, from `<15` to `<7`; the two `not known` triggers on surname and business and the precedence of `CHECK THIS` over `ALREADY ON SITE` are untouched, verified by re-running the precedence case.
+
+Re-simulated across the same twelve cases. **Two verdicts change, and they are exactly the two the owner predicted:** his real row 1 (*"top blokes"*, 10 characters) and real row 2 (*"Lovely people"*, 13) move from `CHECK THIS` to `NEW`. Honest short answers stop being flagged. The other ten are unchanged — `C4` (4 characters) still flags, `C5` and `C6` still flag on "not known", and `C7` still returns `CHECK THIS` despite its phone matching `T001`, which is the precedence rule holding. **The boundary was then verified exactly rather than assumed from the table:** 0, 2, 3, 5 and 6 characters all flag; 7 passes; and the owner's own *"Fixed Gate"* (10) passes.
+
+`apps-script/SHEET-FORMULAS.md` updated with the corrected formula, the layout check at its start kept intact, the verdict table's wording changed from the vague *"wrote barely anything"* to **"under seven characters"**, and a short note added explaining why seven is deliberately low.
+
+**On the design:** the prompt asked for §7.3 to be corrected, but **§7.3 does not state a length at all** — it covers only the Publish / Add to T0xx / Reject dropdown. The fifteen lived in two other places, and both were corrected: **§7.4**, the page panel's rule, now reads seven with the owner's ruling quoted verbatim and the rationale preserved; and **§7.2**'s verdict table, which described the `CHECK THIS` trigger. A third correction was made in **§7.1**, the Google Form's own rules, where the telephone regex is now marked SUPERSEDED to the eleven-digit rule the owner reports installing — recorded as REPORTED, not measured.
+
+**Task 2 — row 4.5 appended and closed on served-page evidence.** Appended after 4.3/4.4 in both the status and satellite tables; nothing inserted, nothing renumbered. `MIN_WORDS` 15 → 7 with a comment recording the ruling, and **the message rewritten because the number alone was not enough**: *"Please write a few more words"* had stopped being true — seven characters is about two words, not "a few more" — and it never said what would be enough, which for a villager who has just been refused is where they give up. It now reads **"Please add a word or two more — even "Fixed gate" is enough."**, naming a length they can picture and using the owner's own example. Exactly two lines changed; `node --check` passes and the diff shows nothing else in the panel touched.
+
+**Measured on the SERVED page** in a real browser at 320px, with the votes POST blocked at the network layer so no row was written to the owner's sheet: **six characters (`"Fix it"`) is REFUSED** — panel stays open, message visible reading exactly the new text, what was typed preserved, `aria-invalid="true"` set; **seven characters (`"Fixed g"`) is ACCEPTED** — panel closes; and the owner's own **`"Fixed gate"` (10) is accepted and renders on the card**. **Message colour `rgb(16, 20, 19)` equals body colour `rgb(16, 20, 19)`**, so colour alone still carries no meaning. Every clause of the row's own wording is covered by evidence from the served page.
+
+**The validator rejected the first version of this row and was right to.** The `Human` sentence was 21 words against STD-00009's 20-word cap (Rule 5.11.9.1). The sentence was shortened rather than the check weakened, and the plan re-validated clean.
+
+**Task 3 — the trade-heading question measured, and the answer is not uniform.** Driven against the LIVE site in a real browser with a feed fixture substituted at the network layer; the owner's sheet was never touched. **Whitespace is forgiven; capitalisation is not.** `Plumber` and `plumber` produce **two** headings of one person each. `Plumber` and `Plumber ` (trailing space) produce **one** heading of two. `Plumber` and ` Plumber` (leading space) produce **one** heading of two. All four spellings together produce **two** headings — `Plumber` with 3 and `plumber` with 1.
+
+The mechanism was then confirmed in the source rather than inferred: `app.js` line 139 trims every cell, which is why the space cases merge, and line 141 lower-cases `status` before comparing it — but **nothing lower-cases the trade**, so the grouping key keeps its original capitalisation. What it means for the owner is concrete: the form's dropdown protects the responses tab, but he **retypes the trade when copying a row across to Published**, and that retyping is unprotected. A row typed as `plumber` sits under a second heading further down with one person under it, invisible to anyone who taps the first, and nothing errors or looks broken. **Recommended, not implemented**, as instructed — recorded in Layer 5 with the suggested shape (group by the lower-cased trade, display the first spelling seen) and left for his ruling, because it is a behaviour change on a closed row that would need its own row and its own served-page evidence.
+
+**Task 4 — recorded and landed.** Layer 1: plan position superseded with the denominator effect spelled out; both form items closed as **REPORTED by the owner**, each saying plainly that form settings cannot be seen from outside the account and noting that the email change becomes observable the first time a submission arrives with column B empty. Layer 3: the trade-grouping measurement as a `[BUG]` with the full case table and the code mechanism. Layer 4: the same two items closed with strikethrough and `RESOLVED`. Layer 5: four `[DECISION]` entries. The plan's rows 4.5 and 5.1 updated; 5.1 deliberately left `new`.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual (measured) | Result |
+|---|---|---|---|---|
+| 1 | HEAD / branch / tree / sync | `2169da10…`, master, clean, `0 0` | as expected | PASS |
+| 2 | Does design §7.3 state a length? | — | **No** — §7.3 is the dropdown only; the fifteen was in §7.4 and §7.2 | corrected the right sections |
+| 3 | Does row 4.1 name a number? | — | **No** — "a too-short entry"; its evidence stays true | PASS |
+| 4 | 12-case simulation at `<7` | 2 verdicts change | **R1 and R2 flip `CHECK THIS` → `NEW`**; other 10 unchanged | PASS — as owner predicted |
+| 5 | Precedence case `C7` at `<7` | still `CHECK THIS` | `CHECK THIS` (text "quick", 5 chars) | PASS |
+| 6 | Boundary: 0/2/3/5/6 characters | flag | all `CHECK THIS` | PASS |
+| 7 | Boundary: 7 characters | pass | `NEW` | PASS |
+| 8 | Owner's "Fixed Gate" (10) | pass | `NEW` | PASS |
+| 9 | `node --check app.js` | parses | parses OK | PASS |
+| 10 | `git diff app.js` | 2 changes only | constant + message; nothing else in the panel | PASS |
+| 11 | Served `app.js` carries `MIN_WORDS = 7` | live | live ~20 s after push | PASS |
+| 12 | **SERVED page: 6 characters** | refused | panel open, message visible, text preserved, `aria-invalid="true"` | **PASS** |
+| 13 | **SERVED page: message text** | new wording | `"Please add a word or two more — even "Fixed gate" is enough."` | **PASS** |
+| 14 | **SERVED page: 7 characters** | accepted | panel closes | **PASS** |
+| 15 | **SERVED page: message colour vs body** | equal | both `rgb(16, 20, 19)` | **PASS** |
+| 16 | SERVED page: "Fixed gate" renders on card | appears | `"Fixed gate"` under `1 villager recommends this tradesperson` | PASS |
+| 17 | Trade grouping: `Plumber` vs `plumber` | — | **TWO headings**, 1 person each | measured |
+| 18 | Trade grouping: trailing space | — | **ONE heading**, 2 people | measured |
+| 19 | Trade grouping: leading space | — | **ONE heading**, 2 people | measured |
+| 20 | Trade grouping: all four | — | **TWO headings** — `Plumber` (3), `plumber` (1) | measured |
+| 21 | Mechanism in source | — | `.trim()` on every cell (L139); `status` lower-cased (L141); **trade is not** | measured |
+| 22 | Validator, first attempt | exit 0 | **exit 1** — Human sentence 21 words over the 20-word cap | **FAIL — plan fixed** |
+| 23 | Validator, after fix | exit 0 | `OK`, exit `0`, **16 sub-tasks**, 56/79 = 70.9% | PASS |
+| 24 | Independent row count vs validator | equal | 16 vs 16 (12 done, 4 new); effort 56/79 both ways | PASS |
+
+**What was not tested:**
+
+- **The sheet formulas have still not run in Google Sheets.** The `<7` change is simulated and structurally checked, exactly as the `<15` version was. Row 5.1 remains open on the owner's paste.
+- **Neither reported form change could be verified.** Email collection being off and the eleven-digit rule being installed are **REPORTED by the owner**; form settings are invisible from outside the account. Both Layer 4 items were closed on his report and say so.
+- **Trade normalisation was not implemented**, only measured and recommended.
+- **The trade measurement used a substituted feed**, not the owner's real sheet, which was deliberate — it proves the site's grouping behaviour without touching his data.
+- **The votes POST was blocked during the row 4.5 measurement**, so no row was written to his Votes tab and the end-to-end send was not re-exercised. That path was already proven at row 4.2.
+- **The new message has not been seen by a real villager** on a real phone at the largest text size. Its colour and visibility are measured; its readability in situ is not.
+
+**Commits:**
+
+- `81385b7` — `feat: the note minimum becomes seven characters, on the page and in the sheet`
+
+**Finished:** 2026-09-18T18:33:23Z
+
+**End state:**
+
+The plan stands at **56 of 79 effort (70.9%)**, 12 of 16 rows `done`. The movement from 54/77 is small and worth reading correctly: **row 4.5 added 2 to the numerator and 2 to the denominator**, so the percentage moved only 70.1% → 70.9%. Closing a 2-effort row against the old 77 denominator would have read 72.7%; appending the row first accounts for the difference. Nothing was reweighted and nothing renumbered.
+
+A villager can now write *"Fixed gate"* and be thanked rather than refused, on the page and without being flagged in the sheet — the two surfaces ask the same question of the same text, which they did not before today.
+
+**Four rows remain, every one of them the owner's:** **6.1** (9, walk the runbook), **5.1** (6, paste the formulas), **7.1** (5, full journey, needs seeding), **7.2** (3, seed to 12–15 across ≥6 trades). Two non-villager rows still need deleting from the Votes tab before launch, and the launch message stays a draft.
+
+**One ruling is waiting on him:** whether the site should group trade headings case-insensitively. The risk is now measured rather than theoretical, and the fix is small, but it is a behaviour change on a closed row and it is his call.
+
+**Effort per prompt for the plan, cumulative: 56 effort done ÷ 16 prompts sent = 3.5.** Both figures recorded, not only the ratio.
