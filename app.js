@@ -27,7 +27,7 @@
   /* The Votes endpoint does not exist yet — build plan row 4.2 creates the
      Apps Script web app and the Votes tab, and sets this. No URL is invented
      here; while it is empty, sendRecommendation() sends nothing. */
-  var VOTES_ENDPOINT = "";
+  var VOTES_ENDPOINT = "https://script.google.com/macros/s/AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec";
 
   /* "What did they do for you?" is required, minimum 15 characters —
      solution design §7.4, matching the Google Form's own rule. */
