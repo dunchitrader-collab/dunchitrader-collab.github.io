@@ -14,7 +14,7 @@
 
   /* The published CSV of the Published tab. Read-only and public: the page
      holds no credential for the sheet and has no way to write to it. */
-  var FEED = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSJA1qHOmFEOYqsSZcy0Y90LBUXbiTBGTJCqy2U-W3VE_zXdWWB6a59QclDbbO9tXoriWZda76rDWkn/pub?gid=1583719737&single=true&output=csv";
+  var FEED = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSJA1qHOmFEOYqsSZcy0Y90LBUXbiTBGTJCqy2U-W3VE_zXdWWB6a59QclDbbO9tXoriWZda76rDWkn/pub?gid=1915382769&single=true&output=csv";
 
   /* The columns the Published tab is expected to carry. Solution design
      section 6.1.1 rule 1: columns are matched by NAME, never by position, so
