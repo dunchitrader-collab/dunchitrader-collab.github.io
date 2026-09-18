@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T20:18:13Z
+last-updated: 2026-09-18T20:46:38Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T20:18:13Z**
+**Last updated: 2026-09-18T20:46:38Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -125,6 +125,8 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | 2026-09-18 | **CRITICAL** | no | **Add columns K and L to the Published tab, and re-paste `Code.gs`.** Two short jobs, both in [PATH] `apps-script/DEPLOY.md` — **step 10** adds `recommendations` and `recommended_by` at K1 and L1 (leave them empty; the publisher fills them), and **step 11** re-pastes `Code.gs` and redeploys it as a **NEW VERSION OF THE EXISTING DEPLOYMENT**. **Step 11's last instruction is the one that matters**: choosing *New deployment* instead would issue a different `/exec` URL, the site would keep posting to the old one, and the recommend button would stop with nothing on screen to say so. Without K and L the site still works exactly as before — it simply shows no recommendations.
 | 2026-09-18 | **CRITICAL** | no | **Re-paste `Publish.gs`, run the repair, then re-test.** The publisher he installed tonight wrote its rows about a thousand lines below the table — see the Layer 3 bug; **nothing was lost and every id is intact.** Three steps, written out in [PATH] `apps-script/DEPLOY.md` **step 12**: (1) re-paste `apps-script/Publish.gs` into the Apps Script editor and save; (2) reload the spreadsheet and click **Village list → Repair the list (move stray rows back up)**; (3) click **Village list → Check the setup** and confirm it reports *"Stranded rows below the list: none. Good."* Then submit the form once from his phone and watch the row appear directly under the others. **Fixed and tested in the stub at `e5a82da` (23/23), but NOT RUN IN GOOGLE SHEETS** — his re-test is the proof.
 | 2026-09-18 | **CRITICAL** | no | **The Call button would misdial — repair the phone numbers before anybody uses the site.** Google stored six of his eight numbers as NUMBERS and dropped the leading zero, and the site builds the `tel:` link from that column. **Nothing warns the villager**: they tap Call and reach a stranger. Fixed so it cannot recur (phone written as text) and repairable for rows already damaged — [PATH] `apps-script/DEPLOY.md` **step 13** has his five steps. Re-derives each number from the responses tab where the original text survives; refuses and reports anything it cannot work out. **Helen Smith's `78853335434` is one it refuses** — it is the known-bad twelve-digit number minus its zero, so it needs retyping from her form answer. Her row is `hidden` either way. The same repair also removes the six duplicate people and corrects `Gas Engineer`/`Car Mechanic` to `Boiler & heating`/`Car mechanic`.
+| ~~2026-09-18~~ | ~~**CRITICAL**~~ | ~~yes~~ | ~~**The Call button would misdial.**~~ RESOLVED 2026-09-18T20:46Z — **CONFIRMED BY THE OWNER ON THE SERVED PAGE.** He opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. Measured here against his real feed the same evening: 12 of 13 numbers are eleven digits starting zero. **One remains and needs him:** `T007` Helen Smith's `078853335434` is twelve digits — the repair refused it honestly rather than inventing a plausible wrong number, and her row is `hidden`, so no villager can reach it. Retype it from her original form answer.
+| 2026-09-18 | HIGH | no | **Re-paste `Publish.gs` once more — the repair destroyed the duplicate-checker formulas in Published `I2` and `J2`.** He has already pasted them back by hand, so the columns are working again (measured: populated for all 13 rows on the live feed). **The script can no longer do it** as of `8dbf9b2`, but he must take that version for the protection to apply. Re-paste `apps-script/Publish.gs` into the Apps Script editor and save. The same version also maps a second trade, which the live site showed was still producing a stray `Heating` tile. Afterwards, **Village list → Check the setup** reports the health of `I` and `J` so this cannot be found by eye again.
 | 2026-09-18 | MEDIUM | no | **Recommendations typed into the SITE's own panel are still seen only by the person who typed them.** Measured 2026-09-18: they post to the Votes tab, and nothing copies Votes into Published, so no other visitor ever sees them. Recommendations arriving through the **Google Form** do reach everybody, via `Publish.gs` writing K and L. Closing the gap means teaching the publisher to read the Votes tab as well, which is NOT built and would need its own plan row and its own ruling. Recorded so nobody assumes D8a closed it.
 | 2026-09-18 | HIGH | no | **RULE FOR HIS RULING — the form should tell villagers their recommendation goes public.** Recorded, not implemented; changing the form is his alone. A tradesperson's name and telephone number now appear on a public website without anybody asking that tradesperson, and the villager submitting is the only person in a position to have asked them. Suggested: add one line to the form's description saying the recommendation will be shown publicly with the tradesperson's name and number. See solution design §7.3.
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Form email collection is still ON.** Evidence, REPORTED by the owner: the third real response row carries `gsamwell@deverse.co.uk` in column B. This contradicts decision 3 … **Settings → Responses → Collect email addresses → Off.** Only the owner can change it; nobody here can touch the Google Form.~~ RESOLVED 2026-09-18T18:30Z — **REPORTED BY THE OWNER, NOT MEASURED HERE.** He reports having turned email collection off in Google on 2026-09-18. Nobody in this session can verify it: the form's settings are visible only while signed in and editing the form, and the responses tab is not published. It will become observable the first time a new submission arrives with column B empty — worth a glance then, and until then it stands on his report alone. |
@@ -171,6 +173,43 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 # LAYER 2 — ARCHITECTURE
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
+
+**[BUG] 2026-09-18 — the repair destroyed the owner's helper formulas by writing straight through their columns**
+
+Root cause: Published now has three kinds of column — `A`–`H` written by the script, **`I` and `J` owned by the owner's `ARRAYFORMULA` helpers**, and `K`–`L` written by the script. Five of the script's six writes crossed all twelve columns in one contiguous range:
+
+| Where | Range | Crossed I and J? |
+|---|---|---|
+| `publishOne` — new row | `setValues` A..L | **yes** |
+| `appendRecommendation` — words | `setValue` K only | no |
+| `appendRecommendation` — name | `setValue` L only | no |
+| `repairPublished` — move a stranded row | `setValues` A..L | **yes** |
+| `repairPublished` — clear the old position | `clearContent` A..L | **yes, cleared them** |
+| `cleanPublished` — write the tidied table | `setValues` A..L | **yes** |
+| `cleanPublished` — clear the surplus rows | `clearContent` A..L | **yes, cleared them** |
+
+Writing a value into a cell an `ARRAYFORMULA` produces **replaces the formula with that value**, so after the repair `I2` and `J2` held their last computed result as dead text. The declaration `PUB_COLS` already carried the comment *"the sheet-formula helpers, written by formulas, NEVER by this script"* — **the intent was recorded and the code contradicted it**, which is the kind of gap a comment cannot catch.
+
+**Why it matters beyond tidiness, and why it is the same failure class this project keeps producing:** the `verdict` formula on the Form responses tab looks up Published `I` and `J` to decide `ALREADY ON SITE` and `SAME NAME, DIFFERENT NUMBER`. With those columns dead, **every future submission reads as `NEW`, even for somebody already listed** — and nothing anywhere would say so. The owner found it by eye, on one row, by noticing the new row had published "but not column I or J".
+
+Fix applied: `apps-script/Publish.gs` at `8dbf9b2`. **`FORMULA_COLS` declares the columns the script must never touch**, and `writableBlocks()` derives the contiguous writable spans from it — `A`–`H` and `K`–`L`. Every write now goes through `writeRowBlocks`, `writeRangeBlocks` or `clearRowsBlocks`. Adding another formula column later means adding one index to `FORMULA_COLS` and nothing else.
+
+**The limit, stated in the file rather than left implicit:** if the owner puts a formula in a column `FORMULA_COLS` does not name, the script will still overwrite it. It cannot detect one, because the Sheets API returns a formula's **result** when reading values — a formula and a typed value are indistinguishable on a read. `checkSetup` therefore reports the health of the columns it knows about, and `FORMULA_COLS` is the place to record any new one.
+
+**Proven, not asserted.** A stub was built whose `I` and `J` hold formula *objects*, so any write to them is detectable, with a damaged phone number to force the repair's write path. After a publish, after a duplicate append and after a full repair, both formulas are intact. **The same test run against the previous commit `141330b` shows both destroyed and replaced by their last computed values** — exactly what the owner saw — so the test detects the defect rather than merely passing.
+
+Diagnosis: **Village list → Check the setup** now reports whether `I2` and `J2` hold a formula at all, and if they do, whether they are producing a value for every row that has a phone. If they are missing it names the fix: *"open apps-script/SHEET-FORMULAS.md, step 2, and paste the two formulas back into Published I2 and J2"*.
+
+**[BUG] 2026-09-18 — the repair mapped `trade` but not `extra_trade`, so a second trade could still make a stray tile**
+
+Root cause: `cleanPublished` normalised the `trade` column only. A person with two trades appears under both headings, so an unmapped `extra_trade` makes a tile of its own just as readily.
+
+**Measured on the owner's real live feed 2026-09-18**, which is how it was found: the site rendered seven tiles and one of them was **`Heating`** — not on the agreed list — sitting alongside the correct `Boiler & heating`. It came from `T002`'s `extra_trade`, which the repair had left untouched while correctly mapping that row's `trade`.
+
+Fix applied: the same commit's follow-up — the clean-up loop now maps **both** trade columns, and `checkSetup` reports an unrecognised second trade as well, labelled *"second trade"* so he can tell which column to look in. Verified in the stub: `T002`'s `extra_trade` `Heating` becomes `Boiler & heating`.
+
+Diagnosis: **Village list → Check the setup** lists any trade, in either column, that is not on the agreed list.
+
 
 **[BUG] 2026-09-18 — LAUNCH-CRITICAL: Google ate the leading zero off telephone numbers, so the Call button misdialled**
 
@@ -531,6 +570,13 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ---
 
 # LAYER 4 — OUTSTANDING WORK
+
+**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
+**Re-paste `apps-script/Publish.gs` one more time.** The repair he ran destroyed the `ARRAYFORMULA` helpers in Published `I2` and `J2` by writing rows straight through their columns. He has pasted them back by hand and they are working again — measured on the live feed, populated for all thirteen rows — but **the protection only applies once he takes the new script** (`8dbf9b2`). It also fixes a second fault the live site revealed: a stray `Heating` tile from `T002`'s `extra_trade`, which the repair had not been mapping. One step: Extensions → Apps Script → `Publish.gs` → select all, delete, paste the fresh copy from GitHub, Ctrl+S. Then **Village list → Check the setup**, which now reports whether `I` and `J` are healthy.
+
+**[OUTSTANDING] 2026-09-18 | MEDIUM | Blocking: no**
+**Retype Helen Smith's telephone number (`T007`).** It reads `078853335434` — twelve digits, the mistyped original. The repair refuses it deliberately rather than inventing a plausible wrong number, and her row is `hidden`, so no villager can reach it. Retype it from her original form answer on the Form responses tab and set her `status` to `active`.
+
 
 **[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: yes — blocks launch**
 **Repair the telephone numbers, the duplicates and the trade names.** [PATH] `apps-script/DEPLOY.md` **step 13**, five steps: re-paste `Publish.gs`, **Village list → Check the setup** to see what is wrong before changing anything, **Village list → Repair the list**, check again, then verify one number by eye and tap Call on the site.
@@ -2933,3 +2979,100 @@ The most important thing here is not the count. **The Call button would have mis
 **Six rows remain, every one waiting on him:** 6.1 (9, walk the runbook), 5.2 (6, re-paste, repair, re-test), 5.1 (6, confirm the verdicts), 7.1 (5, full journey), 7.2 (3, seed the list), 4.6 (1, redeploy the endpoint).
 
 **Effort per prompt for the plan, cumulative: 62 effort done ÷ 20 prompts sent = 3.1.** Both figures recorded, not only the ratio.
+
+### 2026-09-18T20:46:38Z — Row 5.2 closed; the repair no longer destroys the owner's formulas; his real data measured for the first time
+
+**Source:** Claude Code
+**Started:** 2026-09-18T20:20:00Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH
+**Repos touched this session:** `gsamwell-lang/dunchi-trader` (origin), `dunchitrader-collab/dunchitrader-collab.github.io` (collab). No other repository was read or written.
+
+**Prompt received:**
+
+> Target repo: dunchi-trader. MODE: IMPLEMENTATION. Package tier (a) hard/ambiguous, model claude-opus-5, effort high.
+>
+> Same conversation as 2665 through 2689. You landed 2689 at 20:19Z reporting HEAD 141330b, plan 62/92 = 67.4%, 14 of 20 rows. Re-establish HEAD yourself and stop if it is not 141330b, clean and level. MISSION: re-read at source and name it back.
+>
+> ## WHAT THE OWNER DID AND WHAT HAPPENED
+>
+> He re-pasted Publish.gs, added the K1/L1 headings, ran Check the setup, then ran the repair. Reported verbatim: "Repaired. Moved 14 people back up into the list. Removed 6 duplicate rows, keeping the earliest ID for each person and moving their recommendations onto the row that was kept. Retired IDs (never reused): T013, T014, T015, T016, T017, T018. Put the missing 0 back on 12 telephone numbers. Corrected 5 trade names to match the list on the website. WORTH A LOOK — these duplicates did not agree: T006 and T011 share a telephone number but are different people (Ben Franks / John Pilkington) — BOTH KEPT, nothing merged. Every ID is unchanged."
+>
+> The before picture from Check the setup, also verbatim: 18 people, last id T018, list filling rows 2 to 5, 14 rows stranded at rows 1001-1014, 7 duplicate rows, 12 telephone numbers wrong, 3 trade names off the list (T003 Roofer, T007 and T015 Gas Engineer), and the K1/L1 headings missing at that point.
+>
+> THEN THE TWO TESTS: 1. RENDERED SURFACE, PASSED. He opened the live site on his phone, tapped Plumber, tapped Call, and confirmed the dialler showed the full eleven-digit number with its leading zero. His word: "pass". 2. A REAL FORM SUBMISSION FROM HIS PHONE PUBLISHED ITSELF.
+>
+> ## THE NEW DEFECT — THE REPAIR DESTROYS THE HELPER FORMULAS
+>
+> His words: the new row published "but not column I or J", and when asked which columns, he named them: pub_phone_key and pub_name_key. Those two columns hold ARRAYFORMULA formulas he pasted into Published I2 and J2. The repair writes rows back across a range that includes I and J, so it has overwritten or cleared them. This matters beyond tidiness: the verdict column looks up Published I and J to decide ALREADY ON SITE and SAME NAME, DIFFERENT NUMBER. With those columns dead, every future submission reads as NEW even when the person is already listed. I have told him to re-paste both formulas by hand as an immediate repair. Your job is to make sure no script can do it again.
+>
+> [Tasks 0–5 as issued: guards and every Published range stated by column span; never write to the formula columns, in a way that survives another being added; detect it in Check the setup; close row 5.2 on his words after reading the row's own wording; measure the live feed and drive the live site; record and land.]
+
+**What was done:**
+
+**Task 0 — guards passed, MISSION re-read, every Published write stated by column span before changing anything.** HEAD `141330b0e12b78adbcf3e1e28461a65e8580f1d2`, master, clean, `0 0`. Six writes found; **five of them crossed `I` and `J`** — `publishOne`'s row write, both of `repairPublished`'s move-and-clear, and both of `cleanPublished`'s write-and-clear, all spanning `A`..`L`. Only `appendRecommendation` was safe, writing `K` and `L` individually. The full table is in the Layer 3 entry.
+
+Worth recording: **`PUB_COLS` already carried the comment *"the sheet-formula helpers, written by formulas, NEVER by this script"*.** The intent was written down and the code contradicted it. A comment cannot enforce anything, which is why the fix is structural rather than another comment.
+
+**Task 1 — the columns are now declared, not remembered.** `FORMULA_COLS = [8, 9]` names the columns the script must never touch, and `writableBlocks()` derives the contiguous writable spans from it — `A`–`H` and `K`–`L`. Every write goes through `writeRowBlocks`, `writeRangeBlocks` or `clearRowsBlocks`. **Adding another formula column later means adding one index and nothing else**, which was verified by declaring a thirteenth column formula-owned and watching the blocks recompute.
+
+**The limit is stated in the file rather than left implicit:** if the owner puts a formula in a column `FORMULA_COLS` does not name, the script will still overwrite it — it cannot detect one, because the Sheets API returns a formula's **result** when reading values, so a formula and a typed value are indistinguishable on a read. `checkSetup` reports the health of the columns it knows about, and `FORMULA_COLS` is the place to record a new one.
+
+**The proof was made to fail first.** A stub was built whose `I` and `J` hold formula *objects*, so any write replaces the object and is detectable. The first version of that test **passed against the old code**, which was wrong — the fixture exited early with "nothing to repair" and never reached a write. A damaged phone number was added to force the write path, and then: **old code destroys both formulas, replacing them with their last computed values — exactly what the owner saw — and the new code leaves both intact while still doing the repair.** A test that cannot fail proves nothing, and this one nearly did not.
+
+**Task 2 — `checkSetup` reports the helper columns.** Whether `I2` and `J2` hold a formula at all, and if so whether they are producing a value for every row that has a phone. When they are missing it says what it means — *"EVERY new form submission will look like a new person, even somebody already on the list"* — and names the fix and the file. He found this by eye on one row; the report now states it.
+
+**Task 3 — row 5.2 closed on his words, after checking its own wording clause by clause.** Every clause was **measured on his real live feed** rather than taken from the summary: a new response appended one row by itself (`T013 Ron Suttil`), the next id derived from the highest already there (`T012` → `T013`), plain values throughout, `active` for the clean submission, `hidden` for the unusable phone (`T007`), and no existing row edited, deleted or reordered.
+
+**One clause is superseded rather than unmet, and it is recorded as such:** the row predates D8a and names "a phone already on Published" as a third hard failure that should set `hidden`. D8a deliberately reversed that — a duplicate is now a second recommendation appended to the existing person — and the live feed shows it working. The row's intent, that a duplicate must not quietly create a second listing, is met by the better behaviour.
+
+**Task 4 — the first measurement of his real repaired data.** The live CSV now holds **13 rows**. **12 of 13 phone numbers are eleven digits starting zero**; the one exception is `T007`'s twelve-digit number, which the repair refused honestly and which is `hidden`, so no villager can reach it. **Every trade in the `trade` column is on the agreed list.** `I` and `J` are populated for all thirteen rows, confirming he has already pasted the formulas back.
+
+Driving the live site at 320px: **7 trade tiles, 12 cards, 9 of them showing a villager's words, 0px overflow.** Every Call link carries a full eleven-digit `tel:`. **`T013` Ron Suttil's card reads *"Very good engineers, especially good working with metal" — Recommended by Helen*** — which is the **first end-to-end proof against real data** that the words and the recommender's name reach a card, where previously only a fixture had shown it.
+
+**That measurement found a further defect the brief had not named.** One of the seven tiles was **`Heating`**, which is not on the agreed list, sitting beside the correct `Boiler & heating`. It came from `T002`'s **`extra_trade`**, which `cleanPublished` was not mapping — it normalised `trade` only. A person with two trades appears under both headings, so an unmapped second trade makes a stray tile just as readily. Fixed in the same session, with `checkSetup` now reporting an unrecognised second trade separately so he can tell which column to look in.
+
+**Testing performed: 49 stub cases, 49 passed** — the 46-case regression suite from previous sessions plus the 3 new formula-column proofs.
+
+| # | Test | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1–23 | Regression suite (stranded rows, repair, backfill) | all pass | all pass | **23/23** |
+| 24–46 | Regression suite (trades, phones, duplicates, his 14 rows) | all pass | all pass | **23/23** |
+| 47 | **I and J after a PUBLISH** | formulas intact | intact | **PASS** |
+| 48 | **I and J after a DUPLICATE APPEND** | formulas intact, K merged | intact, `"First words"` merged | **PASS** |
+| 49 | **I and J after a FULL REPAIR** | formulas intact | intact, row moved 1001 → 4 | **PASS** |
+| — | **Same three against `141330b`** | should FAIL | **both destroyed → `"07000000001"`, `"annone"`** | test is genuine |
+| — | `writableBlocks()` | A–H, K–L | A–H, K–L | PASS |
+| — | …with a 13th formula column declared | A–H, K–L | A–H, K–L | PASS |
+| — | `extra_trade` mapping | `Heating` → `Boiler & heating` | `Boiler & heating` | PASS |
+| — | His 14-row repair, re-run | idempotent | byte-identical | PASS |
+| — | **LIVE FEED: phones** | 11 digits starting 0 | **12 of 13**; `T007` refused and `hidden` | measured |
+| — | **LIVE FEED: trades** | on the agreed list | **13 of 13 in `trade`** | measured |
+| — | **LIVE FEED: helper columns** | populated | **all 13 rows** | measured |
+| — | **LIVE SITE: tiles** | on the agreed list | **7 tiles; `Heating` off-list** | **defect found** |
+| — | **LIVE SITE: cards** | recommendations render | **9 of 12 show a villager's words** | measured |
+| — | **LIVE SITE: overflow at 320px** | 0px | **0px** | measured |
+
+**What was not tested:**
+
+- **None of the script changes have run in Google Sheets.** The formula-column protection is stub-proven, including against the old code, but the owner must take the new `Publish.gs` for it to apply to him. Until he does, his next repair would destroy the formulas again.
+- **The owner has not seen a recommendation on a card.** That was measured here against his real feed, and it is this session's measurement rather than his sighting — recorded in row 5.2 rather than implied.
+- **`T007`'s true number cannot be recovered here**; it needs his original form answer.
+- **Whether `T002`'s stray `Heating` tile is gone** will only be true after he re-pastes and re-runs the repair.
+- **No Google-side change was made**, and nothing was written to his sheet or Votes tab.
+
+**Commits:**
+
+- `8dbf9b2` — `fix: the script must never write to the owner's formula columns`
+
+**Finished:** 2026-09-18T20:46:38Z
+
+**End state:**
+
+The plan stands at **68 of 92 effort (73.9%)**, 15 of 20 rows `done`. **Row 5.2 closed** — the largest single movement in several sessions, and the one that matters most: a villager's recommendation now reaches the village list with nobody touching a spreadsheet.
+
+**Two things are true tonight that were not this morning.** The Call button dials the right number, confirmed by the owner on his own phone on the served page. And a recommendation written by a villager appears on a tradesperson's card, measured against his real data rather than a fixture.
+
+**Five rows remain, every one waiting on him:** 6.1 (9, walk the runbook), 5.1 (6, confirm the verdicts), 7.1 (5, full journey), 7.2 (3, seed the list), 4.6 (1, redeploy the endpoint). Two short jobs are outstanding: re-paste `Publish.gs` so the formula protection applies, and retype Helen Smith's number.
+
+**Effort per prompt for the plan, cumulative: 68 effort done ÷ 21 prompts sent = 3.24.** Both figures recorded, not only the ratio.

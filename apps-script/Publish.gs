@@ -1021,12 +1021,26 @@ function cleanPublished(ss, pub) {
   }
 
   /* --- b. trade names onto the agreed list --- */
+  var iExtra = PUB_COLS.indexOf('extra_trade');
   var fixedTrade = 0;
   for (var t = 1; t < vals.length; t++) {
     if (!String(vals[t][0] || '').trim()) continue;
+
+    /* BOTH trade columns. A person with two trades appears under both
+       headings, so an unmapped `extra_trade` makes a tile of its own just as
+       readily as `trade` does. Measured on the live feed 2026-09-18: T002's
+       extra_trade "Heating" was producing a Heating tile alongside the agreed
+       "Boiler & heating", because an earlier version of this loop only looked
+       at `trade`. */
     var was = String(vals[t][iTrade] || '').trim();
     var now = normaliseTrade(was);
     if (now !== was) { vals[t][iTrade] = now; fixedTrade++; }
+
+    var wasX = String(vals[t][iExtra] || '').trim();
+    if (wasX) {
+      var nowX = normaliseTrade(wasX);
+      if (nowX !== wasX) { vals[t][iExtra] = nowX; fixedTrade++; }
+    }
   }
 
   /* --- c. duplicates: keep the LOWEST id, merge the rest into it --- */
@@ -1280,6 +1294,9 @@ function checkSetup() {
 
         var tr = String(tv[v][iT] || '').trim();
         if (tr && !isKnownTrade(tr)) oddTrades.push(vid + ' (' + tr + ')');
+        var iX = PUB_COLS.indexOf('extra_trade');
+        var trx = String(tv[v][iX] || '').trim();
+        if (trx && !isKnownTrade(trx)) oddTrades.push(vid + ' (' + trx + ', second trade)');
       }
 
       lines.push('');
