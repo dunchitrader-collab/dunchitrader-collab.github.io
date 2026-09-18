@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T17:43:18Z
+last-updated: 2026-09-18T17:53:26Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T17:43:18Z**
+**Last updated: 2026-09-18T17:53:26Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ SUPERSEDED 2026-09-18T17:26Z → **48 of 77 effort (62.3%)**, 10 of 15 rows done. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ SUPERSEDED 2026-09-18T17:48Z → **54 of 77 effort (70.1%)**, 11 of 15 rows done. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -60,7 +60,7 @@ This project is **entirely standalone**. It depends on no external organisation'
 | [URL] `https://forms.gle/ZyLed4Tue91bzXjD7` | The Google Form villagers fill in | [VERIFIED 2026-09-18] — HTTP 200 |
 | [URL] `https://docs.google.com/spreadsheets/d/1j9SVNJG9Zf_iFtl6OrsrcVom5SY13sOiv3vt58jcprc/edit` | The Google Sheet | [ASSUMED] — not opened this session (requires the Google login) |
 | [URL] Published CSV — ~~`...&gid=1583719737&...`~~ SUPERSEDED 2026-09-18T15:20:38Z → `https://docs.google.com/spreadsheets/d/e/2PACX-1vSJA1qHOmFEOYqsSZcy0Y90LBUXbiTBGTJCqy2U-W3VE_zXdWWB6a59QclDbbO9tXoriWZda76rDWkn/pub?gid=1915382769&single=true&output=csv` | The read interface the site fetches. **Now the Published tab** (gid `1915382769`). | [VERIFIED 2026-09-18T15:20:38Z] — HTTP 200, `text/csv`, 291 bytes, header exactly `id,first_name,last_name,business,phone,trade,extra_trade,status`, 4 data rows. ~~**BUT IT SERVES THE WRONG TAB**~~ RESOLVED — it now serves the correct tab. |
-| [URL] Votes endpoint — ~~not deployed; `VOTES_ENDPOINT` empty~~ SUPERSEDED 2026-09-18T17:04:41Z → `https://script.google.com/macros/s/AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec` | The write interface. The Apps Script web app the page posts a recommendation to; it can only append to the Votes tab. Set in `app.js` line 30 at commit `4d67c15`. | [VERIFIED 2026-09-18T17:02:32Z] — driven from the live Pages origin in a real browser: `POST` returns **HTTP 302** with `access-control-allow-origin: *`, redirecting to `script.googleusercontent.com/macros/echo`, which the browser follows as `GET` and receives **HTTP 200**; round trip 2779.9 ms. The page itself sees only an **opaque** response (`type: opaque`, `status: 0`, `ok: false`, no readable headers) — see Layer 3 and solution design §6.2. **The DEPLOYMENT SETTINGS and the existence of the Votes tab with its four-column header are REPORTED BY THE OWNER, not measured here** — he deployed it under `dunchitrader@gmail.com` per `apps-script/DEPLOY.md` steps 1–3, executing as himself with access set to Anyone. |
+| [URL] Votes endpoint — ~~not deployed; `VOTES_ENDPOINT` empty~~ SUPERSEDED 2026-09-18T17:04:41Z → `https://script.google.com/macros/s/AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec` | The write interface. The Apps Script web app the page posts a recommendation to; it can only append to the Votes tab. Set in `app.js` line 30 at commit `4d67c15`. | [VERIFIED 2026-09-18T17:02:32Z] — driven from the live Pages origin in a real browser: `POST` returns **HTTP 302** with `access-control-allow-origin: *`, redirecting to `script.googleusercontent.com/macros/echo`, which the browser follows as `GET` and receives **HTTP 200**; round trip 2779.9 ms. The page itself sees only an **opaque** response (`type: opaque`, `status: 0`, `ok: false`, no readable headers) — see Layer 3 and solution design §6.2. **The DEPLOYMENT SETTINGS and the existence of the Votes tab with its four-column header are REPORTED BY THE OWNER, not measured here** — he deployed it under `dunchitrader@gmail.com` per `apps-script/DEPLOY.md` steps 1–3, executing as himself with access set to Anyone. **2026-09-18T17:48Z — THE WHOLE PATH IS NOW CONFIRMED END TO END FROM A REAL PHONE: the owner placed a vote on the live site and the row reached the Votes tab. Verbatim: *"the vote populated"*. REPORTED by him — the append is only visible inside his Google account, which is inherent to the design rather than a gap in the testing. His first attempt at ~17:25Z produced no row; see the stale-page `[BUG]` in Layer 3. Build Plan row 4.2 is `done`.** |
 
 ### Repository Topology
 
@@ -118,8 +118,8 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | ~~2026-09-18~~ | ~~**CRITICAL**~~ | ~~**YES**~~ | ~~**No push credential for the dunchitrader-collab GitHub account.** Measured 2026-09-18T14:13:45Z: both credentials report `"push": false`, and a dry-run push returns HTTP 403.~~ RESOLVED 2026-09-18T14:26:12Z — Gavin added `gsamwell-personal` as a collaborator with Write access. The push landed at `f94d45a` using the `gsamwell-lang` classic token; see Layer 3 for why the fine-grained token still could not, despite the API reporting `push: true`. |
 | ~~2026-09-18~~ | ~~MEDIUM~~ | ~~no~~ | ~~**Row 1.1 needs the phone sighting.**~~ RESOLVED 2026-09-18T15:13:20Z — **Owner sighting 2026-09-18T15:04Z, verbatim:** *"https://dunchitrader-collab.github.io all works are expected without any data in it though"* Row 1.1 is `done`. |
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 3.3 is held open on ONE clause.** The sighting covered most of it — nothing scrolled sideways, no text left its box, the header did not swallow the screen and the size buttons did not grow. But *"no phone number breaks mid-digit"* **cannot** have been shown: the feed still serves the wrong tab, so no cards and therefore no phone number were on screen. Deliberately not closed on evidence that could not have shown it. Closes when 2.1 is unblocked and the owner presses the largest A with real cards visible.~~ RESOLVED 2026-09-18T17:04:41Z — the held clause is now sighted. **Owner sighting 2026-09-18 (~16:50Z), verbatim:** *"Task 1 is a pass."* He pressed the largest A on his phone with real cards on screen and confirmed the phone number stays in one piece with nothing running off the right edge. Row 3.3 is `done`. |
-| 2026-09-18 | HIGH | no | **Row 4.2 needs a vote FROM A REAL PHONE.** ~~The script and its numbered steps are committed. Follow [PATH] `apps-script/DEPLOY.md` while signed in as `dunchitrader@gmail.com`.~~ SUPERSEDED 2026-09-18T17:04:41Z → the owner has deployed it (REPORTED by him, not measured here) and the endpoint is now wired in `app.js` at `4d67c15` and **verified served live**. **DEPLOY.md step 4 is superseded** — the endpoint was set in this repository and pushed to both remotes, so the owner must NOT hand-edit `app.js` in the live repo. What remains is only the closing evidence: the owner opens the live site **on his phone**, taps a trade, taps "I recommend them too", fills both boxes, taps "Add my recommendation", then opens the Votes tab and sees the row. Closes on that. |
-| 2026-09-18 | HIGH | no | **Delete the test row from the Votes tab.** Row 4.3's measurement deliberately submitted one real recommendation through the live site, so the Votes tab now carries a row that is not a villager's. It is labelled for deletion in both text columns. Column `id` is `T001`; column `name` is `TEST - Claude Code 2026-09-18 - please delete`; column `text` begins `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` Delete that one row. **Note the caveat:** because the cross-origin response is opaque, this session could not confirm from the browser that the row was actually appended — if the Votes tab has no such row, that is itself the finding, and it means row 4.2's append path is not working. |
+| ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 4.2 needs a vote FROM A REAL PHONE.** The script and its numbered steps are committed. Follow [PATH] `apps-script/DEPLOY.md` while signed in as `dunchitrader@gmail.com`. … the owner has deployed it and the endpoint is now wired in `app.js` at `4d67c15` and verified served live. What remains is only the closing evidence: the owner opens the live site on his phone, taps a trade, taps "I recommend them too", fills both boxes, taps "Add my recommendation", then opens the Votes tab and sees the row. Closes on that.~~ RESOLVED 2026-09-18T17:48Z — **Owner confirmation 2026-09-18 (~17:47Z), verbatim:** *"the vote populated"*. He placed the vote from his phone on the live site and confirmed the row reached the Votes tab. Build Plan row 4.2 is `done`. His FIRST attempt at ~17:25Z did not reach the sheet and he retried on a cache-busted URL — see the stale-page `[BUG]` in Layer 3; the endpoint was provably working throughout. |
+| 2026-09-18 | HIGH | no | **Delete the TWO non-villager rows from the Votes tab before launch.** The tab now holds two rows that are not a villager's recommendation, and they are different things: **(1) the automated test row** from Build Plan row 4.3's cross-origin measurement — `id` `T001`, `name` `TEST - Claude Code 2026-09-18 - please delete`, `text` beginning `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` **(2) the owner's own test vote** from ~17:47Z, the one that closed row 4.2 — whatever name and words he typed, against whichever tradesperson he tapped. Only he knows its content; it is the row whose arrival he confirmed. **Both should go before launch**, so the tally on each card counts only real villagers. Deleting rows from the Votes tab is safe and affects nothing else — the site never reads that tab. **Do NOT delete anything from the Published tab in the process**; that is the list itself. His first ~17:25Z attempt produced no row at all, so there is nothing to remove for that one. |
 | 2026-09-18 | MEDIUM | no | **Row 5.1 needs the formulas pasted.** Paste-ready in [PATH] `apps-script/SHEET-FORMULAS.md`. Closes when one sample row of each of the four verdicts shows correctly in the real sheet. |
 | 2026-09-18 | MEDIUM | no | **Row 6.1 needs the runbook WALKED.** [PATH] `docs/RESTORE-dunchi-trader.md` is written and was **reconciled to the deployed state on 2026-09-18T17:40Z at `983525f`** so the walk is not wasted on stale instructions — it had been written before the Apps Script was deployed. It now carries a **walk-through tick list** at the end, one line per step naming what should be seen, usable on a phone beside a laptop. The walk itself needs the Form, Sheet, Apps Script and Pages under the two logins and is the owner's; nothing in the build can substitute for it. **Two steps are honestly marked as not confirmable from outside the Google account** — step 3's email-collection and response-validation settings — with an incognito test given for what can be checked. |
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 3.1 needs Gavin's sighting.**~~ RESOLVED 2026-09-18T15:13:20Z — same sighting. Every clause of row 3.1 is visible without data, so the sighting covers it in full. Row 3.1 is `done`. |
@@ -147,11 +147,13 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 
 ~~**The build is at 46 of 75 effort (61.3%), 9 of 14 rows done. Nothing is blocked on code. Three things are needed from the owner, all Google-side:**~~ SUPERSEDED 2026-09-18T17:26Z →
 
-**The build is at 48 of 77 effort (62.3%), 10 of 15 rows done. Nothing is blocked on code, and every remaining item is the owner's, inside Google.** In priority order:
+~~**The build is at 48 of 77 effort (62.3%), 10 of 15 rows done. Nothing is blocked on code, and every remaining item is the owner's, inside Google.**~~ SUPERSEDED 2026-09-18T17:48Z →
 
-1. **SEED THE LIST.** This is now the biggest single thing between the build and launch, and it is bigger than everything else combined. The live list carries 3 visible test people across 4 trades; launch needs **12–15 tradespeople across at least 6 trades**. It blocks row 7.1 and the second half of 7.2. **[PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md` is the step-by-step guide**, written for him rather than for a developer.
-2. **Place ONE vote from your phone, then look at the Votes tab.** The only thing standing between the project and row 4.2. Open the site on your phone, tap a trade, tap "I recommend them too", type a name and a sentence, tap "Add my recommendation" — then open the Sheet's **Votes** tab and confirm a new row appeared. The page will show its thank-you either way, because the cross-origin reply is unreadable by design and by measurement (Layer 3), so **the sheet is the only proof**.
-3. **Delete the test row** the 4.3 measurement wrote into the Votes tab — identified in the Outstanding Items table above.
+**The build is at 54 of 77 effort (70.1%), 11 of 15 rows done. Step 4 is COMPLETE — the whole votes path works end to end from a real phone. Nothing is blocked on code, and every one of the four remaining rows waits on the owner.** In priority order:
+
+1. **SEED THE LIST.** The biggest single thing between the build and launch, and bigger than everything else combined. The live list carries 3 visible test people across 4 trades; launch needs **12–15 tradespeople across at least 6 trades**. It blocks rows 7.1 and 7.2. **[PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md` is the step-by-step guide**, written for him rather than for a developer.
+2. **WALK THE RUNBOOK** — [PATH] `docs/RESTORE-dunchi-trader.md`, row 6.1 at 9 effort, the largest row left. It was reconciled to the deployed state at `983525f` so the walk is not wasted on stale instructions, and it ends with a tick list usable on a phone beside a laptop.
+3. **Delete the TWO non-villager rows from the Votes tab** — the 4.3 automated test row and his own ~17:47Z test vote. Both identified in the Outstanding Items table above.
 4. **The remaining Google-side operator actions in Layer 4** — the form's dropdown/"Other" control, email collection, the star-rating question, the missing trades, and the 5.1 sheet formulas.
 
 **Do NOT post the launch message yet.** It is drafted in `docs/PROCESS-seeding-and-launch-dunchi-trader.md` §4 under a heading marking it a draft awaiting approval, and it must not go to the village group until step 7 has passed — otherwise the village is sent to a list of test people.
@@ -270,6 +272,41 @@ The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file a
 # LAYER 3 — KNOWN ISSUES AND GOTCHAS
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
+
+**[BUG] 2026-09-18 — a page already open on a phone keeps running the OLD `app.js`, so a villager can get a thank-you for a vote that was never sent**
+
+Root cause: the site is static and has no version signal. A browser that already holds the page carries on running the copy it has. If that copy predates a change, the villager is using yesterday's code while the live site serves today's — and because the recommendation panel shows its thank-you optimistically (see the opaque-response bug below), a stale `app.js` whose `VOTES_ENDPOINT` is still `""` **sends nothing and thanks them anyway**. `sendRecommendation()` returns `false` immediately and the thank-you is shown regardless.
+
+The timeline that surfaced it, separating what is measured from what is not:
+
+| Time (UTC) | Event | Status |
+|---|---|---|
+| ~16:50 | Owner loads the live site on his phone for the row 2.1/3.3 sighting | REPORTED by the owner |
+| 16:59:59 | `4d67c15` commits the endpoint into `app.js` | **MEASURED** — commit timestamp |
+| ~17:01 | The live site first serves an `app.js` carrying the endpoint; sha256 byte-identical to the committed file | **MEASURED** — cache-busted fetch |
+| ~17:02:32 | A server-driven browser vote from the Pages origin posts successfully (302 → 200) | **MEASURED** — row 4.3 |
+| ~17:25 | Owner's FIRST phone vote: the page thanked him, **no row appeared** in the Votes tab | REPORTED by the owner |
+| ~17:47 | Owner retries on a **cache-busted URL**; the row appears. Verbatim: *"the vote populated"* | REPORTED by the owner |
+
+**The explanation is REPORTED, not measured, and nobody instrumented his phone.** The working account is that his phone was still running the `app.js` it loaded at ~16:50, before the endpoint went live at ~17:01, so the page skipped the send and showed its thank-you anyway. That is consistent with every fact above and with the code, and the cache-busted retry succeeding is strong circumstantial support — but it remains an inference about a device nobody observed.
+
+One measured fact **narrows** that explanation, and it is recorded because the explanation would otherwise be stated too confidently: GitHub Pages serves both `index.html` and `app.js` with **`cache-control: max-age=600`** (measured 2026-09-18T17:48Z, alongside `etag` and `last-modified`). A ten-minute freshness window does **not** by itself explain a stale page ~35 minutes after loading. The likelier mechanism is therefore that the **already-loaded page stayed alive in the phone's memory** — an open tab, or a back-forward-cache restore — and simply never re-fetched anything, rather than HTTP caching holding a stale file past its expiry. Both routes produce the identical symptom, and neither was measured on his device.
+
+Impact, and it is narrower than it first appears: **this bites people who already had the page open just before a change, not people arriving fresh.** A villager opening the link for the first time after a deploy gets the current code. The exposure is a window around each deploy, affecting only those holding an older copy — and for a site that changes rarely once launched, that window is small and closes on its own as people reload. It cost one confusing retry here and could have cost a wrong diagnosis: the natural first suspicion was that the endpoint or the Apps Script was broken, when both were provably working at the time.
+
+Fix applied: **none, deliberately.** See the assessment below.
+
+Diagnosis: if a vote does not reach the Votes tab, before suspecting the endpoint, **reload the page with a cache-busting query string** (`?x=1`, any value) and try again. If the cache-busted attempt works, the original page was stale and nothing is broken. Confirm the endpoint independently by fetching `app.js` from the live site cache-busted and checking `VOTES_ENDPOINT` is non-empty — if it is set on the server, the server side is fine.
+
+**Assessment — does this warrant a change to the site? [ASSESSED 2026-09-18. A recommendation for the owner to rule on; no site behaviour was changed in recording it.]**
+
+**Judgement: this is inherent to a no-build-step static site, and it is worth knowing rather than fixing.** It should not change the site. Three reasons:
+
+1. **It is a deploy-window problem on a site that will stop being deployed.** Once the list is seeded and launched, `app.js` changes rarely or never. The failure needs a code change and a villager mid-visit at the same moment — a shrinking coincidence, not a standing defect.
+2. **Every fix costs more than the problem.** A cache-busting version string on the `<script>` tag would have to be edited by hand on every change — precisely the kind of step-you-must-remember that the no-build-step rule (decision 14) exists to forbid, and forgetting it fails silently. A service worker or a version-check fetch adds machinery a non-technical inheritor cannot reason about, to a codebase whose entire value is that they can.
+3. **The blast radius is one lost recommendation, recoverable by asking again.** Nothing is corrupted and no listing is affected; the villager's words are simply not saved that once.
+
+**If the owner disagrees and wants it addressed**, the cheapest honest option is not a technical one: after any future change to `app.js`, reload once with `?x=1` before testing — already recorded as the diagnosis step above. **A change to site behaviour is his call, not the build's, and this entry does not make it.**
 
 **The three "something is wrong" messages, and exactly what each one means — MEASURED 2026-09-18T17:38Z**
 
@@ -396,7 +433,14 @@ These sit inside Google and can only be done by the account owner. **They are de
 **Place one vote from your phone and confirm it reaches the Votes tab.** This is the sole remaining evidence for Build Plan row 4.2, and nothing in the code blocks it. Open `https://dunchitrader-collab.github.io` on your phone, tap a trade, tap "I recommend them too", type a name and a sentence of at least 15 characters, tap "Add my recommendation" — then open the Sheet's **Votes** tab and confirm a new row appeared. **The page will show its thank-you whether or not the write succeeded** (Layer 3 — the cross-origin reply is opaque and carries no information), so the sheet is the only proof. `apps-script/DEPLOY.md` **step 4 is superseded** — do NOT hand-edit `app.js` in the live repo; the endpoint is already set at `4d67c15` and served.
 
 **[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
-**Delete the test row from the Votes tab.** Build Plan row 4.3's measurement deliberately submitted one real recommendation through the live site, so the Votes tab carries a row that is not a villager's. It is labelled for deletion in both text columns: `id` is `T001`, `name` is `TEST - Claude Code 2026-09-18 - please delete`, and `text` begins `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` **If no such row is present, that is itself a finding** — it would mean the append path is not working, and row 4.2 should not be closed.
+**Delete the TWO non-villager rows from the Votes tab before launch.** ~~Build Plan row 4.3's measurement deliberately submitted one real recommendation through the live site, so the Votes tab carries a row that is not a villager's.~~ SUPERSEDED 2026-09-18T17:48Z → there are now **two** such rows, and they are different things:
+
+1. **The automated test row** — written by Build Plan row 4.3's cross-origin measurement at ~17:02Z. Labelled for deletion in both text columns: `id` is `T001`, `name` is `TEST - Claude Code 2026-09-18 - please delete`, and `text` begins `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.`
+2. **The owner's own test vote** — placed from his phone at ~17:47Z, the vote that closed row 4.2. Its name and words are whatever he typed, against whichever tradesperson he tapped, so only he can identify it. It is the row whose arrival he confirmed with *"the vote populated"*.
+
+Both should be removed before launch so the tally shown on each card counts only real villagers. Deleting rows from the **Votes** tab is safe and affects nothing else — the site never reads that tab. **Do not delete anything from the Published tab while doing it**; that tab is the list itself. His first attempt at ~17:25Z produced no row at all (see the stale-page `[BUG]` in Layer 3), so there is nothing to remove for that one.
+
+~~**If no such row is present, that is itself a finding** — it would mean the append path is not working, and row 4.2 should not be closed.~~ RESOLVED 2026-09-18T17:48Z — the append path is confirmed working by the owner's own vote; this caveat no longer applies.
 
 ~~**[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**~~
 ~~**The site 404s on `/favicon.ico` on every page load.** No icon file exists and `index.html` declares no icon link. Cosmetic — no villager is affected — but it puts a red error line in the browser console on every load, which will mislead a future session debugging the votes POST. Either add a small `favicon.ico` at the repo root or declare an inline data-URI icon link. See Layer 3.~~ RESOLVED 2026-09-18T17:25Z — an inline SVG data-URI icon link was added to `index.html` at commit `99b66de`, drawn in the Call button green `#0A4F2E`. No build step, no binary file and no extra request. **Measured on the SERVED site in a real browser, plain page load: before, 1 failed request and 1 console error; after, 0 and 0.** The icon was additionally verified to decode and paint rather than merely be declared. Build Plan row 4.4. See Layer 3.
@@ -625,6 +669,24 @@ The first draft of `PLAN-DUNCHI-TRADER-V1` carried **90 sub-tasks and 231 effort
 **[DECISION]** Where two inheritance documents covered the same action, the one the reader reaches first keeps the instruction and the other points at it.
 
 **Rationale:** four documents now address one non-technical reader — `README.md`, `docs/RESTORE-dunchi-trader.md`, `apps-script/DEPLOY.md` and `docs/PROCESS-seeding-and-launch-dunchi-trader.md`. Two copies of an instruction is two things to keep in step, and the estate has repeatedly found that the copies drift rather than staying identical. The three standing warnings are the deliberate exception and are kept in all of them: row 6.1 requires them in the README, a rebuilder needs them at the moment of publishing, and a seeder needs them before touching the tab — they are entry points, not duplicates, and each is a warning rather than a procedure.
+
+### 2026-09-18 — Row 4.2 closed clause by clause; the stale-page finding assessed and deliberately not fixed
+
+**[DECISION]** Row 4.2 was closed on the owner's confirmation, but **checked clause by clause first rather than on his sentence alone**.
+
+**Rationale:** *"the vote populated"* is one sentence and the row carries three requirements. It plainly evidences the hard one — an append from a real phone, the clause held open across three sessions and the only one a build cannot supply for itself. It says nothing about the other two, and closing on it alone would have meant asserting things his sentence never claimed. So each was traced to its own evidence and the source of each was named: the *id-not-name* half of clause 1 was verified by reading the shipped code this session (`sendRecommendation(l.id, by, why)` — the tradesperson is referenced only by stable id, and the `name` field carries the **villager's** name, which is easy to misread as the tradesperson's); clause 2 rests on the prior session's 21 stub tests, REPORTED here, plus the stronger structural property that no code path can address `Published` at all; clause 3 was measured — `Code.gs` committed at `3bdf845` and present in both remotes. One limit is stated rather than glossed: nobody here can verify that the script **currently deployed** in his Apps Script project is byte-identical to the committed file, and clause 3 does not ask that it be. `[PATTERN CANDIDATE: evidence-matches-claim]` — the third row in this project closed or held on this basis.
+
+**Alternatives considered:** closing on the owner's sentence alone — rejected; it would have recorded two clauses as evidenced by something that could not evidence them, which is the specific failure the estate's measured-vs-reported rule exists to prevent.
+
+**[DECISION]** The stale-page finding is recorded as a known behaviour and **deliberately not fixed**; any change to site behaviour is referred to the owner rather than made.
+
+**Rationale:** the cause is inherent to a static site with no build step — a browser already holding the page keeps running the copy it has, and because the thank-you is optimistic by design, a stale `app.js` with an empty `VOTES_ENDPOINT` thanks the villager while sending nothing. Every available fix costs more than the problem. A cache-busting version string on the `<script>` tag must be hand-edited on every change, which is exactly the remember-this-step trap decision 14 exists to forbid, and forgetting it fails silently. A service worker or version-check adds machinery a non-technical inheritor cannot reason about, to a codebase whose whole value is that they can. The blast radius is one lost recommendation, recoverable by asking again; nothing is corrupted and no listing is touched. It is also a deploy-window problem on a site that will stop being deployed once launched. The honest mitigation is procedural and already recorded as the diagnosis step: reload once with `?x=1` after any change to `app.js` before testing.
+
+**Alternatives considered:** adding a version query string — rejected for the silent-failure and no-build-step reasons above. Shortening the cache window — not available; GitHub Pages sets `cache-control: max-age=600` and it is not configurable from a static repository.
+
+**[DECISION]** The cache explanation is recorded as **REPORTED**, and a measurement that *narrows* it is recorded alongside rather than being allowed to dress it up as established.
+
+**Rationale:** nobody instrumented the owner's phone, so the account of what it was running is an inference about an unobserved device, however well it fits. One thing here *was* measurable and was measured: GitHub Pages serves `index.html` and `app.js` with `cache-control: max-age=600`. That ten-minute window does **not** by itself explain a stale page ~35 minutes after loading, so the likelier mechanism is an already-loaded page still alive in memory — an open tab or a back-forward-cache restore — rather than HTTP caching holding a stale file past expiry. Recording the measurement next to the inference stops a plausible story hardening into a mechanism nobody tested, and it flags the one part of the story that does not quite fit. Both routes produce the identical symptom and neither was observed on his device.
 
 ---
 
@@ -1717,3 +1779,131 @@ The inheritance package is four documents telling one story: `README.md` for day
 Nothing is blocked on code. For the owner, in priority order: **walk the runbook** (row 6.1, and the tick list at its end is the ticksheet); **seed the list** to 12–15 tradespeople across at least 6 trades; **place one vote from his phone and check the Votes tab** (row 4.2); **delete the test row** from the 4.3 measurement; then the remaining form and sheet actions in Layer 4. The launch message stays a draft and must not be posted until step 7 has passed.
 
 **Effort per prompt for the plan, cumulative: 48 effort done ÷ 13 prompts sent = 3.69.** Both figures recorded, not only the ratio.
+
+### 2026-09-18T17:52:10Z — Row 4.2 closed on the owner's phone vote; the stale-page finding recorded and assessed
+
+**Source:** Claude Code
+**Started:** 2026-09-18T17:48:00Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH
+**Repos touched this session:** `gsamwell-lang/dunchi-trader` (origin), `dunchitrader-collab/dunchitrader-collab.github.io` (collab). No other repository was read or written.
+
+**Prompt received:**
+
+> Target repo: dunchi-trader
+>
+> Comply with the loaded global CLAUDE.md and the loaded project CLAUDE.md. Both auto-load — do NOT Read either.
+>
+> MODE: IMPLEMENTATION. Package tier (a) hard/ambiguous, model claude-opus-5, effort high.
+>
+> ## CONTEXT TRANSFER BRIEF
+>
+> Same conversation as prompts 2665, 2667 and 2670: https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH. You landed 2670 at 17:44Z. Repo re-read by me at 17:47:39Z: HEAD d6dfcc989a69e75bb021900a847800a4350c8b49, master, tree clean, 0 ahead / 0 behind. Composed against that HEAD. Plan at 48/77 = 62.3%, 10 of 15 rows done.
+>
+> MISSION: re-read at source in task 0 and name it back.
+>
+> THE EVENT THIS PROMPT RECORDS. Row 4.2's own wording closes it when a vote placed on a real phone appends a row to the Votes tab. That has now happened. The Owner (Gavin), 2026-09-18 ~17:47Z, VERBATIM: "the vote populated". He placed the vote from his phone on the live site and has confirmed the row reached the Votes tab.
+>
+> There is a second fact worth recording accurately, because it nearly cost a wrong diagnosis. His FIRST attempt, at about 17:25Z, did not reach the sheet: the page thanked him and no row appeared. The working explanation, REPORTED not measured, is that his phone was serving the cached app.js from his 16:50Z sighting, taken before the endpoint went live at about 17:05Z, so the page skipped the send and showed its thank-you anyway. He retried on a cache-busted URL and that vote populated. Record it as REPORTED with that reasoning, never as measured — nobody instrumented his phone.
+>
+> ## TASK 0 — GUARDS
+>
+> Confirm HEAD d6dfcc98, master, clean, 0/0. Re-read the MISSION block at source and state it back. Read row 4.2's own wording in full before closing anything.
+>
+> ## TASK 1 — close row 4.2
+>
+> Close it on the Owner's confirmation, recorded verbatim with its date. Check its wording clause by clause first: a vote placed on a real phone appends one row to the Votes tab carrying the trader id rather than the name; an attempted write to the Published tab fails; the Apps Script source is committed so it can be redeployed from scratch. Two of those three were already evidenced — the committed source at apps-script/Code.gs, and the Published-tab isolation proven by 21 logic tests against a stub in the earlier session. State plainly which clause rests on which evidence, and if you judge any clause NOT covered, leave the row open and say which. Do not close it on the Owner's sentence alone if his sentence does not reach every clause.
+>
+> ## TASK 2 — record the cached-page finding
+>
+> Add a Layer 3 entry: a page loaded before a change keeps working from the cached copy, so a villager who visited shortly before a deploy can use a stale app.js and see a thank-you for a vote that was never sent. Record the measured facts around it — the endpoint went live at about 17:05Z, the server-driven vote at 18:02 local appended correctly, the Owner's first phone attempt did not, his cache-busted retry did — and mark the cache explanation REPORTED. Say what it means for launch: it bites people who visited just before a change, not people arriving fresh.
+>
+> Then judge, and say plainly either way: does this warrant any change to the site, or is it inherent to a no-build-step static site and simply worth knowing? Do NOT change site behaviour in this prompt. If you recommend a change, name it as a recommendation for the Owner to rule on.
+>
+> ## TASK 3 — record and land
+>
+> Handover Layer 6 entry citing my conversation reference; Layer 1 current facts; close the Layer 4 item for the Owner's vote. Keep the test-row deletion item open — he has not confirmed deleting it, and there are now two rows in that tab that are not villagers' (the 4.3 test row and his own test vote). Say so in Layer 4 with what each one is, so he deletes the right things before launch.
+>
+> Update the plan for row 4.2 with full STD-00009 row grammar and delivery fields; never insert or renumber. Commit and push BOTH remotes — GITHUB_TOKEN= is needed for origin. Run the validator and report its exit code AND its reported sub-task count against the rows the document actually holds.
+>
+> ## RETURN
+>
+> - A detailed written summary.
+> - A formatted table of what was tested and each result, measured values not assertions, and for row 4.2 a clause-by-clause table of its wording against the evidence that closes each clause.
+> - The plan's new completion position: effort done, effort total, percentage.
+> - What now remains, and which of it is the Owner's rather than the build's.
+> - The end-of-session summary and any recommended follow-on prompt as a single copy-paste-ready fenced code block.
+> - State the model and effort this session ran on.
+
+**What was done:**
+
+**Task 0 — guards passed, MISSION re-read at source.** HEAD `d6dfcc989a69e75bb021900a847800a4350c8b49`, branch `master`, `git status --porcelain` empty, `0 0` against origin. The MISSION block was read again from Layer 1 rather than carried from the previous reply. Row 4.2's full wording was read before anything was closed.
+
+**Task 1 — row 4.2 closed, clause by clause rather than on one sentence.** The owner's confirmation — *"the vote populated"*, 2026-09-18 ~17:47Z — is recorded verbatim in the row, in Layer 1 twice and in Layer 4. It plainly evidences the clause the row was held open on for three sessions: an append from a real phone, the only clause a build cannot supply for itself.
+
+It does not, by itself, reach the other two, so each was traced to its own evidence and the **source of each was named separately**:
+
+- **Clause 1, the append and *"carrying the trader id rather than the name"*.** The append is the owner's confirmation. The id-not-name half was **verified by reading the shipped code this session**: `app.js` calls `sendRecommendation(l.id, by, why)`, so the tradesperson is referenced ONLY by the stable id; `Code.gs` line 146 appends `[new Date(), id, name, text]`, putting that id in column B. Worth stating because it is easy to misread: the `name` column carries the **villager's own name** — or the literal `"a villager"` when left blank — and never the tradesperson's.
+- **Clause 2, *"an attempted write to the Published tab fails"*.** Satisfied by a **stronger property than a runtime failure**, and the distinction is deliberate: there is no code path that can address `Published` at all. The target is the hard-coded constant `VOTES_TAB = 'Votes'` (line 39), never derived from caller input, with a `FORBIDDEN_TABS` guard checked before any sheet is opened (lines 137–139), and the file holds no read, edit or delete path. Such a write is not expressible through this endpoint rather than merely rejected by it. The 21 stub tests including four adversarial attempts are REPORTED from the 15:06:40Z session, not re-run here.
+- **Clause 3, *"the Apps Script source is committed … so it can be redeployed from scratch"*.** **Measured this session:** `apps-script/Code.gs`, 5,733 bytes, committed at `3bdf845`, present in both `origin/master` and `collab/main`, alongside `apps-script/DEPLOY.md` with five numbered steps.
+
+**One limit is recorded rather than glossed:** nobody here can verify that the script **currently deployed** in his Apps Script project is byte-identical to the committed `Code.gs` — he pasted it, and only he can see it. Clause 3 asks that the source be committed so it *can* be redeployed, which is measured and true; it does not assert that what is running today came from that file.
+
+**Task 2 — the stale-page finding recorded, and assessed.** A new `[BUG]` in Layer 3 records that a page already open on a phone keeps running the `app.js` it loaded, so a villager holding a copy from before a deploy can be thanked for a vote that was never sent — the optimistic thank-you and an empty `VOTES_ENDPOINT` combine to make the failure invisible at the moment it happens. The timeline is tabulated with each line marked MEASURED or REPORTED: the commit at 16:59:59Z and the first endpoint-carrying serve at ~17:01Z are measured from the commit timestamp and a cache-busted fetch; the successful server-driven vote at ~17:02:32Z is measured from row 4.3; the owner's failed 17:25Z attempt and successful cache-busted 17:47Z retry are REPORTED by him.
+
+**The cache explanation is marked REPORTED throughout**, and one measurement was taken that **narrows** it rather than confirming it: GitHub Pages serves both `index.html` and `app.js` with `cache-control: max-age=600`. A ten-minute freshness window does **not** by itself explain a stale page ~35 minutes after loading, so the likelier mechanism is an already-loaded page still alive in the phone's memory — an open tab or a back-forward-cache restore — rather than HTTP caching holding a stale file past its expiry. That is recorded next to the inference deliberately: it is the part of the reported story that does not quite fit, and leaving it unrecorded would let a plausible account harden into a mechanism nobody tested. Both routes produce the identical symptom and neither was observed on his device.
+
+**The assessment, stated plainly as the prompt required: this warrants no change to the site.** It is inherent to a no-build-step static site and is worth knowing rather than fixing. It is a deploy-window problem on a site that will stop being deployed once launched; every available fix costs more than the problem (a hand-edited cache-busting version string is exactly the remember-this-step trap decision 14 forbids, and fails silently when forgotten; a service worker adds machinery a non-technical inheritor cannot reason about); and the blast radius is one lost recommendation, recoverable by asking again, with nothing corrupted and no listing touched. **No site behaviour was changed.** The mitigation offered is procedural and already recorded as the diagnosis step — reload once with `?x=1` after any change to `app.js` before testing — and the entry states explicitly that a behaviour change is the owner's call, not the build's.
+
+**Task 3 — recorded and landed.** Layer 1: plan position superseded to 54/77 (70.1%); the votes-endpoint URL row now records the end-to-end confirmation; the phone-vote outstanding item closed with `RESOLVED` and the verbatim quote; **the test-row item deliberately kept open and widened**, because the Votes tab now holds **two** non-villager rows and they are different things — the 4.3 automated test row, identifiable by its labelled text, and the owner's own ~17:47Z test vote, whose content only he knows. Both are described so he removes the right things, with a warning not to touch the Published tab while doing it, and a note that his failed 17:25Z attempt left nothing to remove. The Next Action block was re-prioritised: seeding first, then the runbook walk, then the two Votes rows, then the Google-side actions. Layer 4 carries the same widened item. Layer 5 gained three `[DECISION]` entries. The plan's row 4.2 and its satellite delivery row were updated; nothing was inserted or renumbered.
+
+**Testing performed:**
+
+| # | What was tested (exact action) | Expected | Actual (measured) | Result |
+|---|---|---|---|---|
+| 1 | `git rev-parse HEAD` / branch / tree / sync | `d6dfcc98…`, master, clean, `0 0` | `d6dfcc989a69e75bb021900a847800a4350c8b49`, master, empty, `0	0` | PASS |
+| 2 | What `app.js` sends as the trader reference | the id, not the name | `sendRecommendation(l.id, by, why)` — id only; `by` is the VILLAGER's name | PASS |
+| 3 | What `Code.gs` appends | id in its own column | line 146 `sheet.appendRow([new Date(), id, name, text])` | PASS |
+| 4 | Can any code path address `Published`? | no | `VOTES_TAB` a hard-coded constant (line 39); `FORBIDDEN_TABS` guard (lines 137–139); no read, edit or delete path | PASS |
+| 5 | `Code.gs` committed and in both remotes | present | 5,733 B at `3bdf845`; in `origin/master` and `collab/main` | PASS |
+| 6 | `DEPLOY.md` redeployment steps present | numbered steps | 5 numbered steps | PASS |
+| 7 | Endpoint commit timestamp | ~17:00Z | `4d67c15` authored **2026-09-18T16:59:59+00:00** | measured |
+| 8 | **Live cache headers on `app.js`** | — | **`cache-control: max-age=600`**, plus `etag` and `last-modified` | measured |
+| 9 | **Live cache headers on `index.html`** | — | **`cache-control: max-age=600`**, same | measured |
+| 10 | Does a 600 s window explain a stale page at ~35 min? | — | **No** — recorded as narrowing the REPORTED explanation | measured / reasoned |
+| 11 | `validate_build_plan.py --verbose` | exit 0 | `OK`, exit `0`, 7 steps, **15 sub-tasks**, **54/77 = 70.1%** | PASS |
+| 12 | Independent row count vs validator's sub-task count | equal | document holds **15** rows (11 `done`, 4 `new`); validator read **15** | PASS |
+| 13 | Independent recompute of done and total effort | matches validator | **54** and **77** | PASS |
+
+**What was not tested:**
+
+- **The owner's phone.** Nobody instrumented it. That his first attempt ran a stale `app.js` is REPORTED and inferred, never measured, and the one measurement taken (the 600-second cache window) does not fully account for a 35-minute gap — which is recorded rather than smoothed over.
+- **The append itself.** The row reaching the Votes tab is the owner's observation inside his own Google account. It cannot be measured from outside, which is inherent to the design rather than a gap in the testing.
+- **Whether the DEPLOYED script matches the committed `Code.gs`.** Only he can see the Apps Script project. Clause 3 does not require it, and the row records the limit explicitly.
+- **The Published-tab isolation was not re-run this session** — the 21 stub tests are REPORTED from the earlier session. What was verified here is the structural property in the source: no code path can name that tab.
+- **No vote was placed and no test row was written** to the Votes tab this session.
+- **No site behaviour was changed**, so nothing about the stale-page finding was fixed or re-measured after a change.
+
+**Commits:**
+
+- None for code. This session changed documentation only; the commits are recorded in the git history for `docs/HANDOVER-dunchi-trader.md` and `docs/BUILD-PLAN-dunchi-trader.md`.
+
+**Finished:** 2026-09-18T17:52:10Z
+
+**End state:**
+
+**Step 4 is complete.** The votes path works end to end from a real phone: a villager taps a card, types a few words, and the recommendation reaches the Votes tab. That was the last uncertain mechanism in the system, and it is now confirmed rather than assumed.
+
+The plan stands at **54 of 77 effort (70.1%)**, 11 of 15 rows `done`, up from 48/77 (62.3%). Row 4.2's 6 effort is the whole movement; the denominator did not change.
+
+**Four rows remain, and every one of them waits on the owner** — none is blocked on code, and none can be advanced by the build:
+
+- **6.1 (9 effort)** — walk `docs/RESTORE-dunchi-trader.md` end to end. The largest row left. Reconciled to the deployed state at `983525f` so the walk is not wasted, and it ends with a tick list usable on a phone.
+- **7.1 (5)** and **7.2 (3)** — both need the list seeded first: 12–15 tradespeople across at least 6 trades, against 3 visible test people across 4 trades today.
+- **5.1 (5)** — paste the four sheet formulas, paste-ready in `apps-script/SHEET-FORMULAS.md`.
+
+Before launch he must also **delete two rows from the Votes tab**: the 4.3 automated test row, labelled for deletion, and his own ~17:47Z test vote, which only he can identify. Both are described in Layer 1 and Layer 4, with a warning not to touch the Published tab while doing it.
+
+**The launch message stays a draft** and must not be posted until step 7 has passed.
+
+**Effort per prompt for the plan, cumulative: 54 effort done ÷ 14 prompts sent = 3.86.** Both figures recorded, not only the ratio.
