@@ -10,6 +10,12 @@ green button to ring the person. That is the whole thing.
 It is a list of **recommendations from neighbours**. It is deliberately not a
 review site: there are no star ratings and no bad reviews.
 
+> **Filling the list and launching it:** see
+> **[`docs/PROCESS-seeding-and-launch-dunchi-trader.md`](docs/PROCESS-seeding-and-launch-dunchi-trader.md)**.
+> It covers adding tradespeople to the spreadsheet, the trades to cover, the
+> five-minute publishing wait and the two things never to click, and the draft
+> message to post in the village group. Start there if the list is empty or thin.
+
 ---
 
 ## Who this page is for
@@ -166,6 +172,7 @@ the files before serving them. **Do not delete it.**
 | `.nojekyll` | Stops GitHub altering the files. Do not delete. |
 | `design/wireframe-dunchi-trader.html` | The agreed design the page was built from |
 | `apps-script/` | The small script that saves villagers' recommendations, and how to set it up |
+| `docs/PROCESS-seeding-and-launch-dunchi-trader.md` | **How to fill the list and launch it.** Written for whoever runs the site, not for a programmer. |
 | `docs/` | The full records: how it was built, why, and how to rebuild it |
 
 ---

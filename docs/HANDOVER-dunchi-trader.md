@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T17:10:47Z
+last-updated: 2026-09-18T17:31:02Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T17:10:47Z**
+**Last updated: 2026-09-18T17:31:02Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ SUPERSEDED 2026-09-18T17:04:41Z → **46 of 75 effort (61.3%)**, 9 of 14 rows done. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ SUPERSEDED 2026-09-18T17:26Z → **48 of 77 effort (62.3%)**, 10 of 15 rows done. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -129,7 +129,8 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | 2026-09-18 | HIGH | no | Email collection is on and required on the form. Must be turned off. |
 | 2026-09-18 | HIGH | no | A star-rating question exists on the form, contradicting decision 3. Must be removed. |
 | 2026-09-18 | MEDIUM | no | The form's trade list is missing everyday village trades. |
-| 2026-09-18 | MEDIUM | no | Confirm the Published tab carries the agreed header row. |
+| ~~2026-09-18~~ | ~~MEDIUM~~ | ~~no~~ | ~~Confirm the Published tab carries the agreed header row.~~ RESOLVED 2026-09-18T17:25Z — measured this session by fetching the published CSV directly: the first line is exactly `id,first_name,last_name,business,phone,trade,extra_trade,status`, all eight columns in the agreed order. 291 bytes, `text/csv; charset=utf-8`, 4 data rows. |
+| 2026-09-18 | HIGH | no | **Seed the Published tab to 12–15 tradespeople across at least 6 trades, and remove the four test rows.** This is now the largest single thing standing between the build and launch — it blocks Build Plan rows 7.1 and the second half of 7.2, and no code change can substitute for it. Measured 2026-09-18T17:25Z, the live feed carries only `T001`–`T004`: 3 visible test people across 4 trades. **[PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md` was written this session and tells him exactly how** — the eight columns, that ids start at `T005` and are never changed or reused, that `status` must be exactly `active`, how `extra_trade` puts one person under two headings without double-counting, how to remove the test rows safely, the trade vocabulary, the five-minute lag and the two publishing warnings. |
 | 2026-09-18 | MEDIUM | no | Whether the two form validation rules were added is UNKNOWN and unverified. |
 | ~~2026-09-18~~ | ~~MEDIUM~~ | ~~no~~ | ~~Complete first build session — populate handover layers~~ COMPLETED 2026-09-18T13:49:45Z — all six layers populated by this session. |
 
@@ -144,11 +145,16 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 
 ~~Plus the remaining Google-side operator actions in Layer 4.~~ SUPERSEDED 2026-09-18T17:04:41Z — both are resolved. Push works via the `gsamwell-lang` classic token; the CSV serves the Published tab. →
 
-**The build is at 46 of 75 effort (61.3%), 9 of 14 rows done. Nothing is blocked on code. Three things are needed from the owner, all Google-side:**
+~~**The build is at 46 of 75 effort (61.3%), 9 of 14 rows done. Nothing is blocked on code. Three things are needed from the owner, all Google-side:**~~ SUPERSEDED 2026-09-18T17:26Z →
 
-1. **Place ONE vote from your phone, then look at the Votes tab.** This is the only thing standing between the project and row 4.2. Open `https://dunchitrader-collab.github.io` on your phone, tap a trade, tap "I recommend them too", type a name and a sentence, tap "Add my recommendation" — then open the Sheet's **Votes** tab and confirm a new row appeared. The endpoint is wired and served; the page will show its thank-you either way, because the cross-origin reply is unreadable by design (Layer 3), so **the sheet is the only proof**.
-2. **Delete the test row** this session wrote into the Votes tab — identified in the Outstanding Items table above.
-3. **The remaining Google-side operator actions in Layer 4** — the form's dropdown/"Other" control, email collection, the star-rating question, the missing trades, and the Layer 5.1 formulas.
+**The build is at 48 of 77 effort (62.3%), 10 of 15 rows done. Nothing is blocked on code, and every remaining item is the owner's, inside Google.** In priority order:
+
+1. **SEED THE LIST.** This is now the biggest single thing between the build and launch, and it is bigger than everything else combined. The live list carries 3 visible test people across 4 trades; launch needs **12–15 tradespeople across at least 6 trades**. It blocks row 7.1 and the second half of 7.2. **[PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md` is the step-by-step guide**, written for him rather than for a developer.
+2. **Place ONE vote from your phone, then look at the Votes tab.** The only thing standing between the project and row 4.2. Open the site on your phone, tap a trade, tap "I recommend them too", type a name and a sentence, tap "Add my recommendation" — then open the Sheet's **Votes** tab and confirm a new row appeared. The page will show its thank-you either way, because the cross-origin reply is unreadable by design and by measurement (Layer 3), so **the sheet is the only proof**.
+3. **Delete the test row** the 4.3 measurement wrote into the Votes tab — identified in the Outstanding Items table above.
+4. **The remaining Google-side operator actions in Layer 4** — the form's dropdown/"Other" control, email collection, the star-rating question, the missing trades, and the 5.1 sheet formulas.
+
+**Do NOT post the launch message yet.** It is drafted in `docs/PROCESS-seeding-and-launch-dunchi-trader.md` §4 under a heading marking it a draft awaiting approval, and it must not go to the village group until step 7 has passed — otherwise the village is sent to a list of test people.
 
 ---
 
@@ -232,6 +238,7 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | `docs/RESTORE-dunchi-trader.md` | Full rebuild runbook | Not written — Build Plan row 6.1 |
 | `docs/SOLUTION-DESIGN-dunchi-trader.md` | Architecture and rationale | [VERIFIED 2026-09-18] |
 | `docs/BUILD-PLAN-dunchi-trader.md` | `PLAN-DUNCHI-TRADER-V1` | [VERIFIED 2026-09-18] |
+| `docs/PROCESS-seeding-and-launch-dunchi-trader.md` | **How the owner fills the list and launches it.** The eight columns, ids starting at `T005` and never reused, `status` must be exactly `active`, `extra_trade` for two-trade people, removing the four test rows, the trade vocabulary, the five-minute lag and the two publishing warnings, and the draft launch message. Written for a non-technical reader. | [VERIFIED 2026-09-18T17:26Z] — created this session; linked from `README.md`. Prefix `PROCESS-` confirmed ACTIVE via `get_active_prefixes` at 2026-09-18T17:25:49Z |
 
 **Two deliberate anti-patterns in `design/wireframe-dunchi-trader.html` that must survive the port.** Both are fixes for defects found by eye, and a tidy-up would silently undo them:
 
@@ -278,8 +285,8 @@ Diagnosis: `gh auth status` showing `Logged in to github.com account gsamwell-pe
 **[BUG] 2026-09-18 — the site requests `/favicon.ico` and gets a 404 on every page load**
 Root cause: no `favicon.ico` exists in the repository and `index.html` declares no icon link, so the browser makes its default request and GitHub Pages answers 404. Measured 2026-09-18T17:03Z on a plain load of the live site with no vote placed: exactly one failed request, `https://dunchitrader-collab.github.io/favicon.ico` → 404.
 Impact: cosmetic only — nothing on the page is affected and no villager will see it. It is recorded because **it puts a red error line in the browser console on every load**, and a future session debugging the votes POST will see that 404 and may waste time attributing it to the vote. It is not the vote: the votes POST returns 302→200.
-Fix applied: none — out of scope for this session's tasks. Recorded in Layer 4 as a LOW outstanding item.
-Diagnosis: load the site with the console open; a single 404 for `favicon.ico` and no other failed request is the expected, harmless state.
+Fix applied: ~~none — out of scope for this session's tasks. Recorded in Layer 4 as a LOW outstanding item.~~ SUPERSEDED 2026-09-18T17:25Z → **FIXED at commit `99b66de`** in `index.html`, immediately after the `<title>`: a `<link rel="icon">` carrying an inline SVG data URI (527 bytes, a white telephone handset on a `#0A4F2E` circle — the Call button's own green, `--go`). A data URI was chosen over committing a `favicon.ico` because it adds no binary to a repository that must stay readable by a non-technical inheritor, costs no extra request, and needs no build step, which the project prohibits outright (decision 14).
+Diagnosis: ~~load the site with the console open; a single 404 for `favicon.ico` and no other failed request is the expected, harmless state.~~ SUPERSEDED 2026-09-18T17:25Z → load the site with the console open: **zero failed requests and zero console errors is now the expected state.** Any 404 at all is a regression. Measured in a real browser on the live site, plain page load with no vote placed: **before the fix, 1 failed request (`/favicon.ico` → 404) and 1 console error; after, 0 and 0.** The icon was also verified to decode and paint (`naturalWidth` 150), not merely to be declared — a `rel="icon"` pointing at a malformed data URI would still silence the 404 while rendering nothing.
 
 **[BUG] 2026-09-18 — Published CSV serves the wrong tab**
 Root cause: the published CSV URL recorded for this project is publishing the **Form responses** tab, not the curated **Published** tab. Measured this session: the first line of the fetched CSV is the form's question text — `Timestamp,Email Address,What Trade are you recommending?,...` — not the agreed `id, first_name, last_name, business, phone, trade, extra_trade, status`.
@@ -373,11 +380,14 @@ These sit inside Google and can only be done by the account owner. **They are de
 **[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
 **Delete the test row from the Votes tab.** Build Plan row 4.3's measurement deliberately submitted one real recommendation through the live site, so the Votes tab carries a row that is not a villager's. It is labelled for deletion in both text columns: `id` is `T001`, `name` is `TEST - Claude Code 2026-09-18 - please delete`, and `text` begins `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` **If no such row is present, that is itself a finding** — it would mean the append path is not working, and row 4.2 should not be closed.
 
-**[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**
-**The site 404s on `/favicon.ico` on every page load.** No icon file exists and `index.html` declares no icon link. Cosmetic — no villager is affected — but it puts a red error line in the browser console on every load, which will mislead a future session debugging the votes POST. Either add a small `favicon.ico` at the repo root or declare an inline data-URI icon link. See Layer 3.
+~~**[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**~~
+~~**The site 404s on `/favicon.ico` on every page load.** No icon file exists and `index.html` declares no icon link. Cosmetic — no villager is affected — but it puts a red error line in the browser console on every load, which will mislead a future session debugging the votes POST. Either add a small `favicon.ico` at the repo root or declare an inline data-URI icon link. See Layer 3.~~ RESOLVED 2026-09-18T17:25Z — an inline SVG data-URI icon link was added to `index.html` at commit `99b66de`, drawn in the Call button green `#0A4F2E`. No build step, no binary file and no extra request. **Measured on the SERVED site in a real browser, plain page load: before, 1 failed request and 1 console error; after, 0 and 0.** The icon was additionally verified to decode and paint rather than merely be declared. Build Plan row 4.4. See Layer 3.
 
-**[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**
-**The comment above `VOTES_ENDPOINT` in `app.js` is now stale.** Lines 27–29 still read "The Votes endpoint does not exist yet" and lines 287–291 still read "TODAY IT SENDS NOTHING … there is no endpoint to post to", both of which became false at `4d67c15` when the endpoint was wired and measured live. The code is correct; only the prose is wrong. It was deliberately left untouched because the prompt for that change said to alter nothing else in the file, and it is recorded here rather than silently fixed. A future session should correct both comments to describe the deployed endpoint and the measured opaque-response behaviour.
+~~**[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**~~
+~~**The comment above `VOTES_ENDPOINT` in `app.js` is now stale.** Lines 27–29 still read "The Votes endpoint does not exist yet" and lines 287–291 still read "TODAY IT SENDS NOTHING … there is no endpoint to post to", both of which became false at `4d67c15` when the endpoint was wired and measured live. The code is correct; only the prose is wrong. It was deliberately left untouched because the prompt for that change said to alter nothing else in the file, and it is recorded here rather than silently fixed. A future session should correct both comments to describe the deployed endpoint and the measured opaque-response behaviour.~~ RESOLVED 2026-09-18T17:25Z — corrected at commit `99b66de`. Three comment blocks were stale, not two: the header above `VOTES_ENDPOINT`, the block above `sendRecommendation()`, and the comment inside its `try`. All three now describe the deployed bounded endpoint and carry the §6.2 measurement, including the explicit warning that the return value is **not** a success signal and that `catch`/`ok`/`status` must never be branched on. **Proven comment-only:** with comments and blank lines stripped the code is byte-identical to `93c2777`, and `node --check app.js` passes. Build Plan row 4.4.
+
+~~**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**~~
+~~`apps-script/DEPLOY.md` step 4 instructs the owner to hand-edit `app.js` in the live repository, which would split the two repositories apart.~~ RESOLVED 2026-09-18T17:25Z — rewritten at commit `99b66de`. Step 4 now records that the value went in at `4d67c15`, tells the owner there is nothing to paste, and explains in plain English why editing one repository of two makes them disagree and how the next ordinary push would silently revert it. It also tells him what to do if a redeploy ever produces a new `/exec` URL. The document's opening and step 5 were corrected in the same pass; step 5 now carries the measured fact that the page thanks the villager either way, so **the Votes tab is the only proof**. Build Plan row 4.4. (This item is recorded and closed in the same edit: it was raised in the previous session's summary and Layer 6 "what was not tested", but never written as a Layer 4 row.)
 
 **[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
 **Change form question 1 from a dropdown to Multiple Choice.** It is currently a dropdown with "Other" typed as an ordinary option. A dropdown cannot have a working "Other" — the villager selects the word and gets no text box. It must use the real Add "Other" control.
@@ -563,6 +573,22 @@ The first draft of `PLAN-DUNCHI-TRADER-V1` carried **90 sub-tasks and 231 effort
 **[DECISION]** Solution design §6.2 is corrected to record the measurement, with the superseded inference preserved verbatim inside the section rather than deleted.
 
 **Rationale:** the old text's *conclusion* (use `no-cors`, show the thank-you optimistically) was right, but its *stated reason* (Apps Script "does not reliably return CORS headers") was wrong — the header is present. A silent overwrite would have hidden that a documented mechanism had been disproven, and a future session would have had no way to tell the corrected text from the original guess. Keeping both makes the correction auditable. The genuinely new fact, and the one most likely to cause a future bug, is that the promise **resolves** rather than rejecting, so error handling added later would silently never fire.
+
+### 2026-09-18 — Documentation debts entered as a plan row; seeding and launch written for the owner
+
+**[DECISION]** The three defects raised and deliberately left unfixed by the previous session were entered as a **new build plan row 4.4**, appended at the next free number, rather than fixed quietly as untracked tidying.
+
+**Rationale:** they were real, they were known, and they had already survived one session. Work that is known and not on the board is work that gets forgotten — and in this case one of the three (`DEPLOY.md` step 4) was not merely stale but **actively dangerous**: it instructed the owner to hand-edit `app.js` in the live repository, which would have split the two repositories apart and been silently reverted by the next push, leaving him with a site that had no votes endpoint and no visible sign of why. Putting it on the plan makes the cost visible in the denominator and makes the fix auditable. The row's provenance as unplanned work entered mid-plan is recorded in Layer 6 rather than in the row text, so the row reads as an outcome like every other. `[PATTERN CANDIDATE: known-debt-becomes-a-row]`
+
+**Alternatives considered:** fixing the three silently as housekeeping — rejected, because it would have moved the completion percentage without anything on the board explaining why, and because a dangerous instruction deserves a traceable fix. Leaving them for a later session — rejected; they were the only work available that did not depend on the owner, and one of them could have cost him the endpoint.
+
+**[DECISION]** The favicon is an **inline SVG data URI in `index.html`**, not a committed `favicon.ico` binary.
+
+**Rationale:** the project forbids a build step outright (decision 14) and is explicitly designed to be inherited by a non-technical person who edits files in the GitHub web interface. A binary blob in the repository is opaque to that person and cannot be inspected or changed in a browser; an inline data URI is text, lives in the file it affects, adds no extra HTTP request, and is self-evidently harmless. It is drawn in `--go` (`#0A4F2E`), the Call button's own green, because the Call button is what the product is for. Verified to decode and paint rather than merely be declared — a malformed data URI would have silenced the 404 while rendering nothing, which would have looked like success.
+
+**[DECISION]** The launch message is published as a **draft explicitly marked as awaiting the owner's approval and not to be posted**, inside the seeding document rather than as a separate file.
+
+**Rationale:** the words and the preconditions are one decision, not two. The message is only safe once the list is seeded, and a villager sent to a list of four test people does not come back — the link is the one thing that cannot be un-sent. Keeping the draft in the same document as the seeding instructions, behind a checklist, means the owner cannot encounter the message without also encountering what must be true before he posts it. The text is reproduced **byte-exact** as supplied and verified programmatically rather than by eye, because it is his voice and not the build's to edit.
 
 ---
 
@@ -1365,3 +1391,153 @@ Three things are needed from the owner, all inside Google, and the first is smal
 Two documentation debts are recorded rather than silently carried: `apps-script/DEPLOY.md` step 4 now contradicts the live state and must not be followed, and two comments in `app.js` still claim the endpoint does not exist. Both are flagged in Layer 4 for a future session.
 
 **Effort per prompt for the plan, cumulative: 46 effort done ÷ 11 prompts sent = 4.18.** Both figures recorded, not only the ratio.
+
+### 2026-09-18T17:29:30Z — Documentation debts fixed as row 4.4; seeding and launch document written
+
+**Source:** Claude Code
+**Started:** 2026-09-18T17:21:00Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH
+**Repos touched this session:** `gsamwell-lang/dunchi-trader` (origin), `dunchitrader-collab/dunchitrader-collab.github.io` (collab). No other repository was read or written.
+
+**Prompt received:**
+
+> Target repo: dunchi-trader
+>
+> Comply with the loaded global CLAUDE.md and the loaded project CLAUDE.md. Both auto-load — do NOT Read either.
+>
+> MODE: IMPLEMENTATION. Package tier (a) hard/ambiguous, model claude-opus-5, effort high.
+>
+> ## CONTEXT TRANSFER BRIEF
+>
+> Same conversation as prompt 2665: https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH. You landed 2665 at 17:12Z; rows 2.1, 3.3 and 4.3 closed, plan at 46/75 = 61.3%, 9 of 14 rows done.
+>
+> Plan: PLAN-DUNCHI-TRADER-V1, position re-read via list_build_plans at 2026-09-18T17:13:11Z — 14 sub-tasks, 46/75, 61.3%. Repo re-read at 17:20:40Z: HEAD 93c277732c943795277f673e57893d7951700ec6, master, tree clean, 0 ahead / 0 behind. Composed against that HEAD.
+>
+> MISSION: you re-read it at source in 2665 and confirmed it. Name it back from the file again in task 0 rather than carrying it from that reply.
+>
+> The Owner has NOT yet placed his phone vote and has NOT confirmed the Votes-tab row. Row 4.2 therefore stays open and untouched in this prompt — do not close it, do not infer anything about the append path, and do not write a second test row into his Votes tab. No browser vote this session.
+>
+> This prompt takes the three defects your own 2665 summary raised and left deliberately unfixed, and does the documentation that unblocks the Owner's launch work. It is the only work available that does not depend on him.
+>
+> ## TASK 0 — GUARDS
+>
+> Confirm HEAD 93c27773, master, clean, 0/0. Re-read the MISSION block at source and state it back. Read build plan step 4 in full and row 7.2 in full.
+>
+> ## TASK 1 — append the defect row to the plan, then do it
+>
+> Append ONE new sub-task to step 4 at the next free number (expected 4.4) — appended, never inserted, nothing renumbered — with full STD-00009 §5.1 row grammar and the mandatory delivery fields, status new, effort 2, Owner 222b34c4-7d05-48f4-9d23-cfb47e96d9de. Its outcome is that the shipped code and the inheritance documents stop contradicting the deployed reality. Record its provenance as unplanned work entered this session in Layer 6, not in the row text.
+>
+> Then do it:
+>
+> (a) Correct the two stale comments in app.js, lines 27-29 and 287-291, which say the votes endpoint does not exist. It has existed since 4d67c15. Describe the deployed endpoint and the measured opaque-response behaviour, citing solution design §6.2. Do not change any behaviour.
+>
+> (b) Add a favicon so the site stops returning 404 on /favicon.ico on every page load. Smallest sensible thing that works with no build step — an inline data-URI icon link in index.html is acceptable and preferred over a binary file if it renders. Whatever you choose, MEASURE it: after the push, fetch the live site cache-busted and confirm 0 console 404s on a plain page load.
+>
+> (c) Correct apps-script/DEPLOY.md step 4. It currently tells the Owner to hand-edit app.js in the live repo, which would split the two repositories apart. It must say instead that the endpoint is set in source in gsamwell-lang/dunchi-trader and pushed to both remotes, and that the value is already in place as of 4d67c15. Keep the rest of the document's plain-English voice for a non-technical reader.
+>
+> Close 4.4 only on measured evidence from the SERVED site, not the commit.
+>
+> ## TASK 2 — the seeding and launch document
+>
+> Create docs/PROCESS-seeding-and-launch-dunchi-trader.md. The PROCESS- prefix was confirmed ACTIVE via get_active_prefixes at 2026-09-18T17:20:39Z. Written for the Owner, plain English, no jargon.
+>
+> It covers, in order:
+>
+> (a) How to seed the Published tab to 12-15 tradespeople across at least 6 trades — the exact eight columns in order, that ids continue from T005 because T001-T004 are the existing test rows, that ids are assigned once and never change, what goes in status, and how extra_trade works for somebody who does two trades. Say plainly that the four test rows must be removed or overwritten before launch and how to do it safely given ids never change.
+>
+> (b) The agreed trade vocabulary to seed against: Gardener, Handyman, Carpenter / Joiner, Plasterer, Painter & Decorator, Tree Surgeon, Fencing, Groundworks / Drainage, Window Cleaner, Cleaner, Logs / Firewood, Oil / LPG Supplier, Pest Control — plus the trades already live.
+>
+> (c) The five-minute republish lag, and the two standing warnings: never click "Stop publishing", and deleting the Published tab breaks the feed while renaming it is safe.
+>
+> (d) The launch message, under a heading that says clearly it is a DRAFT AWAITING THE OWNER'S APPROVAL and must not be posted until build plan step 7 has passed. Reproduce this text exactly as the draft, changing nothing:
+>
+> [the launch message, reproduced verbatim into docs/PROCESS-seeding-and-launch-dunchi-trader.md §4 and verified byte-exact]
+>
+> Row 7.2 does NOT close on this. Its other half requires the live feed confirmed to carry at least 12 tradespeople across at least 6 trades, and the feed carries 4 test rows today. Append the drafting as recorded evidence against 7.2 and leave its status alone. Add a line to the README pointing at this document so whoever inherits the site finds it.
+>
+> ## TASK 3 — record and land
+>
+> Handover Layer 6 entry citing my conversation reference; Layer 1 current facts; close the two Layer 4 items this prompt resolves (the favicon 404 and the stale app.js comments) and the DEPLOY.md step 4 supersession; keep every Owner action in Layer 4 that is still outstanding, including his phone vote and the test-row deletion. Update the plan per task 1. Commit and push BOTH remotes — remember GITHUB_TOKEN= is needed to push to origin, per the Layer 3 gotcha you recorded. Run the validator and report its exit code AND its reported sub-task count against the rows the document actually holds.
+>
+> ## RETURN
+>
+> - A detailed written summary.
+> - A formatted table of what was tested and each result, measured values not assertions — including the live 404 check before and after.
+> - The plan's new completion position: effort done, effort total, percentage, and say explicitly how much of the movement is the new row 4.4 changing the denominator.
+> - The end-of-session summary and any recommended follow-on prompt as a single copy-paste-ready fenced code block.
+> - State the model and effort this session ran on.
+
+**What was done:**
+
+**Task 0 — guards passed and the MISSION re-read at source.** `git rev-parse HEAD` returned `93c277732c943795277f673e57893d7951700ec6`; branch `master`; `git status --porcelain` empty; `0 0` against origin. The MISSION block was read again from Layer 1 "What the System Does" rather than carried over from the previous reply, and states: a public web app listing local tradespeople recommended by villagers of Dunchideock, Devon; a recommendations list and deliberately not a review site; villagers open a link, tap a trade, and tap a large green Call button, which is the whole product; built for an elderly audience who will mostly use a phone and will zoom heavily; tradespeople from surrounding parishes count but the site is for Dunchideock; and the wording rule — always "tradesperson", never "tradesman", with "trader" acceptable as the owner's own word. Build plan step 4 was read in full (rows 4.1–4.3, confirming 4.4 as the next free number) and row 7.2 in full.
+
+**Task 1 — row 4.4 appended, then closed on served-site evidence.** The row was appended after 4.3 in both the status table and the satellite delivery table; nothing was inserted and nothing renumbered. It entered at `new` and was moved to `done` only after the measurement below, not on the commit.
+
+*(a) The stale comments.* **Three** blocks were stale, not the two the prompt named: the header above `VOTES_ENDPOINT` (lines 27–29), the block above `sendRecommendation()` (lines 288–296), and a third comment inside its `try` (lines 300–303) which still described the no-cors behaviour as "expected … to be confirmed by measurement at 4.2". All three now describe the deployed bounded endpoint and carry the §6.2 measurement. The most important addition is a warning rather than a description: the return value is **not** a success signal, the promise **resolves** rather than rejecting, and error handling must never branch on `catch`, `ok` or `status` — because doing so would report success on a total failure. The requirement to change no behaviour was **proven rather than asserted**: with comments and blank lines stripped programmatically, the code is byte-identical to `93c2777`, and `node --check app.js` passes.
+
+*(b) The favicon.* An inline SVG data URI (527 bytes) was added to `index.html`, a white telephone handset on a circle in `#0A4F2E` — read out of `style.css` as the actual value of `--go`, the Call button's green, rather than guessed. A data URI was chosen over a committed `.ico` because the project forbids a build step and is meant to be inherited by someone editing files in a browser, where a binary blob is opaque and unchangeable.
+
+*(c) `apps-script/DEPLOY.md`.* Step 4 was rewritten. It now opens by saying the step is already done and there is nothing to paste, then explains in plain English why he must not hand-edit `app.js` in the live repository: the site lives in two repositories kept identical, editing one makes them disagree, and the next ordinary update would quietly wipe the change out and leave the site with no endpoint and nothing obviously broken to warn him. It closes by telling him what to do if a redeploy ever yields a new `/exec` URL. Two dependent passages were corrected in the same pass because they would otherwise have contradicted the new step 4: the document's opening paragraph, which said the button was not yet working, and step 5's troubleshooting list, which still referred to checking the quotation marks around a pasted URL. Step 5 also gained the measured fact that **the page thanks the villager either way, so the Votes tab is the only proof** — the single most useful thing he can know when checking whether it worked. A repo-wide grep for other references to the hand-edit found two, in `README.md` and `docs/RESTORE-dunchi-trader.md`; both were read and are legitimately different (generic browser-editing guidance, and a from-scratch rebuild where only one repository exists), so both were left alone.
+
+**Task 2 — the seeding and launch document.** `docs/PROCESS-seeding-and-launch-dunchi-trader.md` was created after confirming the `PROCESS-` prefix is ACTIVE by a live call to `get_active_prefixes` at 17:25:49Z. It is written for the owner: the eight columns with an example each, ids starting at `T005` with an explanation of *why* an id must never change or be reused (recommendations are filed against the id, so changing one silently moves a person's recommendations to somebody else with nothing appearing broken), `status` behaviour, `extra_trade` for two-trade people in one row rather than two, two safe ways to remove the four test rows with an explicit warning against overwriting them, the trade vocabulary with a note on consistent spelling, the five-minute lag, the two publishing warnings, the draft launch message, a pre-post checklist, and a troubleshooting table.
+
+Three facts in it were **measured this session rather than taken from the handover**: the live feed's exact header line and its four rows (`T001`–`T004`, confirming `T005` is the correct next id); that `app.js` line 136 shows a row only when `status` is exactly `active` case-insensitively, so anything else hides it; and that line 143 builds a person's trades from `trade` plus `extra_trade` with empties filtered. The launch message was reproduced **byte-exact** and verified programmatically with a string containment check rather than by eye. A repo-wide check confirmed the document contains zero instances of "tradesman", per the Layer 1 wording rule.
+
+Row 7.2 was **not** closed. Its first half is delivered and recorded as evidence in the row; its second half — the live feed carrying at least 12 tradespeople across at least 6 trades — was measured false this session at 3 visible test people across 4 trades, and cannot be satisfied by anything the build does. Its status stays `new`. `README.md` gained two pointers to the new document: a callout near the top where the owner will actually see it, and a row in the file-map table.
+
+**Task 3 — recorded and landed.** Handover updated in Layer 1 (plan position superseded with an explicit note that the denominator moved because 4.4 was appended; the Published-tab header item closed on measurement; a new HIGH seeding item added; Next Action rewritten and re-prioritised to lead with seeding), Layer 2 (the new document added to the key files table), Layer 3 (the favicon bug's fix and diagnosis both superseded, recording that zero 404s is now the expected state and any 404 is a regression), Layer 4 (two items closed with strikethrough and `RESOLVED`, plus a third recorded-and-closed in the same edit for the `DEPLOY.md` supersession, which had been raised in the previous session's summary but never written as a Layer 4 row), Layer 5 (three `[DECISION]` entries) and Layer 6 (this entry). Every owner action still outstanding was left in place, including the phone vote and the test-row deletion.
+
+**Testing performed:**
+
+| # | What was tested (exact action) | Expected | Actual (measured) | Result |
+|---|---|---|---|---|
+| 1 | `git rev-parse HEAD` | `93c27773…` | `93c277732c943795277f673e57893d7951700ec6` | PASS |
+| 2 | `git status --porcelain`; `git rev-list --left-right --count origin/master...HEAD` | clean, `0 0` | empty; `0	0` | PASS |
+| 3 | **Live 404 check BEFORE the fix** — real browser, plain page load, no vote | the known favicon 404 | **1 failed request** (`/favicon.ico` → 404), **1 console error** | baseline measured |
+| 4 | `app.js` code-only comparison vs `93c2777`, comments and blanks stripped | identical | **identical — `true`** | PASS — comment-only proven |
+| 5 | `node --check app.js` | parses | parses OK | PASS |
+| 6 | `--go` token read from `style.css` | the Call button green | `#0A4F2E` (line 20) | measured, not guessed |
+| 7 | `GITHUB_TOKEN= git push origin master` | succeeds | `93c2777..99b66de  master -> master` | PASS |
+| 8 | `GITHUB_TOKEN= git push collab master:main` | succeeds | `93c2777..99b66de  master -> main` | PASS |
+| 9 | Pages rebuild poll, cache-busted | both files live | attempt 1 stale; attempt 2 (~20 s later) both live | PASS |
+| 10 | **Live 404 check AFTER the fix** — identical method to #3 | 0 | **0 failed requests, 0 console errors** | **PASS — defect gone** |
+| 11 | Icon actually decodes and paints, not merely declared | renders | `declared: true`, `decodes: true`, `naturalWidth` 150, href 527 B | PASS |
+| 12 | sha256 served vs committed, `index.html` | equal | both `66ba1299edaa7a5e…070d2b43` | PASS |
+| 13 | sha256 served vs committed, `app.js` | equal | both `1276f60fa6c4ddb6…a7e1f92c` | PASS |
+| 14 | Live feed fetched directly | header + rows | `text/csv; charset=utf-8`, 291 B, header exactly `id,first_name,last_name,business,phone,trade,extra_trade,status`, rows `T001`–`T004` | PASS |
+| 15 | Seeding threshold against row 7.2's wording | ≥12 across ≥6 | **3 visible people across 4 trades** | FAIL — correctly leaves 7.2 open |
+| 16 | `get_active_prefixes` live call | `PROCESS-` active | `PROCESS-` present, `active: true`, read at 17:25:49Z | PASS |
+| 17 | Launch message reproduced byte-exact | exact match | containment check `True` | PASS |
+| 18 | Wording rule — "tradesman" in the new document | 0 | 0 | PASS |
+| 19 | Repo-wide grep for other hand-edit instructions | none live | 2 found, both read, both legitimately different; left alone | PASS |
+| 20 | `validate_build_plan.py --verbose` | exit 0 | `OK`, exit `0`, 7 steps, **15 sub-tasks**, done effort **48/77 = 62.3%** | PASS |
+| 21 | Independent row count vs validator's sub-task count | equal | document holds **15** rows (10 `done`, 5 `new`); validator read **15** | PASS — no rows invisible |
+| 22 | Independent recompute of done and total effort | matches validator | **48** and **77** | PASS |
+
+**What was not tested:**
+
+- **Whether the test recommendation from the 4.3 measurement reached the Votes tab.** Unchanged from the previous session and still the owner's to confirm. No vote was placed this session, and no second test row was written, as instructed.
+- **Row 4.2's append path**, deliberately untouched. Nothing here infers anything about it.
+- **How the favicon looks in a browser tab.** It was verified to decode and paint at 150px, which proves the SVG is valid and renders, but nobody has looked at it small. It is cosmetic either way.
+- **The seeding document walked end to end by the owner.** It was written from measured facts about the feed and the code, but he has not yet followed it, so its clarity for its actual reader is untested. That is the honest limit of any document written for somebody else.
+- **The launch message's wording** was not reviewed or improved — deliberately. It is reproduced byte-exact as supplied and marked as a draft for his approval.
+- **`docs/RESTORE-dunchi-trader.md`** was read where it mentioned committing changes but was otherwise not revisited against the new endpoint state.
+
+**Commits:**
+
+- `99b66de` — `fix: code, deploy steps and favicon stop contradicting the deployed reality`
+
+**Finished:** 2026-09-18T17:29:30Z
+
+**End state:**
+
+The plan stands at **48 of 77 effort (62.3%)**, 10 of 15 rows `done`. The movement from 46/75 is smaller than it looks and is worth reading carefully: row 4.4 added **2 to the numerator and 2 to the denominator**, so the percentage moved only 61.3% → 62.3%. Closing a 2-effort row on a 75 denominator would have given 64.0%; appending the row first is what accounts for the difference. Nothing was reweighted and no row was renumbered.
+
+The live site serves 0 failed requests and 0 console errors on a plain load, down from 1 and 1. Nothing a maintainer or the owner reads still claims the votes endpoint does not exist, and `apps-script/DEPLOY.md` no longer contains an instruction that would have broken the site.
+
+**Nothing is blocked on code.** Every remaining item is the owner's, inside Google, and the largest by far is seeding — the live list carries 3 visible test people across 4 trades against a launch requirement of 12–15 across at least 6. `docs/PROCESS-seeding-and-launch-dunchi-trader.md` now tells him exactly how to do it, and `README.md` points at it.
+
+In priority order for him: **seed the list**; place one vote from his phone and check the Votes tab (row 4.2); delete the test row from the 4.3 measurement; then the remaining form and sheet actions in Layer 4. **The launch message must not be posted until step 7 has passed** — it is drafted and waiting for his approval, not ready to send.
+
+**Effort per prompt for the plan, cumulative: 48 effort done ÷ 12 prompts sent = 4.0.** Both figures recorded, not only the ratio.
