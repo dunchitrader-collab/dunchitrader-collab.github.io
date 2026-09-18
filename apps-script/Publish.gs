@@ -111,6 +111,81 @@ var PUB_COLS = [
 var COL_WORDS = 10;   // K, zero-based
 var COL_BY    = 11;   // L, zero-based
 
+/* ===========================================================================
+   COLUMNS THIS SCRIPT MUST NEVER WRITE TO
+
+   Published has three kinds of column now:
+     A-H  the tradesperson    — written by this script
+     I,J  pub_phone_key / pub_name_key — ARRAYFORMULA, owned by the OWNER
+     K,L  the villagers' words — written by this script
+
+   The owner pastes those two formulas once, into I2 and J2, and they fill
+   their own columns downwards. **Writing a value into a cell an ARRAYFORMULA
+   produces destroys the formula.** On 2026-09-18 the repair wrote rows back
+   across A to L in one go and killed both of them. Nothing failed, nothing
+   warned — and with those columns dead, the verdict formula on the responses
+   tab reads every future submission as NEW, even for somebody already listed.
+
+   So every write is now made in BLOCKS that skip these columns. Add another
+   formula column later and the only change needed is to add its zero-based
+   index here; `writableBlocks()` re-derives the spans and every write follows.
+
+   IF THE OWNER PUTS A FORMULA SOMEWHERE THIS LIST DOES NOT NAME, the script
+   will still overwrite it — it cannot detect a formula it has not been told
+   about, because the Sheets API returns the formula's RESULT when reading
+   values. `checkSetup` therefore reports the health of the columns it does
+   know about, and this list is the place to record any new one.
+   =========================================================================== */
+
+var FORMULA_COLS = [8, 9];   // I and J, zero-based
+
+/**
+ * Contiguous spans of writable columns, as {start, len} in zero-based terms.
+ * With FORMULA_COLS = [8,9] over twelve columns this yields A-H and K-L.
+ */
+function writableBlocks() {
+  var blocks = [], start = -1;
+  for (var c = 0; c <= PUB_COLS.length; c++) {
+    var owned = (c === PUB_COLS.length) || FORMULA_COLS.indexOf(c) !== -1;
+    if (owned) {
+      if (start !== -1) { blocks.push({ start: start, len: c - start }); start = -1; }
+    } else if (start === -1) {
+      start = c;
+    }
+  }
+  return blocks;
+}
+
+/** Write one row's values, skipping the owner's formula columns. */
+function writeRowBlocks(pub, rowNum, values) {
+  var blocks = writableBlocks();
+  for (var b = 0; b < blocks.length; b++) {
+    var chunk = values.slice(blocks[b].start, blocks[b].start + blocks[b].len);
+    pub.getRange(rowNum, blocks[b].start + 1, 1, chunk.length).setValues([chunk]);
+  }
+}
+
+/** Write many rows at once, skipping the owner's formula columns. */
+function writeRangeBlocks(pub, firstRow, rows) {
+  if (!rows.length) return;
+  var blocks = writableBlocks();
+  for (var b = 0; b < blocks.length; b++) {
+    var chunk = rows.map(function (r) {
+      return r.slice(blocks[b].start, blocks[b].start + blocks[b].len);
+    });
+    pub.getRange(firstRow, blocks[b].start + 1, chunk.length, chunk[0].length).setValues(chunk);
+  }
+}
+
+/** Clear rows, skipping the owner's formula columns. */
+function clearRowsBlocks(pub, firstRow, numRows) {
+  if (numRows < 1) return;
+  var blocks = writableBlocks();
+  for (var b = 0; b < blocks.length; b++) {
+    pub.getRange(firstRow, blocks[b].start + 1, numRows, blocks[b].len).clearContent();
+  }
+}
+
 /**
  * How several recommendations share one cell.
  *
@@ -545,7 +620,7 @@ function publishOne(ss, row) {
      formula-produced empty strings cannot push it into the middle of nowhere.
      setValues writes plain values exactly as appendRow did. */
   var target = lastIdRow(pub) + 1;
-  pub.getRange(target, 1, 1, out.length).setValues([out]);
+  writeRowBlocks(pub, target, out);
   return true;
 }
 
@@ -854,11 +929,11 @@ function repairPublished() {
   var moved = 0;
   for (var m = 0; m < stranded.length; m++) {
     var from = stranded[m];
-    var vals = pub.getRange(from, 1, 1, width).getValues();
+    var vals = pub.getRange(from, 1, 1, width).getValues()[0];
     var to   = contiguousEnd + 1 + m;
     if (to !== from) {
-      pub.getRange(to, 1, 1, width).setValues(vals);
-      pub.getRange(from, 1, 1, width).clearContent();
+      writeRowBlocks(pub, to, vals);
+      clearRowsBlocks(pub, from, 1);
     }
     moved++;
   }
@@ -1037,10 +1112,10 @@ function cleanPublished(ss, pub) {
       if (String(row[iPhone] || '').trim()) row[iPhone] = phoneText(row[iPhone]);
       out.push(row);
     }
-    if (out.length) pub.getRange(2, 1, out.length, width).setValues(out);
+    if (out.length) writeRangeBlocks(pub, 2, out);
     // clear whatever the shortened table left behind
     if (vals.length - 1 > out.length) {
-      pub.getRange(2 + out.length, 1, (vals.length - 1) - out.length, width).clearContent();
+      clearRowsBlocks(pub, 2 + out.length, (vals.length - 1) - out.length);
     }
   }
 
@@ -1227,6 +1302,45 @@ function checkSetup() {
         lines.push('');
         lines.push('Fix what can be fixed with: Village list -> Repair the list.');
       }
+    }
+
+    /* --- the owner's helper formulas in I and J ---
+       He found them dead by eye, on one row. This report should have told him.
+       A script wrote values over them on 2026-09-18; that can no longer happen,
+       but a hand edit or a stray paste still can, and with them dead every
+       future submission reads as NEW even for somebody already listed. */
+    var fI = '', fJ = '';
+    try {
+      var f = pub.getRange(2, 9, 1, 2).getFormulas()[0];
+      fI = String(f[0] || ''); fJ = String(f[1] || '');
+    } catch (ignored) {}
+
+    lines.push('');
+    if (fI && fJ) {
+      // both present — are they actually producing a value for every phone?
+      var lastR = lastIdRow(pub);
+      var blank = [];
+      if (lastR > 1) {
+        var hv = pub.getRange(1, 1, lastR, PUB_COLS.length).getValues();
+        var pI = PUB_COLS.indexOf('phone');
+        for (var q = 1; q < hv.length; q++) {
+          if (!String(hv[q][0] || '').trim()) continue;
+          if (!String(hv[q][pI] || '').trim()) continue;
+          if (!String(hv[q][8] || '').trim()) blank.push(String(hv[q][0]).trim());
+        }
+      }
+      lines.push(blank.length
+        ? '*** THE DUPLICATE CHECKER IS NOT FILLING IN for: ' + blank.join(', ') +
+          '\n    The formula is in I2 but is not reaching those rows.'
+        : 'Duplicate-checker columns (I and J): working.');
+    } else {
+      lines.push('*** THE DUPLICATE CHECKER IS BROKEN ***');
+      if (!fI) lines.push('  I2 has no formula in it.');
+      if (!fJ) lines.push('  J2 has no formula in it.');
+      lines.push('  Until this is put right, EVERY new form submission will look');
+      lines.push('  like a new person, even somebody already on the list.');
+      lines.push('  Fix: open apps-script/SHEET-FORMULAS.md, step 2, and paste the');
+      lines.push('  two formulas back into Published I2 and J2.');
     }
 
     var headers = pub.getRange(1, 1, 1, PUB_COLS.length).getValues()[0];
