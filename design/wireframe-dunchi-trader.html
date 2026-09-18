@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dunchideock Village Suppliers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+
+<style>
+  :root{
+    --fs:20px;
+    font-size:var(--fs);
+
+    --ground:#EAEEEB;
+    --card:#FFFFFF;
+    --ink:#101413;
+    --ink2:#3A4641;
+    --line:#8A958F;
+    --line-soft:#C7CFC9;
+    --go:#0A4F2E;
+    --go-ink:#FFFFFF;
+    --note:#6B3A08;
+    --note-bg:#FBF1E3;
+    --note-line:#C8A268;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0F1311;
+      --card:#171C19;
+      --ink:#F2F6F2;
+      --ink2:#B9C4BC;
+      --line:#5D6A63;
+      --line-soft:#39433D;
+      --go:#58BC8B;
+      --go-ink:#06170E;
+      --note:#F0B879;
+      --note-bg:#241C12;
+      --note-line:#6B5330;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0F1311;
+    --card:#171C19;
+    --ink:#F2F6F2;
+    --ink2:#B9C4BC;
+    --line:#5D6A63;
+    --line-soft:#39433D;
+    --go:#58BC8B;
+    --go-ink:#06170E;
+    --note:#F0B879;
+    --note-bg:#241C12;
+    --note-line:#6B5330;
+  }
+
+  *{box-sizing:border-box}
+
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Atkinson Hyperlegible",Verdana,Arial,sans-serif;
+    font-size:1rem;
+    line-height:1.55;
+    margin:0;
+    -webkit-text-size-adjust:100%;
+    overflow-wrap:break-word;
+  }
+
+  .wrap{
+    max-width:46rem;
+    margin:0 auto;
+    padding-inline:1rem;
+    padding-block:0 3rem;
+  }
+
+  /* ---------------- header ---------------- */
+  .top{
+    background:var(--ground);
+    padding-block:0 .2rem;
+  }
+
+  .vh{
+    position:absolute;
+    width:1px;height:1px;
+    margin:-1px;padding:0;border:0;
+    overflow:hidden;
+    clip-path:inset(50%);
+    white-space:nowrap;
+  }
+
+  label.big{
+    display:block;
+    margin:0 0 .3rem;
+    font-size:1.05rem;
+    font-weight:700;
+    line-height:1.3;
+  }
+  #search{
+    width:100%;
+    font-family:inherit;
+    font-size:1.15rem;
+    font-weight:400;
+    padding:.8rem .85rem;
+    min-height:3.2rem;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+  }
+
+  /* ---------------- text size control ----------------
+     Every value here is in px on purpose: this strip must stay the
+     same size whatever the reader sets, or it grows to fill the phone. */
+  .sizer{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:6px 0 8px;
+  }
+  .sizer b{
+    font-size:15px;
+    font-weight:700;
+    line-height:1.2;
+    margin-right:auto;
+  }
+  .sizer button{
+    font-family:inherit;
+    font-weight:700;
+    line-height:1;
+    width:48px;
+    height:44px;
+    padding:0;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--line);
+    border-radius:6px;
+    cursor:pointer;
+  }
+  .sizer button[aria-pressed="true"]{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--ground);
+  }
+  #s1{font-size:15px}
+  #s2{font-size:20px}
+  #s3{font-size:26px}
+
+  /* ---------------- autocomplete ---------------- */
+  #sugg{
+    display:flex;
+    flex-direction:column;
+    gap:.4rem;
+    margin:.5rem 0 0;
+  }
+  #sugg button{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.1rem;
+    width:100%;
+    min-height:3.4rem;
+    padding:.6rem .85rem;
+    text-align:left;
+    font-family:inherit;
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--line);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+  #sugg button > span{min-width:0;overflow-wrap:break-word}
+  #sugg button .kind{
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--ink2);
+  }
+  #sugg mark{
+    background:transparent;
+    color:inherit;
+    text-decoration:underline;
+    text-decoration-thickness:3px;
+    text-underline-offset:3px;
+  }
+
+  /* ---------------- headings ---------------- */
+  h2{
+    font-size:1.3rem;
+    font-weight:700;
+    margin:.9rem 0 .7rem;
+    line-height:1.3;
+  }
+
+  /* ---------------- trade list ---------------- */
+  /* min() stops a track being wider than the screen at the largest
+     text size, which is what pushed the page sideways before. */
+  .trades{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap:.7rem;
+  }
+  .trade{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:.8rem;
+    width:100%;
+    min-height:4rem;
+    padding:.85rem 1rem;
+    text-align:left;
+    font-family:inherit;
+    font-size:1.15rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+  .trade strong{
+    min-width:0;
+    overflow-wrap:break-word;
+  }
+  .trade em{
+    flex:none;
+    font-style:normal;
+    font-size:.9rem;
+    font-weight:700;
+    color:var(--ink2);
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------------- back ---------------- */
+  .back{
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+    width:100%;
+    min-height:3.4rem;
+    margin:1.4rem 0 0;
+    padding:.6rem 1rem;
+    font-family:inherit;
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+
+  /* ---------------- trader cards ---------------- */
+  .cards{display:flex;flex-direction:column;gap:1rem}
+
+  .card{
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+    padding:1rem;
+  }
+  .card h3{
+    margin:0;
+    font-size:1.4rem;
+    font-weight:700;
+    line-height:1.25;
+  }
+  .card .biz{
+    margin:.15rem 0 0;
+    font-size:1.05rem;
+    color:var(--ink2);
+  }
+  .card .does{
+    margin:.5rem 0 0;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--ink2);
+  }
+
+  /* Two stacked lines so a long number never has to break mid-digit. */
+  .call{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:.1rem;
+    margin:.9rem 0 0;
+    padding:.8rem 1rem;
+    min-height:3.8rem;
+    background:var(--go);
+    color:var(--go-ink);
+    border-radius:.4rem;
+    text-decoration:none;
+    text-align:center;
+    font-weight:700;
+  }
+  .call .word{font-size:.95rem;letter-spacing:.06em}
+  .call .num{
+    font-size:1.15rem;
+    font-variant-numeric:tabular-nums;
+    letter-spacing:.01em;
+    overflow-wrap:anywhere;
+  }
+
+  .vote{
+    display:block;
+    width:100%;
+    margin:1rem 0 0;
+    padding:.8rem 1rem;
+    min-height:3.6rem;
+    text-align:center;
+    font-family:inherit;
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+
+  .panel{
+    margin:1rem 0 0;
+    padding:1rem;
+    background:var(--ground);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+  }
+  .panel h4{
+    margin:0 0 .8rem;
+    font-size:1.15rem;
+    font-weight:700;
+    line-height:1.3;
+  }
+  .panel label{
+    display:block;
+    margin:0 0 .3rem;
+    font-size:1rem;
+    font-weight:700;
+  }
+  .panel input, .panel textarea{
+    width:100%;
+    font-family:inherit;
+    font-size:1.1rem;
+    padding:.7rem .75rem;
+    margin:0 0 .9rem;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+  }
+  .panel input{min-height:3.2rem}
+  .panel textarea{min-height:6rem;line-height:1.5;resize:vertical}
+  .panel .send{
+    display:block;
+    width:100%;
+    min-height:3.8rem;
+    padding:.9rem 1rem;
+    font-family:inherit;
+    font-size:1.2rem;
+    font-weight:700;
+    color:var(--go-ink);
+    background:var(--go);
+    border:3px solid var(--go);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+  .panel .cancel{
+    display:block;
+    width:100%;
+    min-height:3.2rem;
+    margin-top:.6rem;
+    padding:.6rem 1rem;
+    font-family:inherit;
+    font-size:1.05rem;
+    font-weight:700;
+    color:var(--ink);
+    background:transparent;
+    border:3px solid var(--line);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+
+  .thanks{
+    margin:1rem 0 0;
+    padding:1rem;
+    font-size:1.15rem;
+    font-weight:700;
+    color:var(--go-ink);
+    background:var(--go);
+    border-radius:.4rem;
+  }
+
+  .tally{
+    margin:1rem 0 0;
+    padding-top:.7rem;
+    border-top:3px solid var(--ink);
+    font-size:1.05rem;
+    font-weight:700;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .recs{margin:.6rem 0 0;display:flex;flex-direction:column;gap:.9rem}
+  .rec{
+    border-top:2px solid var(--line-soft);
+    padding-top:.7rem;
+  }
+  .rec p{margin:0;font-size:1.05rem}
+  .rec .by{
+    display:block;
+    margin-top:.3rem;
+    font-size:.95rem;
+    font-weight:700;
+    color:var(--ink2);
+  }
+
+  .todo{
+    margin:.9rem 0 0;
+    padding:.7rem .8rem;
+    font-size:.95rem;
+    font-weight:700;
+    color:var(--note);
+    background:var(--note-bg);
+    border:2px solid var(--note-line);
+    border-radius:.4rem;
+  }
+
+  .none{
+    margin:1.2rem 0;
+    padding:1.2rem;
+    font-size:1.1rem;
+    color:var(--ink2);
+    background:var(--card);
+    border:3px solid var(--line);
+    border-radius:.4rem;
+  }
+
+  /* ---------------- wireframe strip ---------------- */
+  .demo{
+    margin-top:1.2rem;
+    padding:.9rem;
+    background:var(--note-bg);
+    border:2px solid var(--note-line);
+    border-radius:.4rem;
+  }
+  .demo p{margin:0 0 .6rem;font-size:.95rem;font-weight:700;color:var(--note)}
+  .demo .row{display:flex;flex-wrap:wrap;gap:.5rem}
+  .demo button{
+    flex:1 1 9rem;
+    min-height:3rem;
+    padding:.5rem .7rem;
+    font-family:inherit;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--line);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+  .demo button[aria-pressed="true"]{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--ground);
+  }
+  .demo .count{
+    margin:.7rem 0 0;
+    font-size:.95rem;
+    font-weight:400;
+    color:var(--note);
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------------- footer ---------------- */
+  .foot{
+    margin-top:2.4rem;
+    padding-top:1.2rem;
+    border-top:3px solid var(--ink);
+  }
+  .foot p{margin:0 0 .7rem;font-size:1.05rem}
+  .foot .problem{
+    margin:1.4rem 0 0;
+    padding-top:1.2rem;
+    border-top:2px solid var(--line-soft);
+    font-size:1.05rem;
+  }
+  .foot .smallprint{
+    margin:.8rem 0 0;
+    font-size:.95rem;
+    color:var(--ink2);
+    line-height:1.5;
+  }
+  .add{
+    display:block;
+    padding:.9rem 1rem;
+    min-height:3.6rem;
+    text-align:center;
+    font-size:1.15rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+    text-decoration:none;
+  }
+
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:4px solid var(--go);
+    outline-offset:3px;
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="sizer">
+      <b>Text size</b>
+      <button id="s1" type="button" aria-pressed="true" aria-label="Normal text">A</button>
+      <button id="s2" type="button" aria-pressed="false" aria-label="Large text">A</button>
+      <button id="s3" type="button" aria-pressed="false" aria-label="Largest text">A</button>
+    </div>
+
+    <h1 class="vh">Dunchideock Village Suppliers</h1>
+
+    <label class="big" for="search">Search for a Dunchideock recommended trader</label>
+    <input id="search" type="search" autocomplete="off" placeholder="plumber"
+           role="combobox" aria-expanded="false" aria-controls="sugg" aria-autocomplete="list">
+    <div id="sugg" role="listbox" aria-label="Suggestions"></div>
+    <p class="vh" id="sugg-count" aria-live="polite"></p>
+  </header>
+
+  <main id="main"></main>
+
+  <footer class="foot">
+    <p>Know a good tradesperson? Add them to the list.</p>
+    <a class="add" href="https://forms.gle/ZyLed4Tue91bzXjD7">Recommend a trader</a>
+
+    <p class="problem">Had a problem with someone on this list? Please mention it on the village chat.</p>
+
+    <p class="smallprint">These are recommendations from neighbours &mdash; not checks or endorsements by anyone. Please satisfy yourself before hiring.</p>
+
+    <section class="demo">
+      <p>Wireframe control &mdash; this would not be on the real site</p>
+      <div class="row">
+        <button id="btn-clean" type="button" aria-pressed="true">After clean-up</button>
+        <button id="btn-raw" type="button" aria-pressed="false">Raw form entries</button>
+      </div>
+      <p class="count" id="count"></p>
+    </section>
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* On the real site this array is built from the Google Sheet at page load.
+     Here it is inline so the wireframe stands alone. */
+  var RAW = [
+    {trade:"Plumber", name:"Richard Whitthorn", phone:"07825 736940", biz:"Whitthorn Plumbing",
+     why:"Came out the same day when our boiler packed up. Very reasonable.", by:"Jane Duckworth"},
+    {trade:"Plumber", name:"Richard Whitthorne", phone:"+44 7825 736940", biz:"",
+     why:"Richard has done work for us for years and has never let us down.", by:""},
+    {trade:"Electrician", name:"Dave Trelawny", phone:"01632 960431", biz:"Trelawny Electrical Ltd",
+     why:"Rewired our kitchen. Tidy worker, cleaned up after himself.", by:"Margaret Hine"},
+    {trade:"Oil Boiler Technician", name:"Steve", phone:"07700 900883", biz:"",
+     why:"Steve services our oil boiler every year. Always turns up when he says he will.", by:"Bill Ash"},
+    {trade:"Roofer", name:"Tom Pengelly", phone:"07700900233", biz:"Pengelly Roofing",
+     why:"Fixed slipped slates after the January storms. Fair price, no fuss.", by:"Margaret Hine"},
+    {trade:"General Builder", name:"dave trelawny", phone:"01632960431", biz:"Trelawny Electrical",
+     why:"He does building work as well — put our new porch up last spring.", by:"Peter Snell"},
+    {trade:"Gas Engineer", name:"Alan Priddis", phone:"07700 900112", biz:"Priddis Heating & Gas",
+     why:"Serviced the boiler and sorted a leak on the hob. Gas Safe registered.", by:"Jane Duckworth"},
+    {trade:"Chimney Sweep", name:"Mick Sanders", phone:"01632 960119", biz:"Sanders Sweep",
+     why:"Sweeps ours every autumn. Clean and quick, puts sheets down.", by:"Bill Ash"}
+  ];
+
+  var CLEAN = [
+    {name:"Richard Whitthorn", biz:"Whitthorn Plumbing", phone:"07825 736940", trades:["Plumber"],
+     recs:[{why:"Came out the same day when our boiler packed up. Very reasonable.", by:"Jane Duckworth"},
+           {why:"Richard has done work for us for years and has never let us down.", by:"a villager"}]},
+    {name:"Dave Trelawny", biz:"Trelawny Electrical Ltd", phone:"01632 960431",
+     trades:["Electrician","General Builder"],
+     recs:[{why:"Rewired our kitchen. Tidy worker, cleaned up after himself.", by:"Margaret Hine"},
+           {why:"He does building work as well — put our new porch up last spring.", by:"Peter Snell"}]},
+    {name:"Alan Priddis", biz:"Priddis Heating & Gas", phone:"07700 900112", trades:["Gas Engineer"],
+     recs:[{why:"Serviced the boiler and sorted a leak on the hob. Gas Safe registered.", by:"Jane Duckworth"}]},
+    {name:"Steve", biz:"", phone:"07700 900883", trades:["Oil Boiler Technician"],
+     todo:"Surname still needed before this goes on the site",
+     recs:[{why:"Steve services our oil boiler every year. Always turns up when he says he will.", by:"Bill Ash"}]},
+    {name:"Tom Pengelly", biz:"Pengelly Roofing", phone:"07700 900233", trades:["Roofer"],
+     recs:[{why:"Fixed slipped slates after the January storms. Fair price, no fuss.", by:"Margaret Hine"}]},
+    {name:"Mick Sanders", biz:"Sanders Sweep", phone:"01632 960119", trades:["Chimney Sweep"],
+     recs:[{why:"Sweeps ours every autumn. Clean and quick, puts sheets down.", by:"Bill Ash"}]}
+  ];
+
+  var main   = document.getElementById("main");
+  var count  = document.getElementById("count");
+  var search = document.getElementById("search");
+
+  var mode  = "clean";
+  var trade = null;
+  var committed = false;   // true once a suggestion is chosen or Enter pressed
+  var VOTES = {};   // votes added this visit, keyed by trader name
+  var DONE  = {};   // traders this visitor has already endorsed
+
+  /* ---- text size ---- */
+  var SIZES = ["20px","24px","29px"];
+  function setSize(i){
+    document.documentElement.style.setProperty("--fs", SIZES[i]);
+    for (var n=0;n<3;n++){
+      document.getElementById("s"+(n+1)).setAttribute("aria-pressed", String(n===i));
+    }
+    try { localStorage.setItem("dvs-size", String(i)); } catch(e){}
+  }
+  for (var i=0;i<3;i++){
+    (function(n){
+      document.getElementById("s"+(n+1)).addEventListener("click", function(){ setSize(n); });
+    })(i);
+  }
+  try {
+    var saved = localStorage.getItem("dvs-size");
+    if (saved !== null) setSize(Math.min(2, Math.max(0, parseInt(saved,10)||0)));
+  } catch(e){}
+
+  /* ---- helpers ---- */
+  function tel(s){ return "tel:" + s.replace(/[^\d+]/g,""); }
+
+  function el(tag, cls, text){
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function listings(){
+    if (mode === "raw"){
+      return RAW.map(function(e){
+        return {trade:e.trade, name:e.name, biz:e.biz, phone:e.phone, trades:[e.trade],
+                recs:[{why:e.why, by:e.by || "a villager"}]};
+      });
+    }
+    var out = [];
+    CLEAN.forEach(function(t){
+      t.trades.forEach(function(tr){
+        out.push({trade:tr, name:t.name, biz:t.biz, phone:t.phone,
+                  trades:t.trades, recs:t.recs, todo:t.todo});
+      });
+    });
+    return out;
+  }
+
+  function card(l){
+    var c = el("article","card");
+    c.appendChild(el("h3", null, l.name));
+    if (l.biz) c.appendChild(el("p","biz", l.biz));
+    c.appendChild(el("p","does", l.trades.join("  ·  ")));
+
+    var a = el("a","call");
+    a.href = tel(l.phone);
+    a.setAttribute("aria-label", "Call " + l.name + " on " + l.phone);
+    a.appendChild(el("span","word","CALL"));
+    a.appendChild(el("span","num", l.phone));
+    c.appendChild(a);
+
+    if (l.todo) c.appendChild(el("p","todo", l.todo));
+
+    var recs = l.recs.concat(VOTES[l.name] || []);
+
+    c.appendChild(el("p","tally", recs.length === 1
+      ? "1 villager recommends this trader"
+      : recs.length + " villagers recommend this trader"));
+
+    var box = el("div","recs");
+    recs.forEach(function(r){
+      var d = el("div","rec");
+      d.appendChild(el("p", null, "“" + r.why + "”"));
+      d.appendChild(el("span","by", "Recommended by " + r.by));
+      box.appendChild(d);
+    });
+    c.appendChild(box);
+
+    if (DONE[l.name]){
+      c.appendChild(el("p","thanks","Thank you — your recommendation has been added."));
+      return c;
+    }
+
+    var v = el("button","vote","I recommend them too");
+    v.type = "button";
+    c.appendChild(v);
+
+    v.addEventListener("click", function(){
+      v.remove();
+      c.appendChild(panel(l, c));
+    });
+    return c;
+  }
+
+  /* The whole "vote" is two boxes, in place. Nothing is re-typed and the
+     villager never leaves the page. On the live site, send() posts the
+     trader's name plus these two fields to the sheet. */
+  function panel(l, c){
+    var p = el("div","panel");
+    p.appendChild(el("h4","", "You are recommending " + l.name));
+
+    var idN = "n-" + l.name.replace(/\W+/g,"");
+    var idW = "w-" + l.name.replace(/\W+/g,"");
+
+    var ln = el("label", null, "Your name");
+    ln.setAttribute("for", idN);
+    var inp = document.createElement("input");
+    inp.id = idN; inp.type = "text"; inp.autocomplete = "name";
+
+    var lw = el("label", null, "What did they do for you?");
+    lw.setAttribute("for", idW);
+    var ta = document.createElement("textarea");
+    ta.id = idW; ta.rows = 3;
+
+    var send = el("button","send","Add my recommendation");
+    send.type = "button";
+    var cancel = el("button","cancel","Cancel");
+    cancel.type = "button";
+
+    p.append(ln, inp, lw, ta, send, cancel);
+
+    send.addEventListener("click", function(){
+      var by  = inp.value.trim() || "a villager";
+      var why = ta.value.trim();
+      if (!why){ ta.focus(); return; }
+      (VOTES[l.name] = VOTES[l.name] || []).push({why:why, by:by});
+      DONE[l.name] = true;
+      render();
+    });
+    cancel.addEventListener("click", function(){ render(); });
+
+    setTimeout(function(){ inp.focus(); }, 0);
+    return p;
+  }
+
+  /* ---- autocomplete ----
+     Suggests trades first (what most people are looking for), then
+     traders and businesses. Each suggestion is a full-width button,
+     so it is a real tap target and sits in the keyboard tab order. */
+  var sugg      = document.getElementById("sugg");
+  var suggCount = document.getElementById("sugg-count");
+
+  function mark(text, q){
+    var frag = document.createDocumentFragment();
+    var i = text.toLowerCase().indexOf(q);
+    if (i < 0 || !q){ frag.appendChild(document.createTextNode(text)); return frag; }
+    frag.appendChild(document.createTextNode(text.slice(0, i)));
+    var m = document.createElement("mark");
+    m.textContent = text.slice(i, i + q.length);
+    frag.appendChild(m);
+    frag.appendChild(document.createTextNode(text.slice(i + q.length)));
+    return frag;
+  }
+
+  function suggest(q, all){
+    sugg.innerHTML = "";
+    search.setAttribute("aria-expanded","false");
+    suggCount.textContent = "";
+    if (!q || committed) return;
+
+    var items = [], seen = {};
+
+    // trades
+    var counts = {};
+    all.forEach(function(l){ counts[l.trade] = (counts[l.trade] || 0) + 1; });
+    Object.keys(counts).sort().forEach(function(t){
+      if (t.toLowerCase().indexOf(q) > -1){
+        items.push({text:t, kind:counts[t] + (counts[t] === 1 ? " trader" : " traders"), go:{trade:t}});
+      }
+    });
+
+    // people and businesses
+    all.forEach(function(l){
+      [l.name, l.biz].forEach(function(txt){
+        if (!txt || seen[txt]) return;
+        if (txt.toLowerCase().indexOf(q) > -1){
+          seen[txt] = 1;
+          items.push({text:txt, kind:l.trades.join(", "), go:{q:l.name}});
+        }
+      });
+    });
+
+    if (!items.length) return;
+    items = items.slice(0, 6);
+
+    items.forEach(function(it){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("role","option");
+      b.setAttribute("aria-selected","false");
+      var label = document.createElement("span");
+      label.appendChild(mark(it.text, q));
+      b.appendChild(label);
+      b.appendChild(el("span","kind", it.kind));
+      b.addEventListener("click", function(){
+        if (it.go.trade){ search.value = ""; trade = it.go.trade; committed = false; }
+        else { search.value = it.go.q; trade = null; committed = true; }
+        render();
+        window.scrollTo(0,0);
+      });
+      sugg.appendChild(b);
+    });
+
+    search.setAttribute("aria-expanded","true");
+    suggCount.textContent = items.length + " suggestions";
+  }
+
+  function render(){
+    main.innerHTML = "";
+    var all = listings();
+    var q = search.value.trim().toLowerCase();
+    var tradeCount = new Set(all.map(function(l){ return l.trade; })).size;
+
+    count.textContent = (mode === "clean")
+      ? CLEAN.length + " traders  ·  8 recommendations  ·  " + tradeCount + " trades"
+      : RAW.length + " form entries  ·  " + tradeCount + " trades  ·  duplicates not yet merged";
+
+    suggest(q, all);
+
+    if (q && committed){
+      var hits = all.filter(function(l){
+        return (l.name + " " + l.biz + " " + l.trades.join(" ")).toLowerCase().indexOf(q) > -1;
+      });
+      main.appendChild(el("h2", null,
+        hits.length + (hits.length === 1 ? " match" : " matches") + " for “" + search.value.trim() + "”"));
+      if (!hits.length){
+        main.appendChild(el("p","none","Nothing found. Try a trade, such as plumber or roofer."));
+        return;
+      }
+      var cs = el("div","cards");
+      hits.forEach(function(l){ cs.appendChild(card(l)); });
+      main.appendChild(cs);
+      return;
+    }
+
+    if (trade && !q){
+      var back = el("button","back","←  All trades");
+      back.type = "button";
+      back.addEventListener("click", function(){
+        search.value = "";
+        committed = false;
+        trade = null;
+        render();
+        window.scrollTo(0,0);
+      });
+      main.appendChild(back);
+      main.appendChild(el("h2", null, trade));
+      var list = el("div","cards");
+      all.filter(function(l){ return l.trade === trade; })
+         .forEach(function(l){ list.appendChild(card(l)); });
+      main.appendChild(list);
+      return;
+    }
+
+    main.appendChild(el("h2", null, "What do you need?"));
+    var counts = {};
+    all.forEach(function(l){ counts[l.trade] = (counts[l.trade] || 0) + 1; });
+
+    var grid = el("div","trades");
+    Object.keys(counts).sort().forEach(function(t){
+      var b = el("button","trade");
+      b.type = "button";
+      b.appendChild(el("strong", null, t));
+      b.appendChild(el("em", null, String(counts[t])));
+      b.addEventListener("click", function(){
+        search.value = "";        // picking a trade always clears the search
+        committed = false;
+        trade = t;
+        render();
+        window.scrollTo(0,0);
+      });
+      grid.appendChild(b);
+    });
+    main.appendChild(grid);
+  }
+
+  function setMode(m){
+    mode = m;
+    trade = null;
+    document.getElementById("btn-clean").setAttribute("aria-pressed", String(m === "clean"));
+    document.getElementById("btn-raw").setAttribute("aria-pressed", String(m === "raw"));
+    render();
+  }
+
+  document.getElementById("btn-clean").addEventListener("click", function(){ setMode("clean"); });
+  document.getElementById("btn-raw").addEventListener("click", function(){ setMode("raw"); });
+  search.addEventListener("input", function(){
+    trade = null;
+    committed = false;
+    render();
+  });
+  search.addEventListener("keydown", function(e){
+    if (e.key === "Enter"){
+      e.preventDefault();
+      committed = true;
+      render();
+    } else if (e.key === "Escape"){
+      search.value = "";
+      committed = false;
+      render();
+    }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

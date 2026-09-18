@@ -1,0 +1,52 @@
+/* Dunchideock Village Suppliers — placeholder styling.
+   The real stylesheet is ported from design/wireframe-dunchi-trader.html
+   at build plan sub-task 3.1. Nothing here is the agreed design. */
+
+:root{
+  --ground:#EAEEEB;
+  --card:#FFFFFF;
+  --ink:#101413;
+  --ink2:#3A4641;
+}
+
+*{box-sizing:border-box}
+
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"Atkinson Hyperlegible",Verdana,Arial,sans-serif;
+  font-size:20px;
+  line-height:1.55;
+  margin:0;
+  -webkit-text-size-adjust:100%;
+  overflow-wrap:break-word;
+}
+
+.wrap{
+  max-width:46rem;
+  margin:0 auto;
+  padding:2rem 1rem 3rem;
+}
+
+h1{
+  font-size:1.6rem;
+  font-weight:700;
+  line-height:1.25;
+  margin:0 0 1rem;
+}
+
+.soon{
+  margin:0 0 1.6rem;
+  padding:1rem;
+  font-size:1.05rem;
+  background:var(--card);
+  border:3px solid var(--ink);
+  border-radius:.4rem;
+}
+
+.smallprint{
+  margin:0;
+  font-size:.95rem;
+  color:var(--ink2);
+  line-height:1.5;
+}
