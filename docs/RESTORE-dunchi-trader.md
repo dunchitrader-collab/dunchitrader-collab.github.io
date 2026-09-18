@@ -17,6 +17,15 @@ fixed, not worked around.
 
 Allow about an hour and a half.
 
+> **This document was checked against the live site on 2026-09-18** and matches
+> what is actually deployed on that date. If you are reading it much later and a
+> screen does not look as described, trust the site and fix this document.
+>
+> **You are rebuilding something that currently exists and works.** The form, the
+> spreadsheet, the website and the recommend button are all live today. This is
+> the instruction for putting them back if they are lost, or for moving them to a
+> different pair of accounts — not a description of work still to be done.
+
 ---
 
 ## Before you start
@@ -75,10 +84,17 @@ with a row of headings and nothing else.
 5. **Copy the address it gives you.** It is long and looks like this:
 
 ```
-https://docs.google.com/spreadsheets/d/e/2PACX-1vSJA1...../pub?gid=1583719737&single=true&output=csv
+https://docs.google.com/spreadsheets/d/e/2PACX-1vSJA1...../pub?gid=1915382769&single=true&output=csv
 ```
 
 Keep it somewhere — you need it in step 6.
+
+> **Check the `gid=` number is the Published tab's, not another tab's.** This is
+> the single easiest thing to get wrong, and it has already gone wrong once on
+> this project: the address was published from the raw form-answers tab instead,
+> so the website would have shown unreviewed submissions and villagers' email
+> addresses. Publish with the **Published** tab selected, and if the address you
+> get downloads anything other than your eight headings, you have the wrong tab.
 
 **You should now have:** a web address that, pasted into a browser, downloads a
 small file containing your headings.
@@ -146,6 +162,21 @@ Window Cleaner, Cleaner, Logs / Firewood, Oil / LPG Supplier, Pest Control.
 **You should now have:** a form that villagers can fill in without signing in,
 whose answers appear on a new tab in your spreadsheet.
 
+**How to check it, with nothing but these two logins:** open the link you copied
+in a private/incognito browser window, so you are not signed in to Google. The
+form should open and let you answer without asking you to sign in. Submit one
+test answer, then look at your spreadsheet — a new tab appears with your answer
+on it. Delete that test answer's row afterwards if you like.
+
+> **Two of the settings above cannot be confirmed from outside the account**, and
+> that is expected rather than a fault: whether **Collect email addresses** is
+> off, and whether the two response-validation rules saved correctly, are only
+> visible to you while signed in and editing the form. The incognito test above
+> proves the email setting indirectly — if it were on, the form would demand a
+> sign-in. For the validation rules, type `abc` into the telephone box and two
+> words into the last box; you should see your own custom messages rather than
+> Google's *"Please enter a valid response"*.
+
 ---
 
 ## Step 4 — The website's home on GitHub
@@ -196,13 +227,25 @@ index.html
 style.css
 app.js
 .nojekyll                <- empty file, but it must exist
+CLAUDE.md
+README.md
 design/wireframe-dunchi-trader.html
 apps-script/Code.gs
 apps-script/DEPLOY.md
 apps-script/SHEET-FORMULAS.md
-docs/
-README.md
+docs/HANDOVER-dunchi-trader.md
+docs/BUILD-PLAN-dunchi-trader.md
+docs/SOLUTION-DESIGN-dunchi-trader.md
+docs/RESTORE-dunchi-trader.md
+docs/PROCESS-seeding-and-launch-dunchi-trader.md
 ```
+
+> **Copy the whole repository, do not pick files out of it.** Everything the
+> site needs is plain text that is served exactly as it is written — there is
+> nothing to build and nothing to generate. In particular the website's icon is
+> drawn inside `index.html` itself rather than being a separate image file, so
+> copying `index.html` brings the icon with it and there is no icon file to
+> remember. If you copy the repository whole, you cannot miss anything.
 
 **`.nojekyll` is easy to miss and the site misbehaves without it.** It is an
 empty file whose only job is to stop GitHub processing the pages before serving
@@ -216,9 +259,22 @@ Then switch the website on:
 3. Set the branch to **main** and the folder to **/ (root)**. Click **Save**.
 4. Wait two or three minutes.
 
-**You should now have:** your site loading at
-`https://<account>.github.io`. It will say *"The list is being updated"*,
-because it does not yet know where the list is. That is step 6.
+**You should now have:** your site loading at `https://<account>.github.io`, with
+the heading, the search box and the three **A** text-size buttons all showing.
+
+Instead of a list of trades you will see one of these two messages, and **either
+one is correct at this point**:
+
+- *"The list will not load at the moment"* — the usual one. The copied `app.js`
+  still points at the old spreadsheet, which no longer exists or is no longer
+  published, so the site cannot reach any list.
+- *"The list is being updated"* — if the old address still answers but no longer
+  gives the right headings.
+
+Both mean the same thing here: **the website is working, and it does not yet know
+where your new list is.** That is step 6. What you must not see is a blank page
+or a Google "404" page; either of those means the files or the Pages setting in
+this step are wrong, not the list address.
 
 ---
 
@@ -231,27 +287,68 @@ because it does not yet know where the list is. That is step 6.
 4. Click **Commit changes**.
 5. Wait a minute or two and reload the website.
 
-**You should now have:** a working site. With nothing on the Published tab yet
-it will say *"Nobody on the list just yet"* — which is the correct message for
-an empty list, and proves it is reading the spreadsheet properly.
+**You should now have:** a working site. With only the headings on the Published
+tab and nobody under them, it says *"Nobody on the list just yet"*.
 
-Add one test person to the Published tab, wait five minutes, and they should
-appear. Once you have seen that, the site is rebuilt.
+**That message is the proof this step worked**, and it is worth understanding
+why: it is a different message from the two in step 5. It means the website
+reached your spreadsheet, read it successfully and found the headings it
+expected — there is simply nobody on the list yet. If you still see *"The list
+will not load at the moment"*, the address is wrong or the tab is not published.
+If you see *"The list is being updated"*, the address works but points at the
+wrong tab — go back to step 2 and check the `gid=` number.
+
+Now add one test person to the Published tab, wait five minutes, and reload.
+They should appear under their trade with a green **CALL** button.
+
+**Once you have seen that, the website is rebuilt.** Steps 7 and 8 add the
+recommend button and the duplicate checker.
+
+> **Filling the list properly is a separate job** — how many people to add,
+> which trades to cover, how the ids work and what to do before you share the
+> link. That is in **`docs/PROCESS-seeding-and-launch-dunchi-trader.md`**, and it
+> is not part of rebuilding. Get the site working first.
 
 ---
 
 ## Step 7 — The recommend button
 
-This is optional. The site works fully without it; villagers just cannot add
-their own recommendations.
+This one is optional in the sense that the site works fully without it —
+villagers just cannot add their own recommendations. Everything up to here is
+the site; this is the extra.
 
-Follow **`apps-script/DEPLOY.md`** in the repository. In short: paste
-`apps-script/Code.gs` into **Extensions → Apps Script**, deploy it as a web app
-with **Execute as: Me** and **Who has access: Anyone**, copy the `/exec`
-address, and paste it into the `VOTES_ENDPOINT` line of `app.js`.
+Follow **`apps-script/DEPLOY.md`** in the repository and do **its steps 1, 2 and
+3**: create the Votes tab, paste in `apps-script/Code.gs`, and deploy it as a web
+app with **Execute as: Me** and **Who has access: Anyone**. Copy the `/exec`
+address it gives you at the end.
 
-**You should now have:** a recommendation made on a phone appearing as a new
-row on the Votes tab within a few seconds.
+> **Do not paste that address into `app.js` yourself.** `DEPLOY.md` step 4
+> explains why in full, and it matters: the site normally lives in **two** GitHub
+> repositories kept identical, and hand-editing one makes them disagree so the
+> next ordinary update silently wipes the change out.
+>
+> **In a from-scratch rebuild you may well have only one repository**, and in
+> that case editing `app.js` directly is fine — there is nothing for it to
+> disagree with. Open `app.js`, find the line beginning `var VOTES_ENDPOINT =`,
+> and put your new `/exec` address between the quotation marks, exactly as you
+> did for `var FEED` in step 6. If you have restored both repositories, make the
+> change in one and copy the same file to the other so they stay identical.
+
+**You should now have:** a new row on the **Votes** tab each time somebody taps
+**Add my recommendation** on the website.
+
+> **Check the spreadsheet, never the website.** The page thanks the villager
+> whether or not the recommendation was saved, and it is not being careless: the
+> reply from Google comes back sealed and the website is not allowed to open it.
+> This was measured on 2026-09-18, not assumed. **The Votes tab is the only
+> proof.**
+>
+> So: open the site on your phone, tap a trade, tap **I recommend them too**,
+> type a few words, tap **Add my recommendation** — then go to the spreadsheet
+> and look at the Votes tab. A thank-you on the page tells you nothing on its
+> own.
+>
+> If no row appears, the checks are in `DEPLOY.md` step 5.
 
 ---
 
@@ -274,9 +371,12 @@ Check each of these:
 - [ ] Adding somebody to the Published tab shows them on the site within five
       minutes.
 - [ ] Setting somebody's `status` to something other than `active` removes them.
-- [ ] The form can be filled in **without signing in to Google**.
+- [ ] The form can be filled in **without signing in to Google** (test it in a
+      private/incognito window).
 - [ ] A form answer appears on the Form responses tab.
-- [ ] If you did step 7: a recommendation from a phone reaches the Votes tab.
+- [ ] If you did step 7: a recommendation made on a phone appears as a new row
+      **on the Votes tab**. Judge this in the spreadsheet, never by the
+      thank-you message on the page.
 
 If every one of those worked using only the two logins, the rebuild is
 complete and the site is genuinely inheritable.
@@ -299,3 +399,21 @@ whoever inherits the site change a word in the browser and see it live.
 **Nothing here costs money**, and nothing needs renewing. GitHub provides the
 web address and the security certificate; Google provides the form and the
 spreadsheet. There is no server to keep running and nothing to patch.
+
+---
+
+## Walk-through tick list
+
+Tick each line when you have seen the thing it names.
+
+1. [ ] **Spreadsheet** — two tabs, `Published` and `Votes`, each with one row of headings.
+2. [ ] **Publish** — the copied address, pasted into a browser, downloads a file containing your eight headings.
+3. [ ] **Form** — opens in a private window without asking you to sign in; a test answer lands on a new tab in the spreadsheet.
+4. [ ] **Repository** — exists at `https://github.com/<account>/<account>.github.io` and is **Public**.
+5. [ ] **Files and Pages** — the site loads at `https://<account>.github.io` showing the heading, search box and three **A** buttons, and says either *"The list will not load at the moment"* or *"The list is being updated"*.
+6. [ ] **Point at the list** — the site now says *"Nobody on the list just yet"*; after adding one test person and waiting five minutes, that person appears under their trade with a green **CALL** button.
+7. [ ] **Recommend button** (optional) — a recommendation made on a phone appears as a new row **on the Votes tab**. Check the spreadsheet, not the thank-you message.
+8. [ ] **Duplicate checker** (optional) — the four extra columns on the Form responses tab show a verdict in plain English.
+9. [ ] **Call button** — tapping **CALL** on a phone dials the right number.
+10. [ ] **Removal** — setting somebody's `status` to anything other than `active` takes them off the site within five minutes.
+11. [ ] **Two logins only** — you reached the end without needing any other account, password or payment.

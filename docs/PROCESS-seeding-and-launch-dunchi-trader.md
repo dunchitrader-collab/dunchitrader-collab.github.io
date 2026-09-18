@@ -272,3 +272,19 @@ If someone has done good work for you and they are not on the list, send me thei
 Anything else, or if a villager reports a problem, the full technical record is
 in `docs/HANDOVER-dunchi-trader.md` and the rebuild instructions are in
 `docs/RESTORE-dunchi-trader.md`.
+
+---
+
+## Where the other instructions are
+
+This document is about **filling the list for the first time and launching it**.
+Once that is done, the day-to-day jobs live elsewhere, so there is only ever one
+set of instructions for each thing:
+
+| What you want to do | Where it is |
+|---|---|
+| Add, change or remove one tradesperson, day to day | **`README.md`** |
+| Edit the words on the website | **`README.md`** |
+| Set up the recommend button, or redeploy it | **`apps-script/DEPLOY.md`** |
+| Make the spreadsheet flag duplicates | **`apps-script/SHEET-FORMULAS.md`** |
+| Rebuild everything from nothing, or move it to new accounts | **`docs/RESTORE-dunchi-trader.md`** |

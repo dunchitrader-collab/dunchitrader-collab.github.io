@@ -229,12 +229,18 @@ working repository too, so the two do not drift apart.
 ## Turning on the recommend button
 
 Villagers can add their own recommendation to somebody already on the list.
-Until the small Google script behind it is switched on, that recommendation
-only stays on their own phone — the page says so honestly rather than
-pretending it was saved.
 
-To switch it on, follow **`apps-script/DEPLOY.md`**. It takes about ten minutes
-and you only do it once.
+**This is switched on.** The small Google script behind it was deployed on
+2026-09-18 and the website has been sending recommendations to it since. New
+recommendations arrive as rows on the **Votes** tab of the spreadsheet.
+
+**Check the Votes tab, not the website.** The page thanks the villager whether or
+not the recommendation was saved — the reply from Google comes back sealed and
+the website is not allowed to open it. That was measured, not assumed. So the
+Votes tab is the only place that tells you the truth.
+
+If you ever need to set it up again from scratch, or you redeploy the script and
+get a new address, follow **`apps-script/DEPLOY.md`**.
 
 To make the spreadsheet flag duplicate entries for you, follow
 **`apps-script/SHEET-FORMULAS.md`**.
