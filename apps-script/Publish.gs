@@ -178,6 +178,7 @@ function onOpen() {
     .createMenu('Village list')
     .addItem('Publish any responses not yet on the list', 'backfillPublished')
     .addItem('Check the setup', 'checkSetup')
+    .addItem('Repair the list (move stray rows back up)', 'repairPublished')
     .addToUi();
 }
 
@@ -256,6 +257,8 @@ function backfillPublished() {
   var sheet = responsesSheet(ss);
   if (!sheet) return say('Could not find the form responses tab.');
 
+  // The responses tab carries no open-ended formulas, so its own extent is
+  // honest. If that ever changes, this needs the same treatment as Published.
   var values = sheet.getDataRange().getValues();
   if (values.length < 2) return say('There are no form responses yet.');
 
@@ -322,6 +325,54 @@ function cellAt(row, i) {
  *
  * Everything that makes this safe lives here, so it is worth reading slowly.
  */
+/* ===========================================================================
+   HOW TALL IS THE TABLE?
+
+   NEVER ask the sheet. This is the bug that cost 2026-09-18 an evening.
+
+   The owner's duplicate-check helpers in columns I and J are ARRAYFORMULA over
+   an open-ended range, so they return an empty string for every row to the
+   bottom of the sheet. An empty string returned by a formula is still CONTENT:
+   getLastRow() and getDataRange() both count it, and appendRow() writes after
+   it. With nine real rows and helpers reaching row 1000, appendRow put the new
+   row on ROW 1001 — in the sheet, correct in every cell, and a thousand rows
+   below anything the owner could see. Reproduced exactly in the stub before
+   this was written.
+
+   So the table's height is defined HERE, by the last row carrying a real id in
+   column A, and nowhere else.
+   =========================================================================== */
+
+/** Column A only, as far as the sheet could possibly go. One read. */
+function idColumn(pub) {
+  var maxRows = pub.getMaxRows();
+  if (maxRows < 2) return [];
+  return pub.getRange(1, 1, maxRows, 1).getValues();
+}
+
+/** The 1-based row of the last real id, or 1 (the header) if there are none. */
+function lastIdRow(pub) {
+  var col = idColumn(pub);
+  for (var r = col.length - 1; r >= 1; r--) {
+    if (String(col[r][0] || '').trim() !== '') return r + 1;
+  }
+  return 1;
+}
+
+/**
+ * The table as a rectangle: header plus every row down to the last real id.
+ *
+ * Replaces getDataRange(), which returned a thousand rows to read nine and is
+ * why the backfill took 31 seconds. Reads exactly the rows that exist.
+ */
+function tableValues(pub) {
+  var last = lastIdRow(pub);
+  if (last < 2) {
+    return [pub.getRange(1, 1, 1, PUB_COLS.length).getValues()[0]];
+  }
+  return pub.getRange(1, 1, last, PUB_COLS.length).getValues();
+}
+
 function publishOne(ss, row) {
   if (PUBLISH_FORBIDDEN.indexOf(PUB_TAB) !== -1) {
     throw new Error('refusing to write to a protected tab');
@@ -330,7 +381,7 @@ function publishOne(ss, row) {
   var pub = ss.getSheetByName(PUB_TAB);
   if (!pub) throw new Error('the "' + PUB_TAB + '" tab does not exist');
 
-  var existing = pub.getDataRange().getValues();
+  var existing = tableValues(pub);
   var phoneKey = normalisePhone(row.phone);
 
   var words = plain(row.words);
@@ -374,9 +425,12 @@ function publishOne(ss, row) {
     words ? by : ''                       // L recommended_by — no name without words
   ];
 
-  // appendRow writes VALUES. Nothing here is a formula, so the owner
-  // overwriting a cell by hand stays overwritten.
-  pub.appendRow(out);
+  /* An EXPLICIT write to a known range, never appendRow.
+     The target row is computed from the last real id, so a column of
+     formula-produced empty strings cannot push it into the middle of nowhere.
+     setValues writes plain values exactly as appendRow did. */
+  var target = lastIdRow(pub) + 1;
+  pub.getRange(target, 1, 1, out.length).setValues([out]);
   return true;
 }
 
@@ -572,6 +626,107 @@ function looksLikeContactSpam(row) {
 }
 
 /* ===========================================================================
+   RECOVERY — bring stranded rows back to the table
+   =========================================================================== */
+
+/**
+ * Rows written below the table by the pre-2026-09-18 bug are real rows with
+ * real ids; only their POSITION is wrong. This moves them up so Published is
+ * one continuous table again.
+ *
+ * IDS ARE NEVER CHANGED. A row's identity is its id, and every recommendation
+ * a villager has left is filed against it. The row moves; the id does not.
+ *
+ * SAFE TO RUN WHEN THERE IS NOTHING TO FIX — it says so and stops.
+ *
+ * REFUSES RATHER THAN GUESSES. If it meets anything it does not understand —
+ * a duplicate id, or a row below the table with no id at all — it changes
+ * nothing and reports what it found, because moving rows around on a guess is
+ * how a directory loses somebody.
+ */
+function repairPublished() {
+  var ss  = SpreadsheetApp.getActiveSpreadsheet();
+  var pub = ss.getSheetByName(PUB_TAB);
+  if (!pub) return say('Could not find the "' + PUB_TAB + '" tab.');
+
+  var col = idColumn(pub);
+  var idRows = [];
+  for (var r = 1; r < col.length; r++) {
+    if (String(col[r][0] || '').trim() !== '') idRows.push(r + 1);   // 1-based
+  }
+
+  if (!idRows.length) {
+    return say('The list is empty — there is nothing to repair.');
+  }
+
+  // Where does the contiguous block starting at row 2 end?
+  var contiguousEnd = 1;
+  for (var i = 0; i < idRows.length; i++) {
+    if (idRows[i] === contiguousEnd + 1) contiguousEnd = idRows[i];
+    else break;
+  }
+
+  var stranded = idRows.filter(function (n) { return n > contiguousEnd; });
+
+  /* --- REFUSE RATHER THAN GUESS ---
+     Checked BEFORE the "nothing to repair" reply, deliberately. A row carrying
+     details but no id does not appear in idRows, so an earlier version of this
+     function reported a clean sheet while an orphan sat below it — which is the
+     same class of silent reassurance as the bug this whole repair exists for.
+     Caught by the stub suite on 2026-09-18 before it ever ran on a real sheet. */
+  var width = PUB_COLS.length;
+  var seen = {}, problems = [];
+
+  for (var k = 0; k < idRows.length; k++) {
+    var idv = String(col[idRows[k] - 1][0]).trim();
+    if (seen[idv]) problems.push('id ' + idv + ' appears on rows ' + seen[idv] + ' and ' + idRows[k]);
+    seen[idv] = idRows[k];
+  }
+
+  /* Scan every row below the contiguous block, not just as far as the last id,
+     so an orphan sitting past everything is still found. */
+  var scanTo = Math.max(idRows[idRows.length - 1], pub.getMaxRows());
+  if (scanTo > contiguousEnd) {
+    var below = pub.getRange(contiguousEnd + 1, 1, scanTo - contiguousEnd, width).getValues();
+    for (var b = 0; b < below.length; b++) {
+      var hasId   = String(below[b][0] || '').trim() !== '';
+      var hasData = below[b].some(function (c) { return String(c || '').trim() !== ''; });
+      if (hasData && !hasId) problems.push('row ' + (contiguousEnd + 1 + b) + ' has details but no id');
+    }
+  }
+
+  if (!problems.length && !stranded.length) {
+    return say('Nothing to repair.\n\nThe list is one continuous block of ' +
+               (contiguousEnd - 1) + ' ' + ((contiguousEnd - 1) === 1 ? 'person' : 'people') +
+               ', which is how it should be.');
+  }
+
+  if (problems.length) {
+    return say('STOPPED — nothing was changed.\n\n' +
+               'Something here needs a human:\n  • ' + problems.join('\n  • ') +
+               '\n\nFix those by hand, then run this again.');
+  }
+
+  // --- move them up, in order, ids untouched ---
+  var moved = 0;
+  for (var m = 0; m < stranded.length; m++) {
+    var from = stranded[m];
+    var vals = pub.getRange(from, 1, 1, width).getValues();
+    var to   = contiguousEnd + 1 + m;
+    if (to !== from) {
+      pub.getRange(to, 1, 1, width).setValues(vals);
+      pub.getRange(from, 1, 1, width).clearContent();
+    }
+    moved++;
+  }
+
+  say('Repaired.\n\nMoved ' + moved + ' ' + (moved === 1 ? 'person' : 'people') +
+      ' back up into the list. Every ID is unchanged.\n\n' +
+      'The list is now ' + (contiguousEnd - 1 + moved) + ' people in one block. ' +
+      'Check the website in about five minutes.');
+}
+
+/* ===========================================================================
    SETUP CHECK — so the owner can see it is wired up
    =========================================================================== */
 
@@ -579,18 +734,69 @@ function checkSetup() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var lines = [];
 
-  lines.push(ss.getSheetByName(PUB_TAB)
-    ? 'Published tab: found'
-    : 'Published tab: MISSING — the publisher cannot work without it');
+  var pub = ss.getSheetByName(PUB_TAB);
+  var resp = responsesSheet(ss);
 
-  lines.push(responsesSheet(ss)
-    ? 'Form responses tab: found'
-    : 'Form responses tab: MISSING');
+  /* WHY THIS REPORT EXISTS, in plain terms: on 2026-09-18 the publisher ran
+     twice, completed both times with a clean log, and the owner saw nothing —
+     the rows were a thousand lines below the table. Neither silence nor a
+     "Completed" status told him anything. These are the numbers that would
+     have. */
+
+  if (!pub) {
+    lines.push('The list (Published tab): MISSING — nothing can work without it');
+  } else {
+    var col = idColumn(pub);
+    var idRows = [];
+    for (var r = 1; r < col.length; r++) {
+      if (String(col[r][0] || '').trim() !== '') idRows.push(r + 1);
+    }
+
+    if (!idRows.length) {
+      lines.push('People on the list: NONE yet');
+    } else {
+      var contiguousEnd = 1;
+      for (var i = 0; i < idRows.length; i++) {
+        if (idRows[i] === contiguousEnd + 1) contiguousEnd = idRows[i]; else break;
+      }
+      var stranded = idRows.filter(function (n) { return n > contiguousEnd; });
+
+      lines.push('People on the list: ' + idRows.length);
+      lines.push('Last ID in use: ' + String(col[idRows[idRows.length - 1] - 1][0]).trim());
+      lines.push('The list fills rows 2 to ' + contiguousEnd + '.');
+
+      if (stranded.length) {
+        lines.push('');
+        lines.push('*** ' + stranded.length + ' ' + (stranded.length === 1 ? 'ROW IS' : 'ROWS ARE') +
+                   ' STRANDED BELOW THE LIST ***');
+        lines.push('at row ' + stranded.join(', row ') + '.');
+        lines.push('They are real people and nothing is lost — they are just in');
+        lines.push('the wrong place, so you cannot see them and nor can the website.');
+        lines.push('Fix it with: Village list -> Repair the list.');
+      } else {
+        lines.push('Stranded rows below the list: none. Good.');
+      }
+    }
+
+    var headers = pub.getRange(1, 1, 1, PUB_COLS.length).getValues()[0];
+    var missing = [];
+    for (var h = 0; h < PUB_COLS.length; h++) {
+      if (String(headers[h] || '').trim().toLowerCase() !== PUB_COLS[h]) missing.push(PUB_COLS[h]);
+    }
+    if (missing.length) {
+      lines.push('');
+      lines.push('Headings that are missing or in the wrong place: ' + missing.join(', '));
+      lines.push('(recommendations and recommended_by go in K1 and L1 — see DEPLOY.md step 10)');
+    }
+  }
+
+  lines.push('');
+  lines.push(resp ? 'Form responses tab: found' : 'Form responses tab: MISSING');
 
   var triggers = ScriptApp.getProjectTriggers();
   var wired = false;
-  for (var i = 0; i < triggers.length; i++) {
-    if (triggers[i].getHandlerFunction() === 'onFormSubmitPublish') wired = true;
+  for (var t = 0; t < triggers.length; t++) {
+    if (triggers[t].getHandlerFunction() === 'onFormSubmitPublish') wired = true;
   }
   lines.push(wired
     ? 'Automatic publishing: ON'
