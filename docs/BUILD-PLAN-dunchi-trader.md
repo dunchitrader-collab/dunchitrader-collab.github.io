@@ -55,7 +55,7 @@ it lives in the solution design.
   `docs/HANDOVER-dunchi-trader.md` Layer 4. Counting them here would inflate the plan with
   work the build does not do.
 - Sub-tasks are numbered `{step}.{n}`. **Numbering is append-only from here on.**
-- **Status** is one of `new`, `to-do`, `in progress`, `done`, `blocked`, `parked`, `descoped`.
+- **Status** is one of `new`, `to-do`, `done`, `blocked`, `parked`, `descoped`, `external`.
 - **Effort** is an integer 1–10, where 10 is the most work.
 
 ### Authority precedence
@@ -82,13 +82,13 @@ until it is done.
 
 | # | Status | Sub-task | Effort |
 |---|---|---|---|
-| 1.1 | blocked | The site is live at `https://dunchitrader-collab.github.io` and serves the committed source untouched. Done when a placeholder page carrying the site title and the small print is reachable at that URL on a phone and on a computer, the served HTML is byte-identical to the committed `index.html` (Jekyll processing disabled), and nothing resembling a credential or token is present anywhere in the repository. **2026-09-18: files built and pushed to `origin` at `c1a4f78` — `index.html`, `style.css`, `app.js`, `.nojekyll`. Credential scan clean. BLOCKED on the same missing dunchitrader-collab credential as 1.2: the files cannot reach the live repo, so the live URL still serves the old Jekyll page (measured — live sha differs from committed `index.html`, `Jekyll v3.10.0` still in the served markup). The byte-identity and phone/computer checks are unrunnable until the push lands.** | 5 |
-| 1.2 | blocked | Both repositories carry the same source and either can be pushed to. Done when the `collab` remote and `origin` both push successfully, the two repositories hold identical content, and the push procedure is written down plainly enough for someone who has not seen this session to follow it. **2026-09-18: `collab` remote configured and fetches successfully; `origin` pushes successfully; push procedure written in `README.md`. BLOCKED on a credential for the dunchitrader-collab GitHub account — both credentials available to this session have `push: false` on that repo, and a dry-run push returns HTTP 403 "Permission denied". Nothing else is outstanding on this row.** | 3 |
+| 1.1 | blocked | The site is live at `https://dunchitrader-collab.github.io` and serves the committed source untouched. Done when a placeholder page carrying the site title and the small print is reachable at that URL on a phone and on a computer, the served HTML is byte-identical to the committed `index.html` (Jekyll processing disabled), and nothing resembling a credential or token is present anywhere in the repository. **2026-09-18T14:25:29Z — measured against the live URL: HTTP 200, `text/html`, 624 bytes; live sha256 `926e3141…babbeb8` equals committed `index.html` sha256 `926e3141…babbeb8`; `Jekyll v3.10.0` returns 0 matches, so `.nojekyll` is working; served `<title>` is `Dunchideock Village Suppliers`; the small print line is served. Credential scan clean. Computer half CONFIRMED. OUTSTANDING — the phone sighting only: this session has no phone and did not check it, and the row is deliberately left short of done on that ground alone. Gavin opens the URL on a phone to close it.** | 5 |
+| 1.2 | done | Both repositories carry the same source and either can be pushed to. Done when the `collab` remote and `origin` both push successfully, the two repositories hold identical content, and the push procedure is written down plainly enough for someone who has not seen this session to follow it. **CLOSED 2026-09-18T14:25:29Z — `origin` pushed (`5d48f55..f94d45a`) and `collab` pushed (`313ccfb..f94d45a`, `master:main`). Tree equality verified: both remotes resolve to tree `7b79e241`, and HEAD is 0 ahead of each. Push procedure written in `README.md`, including the `master:main` branch-name difference. The live repo's own unrelated `Initial commit` was merged rather than force-pushed over, so its history is preserved.** | 3 |
 
 | # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on |
 |---|---|---|---|---|---|---|---|---|---|
 | 1.1 | When Gavin opens the link on his phone to check the work, he sees the page. | Serve committed static source at the public URL | Later steps become verifiable, because rendered work can now be reviewed in a browser | Static files plus .nojekyll on Pages | blocked | | | build | none |
-| 1.2 | When Gavin has finished a change here and wants the village to see it, he pushes to the live site. | Configure both remotes and document the push | The inheritable repo stays a full copy rather than drifting behind | Second named git remote | blocked | | | build | 1.1 |
+| 1.2 | When Gavin has finished a change here and wants the village to see it, he pushes to the live site. | Configure both remotes and document the push | The inheritable repo stays a full copy rather than drifting behind | Second named git remote | done | | | build | 1.1 |
 
 ---
 
