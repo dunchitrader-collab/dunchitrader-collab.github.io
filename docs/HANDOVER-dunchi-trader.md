@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T14:58:46Z
+last-updated: 2026-09-18T15:13:20Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T14:58:46Z**
+**Last updated: 2026-09-18T15:13:20Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ SUPERSEDED 2026-09-18T14:58:46Z → **20 of 75 effort (26.7%)**. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ SUPERSEDED 2026-09-18T15:13:20Z → **31 of 75 effort (41.3%)**. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -115,9 +115,12 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | Date | Priority | Blocking | Description |
 |------|----------|----------|-------------|
 | ~~2026-09-18~~ | ~~**CRITICAL**~~ | ~~**YES**~~ | ~~**No push credential for the dunchitrader-collab GitHub account.** Measured 2026-09-18T14:13:45Z: both credentials report `"push": false`, and a dry-run push returns HTTP 403.~~ RESOLVED 2026-09-18T14:26:12Z — Gavin added `gsamwell-personal` as a collaborator with Write access. The push landed at `f94d45a` using the `gsamwell-lang` classic token; see Layer 3 for why the fine-grained token still could not, despite the API reporting `push: true`. |
-| 2026-09-18 | MEDIUM | no | **Row 1.1 needs the phone sighting.** Everything else on it is measured and confirmed against the live URL. Gavin opens `https://dunchitrader-collab.github.io` on a phone and confirms it renders; the row closes on that alone. |
-| 2026-09-18 | HIGH | no | **Row 3.3 needs Gavin's sighting.** The zoom and overflow behaviour is measured in a real browser — 0px sideways overflow across six cases at 320px, every digit group intact — but it is a rendered surface. Gavin presses the largest A on his phone and confirms nothing runs off the edge. |
-| 2026-09-18 | HIGH | no | **Row 3.1 needs Gavin's sighting.** The wireframe is ported and live at `d10ae18`, verified byte-identical and checked against every design §9 rule this session could measure. It is a rendered surface, so it is not closed on Claude's reading. Gavin opens the site on a phone AND a computer and says whether it looks right. |
+| ~~2026-09-18~~ | ~~MEDIUM~~ | ~~no~~ | ~~**Row 1.1 needs the phone sighting.**~~ RESOLVED 2026-09-18T15:13:20Z — **Owner sighting 2026-09-18T15:04Z, verbatim:** *"https://dunchitrader-collab.github.io all works are expected without any data in it though"* Row 1.1 is `done`. |
+| 2026-09-18 | HIGH | no | **Row 3.3 is held open on ONE clause.** The sighting covered most of it — nothing scrolled sideways, no text left its box, the header did not swallow the screen and the size buttons did not grow. But *"no phone number breaks mid-digit"* **cannot** have been shown: the feed still serves the wrong tab, so no cards and therefore no phone number were on screen. Deliberately not closed on evidence that could not have shown it. Closes when 2.1 is unblocked and the owner presses the largest A with real cards visible. |
+| 2026-09-18 | HIGH | no | **Row 4.2 needs the owner's Apps Script deployment.** The script and its numbered steps are committed. Follow [PATH] `apps-script/DEPLOY.md` while signed in as `dunchitrader@gmail.com`. Closes when a vote from a real phone lands in the Votes tab. |
+| 2026-09-18 | MEDIUM | no | **Row 5.1 needs the formulas pasted.** Paste-ready in [PATH] `apps-script/SHEET-FORMULAS.md`. Closes when one sample row of each of the four verdicts shows correctly in the real sheet. |
+| 2026-09-18 | MEDIUM | no | **Row 6.1 needs the runbook walked.** [PATH] `docs/RESTORE-dunchi-trader.md` is written; the walk needs the Form, Sheet, Apps Script and Pages under the two logins and is the owner's. |
+| ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 3.1 needs Gavin's sighting.**~~ RESOLVED 2026-09-18T15:13:20Z — same sighting. Every clause of row 3.1 is visible without data, so the sighting covers it in full. Row 3.1 is `done`. |
 | 2026-09-18 | **CRITICAL** | **YES — blocks Build Plan step 2** | **The published CSV serves the WRONG TAB.** Measured this session: it returns the raw Form responses header, not the Published schema. Must be republished from the Published tab. |
 | 2026-09-18 | HIGH | no | Form question 1 is a dropdown with "Other" typed as an ordinary option. Must become Multiple Choice with the real Add "Other" control. |
 | 2026-09-18 | HIGH | no | Email collection is on and required on the form. Must be turned off. |
@@ -961,3 +964,81 @@ Live at `https://dunchitrader-collab.github.io`, verified cache-busted and byte-
 **Rows 3.2 and 4.1 are `done`. Row 3.3 is `blocked` on Gavin's sighting** — measured, but a rendered surface. Rows 1.1 and 3.1 remain blocked on his sighting; 2.1 remains blocked on the feed. The plan carries owner, due start, due end, actual start and forecast end on all 14 rows, scheduled forward.
 
 The next build step is row 4.2 — the Apps Script web app and the Votes tab — which turns `sendRecommendation()` from a stub into a real send by setting one constant.
+
+### 2026-09-18T15:13:20Z — Sighted rows closed; votes script, sheet formulas, README and runbook
+**Source:** Claude Code
+**Started:** 2026-09-18T15:06:40Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01U4wmyQG3nVGNetpsU5i2zw
+**Repos touched this session:** dunchi-trader, deverse-standards, planning-tracker
+
+**Prompt received:**
+IMPLEMENTATION. Rows 1.1, 3.1 and 3.3 close on the owner's sighting; rows 4.2, 5.1 and 6.1 are built as far as they can be without the owner's Google account. Task 0: guard on HEAD `c54bcadd`, clean tree, 0 behind, and read the MISSION block from the handover. Task 1: move 1.1, 3.1 and 3.3 to done, recording the sighting verbatim as the evidence — but read each row's own wording, and if any part of a done-when could NOT have been shown by that sighting, leave that row open and say exactly which clause was not covered; do not close a row on evidence that could not have shown it. Task 2: commit the Apps Script source, bound so it can only append one row to a tab named Votes and can never write to Published, with paste-ready deployment steps and a Votes header row; test locally with a stub and say plainly it has not run against a real sheet; do not set VOTES_ENDPOINT. Task 3: the normalising-key and verdict formulas covering all four cases plus the dropdown, paste-ready with exact cells, tested by local simulation. Task 4: the root README and docs/RESTORE-dunchi-trader.md to row 6.1's own wording; do not walk the runbook and do not close the row.
+
+**MISSION, read from source this session:** a public web app listing local tradespeople recommended by villagers of Dunchideock, Devon — a recommendations list and deliberately not a review site, built for an elderly audience who will mostly use a phone and zoom heavily, where a villager opens a link, taps a trade, and taps a large green Call button.
+
+**What was done:**
+
+**Task 1 split three ways rather than two, and that was the substance of it.** Each row's done-when was read and tested against what the sighting could actually have demonstrated.
+
+- **Row 1.1 — closed.** Its only outstanding clause was "reachable on a phone and on a computer"; the sighting was given after doing exactly that. Byte-identity, Jekyll-disabled and the credential scan were already measured, and were re-measured this session.
+- **Row 3.1 — closed.** Every clause is visible with no data on the page: the text-size control and its remembered setting, the small print, the village chat line, and the wording rule. The owner pressed the largest A and tapped a trade, so all of it was on screen.
+- **Row 3.3 — HELD OPEN on one clause.** The sighting covers four of its five clauses. It cannot cover *"no phone number breaks mid-digit"*, because the feed still serves the wrong tab, so the page showed the "list is being updated" message — **no cards, and therefore no phone number, were on screen at all.** Closing it would have meant accepting evidence that could not have shown the thing it was closing. It closes when 2.1 is unblocked and the owner presses the largest A with real cards visible.
+
+**Row 4.2.** [PATH] `apps-script/Code.gs` committed. Its safety properties are enforced in code, not promised in a comment: the Votes tab name is a hard-coded constant that no request parameter can influence; there is no `getValues` or any other read call in the file; `appendRow` is the only write, so nothing existing can be altered or deleted. 21 tests against a `SpreadsheetApp` stub pass, including four adversarial posts attempting to steer the write at `Published` — by trader id, by a path-traversal id, and by passing explicit `tab` and `sheet` parameters. Every write landed on Votes, no tab was ever read, and Published and the responses tab were byte-unchanged. [PATH] `apps-script/DEPLOY.md` carries the numbered steps, the Votes header row, and the exact `app.js` line to paste the URL into. **`VOTES_ENDPOINT` is still `""` and no URL was invented.**
+
+**Row 5.1.** [PATH] `apps-script/SHEET-FORMULAS.md` carries paste-ready array formulas written against the real responses-tab columns, which were fetched and confirmed as A–J this session (phone in E, first name D, surname J, experience text G). 12 local tests pass: both phone forms normalise to one key, name keys ignore case, spacing and punctuation, all four verdicts fire, both `CHECK THIS` triggers work, and `CHECK THIS` correctly takes precedence over `ALREADY ON SITE`. A note covers the one real trap — the verdict compares against Published's phone column, which needs the same normalisation — with the formula and the one-line edit to point at it.
+
+**Rows 6.1.** [PATH] `README.md` rewritten from the interim version for a non-technical inheritor, and [PATH] `docs/RESTORE-dunchi-trader.md` written as the rebuild runbook. Both cover every item row 6.1 names.
+
+**An unexpected finding: the plan validator hardened between sessions.** Last session `Planned end` and `Estimate` were advisories; this session they are errors, and `Planned end`, `Actual start` and `Forecast end` are now distinct columns 13–15 rather than something to fold into `Due` and `Forecast`. The satellite tables were rebuilt from 12 columns to the 15-column schema and an `Estimate` of 70 added, recorded as pre-decomposition against rows summing to 75 — within 8%, so the decomposition is consistent with the estimate.
+
+**Testing performed:**
+
+| Test | Expected | Actual | Result |
+|---|---|---|---|
+| Guard: HEAD / tree / behind | `c54bcadd`, clean, 0 | `c54bcadd7efbf10…`, clean, 0/0 | PASS |
+| Apps Script: valid post appends one row | 1 row | 1 row, timestamped, id first | PASS |
+| Apps Script: blank or missing name | "a villager" | "a villager" both ways | PASS |
+| Apps Script: too-short text rejected | rejected, nothing written | rejected, 0 rows added | PASS |
+| Apps Script: missing trader id rejected | rejected | rejected | PASS |
+| **Apps Script: 4 adversarial attempts on Published** | Published unchanged | **unchanged, every write to Votes** | **PASS** |
+| Apps Script: never reads any tab | 0 reads | **0** | PASS |
+| Apps Script: no op other than appendRow | none | none | PASS |
+| Apps Script: missing Votes tab | fails safely | fails, no crash | PASS |
+| Apps Script: length caps | 120 / 2000 | 120 / 2000 | PASS |
+| Apps Script: GET leaks nothing | no sheet detail | none | PASS |
+| Verdict: phone `+44` and `0` forms | same key | identical | PASS |
+| Verdict: all four cases | each fires | all four | PASS |
+| Verdict: CHECK THIS precedence | wins | wins | PASS |
+| Responses columns confirmed live | A–J | A–J as expected | PASS |
+| Live site still byte-identical | identical | identical | PASS |
+| `VOTES_ENDPOINT` untouched | `""` | `""` | PASS |
+| No invented Google Script URL | 0 | 0 | PASS |
+| "tradesman" in new documents | 0 | 0 | PASS |
+| Build plan validates | exit 0 | exit 0 — **31 of 75 (41.3%)** | PASS |
+| Handover heading preservation | none removed | none removed | PASS |
+| Append-only layers | 0 lines lost | 0 | PASS |
+
+21 Apps Script tests and 12 verdict tests, all passing.
+
+**What was not tested:**
+
+- **The Apps Script has NOT run against a real sheet.** Everything above was a stub. Whether Google accepts the deployment, whether the `no-cors` post actually arrives, and whether a row really appears in Votes are all unknown until the owner deploys it. That is row 4.2, and it is why the row stays open.
+- **The formulas have NOT run in Google Sheets.** They were tested as logic in a local simulation. Google's own `ARRAYFORMULA`, `REGEXREPLACE` and `COUNTIF` behaviour on a live sheet — including the Published-phone normalisation note — is unverified.
+- **The runbook has NOT been walked.** Not a single step was executed. It needs the Form, Sheet, Apps Script and Pages under the two logins, and is the owner's to do. Two parts are additionally unverifiable while other rows are open: the form settings in step 3 cannot be confirmed from outside the Google account, and step 7's deployment depends on 4.2.
+- **Row 3.3's remaining clause is untested by anyone** — not by the owner, because no number was on screen, and not by me beyond the browser measurement already recorded last session.
+- **No rendered surface changed this session**, so nothing new needs the owner's eye beyond the clause already named.
+
+**Commits:**
+- `3bdf845` — `feat: votes script, sheet formulas, README and restore runbook`
+
+**Finished:** 2026-09-18T15:13:20Z
+
+**End state:**
+
+Rows 1.1, 1.2, 2.2, 3.1, 3.2 and 4.1 are `done` — **31 of 75 effort, 41.3%**. Nothing on the live site changed; it still serves the placeholder-plus-message state correctly because the feed is still wrong.
+
+Four rows wait on the owner and each has a single, named thing that closes it: **2.1** republish the CSV from the Published tab; **4.2** deploy the Apps Script per `apps-script/DEPLOY.md`; **5.1** paste the formulas per `apps-script/SHEET-FORMULAS.md`; **6.1** walk the runbook. **3.3** closes as a consequence of 2.1, needing only a glance at the largest text size once real cards are on screen.
+
+All of the owner's remaining work is inside his own Google account, which is the intended shape: nothing on this site touches anything else, and the Apps Script is deployed by him from the dunchitrader account rather than from any server.
