@@ -340,6 +340,27 @@
     max-width:100%;
   }
 
+  /* "Read N more recommendations". A full-width tap target like .vote, but
+     deliberately quieter: a thin border and normal weight, so it never
+     competes with the Call button, which is the one thing the card is for.
+     Sized in rem so it grows with the text-size control. */
+  .more{
+    display:block;
+    width:100%;
+    margin:.8rem 0 0;
+    padding:.7rem 1rem;
+    min-height:3rem;
+    text-align:center;
+    font-family:inherit;
+    font-size:1rem;
+    font-weight:400;
+    color:var(--ink);
+    background:transparent;
+    border:2px solid var(--line);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+
   .vote{
     display:block;
     width:100%;

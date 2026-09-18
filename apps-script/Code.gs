@@ -49,8 +49,21 @@ var MAX_ID   = 32;
 var MAX_NAME = 120;
 var MAX_TEXT = 2000;
 
-/** Minimum length of the words, matching the website and the Google Form. */
-var MIN_TEXT = 15;
+/** Minimum length of the words, matching the website and the Google Form.
+ *
+ *  SEVEN, not fifteen. The owner ruled on 2026-09-18 that "Fixed gate" is
+ *  about as short as a real answer gets. The page and the sheet moved to seven
+ *  that day; this file was not in scope and was left at fifteen, which meant a
+ *  villager could type a valid seven-character recommendation, be thanked by
+ *  the page, and have it silently dropped here — the cross-origin reply is
+ *  opaque, so the page could never have told them. Corrected 2026-09-18.
+ *
+ *  CHANGING THIS FILE IS ONLY HALF THE FIX. The copy that actually runs lives
+ *  in the owner's Apps Script project, so he must re-paste it and redeploy as
+ *  a NEW VERSION of the EXISTING deployment — see apps-script/DEPLOY.md. A new
+ *  deployment would issue a different /exec URL and silently stop the site's
+ *  recommend button working. */
+var MIN_TEXT = 7;
 
 /**
  * The website posts here.

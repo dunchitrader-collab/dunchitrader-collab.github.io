@@ -20,16 +20,35 @@
  *   messy."
  *
  *   So a clean submission publishes itself. The protection is no longer a
- *   human approving each row; it is the three hard checks below, plus the
+ *   human approving each row; it is the two hard checks below, plus the
  *   owner's batch sweep of the Published tab.
  *
  * WHAT IT DOES
- *   On each new form response, it appends ONE row to Published:
- *     id, first_name, last_name, business, phone, trade, extra_trade, status
+ *   On each new form response it either adds a person, or adds a recommendation
+ *   to a person already listed.
  *
- *   status is 'active' — visible on the site — unless the row trips one of
- *   three hard failures, in which case it is 'hidden': present in the sheet,
- *   off the website, waiting for the owner.
+ *   NEW PERSON — appends ONE row to Published:
+ *     A id · B first_name · C last_name · D business · E phone · F trade
+ *     G extra_trade · H status · I,J the owner's helper formulas (left empty)
+ *     K recommendations · L recommended_by
+ *
+ *   ALREADY LISTED — adds nothing and hides nothing. The villager's words and
+ *   name are APPENDED to K and L of the row that person already has, because a
+ *   second submission for the same number is a SECOND RECOMMENDATION and that
+ *   is the entire point of the product. Before 2026-09-18 it was skipped and
+ *   the second villager's words were lost with no record that they were sent.
+ *
+ *   status is 'active' — visible on the site — unless the row trips one of the
+ *   two hard failures, in which case it is 'hidden': present in the sheet, off
+ *   the website, waiting for the owner. A duplicate is NOT one of them.
+ *
+ * THE PROMISE THIS KEEPS
+ *   The form asks for the villager's name "so a fellow villager might reach out
+ *   to you if they have any questions". That sentence promises the name appears
+ *   on the site. Until 2026-09-18 nothing carried it there, and nothing carried
+ *   the villager's description either — the site listed phone numbers while the
+ *   mission called it a recommendations list. Columns K and L are what keep the
+ *   promise. A blank name becomes "a villager", matching the site's own panel.
  *
  * WHAT IT CANNOT DO — enforced below, not promised here:
  *   - It cannot edit, delete or reorder an existing Published row. It only
@@ -71,7 +90,9 @@ var FIELD_MATCH = {
   first:    ['what is their first'],
   last:     ['what is their last'],
   phone:    ['what is their telephone', 'what is their phone'],
-  business: ['what is their business']
+  business: ['what is their business'],
+  words:    ['please give a short amount of text', 'please tell us what they did'],
+  by:       ['finally please give your name', 'your name, so a neighbour']
 };
 
 /* ---------------------------------------------------------------------------
@@ -80,7 +101,49 @@ var FIELD_MATCH = {
    so this order is a contract.
    --------------------------------------------------------------------------- */
 
-var PUB_COLS = ['id', 'first_name', 'last_name', 'business', 'phone', 'trade', 'extra_trade', 'status'];
+var PUB_COLS = [
+  'id', 'first_name', 'last_name', 'business', 'phone', 'trade', 'extra_trade', 'status',
+  'pub_phone_key', 'pub_name_key',    // I, J — the sheet-formula helpers, written by formulas, NEVER by this script
+  'recommendations', 'recommended_by' // K, L — the villagers' own words, and who gave them
+];
+
+/** K and L, by position. The helpers at I and J are formulas and are left alone. */
+var COL_WORDS = 10;   // K, zero-based
+var COL_BY    = 11;   // L, zero-based
+
+/**
+ * How several recommendations share one cell.
+ *
+ * A BLANK LINE between contributions, in two parallel cells — the words in K
+ * and the names in L, in the same order, so the nth name belongs to the nth
+ * recommendation.
+ *
+ * Why a blank line rather than a delimiter like | or ;: a villager's own words
+ * may contain any punctuation, and a separator that appears inside the data is
+ * a corruption waiting to happen. A blank line cannot appear inside a single
+ * form answer, because Google Forms strips leading and trailing whitespace and
+ * a villager typing two newlines mid-sentence is not a real case here.
+ *
+ * VERIFIED, not assumed: Google publishes such a cell as a quoted CSV field
+ * with the newlines intact and any internal quotes doubled, and the site's own
+ * parseCSV in app.js is a proper state machine that reassembles it. Tested
+ * against that exact function with a value containing a comma, a quotation
+ * mark and two line breaks — it round-trips into three recommendations.
+ *
+ * AT TEN RECOMMENDATIONS FOR ONE PERSON, stated plainly: the cell holds ten
+ * paragraphs and is unwieldy to read in the spreadsheet, though the site shows
+ * them tidily and the owner can widen the row or edit any one of them. Nothing
+ * breaks — Google's per-cell limit is 50,000 characters, so ten village-length
+ * recommendations use a fraction of it. The practical limit is the owner's
+ * patience with the cell, not the software, and if a tradesperson ever earns
+ * dozens he can prune the oldest by hand; they are plain text.
+ */
+var REC_SEP = '\n\n';
+
+/** An empty recommender name is not empty on the site. The form makes that
+ *  question optional, and the site's own vote panel already renders a blank
+ *  name as "a villager" — this keeps the two consistent. */
+var ANON = 'a villager';
 
 /* ---------------------------------------------------------------------------
    What counts as a usable phone number.
@@ -171,7 +234,9 @@ function readSubmission(ss, e) {
     first:    pick('first'),
     last:     pick('last'),
     phone:    pick('phone'),
-    business: pick('business')
+    business: pick('business'),
+    words:    pick('words'),
+    by:       pick('by')
   };
 }
 
@@ -203,7 +268,9 @@ function backfillPublished() {
       first:    cellAt(values[r], idx.first),
       last:     cellAt(values[r], idx.last),
       phone:    cellAt(values[r], idx.phone),
-      business: cellAt(values[r], idx.business)
+      business: cellAt(values[r], idx.business),
+      words:    cellAt(values[r], idx.words),
+      by:       cellAt(values[r], idx.by)
     };
     if (!row.first && !row.last && !row.phone) { skipped++; continue; }
 
@@ -266,33 +333,98 @@ function publishOne(ss, row) {
   var existing = pub.getDataRange().getValues();
   var phoneKey = normalisePhone(row.phone);
 
-  // Already listed? Match on the normalised phone, which is what makes both
-  // the trigger and the backfill idempotent.
-  if (phoneKey && existingPhones(existing).indexOf(phoneKey) !== -1) return false;
+  var words = plain(row.words);
+  var by    = plain(row.by) || ANON;
+
+  /* ALREADY LISTED — a SECOND RECOMMENDATION, not noise.
+     This is the whole point of the product. Until 2026-09-18 a duplicate was
+     skipped outright and the second villager's words were lost with nothing
+     recording that they had ever been sent. Now their words and name are
+     appended to the person already on the list, and no new row is created. */
+  if (phoneKey) {
+    var at = rowIndexForPhone(existing, phoneKey);
+    if (at !== -1) {
+      if (words) appendRecommendation(pub, existing, at, words, by);
+      return false;   // no new row was added, which is what the backfill counts
+    }
+  }
 
   var names = splitName(row.first, row.last);
 
-  // --- the three hard failures ---
-  var badPhone  = phoneKey.length !== PHONE_DIGITS;
-  var spammy    = looksLikeContactSpam(row);
-  var duplicate = false;   // a phone duplicate returned above; kept for clarity
+  /* --- the two hard failures that still hide a row ---
+     A duplicate is deliberately NOT one of them any more: it is handled above
+     by adding to the existing person rather than by hiding anything. */
+  var badPhone = phoneKey.length !== PHONE_DIGITS;
+  var spammy   = looksLikeContactSpam(row);
 
-  var status = (badPhone || spammy || duplicate) ? 'hidden' : 'active';
+  var status = (badPhone || spammy) ? 'hidden' : 'active';
 
   var out = [
-    nextId(existing),                     // id
-    names.first,                          // first_name
-    names.last,                           // last_name
-    plain(row.business),                  // business
-    plain(row.phone),                     // phone — as typed, readable
-    normaliseTrade(row.trade),            // trade
-    '',                                   // extra_trade — the form asks for one trade
-    status                                // status
+    nextId(existing),                     // A id
+    names.first,                          // B first_name
+    names.last,                           // C last_name
+    plain(row.business),                  // D business
+    plain(row.phone),                     // E phone — as typed, readable
+    normaliseTrade(row.trade),            // F trade
+    '',                                   // G extra_trade — the form asks for one trade
+    status,                               // H status
+    '',                                   // I pub_phone_key — the owner's formula fills this
+    '',                                   // J pub_name_key  — likewise
+    words,                                // K recommendations
+    words ? by : ''                       // L recommended_by — no name without words
   ];
 
   // appendRow writes VALUES. Nothing here is a formula, so the owner
   // overwriting a cell by hand stays overwritten.
   pub.appendRow(out);
+  return true;
+}
+
+/** Which Published row carries this normalised phone? -1 if none. Zero-based
+ *  into the values array, so row 1 is the first data row. */
+function rowIndexForPhone(values, phoneKey) {
+  var col = PUB_COLS.indexOf('phone');
+  for (var r = 1; r < values.length; r++) {
+    if (normalisePhone(values[r][col]) === phoneKey) return r;
+  }
+  return -1;
+}
+
+/**
+ * Add one more recommendation to somebody already on the list.
+ *
+ * Writes ONLY cells K and L of that row, and only by appending to what is
+ * there. It never touches the name, phone, trade or status, never reorders
+ * anything, and never removes an existing recommendation — so the row the
+ * owner has tidied by hand stays tidied.
+ *
+ * The same words from the same person are not added twice, which is what keeps
+ * the backfill safe to run repeatedly.
+ */
+function appendRecommendation(pub, values, rowIdx, words, by) {
+  var rowVals  = values[rowIdx] || [];
+  var oldWords = rowVals.length > COL_WORDS ? String(rowVals[COL_WORDS] || '') : '';
+  var oldBy    = rowVals.length > COL_BY    ? String(rowVals[COL_BY]    || '') : '';
+
+  // Already recorded? Compare the trimmed blocks rather than the whole cell.
+  var blocks = oldWords ? oldWords.split(REC_SEP) : [];
+  for (var i = 0; i < blocks.length; i++) {
+    if (blocks[i].trim() === words.trim()) return false;
+  }
+
+  var newWords = oldWords ? oldWords + REC_SEP + words : words;
+
+  // Keep the two columns in step. If the words cell already held blocks with
+  // no matching names — a row the owner typed by hand — pad the names so the
+  // nth name still lines up with the nth recommendation.
+  var byBlocks = oldBy ? oldBy.split(REC_SEP) : [];
+  while (byBlocks.length < blocks.length) byBlocks.push(ANON);
+  byBlocks.push(by);
+  var newBy = byBlocks.join(REC_SEP);
+
+  // setValue writes a plain value, exactly as appendRow does.
+  pub.getRange(rowIdx + 1, COL_WORDS + 1).setValue(newWords);
+  pub.getRange(rowIdx + 1, COL_BY + 1).setValue(newBy);
   return true;
 }
 

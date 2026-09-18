@@ -21,6 +21,11 @@
      re-ordering them in the sheet is safe. */
   var REQUIRED = ["id","first_name","last_name","business","phone","trade","extra_trade","status"];
 
+  /* Carried by the Published tab from 2026-09-18 onward: the villagers' own
+     words and the names of the villagers who gave them. Optional on purpose —
+     the site must keep working against a sheet that has not got them yet. */
+  var OPTIONAL = ["recommendations","recommended_by"];
+
   var main   = document.getElementById("main");
   var search = document.getElementById("search");
 
@@ -134,6 +139,11 @@
     var missing = REQUIRED.filter(function(name){ return index[name] < 0; });
     if (missing.length) return null;   // solution design 6.1.1 rule 3
 
+    /* OPTIONAL columns. Looked up the same way but deliberately NOT in
+       REQUIRED: a sheet that predates them still renders, it simply shows no
+       recommendations. Missing means index -1, which cell() reads as "". */
+    OPTIONAL.forEach(function(name){ index[name] = header.indexOf(name); });
+
     var people = [];
     rows.slice(1).forEach(function(r){
       function cell(name){ return (r[index[name]] || "").trim(); }
@@ -148,12 +158,24 @@
       var trades = [cell("trade"), cell("extra_trade")].filter(Boolean);
       if (!trades.length) return;
 
+      /* The villagers' own words, and who gave them. These two columns are
+         OPTIONAL — they are not in REQUIRED, so a sheet without them still
+         renders exactly as before rather than failing. Several contributions
+         share one cell, separated by a blank line, and the nth name in
+         `recommended_by` belongs to the nth block in `recommendations`. */
+      var said  = splitRecs(cell("recommendations"));
+      var byWho = splitRecs(cell("recommended_by"));
+      var recs  = said.map(function(why, n){
+        return { why: why, by: byWho[n] || "a villager" };
+      });
+
       people.push({
         id: cell("id"),
         name: name,
         biz: cell("business"),
         phone: phone,
-        trades: trades
+        trades: trades,
+        recs: recs
       });
     });
 
@@ -162,6 +184,15 @@
 
   /* One entry per person per trade, so a two-trade person appears under both
      headings. The person themselves is still counted once. */
+  /* Several recommendations live in one spreadsheet cell, separated by a
+     blank line. Split them back out, dropping anything empty so a trailing
+     blank line cannot produce a phantom recommendation. */
+  function splitRecs(v){
+    if (!v) return [];
+    return String(v).split(/\n\s*\n/).map(function(s){ return s.trim(); })
+                    .filter(function(s){ return s.length; });
+  }
+
   /* Trades are grouped IGNORING CAPITALS, showing the first spelling met.
 
      Measured 2026-09-18: without this, a row typed `plumber` made a second
@@ -192,7 +223,7 @@
     var out = [];
     PEOPLE.forEach(function(p){
       p.trades.forEach(function(t){
-        out.push({trade:t, id:p.id, name:p.name, biz:p.biz, phone:p.phone, trades:p.trades});
+        out.push({trade:t, id:p.id, name:p.name, biz:p.biz, phone:p.phone, trades:p.trades, recs:p.recs});
       });
     });
     return out;
@@ -212,21 +243,46 @@
     a.appendChild(el("span","num", l.phone));
     c.appendChild(a);
 
-    var recs = VOTES[l.id] || [];
+    /* The villagers' own words. Those from the sheet come first — everyone
+       sees those — followed by anything this visitor has added in this visit,
+       which only they can see until it reaches the sheet. */
+    var recs = (l.recs || []).concat(VOTES[l.id] || []);
 
     if (recs.length){
       c.appendChild(el("p","tally", recs.length === 1
         ? "1 villager recommends this tradesperson"
         : recs.length + " villagers recommend this tradesperson"));
 
+      /* A popular tradesperson must not become a wall of text. At the largest
+         size a single recommendation already fills much of a 320px screen, so
+         only the two most recent are shown, and the rest sit behind one large
+         button. Nothing is hidden from anybody — it is one tap, and the tap
+         target is a full-width button rather than a link. */
+      var SHOWN = 2;
       var box = el("div","recs");
-      recs.forEach(function(r){
+
+      function addRec(r){
         var d = el("div","rec");
         d.appendChild(el("p", null, "“" + r.why + "”"));
         d.appendChild(el("span","by", "Recommended by " + r.by));
         box.appendChild(d);
-      });
+      }
+
+      recs.slice(0, SHOWN).forEach(addRec);
       c.appendChild(box);
+
+      if (recs.length > SHOWN){
+        var rest = recs.length - SHOWN;
+        var more = el("button","more", rest === 1
+          ? "Read 1 more recommendation"
+          : "Read " + rest + " more recommendations");
+        more.type = "button";
+        more.addEventListener("click", function(){
+          more.remove();
+          recs.slice(SHOWN).forEach(addRec);
+        });
+        c.appendChild(more);
+      }
     }
 
     if (DONE[l.id]){
