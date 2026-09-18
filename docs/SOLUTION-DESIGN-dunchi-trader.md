@@ -383,7 +383,7 @@ The four verdicts are written in plain English, for a human reading a phone scre
 | `NEW` | Number not seen before | Publish as a new tradesperson |
 | `ALREADY ON SITE — row 12` | Same number, same person | Their words become another recommendation |
 | `SAME NAME, DIFFERENT NUMBER` | Probably a changed mobile | Needs a look |
-| `CHECK THIS` | Surname is "Not Known", or the experience text is very short | Needs a look |
+| `CHECK THIS` | Surname **or business** reads "Not Known", or the experience text is very short | Needs a look |
 
 ### 7.3 Validation layer 3 — the owner is the gate
 

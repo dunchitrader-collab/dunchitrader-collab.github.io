@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T17:53:26Z
+last-updated: 2026-09-18T18:21:15Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T17:53:26Z**
+**Last updated: 2026-09-18T18:21:15Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -120,7 +120,9 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 3.3 is held open on ONE clause.** The sighting covered most of it — nothing scrolled sideways, no text left its box, the header did not swallow the screen and the size buttons did not grow. But *"no phone number breaks mid-digit"* **cannot** have been shown: the feed still serves the wrong tab, so no cards and therefore no phone number were on screen. Deliberately not closed on evidence that could not have shown it. Closes when 2.1 is unblocked and the owner presses the largest A with real cards visible.~~ RESOLVED 2026-09-18T17:04:41Z — the held clause is now sighted. **Owner sighting 2026-09-18 (~16:50Z), verbatim:** *"Task 1 is a pass."* He pressed the largest A on his phone with real cards on screen and confirmed the phone number stays in one piece with nothing running off the right edge. Row 3.3 is `done`. |
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 4.2 needs a vote FROM A REAL PHONE.** The script and its numbered steps are committed. Follow [PATH] `apps-script/DEPLOY.md` while signed in as `dunchitrader@gmail.com`. … the owner has deployed it and the endpoint is now wired in `app.js` at `4d67c15` and verified served live. What remains is only the closing evidence: the owner opens the live site on his phone, taps a trade, taps "I recommend them too", fills both boxes, taps "Add my recommendation", then opens the Votes tab and sees the row. Closes on that.~~ RESOLVED 2026-09-18T17:48Z — **Owner confirmation 2026-09-18 (~17:47Z), verbatim:** *"the vote populated"*. He placed the vote from his phone on the live site and confirmed the row reached the Votes tab. Build Plan row 4.2 is `done`. His FIRST attempt at ~17:25Z did not reach the sheet and he retried on a cache-busted URL — see the stale-page `[BUG]` in Layer 3; the endpoint was provably working throughout. |
 | 2026-09-18 | HIGH | no | **Delete the TWO non-villager rows from the Votes tab before launch.** The tab now holds two rows that are not a villager's recommendation, and they are different things: **(1) the automated test row** from Build Plan row 4.3's cross-origin measurement — `id` `T001`, `name` `TEST - Claude Code 2026-09-18 - please delete`, `text` beginning `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` **(2) the owner's own test vote** from ~17:47Z, the one that closed row 4.2 — whatever name and words he typed, against whichever tradesperson he tapped. Only he knows its content; it is the row whose arrival he confirmed. **Both should go before launch**, so the tally on each card counts only real villagers. Deleting rows from the Votes tab is safe and affects nothing else — the site never reads that tab. **Do NOT delete anything from the Published tab in the process**; that is the list itself. His first ~17:25Z attempt produced no row at all, so there is nothing to remove for that one. |
-| 2026-09-18 | MEDIUM | no | **Row 5.1 needs the formulas pasted.** Paste-ready in [PATH] `apps-script/SHEET-FORMULAS.md`. Closes when one sample row of each of the four verdicts shows correctly in the real sheet. |
+| 2026-09-18 | MEDIUM | no | **Row 5.1 needs the formulas pasted.** ~~Paste-ready in [PATH] `apps-script/SHEET-FORMULAS.md`.~~ SUPERSEDED 2026-09-18T18:20Z → **the previously committed formulas were WRONG against the real sheet and would have written nonsense into every row.** They assumed phone in E, name in D+J, experience text in G and business in J; the real layout is phone **F**, first name **D**, last name **E**, business **G**, experience text **H**, trade **C**, with **J** the first free column. Rewritten and re-simulated at `bd3f42a` against the owner's three real rows plus nine constructed ones. **They now go in `J2`, `K2`, `L2` on Form responses, with two helper columns in `I2`/`J2` on Published** — the cells changed, so any earlier note about K/L/M/N is superseded. NOT RUN IN GOOGLE SHEETS. Closes when one sample row of each of the four verdicts shows correctly in the real sheet. |
+| 2026-09-18 | HIGH | no | **Form email collection is still ON.** Evidence, REPORTED by the owner: the third real response row carries `gsamwell@deverse.co.uk` in column B. This contradicts decision 3 and the design's own reasoning — requiring a Google sign-in is exactly what stops an elderly villager at the first step. **Settings → Responses → Collect email addresses → Off.** Only the owner can change it; nobody here can touch the Google Form. |
+| 2026-09-18 | MEDIUM | no | **The telephone validation rule is too loose to catch a typo, and may also be absent.** Evidence, REPORTED by the owner: the third row's number is `078853335434` — twelve digits, one too many for a UK mobile. **Measured this session:** that value **passes** the documented rule `^[\d\s\+\(\)\-]{10,20}$`, which permits 10–20 characters, so its presence is NOT proof the rule is missing — the rule as designed simply allows it. Whether the rule is actually installed remains UNKNOWN and is already carried as a separate outstanding item. Recommendation: tighten the rule so it counts digits rather than characters, and add the custom error text. This is the owner's to change on the form. |
 | 2026-09-18 | MEDIUM | no | **Row 6.1 needs the runbook WALKED.** [PATH] `docs/RESTORE-dunchi-trader.md` is written and was **reconciled to the deployed state on 2026-09-18T17:40Z at `983525f`** so the walk is not wasted on stale instructions — it had been written before the Apps Script was deployed. It now carries a **walk-through tick list** at the end, one line per step naming what should be seen, usable on a phone beside a laptop. The walk itself needs the Form, Sheet, Apps Script and Pages under the two logins and is the owner's; nothing in the build can substitute for it. **Two steps are honestly marked as not confirmable from outside the Google account** — step 3's email-collection and response-validation settings — with an incognito test given for what can be checked. |
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 3.1 needs Gavin's sighting.**~~ RESOLVED 2026-09-18T15:13:20Z — same sighting. Every clause of row 3.1 is visible without data, so the sighting covers it in full. Row 3.1 is `done`. |
 | ~~2026-09-18~~ | ~~**CRITICAL**~~ | ~~**YES**~~ | ~~**The published CSV serves the WRONG TAB.**~~ RESOLVED 2026-09-18T15:20:38Z — the owner republished from the Published tab (gid `1915382769`) and seeded four test rows. `app.js` switched at commit `0267ef3` and verified live. The feed now returns the agreed eight-column header. |
@@ -273,6 +275,34 @@ The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file a
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
 
+**[BUG] 2026-09-18 — the committed sheet formulas were written against a GUESSED responses-tab layout and recorded as tested against the real one**
+
+Root cause: `apps-script/SHEET-FORMULAS.md` was authored on 2026-09-18T15:06Z without access to the real Form responses tab, which is not published and cannot be read from outside the Google account. An assumed column layout was used, and — this is the damaging part — **Build Plan row 5.1 recorded the formulas as written "against the real responses-tab columns A–J"**, which was never true and could not have been known. The 12 logic tests that passed were run against the same assumption, so they confirmed self-consistency rather than correctness.
+
+The real layout, REPORTED by the owner 2026-09-18T18:13Z by pasting his own header row and three data rows:
+
+| | Real column | Old formula assumed |
+|---|---|---|
+| Telephone | **F** | E |
+| First name | **D** | D (correct) |
+| Last name | **E** | J |
+| Business | **G** | J |
+| Experience text | **H** | G |
+| Trade | **C** | not used |
+| First free column | **J** | K |
+
+Every one of the four the formulas depend on was wrong. **Impact: pasting the committed formulas would have put nonsense in every row of the tab** — `phone_key` built from the last name, `name_key` from the first name plus an empty column, and the experience-length test measuring the business name. Nothing would have errored visibly; it would simply have produced confident, wrong verdicts.
+
+Three further defects were found while rewriting, none of which the layout mismatch would have revealed:
+
+1. **The verdict formula nested `ARRAYFORMULA` inside `COUNTIF`**, which Google Sheets does not accept — `COUNTIF` needs a real range, not a computed array. It would have errored on paste regardless of the columns. Fixed by putting the two comparison keys in helper columns on the Published tab (`I` and `J`) and pointing `COUNTIF` at those ranges. Verified safe: `app.js` maps the Published tab by header **name** (`header.indexOf`) and reads only its eight known columns, so extra columns are ignored entirely.
+2. **`0044` was not normalised.** `0044 7887 988959` produced `00447887988959` instead of `07887988959`, so the same number written that way would read as a different person. Fixed by stripping a leading `0044` before the `44` case. All five UK forms now collapse to one key, verified by simulation.
+3. **`MATCH` was unguarded** and would surface `#N/A` in the verdict text on a near-miss. Now wrapped in `IFERROR`.
+
+Fix applied: `apps-script/SHEET-FORMULAS.md` rewritten at `bd3f42a` against the real layout, target cells moved to `J2`/`K2`/`L2` on Form responses with helper columns at `I2`/`J2` on Published, re-simulated against the owner's three real rows plus nine constructed ones covering every verdict, both `CHECK THIS` triggers, the precedence case, a blank row and the `+44` form. **It has still not run in Google Sheets** — that is row 5.1's closing condition and remains the owner's.
+
+Diagnosis, and the lesson worth carrying: **before trusting any formula that addresses cells by letter, read row 1 of the actual sheet.** The rewritten document now opens with exactly that check and tells the reader what to do if their layout differs — the step whose absence caused this. More generally, a document written against an unreadable system should say which parts are assumed; this one asserted them as measured, and the assertion survived three sessions unchallenged.
+
 **[BUG] 2026-09-18 — a page already open on a phone keeps running the OLD `app.js`, so a villager can get a thank-you for a vote that was never sent**
 
 Root cause: the site is static and has no version signal. A browser that already holds the page carries on running the copy it has. If that copy predates a change, the villager is using yesterday's code while the live site serves today's — and because the recommendation panel shows its thank-you optimistically (see the opaque-response bug below), a stale `app.js` whose `VOTES_ENDPOINT` is still `""` **sends nothing and thanks them anyway**. `sendRecommendation()` returns `false` immediately and the thank-you is shown regardless.
@@ -418,6 +448,15 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ---
 
 # LAYER 4 — OUTSTANDING WORK
+
+**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
+**Turn form email collection OFF.** Evidence, REPORTED by the owner from his own sheet: the third real response row carries `gsamwell@deverse.co.uk` in column B. It contradicts decision 3, and requiring a Google sign-in is exactly the barrier that stops an elderly villager at the first step. **Settings → Responses → Collect email addresses → Off.** Only he can do it; nobody here can touch the Google Form. Note this also means villagers' email addresses are currently landing in the responses tab — they never reach the site, because the site reads only the Published tab, but they are being collected without need.
+
+**[OUTSTANDING] 2026-09-18 | MEDIUM | Blocking: no**
+**Tighten the telephone validation rule, and confirm it is installed.** Evidence, REPORTED: the third row's number is `078853335434`, twelve digits — one too many for a UK mobile. **Measured this session, and it corrects the obvious reading:** that value **passes** the documented rule `^[\d\s\+\(\)\-]{10,20}$`, because the rule counts *characters* (10–20) rather than digits. Its presence is therefore NOT evidence the rule is missing or unenforced — a correctly installed rule would also have let it through. Whether the rule is actually installed is still UNKNOWN and is carried separately below. Recommendation, for the owner to rule on: change the rule to count digits, so a mistyped number is caught at the point a villager types it rather than discovered weeks later when somebody rings a stranger.
+
+**[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**
+**The form's first-name box is collecting full names — and the recommendation is to leave it alone.** Evidence, REPORTED: two of the three real rows carry `Bob Samwell` and `Ben Franks` in the first-name column with the last-name column blank; the third, `Helen` / `Smith`, is split properly. **Judgement asked for and given: this is simply how people fill in forms, not a form defect and not a formula defect.** Reasons: the form's two boxes are correctly labelled and correctly required, so there is nothing to fix there short of merging them into one box — which would lose the split for the villagers who do use it properly, and which the Published tab's own `first_name`/`last_name` columns want. And it is **not a formula defect because the rewritten `name_key` already handles it**: the formula concatenates first and last *before* stripping non-letters, so `"Bob Samwell"` + `""` and `"Bob"` + `"Samwell"` both collapse to `bobsamwell` and match. **Verified by simulation this session**, along with differing capitals, doubled spaces, apostrophes and hyphens. The one case it cannot handle is a name typed back to front (`Samwell` then `Bob`), which is recorded as a stated limitation in `apps-script/SHEET-FORMULAS.md` rather than papered over. **No action recommended.** It is recorded so that a future session does not "fix" the form and break the split for people who use it correctly.
 
 ~~**[OUTSTANDING] 2026-09-18 | MEDIUM | Blocking: no**~~
 ~~Complete first build session — populate all handover layers with architecture, decisions, and session history.~~ COMPLETED 2026-09-18T13:49:45Z — all six layers populated by this session. See Layer 6 entry dated 2026-09-18T13:49:45Z.
@@ -687,6 +726,24 @@ The first draft of `PLAN-DUNCHI-TRADER-V1` carried **90 sub-tasks and 231 effort
 **[DECISION]** The cache explanation is recorded as **REPORTED**, and a measurement that *narrows* it is recorded alongside rather than being allowed to dress it up as established.
 
 **Rationale:** nobody instrumented the owner's phone, so the account of what it was running is an inference about an unobserved device, however well it fits. One thing here *was* measurable and was measured: GitHub Pages serves `index.html` and `app.js` with `cache-control: max-age=600`. That ten-minute window does **not** by itself explain a stale page ~35 minutes after loading, so the likelier mechanism is an already-loaded page still alive in memory — an open tab or a back-forward-cache restore — rather than HTTP caching holding a stale file past expiry. Recording the measurement next to the inference stops a plausible story hardening into a mechanism nobody tested, and it flags the one part of the story that does not quite fit. Both routes produce the identical symptom and neither was observed on his device.
+
+### 2026-09-18 — Formulas rewritten against the real sheet; a trade check recommended but not built
+
+**[DECISION]** `CHECK THIS` fires when **either** the last name **or** the business reads "not known", rather than picking one.
+
+**Rationale:** the two authorities disagreed. Solution design §7.2 says *"Surname is 'Not Known'"*, and the form's own help text on the last-name question asks villagers to write exactly that — so the surname is where the convention actually lives. The prompt commissioning this work named the business column instead, which traces back to the old formula's mistaken assumption that the business sat in the column the experience text really occupies. Checking both costs one extra `REGEXMATCH`, catches the case whichever box the villager typed it into, and cannot produce a false negative. Picking one would have silently dropped the other. §7.2 was corrected to say "surname **or business**" so the design and the formula now agree.
+
+**[DECISION]** The verdict compares against **helper columns on the Published tab** rather than computing the comparison keys inline.
+
+**Rationale:** not a style choice — the committed formula nested `ARRAYFORMULA` inside `COUNTIF`, which Google Sheets rejects, because `COUNTIF` requires a real range and not a computed array. It would have errored on paste whatever the columns said. Two helper columns on Published (`I` phone key, `J` name key) give `COUNTIF` and `MATCH` genuine ranges. The cost is two more columns on a tab the owner looks at; that was checked rather than assumed to be safe — `app.js` maps the Published tab by header **name** via `header.indexOf` and reads only its eight known columns, so anything else there is ignored entirely.
+
+**[DECISION]** A trade-not-in-the-list check is **recommended but deliberately not implemented**, for the owner to rule on.
+
+**Rationale:** the trade column (`C`) became visible for the first time with the real layout, and the case for checking it is stronger than it first appears. **Measured this session:** `app.js` has no fixed trade vocabulary at all — the headings on the site are built from whatever text sits in the Published tab's `trade` and `extra_trade` columns. So a misspelling does not fail loudly; it **silently creates a separate heading with one person under it**, and a villager looking for a plumber never sees the person filed under `Plumbner`. The form's dropdown protects the responses tab, but the owner retypes the trade when he copies a row across to Published, and that retyping is unprotected. It is not implemented here because this prompt asked for a recommendation rather than a change, and because the sensible place for the check is the **Published** tab — where the retyping happens — not the responses tab these formulas live on, which would be a different piece of work with its own paste steps. Recommended shape if he wants it: a helper column on Published flagging any `trade` or `extra_trade` not matching the agreed vocabulary in `docs/PROCESS-seeding-and-launch-dunchi-trader.md`. `[PATTERN CANDIDATE: free-text-key-needs-a-vocabulary-check]`
+
+**[DECISION]** The `name_key` limitation is stated in the document rather than hidden.
+
+**Rationale:** the formula genuinely solves the case that matters — two of the owner's three real rows carry a full name in the first-name box, and the concatenate-then-strip order makes those match a properly split Published row, which was verified by simulation rather than asserted. It cannot match a reversed name order, and that is inherent to concatenation rather than fixable by a cleverer regex. A document that implies completeness it does not have is worse than one that names its edge, because the owner would trust a `NEW` verdict that was wrong. The limitation and the second one — that the formula compares against the site rather than against other form answers — are both written into the document in plain English under a heading saying so.
 
 ---
 
@@ -1907,3 +1964,169 @@ Before launch he must also **delete two rows from the Votes tab**: the 4.3 autom
 **The launch message stays a draft** and must not be posted until step 7 has passed.
 
 **Effort per prompt for the plan, cumulative: 54 effort done ÷ 14 prompts sent = 3.86.** Both figures recorded, not only the ratio.
+
+### 2026-09-18T18:19:44Z — Sheet formulas rewritten against the real responses tab; three form defects recorded
+
+**Source:** Claude Code
+**Started:** 2026-09-18T18:14:00Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH
+**Repos touched this session:** `gsamwell-lang/dunchi-trader` (origin), `dunchitrader-collab/dunchitrader-collab.github.io` (collab). No other repository was read or written.
+
+**Prompt received:**
+
+> Target repo: dunchi-trader
+>
+> Comply with the loaded global CLAUDE.md and the loaded project CLAUDE.md. Both auto-load — do NOT Read either.
+>
+> MODE: IMPLEMENTATION. Package tier (a) hard/ambiguous, model claude-opus-5, effort high.
+>
+> ## CONTEXT TRANSFER BRIEF
+>
+> Same conversation as prompts 2665, 2667, 2670 and 2671: https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH. You landed 2671 at 17:54Z. Repo re-read by me at 18:13:42Z: HEAD 94ff7dbdee91ebfedf2ef41ad42cde1c006a3d54, master, tree clean, 0 ahead / 0 behind. Composed against that HEAD. Plan at 54/77 = 70.1%, 11 of 15 rows done.
+>
+> MISSION: re-read at source in task 0 and name it back.
+>
+> ## THE FINDING — apps-script/SHEET-FORMULAS.md IS WRITTEN AGAINST THE WRONG COLUMNS
+>
+> The formulas were written and logic-tested against an assumed responses-tab layout. The Owner has now pasted the REAL header row and the real data. They do not match, and pasting the committed formulas would put nonsense in every row.
+>
+> The Owner supplied this verbatim. It is his sheet, so it is the authority on its own shape; it is REPORTED to you rather than measured by you, and you cannot read that tab from the server because it is not published. Record it as reported.
+>
+> Real responses-tab columns, in order: A Timestamp, B Email Address, C What Trade are you recommending?, D What is their First name?, E What is their Last name?, F What is their telephone number?, G What is their Business called? (Optional), H Please give a short amount of text to describe your experience with them and why you are recommending them., I Finally please give your name (if you want to share it on the website) so a fellow villager might reach out to you if they have any questions.
+>
+> Column J is empty. The committed formulas assume phone in E, name in D, experience text in G and business in J — every one of those is wrong.
+>
+> The three real data rows he pasted, verbatim, for your test fixtures:
+>
+> 9/18/2026 13:29:27 | (no email) | Plumber | Bob Samwell | (blank) | 07887988959 | (blank) | top blokes | Frankie Valentine
+> 9/18/2026 13:30:08 | (no email) | Electrician | Ben Franks | (blank) | 07887800192 | (blank) | Lovely people | Gavin
+> 9/18/2026 19:10:50 | gsamwell@deverse.co.uk | Gas Engineer | Helen | Smith | 078853335434 | (blank) | Really helpful chap - punctual etc. | Gavin
+>
+> Note what those rows tell you and check each one rather than taking my word: the first two carry a FULL NAME in the first-name column with last name blank, the third is split properly; the third carries an email address, so form email collection is still on; the third's phone number has twelve digits, so the phone validation rule is either absent or not enforcing; and two of the three experience texts are under fifteen characters, which should trigger CHECK THIS.
+>
+> The Published tab's columns are unchanged and the formulas' Published-side references are correct: A id, B first_name, C last_name, D business, E phone, F trade, G extra_trade, H status.
+>
+> ## TASK 0 — GUARDS
+>
+> Confirm HEAD 94ff7dbd, master, clean, 0/0. Re-read the MISSION block at source and state it back. Read apps-script/SHEET-FORMULAS.md in full, read row 5.1's own wording in full, and read solution design §7.2 and §7.3, which define the normalisation and the four verdicts.
+>
+> ## TASK 1 — rewrite the formulas against the real columns
+>
+> Rewrite phone_key, name_key and verdict to work against the layout above, keeping the meaning defined in the solution design unchanged. Decide the target cells yourself and state why: column I is the last used column, so J is free. Keep them together and say exactly which cell each goes in.
+>
+> Points to get right, each of which you should satisfy yourself about rather than accept from me:
+>
+> - phone_key normalises the +44 and 0 forms to one key, from column F
+> - name_key must be comparable with the Published tab's first_name plus last_name. A response carrying "Bob Samwell" in the first-name column with a blank last name must produce the same key as a Published row holding "Bob" and "Samwell". Say plainly whether your formula achieves that, and if it cannot, say so rather than implying it does
+> - CHECK THIS fires when the business reads "not known" (now column G) or the experience text is under fifteen characters (now column H), and takes precedence over ALREADY ON SITE
+> - the trade column, C, is now visible to you and was not used before. Consider whether the verdict should say anything about a trade that is not in the site's trade list, and recommend rather than implement if you think it should
+>
+> ## TASK 2 — test them against the real rows
+>
+> Simulate locally against the three real rows above plus rows you construct to trigger every verdict: NEW, ALREADY ON SITE, SAME NAME DIFFERENT NUMBER, CHECK THIS by short text, CHECK THIS by "not known" business, and the precedence case. Report a table of input row against verdict produced. Say plainly that this is local simulation and has not run in Google Sheets.
+>
+> Row 5.1 does NOT close on this. Its wording closes it when the Owner has pasted the formulas and one sample row of each case shows the right verdict in the real sheet. Leave it open.
+>
+> ## TASK 3 — rewrite the document for a human at a keyboard
+>
+> apps-script/SHEET-FORMULAS.md is what the Owner pastes from. Rewrite it so it names the exact cell for each formula, states the column layout it depends on, and — this is the part that failed today — tells the reader how to check their own sheet matches that layout BEFORE pasting, and what to do if it does not. Keep the dropdown setup. Plain English throughout.
+>
+> If solution design §7.2 or §7.3 states the wrong columns, correct it to the real layout and say so. If it states only the meaning and not the columns, leave it alone and say that instead.
+>
+> ## TASK 4 — record the three defects this exposed
+>
+> As Layer 4 items for the Owner, or Layer 3 if you judge them defects of the build:
+>
+> - form email collection is still on, evidenced by an address in the third row
+> - the phone validation rule is absent or not enforcing, evidenced by a twelve-digit number
+> - the first-name field is collecting full names, so the form's two name fields are not being used as intended. Recommend whether this is a form problem, a formula problem, or simply how people fill forms in — and say which
+>
+> Do not change the Google Form. Nobody here can.
+>
+> ## TASK 5 — record and land
+>
+> Handover Layer 6 entry citing my conversation reference; Layer 1 current facts; the Layer 4 items above. Record against row 5.1 that the committed formulas were wrong against the real sheet, that they have been rewritten and simulated, and that the row still closes only on the Owner's paste. Commit and push BOTH remotes — GITHUB_TOKEN= is needed for origin. Run the validator and report its exit code AND its reported sub-task count against the rows the document actually holds.
+>
+> ## RETURN
+>
+> - A detailed written summary.
+> - The three rewritten formulas, each in its own fenced block, ready for the Owner to copy one at a time, with its cell named immediately above it.
+> - The table of test input against verdict produced.
+> - The plan's completion position, and state plainly whether this prompt cleared any effort.
+> - The end-of-session summary and any recommended follow-on prompt as a single copy-paste-ready fenced code block.
+> - State the model and effort this session ran on.
+
+**What was done:**
+
+**Task 0 — guards passed, MISSION re-read at source, all three required documents read.** HEAD `94ff7dbdee91ebfedf2ef41ad42cde1c006a3d54`, master, clean, `0 0`. `apps-script/SHEET-FORMULAS.md`, row 5.1's wording and solution design §7.2/§7.3 were all read before any change.
+
+**Task 1 — formulas rewritten, with four things checked rather than accepted.**
+
+Target cells: **`J2` `phone_key`, `K2` `name_key`, `L2` `verdict`, column `M` the dropdown** on Form responses. Column `I` is the last question, so `J` is the first free column and the four sit together immediately right of the answers, which is where a reader expects them. They have **moved** from the old `K`/`L`/`M`/`N`, and that is called out wherever the old cells were named.
+
+*phone_key, from column F.* Normalises `+44` and `0` to one key — and a defect was found here that the brief did not name: **`0044` was not normalised** by the old logic, producing `00447887988959` instead of `07887988959`, so the same number written that way would have read as a different person. Fixed by stripping a leading `0044` before the `44` case. Verified by simulation that all five UK forms — `07887988959`, `+44 7887 988959`, `0044 7887 988959`, `+447887988959`, `(07887) 988959` — collapse to one key.
+
+*name_key, from columns D and E.* **It does achieve the full-name case, and this was verified rather than asserted.** `"Bob Samwell"` in D with E blank and a Published row of `"Bob"`/`"Samwell"` both produce `bobsamwell`, because the formula concatenates first and last *before* stripping non-alphanumerics — the order is what makes it work. Also verified: differing capitals, doubled spaces, apostrophes and hyphen-versus-space all match. **It cannot match a name typed back to front** (`Samwell` then `Bob` against `Bob`/`Samwell`), which is inherent to concatenation rather than fixable by a better regex. That limitation is stated plainly in the document under its own heading rather than implied away, together with a second one: the verdict compares against the site, not against other form answers, so the same person recommended twice before being published shows `NEW` on both rows — correct, but worth knowing.
+
+*verdict.* `CHECK THIS` now fires when the **last name (E) or the business (G)** reads "not known", or the experience text (H) is under fifteen characters, and it is evaluated before the two lookups so it takes precedence over `ALREADY ON SITE` as the design requires. Checking both name and business was a deliberate departure from the brief, which named only the business: solution design §7.2 says *"Surname is 'Not Known'"* and the form's own help text asks villagers to write exactly that on the last-name question, so the surname is where the convention actually lives. Checking both costs one `REGEXMATCH`, catches it whichever box was used, and cannot produce a false negative. §7.2 was corrected to say "surname **or business**" so design and formula agree.
+
+**Two further defects were found while rewriting, neither in the brief and neither caused by the column mismatch.** The old verdict formula nested `ARRAYFORMULA` inside `COUNTIF`, which Google Sheets rejects outright because `COUNTIF` needs a real range rather than a computed array — **it would have errored on paste whatever the columns said**. Fixed by giving Published two helper columns (`I2` phone key, `J2` name key) so `COUNTIF` and `MATCH` have genuine ranges; that this is safe was **measured, not assumed** — `app.js` maps the Published tab by header name via `header.indexOf` and reads only its eight known columns, so extra columns are ignored. And `MATCH` was unguarded and would have surfaced `#N/A` inside the verdict text; it is now wrapped in `IFERROR`.
+
+*The trade column.* Recommended, not implemented, as the prompt directed. The case is stronger than it looks and rests on a measurement: **`app.js` has no fixed trade vocabulary** — site headings are built from whatever text sits in Published's `trade`/`extra_trade`. A misspelling therefore does not fail loudly; it silently creates a separate heading with one person under it, and a villager looking for a plumber never sees somebody filed under `Plumbner`. The form's dropdown protects the responses tab, but the owner retypes the trade when copying a row to Published, and that retyping is unprotected. The right home for the check is therefore the **Published** tab, not the responses tab these formulas live on — a different piece of work with its own paste steps. Recorded as a Layer 5 recommendation for him to rule on.
+
+**Task 2 — simulated against the three real rows plus nine constructed.** All twelve produce the intended verdict; the table is in the session summary and in the plan row. The owner's predictions were confirmed: rows 1 and 2 do trigger `CHECK THIS` on short experience text (10 and 13 characters). **This is local simulation in JavaScript modelling the formula semantics — it has NOT run in Google Sheets.** The document's three formulas were additionally checked structurally against the shipped file: parentheses balanced, quotes even, `CHECK THIS` evaluated before both lookups, each reading the intended column, `MATCH` guarded, and no nested `ARRAYFORMULA` inside `COUNTIF`.
+
+**Task 3 — the document rewritten for someone at a keyboard.** It now opens with a **⚠️ FIRST — check your sheet matches this layout** section listing all nine questions against their column letters, telling the reader to stop if their sheet differs, naming the three columns that matter most, and warning that changing the form changes the columns. That is precisely the step whose absence caused today's failure. Every formula names its exact cell immediately above it, the Published helper columns are a numbered step of their own, the dropdown setup is kept, and a troubleshooting table maps five likely symptoms to their causes.
+
+**Solution design §7.2 and §7.3 state only the meaning, not the columns** — there is not a single cell reference in either — so per the prompt's instruction they were left alone structurally. The one substantive correction made was the `CHECK THIS` trigger wording described above.
+
+**Task 4 — the three defects recorded, one of them corrected in the recording.** Email collection ON (HIGH) and the telephone rule (MEDIUM) are the owner's, in Layer 4, since nobody here can touch the Google Form. **The telephone item corrects the brief's reasoning:** `078853335434` is twelve digits, but it **passes** the documented rule `^[\d\s\+\(\)\-]{10,20}$`, which counts characters not digits and permits 10–20. Its presence is therefore **not** evidence the rule is missing or unenforced — a correctly installed rule would also have allowed it. Whether the rule exists at all remains UNKNOWN and is already carried separately. The recommendation is to count digits instead. The name-splitting question was judged as asked: **it is simply how people fill in forms** — not a form defect, because the boxes are correctly labelled and merging them would lose the split for villagers who use it properly and which Published's own two columns want; and not a formula defect, because the rewritten `name_key` already handles it, verified by simulation. **No action recommended**, recorded so a future session does not "fix" the form and break the split.
+
+**Task 5 — recorded and landed.** Layer 1: the 5.1 outstanding item rewritten with the real layout and the moved cells, plus the two new form items. Layer 3: a `[BUG]` for the build's own failure — formulas written against a guessed layout and **recorded in the plan as tested against the real one**, which was never knowable. Layer 4: three items. Layer 5: four `[DECISION]` entries. Row 5.1 updated and deliberately left `new`.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual (measured) | Result |
+|---|---|---|---|---|
+| 1 | HEAD / branch / tree / sync | `94ff7dbd…`, master, clean, `0 0` | as expected | PASS |
+| 2 | Do §7.2/§7.3 name any columns? | — | **No cell references in either** — meaning only | left alone, as instructed |
+| 3 | `name_key`: `"Bob Samwell"`+blank vs `Bob`/`Samwell` | match | both `bobsamwell` | **PASS** |
+| 4 | `name_key`: case, double space, apostrophe, hyphen-vs-space | match | all match | PASS |
+| 5 | `name_key`: reversed order (`Samwell`/`Bob`) | — | `samwellbob` ≠ `bobsamwell` | **FAILS — stated as a limitation** |
+| 6 | `phone_key`: five UK forms of one number | one key | all → `07887988959` | PASS |
+| 7 | `phone_key`: `0044` under the OLD logic | — | `00447887988959` — wrong | **DEFECT — fixed** |
+| 8 | Old verdict formula: `ARRAYFORMULA` inside `COUNTIF` | valid | **invalid in Sheets** | **DEFECT — fixed** |
+| 9 | Are extra Published columns safe for the site? | safe | `app.js` uses `header.indexOf`, reads 8 known names only | PASS — measured |
+| 10 | Does the site have a fixed trade list? | — | **No** — headings derived from feed text | measured; drives the recommendation |
+| 11 | 12 simulated rows → verdicts | all correct | all 12 correct (table in summary) | PASS |
+| 12 | Shipped document's 3 formulas: parens/quotes | balanced | all balanced, quotes even | PASS |
+| 13 | Shipped verdict formula: 9 structural properties | all hold | all 9 PASS | PASS |
+| 14 | `078853335434` against the documented phone rule | — | **PASSES** (rule counts characters 10–20) | corrects the brief's premise |
+| 15 | Validator | exit 0 | `OK`, exit `0`, **15 sub-tasks**, 54/77 = 70.1% | PASS |
+| 16 | Independent row count vs validator | equal | 15 vs 15 | PASS |
+
+**What was not tested:**
+
+- **The formulas have not run in Google Sheets.** Everything here is local simulation of the formula semantics plus structural checks on the shipped text. Sheets' own evaluation — array spilling, locale separators, `REGEXMATCH` on a whole column — is not exercised by either. That is row 5.1's closing condition and remains the owner's.
+- **The real responses tab was never read.** It is not published and cannot be reached from the server; the layout and the three data rows are **REPORTED by the owner**, who is the authority on his own sheet.
+- **Whether the two form validation rules are installed at all** is still UNKNOWN. This session measured only that the documented rule would have permitted the twelve-digit number.
+- **The Published helper columns have not been pasted**, so the claim that extra columns do not disturb the site is measured from the code's behaviour rather than observed on the live feed with those columns present.
+- **No Google Form change was made or attempted**, as instructed.
+- **The trade check was not implemented**, only recommended.
+
+**Commits:**
+
+- `bd3f42a` — `fix: rewrite the sheet formulas against the REAL responses-tab columns`
+
+**Finished:** 2026-09-18T18:19:44Z
+
+**End state:**
+
+The plan is **unchanged at 54 of 77 effort (70.1%)**, 11 of 15 rows `done`. **This prompt cleared no effort**, which is correct: row 5.1 closes on the owner pasting the formulas and seeing the right verdicts in his own sheet, and nothing done here can substitute for that.
+
+What changed is that the formulas would now work. The committed ones would have written nonsense into every row of his responses tab — four wrong columns — and the verdict formula would have errored on paste regardless, because of the nested `ARRAYFORMULA` inside `COUNTIF`. Both are fixed, along with the `0044` normalisation gap and the unguarded `MATCH`, and the document now makes the reader check their own layout before pasting anything.
+
+Four rows remain, all the owner's: **6.1** (9, walk the runbook), **7.1** (5, full journey — needs seeding), **5.1** (6, paste these formulas), **7.2** (3, seed to 12–15 across ≥6 trades). Two Votes-tab rows still need deleting before launch, and the launch message stays a draft.
+
+**Effort per prompt for the plan, cumulative: 54 effort done ÷ 15 prompts sent = 3.6.** Both figures recorded, not only the ratio.
