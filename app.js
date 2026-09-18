@@ -162,6 +162,32 @@
 
   /* One entry per person per trade, so a two-trade person appears under both
      headings. The person themselves is still counted once. */
+  /* Trades are grouped IGNORING CAPITALS, showing the first spelling met.
+
+     Measured 2026-09-18: without this, a row typed `plumber` made a second
+     tile beside `Plumber` with one person under it, invisible to anyone who
+     tapped the first. Whitespace already merged, because every cell is
+     trimmed on the way in; capitals did not. The owner retypes the trade when
+     he tidies the sheet, so one slipped shift key hid half a trade from the
+     village. Build plan row 3.4.
+
+     The DISPLAY name is whichever spelling appeared first, so the village sees
+     ordinary words rather than a lower-cased key. */
+  function tradeKey(t){ return String(t || "").toLowerCase(); }
+
+  /* {key: {label, count}} over every listing, in first-seen order. */
+  function tradeGroups(all){
+    var groups = {}, order = [];
+    all.forEach(function(l){
+      var k = tradeKey(l.trade);
+      if (!k) return;
+      if (!groups[k]){ groups[k] = {label: l.trade, count: 0}; order.push(k); }
+      groups[k].count++;
+    });
+    groups._order = order;
+    return groups;
+  }
+
   function listings(){
     var out = [];
     PEOPLE.forEach(function(p){
@@ -397,11 +423,13 @@
     var items = [], seen = {};
 
     // trades
-    var counts = {};
-    all.forEach(function(l){ counts[l.trade] = (counts[l.trade] || 0) + 1; });
-    Object.keys(counts).sort().forEach(function(t){
+    var groups = tradeGroups(all);
+    groups._order.slice().sort(function(a,b){
+      return groups[a].label.localeCompare(groups[b].label);
+    }).forEach(function(k){
+      var t = groups[k].label, n = groups[k].count;
       if (t.toLowerCase().indexOf(q) > -1){
-        items.push({text:t, kind:counts[t] + (counts[t] === 1 ? " trader" : " traders"), go:{trade:t}});
+        items.push({text:t, kind:n + (n === 1 ? " trader" : " traders"), go:{trade:t}});
       }
     });
 
@@ -485,7 +513,7 @@
       main.appendChild(back);
       main.appendChild(el("h2", null, trade));
       var list = el("div","cards");
-      all.filter(function(l){ return l.trade === trade; })
+      all.filter(function(l){ return tradeKey(l.trade) === tradeKey(trade); })
          .forEach(function(l){ list.appendChild(card(l)); });
       main.appendChild(list);
       return;
@@ -496,15 +524,17 @@
     /* Trades with nobody in them do not appear at all — solution design 9.11.
        The grid is built from who is actually on the list, so an empty trade
        has no button to begin with. */
-    var counts = {};
-    all.forEach(function(l){ counts[l.trade] = (counts[l.trade] || 0) + 1; });
+    var groups = tradeGroups(all);
 
     var grid = el("div","trades");
-    Object.keys(counts).sort().forEach(function(t){
+    groups._order.slice().sort(function(a,b){
+      return groups[a].label.localeCompare(groups[b].label);
+    }).forEach(function(k){
+      var t = groups[k].label;
       var b = el("button","trade");
       b.type = "button";
       b.appendChild(el("strong", null, t));
-      b.appendChild(el("em", null, String(counts[t])));
+      b.appendChild(el("em", null, String(groups[k].count)));
       b.addEventListener("click", function(){
         search.value = "";        // picking a trade always clears the search
         committed = false;
