@@ -245,6 +245,29 @@ Three properties of this mechanism must be understood by anyone maintaining the 
 3. **The published URL is tied to the tab's internal id.** Deleting and recreating the tab —
    even with the same name — breaks the URL. **Renaming the tab is safe.**
 
+### 6.1.1 Reading the CSV — three binding rules
+
+The feed is a spreadsheet maintained by hand from a phone. It will be edited by somebody who
+is not thinking about the parser. These three rules exist so that ordinary, reasonable
+spreadsheet edits cannot break the site.
+
+1. **Columns are matched by HEADER NAME, never by position.** A villager's recommendation
+   text routinely contains a comma, and the owner may one day drag a column somewhere more
+   convenient. Position-based mapping would silently shift every field by one and render a
+   phone number into the trade slot — a wrong answer that still looks like a working page.
+   Header-name mapping means re-ordering the columns in the sheet is a safe thing to do.
+
+2. **The parser must handle quoted fields properly** — embedded commas, embedded newlines and
+   escaped quotes. This is not a theoretical nicety: the experience text is free prose typed
+   by a villager, so a comma in it is the normal case, not the edge case. Splitting on commas
+   alone would break the row and shift every field after it.
+
+3. **An unexpected or malformed header degrades to the failure state** described in §7.4, and
+   never renders. If the feed does not carry the expected columns, the correct behaviour is
+   an honest message, because garbage rendered confidently is worse than an error: it would
+   publish unreviewed data while appearing to work. This rule is what stops the 2026-09-18
+   wrong-tab condition from reaching a villager if it ever recurs.
+
 ### 6.2 The Apps Script response, and a known gotcha
 
 Posting to an Apps Script web app from the GitHub Pages origin is a cross-origin request.
