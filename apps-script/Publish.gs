@@ -145,6 +145,121 @@ var REC_SEP = '\n\n';
  *  name as "a villager" — this keeps the two consistent. */
 var ANON = 'a villager';
 
+/**
+ * The phone as it must be STORED — always text, never a number.
+ *
+ * LAUNCH-CRITICAL, and it has already bitten. Google Sheets treats a bare
+ * 07887988959 as a NUMBER, drops the leading zero, and stores 7887988959. The
+ * site builds the tel: link straight from this column, so the Call button —
+ * the one thing the whole product exists for — dials a wrong number, silently,
+ * in the hands of an elderly villager. Measured in the owner's sheet
+ * 2026-09-18: six of eight numbers had lost their zero. The two that survived
+ * were the two containing a space, which Sheets could not read as a number.
+ *
+ * A leading apostrophe forces Sheets to keep the value as text. It is not
+ * displayed and it is not part of the value the site reads.
+ */
+function phoneText(v) {
+  var s = String(v === null || v === undefined ? '' : v).trim();
+  if (!s) return '';
+  return "'" + s;
+}
+
+/**
+ * Try to restore a phone number damaged by the number-conversion above.
+ *
+ * Returns {ok:true, value:...} or {ok:false, why:...}. It REFUSES rather than
+ * guesses, because a confidently wrong phone number is worse than an obviously
+ * missing one.
+ *
+ * THE RULE, stated so it can be argued with:
+ *   - 11 digits already starting 0  -> untouched, it was never damaged.
+ *   - exactly 10 digits             -> a leading 0 is restored. Every UK
+ *                                      landline and mobile is 11 digits in its
+ *                                      national form and all of them start 0,
+ *                                      so a 10-digit value is that number with
+ *                                      its zero eaten. This is the only case
+ *                                      it will reconstruct.
+ *   - anything else                 -> REFUSED. It will not touch a 9-digit
+ *                                      value, a 12-digit value, or an 11-digit
+ *                                      value not starting 0, because there is
+ *                                      more than one way each could have got
+ *                                      that way and no way to tell which.
+ *
+ * THE HONEST CASE, worth naming: the owner's sheet holds 78853335434, eleven
+ * digits not starting 0. That is the known-bad TWELVE-digit 078853335434 with
+ * its zero eaten — so it is damaged AND invalid, and it happens to be hidden
+ * already for the right reason by coincidence rather than by design. This
+ * function refuses it, which is correct: restoring the zero would produce a
+ * twelve-digit number that is still wrong, and the row stays hidden either way.
+ * Only re-deriving from the responses tab, or the owner retyping it, settles it.
+ */
+function repairPhoneValue(v) {
+  var raw = String(v === null || v === undefined ? '' : v).trim();
+  if (!raw) return { ok: false, why: 'empty' };
+
+  var d = raw.replace(/\D/g, '');
+
+  if (d.length === PHONE_DIGITS && d.charAt(0) === '0') {
+    return { ok: true, value: raw, changed: false };
+  }
+  if (d.length === PHONE_DIGITS - 1) {
+    // Rebuild from the digits, so spacing the owner typed is not invented back.
+    return { ok: true, value: '0' + d, changed: true };
+  }
+  return { ok: false, why: d.length + ' digits, cannot tell what it should be' };
+}
+
+/* ===========================================================================
+   THE TRADE LIST — EDIT THIS TABLE WHEN THE FORM CHANGES
+
+   This is the one place trade names are decided. If the owner adds, removes or
+   renames an option on the Google Form, change it HERE and nowhere else.
+
+   TRADES is the agreed list, exactly as the form offers it. The site builds its
+   tiles from whatever text reaches the Published tab, so these spellings ARE
+   the tile names.
+
+   TRADE_ALIASES maps older or looser wordings onto that list. The keys are
+   lower-cased and matched after trimming, so capitalisation never matters.
+   Historical values already sitting in the owner's sheet are included.
+   =========================================================================== */
+
+var TRADES = [
+  'Plumber', 'Electrician', 'Car mechanic', 'Boiler & heating', 'Roof & gutters',
+  'Handyman', 'Builder', 'Appliance repairs', 'Carpenter', 'Chimney sweep',
+  'Cleaner', 'Decorator', 'Drains', 'Driveways', 'Fencing & gates',
+  'Floors & tiling', 'Gardener', 'Heating oil & gas', 'Logs & firewood',
+  'Pest control', 'Pet care & kennels', 'Plasterer', 'Removals', 'Septic tanks',
+  'Trees & hedges', 'TV & aerials', 'Welding & metal', 'Window cleaner',
+  'Windows & doors'
+];
+
+var TRADE_ALIASES = {
+  // --- values already in the owner's sheet, 2026-09-18 ---
+  'gas engineer':            'Boiler & heating',
+  'oil boiler technician':   'Boiler & heating',
+  'car mechanic':            'Car mechanic',
+  'general builder':         'Builder',
+  'window repair / fitting': 'Windows & doors',
+  'window repair/fitting':   'Windows & doors',
+  // --- older wordings from earlier versions of the form ---
+  'heating':                 'Boiler & heating',
+  'roofer':                  'Roof & gutters',
+  'carpenter / joiner':      'Carpenter',
+  'carpenter/joiner':        'Carpenter',
+  'painter & decorator':     'Decorator',
+  'painter and decorator':   'Decorator',
+  'tree surgeon':            'Trees & hedges',
+  'fencing':                 'Fencing & gates',
+  'groundworks / drainage':  'Drains',
+  'groundworks/drainage':    'Drains',
+  'oil / lpg supplier':      'Heating oil & gas',
+  'oil/lpg supplier':        'Heating oil & gas',
+  'logs / firewood':         'Logs & firewood',
+  'logs/firewood':           'Logs & firewood'
+};
+
 /* ---------------------------------------------------------------------------
    What counts as a usable phone number.
 
@@ -415,7 +530,7 @@ function publishOne(ss, row) {
     names.first,                          // B first_name
     names.last,                           // C last_name
     plain(row.business),                  // D business
-    plain(row.phone),                     // E phone — as typed, readable
+    phoneText(row.phone),                 // E phone — TEXT, so Sheets cannot eat the leading zero
     normaliseTrade(row.trade),            // F trade
     '',                                   // G extra_trade — the form asks for one trade
     status,                               // H status
@@ -553,31 +668,49 @@ function normalisePhone(v) {
 }
 
 /**
- * Tidy a trade so it matches the site's tile names.
+ * Map a trade onto the agreed list.
  *
- * WHAT IT DOES: trims, collapses runs of spaces, and capitalises the first
- * letter of each word — so "plumber", "PLUMBER" and " plumber " all become
- * "Plumber" and land on the existing tile. Words the village writes with
- * internal capitals or symbols, like "Carpenter / Joiner" and "Oil / LPG
- * Supplier", are preserved rather than mangled.
+ * Three steps, in order:
+ *   1. trim and collapse runs of spaces;
+ *   2. if it matches one of TRADES ignoring capitals, return the agreed
+ *      spelling — so "plumber" and "PLUMBER" both become "Plumber";
+ *   3. if it matches a key in TRADE_ALIASES, return what that maps to — so
+ *      "Gas Engineer" becomes "Boiler & heating".
  *
- * WHAT IT DOES NOT DO — and this matters, because assuming otherwise would be
- * a silent defect: it does NOT understand what a trade means. It cannot map
- * "boiler" to "Heating", "sparky" to "Electrician", or "guttering" to
- * "Roofer". A villager choosing "Other" and typing free text will create a NEW
- * tile with that exact wording. There is no synonym list here and adding one
- * would be guesswork about what a villager meant.
+ * WHAT IT DOES NOT DO, and this is deliberate: anything it cannot match is
+ * returned TRIMMED AND OTHERWISE UNCHANGED. A villager choosing "Other" and
+ * typing their own words gets exactly those words, with no capitalisation
+ * forced on them and no guess made about what they meant. The site groups
+ * tiles case-insensitively (build plan row 3.4), so an unmapped value cannot
+ * split an existing tile in two; it simply makes a tile of its own, which the
+ * owner can correct in his sweep.
  *
- * The owner's batch sweep is what catches those. The site's own grouping is
- * case-insensitive (build plan row 3.4), so a capitalisation slip cannot split
- * a tile even if this normalisation is bypassed.
+ * Guessing would be worse than passing through. "Boiler" might mean a boiler
+ * service or a boiler replacement; mapping it on a hunch puts somebody under a
+ * heading they never chose.
  */
 function normaliseTrade(v) {
   var s = String(v === null || v === undefined ? '' : v).trim().replace(/\s+/g, ' ');
   if (!s) return '';
-  return s.replace(/(^|[\s\/\-])([a-z])/g, function (m, pre, ch) {
-    return pre + ch.toUpperCase();
-  });
+
+  var key = s.toLowerCase();
+
+  for (var i = 0; i < TRADES.length; i++) {
+    if (TRADES[i].toLowerCase() === key) return TRADES[i];
+  }
+
+  if (TRADE_ALIASES.hasOwnProperty(key)) return TRADE_ALIASES[key];
+
+  return s;   // Other, or something new — passed through untouched
+}
+
+/** Is this trade one the site expects? Used by checkSetup to report, never to
+ *  reject — an unrecognised trade is a thing to look at, not an error. */
+function isKnownTrade(v) {
+  var key = String(v || '').trim().toLowerCase();
+  if (!key) return true;
+  for (var i = 0; i < TRADES.length; i++) if (TRADES[i].toLowerCase() === key) return true;
+  return false;
 }
 
 /**
@@ -695,10 +828,20 @@ function repairPublished() {
     }
   }
 
+  /* A sheet with nothing stranded can still hold duplicates, damaged phone
+     numbers or old trade names — the faults found 2026-09-18 are independent of
+     where the rows sit. So the early exit checks whether cleanPublished has
+     anything to do as well, rather than declaring the sheet sound because the
+     rows happen to be contiguous. */
   if (!problems.length && !stranded.length) {
-    return say('Nothing to repair.\n\nThe list is one continuous block of ' +
-               (contiguousEnd - 1) + ' ' + ((contiguousEnd - 1) === 1 ? 'person' : 'people') +
-               ', which is how it should be.');
+    var dry = cleanPublished(ss, pub);
+    if (!dry.lines.length) {
+      return say('Nothing to repair.\n\nThe list is one continuous block of ' +
+                 (contiguousEnd - 1) + ' ' + ((contiguousEnd - 1) === 1 ? 'person' : 'people') +
+                 ', which is how it should be.');
+    }
+    return say('Repaired.\n\n' + dry.lines.join('\n') +
+               '\n\nEvery ID is unchanged. Check the website in about five minutes.');
   }
 
   if (problems.length) {
@@ -707,7 +850,7 @@ function repairPublished() {
                '\n\nFix those by hand, then run this again.');
   }
 
-  // --- move them up, in order, ids untouched ---
+  // --- 1. move stranded rows up, in order, ids untouched ---
   var moved = 0;
   for (var m = 0; m < stranded.length; m++) {
     var from = stranded[m];
@@ -720,10 +863,266 @@ function repairPublished() {
     moved++;
   }
 
-  say('Repaired.\n\nMoved ' + moved + ' ' + (moved === 1 ? 'person' : 'people') +
-      ' back up into the list. Every ID is unchanged.\n\n' +
-      'The list is now ' + (contiguousEnd - 1 + moved) + ' people in one block. ' +
-      'Check the website in about five minutes.');
+  // --- 2. clean the table now that it is one block ---
+  var report = cleanPublished(ss, pub);
+
+  var lines = [];
+  if (moved) {
+    lines.push('Moved ' + moved + ' ' + (moved === 1 ? 'person' : 'people') +
+               ' back up into the list.');
+  }
+  lines = lines.concat(report.lines);
+
+  if (!lines.length) lines.push('Nothing needed changing.');
+
+  lines.push('');
+  lines.push('Every ID is unchanged. Check the website in about five minutes.');
+  say('Repaired.\n\n' + lines.join('\n'));
+}
+
+/* ===========================================================================
+   CLEANING THE TABLE — duplicates, damaged phone numbers, old trade names
+   =========================================================================== */
+
+/**
+ * Put right the three faults the owner found on 2026-09-18, on rows that are
+ * already in the sheet. Returns {lines:[...]} for the report.
+ *
+ * NOTHING HERE EVER CHANGES OR REUSES AN ID. A removed duplicate's id is
+ * RETIRED — it is not handed to anybody else, ever, because a villager's
+ * recommendation is filed against it and the next person to hold that number
+ * would inherit somebody else's reputation.
+ */
+function cleanPublished(ss, pub) {
+  var width = PUB_COLS.length;
+  var last  = lastIdRow(pub);
+  var lines = [];
+  if (last < 2) return { lines: lines };
+
+  var vals = pub.getRange(1, 1, last, width).getValues();
+
+  var iPhone = PUB_COLS.indexOf('phone');
+  var iTrade = PUB_COLS.indexOf('trade');
+  var iFirst = PUB_COLS.indexOf('first_name');
+  var iLast  = PUB_COLS.indexOf('last_name');
+  var iStat  = PUB_COLS.indexOf('status');
+
+  /* --- a. phone numbers, RE-DERIVED from the responses tab where possible ---
+     The original text the villager typed still exists there, so it is a source
+     of truth rather than a reconstruction. Reconstruction is the fallback. */
+  var byKey = responsePhonesByKey(ss);
+  var fixedPhone = 0, refusedPhone = [];
+
+  for (var r = 1; r < vals.length; r++) {
+    if (!String(vals[r][0] || '').trim()) continue;
+    var raw = String(vals[r][iPhone] || '').trim();
+    if (!raw) continue;
+
+    var digits = raw.replace(/\D/g, '');
+    if (digits.length === PHONE_DIGITS && digits.charAt(0) === '0') continue;  // sound
+
+    /* (i) the responses tab, matched on the digits we still have.
+       Only counted as a fix if it actually CHANGES the value — a number the
+       form recorded as invalid (the known twelve-digit one) matches itself
+       here, and reporting that as "fixed" on every run would make the report
+       lie and look non-idempotent. */
+    var fromForm = byKey[digits] || byKey['0' + digits];
+    if (fromForm) {
+      if (String(fromForm).replace(/\D/g, '') !== digits) {
+        vals[r][iPhone] = fromForm;
+        fixedPhone++;
+      } else if (!(digits.length === PHONE_DIGITS && digits.charAt(0) === '0')) {
+        // matches the form exactly and is still not a usable number
+        refusedPhone.push(String(vals[r][0]).trim() + ' (' + raw +
+          ': the form has the same number, and it is ' + digits.length + ' digits)');
+      }
+      continue;
+    }
+
+    // (ii) the rule, which refuses when it cannot tell
+    var attempt = repairPhoneValue(raw);
+    if (attempt.ok && attempt.changed) { vals[r][iPhone] = attempt.value; fixedPhone++; }
+    else if (!attempt.ok) refusedPhone.push(String(vals[r][0]).trim() + ' (' + raw + ': ' + attempt.why + ')');
+  }
+
+  /* --- b. trade names onto the agreed list --- */
+  var fixedTrade = 0;
+  for (var t = 1; t < vals.length; t++) {
+    if (!String(vals[t][0] || '').trim()) continue;
+    var was = String(vals[t][iTrade] || '').trim();
+    var now = normaliseTrade(was);
+    if (now !== was) { vals[t][iTrade] = now; fixedTrade++; }
+  }
+
+  /* --- c. duplicates: keep the LOWEST id, merge the rest into it --- */
+  /* Keyed on PHONE **plus NAME**, so two different people sharing one number
+     are two entries rather than one. The owner's sheet has exactly that case:
+     Ben Franks the electrician and John Pilkington the car mechanic both on
+     07887800192. Keying on the phone alone would have deleted one of them. */
+  var seen = {}, drop = [], retired = [], disagreed = [], phoneOwner = {};
+
+  for (var d = 1; d < vals.length; d++) {
+    var id = String(vals[d][0] || '').trim();
+    if (!id) continue;
+    var phoneKey = normalisePhone(vals[d][iPhone]);
+    if (!phoneKey) continue;
+
+    var nameKey = (String(vals[d][iFirst] || '') + String(vals[d][iLast] || ''))
+                    .toLowerCase().replace(/[^a-z0-9]/g, '');
+    var key = phoneKey + '|' + nameKey;
+
+    /* Report a shared number between DIFFERENT people once, so he can look at
+       it, without merging anything. */
+    if (phoneOwner.hasOwnProperty(phoneKey) && phoneOwner[phoneKey].nameKey !== nameKey) {
+      var other = phoneOwner[phoneKey];
+      if (!other.reported) {
+        disagreed.push(other.id + ' and ' + id + ' share a telephone number but are ' +
+                       'different people (' + other.label + ' / ' +
+                       String(vals[d][iFirst]).trim() + ' ' + String(vals[d][iLast]).trim() +
+                       ') — BOTH KEPT, nothing merged');
+        other.reported = true;
+      }
+    } else if (!phoneOwner.hasOwnProperty(phoneKey)) {
+      phoneOwner[phoneKey] = { id: id, nameKey: nameKey, reported: false,
+        label: String(vals[d][iFirst]).trim() + ' ' + String(vals[d][iLast]).trim() };
+    }
+
+    if (!seen.hasOwnProperty(key)) { seen[key] = d; continue; }
+
+    var keepAt = seen[key];
+    var keepId = String(vals[keepAt][0]).trim();
+    // the LOWEST id wins, whichever row it sits on
+    if (idNumber(id) < idNumber(keepId)) { var swap = keepAt; keepAt = d; d = swap; seen[key] = keepAt; }
+
+    var kept = vals[keepAt], dup = vals[d];
+
+    /* Where the two rows DISAGREE, the kept row's values stand and the
+       difference is REPORTED rather than silently resolved. The owner decides;
+       this only ever merges the recommendations, which are additive. */
+    var diffs = [];
+    if (String(kept[iFirst]).trim() + ' ' + String(kept[iLast]).trim() !==
+        String(dup[iFirst]).trim() + ' ' + String(dup[iLast]).trim()) diffs.push('name');
+    if (String(kept[iTrade]).trim().toLowerCase() !== String(dup[iTrade]).trim().toLowerCase()) diffs.push('trade');
+    if (String(kept[iStat]).trim().toLowerCase()  !== String(dup[iStat]).trim().toLowerCase())  diffs.push('status');
+    /* A DIFFERENT NAME MEANS A DIFFERENT PERSON, and two different people can
+       genuinely share a telephone number — a household, a father and son, two
+       tradespeople working out of one landline. The owner's own sheet has
+       exactly this: Ben Franks the electrician and John Pilkington the car
+       mechanic on 07887800192.
+
+       Merging them would delete a real tradesperson from the village list, so
+       it is refused. Only rows carrying the SAME NAME are treated as the same
+       person; a name disagreement is left alone and reported for him to judge. */
+    if (diffs.length) {
+      disagreed.push(String(kept[0]).trim() + ' and ' + String(dup[0]).trim() +
+                     ' disagree on ' + diffs.join(' and ') + ' — kept ' + String(kept[0]).trim() + "'s");
+    }
+
+    // same person: merge the recommendations rather than discarding the duplicate's
+    var merged = mergeBlocks(kept[COL_WORDS], kept[COL_BY], dup[COL_WORDS], dup[COL_BY]);
+    kept[COL_WORDS] = merged.words;
+    kept[COL_BY]    = merged.by;
+
+    drop.push(d);
+    retired.push(String(dup[0]).trim());
+  }
+
+  /* --- write the cleaned table back, dropping the duplicate rows --- */
+  if (fixedPhone || fixedTrade || drop.length) {
+    var out = [];
+    for (var w = 1; w < vals.length; w++) {
+      if (drop.indexOf(w) !== -1) continue;
+      var row = vals[w].slice();
+      // keep the phone as TEXT so Sheets cannot eat the zero again
+      if (String(row[iPhone] || '').trim()) row[iPhone] = phoneText(row[iPhone]);
+      out.push(row);
+    }
+    if (out.length) pub.getRange(2, 1, out.length, width).setValues(out);
+    // clear whatever the shortened table left behind
+    if (vals.length - 1 > out.length) {
+      pub.getRange(2 + out.length, 1, (vals.length - 1) - out.length, width).clearContent();
+    }
+  }
+
+  if (drop.length) {
+    lines.push('Removed ' + drop.length + ' duplicate ' + (drop.length === 1 ? 'row' : 'rows') +
+               ', keeping the earliest ID for each person and moving their');
+    lines.push('recommendations onto the row that was kept.');
+    lines.push('Retired IDs (never reused): ' + retired.join(', '));
+  }
+  if (fixedPhone) {
+    lines.push('Put the missing 0 back on ' + fixedPhone + ' telephone ' +
+               (fixedPhone === 1 ? 'number' : 'numbers') + '.');
+  }
+  if (fixedTrade) {
+    lines.push('Corrected ' + fixedTrade + ' trade ' + (fixedTrade === 1 ? 'name' : 'names') +
+               ' to match the list on the website.');
+  }
+  if (disagreed.length) {
+    lines.push('');
+    lines.push('WORTH A LOOK — these duplicates did not agree:');
+    for (var g = 0; g < disagreed.length; g++) lines.push('  • ' + disagreed[g]);
+  }
+  if (refusedPhone.length) {
+    lines.push('');
+    lines.push('COULD NOT FIX these telephone numbers — please retype them:');
+    for (var f = 0; f < refusedPhone.length; f++) lines.push('  • ' + refusedPhone[f]);
+  }
+
+  return { lines: lines };
+}
+
+/** T012 -> 12. Non-numeric ids sort last, so a hand-typed id never wins. */
+function idNumber(id) {
+  var m = String(id || '').match(/(\d+)/);
+  return m ? parseInt(m[1], 10) : Number.MAX_SAFE_INTEGER;
+}
+
+/** Merge two rows' recommendation cells, keeping the words with their names
+ *  and dropping anything already present. */
+function mergeBlocks(wordsA, byA, wordsB, byB) {
+  function split(v) {
+    var s = String(v === null || v === undefined ? '' : v);
+    return s ? s.split(REC_SEP).map(function (x) { return x.trim(); })
+                .filter(function (x) { return x.length; }) : [];
+  }
+  var wa = split(wordsA), ba = split(byA), wb = split(wordsB), bb = split(byB);
+  while (ba.length < wa.length) ba.push(ANON);
+
+  for (var i = 0; i < wb.length; i++) {
+    if (wa.indexOf(wb[i]) !== -1) continue;          // already recorded
+    wa.push(wb[i]);
+    ba.push(bb[i] || ANON);
+  }
+  return { words: wa.join(REC_SEP), by: ba.join(REC_SEP) };
+}
+
+/**
+ * Every phone number the responses tab holds, keyed by its digits, with the
+ * ORIGINAL TEXT as the value. This is the good source: the villager typed it
+ * and Google never converted it, because the responses tab stores form answers
+ * as text.
+ */
+function responsePhonesByKey(ss) {
+  var out = {};
+  var sheet = responsesSheet(ss);
+  if (!sheet) return out;
+
+  var values = sheet.getDataRange().getValues();
+  if (values.length < 2) return out;
+
+  var idx = headerIndex(values[0]);
+  if (idx.phone < 0) return out;
+
+  for (var r = 1; r < values.length; r++) {
+    var raw = String(values[r][idx.phone] || '').trim();
+    if (!raw) continue;
+    var d = raw.replace(/\D/g, '');
+    if (!d) continue;
+    out[d] = raw;                       // as typed
+    if (d.charAt(0) === '0') out[d.slice(1)] = raw;   // also findable by the eaten form
+  }
+  return out;
 }
 
 /* ===========================================================================
@@ -775,6 +1174,58 @@ function checkSetup() {
         lines.push('Fix it with: Village list -> Repair the list.');
       } else {
         lines.push('Stranded rows below the list: none. Good.');
+      }
+    }
+
+    /* --- the three faults found 2026-09-18, REPORTED not fixed ---
+       He should be able to see everything before he runs anything. */
+    if (idRows.length) {
+      var last = lastIdRow(pub);
+      var tv = pub.getRange(1, 1, last, PUB_COLS.length).getValues();
+      var iP = PUB_COLS.indexOf('phone'), iT = PUB_COLS.indexOf('trade');
+
+      var dupes = {}, dupCount = 0, badPhones = [], oddTrades = [];
+      for (var v = 1; v < tv.length; v++) {
+        var vid = String(tv[v][0] || '').trim();
+        if (!vid) continue;
+
+        var key = normalisePhone(tv[v][iP]);
+        if (key) {
+          if (dupes[key]) dupCount++;
+          else dupes[key] = vid;
+        }
+
+        var praw = String(tv[v][iP] || '').trim();
+        if (praw) {
+          var pd = praw.replace(/\D/g, '');
+          if (!(pd.length === PHONE_DIGITS && pd.charAt(0) === '0')) {
+            badPhones.push(vid + ' (' + praw + ')');
+          }
+        }
+
+        var tr = String(tv[v][iT] || '').trim();
+        if (tr && !isKnownTrade(tr)) oddTrades.push(vid + ' (' + tr + ')');
+      }
+
+      lines.push('');
+      lines.push(dupCount
+        ? '*** ' + dupCount + ' DUPLICATE ' + (dupCount === 1 ? 'ROW' : 'ROWS') +
+          ' — the same telephone number listed more than once. Repair merges them.'
+        : 'Duplicate rows: none.');
+
+      lines.push(badPhones.length
+        ? '*** ' + badPhones.length + ' TELEPHONE ' + (badPhones.length === 1 ? 'NUMBER LOOKS' : 'NUMBERS LOOK') +
+          ' WRONG — the Call button would misdial:\n    ' + badPhones.join('\n    ')
+        : 'Telephone numbers: all look right (11 digits starting 0).');
+
+      lines.push(oddTrades.length
+        ? oddTrades.length + ' trade ' + (oddTrades.length === 1 ? 'name is' : 'names are') +
+          ' not on the agreed list (they make a tile of their own):\n    ' + oddTrades.join('\n    ')
+        : 'Trade names: all match the website\'s list.');
+
+      if (dupCount || badPhones.length || oddTrades.length) {
+        lines.push('');
+        lines.push('Fix what can be fixed with: Village list -> Repair the list.');
       }
     }
 
