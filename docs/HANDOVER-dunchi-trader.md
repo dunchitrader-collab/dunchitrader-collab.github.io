@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T20:46:38Z
+last-updated: 2026-09-18T21:10:23Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T20:46:38Z**
+**Last updated: 2026-09-18T21:10:23Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **2026-09-18T21:10:23Z — CONVERSATION CLOSED DOWN at 68 of 92 (73.9%), 15 of 20 rows.** This conversation took the plan from 31/75 (41.3%) to here, closing eight rows and appending six as real gaps were found. **The site is functionally complete and not yet launchable**: a villager's recommendation reaches the village list without anybody touching a spreadsheet, the Call button dials correctly (sighted by the owner on his phone), and villagers' words appear on the cards. What stands between it and launch is **seeding** — the list still holds test people — plus the runbook walk. **One defect is open and undiagnosed:** the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed; it is the first thing the successor conversation picks up, and it does not affect the directory itself. **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -173,6 +173,29 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 # LAYER 2 — ARCHITECTURE
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
+
+**[BUG] 2026-09-18 — OPEN, UNDIAGNOSED — the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed**
+
+**This is the first thing the successor conversation diagnoses.** It is recorded open and undiagnosed on purpose: no cause has been established and none is guessed at here.
+
+What happened, REPORTED by the owner. He redeployed `apps-script/Code.gs` as a new version of the existing deployment, then followed the test in `apps-script/DEPLOY.md`: open the live site, tap **I recommend them too** on a card, type a short sentence, submit, then look at the Votes tab. **No row appeared.** His words: *"job 2 done. number 4 did not work."*
+
+Impact: the site's own recommend panel is the only route by which a villager can add a recommendation to somebody **already listed** without filling in the whole form again. Recommendations arriving through the Google Form are unaffected and continue to publish themselves — this does not touch the directory itself, and nothing a villager sees is broken. It also fails in the way this project keeps producing: the page thanks the villager either way, because the cross-origin reply is opaque by design, so nobody would know.
+
+**CANDIDATES TO TEST, not conclusions.** No evidence yet favours any of these over the others, and they are listed so a successor starts from a checklist rather than a hunch:
+
+1. **Was the deployment EDITED rather than replaced?** `DEPLOY.md` step 11 requires *Deploy → Manage deployments → pencil icon → Version: New version*. Choosing **New deployment** instead issues a **different `/exec` URL**, and the site would carry on posting to the old one. Check the deployment's URL against `VOTES_ENDPOINT` in `app.js`.
+2. **Was the new version actually published?** Saving the editor is not deploying. Check the deployment's version number went up.
+3. **Does `doPost` appear in the Apps Script Executions log for that attempt?** If it does not, the request never arrived and the fault is the URL or the browser. If it does and failed, the fault is inside the script.
+4. **Does `VOTES_ENDPOINT` in `app.js` still match the deployed URL?** Measured 2026-09-18 that the served `app.js` carries `…AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec`; compare that string against what Manage deployments shows now.
+5. **Did the seven-character minimum land in the DEPLOYED copy?** `Code.gs` in the repository carries `MIN_TEXT = 7` as of `bb616a3`, but if an older copy is deployed it still requires fifteen, and a short test sentence would be rejected silently. Check the length of the sentence he typed against what the deployed file requires.
+
+Also worth eliminating early, because it has bitten on this project before: **a stale page in the phone's memory**. A page loaded before the redeploy carries the old `app.js`. Re-test on a cache-busted URL (`?x=1`) before concluding anything — see the stale-page `[BUG]` recorded above.
+
+Diagnosis: the Apps Script **Executions** log is the first place to look, because it distinguishes "the request never arrived" from "the request arrived and failed", and those two have entirely different causes.
+
+Fix applied: **none.** Build Plan row 4.6 stays `new`.
+
 
 **[BUG] 2026-09-18 — the repair destroyed the owner's helper formulas by writing straight through their columns**
 
@@ -570,6 +593,51 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ---
 
 # LAYER 4 — OUTSTANDING WORK
+
+## The queue as it stands at conversation close-down, 2026-09-18T21:10:23Z
+
+Recorded here in full so that **none of it lives only in conversation context**. The conversation that produced it is closed to further sends.
+
+**[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: no**
+**Diagnose why the site's own recommend button produced no row in the Votes tab.** The first thing the successor conversation picks up. Recorded open and undiagnosed as a `[BUG]` in Layer 3, with five candidates to test and no cause guessed at. Build Plan row **4.6 stays open**. The directory itself is unaffected — form submissions still publish themselves.
+
+**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
+**Row 5.1 needs two more verdicts produced, and here are the exact test rows.** The verdict column has been seen producing **`ALREADY ON SITE`** (ten rows) and **`CHECK THIS`** (one row), MEASURED by the owner in his own sheet. **`NEW` and `SAME NAME, DIFFERENT NUMBER` have not been produced**, because every response on the tab is already published. Type these two rows into **Form Responses columns C to H** — they are recorded here in full so the successor does not have to reconstruct them:
+
+| C trade | D first | E last | F phone | G business | H experience | Expect |
+|---|---|---|---|---|---|---|
+| Plumber | Test | Nine | `07999 888777` | *(blank)* | Did a proper job on the boiler | **NEW** |
+| Plumber | Bob | Samwell | `07999 111222` | *(blank)* | Came out on a Sunday evening | **SAME NAME, DIFFERENT NUMBER** |
+
+Row 5.1 closes when one sample row of **each of the four** verdicts shows correctly in the real sheet.
+
+**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
+**Walk `docs/RESTORE-dunchi-trader.md` end to end with the two Google logins and nothing else.** Build Plan row **6.1, 9 effort — the largest row left**. The runbook was reconciled to the deployed state so the walk is not wasted on stale instructions, and it ends with a tick list usable on a phone beside a laptop.
+
+**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: yes — gates launch**
+**Seed the Published tab to 12–15 real tradespeople across at least 6 trades.** Gates Build Plan rows **7.1 and 7.2**. The owner was advised to ask the village WhatsApp group; **submissions now publish themselves**, so anything villagers send arrives without him copying it across. `docs/PROCESS-seeding-and-launch-dunchi-trader.md` is the step-by-step guide.
+
+**[OUTSTANDING] 2026-09-18 | MEDIUM | Blocking: no**
+**`T007` cannot be repaired automatically — retype it or delete the row before launch.** The form itself holds the same twelve-digit number, so there is no good source to re-derive from; the repair refuses it rather than inventing a plausible wrong number, and the row is `hidden` so no villager can reach it. **It is test data from the owner's own submission**, so deleting it is as acceptable as retyping it.
+
+**[OUTSTANDING] 2026-09-18 | MEDIUM | Blocking: no**
+**Verify the hand-pasted recommender names in Published column `L` are aligned to the right people.** The owner pasted them across from the responses tab as a block, and **the repair had reordered the rows**, so a block paste may be one or more rows out. Check each name against the response carrying **that person's phone number**, not against its position. A misaligned name attributes a villager's words to the wrong neighbour, which is worse than having no name at all.
+
+**[OUTSTANDING] 2026-09-18 | MEDIUM | Blocking: no**
+**Rule on Ben Franks and John Pilkington sharing `07887800192`** — one electrician, one car mechanic. Both are kept deliberately and the sharing is reported rather than resolved, because two people genuinely can share a household or business line. **The owner has not ruled on whether it is genuine.**
+
+**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: yes — gates launch**
+**Delete the remaining test people from Published, and the two non-villager rows from the Votes tab.** The Votes rows are the 4.3 automated test row (`name` = `TEST - Claude Code 2026-09-18 - please delete`) and the owner's own ~17:47Z test vote.
+
+**[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: yes — gates launch**
+**The launch message stays a DRAFT and must not be posted until step 7 passes.** It is in `docs/PROCESS-seeding-and-launch-dunchi-trader.md` §4 under a heading saying so. Posting it early sends the village to a list of test people, and the link is the one thing that cannot be un-sent.
+
+**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no — OPEN RULING**
+**Should the form's description tell villagers their recommendation goes public?** Recommended, not implemented. A tradesperson's name and telephone number now appear on a public website without that tradesperson being asked, and the villager submitting is the only person positioned to have asked them. A form wording change, which only the owner can make.
+
+**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no — OPEN RULING**
+**The site's own recommend panel writes only to the Votes tab, which nothing reads.** Only form submissions reach the site. Two ways forward and they are the owner's to choose between: **teach the publisher to read the Votes tab** — matching each vote's trader id to a Published row and appending it exactly as a duplicate form submission is appended — **or retire the panel** so the site stops offering something that goes nowhere. Either way it needs its own plan row. This is separate from the `[BUG]` above: even with the button working, what it writes is read by nothing.
+
 
 **[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
 **Re-paste `apps-script/Publish.gs` one more time.** The repair he ran destroyed the `ARRAYFORMULA` helpers in Published `I2` and `J2` by writing rows straight through their columns. He has pasted them back by hand and they are working again — measured on the live feed, populated for all thirteen rows — but **the protection only applies once he takes the new script** (`8dbf9b2`). It also fixes a second fault the live site revealed: a stray `Heating` tile from `T002`'s `extra_trade`, which the repair had not been mapping. One step: Extensions → Apps Script → `Publish.gs` → select all, delete, paste the fresh copy from GitHub, Ctrl+S. Then **Village list → Check the setup**, which now reports whether `I` and `J` are healthy.
@@ -970,6 +1038,26 @@ The first draft of `PLAN-DUNCHI-TRADER-V1` carried **90 sub-tasks and 231 effort
 **[DECISION]** A popular card shows **two recommendations, then a button**.
 
 **Rationale:** at the largest text size on a 320px phone a single recommendation already fills much of the screen. Showing every one would bury the Call button — the one thing the card exists for — under a wall of text, for exactly the audience least able to scroll past it. Two in full plus a full-width *"Read N more recommendations"* button keeps the card's shape constant however popular somebody becomes, and hides nothing: it is one tap on a large target. Measured at both 20px and 29px with three recommendations: 0px overflow either way.
+
+---
+
+### 2026-09-18 — Conversation close-down: the five rulings, with their decision IDs
+
+Recorded at close-down so each ruling carries its estate decision ID alongside the owner's own wording. The rationale for each is already written up in the dated Layer 5 entries above, made at the time the ruling was applied; this entry exists to give them their IDs and to catch the one that never reached a document.
+
+**[DECISION] D4a-9USH-18092026** — the minimum length for a recommendation becomes **seven characters**, not removed. Owner verbatim: *"I think we can change the check to 7 characters. As they can't really put in a sentence without more than that "Fixed Gate" is about as short as you can get."* Applied to the sheet verdict rule and the site's recommend panel; the solution design was corrected to match, since his statement outranks it. Rejected: removing the minimum entirely (**D4b**).
+
+**[DECISION] D5c-9USH-18092026** — **no fuzzy search and no everyday-words list.** Effort goes into the tile names being plain and complete instead. Rejected: a built-in forgiving matcher, and vendoring a fuzzy-search library (**D5b**).
+
+**Recorded here for the first time.** This ruling was made in conversation and **never reached any document or any line of code** — a search of the repository for "fuzzy", "forgiving match" and "everyday words" returns nothing. Had this close-down not been written, the reasoning would have been lost and a future session could have proposed exactly the thing that was rejected. It also carries a standing consequence worth stating: because there is no forgiving matcher, **the search box matches what is actually written in the sheet**, so the tile names and trade spellings are doing the work a fuzzy matcher would otherwise do. That is the argument for keeping them plain.
+
+**[DECISION] D6a-9USH-18092026** — the site **groups trades ignoring capitals**, displaying the first spelling seen. Measured cause: capitals split a tile in two while whitespace already merged. Rejected: leaving grouping case-sensitive (**D6b**).
+
+**[DECISION] D7a-9USH-18092026** — **publishing becomes automatic**, with hard failures landing `hidden` rather than live: no usable phone number, an email address or web link in an identity field, and — **superseded by D8a** — a duplicate. Owner verbatim: *"OK i am not doing this by hand. I said as a design principle this will be no admin. Make it automatic from the form responses. I will routinely check the data and overwrite whatever looks messy. That is easier and can be done in batch. In fact we can write a script for that can we not?"* This reverses the manual copy-to-Published approval gate; the design was corrected to match. Rejected: publishing everything with no checks at all (**D7b**).
+
+**[DECISION] D8a-9USH-18092026** — **villagers' words and names reach the site.** Published gains columns `K` and `L`; the publisher writes responses columns `H` and `I` into them; a duplicate submission **appends** to the person already listed rather than being discarded. Raised by the owner noticing the publisher ignored column `I`, **whose own question text promises the villager their name appears on the website**. Rejected: a second published feed from the Votes tab (**D8b**).
+
+**[DECISION] D2-9USH-18092026** — planning-tracker left running and untouched; this conversation never sent to it.
 
 ---
 
@@ -3076,3 +3164,53 @@ The plan stands at **68 of 92 effort (73.9%)**, 15 of 20 rows `done`. **Row 5.2 
 **Five rows remain, every one waiting on him:** 6.1 (9, walk the runbook), 5.1 (6, confirm the verdicts), 7.1 (5, full journey), 7.2 (3, seed the list), 4.6 (1, redeploy the endpoint). Two short jobs are outstanding: re-paste `Publish.gs` so the formula protection applies, and retype Helen Smith's number.
 
 **Effort per prompt for the plan, cumulative: 68 effort done ÷ 21 prompts sent = 3.24.** Both figures recorded, not only the ratio.
+
+### 2026-09-18T21:10:23Z — Claude AI + Human — conversation close-down
+**Source:** Claude AI + Human
+
+**Conversation reference:** https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH
+**Repos touched this conversation:** dunchi-trader (accurate as at writing; may extend if the conversation is reopened, though it is closed to further sends)
+**Predecessor:** https://claude.ai/cowork/cse_01U4wmyQG3nVGNetpsU5i2zw
+
+**What was discussed.** This conversation took PLAN-DUNCHI-TRADER-V1 from 31/75 (41.3%) to 68/92 (73.9%), closing rows 2.1, 3.3, 4.3, 3.4, 3.5, 4.4, 4.5 and 5.2 and appending six new rows as real gaps were found. The substantive work: wiring the deployed Apps Script votes endpoint into the live site; measuring the cross-origin behaviour from the Pages origin rather than assuming it; reconciling the restore runbook to the deployed state before the Owner walks it; changing the minimum recommendation length from fifteen characters to seven; making the site group trades case-insensitively; replacing the manual review gate with an automatic publisher; and carrying villagers' words and names through to the cards.
+
+**Decisions made.**
+
+**[DECISION] D4a-9USH-18092026** — the minimum length for a recommendation becomes SEVEN characters, not removed. Owner verbatim: *"I think we can change the check to 7 characters. As they can't really put in a sentence without more than that "Fixed Gate" is about as short as you can get."* Applied to the sheet verdict rule and the site's recommend panel; the solution design was corrected to match, since his statement outranks it.
+
+**[DECISION] D5c-9USH-18092026** — no fuzzy search and no everyday-words list. Effort goes into the tile names being plain and complete instead. Rejected: a built-in forgiving matcher, and vendoring a fuzzy-search library.
+
+**[DECISION] D6a-9USH-18092026** — the site groups trades ignoring capitals, displaying the first spelling seen. Measured cause: capitals split a tile in two while whitespace already merged.
+
+**[DECISION] D7a-9USH-18092026** — publishing becomes automatic, with three hard failures landing hidden rather than live: no usable phone number, an email address or web link in an identity field, and (superseded by D8a) a duplicate. Owner verbatim: *"OK i am not doing this by hand. I said as a design principle this will be no admin. Make it automatic from the form responses. I will routinely check the data and overwrite whatever looks messy. That is easier and can be done in batch. In fact we can write a script for that can we not?"* This reverses the manual copy-to-Published approval gate; the design was corrected to match.
+
+**[DECISION] D8a-9USH-18092026** — villagers' words and names reach the site. Published gains columns K and L; the publisher writes responses columns H and I into them; a duplicate submission APPENDS to the person already listed rather than being discarded. Raised by the Owner noticing the publisher ignored column I, whose own question text promises the villager their name appears on the website.
+
+**[DECISION] D2-9USH-18092026** — planning-tracker left running and untouched; this conversation never sent to it.
+
+**Options rejected.** Publishing everything with no checks at all (D7b). A second published feed from the Votes tab (D8b). A fuzzy-search library (D5b). Removing the minimum length entirely (D4b). Leaving trade grouping case-sensitive (D6b).
+
+**Constraints and gotchas.** GITHUB_TOKEN must be cleared to push to origin. Deleting the HIGHEST id frees it for reuse, so rows are hidden and never deleted. Helper formulas covering a whole column make a sheet look full to a script — the cause of tonight's largest defect. The Owner's Published tab carries owner-owned formula columns at I and J; the script must never write to them. The site fetches ONE feed, the Published tab; the Votes tab is written to and read by nothing.
+
+**Documents produced or updated this conversation.** docs/PROCESS-seeding-and-launch-dunchi-trader.md (new), apps-script/Publish.gs (new), apps-script/DEPLOY.md (Part 2 added, step 4 superseded), apps-script/SHEET-FORMULAS.md (rewritten against the real column layout), docs/RESTORE-dunchi-trader.md (reconciled to the deployed state, tick list added), README.md, the solution design, the build plan and the handover.
+
+**[Pattern candidate] tags raised this conversation:** evidence-matches-claim; known-debt-becomes-a-row; reconcile-before-the-walk.
+
+---
+
+#### THE OWNER'S WORK, 2026-09-18 evening
+
+All REPORTED by him unless marked measured. This is his own work inside Google and on his phone, not a Claude Code session; it is recorded here because none of it is visible in the repository and a successor would otherwise have no account of it.
+
+- **Rebuilt the Google Form:** removed the email question, made the trade question a real multiple choice with a working Other, removed the star rating, and replaced the trade list with the agreed twenty-nine tile names. **MEASURED** from the public form at 19:0xZ.
+- Turned off email collection and added an eleven-digit phone validation rule.
+- Pasted the four duplicate-check formulas and the action dropdown into the sheet.
+- Installed `Publish.gs` and the on-form-submit trigger; **re-pasted it three times** as defects were fixed.
+- Ran Check the setup and the repair. Verbatim: *"Repaired. Moved 14 people back up into the list. Removed 6 duplicate rows... Retired IDs (never reused): T013, T014, T015, T016, T017, T018. Put the missing 0 back on 12 telephone numbers. Corrected 5 trade names..."*
+- **Restored the two ARRAYFORMULA helper columns** into Published `I2` and `J2` by hand after the repair destroyed them.
+- **Hand-pasted recommender names** from the responses tab into Published column `L`. He was warned the repair had reordered rows so a block paste may be misaligned; **alignment has NOT been verified**.
+- **SIGHTED on his phone, on the served site: the Call button carries the full eleven-digit number with its leading zero. His word: *"pass"*.** That is the launch-critical misdial confirmed fixed by the Owner.
+- **SIGHTED:** no stray Heating tile, and a villager's words visible on a card.
+- Redeployed `Code.gs` as a new version of the existing deployment.
+
+**What the successor conversation picks up first:** the open `[BUG]` recorded in Layer 3 this session — the site's own recommend button produced no row in the Votes tab after the redeploy. Row 4.6 stays open. Row 5.1 stays open and needs two specific test rows typed into the sheet; both are recorded in Layer 4 so they do not have to be reconstructed.
