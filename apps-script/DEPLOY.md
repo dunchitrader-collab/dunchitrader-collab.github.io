@@ -372,3 +372,51 @@ is not until you do this.
 
 **You should now have:** the same deployment, a higher version number, and short
 recommendations reaching the Votes tab.
+
+---
+
+## Step 12 — If the list looks empty when it should not
+
+**Read this if you submitted the form, the script says it ran, and nothing
+appeared.** That happened on 2026-09-18 and it was our fault, not yours.
+
+### What went wrong
+
+Your duplicate-check formulas in columns **I** and **J** cover the whole
+column, all the way to the bottom of the sheet. They show nothing in the empty
+rows, but as far as a script is concerned every one of those rows has something
+in it. So when the publisher added a new person "at the end", the end was **row
+1001**, not row 5.
+
+**Nothing was lost.** Those people are in your Published tab, complete and
+correct, about a thousand rows below the others — which from where you are
+sitting looks exactly like nothing happened.
+
+### Putting it right — three steps
+
+1. **Re-paste the publisher.**
+   **Extensions → Apps Script** → click **`Publish.gs`** → select everything
+   (**Ctrl+A**) and delete it → open `apps-script/Publish.gs` in GitHub, click
+   **Copy raw file**, paste it in → **Ctrl+S**.
+
+2. **Reload the spreadsheet**, then click
+   **Village list → Repair the list (move stray rows back up)**.
+
+   It tells you how many people it moved. **Every ID stays exactly as it was** —
+   a person's ID is how their recommendations are filed, so it never changes,
+   even though the row moves. If there is nothing to fix it says so and does
+   nothing. If it finds something it does not understand it stops and tells you
+   rather than guessing.
+
+3. **Check it.** Click **Village list → Check the setup**. You should see how
+   many people are on the list, the last ID in use, and
+   **"Stranded rows below the list: none. Good."**
+
+Then submit the form once more from your phone. The new row should appear
+directly under the others, and on the website about five minutes later.
+
+### If it happens again
+
+**Village list → Check the setup** is the thing to click. It now tells you in
+plain words whether anything is stranded and on which row. A script that
+finishes without complaining is not proof that anything happened — the check is.

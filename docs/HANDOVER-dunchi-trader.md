@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T19:47:55Z
+last-updated: 2026-09-18T20:08:08Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T19:47:55Z**
+**Last updated: 2026-09-18T20:08:08Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -123,6 +123,7 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | 2026-09-18 | MEDIUM | no | **Row 5.1 needs the formulas pasted.** ~~Paste-ready in [PATH] `apps-script/SHEET-FORMULAS.md`.~~ SUPERSEDED 2026-09-18T18:20Z → **the previously committed formulas were WRONG against the real sheet and would have written nonsense into every row.** They assumed phone in E, name in D+J, experience text in G and business in J; the real layout is phone **F**, first name **D**, last name **E**, business **G**, experience text **H**, trade **C**, with **J** the first free column. Rewritten and re-simulated at `bd3f42a` against the owner's three real rows plus nine constructed ones. **They now go in `J2`, `K2`, `L2` on Form responses, with two helper columns in `I2`/`J2` on Published** — the cells changed, so any earlier note about K/L/M/N is superseded. NOT RUN IN GOOGLE SHEETS. Closes when one sample row of each of the four verdicts shows correctly in the real sheet. |
 | 2026-09-18 | **CRITICAL** | no | **Install the automatic publisher — paste `Publish.gs`, add the on-form-submit trigger, run the backfill once.** Full numbered steps in [PATH] `apps-script/DEPLOY.md` **Part 2** (steps 6–9). Until the trigger is installed, nothing publishes itself and the site shows only what is already on the Published tab. `apps-script/Code.gs` is NOT touched by any of this — it stays exactly as deployed. **Tested against a stub only; it has never run in Google Sheets**, so his first real submission is the proof.
 | 2026-09-18 | **CRITICAL** | no | **Add columns K and L to the Published tab, and re-paste `Code.gs`.** Two short jobs, both in [PATH] `apps-script/DEPLOY.md` — **step 10** adds `recommendations` and `recommended_by` at K1 and L1 (leave them empty; the publisher fills them), and **step 11** re-pastes `Code.gs` and redeploys it as a **NEW VERSION OF THE EXISTING DEPLOYMENT**. **Step 11's last instruction is the one that matters**: choosing *New deployment* instead would issue a different `/exec` URL, the site would keep posting to the old one, and the recommend button would stop with nothing on screen to say so. Without K and L the site still works exactly as before — it simply shows no recommendations.
+| 2026-09-18 | **CRITICAL** | no | **Re-paste `Publish.gs`, run the repair, then re-test.** The publisher he installed tonight wrote its rows about a thousand lines below the table — see the Layer 3 bug; **nothing was lost and every id is intact.** Three steps, written out in [PATH] `apps-script/DEPLOY.md` **step 12**: (1) re-paste `apps-script/Publish.gs` into the Apps Script editor and save; (2) reload the spreadsheet and click **Village list → Repair the list (move stray rows back up)**; (3) click **Village list → Check the setup** and confirm it reports *"Stranded rows below the list: none. Good."* Then submit the form once from his phone and watch the row appear directly under the others. **Fixed and tested in the stub at `e5a82da` (23/23), but NOT RUN IN GOOGLE SHEETS** — his re-test is the proof.
 | 2026-09-18 | MEDIUM | no | **Recommendations typed into the SITE's own panel are still seen only by the person who typed them.** Measured 2026-09-18: they post to the Votes tab, and nothing copies Votes into Published, so no other visitor ever sees them. Recommendations arriving through the **Google Form** do reach everybody, via `Publish.gs` writing K and L. Closing the gap means teaching the publisher to read the Votes tab as well, which is NOT built and would need its own plan row and its own ruling. Recorded so nobody assumes D8a closed it.
 | 2026-09-18 | HIGH | no | **RULE FOR HIS RULING — the form should tell villagers their recommendation goes public.** Recorded, not implemented; changing the form is his alone. A tradesperson's name and telephone number now appear on a public website without anybody asking that tradesperson, and the villager submitting is the only person in a position to have asked them. Suggested: add one line to the form's description saying the recommendation will be shown publicly with the tradesperson's name and number. See solution design §7.3.
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Form email collection is still ON.** Evidence, REPORTED by the owner: the third real response row carries `gsamwell@deverse.co.uk` in column B. This contradicts decision 3 … **Settings → Responses → Collect email addresses → Off.** Only the owner can change it; nobody here can touch the Google Form.~~ RESOLVED 2026-09-18T18:30Z — **REPORTED BY THE OWNER, NOT MEASURED HERE.** He reports having turned email collection off in Google on 2026-09-18. Nobody in this session can verify it: the form's settings are visible only while signed in and editing the form, and the responses tab is not published. It will become observable the first time a new submission arrives with column B empty — worth a glance then, and until then it stands on his report alone. |
@@ -169,6 +170,25 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 # LAYER 2 — ARCHITECTURE
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
+
+**[BUG] 2026-09-18 — the publisher wrote its rows a thousand lines below the table, and every run reported success**
+
+Root cause: **a helper formula covering a whole column makes the sheet look full to a script.** The owner's duplicate-check helpers in Published `I2` and `J2` are `ARRAYFORMULA` over open-ended ranges, so they return an **empty string** for every row down to the bottom of the sheet. An empty string *returned by a formula* is still content as far as Google is concerned: `getLastRow()` counts it, `getDataRange()` spans it, and `appendRow()` writes **after** it. The publisher used `appendRow`, so "the end of the list" was row 1001 rather than row 5.
+
+**In the owner's terms, which is the point of this entry: the script completed, the log was clean, and the data was invisible.** His Apps Script Executions log showed `onFormSubmitPublish` Completed at 20:51:27 and again at 20:55:23, and `backfillPublished` Completed twice. Nothing failed. Nothing warned. The rows were in Published, correct in every cell, about a thousand lines below anything he could see — which from his chair is indistinguishable from nothing having happened. **A silent success is harder to spot than a failure**, because every signal available said it had worked.
+
+It also explains the 31-second backfill, which was the tell: `getDataRange()` returned ~1000 rows to read 8, so the duplicate scan and the highest-id scan were iterating a thousand blank rows per submission.
+
+**REPRODUCED before anything was changed**, in a stub whose Published sheet mimics the real one — eight real data rows, helper columns returning empty strings to row 1000. The new row landed on **row 1001**, 992 rows below the data. After the fix, **row 10**. Successive submissions stranded at 1001, 1002 and so on, each further out. Ids remained correct throughout (`T009`), which is what made recovery possible: identity survived, only position was wrong.
+
+Fix applied: `apps-script/Publish.gs` at `e5a82da`. **The publisher never asks the sheet how tall it is.** `lastIdRow()` reads column A only and returns the last row carrying a real id; `tableValues()` reads exactly that rectangle instead of `getDataRange()`; and the write is an explicit `setValues()` to a computed range, never `appendRow`. The same reasoning was applied to the duplicate scan and the highest-id scan, which shared the fault.
+
+A recovery was added for rows already stranded: **Village list → Repair the list**. It moves them back into the table **keeping every id exactly as it is**, is safe to run when there is nothing to fix, and refuses rather than guesses if it meets a duplicate id or a row with details but no id. `checkSetup` was rewritten to report, in plain English, how many people are on the list, the last id in use, whether anything is stranded and on which row, and whether the trigger is installed.
+
+Diagnosis: **Village list → Check the setup**. If it says anything is stranded, run the repair. More generally — *a script that finishes without complaining is not evidence that it did anything*. Where a script writes to a sheet the owner cannot easily eyeball, it needs a report he can read, and this one now has one.
+
+Related trap for any future session: **never use `appendRow` or `getLastRow` on a tab carrying open-ended `ARRAYFORMULA` helpers.** The site's Published tab has them at `I` and `J` and will keep them.
+
 
 ### Flow Diagram
 
@@ -473,6 +493,10 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ---
 
 # LAYER 4 — OUTSTANDING WORK
+
+**[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: no**
+**Re-paste `Publish.gs`, run the repair, and re-test the form.** Tonight's submissions did reach the Published tab — they are about a thousand rows below the others, because a whole-column helper formula makes the sheet look full to a script (Layer 3). **Nothing is lost and no id has changed.** [PATH] `apps-script/DEPLOY.md` **step 12** has the three steps in his own terms: re-paste the script, run **Village list → Repair the list**, then **Village list → Check the setup** and look for *"Stranded rows below the list: none. Good."* After that, one form submission from his phone should appear directly under the existing rows, and on the website within the republish lag. The fix passes 23 of 23 stub tests including the exact reproduction, but **has not run in Google Sheets**; his re-test is what closes Build Plan row 5.2.
+
 
 **[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: no**
 **Add columns K and L to Published, and re-paste `Code.gs`.** Both are written out in [PATH] `apps-script/DEPLOY.md`. **Step 10**: paste `recommendations` and `recommended_by` into K1 and L1 of the Published tab and leave the cells below empty — the publisher fills them in. Without these two columns nothing breaks; the site simply shows no recommendations, because `app.js` reads them as optional. **Step 11**: re-paste `apps-script/Code.gs` into the Apps Script editor and redeploy via **Deploy → Manage deployments → pencil icon → Version: New version**. **Choosing "New deployment" instead would issue a different `/exec` URL and silently stop the recommend button**, because the site would carry on posting to the old address and the opaque reply means the page can never tell. That constant was corrected from 15 to 7 this session, so until he redeploys, a valid short recommendation typed on the site is still dropped by the endpoint.
@@ -2642,3 +2666,113 @@ The product is now shaped like its mission. A villager filling in the form has t
 **Six rows remain, every one waiting on him:** 6.1 (9, walk the runbook), 5.2 (6, install the publisher and confirm a real submission), 5.1 (6, confirm the verdicts), 7.1 (5, full journey), 7.2 (3, seed the list), 4.6 (1, redeploy the endpoint).
 
 **Effort per prompt for the plan, cumulative: 62 effort done ÷ 18 prompts sent = 3.44.** Both figures recorded, not only the ratio.
+
+### 2026-09-18T20:08:08Z — The publisher's silent success: reproduced, fixed, and given a way to be seen
+
+**Source:** Claude Code
+**Started:** 2026-09-18T19:57:00Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH
+**Repos touched this session:** `gsamwell-lang/dunchi-trader` (origin), `dunchitrader-collab/dunchitrader-collab.github.io` (collab). No other repository was read or written.
+
+**Prompt received:**
+
+> Target repo: dunchi-trader
+>
+> MODE: IMPLEMENTATION. Package tier (a) hard/ambiguous, model claude-opus-5, effort high.
+>
+> Same conversation as 2665 through 2685. You landed 2685 at 19:49Z reporting HEAD 8ec82c6, plan 62/92 = 67.4%, 14 of 20 rows. Re-establish HEAD yourself and stop if it is not 8ec82c6, clean and level.
+>
+> MISSION: re-read at source and name it back.
+>
+> ## THE DEFECT — THE PUBLISHER RUNS, COMPLETES, AND THE OWNER SEES NOTHING
+>
+> The Owner installed Publish.gs and the on-form-submit trigger, added Published columns K and L, and submitted the form twice from his phone — once with a phone number already listed, once with an entirely new person. Published appeared unchanged both times.
+>
+> EVIDENCE, from his Apps Script Executions log, which I have read myself: onFormSubmitPublish, Trigger, 20:51:27 local, 1.467s, Completed; onFormSubmitPublish, Trigger, 20:55:23 local, 1.357s, Completed; backfillPublished, Menu, 20:48:14, 31.073s, Completed; backfillPublished, Menu, 20:58:03, 12.887s, Completed; checkSetup, Menu, 20:49:03, Completed; onOpen, Simple Trigger, 20:46:16, Completed.
+>
+> NOTHING FAILED. Every run completed. A 31-second backfill is not the profile of a script that wrote nothing.
+>
+> MY HYPOTHESIS, and it is a hypothesis you must test rather than accept: the Owner pasted the duplicate-check helper formulas into Published I2 and J2 earlier this evening. Both are ARRAYFORMULA over an open-ended column range, so they return an empty string for every row to the bottom of the sheet. An empty string returned by a formula still counts as content to getLastRow() and to appendRow(). So the publisher is appending its rows BELOW the full height of the helper columns — the data is in Published, a thousand or more rows down, under a sea of blanks, which is exactly what "nothing went in" looks like from the Owner's chair.
+>
+> Test that hypothesis first. If it is wrong, say so plainly and find the real cause; do not implement a fix for a fault you have not reproduced.
+>
+> [Tasks 0–5 as issued: guards and which call decides where a row goes; reproduce it in a stub and report the row number; fix it without ever asking the sheet its height, applying the same reasoning to the duplicate and highest-id scans; a recovery the owner can run that keeps every id; a checkSetup report he can read; record and land.]
+
+**What was done:**
+
+**Task 0 — guards passed, MISSION re-read.** HEAD `8ec82c60ce516da927fb54eb0192283fcbd0a164`, master, clean, `0 0`. **The call that decided where a new row went was `pub.appendRow(out)` at line 379**, with three other extent-dependent reads: `pub.getDataRange().getValues()` at line 333, feeding both the duplicate scan and the highest-id scan, and `sheet.getDataRange().getValues()` at line 259 over the responses tab.
+
+**Task 1 — THE HYPOTHESIS REPRODUCED EXACTLY, and it was tested before anything was changed.** A stub was built whose `getDataRange()`, `getLastRow()` and `appendRow()` model the real semantics: a formula returning an empty string occupies its row. Published was given eight real data rows — ending at row 9 — with helper columns returning `""` to row 1000.
+
+**The new row landed on ROW 1001. Not row 10. 992 blank rows below the table.** `getDataRange()` returned 1000 rows where 9 exist, and `getLastRow()` reported 1000. Successive submissions stranded at 1001, then 1002, each further out. **Ids stayed correct throughout** (`T009` for the first), which is what later made recovery possible: identity survived, only position was wrong.
+
+That also settles the 31-second backfill, which was the tell in his log: the duplicate scan and the highest-id scan were iterating **999 rows to read 8** on every single submission.
+
+**Task 2 — fixed by never asking the sheet how tall it is.** Three new functions define the table's height in one place: `idColumn()` reads column A only; `lastIdRow()` returns the last row carrying a real id, or the header row if there are none; and `tableValues()` reads exactly that rectangle in place of `getDataRange()`. The write became an **explicit `setValues()` to a computed range**, and `appendRow` is gone from the Published path entirely. The duplicate scan and the highest-id scan now read `tableValues()`, so both were fixed by the same change rather than separately. The responses-tab read was left as it is — that tab carries no open-ended formulas, so its own extent is honest — with a comment saying so and what to do if that ever changes.
+
+**Verified against the reproduction: row 1001 → row 10**, with the helpers still reaching row 1000.
+
+**Task 3 — a recovery the owner can run.** `repairPublished()`, on the **Village list** menu as *"Repair the list (move stray rows back up)"*. It finds rows below the contiguous block and moves them up so Published is one continuous table again, **keeping every id exactly as it is** — a row's identity is its id, and every recommendation a villager has left is filed against it, so the row moves and the id does not. It reports what it did in each case: *"Nothing to repair"* with the block size when the sheet is already sound; *"Repaired — moved N people back up into the list. Every ID is unchanged."* when it acts; and **"STOPPED — nothing was changed"** with a list of what it found when it meets something it cannot place.
+
+**The stub suite caught a real gap in that refusal before it ever ran on his sheet.** A row carrying details but no id does not appear in the id list, so the first version returned *"nothing to repair"* while an orphan sat below the table — **the same class of silent reassurance as the bug the repair exists for.** The check was reordered to run before the early return, and its scan extended past the last id. That is recorded here because it is the more interesting failure: the fix for a silent-success bug had its own silent success in it.
+
+**Task 4 — `checkSetup` rewritten as a report he can read.** It now states how many people are on the list, the last id in use, which rows the list fills, **whether anything is stranded and on exactly which row**, any missing or misplaced headings, whether the responses tab is found, and whether the trigger is installed. With a stranded row present it reads: *"1 ROW IS STRANDED BELOW THE LIST — at row 1001. They are real people and nothing is lost — they are just in the wrong place, so you cannot see them and nor can the website. Fix it with: Village list → Repair the list."* That is the report that would have told him the truth tonight, in place of a clean log and an empty-looking sheet.
+
+**Task 5 — recorded.** Layer 3 carries the bug in his own terms — the script completed, the log was clean, the data was invisible, and a silent success is harder to spot than a failure — with the causing interaction named: a helper formula covering a whole column makes the sheet look full to a script. `apps-script/DEPLOY.md` gained **step 12**, his three-step recovery. **Row 5.2 stays open**; it closes when he submits the form and sees the row himself.
+
+**Testing performed:** 23 stub cases, **23 passed**. Every case from the previous session was re-run with helper columns present, plus the new ones the brief named.
+
+| # | Test | Expected | Actual | Result |
+|---|---|---|---|---|
+| — | **REPRODUCTION, before the fix** | — | **new row on ROW 1001**, data ends row 9 | **defect reproduced** |
+| — | **Same, after the fix** | row 10 | **row 10** | **fixed** |
+| 1 | New person lands contiguously | row 3 | row 3 | PASS |
+| 2 | Blank name → "a villager" | a villager | a villager | PASS |
+| 3 | Duplicate appends, no new row | 3 id rows | 3 id rows | PASS |
+| 4 | Same words twice → once | 1 block | 1 block | PASS |
+| 5 | `+44` duplicate, comma + quote | 2 blocks intact | 2 blocks, quote intact | PASS |
+| 6 | 12-digit phone → hidden | hidden | hidden | PASS |
+| 7 | Email in business → hidden | hidden | hidden | PASS |
+| 8 | Votes tab untouched | 1 row | 1 row | PASS |
+| 9 | **Helpers 1000 rows past the data** | row 10 | row 10 | **PASS** |
+| 10 | Next id over a 1000-row range | T009 | T009 | PASS |
+| 11 | **Genuinely empty Published** | row 2 | row 2 | **PASS** |
+| 12 | First id on an empty sheet | T001 | T001 | PASS |
+| 13 | **Rows already stranded by the old bug** | 2,3,4,1001,1002 | 2,3,4,1001,1002 | **PASS** |
+| 14 | **Duplicate whose existing row is STRANDED** | appends there | 2 blocks on row 1001 | **PASS** |
+| 15 | After repair, contiguous | 2,3,4,5,6 | 2,3,4,5,6 | **PASS** |
+| 16 | **Ids unchanged by the move** | T004 then T005 | T004 then T005 | **PASS** |
+| 17 | Stranded row kept its recommendations | 2 blocks | 2 blocks | PASS |
+| 18 | Repair safe to run twice | unchanged | unchanged | PASS |
+| 19 | Repair reports "Nothing to repair" | yes | yes | PASS |
+| 20 | **Repair REFUSES on a row with no id** | STOPPED, nothing changed | STOPPED, nothing changed | **PASS** (failed first, fixed) |
+| 21 | Backfill lands contiguously | rows 2,3 | rows 2,3 | PASS |
+| 22 | Backfill merges a duplicate | 2 blocks | 2 blocks | PASS |
+| 23 | Backfill run twice | byte-identical | byte-identical | PASS |
+
+**What was not tested:**
+
+- **None of this has run in Google Sheets.** Every result is a local stub modelling the API surface, including the empty-string-counts-as-content behaviour that is the whole bug. That behaviour is **REPORTED** from the brief and consistent with every observation in the owner's log, but it was not measured inside Google by this session. His re-test is the proof.
+- **The repair has never run on his real sheet**, so the number of rows actually stranded there is unknown. `checkSetup` will tell him before he runs it.
+- **The 31-second backfill is explained, not measured.** The scan-volume arithmetic (999 rows read to reach 8) is measured in the stub; that this accounts for his 31 seconds is inference.
+- **Row 5.2 is unchanged and still `new`**, as is every other open row. This session closed nothing.
+- **No Google-side change was made**, and nothing was written to his sheet.
+
+**Commits:**
+
+- `e5a82da` — `fix: the publisher wrote a thousand rows below the table, silently`
+
+**Finished:** 2026-09-18T20:08:08Z
+
+**End state:**
+
+The plan is **unchanged at 62 of 92 effort (67.4%)**, 14 of 20 rows `done`. **This session closed no rows**, which is correct: it repaired a defect inside row 5.2's own deliverable, and 5.2 closes on the owner seeing a row appear, not on a passing stub.
+
+What changed is that the failure is now both impossible and visible. Impossible, because the publisher no longer asks the sheet how tall it is — it computes the table's height from column A and writes to an explicit range. Visible, because **Village list → Check the setup** now tells him in plain words how many people are on the list and whether anything is stranded, which is the question he actually had tonight and had no way to answer.
+
+**His three steps are in `apps-script/DEPLOY.md` step 12:** re-paste `Publish.gs`, run **Village list → Repair the list**, then **Check the setup** and look for *"Stranded rows below the list: none. Good."* Then one form submission from his phone. Nothing is lost and no id has changed — the people are in the sheet, just in the wrong place.
+
+**Six rows remain, every one waiting on him:** 6.1 (9, walk the runbook), 5.2 (6, the re-test above), 5.1 (6, confirm the verdicts), 7.1 (5, full journey), 7.2 (3, seed the list), 4.6 (1, redeploy the endpoint).
+
+**Effort per prompt for the plan, cumulative: 62 effort done ÷ 19 prompts sent = 3.26.** Both figures recorded, not only the ratio.
