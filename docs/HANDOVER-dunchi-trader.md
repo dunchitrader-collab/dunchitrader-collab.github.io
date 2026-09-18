@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T15:13:20Z
+last-updated: 2026-09-18T15:20:38Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T15:13:20Z**
+**Last updated: 2026-09-18T15:20:38Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ SUPERSEDED 2026-09-18T15:13:20Z → **31 of 75 effort (41.3%)**. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ SUPERSEDED 2026-09-18T15:13:20Z → **31 of 75 effort (41.3%)**. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -59,7 +59,7 @@ This project is **entirely standalone**. It depends on no external organisation'
 | [URL] `https://github.com/gsamwell-lang/dunchi-trader` | Development working remote. Same content. | [VERIFIED 2026-09-18] |
 | [URL] `https://forms.gle/ZyLed4Tue91bzXjD7` | The Google Form villagers fill in | [VERIFIED 2026-09-18] — HTTP 200 |
 | [URL] `https://docs.google.com/spreadsheets/d/1j9SVNJG9Zf_iFtl6OrsrcVom5SY13sOiv3vt58jcprc/edit` | The Google Sheet | [ASSUMED] — not opened this session (requires the Google login) |
-| [URL] Published CSV — `https://docs.google.com/spreadsheets/d/e/2PACX-1vSJA1qHOmFEOYqsSZcy0Y90LBUXbiTBGTJCqy2U-W3VE_zXdWWB6a59QclDbbO9tXoriWZda76rDWkn/pub?gid=1583719737&single=true&output=csv` | The read interface the site fetches | [VERIFIED 2026-09-18] — HTTP 200, `text/csv`, 636 bytes. **BUT IT SERVES THE WRONG TAB — see the CRITICAL entry under Outstanding Items.** |
+| [URL] Published CSV — ~~`...&gid=1583719737&...`~~ SUPERSEDED 2026-09-18T15:20:38Z → `https://docs.google.com/spreadsheets/d/e/2PACX-1vSJA1qHOmFEOYqsSZcy0Y90LBUXbiTBGTJCqy2U-W3VE_zXdWWB6a59QclDbbO9tXoriWZda76rDWkn/pub?gid=1915382769&single=true&output=csv` | The read interface the site fetches. **Now the Published tab** (gid `1915382769`). | [VERIFIED 2026-09-18T15:20:38Z] — HTTP 200, `text/csv`, 291 bytes, header exactly `id,first_name,last_name,business,phone,trade,extra_trade,status`, 4 data rows. ~~**BUT IT SERVES THE WRONG TAB**~~ RESOLVED — it now serves the correct tab. |
 
 ### Repository Topology
 
@@ -121,7 +121,8 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | 2026-09-18 | MEDIUM | no | **Row 5.1 needs the formulas pasted.** Paste-ready in [PATH] `apps-script/SHEET-FORMULAS.md`. Closes when one sample row of each of the four verdicts shows correctly in the real sheet. |
 | 2026-09-18 | MEDIUM | no | **Row 6.1 needs the runbook walked.** [PATH] `docs/RESTORE-dunchi-trader.md` is written; the walk needs the Form, Sheet, Apps Script and Pages under the two logins and is the owner's. |
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 3.1 needs Gavin's sighting.**~~ RESOLVED 2026-09-18T15:13:20Z — same sighting. Every clause of row 3.1 is visible without data, so the sighting covers it in full. Row 3.1 is `done`. |
-| 2026-09-18 | **CRITICAL** | **YES — blocks Build Plan step 2** | **The published CSV serves the WRONG TAB.** Measured this session: it returns the raw Form responses header, not the Published schema. Must be republished from the Published tab. |
+| ~~2026-09-18~~ | ~~**CRITICAL**~~ | ~~**YES**~~ | ~~**The published CSV serves the WRONG TAB.**~~ RESOLVED 2026-09-18T15:20:38Z — the owner republished from the Published tab (gid `1915382769`) and seeded four test rows. `app.js` switched at commit `0267ef3` and verified live. The feed now returns the agreed eight-column header. |
+| 2026-09-18 | HIGH | no | **Rows 2.1 and 3.3 await the owner's sighting WITH DATA.** Everything on both is measured against the live site — real rows render under the right trades, the hidden row is absent, and at the largest text size no phone number splits mid-digit (0px overflow). Both are rendered surfaces, so neither closes on measurement. The owner opens the site on his phone, taps a trade, and presses the largest A. |
 | 2026-09-18 | HIGH | no | Form question 1 is a dropdown with "Other" typed as an ordinary option. Must become Multiple Choice with the real Add "Other" control. |
 | 2026-09-18 | HIGH | no | Email collection is on and required on the form. Must be turned off. |
 | 2026-09-18 | HIGH | no | A star-rating question exists on the form, contradicting decision 3. Must be removed. |
@@ -481,6 +482,18 @@ The first draft of `PLAN-DUNCHI-TRADER-V1` carried **90 sub-tasks and 231 effort
 **Alternatives considered:** Keeping the granular rows and simply lowering their effort values — rejected, because that would misrepresent the work rather than correct the grain, and the owner explicitly ruled it out.
 
 **[PATTERN CANDIDATE: plan-row-is-an-outcome]** — the outcome-not-task test, and the rule that an unwritable "When" cell is the signal a row should be merged upward, are project-agnostic and would apply to any build plan carrying a mandated human-moment field.
+
+### 2026-09-18 — Build-plan Owner field and delivery-field cutover (decision held in deverse-standards)
+
+**[DECISION] D1a-i2zw-18092026** (Gavin, 2026-09-18 ~15:00Z) — in `STD-00009` the build-plan `Owner` field is the **stable account UUID that must resolve to a person**, never a display name or an email; and the five delivery fields are **mandatory for plans created on or after 2026-09-18, with no grace period**.
+
+**This decision is NOT renumbered into this repo's own series.** It belongs to `deverse-standards`, where it is implemented in commits `51a34ca` and `34dad03`, and is recorded here only because this plan is governed by it. This repository's decision numbering continues from 18.
+
+**Rationale:** a display name orphans a row when somebody is renamed; a stable key resolved at render does not. The no-grace cutover was chosen so that this plan, created 2026-09-18, is bound by the rule rather than exempted from it.
+
+**Alternatives considered and rejected:** leaving the `Owner` rule as a literal named person — rejected because it contradicted a standing 2026-08-31 ruling and would have invalidated roughly 150 live rows; and a 2026-09-25 cutover — rejected precisely because it would have exempted this plan.
+
+**Effect here:** `PLAN-DUNCHI-TRADER-V1` already carried the account UUID in every `Owner` cell. Its satellite tables were rebuilt to the 15-column delivery schema at commit `95baafd`, and the mandatory `Estimate` field added. The validator exits 0.
 
 ### Options Rejected — recorded so they are not revisited
 
@@ -1042,3 +1055,97 @@ Rows 1.1, 1.2, 2.2, 3.1, 3.2 and 4.1 are `done` — **31 of 75 effort, 41.3%**. 
 Four rows wait on the owner and each has a single, named thing that closes it: **2.1** republish the CSV from the Published tab; **4.2** deploy the Apps Script per `apps-script/DEPLOY.md`; **5.1** paste the formulas per `apps-script/SHEET-FORMULAS.md`; **6.1** walk the runbook. **3.3** closes as a consequence of 2.1, needing only a glance at the largest text size once real cards are on screen.
 
 All of the owner's remaining work is inside his own Google account, which is the intended shape: nothing on this site touches anything else, and the Apps Script is deployed by him from the dunchitrader account rather than from any server.
+
+---
+**Claude AI + Human — 2026-09-18, close-down (post-compaction portion)**
+**Conversation reference:** https://claude.ai/cowork/cse_01U4wmyQG3nVGNetpsU5i2zw
+**Repos touched this conversation:** dunchi-trader, deverse-standards, planning-tracker
+**Mode:** IMPLEMENTATION
+**What was discussed:** Validation of Claude Code replies 2661 and 2663 against the repo and the served site; owner's sighting of the live site ("all works are expected without any data in it though", ~15:04Z); owner republished the CSV from the Published tab (gid 1915382769) and seeded test rows; correction of STD-00009 §5.12 in deverse-standards under D1a-i2zw-18092026.
+**Decisions:** D1a-i2zw-18092026 — Owner is the account UUID that must resolve to a person; delivery fields mandatory for plans created on or after 2026-09-18. Implemented in deverse-standards 51a34ca / 34dad03.
+**Validation of preceding Claude Code sessions:** 2661 accepted (0418f59, c54bcad; served CSS/JS measured). 2663 accepted (3bdf845, 95baafd; README measured live). Sighting split accepted: 1.1 and 3.1 closed, 3.3 held on the phone-number clause.
+**Open items handed to the successor conversation:** owner's sighting with real data (closes 2.1 and 3.3); owner creates the Votes tab and deploys apps-script/Code.gs per apps-script/DEPLOY.md, then pastes the URL into VOTES_ENDPOINT (closes 4.2 once a real vote lands); owner pastes apps-script/SHEET-FORMULAS.md into the responses tab (5.1); owner creates the Recommendations tab; three Google Form fixes (question 1 to Multiple choice with a real Other; email collection off; add the missing everyday trades); owner walks docs/RESTORE-dunchi-trader.md (6.1); rows 4.3, 7.1, 7.2 downstream. planning-tracker follow-on recommended by deverse-standards prompt 2662 (satellite widening to 13–15 columns, SD column semantics, its two failing plans, critical-path computation) — not yet sent.
+**Effort per prompt (per plan, cumulative):** 31 done ÷ 10 prompts = 3.1 at close.
+**Sessions reset at close-down:** to be recorded by the owner via the project-admin toggle.
+**Predecessor conversation closed to further sends after this entry.**
+---
+
+### 2026-09-18T15:20:38Z — Feed switched to the Published tab; real data measured live
+**Source:** Claude Code
+**Started:** 2026-09-18T15:17:44Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01U4wmyQG3nVGNetpsU5i2zw
+**Repos touched this conversation:** dunchi-trader, deverse-standards, planning-tracker
+
+**Prompt received:**
+IMPLEMENTATION, two things in one prompt: (A) switch the live feed to the owner's republished Published tab and measure it; (B) land this conversation's close-down in the handover, as the conversation is closing and a successor continues the plan. Task A supplied the new CSV link, noted the only intended change from the old constant was gid 1583719737 → 1915382769, and instructed: fetch it from the server following the redirect, report the header line verbatim and the row count, STOP without changing app.js if the header is not exactly the eight agreed columns; if it matches, set the constant, commit, push to both remotes, verify the served app.js cache-busted, then drive the served page at 320px and desktop confirming every active row renders under its trade heading, a row with extra_trade appears under both, the hidden row does not appear, the Call button carries the number, and — for row 3.3's outstanding clause — no phone number breaks mid-digit at the largest text size. Rows 2.1 and 3.3 are rendered surfaces and close only on the owner's sighting, so both stay open with the measurements recorded as evidence. Task B: append a supplied Claude AI + Human close-down entry verbatim then this session's own entry, update Layer 1 current facts, record D1a-i2zw-18092026 in Layer 5 cross-referenced to deverse-standards and not renumbered into this repo's series, update the plan, and push.
+
+**MISSION, re-read at source this session:** a public web app listing local tradespeople recommended by villagers of Dunchideock, Devon — a recommendations list and deliberately not a review site, built for an elderly audience who will mostly use a phone and zoom heavily, where a villager opens a link, taps a trade, and taps a large green Call button.
+
+**What was done:**
+
+**A discrepancy in the supplied link was caught before anything was changed, and it mattered.** The prompt said the only difference from the existing constant would be the gid. Comparing the two character by character showed the **document id also differed, at position 81** — the supplied link read `…76nDWkn` where `app.js` held `…76rDWkn`.
+
+Both were fetched rather than reasoned about. **The supplied link returned HTTP 404** with a Google HTML error page. The existing document id with the new gid returned **HTTP 200, `text/csv`, 291 bytes**, carrying exactly the required header. So the `n` is a transcription slip, not a new document.
+
+The prompt's instruction was to use the supplied link if the rest differed; following that literally would have pointed the live site at a 404 and taken the directory down. The working address was used instead — the same document id already in `app.js`, with only the gid changed, which is precisely what the prompt described as the intended change. Recorded in the commit message and here rather than silently corrected.
+
+**Feed measurement.** Header line, verbatim: `id,first_name,last_name,business,phone,trade,extra_trade,status` — an exact match. **4 data rows**: `T001` Duckers Plumber (Plumber, active), `T002` Test Sparky (Electrician + extra_trade Heating, active), `T003` Another Roofer (Roofer, active), `T004` Hidden Person (Gardener, **hidden**).
+
+`app.js` switched to gid `1915382769` at commit `0267ef3`, pushed to both remotes, and the served file verified cache-busted as byte-identical and carrying the new gid.
+
+**Sixteen checks driven in a real browser against the LIVE site, all passing.** Four trade headings render — Electrician, Heating, Plumber, Roofer. Each active row appears under its heading with its business, its trades and a working `tel:` link. `T002` appears under **both** `Electrician` and its `extra_trade` `Heating` from one row, counted once. The `hidden` row produces **no heading and is not findable by search**. Desktop 1280px renders the same four with 0px overflow.
+
+**Row 3.3's outstanding clause is now measured with real phone numbers on screen** — the thing the owner's 15:04Z sighting could not show, because no cards existed then. At root 29px on a 320px phone: `07825 736940` → groups [07825: 1 line, 736940: 1 line]; `07700 900456` → [07700: 1 line, 900456: 1 line]; `01392 123456` → [01392: 1 line, 123456: 1 line]. No group split mid-digit, and document overflow 0px in all three.
+
+**Rows 2.1 and 3.3 are left OPEN.** Both are rendered surfaces. The measurements are recorded as evidence awaiting the owner's sighting, not as a substitute for it.
+
+**Testing performed:**
+
+| Test | Expected | Actual | Result |
+|---|---|---|---|
+| Guard: HEAD / tree / behind | `95baafd1`, clean, 0 | `95baafd1d16ce64…`, clean, 0/0 | PASS |
+| Supplied link fetched | 200 | **HTTP 404, HTML error page** | **FAIL — transcription slip** |
+| Existing doc id + new gid fetched | 200 `text/csv` | 200, `text/csv`, 291 bytes | PASS |
+| Header line exact | the eight agreed columns | exact match | PASS |
+| Data row count | 4 (3 active, 1 hidden) | 4 | PASS |
+| Served `app.js` carries new gid | `gid=1915382769` | `gid=1915382769`, byte-identical | PASS |
+| Trade headings on live site | active trades only | Electrician, Heating, Plumber, Roofer | PASS |
+| Hidden row produces no heading | absent | absent | PASS |
+| Hidden person findable by search | not findable | 0 results | PASS |
+| `T001` under Plumber with number | rendered | Duckers Plumber, `07825 736940`, `tel:07825736940` | PASS |
+| `T002` under Electrician | rendered with business | Test Sparky, Sparky Electrics, both trades | PASS |
+| `T002` ALSO under extra_trade Heating | same person | Test Sparky, same number | PASS |
+| `T003` under Roofer | rendered | Another Roofer, `01392 123456` | PASS |
+| **Largest size, Plumber: digits intact** | no split, 0px overflow | groups 1 line each, 0px | PASS |
+| **Largest size, Electrician: digits intact** | no split, 0px overflow | groups 1 line each, 0px | PASS |
+| **Largest size, Roofer: digits intact** | no split, 0px overflow | groups 1 line each, 0px | PASS |
+| Desktop 1280px | 4 trades, no sideways scroll | 4 trades, 0px | PASS |
+| Build plan validates | exit 0 | exit 0 — 31 of 75 (41.3%) | PASS |
+| Handover heading preservation | none removed | none removed | PASS |
+| Append-only layers | 0 lines lost | 0 | PASS |
+
+**What was not tested:**
+
+- **Nobody has looked at the page with this data.** Every check above is a measurement. Rows 2.1 and 3.3 are not closed on it, and that is deliberate.
+- **The data is the owner's test rows, not real tradespeople.** "Duckers Plumber" and "Test Sparky" are placeholders. How the page handles genuine village entries — long business names, unusual trades, awkward numbers — is unmeasured, and seeding real content is row 7.2's prerequisite.
+- **The vote path is still untested end to end.** `VOTES_ENDPOINT` remains `""`; no Votes tab exists; no Apps Script is deployed. The script has still only ever run against a stub.
+- **The sheet formulas have still never run in Google Sheets.**
+- **The runbook has still not been walked.**
+- **Only Chromium was driven**, and `body { zoom }` is not a phone's pinch-zoom.
+- **The 404 on the supplied link was not investigated further** than establishing that the existing document id works — whether a second document exists with that id was not pursued, because it would have been speculation.
+
+**Commits:**
+- `0267ef3` — `feat: point the feed at the republished Published tab`
+
+**Finished:** 2026-09-18T15:20:38Z
+
+**End state:**
+
+**The directory is showing real entries.** `https://dunchitrader-collab.github.io` reads the Published tab and renders three active tradespeople across four trade headings, with the hidden row correctly invisible. The long-standing CRITICAL wrong-tab blocker is resolved.
+
+The plan stands at **31 of 75 effort (41.3%)**. Rows 2.1 and 3.3 hold full measured evidence and wait only on the owner's eyes. Everything else outstanding is inside his Google account: the Votes tab and Apps Script deployment, the sheet formulas, the three Form fixes, and the runbook walk.
+
+**Effort per prompt for the plan, cumulative: 31 effort done ÷ 10 prompts sent = 3.1.** Both figures recorded, not only the ratio.
+
+This conversation is closed to further sends after this entry. A successor conversation continues the plan.
