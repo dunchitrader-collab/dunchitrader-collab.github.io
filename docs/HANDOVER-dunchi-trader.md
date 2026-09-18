@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T14:26:12Z
+last-updated: 2026-09-18T14:40:46Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T14:26:12Z**
+**Last updated: 2026-09-18T14:40:46Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. The agreed design is ported and live; the page reads the feed and handles every failure state. Plan stands at 7 of 75 effort (9.3%). ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -116,6 +116,7 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 |------|----------|----------|-------------|
 | ~~2026-09-18~~ | ~~**CRITICAL**~~ | ~~**YES**~~ | ~~**No push credential for the dunchitrader-collab GitHub account.** Measured 2026-09-18T14:13:45Z: both credentials report `"push": false`, and a dry-run push returns HTTP 403.~~ RESOLVED 2026-09-18T14:26:12Z — Gavin added `gsamwell-personal` as a collaborator with Write access. The push landed at `f94d45a` using the `gsamwell-lang` classic token; see Layer 3 for why the fine-grained token still could not, despite the API reporting `push: true`. |
 | 2026-09-18 | MEDIUM | no | **Row 1.1 needs the phone sighting.** Everything else on it is measured and confirmed against the live URL. Gavin opens `https://dunchitrader-collab.github.io` on a phone and confirms it renders; the row closes on that alone. |
+| 2026-09-18 | HIGH | no | **Row 3.1 needs Gavin's sighting.** The wireframe is ported and live at `d10ae18`, verified byte-identical and checked against every design §9 rule this session could measure. It is a rendered surface, so it is not closed on Claude's reading. Gavin opens the site on a phone AND a computer and says whether it looks right. |
 | 2026-09-18 | **CRITICAL** | **YES — blocks Build Plan step 2** | **The published CSV serves the WRONG TAB.** Measured this session: it returns the raw Form responses header, not the Published schema. Must be republished from the Published tab. |
 | 2026-09-18 | HIGH | no | Form question 1 is a dropdown with "Other" typed as an ordinary option. Must become Multiple Choice with the real Add "Other" control. |
 | 2026-09-18 | HIGH | no | Email collection is on and required on the form. Must be turned off. |
@@ -208,9 +209,9 @@ Plus the remaining Google-side operator actions in Layer 4.
 
 | File | Description | State |
 |---|---|---|
-| `index.html` | The whole page | **Placeholder** — title and small print only. The wireframe port is Build Plan row 3.1. [VERIFIED 2026-09-18 — `c1a4f78`] |
-| `style.css` | All styling | **Placeholder** [VERIFIED 2026-09-18 — `c1a4f78`] |
-| `app.js` | CSV fetch, parse, render, search, autocomplete, vote posting | **Placeholder stub** — no behaviour yet [VERIFIED 2026-09-18 — `c1a4f78`] |
+| `index.html` | The whole page | ~~Placeholder~~ SUPERSEDED → **ported from the wireframe**, 1,845B [VERIFIED 2026-09-18T14:39:30Z — `d10ae18`] |
+| `style.css` | All styling | ~~Placeholder~~ SUPERSEDED → **ported from the wireframe**, 10,988B. Only `.demo` dropped; `.notice` and `.loading` added for the message states [VERIFIED 2026-09-18T14:39:30Z — `d10ae18`] |
+| `app.js` | CSV fetch, parse, render, search, autocomplete, vote posting | ~~Placeholder stub~~ SUPERSEDED → **live feed read, trade grid, search, autocomplete and the three message states**, 14,060B. Vote posting is still to come at row 4.1 [VERIFIED 2026-09-18T14:39:30Z — `d10ae18`] |
 | `.nojekyll` | Disables Jekyll so Pages serves committed files untouched. Empty file; **do not delete** | [VERIFIED 2026-09-18 — `c1a4f78`] |
 | `design/wireframe-dunchi-trader.html` | **LAYOUT AUTHORITY.** The reviewed wireframe, landed verbatim | [VERIFIED 2026-09-18 — `c1a4f78`] |
 | `README.md` | For a non-technical inheritor | Partial — carries the push procedure and the no-build-step rule. Full version is Build Plan row 6.1. [VERIFIED 2026-09-18] |
@@ -775,3 +776,89 @@ The live verification was then run as a poll rather than a single read, as instr
 Row 1.2 is `done`. Row 1.1 is complete in every respect this session could measure, and stays `blocked` on Gavin opening the URL on a phone — the plan now stands at 3 of 75 effort done.
 
 The browser-reachability dependency that step 1 exists to satisfy is now real: rendered work can be reviewed at the live URL, so later steps can be verified where they must be. Step 2 remains blocked on the CSV being republished from the Published tab.
+
+### 2026-09-18T14:40:46Z — Wireframe ported live; feed wired; failure states proven against the real misconfiguration
+**Source:** Claude Code
+**Started:** 2026-09-18T14:35:12Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01U4wmyQG3nVGNetpsU5i2zw
+**Repos touched this session:** dunchi-trader
+
+**Prompt received:**
+Deliver plan sub-tasks 3.1 and 2.2, and build the machinery 2.1 needs so that 2.1 closes the moment the feed is republished. Task 1: port the wireframe to the live page as plain `index.html`, `style.css` and `app.js`, carrying over exactly and verifying rather than assuming — the palette, typeface and layout; the text-size control, its three sizes and its remembered setting; the autocomplete including matching letters UNDERLINED and never coloured; tapping a trade or Back clearing the search box; the overflow rules including the grid's `minmax(min(100%, 15rem), 1fr)` and the two-line Call button; the header NOT sticky and the size-button strip in FIXED PIXELS; and the footer's small print and village chat line. Drop the `<section class="demo">` block and the RAW and CLEAN arrays; the wireframe keeps them and is not edited. No user-facing string may say "tradesman". Task 2: wire the CSV read per solution design §6.1.1 — header-name matching, proper quoted-field parsing, malformed header degrading to the failure state — with the safety property that the page must NEVER render rows it cannot map, because the raw responses tab holds villagers' email addresses; the feed is currently misconfigured, so use that live condition as the test fixture rather than mocking one. Task 3: deploy and verify at the live URL. Row 2.2 may close; row 3.1 may not, because Gavin has not seen it; row 2.1 stays blocked.
+
+**What was done:**
+
+Both governing specifications were read first, as instructed: `design/wireframe-dunchi-trader.html` as the layout authority, and `docs/SOLUTION-DESIGN-dunchi-trader.md` §9 and §6.1.1 as the logic authority. The plan was read at 2026-09-18T14:35:12Z at HEAD `ff78c81`, tree clean.
+
+`index.html`, `style.css`, `app.js` — the wireframe split into three plain files, no build step, no bundler, no framework. The CSS was carried across rule by rule; a block-level comparison confirms **`.demo` is the only rule dropped** and `.notice` and `.loading` the only ones added, for the message states. The wireframe file itself is byte-untouched and retains its scaffolding as the reference.
+
+Every carried-over behaviour was verified rather than assumed, each against the design rule that governs it: header not sticky (0 matches for `position:sticky`); sizer strip entirely in px (0 `rem` inside that block, values `6px 6px 8px 15px 48px 44px 3px 6px 15px 20px 26px`); `minmax(min(100%, 15rem), 1fr)` present; `overflow-wrap:break-word` ×3 and `min-width:0` ×2; `line-height:1.55`; Atkinson Hyperlegible with fallbacks; no italics beyond the `em` reset; the autocomplete's `mark` carrying `color:inherit` and `background:transparent` so the match is **underline only**; a real `<label>` above the search box; search cleared at all four points that should clear it; Enter and Escape wired; the two-line Call button.
+
+**The feed read was built against the live misconfiguration rather than a mock, which made the safety property testable for real.** The published URL still serves the raw Form responses tab, whose header is the form's question text. `build()` matches the eight expected columns **by name**, and returns `null` when any is missing — so the whole feed is rejected rather than partially rendered.
+
+That was proven end to end against the deployed code: the **live** `app.js` was fetched from the live site and run against the **live** feed. It parses 3 rows, `build()` returns `null`, and the page state resolves to `badfeed`. Because the current feed snapshot happens to carry no email addresses, a second fixture was constructed in the same raw-responses shape **carrying 2 real-looking email addresses and unreviewed submissions** — 0 reached the rendered DOM, and no raw form question text leaked either. That is the actual demonstration of the row's safety property, not an inference from it.
+
+The three message states are written in the page's own voice for an elderly reader, and their rendered text was printed rather than assumed: *"Nobody on the list just yet"*, *"The list will not load at the moment"* (with the reassurance that nothing has been lost), and *"The list is being updated"* (pointing at the village chat if it persists). None is a bare error string.
+
+**Row 2.1's machinery was built and tested even though the row cannot close.** Against a correct Published-tab fixture: 3 active people yield 4 listings, a two-trade person appears under both headings while counted once, the inactive row is excluded, and no empty trade appears. Header-name mapping was proven by re-ordering every column in the fixture and confirming the mapping still held. The row is annotated to record that no further code is expected — it closes when the feed is republished.
+
+14 logic tests were written and run covering embedded commas, embedded newlines, doubled quotes, CRLF, blank trailing rows, active-only filtering, two-trade handling, re-ordered columns, partial headers and the live feed. All pass.
+
+**Testing performed:**
+
+| Test | Expected | Actual | Result |
+|---|---|---|---|
+| Plan read cited | timestamp + HEAD | 2026-09-18T14:35:12Z, `ff78c81`, clean | PASS |
+| CSV: embedded comma in quotes | one field | one field | PASS |
+| CSV: embedded newline in quotes | one field, no extra row | one field, 2 rows | PASS |
+| CSV: doubled quote unescapes | `she said "hello"` | matched | PASS |
+| CSV: CRLF line endings | handled | handled | PASS |
+| CSV: blank trailing rows | dropped | dropped | PASS |
+| Mapping: active rows only | 2 of 3 | 2 | PASS |
+| Mapping: two-trade person | under both, counted once | Electrician + General Builder, 1 person | PASS |
+| Mapping: inactive excluded | excluded | excluded | PASS |
+| Mapping: columns re-ordered | still correct | still correct | PASS |
+| **Rule 3: LIVE raw feed** | `null`, renders nothing | `null` | **PASS** |
+| Rule 3: one column missing | `null` | `null` | PASS |
+| Empty sheet, valid header | 0 people, not null | 0 people | PASS |
+| **Safety: feed carrying 2 emails** | 0 in rendered DOM | **0** | **PASS** |
+| Safety: raw question text leak | 0 | 0 | PASS |
+| 2.1 machinery vs correct fixture | 3 people, 4 listings, no empty trades | exactly that | PASS |
+| Header not sticky | 0 | 0 | PASS |
+| Sizer strip in px | 0 rem | 0 rem | PASS |
+| `minmax(min(100%, 15rem), 1fr)` | present | present | PASS |
+| Autocomplete underline not colour | `color:inherit` | confirmed | PASS |
+| Demo scaffolding dropped from live page | 0 | 0 | PASS |
+| Wireframe file untouched | no diff | no diff | PASS |
+| "tradesman" in served page | 0 | 0 | PASS |
+| Small print + village chat served | 1 each | 1 each | PASS |
+| Live `index.html` | 200, identical | 200, 1,845B, sha256 identical | PASS |
+| Live `style.css` | 200, identical | 200, 10,988B, sha256 identical | PASS |
+| Live `app.js` | 200, identical | 200, 14,060B, sha256 identical | PASS |
+| Jekyll in served page | 0 | 0 | PASS |
+| Build plan validates | exit 0 | exit 0 — 14 rows, 75 effort, **7 done (9.3%)** | PASS |
+| Handover heading preservation | none removed | none removed | PASS |
+| Append-only layers | 0 lines lost | 0 | PASS |
+
+**What was not tested:**
+
+- **Nobody has looked at the rendered page.** Every check this session ran was structural or textual — served bytes, CSS values, DOM text. **Whether it LOOKS right is exactly what row 3.1 is not closed on.**
+- **No browser was driven.** The text-size control, the autocomplete, the trade grid and the search-clearing behaviour were verified as code and as served bytes, but no click was performed and no `localStorage` round-trip was exercised in a real browser.
+- **The 200% zoom and largest-text-size overflow checks were not run.** The CSS rules that govern them are present and verified; their rendered effect is row 3.3, and is untested.
+- **The `ready` state has never rendered with real data**, because the feed has never served the Published tab. It was proven against a fixture only.
+- **Fetch failure was tested by construction, not by network fault.** The timeout, the non-200 branch and the catch path were verified in code; no connection was actually severed mid-load.
+- **Contrast ratios were not re-measured.** The palette is carried over unchanged from the reviewed wireframe, where §9.1 records 7.9:1 to 18.6:1; this session did not re-measure them.
+
+**Commits:**
+- `d10ae18` — `feat: port wireframe to the live page and wire the live feed`
+
+**Finished:** 2026-09-18T14:40:46Z
+
+**End state:**
+
+The agreed design is live at `https://dunchitrader-collab.github.io`, byte-identical to the committed source. The page reads the live feed, and handles an empty sheet, an unreachable feed and an unexpected header with readable prose rather than a blank page.
+
+**Row 2.2 is `done`.** **Row 3.1 is `blocked` on Gavin's sighting** — it is a rendered surface and is deliberately not closed on Claude's own reading. **Row 2.1 stays `blocked`** on the feed, with its machinery built and tested so it closes with no further code.
+
+Today a visitor to the live site sees *"The list is being updated"*, which is correct and deliberate: the feed still serves the raw responses tab, and the page refuses to render unreviewed villager data. The moment the Published tab is republished, the same code renders the real directory.
