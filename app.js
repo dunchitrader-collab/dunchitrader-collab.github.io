@@ -24,9 +24,14 @@
   var main   = document.getElementById("main");
   var search = document.getElementById("search");
 
-  /* The Votes endpoint does not exist yet — build plan row 4.2 creates the
-     Apps Script web app and the Votes tab, and sets this. No URL is invented
-     here; while it is empty, sendRecommendation() sends nothing. */
+  /* The deployed Apps Script web app. It is bound to the sheet and can ONLY
+     append a row to the Votes tab — it cannot read, edit or delete anything,
+     and it cannot touch Published (apps-script/Code.gs).
+
+     Set in THIS repository and pushed to both remotes, never hand-edited in
+     the live repo, so the two repositories stay byte-identical. If it is ever
+     redeployed, the Apps Script deployment id changes and this value must be
+     updated here — see apps-script/DEPLOY.md. */
   var VOTES_ENDPOINT = "https://script.google.com/macros/s/AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec";
 
   /* "What did they do for you?" is required, minimum 15 characters —
@@ -280,22 +285,33 @@
     return p;
   }
 
-  /* THE ONLY NETWORK SEND FOR A RECOMMENDATION — build plan row 4.2 fills
-     this in. It posts the trader ID, never the name, because names change and
-     ids do not (solution design §4.1 and §7.5).
+  /* THE ONLY NETWORK SEND FOR A RECOMMENDATION. It posts the trader ID, never
+     the name, because names change and ids do not (solution design §4.1, §7.5).
 
-     TODAY IT SENDS NOTHING. The Apps Script web app does not exist yet and the
-     sheet has no Votes tab, so there is no endpoint to post to and none is
-     invented here. The recommendation is held in this browser for the rest of
-     the visit and is gone on refresh. The card says exactly that rather than
-     claiming the recommendation was saved. */
+     THE RETURN VALUE IS NOT A SUCCESS SIGNAL, and nothing may treat it as one.
+     `true` means only "the request was handed to the browser". Whether the row
+     reached the Votes tab is unknowable from this page — see below. */
   function sendRecommendation(traderId, name, text){
-    if (!VOTES_ENDPOINT) return false;   // row 4.2: set the endpoint, and the body below goes live
+    if (!VOTES_ENDPOINT) return false;   // no endpoint configured: send nothing
 
-    /* Left in place, unreached, so row 4.2 is a one-line change rather than a
-       rewrite. Apps Script from a GitHub Pages origin is expected to need
-       mode:"no-cors" with a text/plain body, which means the reply cannot be
-       read — solution design §6.2, to be confirmed by measurement at 4.2. */
+    /* MEASURED 2026-09-18T17:02:32Z from the live Pages origin in a real
+       browser — solution design §6.2 records the full measurement.
+
+       The reply is OPAQUE and carries no information: type "opaque",
+       status 0, ok false, url "", and zero readable headers. Those are the
+       values WHETHER OR NOT the append succeeded.
+
+       The promise RESOLVES — it does not reject — so the catch below cannot
+       fire on a network or server failure; it only guards a synchronous throw.
+       DO NOT add error handling that branches on `ok`, on `status`, or on a
+       .catch(): it would report success on a total failure. The thank-you is
+       optimistic by design and by measurement, and the Votes tab is the only
+       proof a recommendation landed.
+
+       At the network layer the POST returns 302 (with
+       access-control-allow-origin: *), the browser follows it to a 200, then
+       aborts the body because of mode:"no-cors". That abort is the normal,
+       successful ending — not an error. */
     try {
       fetch(VOTES_ENDPOINT, {
         method: "POST",

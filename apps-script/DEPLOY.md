@@ -2,9 +2,15 @@
 
 Follow these steps once. They take about ten minutes.
 
-Until you do, the button on the website still works, but a recommendation only
-stays on the villager's own phone and disappears when they close the page. The
-page says so honestly — it does not pretend the recommendation was sent.
+**Steps 1 to 4 are already done** — you did 1 to 3 on 2026-09-18, and step 4 was
+done for you in the website's code the same day. What is left is step 5: placing
+one recommendation from your phone and checking it arrives in the Votes tab. The
+whole document is kept so the site can be rebuilt from nothing if it is ever
+needed.
+
+Until the button is working, a recommendation only stays on the villager's own
+phone and disappears when they close the page. The page says so honestly — it
+does not pretend the recommendation was sent.
 
 **You must be signed in as `dunchitrader@gmail.com` for all of this.** That
 account owns the spreadsheet. If you are signed in as anybody else it will not
@@ -72,29 +78,33 @@ could do is put rubbish in the Votes tab, which only you look at.
 
 ## Step 4 — Tell the website where to send them
 
-1. Go to:
-   <https://github.com/dunchitrader-collab/dunchitrader-collab.github.io/edit/main/app.js>
-   (sign in as **dunchitrader-collab** if it asks).
-2. Press **Ctrl+F** and search for: `VOTES_ENDPOINT`
-3. You are looking for this line, near the top:
+**This step is already done. You do not need to do anything here.**
 
-```js
-  var VOTES_ENDPOINT = "";
-```
+On 2026-09-18 you sent your Web app URL across, and it was put into the website's
+code and published to both copies of the site. It went live in the change marked
+`4d67c15`, and the live website was checked afterwards to confirm it really is
+serving that URL and not an older file.
 
-4. Paste your copied URL between the two quotation marks, so it reads like this
-   — your URL will be much longer:
+So if you have just finished step 3 and your URL is on your clipboard, there is
+nothing to paste. Go straight on to step 5 and check it works.
 
-```js
-  var VOTES_ENDPOINT = "https://script.google.com/macros/s/AKfy..../exec";
-```
+**Please do not edit `app.js` on the GitHub website by hand.** An earlier version
+of these instructions asked you to, and that turned out to be a mistake worth
+explaining. The site lives in **two** GitHub repositories that are kept identical:
 
-Keep the quotation marks and the semicolon exactly as they are.
+- `gsamwell-lang/dunchi-trader` — where changes are made
+- `dunchitrader-collab/dunchitrader-collab.github.io` — the live site you own
 
-5. Scroll to the bottom, click the green **Commit changes** button, then
-   **Commit changes** again in the box that appears.
+Editing the live one by hand changes one copy and not the other. The two then
+disagree, and the next ordinary update would quietly wipe your change out and put
+the site back to having no endpoint — with nothing obviously broken to warn you.
+Changes are made in the first repository and pushed to both, so the two never
+drift apart.
 
-Wait about a minute for the website to update.
+**If you ever redeploy the script and get a NEW `/exec` URL** — which happens if
+you create a *new deployment* rather than updating the existing one — the website
+will still be pointing at the old one. Send the new URL across to be put into the
+code the same way. Do not paste it into the live repository yourself.
 
 ---
 
@@ -109,10 +119,19 @@ A new row should appear with the time, the trader's ID, the name, and the words.
 
 If it does, you are finished.
 
+**Important — the page cannot tell you whether it worked.** It will thank the
+villager either way. That is not a fault and it is not laziness: the reply from
+Google comes back sealed, and the website is not allowed to open it. This was
+measured on 2026-09-18 rather than assumed. So **the Votes tab is the only
+proof**. Always check the spreadsheet, never the thank-you message.
+
 **If nothing appears**, check these in order:
 - Is the tab named exactly `Votes`?
 - In step 3, was "Who has access" set to **Anyone** and not "Only myself"?
-- In step 4, did the URL end in `/exec`, and are the quotation marks still there?
+- Did you create a **new deployment** at some point after 2026-09-18? If so its
+  URL is different from the one in the website's code, and the new one needs to
+  be sent across — see the note at the end of step 4.
+- Wait a moment and refresh the spreadsheet; the row is not always instant.
 
 ---
 
