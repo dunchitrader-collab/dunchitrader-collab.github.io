@@ -114,9 +114,11 @@ list, directly on the page, without leaving it and without re-typing anything al
   |                                             |
   |  [ Form responses ]  raw, messy, private    |
   |         |                                   |
-  |         |  OWNER reviews and copies across  |
-  |         v          (manual gate)            |
-  |  [ Published ]      curated, public         |
+  |         |  Publish.gs adds it AUTOMATICALLY |
+  |         v          (D7a, 2026-09-18)        |
+  |  [ Published ]      the public list         |
+  |                     incl. the villager's    |
+  |                     words and their name    |
   |         |                                   |
   |  [ Votes ]          append-only             |
   +---------------------------------------------+
@@ -159,11 +161,20 @@ These two paths differ, and the difference is intentional:
 
 | Event | Where it lands | When it becomes visible |
 |---|---|---|
-| A **new tradesperson** is submitted via the form | Form responses tab | Only after the owner moves the row to Published |
+| A **new tradesperson** is submitted via the form | Form responses tab **and Published, automatically** | Within the republish lag, unless one of the two hard checks hides it (§7.3) |
+| A **second recommendation** for somebody already listed, via the form | Appended to that person's existing Published row | Within the republish lag |
 | A **vote** on an existing tradesperson | Votes tab | Immediately |
 
-A vote appears immediately because it attaches to somebody the owner has *already* approved.
-A new tradesperson never appears without a human decision.
+~~A vote appears immediately because it attaches to somebody the owner has *already* approved.
+A new tradesperson never appears without a human decision.~~ **SUPERSEDED 2026-09-18 — D7a.**
+Both now appear without a human decision. A new tradesperson is added by `Publish.gs` subject
+to the two hard checks in §7.3; a vote posted from the page still lands on the Votes tab.
+
+**A gap recorded rather than glossed:** nothing copies the Votes tab into Published, so a
+recommendation typed into the site's own panel is visible only to the visitor who typed it.
+Recommendations arriving through the **form** reach everybody, because `Publish.gs` writes them
+into the Published tab's `recommendations` and `recommended_by` columns. Closing that gap would
+mean the publisher reading Votes as well, which is not built.
 
 ---
 
@@ -174,7 +185,7 @@ A new tradesperson never appears without a human decision.
 | **Google Form** | The only entry route for a new tradesperson. Carries the validation described in §7.1. |
 | **Form responses tab** | Raw landing area. Messy by nature. Nobody but the owner ever sees it. |
 | **Helper columns** on that tab | `phone_key`, `name_key`, `verdict` — the sheet flags its own duplicates (§7.2). |
-| **Published tab** | The curated list. **The only thing the site reads.** |
+| **Published tab** | The public list. **The only thing the site reads.** Columns `A`–`H` are the tradesperson; `I`–`J` are the duplicate-checker helpers; **`K` `recommendations` and `L` `recommended_by` carry the villagers' own words and their names** (added 2026-09-18, D8a). |
 | **Votes tab** | Append-only record of extra recommendations posted from the page. |
 | **Published CSV URL** | The read interface. Public, read-only, auto-republishing. |
 | **index.html / style.css / app.js** | The whole front end. Plain files, no build step. |
@@ -408,7 +419,7 @@ during his sweep**, not a gate anything waits behind.
 |---|---|
 | No usable phone number — not 11 digits after normalisation | A mistyped number sends a villager to a stranger. Eleven matches the rule on the form itself. |
 | An email address or a web link in any field | A villager has no reason to type either; an advertiser does. |
-| A phone already on Published | A second row would split one person's recommendations in two. |
+| ~~A phone already on Published~~ | ~~A second row would split one person's recommendations in two.~~ **SUPERSEDED 2026-09-18 — D8a. A duplicate is no longer a hard failure and nothing is hidden.** A second submission for a number already listed is a SECOND RECOMMENDATION, which is the point of the product. The villager's words and name are appended to the existing person's `recommendations` and `recommended_by` cells, preserving what is there; no new row is created and their name, phone, trade and status are untouched. Before this, the second villager's words were discarded with no record they had ever been sent. |
 
 **Recorded factually, because it is the consequence of the ruling:** the open Google Form now
 reaches the live site **without a human in between**. The protection is no longer an approval

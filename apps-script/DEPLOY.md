@@ -183,7 +183,7 @@ until you copied it across to Published yourself.
 **After:** a recommendation lands on Form responses *and* adds itself to
 Published, so the village can see it within about five minutes.
 
-**Three kinds of submission do NOT go live.** They are still added to Published
+**Two kinds of submission do NOT go live.** They are still added to Published
 so nothing is lost, but with `status` set to `hidden`, which keeps them off the
 website until you look at them:
 
@@ -192,8 +192,12 @@ website until you look at them:
    because a villager rings a stranger.
 2. **An email address or a web link in any box.** A villager has no reason to
    type either; somebody advertising does.
-3. **A telephone number already on the list.** The person is already there, so
-   a second row would split their recommendations in two.
+
+**A telephone number already on the list is NOT one of them** (changed
+2026-09-18). Somebody recommending a tradesperson you already have is a *second
+recommendation*, which is the whole point of the site. Their words and their name
+are added to that person's existing row, underneath the ones already there. No
+second row appears, and nothing of theirs is lost.
 
 Everything else publishes itself with `status` `active`.
 
@@ -304,3 +308,67 @@ deleting the last row can let its number be given to somebody else, and every
 recommendation filed against that number would follow it to the wrong person.
 Hiding a row keeps the number safely used up. This is the same rule as in
 `README.md`, and it matters more now that IDs are handed out automatically.
+
+---
+
+## Step 10 — Two more columns on the Published tab
+
+Added 2026-09-18. The publisher now carries the villager's own words and their
+name through to the site, so a listing shows *why* a neighbour recommended
+somebody rather than just a phone number.
+
+The form already promises this. It asks for the villager's name *"so a fellow
+villager might reach out to you if they have any questions"* — which only makes
+sense if the name appears on the site. Until today nothing carried it there.
+
+1. Go to the **Published** tab.
+2. Your columns run `id` to `status` in **A**–**H**, and the two helper columns
+   from the duplicate checker sit in **I** and **J**.
+3. Click cell **K1** and paste this one line. It fills K1 and L1:
+
+```
+recommendations	recommended_by
+```
+
+That is all. **Leave K and L empty** — the publisher fills them in.
+
+**You should now have:** twelve headings across row 1, and nothing under K and L
+until the next recommendation arrives.
+
+> **What goes in them.** `recommendations` holds the villager's words and
+> `recommended_by` holds their name. When several people recommend the same
+> tradesperson, each one is added underneath the last with a blank line between,
+> and the names line up in the same order. If somebody left the name question
+> blank it shows as *"a villager"*, the same as on the website.
+
+---
+
+## Step 11 — Update the recommend endpoint
+
+**Only needed if you already did Part 1.** If you have not deployed the votes
+endpoint yet, ignore this — you will get the corrected version when you do.
+
+A recommendation of seven to fourteen characters — *"Fixed gate"* — was being
+accepted by the website and then quietly thrown away by the endpoint, because
+that script still required fifteen. The website could not tell you, because
+Google's reply comes back sealed. The repository is fixed; your deployed copy
+is not until you do this.
+
+1. Open the spreadsheet → **Extensions → Apps Script**.
+2. Click **`Code.gs`** in the file list on the left.
+3. Select everything in it (**Ctrl+A**) and delete it.
+4. Open `apps-script/Code.gs` in the site's GitHub repository, click
+   **Copy raw file**, and paste it in. **Ctrl+S** to save.
+5. Click **Deploy → Manage deployments**.
+6. Click the **pencil icon** on the existing deployment.
+7. Set **Version** to **New version**. Click **Deploy**.
+
+> **Step 7 is the one that matters.** Editing the existing deployment keeps the
+> same `/exec` address, which is the one built into the website. Choosing
+> **New deployment** instead would give you a different address, the website
+> would carry on posting to the old one, and the recommend button would stop
+> working with nothing on screen to tell you — the reply is sealed either way.
+> If you do it by accident, send the new address across to be put into the code.
+
+**You should now have:** the same deployment, a higher version number, and short
+recommendations reaching the Votes tab.

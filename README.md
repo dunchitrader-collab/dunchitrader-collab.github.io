@@ -49,19 +49,29 @@ any part of it, and nothing is paid for.
   It appears on the "Published" tab      <- the list the village sees
             |                                  active  = on the site
             |                                  hidden  = waiting for you
+            |                                  and their words + name go
+            |                                  into columns K and L
             v
-  The website reads the Published tab and shows them
+  The website reads the Published tab and shows them,
+  with each villager's own words on the tradesperson's card
 ```
+
+**Somebody already on the list?** Their row is not duplicated. The new
+villager's words and name are added underneath the ones already there, so a
+good tradesperson collects recommendations over time on a single card.
 
 **Publishing is automatic.** You do not copy anything across. A villager fills
 in the form and the tradesperson is on the site within about five minutes.
 
-**Three kinds of submission wait for you instead of going live.** They are still
+**Two kinds of submission wait for you instead of going live.** They are still
 added, so nothing is lost, but with `status` set to `hidden`:
 
 - the telephone number is not eleven digits, so it cannot be right;
-- there is an email address or a web link in one of the boxes;
-- that telephone number is already on the list.
+- there is an email address or a web link in one of the boxes.
+
+**A number already on the list is no longer one of them.** That is a second
+recommendation for somebody you already have, so their words are added to that
+person's existing row rather than making a duplicate.
 
 **Your job is a sweep, not an approval.** Look down the Published tab when it
 suits you and overwrite anything messy — a name in the wrong box, an odd
@@ -71,7 +81,7 @@ scan while you do it.
 
 **The website can only read.** Nothing a villager does *on the site* can change,
 add or delete anybody. The form is what adds people, and it does so through the
-three checks above rather than through you.
+two checks above rather than through you.
 
 The spreadsheet:
 <https://docs.google.com/spreadsheets/d/1j9SVNJG9Zf_iFtl6OrsrcVom5SY13sOiv3vt58jcprc/edit>
@@ -122,6 +132,8 @@ These three catch people out. They are worth reading twice.
 | `trade` | The kind of work they do | `Plumber` |
 | `extra_trade` | A second kind of work, if they do one. Leave empty if not. | `Gas Engineer` |
 | `status` | Type `active` | `active` |
+| `recommendations` (K) | What villagers said. Filled in automatically; several are separated by a blank line | `Fixed the gate, no fuss` |
+| `recommended_by` (L) | Who said it, in the same order. Blank shows as "a villager" | `Mary` |
 
 4. Wait five minutes, then check the website.
 

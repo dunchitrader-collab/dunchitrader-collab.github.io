@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T19:36:47Z
+last-updated: 2026-09-18T19:47:55Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T19:36:47Z**
+**Last updated: 2026-09-18T19:47:55Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ SUPERSEDED 2026-09-18T19:35Z → **58 of 87 effort (66.7%)**, 13 of 18 rows done. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -122,6 +122,8 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | 2026-09-18 | HIGH | no | **Delete the TWO non-villager rows from the Votes tab before launch.** The tab now holds two rows that are not a villager's recommendation, and they are different things: **(1) the automated test row** from Build Plan row 4.3's cross-origin measurement — `id` `T001`, `name` `TEST - Claude Code 2026-09-18 - please delete`, `text` beginning `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` **(2) the owner's own test vote** from ~17:47Z, the one that closed row 4.2 — whatever name and words he typed, against whichever tradesperson he tapped. Only he knows its content; it is the row whose arrival he confirmed. **Both should go before launch**, so the tally on each card counts only real villagers. Deleting rows from the Votes tab is safe and affects nothing else — the site never reads that tab. **Do NOT delete anything from the Published tab in the process**; that is the list itself. His first ~17:25Z attempt produced no row at all, so there is nothing to remove for that one. |
 | 2026-09-18 | MEDIUM | no | **Row 5.1 needs the formulas pasted.** ~~Paste-ready in [PATH] `apps-script/SHEET-FORMULAS.md`.~~ SUPERSEDED 2026-09-18T18:20Z → **the previously committed formulas were WRONG against the real sheet and would have written nonsense into every row.** They assumed phone in E, name in D+J, experience text in G and business in J; the real layout is phone **F**, first name **D**, last name **E**, business **G**, experience text **H**, trade **C**, with **J** the first free column. Rewritten and re-simulated at `bd3f42a` against the owner's three real rows plus nine constructed ones. **They now go in `J2`, `K2`, `L2` on Form responses, with two helper columns in `I2`/`J2` on Published** — the cells changed, so any earlier note about K/L/M/N is superseded. NOT RUN IN GOOGLE SHEETS. Closes when one sample row of each of the four verdicts shows correctly in the real sheet. |
 | 2026-09-18 | **CRITICAL** | no | **Install the automatic publisher — paste `Publish.gs`, add the on-form-submit trigger, run the backfill once.** Full numbered steps in [PATH] `apps-script/DEPLOY.md` **Part 2** (steps 6–9). Until the trigger is installed, nothing publishes itself and the site shows only what is already on the Published tab. `apps-script/Code.gs` is NOT touched by any of this — it stays exactly as deployed. **Tested against a stub only; it has never run in Google Sheets**, so his first real submission is the proof.
+| 2026-09-18 | **CRITICAL** | no | **Add columns K and L to the Published tab, and re-paste `Code.gs`.** Two short jobs, both in [PATH] `apps-script/DEPLOY.md` — **step 10** adds `recommendations` and `recommended_by` at K1 and L1 (leave them empty; the publisher fills them), and **step 11** re-pastes `Code.gs` and redeploys it as a **NEW VERSION OF THE EXISTING DEPLOYMENT**. **Step 11's last instruction is the one that matters**: choosing *New deployment* instead would issue a different `/exec` URL, the site would keep posting to the old one, and the recommend button would stop with nothing on screen to say so. Without K and L the site still works exactly as before — it simply shows no recommendations.
+| 2026-09-18 | MEDIUM | no | **Recommendations typed into the SITE's own panel are still seen only by the person who typed them.** Measured 2026-09-18: they post to the Votes tab, and nothing copies Votes into Published, so no other visitor ever sees them. Recommendations arriving through the **Google Form** do reach everybody, via `Publish.gs` writing K and L. Closing the gap means teaching the publisher to read the Votes tab as well, which is NOT built and would need its own plan row and its own ruling. Recorded so nobody assumes D8a closed it.
 | 2026-09-18 | HIGH | no | **RULE FOR HIS RULING — the form should tell villagers their recommendation goes public.** Recorded, not implemented; changing the form is his alone. A tradesperson's name and telephone number now appear on a public website without anybody asking that tradesperson, and the villager submitting is the only person in a position to have asked them. Suggested: add one line to the form's description saying the recommendation will be shown publicly with the tradesperson's name and number. See solution design §7.3.
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Form email collection is still ON.** Evidence, REPORTED by the owner: the third real response row carries `gsamwell@deverse.co.uk` in column B. This contradicts decision 3 … **Settings → Responses → Collect email addresses → Off.** Only the owner can change it; nobody here can touch the Google Form.~~ RESOLVED 2026-09-18T18:30Z — **REPORTED BY THE OWNER, NOT MEASURED HERE.** He reports having turned email collection off in Google on 2026-09-18. Nobody in this session can verify it: the form's settings are visible only while signed in and editing the form, and the responses tab is not published. It will become observable the first time a new submission arrives with column B empty — worth a glance then, and until then it stands on his report alone. |
 | ~~2026-09-18~~ | ~~MEDIUM~~ | ~~no~~ | ~~**The telephone validation rule is too loose to catch a typo, and may also be absent.** … Recommendation: tighten the rule so it counts digits rather than characters.~~ RESOLVED 2026-09-18T18:30Z — **REPORTED BY THE OWNER, NOT MEASURED HERE.** He reports having installed an **eleven-digit** phone validation rule in Google on 2026-09-18, which is the digit-counting form recommended. Same limitation as the row above: form settings cannot be seen from outside the account, so this stands on his report. The measured finding it replaces is preserved in the record: the old documented rule `^[\d\s\+\(\)\-]{10,20}$` counted *characters*, which is why the twelve-digit `078853335434` passed it — that was never evidence the rule was missing. Solution design §7.1 updated to the new rule, marked REPORTED. |
@@ -471,6 +473,13 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ---
 
 # LAYER 4 — OUTSTANDING WORK
+
+**[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: no**
+**Add columns K and L to Published, and re-paste `Code.gs`.** Both are written out in [PATH] `apps-script/DEPLOY.md`. **Step 10**: paste `recommendations` and `recommended_by` into K1 and L1 of the Published tab and leave the cells below empty — the publisher fills them in. Without these two columns nothing breaks; the site simply shows no recommendations, because `app.js` reads them as optional. **Step 11**: re-paste `apps-script/Code.gs` into the Apps Script editor and redeploy via **Deploy → Manage deployments → pencil icon → Version: New version**. **Choosing "New deployment" instead would issue a different `/exec` URL and silently stop the recommend button**, because the site would carry on posting to the old address and the opaque reply means the page can never tell. That constant was corrected from 15 to 7 this session, so until he redeploys, a valid short recommendation typed on the site is still dropped by the endpoint.
+
+**[OUTSTANDING] 2026-09-18 | MEDIUM | Blocking: no**
+**Recommendations typed into the site's own panel reach nobody but their author, and D8a did not change that.** Measured 2026-09-18: `app.js` initialises `VOTES = {}` empty on every page load, writes to it only from the vote panel, and reads it only when drawing a card — so those words live in one browser for one visit. They are posted to the **Votes** tab, and **nothing copies Votes into Published**, which is the only thing the site reads. Recommendations arriving through the **Google Form** now reach everybody, because `Publish.gs` writes them into K and L. Closing the remaining gap means teaching the publisher to read the Votes tab too — matching each vote's trader id to a Published row and appending it exactly as a duplicate form submission is appended. That is **not built**, needs its own plan row, and is the owner's to rule on. Recorded explicitly so a future session does not read D8a as having closed it.
+
 
 **[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: no**
 **Install the automatic publisher.** Three steps, all inside the spreadsheet, all written out in [PATH] `apps-script/DEPLOY.md` **Part 2**: paste `apps-script/Publish.gs` as a second Apps Script file (step 6), add the **on-form-submit** trigger on `onFormSubmitPublish` (step 7), and run **Village list → Publish any responses not yet on the list** once (step 8). Then check it with **Village list → Check the setup** and one real form submission (step 9). **`apps-script/Code.gs` is not touched** — the votes endpoint stays exactly as deployed. **The publisher has been tested only against a stub and has never run in Google Sheets**; his first real submission is the proof, which is why row 5.2 closes on that and not on this session's tests. Switching it off again is one trigger deletion, also documented.
@@ -823,6 +832,28 @@ The first draft of `PLAN-DUNCHI-TRADER-V1` carried **90 sub-tasks and 231 effort
 **Rationale:** his ruling on the defect measured in the previous session. Without it a row typed `plumber` created a second tile beside `Plumber` with one person under it, invisible to anyone who tapped the first — silent, since nothing errors. It matters more now than it did yesterday: under D7a the trade text arrives straight from a villager's form answer, so free text entered under "Other" reaches Published without anyone tidying it first. Displaying the first spelling met, rather than lower-casing or title-casing the label, keeps ordinary words on screen instead of showing the village a normalised key.
 
 **A limit worth stating:** `Publish.gs` tidies spacing and capitalisation on the way in, but it **cannot map meaning** — it does not know that "boiler" is Heating or "sparky" is Electrician, and a synonym list would be guesswork about what a villager meant. Free text under "Other" therefore still creates a new tile with that exact wording, and the owner's sweep is what catches it. That is written into the script's own comments so nobody later assumes the normalisation is cleverer than it is.
+
+### 2026-09-18 — D8a, the site keeps the promise the form already made
+
+**[DECISION] D8a — the villager's words and the villager's name are carried through to the site.**
+
+**Rationale, in the owner's own framing: the form already promises this and the site was not keeping it.** The form's last question asks for the villager's name *"(if you want to share it on the website) so a fellow villager might reach out to you if they have any questions"*. That sentence is a promise to the person filling it in — their name will appear, and neighbours may contact them about it. Nothing carried it anywhere. Column H, the villager's description of the work, was dropped in the same way. So the site listed phone numbers while the mission calls it *"a public web app listing local tradespeople recommended by villagers"*; **"recommended by villagers" is the load-bearing phrase and nothing on the page carried a villager's voice.**
+
+**Measured rather than inferred, because it is worse than it looks:** recommendations posted through the site's own panel were never read back by anybody. `VOTES` is initialised empty on every page load, written only by the panel and read only when drawing a card — so a villager's words lived in their own browser for one visit and then vanished. No villager has ever seen another villager's words on this site. That is now true only of panel-posted recommendations; those arriving through the form reach everybody, and the remaining gap is recorded as an outstanding item rather than being quietly left.
+
+**[DECISION]** A duplicate submission becomes a **second recommendation**, not a hard failure.
+
+**Rationale:** this was the sharpest finding. The previous session's own test table shows a duplicate being skipped and the second villager's words written nowhere at all — not to Published, not anywhere, with no record that anything had been sent. Yet a second person recommending the same tradesperson **is the product working**: it is the village agreeing. Treating it as noise threw away the most valuable thing the form collects. So a matching normalised phone now appends the words and the name to the existing person's row, preserving what is there and touching nothing else on it. The two remaining hard failures are unchanged.
+
+**[DECISION]** Several recommendations share one cell, separated by a **blank line**, in two parallel columns.
+
+**Rationale:** a delimiter like `|` or `;` can appear inside a villager's own words, and a separator that occurs in the data is a corruption waiting to happen. A blank line cannot appear inside a single form answer. **Verified rather than assumed:** the shape was tested against `app.js`'s own `parseCSV` — a cell containing a comma, an escaped quotation mark and two line breaks round-trips into exactly three recommendations, because that parser is a proper state machine that accumulates newlines inside quotes. Two parallel columns keep the nth name with the nth recommendation without inventing a record format inside a spreadsheet cell. **At ten recommendations** the cell is unwieldy to read in the sheet but nothing breaks — Google's limit is 50,000 characters — and the site shows them tidily; the practical limit is the owner's patience, and he can prune by hand since it is plain text.
+
+**[DECISION]** A popular card shows **two recommendations, then a button**.
+
+**Rationale:** at the largest text size on a 320px phone a single recommendation already fills much of the screen. Showing every one would bury the Call button — the one thing the card exists for — under a wall of text, for exactly the audience least able to scroll past it. Two in full plus a full-width *"Read N more recommendations"* button keeps the card's shape constant however popular somebody becomes, and hides nothing: it is one tap on a large target. Measured at both 20px and 29px with three recommendations: 0px overflow either way.
+
+---
 
 ---
 
@@ -2501,3 +2532,113 @@ The shape of the product has changed. A villager fills in the form and the trade
 **Five rows remain, and every one waits on the owner:** **6.1** (9, walk the runbook), **5.2** (6, install the publisher and confirm a real submission), **5.1** (6, confirm the verdicts in his sheet), **7.1** (5, full journey, needs seeding), **7.2** (3, seed to 12–15 across ≥6 trades). Two non-villager rows still need deleting from the Votes tab before launch, one ruling is waiting on him about the form's description, and the launch message stays a draft.
 
 **Effort per prompt for the plan, cumulative: 58 effort done ÷ 17 prompts sent = 3.41.** Both figures recorded, not only the ratio.
+
+### 2026-09-18T19:46:55Z — D8a: the villagers' words and names reach the site; duplicates become second recommendations
+
+**Source:** Claude Code
+**Started:** 2026-09-18T19:39:00Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH
+**Repos touched this session:** `gsamwell-lang/dunchi-trader` (origin), `dunchitrader-collab/dunchitrader-collab.github.io` (collab). No other repository was read or written.
+
+**Prompt received:**
+
+> Target repo: dunchi-trader
+>
+> MODE: IMPLEMENTATION. Package tier (a) hard/ambiguous, model claude-opus-5, effort high.
+>
+> Same conversation as 2665, 2667, 2670, 2671, 2673, 2675 and 2684. You landed 2684 at 19:38Z reporting HEAD 892ed21, plan 58/87 = 66.7%, 13 of 18 rows done. Re-establish HEAD yourself in task 0 and stop if it is not 892ed21, clean and level.
+>
+> MISSION: re-read at source and name it back. This prompt exists because the site does not currently do what the mission says.
+>
+> ## THE FINDING — THE SITE IS A PHONE LIST, NOT A RECOMMENDATIONS LIST
+>
+> The Owner noticed that the publisher ignores the responses tab's column I. Checking it properly turned up something larger, and I measured the second part myself against the live site rather than inferring it.
+>
+> 1. The form asks, in column I: "Finally please give your name (if you want to share it on the website) so a fellow villager might reach out to you if they have any questions." That is a PROMISE MADE TO VILLAGERS that their name appears on the site. Nothing keeps it.
+> 2. Column H — the villager's description of the work, the actual recommendation — is also dropped. Published has no column for either.
+> 3. MEASURED by me at 19:34Z against the live app.js: the page fetches ONE feed, the Published tab, carrying trader details only. Recommendations posted from the site go to the Votes tab and are rendered from the visitor's own browser memory. NOTHING EVER READS THEM BACK. No villager has ever seen another villager's words, and none would.
+>
+> So the product currently lists phone numbers. The mission says it is a recommendations list. The Owner has ruled D8a to fix it.
+>
+> Note from your own 2684 reply: Published columns I and J now hold the sheet-formula helper columns, so new columns go at K and L.
+>
+> [Tasks 0–5 as issued: guards and the Published contract; append two plan rows; carry the words and name through to Published at K and L with the duplicate rule changed to append; show them on the card with served-page evidence at 320px and largest text; fix Code.gs's stale MIN_TEXT to seven and say he must redeploy as a new version of the existing deployment; update the documents and land.]
+
+**What was done:**
+
+**Task 0 — guards passed, MISSION re-read, contract stated.** HEAD `892ed2162cec8b3740234be9ee04a7449a388ecf`, master, clean, `0 0`. Published now runs `A id · B first_name · C last_name · D business · E phone · F trade · G extra_trade · H status · I pub_phone_key · J pub_name_key`, so the new columns go at **K** and **L** as the brief says.
+
+**The finding was verified at source rather than taken on trust, and it is correct.** `app.js` initialises `VOTES = {}` empty on every load (line 50), writes to it only from the vote panel, and reads it only when drawing a card. Nothing else references it and no feed carries it. **No villager has ever seen another villager's words.** The CSS for `.recs`, `.rec`, `.tally` and `.by` already existed, which tells its own story: the card was built to show recommendations and was never given any to show.
+
+**Task 1 — rows 3.5 (effort 4) and 4.6 (effort 1) appended**, nothing renumbered, provenance recorded here rather than in the row text.
+
+**Task 2 — the words and the name now reach Published.** Two columns, **`recommendations` (K)** and **`recommended_by` (L)**, written from the responses tab's column H and column I. `Publish.gs` matches both by header name like every other field, so adding or reordering a form question cannot break them. A blank recommender becomes **"a villager"**, matching what the site's own panel already does.
+
+*The storage shape, and it was verified rather than chosen on taste.* Several contributions share one cell separated by a **blank line**, in two parallel columns so the nth name belongs to the nth recommendation. A delimiter such as `|` can occur inside a villager's own words; a blank line cannot occur inside a single form answer. **Tested against `app.js`'s own `parseCSV`** — not a stand-in — with a value carrying a comma, an escaped quotation mark and two line breaks: it round-trips into exactly three recommendations. **At ten recommendations for one person** the cell is unwieldy to read in the spreadsheet but nothing breaks; Google's per-cell limit is 50,000 characters, the site renders them tidily, and the owner can prune by hand because it is plain text. The limit is his patience, not the software.
+
+*The duplicate rule changed, and this was the sharpest part of the brief.* Previously a duplicate was skipped and the second villager's words were written **nowhere at all** — the previous session's own test table shows it. A second person recommending the same tradesperson is the product working, not noise. Now a matching normalised phone **appends** the words and name to that person's existing K and L, preserving what is there and never touching their name, phone, trade or status. The same words submitted twice are not added twice, which is what keeps the backfill idempotent. The two other hard failures are unchanged; a duplicate is no longer one of them.
+
+**Task 3 — the card shows them, and the design decision was made for the audience.** `app.js` reads both columns as **OPTIONAL**, so a sheet predating them renders exactly as before rather than failing. A popular card shows **two recommendations in full plus a full-width "Read N more recommendations" button**: at 29px on a 320px phone a single recommendation already fills much of the screen, and showing every one would bury the Call button under a wall of text for exactly the audience least able to scroll past it.
+
+**Task 4 — `Code.gs`'s `MIN_TEXT` corrected from 15 to 7**, with the reason and the redeployment warning written into the file itself. The repository change is half the fix; the running copy is in the owner's account.
+
+**Task 5 — five documents updated**, and a consistency sweep caught the second-order effect: three of them still said *"three kinds of submission do not go live"*. A duplicate is no longer one of the three, so `README.md`, the PROCESS doc and `DEPLOY.md` were all corrected to two, with the duplicate's new behaviour explained in each. The design's §3.1 diagram and §3.3 visibility table still described the manual gate and were corrected too.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual (measured) | Result |
+|---|---|---|---|---|
+| 1 | HEAD / branch / tree / sync | `892ed21`, master, clean, `0 0` | as expected | PASS |
+| 2 | Is `VOTES` ever read from a feed? | — | **No** — empty on load, panel-written, card-read only | finding confirmed |
+| 3 | Blank-line cell through `app.js`'s own `parseCSV` | 3 recommendations | **3**, comma and escaped quote intact | PASS |
+| 4 | New person, words + name | K/L populated | `Cleared the whole garden…` / `Sue` | PASS |
+| 5 | New person, **blank** name | "a villager" | `a villager` | PASS |
+| 6 | **Duplicate of T001** | appended, no new row | **no new row; appended to T001** | **PASS** |
+| 7 | **Duplicate, same words again** | nothing added | **unchanged** | **PASS — idempotent** |
+| 8 | **Duplicate, blank name** | appended as "a villager" | `Mary\n\na villager` | **PASS** |
+| 9 | **Duplicate, comma + quotation mark** | preserved | `Fixed the gate, and said "no charge"` intact | **PASS** |
+| 10 | Duplicate via `+44` form | matched | matched, appended | PASS |
+| 11 | K and L stay aligned | equal counts | **3 recommendations, 3 names** | PASS |
+| 12 | Bad phone (12 digits) | `hidden`, words kept | `hidden`, K/L populated | PASS |
+| 13 | Email in business | `hidden` | `hidden` | PASS |
+| 14 | Votes tab throughout | untouched | header only, unchanged | PASS |
+| 15 | **Backfill run 1** over 5 responses incl. 2 duplicates | 3 people | "Added 3… Skipped 2"; Bob has **3 recommendations** | PASS |
+| 16 | **Backfill run 2** | changes nothing | "Added 0… Skipped 5", sheet **byte-identical** | **PASS** |
+| 17 | `node --check` on all three files | parse | all parse | PASS |
+| 18 | **SERVED, 3 recs, 20px** | 2 + button | tally "3 villagers…", 2 shown, "Read 1 more recommendation" | **PASS** |
+| 19 | **SERVED, tap the button** | all 3, button gone | **3 shown, button removed, 0px overflow** | **PASS** |
+| 20 | **SERVED, 1 rec** | shown, no button | shown, attributed `Sue`, no button | **PASS** |
+| 21 | **SERVED, 0 recs** | nothing | no tally, no empty heading | **PASS** |
+| 22 | **SERVED, all of the above at 29px** | same | **identical behaviour at root 29px** | **PASS** |
+| 23 | **SERVED, Call + vote panel** | still work | right `tel:` on every card, panel present | **PASS** |
+| 24 | **SERVED, overflow at 320px** | 0px | **0px and 0 elements past the right edge, all 6 cases** | **PASS** |
+| 25 | Validator | exit 0 | `OK`, **20 sub-tasks**, 62/92 = 67.4% | PASS |
+| 26 | Independent row count vs validator | equal | 20 vs 20 | PASS |
+
+**What was not tested:**
+
+- **`Publish.gs` still has never run in Google Sheets.** Every publisher result above is a local `SpreadsheetApp` stub. The real trigger, real authorisation and the exact shape of `e.namedValues` from a live submission remain unexercised. Row 5.2 still closes on a real submission.
+- **Columns K and L do not exist on the real sheet yet.** Until the owner adds them (DEPLOY.md step 10), the publisher writes into positions the sheet has no headers for, and the site shows no recommendations. The site does not break either way — that was the point of reading them as optional — but the feature is inert until he acts.
+- **`Code.gs`'s fix is not live.** The deployed copy still carries 15 until he re-pastes and redeploys.
+- **The served-page evidence used a feed fixture**, not the owner's sheet, which was deliberate: it proves the rendering without writing anything to his data.
+- **Recommendations typed into the site's own panel still reach nobody else**, and that is recorded as an outstanding item rather than implied to be fixed.
+- **No Google-side change was made or attempted**, and nothing was written to the owner's sheet or Votes tab.
+
+**Commits:**
+
+- `91a3f4c` — `feat: carry villagers' words and names through to the site`
+
+**Finished:** 2026-09-18T19:46:55Z
+
+**End state:**
+
+The plan stands at **62 of 92 effort (67.4%)**, 14 of 20 rows `done`. Two rows were appended totalling 5 effort and one of them closed, so the percentage moved 66.7% → 67.4%. **Row 3.5 is the only row this session closed.**
+
+The product is now shaped like its mission. A villager filling in the form has their words and their name carried through to the tradesperson's card, which is what the form has been promising them all along. A second person recommending somebody already listed adds to that person rather than being discarded. A card with several recommendations stays readable at the largest text size on the smallest phone.
+
+**Two things must happen in the owner's Google account before any of it is visible**, both short and both in `apps-script/DEPLOY.md`: add `recommendations` and `recommended_by` at K1 and L1, and re-paste `Code.gs` redeploying as a **new version of the existing deployment**. Until then the site behaves exactly as it did yesterday.
+
+**Six rows remain, every one waiting on him:** 6.1 (9, walk the runbook), 5.2 (6, install the publisher and confirm a real submission), 5.1 (6, confirm the verdicts), 7.1 (5, full journey), 7.2 (3, seed the list), 4.6 (1, redeploy the endpoint).
+
+**Effort per prompt for the plan, cumulative: 62 effort done ÷ 18 prompts sent = 3.44.** Both figures recorded, not only the ratio.

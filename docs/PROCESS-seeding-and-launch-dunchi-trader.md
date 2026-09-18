@@ -31,10 +31,15 @@ ever sees that tab**, and you no longer copy anything out of it by hand.
 
 **Submissions publish themselves.** ~~You read it, decide, and copy the good ones
 across to `Published` yourself.~~ SUPERSEDED 2026-09-18 — a script adds each new
-response to `Published` automatically. Three kinds arrive with `status` set to
+response to `Published` automatically. Two kinds arrive with `status` set to
 `hidden` instead of `active`, so they are on the tab but off the website until
-you look: a telephone number that is not eleven digits, an email address or web
-link in any box, or a number already on the list.
+you look: a telephone number that is not eleven digits, or an email address or
+web link in any box.
+
+**A number already on the list is not one of them.** Somebody recommending a
+tradesperson you already have is a *second recommendation*, not a duplicate — so
+their words and name are added to that person's existing row, and no second row
+appears.
 
 **So the thing that keeps the site tidy is your sweep, not a gate.** Nothing
 waits for your approval any more. Open `Published` when it suits you, read down
@@ -44,7 +49,7 @@ quicker in batch than one row at a time. The `verdict` column on the
 
 **Stated plainly, because it is the consequence:** the form is open to anyone
 with the link, and what it collects now reaches the live site without a person
-in between. The three checks above and your sweep are what stand in the way of
+in between. The two checks above and your sweep are what stand in the way of
 something wrong being visible for a while.
 
 **Seeding the list is still a hand job**, and the rest of this section is about
@@ -60,6 +65,11 @@ this order and spelling:
 id    first_name    last_name    business    phone    trade    extra_trade    status
 ```
 
+Plus, further right: **I** and **J** hold the duplicate checker's working
+columns, and **K** `recommendations` and **L** `recommended_by` hold the
+villagers' own words and their names. You do not type in K and L — the script
+fills them in, and adds each new recommendation underneath the last.
+
 Here is what goes in each one.
 
 | Column | What to put | Example |
@@ -72,6 +82,8 @@ Here is what goes in each one.
 | `trade` | What they do. One trade only. | `Gardener` |
 | `extra_trade` | A second trade, if they do two. Otherwise leave empty. | `Tree Surgeon` |
 | `status` | `active` to show them. See below. | `active` |
+| `recommendations` (K) | The villagers' own words. **Leave it empty** — filled in automatically. Several are separated by a blank line. | `Fixed the gate, no fuss` |
+| `recommended_by` (L) | Who said it, in the same order. An empty name shows as "a villager". | `Mary` |
 
 A few things that matter more than they look:
 
