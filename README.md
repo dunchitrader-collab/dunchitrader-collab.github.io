@@ -2,28 +2,171 @@
 
 A list of local tradespeople recommended by people in the village.
 
-The site is being built. The full guide for whoever runs or inherits this site
-is written later in the build; this file currently covers only how the code
-gets from here to the live site.
+**The website:** <https://dunchitrader-collab.github.io>
+
+A villager opens the link, taps the kind of work they need, and taps the big
+green button to ring the person. That is the whole thing.
+
+It is a list of **recommendations from neighbours**. It is deliberately not a
+review site: there are no star ratings and no bad reviews.
 
 ---
 
-## There is no build step
+## Who this page is for
 
-Every file in this repository is served to visitors **exactly as it is
-committed**. Nothing is compiled, bundled or generated.
+Whoever looks after this site. You do not need to be technical and you do not
+need to know anything about programming. If you can edit a spreadsheet on your
+phone, you can run this.
 
-That means you can change a word on the site by editing a file here in the
-GitHub web editor and clicking Commit. A minute or so later it is live.
+**Everything is controlled by two logins:**
 
-It also means **nothing may be added that needs building** — no npm install,
-no bundler, no framework that has to be compiled first. If a change would
-stop a non-technical person editing a file in the browser and seeing the
-result, it does not belong in this project.
+| Login | What it controls |
+|---|---|
+| `dunchitrader@gmail.com` | The form villagers fill in, and the spreadsheet holding the list |
+| `dunchitrader-collab` on GitHub | The website itself |
 
-The empty `.nojekyll` file at the root is part of this. Without it, GitHub
-Pages runs the files through Jekyll before serving them, and what visitors
-get is no longer what is committed. **Do not delete it.**
+Those two together are the whole system. Nobody else's account is needed for
+any part of it, and nothing is paid for.
+
+---
+
+## How the list actually works
+
+```
+  A villager fills in the form
+            |
+            v
+  It lands on the "Form responses" tab   <- messy, private, only you see it
+            |
+            |   you read it and decide
+            v
+  You copy them to the "Published" tab   <- the tidy list
+            |
+            v
+  The website reads the Published tab and shows them
+```
+
+**The website can only read.** Nothing a villager does on the site can change,
+add or delete anybody on the list. Only you can, by editing the spreadsheet.
+
+The spreadsheet:
+<https://docs.google.com/spreadsheets/d/1j9SVNJG9Zf_iFtl6OrsrcVom5SY13sOiv3vt58jcprc/edit>
+
+---
+
+## Three things to know before you touch anything
+
+These three catch people out. They are worth reading twice.
+
+> ### 1. Changes take about five minutes to appear
+>
+> Edit the spreadsheet, then refresh the website, and you will probably still
+> see the old version. **That is normal and nothing is broken.** Google
+> re-publishes the list every few minutes. Have a cup of tea and look again.
+
+> ### 2. Never click "Stop publishing"
+>
+> In the spreadsheet under **File → Share → Publish to web** there is a button
+> marked **Stop publishing**. If you click it **the website goes blank
+> immediately**, because it can no longer read the list. If you ever do it by
+> accident, publish it again the same way and it will come back.
+
+> ### 3. Never delete the "Published" tab
+>
+> **Renaming it is completely safe.** Deleting it and making a new one with the
+> same name is not — the website finds that tab by a hidden internal number,
+> not by its name, so a fresh tab is a different tab as far as the website is
+> concerned, and the list stops loading.
+>
+> If you want to clear it out, delete the *rows*, not the tab.
+
+---
+
+## Adding a tradesperson
+
+1. Open the spreadsheet and go to the **Published** tab.
+2. Go to the first empty row at the bottom.
+3. Fill in the columns:
+
+| Column | What goes in it | Example |
+|---|---|---|
+| `id` | The next number in the list | `T014` |
+| `first_name` | Their first name | `Richard` |
+| `last_name` | Their surname | `Whitthorn` |
+| `business` | Business name, if they have one. Leave empty if not. | `Whitthorn Plumbing` |
+| `phone` | Their number, written so it is easy to read | `07825 736940` |
+| `trade` | The kind of work they do | `Plumber` |
+| `extra_trade` | A second kind of work, if they do one. Leave empty if not. | `Gas Engineer` |
+| `status` | Type `active` | `active` |
+
+4. Wait five minutes, then check the website.
+
+### The one rule that must never be broken
+
+**Give each person the next ID, and never change it afterwards.** `T001`,
+`T002`, `T003`, and so on. Never reuse an ID from somebody you removed.
+
+When villagers add their own recommendation from the website, it is filed
+against that ID. Change the ID and you quietly detach every recommendation that
+person has. Their name can change, their phone number can change, their trade
+can change — the ID never does.
+
+---
+
+## Changing somebody's details
+
+Find their row on the **Published** tab and type over it. Change the phone
+number, the business, the trade, anything you like — **except the `id`**.
+
+Five minutes later the website shows the new version.
+
+---
+
+## Taking somebody off the list
+
+Find their row on the **Published** tab and change `status` from `active` to
+anything else — `removed` is clear. They disappear from the website within five
+minutes.
+
+**Do not delete the row.** Keeping it means their ID is never reused, so any
+recommendations attached to them stay attached. If somebody asks to be taken
+off, this is all you need to do, and it takes about ten seconds.
+
+---
+
+## Changing the words on the website
+
+You can edit the site itself in your web browser. Nothing needs installing.
+
+1. Sign in to GitHub as **dunchitrader-collab**.
+2. Go to
+   <https://github.com/dunchitrader-collab/dunchitrader-collab.github.io>
+3. Click the file you want to change, then the pencil icon.
+4. Make the change, scroll down, click **Commit changes**.
+5. Wait a minute and refresh the website.
+
+**There is no build step, and there must never be one.** The files in that
+repository are exactly the files sent to people's phones. Nothing is compiled
+or generated. That is what makes it possible for someone non-technical to
+change a word and see it live a minute later — and that is deliberate.
+
+If anybody ever proposes a change needing a build step, a bundler, or an
+`npm install`, the answer is no. The test is simple: *can whoever inherits this
+still edit a file in the browser and see the result?* If not, it does not
+belong here.
+
+The empty file called `.nojekyll` is part of that. Without it GitHub processes
+the files before serving them. **Do not delete it.**
+
+| Path | What it is |
+|---|---|
+| `index.html` | The page |
+| `style.css` | How it looks |
+| `app.js` | How it behaves |
+| `.nojekyll` | Stops GitHub altering the files. Do not delete. |
+| `design/wireframe-dunchi-trader.html` | The agreed design the page was built from |
+| `apps-script/` | The small script that saves villagers' recommendations, and how to set it up |
+| `docs/` | The full records: how it was built, why, and how to rebuild it |
 
 ---
 
@@ -42,9 +185,10 @@ it is the one being served and the one that gets inherited.
 
 ---
 
-## Publishing a change to the live site
+## Publishing a change from a computer
 
-From a checkout of this repository:
+Most of the time the browser method above is enough. If you are working from a
+copy on a computer:
 
 ```
 git add -A
@@ -68,31 +212,45 @@ git remote add collab https://github.com/dunchitrader-collab/dunchitrader-collab
 ```
 
 After pushing, wait a minute, then open <https://dunchitrader-collab.github.io>
-and check the change is actually there. GitHub Pages takes a short while to
-publish, so an immediate refresh may still show the old page.
+and check the change is actually there.
+
+If you edit directly in the browser instead, copy the same change back into the
+working repository too, so the two do not drift apart.
 
 ---
 
-## Editing the live site directly
+## Turning on the recommend button
 
-You do not have to use git at all. Signed in as **dunchitrader-collab**, you
-can open any file at
-<https://github.com/dunchitrader-collab/dunchitrader-collab.github.io>, click
-the pencil icon, make the change and click Commit. The site updates itself a
-minute later.
+Villagers can add their own recommendation to somebody already on the list.
+Until the small Google script behind it is switched on, that recommendation
+only stays on their own phone — the page says so honestly rather than
+pretending it was saved.
 
-If you do that, copy the same change back into the working repository too, so
-the two do not drift apart.
+To switch it on, follow **`apps-script/DEPLOY.md`**. It takes about ten minutes
+and you only do it once.
+
+To make the spreadsheet flag duplicate entries for you, follow
+**`apps-script/SHEET-FORMULAS.md`**.
 
 ---
 
-## What is in here
+## If something looks wrong
 
-| Path | What it is |
+| What you see | What it usually means |
 |---|---|
-| `index.html` | The page itself. Currently a placeholder. |
-| `style.css` | How the page looks. Currently a placeholder. |
-| `app.js` | How the page behaves. Currently a placeholder. |
-| `.nojekyll` | Stops GitHub Pages altering the files. Do not delete. |
-| `design/wireframe-dunchi-trader.html` | The agreed design, reviewed and signed off. The real page is built from this. |
-| `docs/` | The project's records: what it is, why it is built this way, what is still to do. |
+| "The list is being updated" | The website cannot read the Published tab. Check it is still published, and that the tab was not deleted and recreated. |
+| "Nobody on the list just yet" | The Published tab has no rows with `status` set to `active`. |
+| "The list will not load at the moment" | Usually the internet connection. Try again shortly. |
+| Your edit has not appeared | Wait five minutes. See warning 1. |
+
+The website never shows a blank page. If a villager sees any of the messages
+above, nothing has been lost and the list is safe.
+
+---
+
+## Rebuilding it all from nothing
+
+If the spreadsheet is deleted, the website disappears, or you need to move the
+whole thing to a different account, **`docs/RESTORE-dunchi-trader.md`** is the
+step-by-step guide to building it again from scratch with only those two
+logins.
