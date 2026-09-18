@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T15:20:38Z
+last-updated: 2026-09-18T17:10:47Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T15:20:38Z**
+**Last updated: 2026-09-18T17:10:47Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ SUPERSEDED 2026-09-18T15:13:20Z → **31 of 75 effort (41.3%)**. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ SUPERSEDED 2026-09-18T17:04:41Z → **46 of 75 effort (61.3%)**, 9 of 14 rows done. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -60,6 +60,7 @@ This project is **entirely standalone**. It depends on no external organisation'
 | [URL] `https://forms.gle/ZyLed4Tue91bzXjD7` | The Google Form villagers fill in | [VERIFIED 2026-09-18] — HTTP 200 |
 | [URL] `https://docs.google.com/spreadsheets/d/1j9SVNJG9Zf_iFtl6OrsrcVom5SY13sOiv3vt58jcprc/edit` | The Google Sheet | [ASSUMED] — not opened this session (requires the Google login) |
 | [URL] Published CSV — ~~`...&gid=1583719737&...`~~ SUPERSEDED 2026-09-18T15:20:38Z → `https://docs.google.com/spreadsheets/d/e/2PACX-1vSJA1qHOmFEOYqsSZcy0Y90LBUXbiTBGTJCqy2U-W3VE_zXdWWB6a59QclDbbO9tXoriWZda76rDWkn/pub?gid=1915382769&single=true&output=csv` | The read interface the site fetches. **Now the Published tab** (gid `1915382769`). | [VERIFIED 2026-09-18T15:20:38Z] — HTTP 200, `text/csv`, 291 bytes, header exactly `id,first_name,last_name,business,phone,trade,extra_trade,status`, 4 data rows. ~~**BUT IT SERVES THE WRONG TAB**~~ RESOLVED — it now serves the correct tab. |
+| [URL] Votes endpoint — ~~not deployed; `VOTES_ENDPOINT` empty~~ SUPERSEDED 2026-09-18T17:04:41Z → `https://script.google.com/macros/s/AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec` | The write interface. The Apps Script web app the page posts a recommendation to; it can only append to the Votes tab. Set in `app.js` line 30 at commit `4d67c15`. | [VERIFIED 2026-09-18T17:02:32Z] — driven from the live Pages origin in a real browser: `POST` returns **HTTP 302** with `access-control-allow-origin: *`, redirecting to `script.googleusercontent.com/macros/echo`, which the browser follows as `GET` and receives **HTTP 200**; round trip 2779.9 ms. The page itself sees only an **opaque** response (`type: opaque`, `status: 0`, `ok: false`, no readable headers) — see Layer 3 and solution design §6.2. **The DEPLOYMENT SETTINGS and the existence of the Votes tab with its four-column header are REPORTED BY THE OWNER, not measured here** — he deployed it under `dunchitrader@gmail.com` per `apps-script/DEPLOY.md` steps 1–3, executing as himself with access set to Anyone. |
 
 ### Repository Topology
 
@@ -116,13 +117,14 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 |------|----------|----------|-------------|
 | ~~2026-09-18~~ | ~~**CRITICAL**~~ | ~~**YES**~~ | ~~**No push credential for the dunchitrader-collab GitHub account.** Measured 2026-09-18T14:13:45Z: both credentials report `"push": false`, and a dry-run push returns HTTP 403.~~ RESOLVED 2026-09-18T14:26:12Z — Gavin added `gsamwell-personal` as a collaborator with Write access. The push landed at `f94d45a` using the `gsamwell-lang` classic token; see Layer 3 for why the fine-grained token still could not, despite the API reporting `push: true`. |
 | ~~2026-09-18~~ | ~~MEDIUM~~ | ~~no~~ | ~~**Row 1.1 needs the phone sighting.**~~ RESOLVED 2026-09-18T15:13:20Z — **Owner sighting 2026-09-18T15:04Z, verbatim:** *"https://dunchitrader-collab.github.io all works are expected without any data in it though"* Row 1.1 is `done`. |
-| 2026-09-18 | HIGH | no | **Row 3.3 is held open on ONE clause.** The sighting covered most of it — nothing scrolled sideways, no text left its box, the header did not swallow the screen and the size buttons did not grow. But *"no phone number breaks mid-digit"* **cannot** have been shown: the feed still serves the wrong tab, so no cards and therefore no phone number were on screen. Deliberately not closed on evidence that could not have shown it. Closes when 2.1 is unblocked and the owner presses the largest A with real cards visible. |
-| 2026-09-18 | HIGH | no | **Row 4.2 needs the owner's Apps Script deployment.** The script and its numbered steps are committed. Follow [PATH] `apps-script/DEPLOY.md` while signed in as `dunchitrader@gmail.com`. Closes when a vote from a real phone lands in the Votes tab. |
+| ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 3.3 is held open on ONE clause.** The sighting covered most of it — nothing scrolled sideways, no text left its box, the header did not swallow the screen and the size buttons did not grow. But *"no phone number breaks mid-digit"* **cannot** have been shown: the feed still serves the wrong tab, so no cards and therefore no phone number were on screen. Deliberately not closed on evidence that could not have shown it. Closes when 2.1 is unblocked and the owner presses the largest A with real cards visible.~~ RESOLVED 2026-09-18T17:04:41Z — the held clause is now sighted. **Owner sighting 2026-09-18 (~16:50Z), verbatim:** *"Task 1 is a pass."* He pressed the largest A on his phone with real cards on screen and confirmed the phone number stays in one piece with nothing running off the right edge. Row 3.3 is `done`. |
+| 2026-09-18 | HIGH | no | **Row 4.2 needs a vote FROM A REAL PHONE.** ~~The script and its numbered steps are committed. Follow [PATH] `apps-script/DEPLOY.md` while signed in as `dunchitrader@gmail.com`.~~ SUPERSEDED 2026-09-18T17:04:41Z → the owner has deployed it (REPORTED by him, not measured here) and the endpoint is now wired in `app.js` at `4d67c15` and **verified served live**. **DEPLOY.md step 4 is superseded** — the endpoint was set in this repository and pushed to both remotes, so the owner must NOT hand-edit `app.js` in the live repo. What remains is only the closing evidence: the owner opens the live site **on his phone**, taps a trade, taps "I recommend them too", fills both boxes, taps "Add my recommendation", then opens the Votes tab and sees the row. Closes on that. |
+| 2026-09-18 | HIGH | no | **Delete the test row from the Votes tab.** Row 4.3's measurement deliberately submitted one real recommendation through the live site, so the Votes tab now carries a row that is not a villager's. It is labelled for deletion in both text columns. Column `id` is `T001`; column `name` is `TEST - Claude Code 2026-09-18 - please delete`; column `text` begins `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` Delete that one row. **Note the caveat:** because the cross-origin response is opaque, this session could not confirm from the browser that the row was actually appended — if the Votes tab has no such row, that is itself the finding, and it means row 4.2's append path is not working. |
 | 2026-09-18 | MEDIUM | no | **Row 5.1 needs the formulas pasted.** Paste-ready in [PATH] `apps-script/SHEET-FORMULAS.md`. Closes when one sample row of each of the four verdicts shows correctly in the real sheet. |
 | 2026-09-18 | MEDIUM | no | **Row 6.1 needs the runbook walked.** [PATH] `docs/RESTORE-dunchi-trader.md` is written; the walk needs the Form, Sheet, Apps Script and Pages under the two logins and is the owner's. |
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 3.1 needs Gavin's sighting.**~~ RESOLVED 2026-09-18T15:13:20Z — same sighting. Every clause of row 3.1 is visible without data, so the sighting covers it in full. Row 3.1 is `done`. |
 | ~~2026-09-18~~ | ~~**CRITICAL**~~ | ~~**YES**~~ | ~~**The published CSV serves the WRONG TAB.**~~ RESOLVED 2026-09-18T15:20:38Z — the owner republished from the Published tab (gid `1915382769`) and seeded four test rows. `app.js` switched at commit `0267ef3` and verified live. The feed now returns the agreed eight-column header. |
-| 2026-09-18 | HIGH | no | **Rows 2.1 and 3.3 await the owner's sighting WITH DATA.** Everything on both is measured against the live site — real rows render under the right trades, the hidden row is absent, and at the largest text size no phone number splits mid-digit (0px overflow). Both are rendered surfaces, so neither closes on measurement. The owner opens the site on his phone, taps a trade, and presses the largest A. |
+| ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Rows 2.1 and 3.3 await the owner's sighting WITH DATA.** Everything on both is measured against the live site — real rows render under the right trades, the hidden row is absent, and at the largest text size no phone number splits mid-digit (0px overflow). Both are rendered surfaces, so neither closes on measurement. The owner opens the site on his phone, taps a trade, and presses the largest A.~~ RESOLVED 2026-09-18T17:04:41Z — **Owner sighting 2026-09-18 (~16:50Z), verbatim:** *"Task 1 is a pass."* He opened the live site on his phone, tapped Plumber, pressed the largest A, and confirmed a card shows name, business and a working green Call button, that it reads correctly, and that the phone number stays in one piece with nothing running off the right edge. Both rows are `done`. |
 | 2026-09-18 | HIGH | no | Form question 1 is a dropdown with "Other" typed as an ordinary option. Must become Multiple Choice with the real Add "Other" control. |
 | 2026-09-18 | HIGH | no | Email collection is on and required on the form. Must be turned off. |
 | 2026-09-18 | HIGH | no | A star-rating question exists on the form, contradicting decision 3. Must be removed. |
@@ -135,12 +137,18 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 
 ~~The owner completes the seven operator actions in Layer 4, starting with the **CRITICAL** republishing of the CSV from the Published tab. Then Build Plan `PLAN-DUNCHI-TRADER-V1` step 1 can begin. Step 2 is **blocked** until the CSV serves the correct tab.~~ SUPERSEDED 2026-09-18T14:13:45Z →
 
-**Two things are needed from the owner, and the first now blocks everything:**
+~~**Two things are needed from the owner, and the first now blocks everything:**~~
 
-1. **Supply a push credential for the `dunchitrader-collab` GitHub account** — a Personal Access Token with `repo` scope on `dunchitrader-collab/dunchitrader-collab.github.io`, or add an existing account as a collaborator with write access. **Until this exists nothing can reach the live site**, and because a change is only built when it is visible at the URL Gavin opens, no build plan row can be completed. Rows 1.1 and 1.2 are `blocked` on exactly this. The code for both is written and pushed to `origin` at `c1a4f78`; only the push to the live repo is missing.
-2. **Republish the CSV from the Published tab** — still blocks Build Plan row 2.1.
+~~1. **Supply a push credential for the `dunchitrader-collab` GitHub account** — a Personal Access Token with `repo` scope on `dunchitrader-collab/dunchitrader-collab.github.io`, or add an existing account as a collaborator with write access. **Until this exists nothing can reach the live site**, and because a change is only built when it is visible at the URL Gavin opens, no build plan row can be completed. Rows 1.1 and 1.2 are `blocked` on exactly this. The code for both is written and pushed to `origin` at `c1a4f78`; only the push to the live repo is missing.~~
+~~2. **Republish the CSV from the Published tab** — still blocks Build Plan row 2.1.~~
 
-Plus the remaining Google-side operator actions in Layer 4.
+~~Plus the remaining Google-side operator actions in Layer 4.~~ SUPERSEDED 2026-09-18T17:04:41Z — both are resolved. Push works via the `gsamwell-lang` classic token; the CSV serves the Published tab. →
+
+**The build is at 46 of 75 effort (61.3%), 9 of 14 rows done. Nothing is blocked on code. Three things are needed from the owner, all Google-side:**
+
+1. **Place ONE vote from your phone, then look at the Votes tab.** This is the only thing standing between the project and row 4.2. Open `https://dunchitrader-collab.github.io` on your phone, tap a trade, tap "I recommend them too", type a name and a sentence, tap "Add my recommendation" — then open the Sheet's **Votes** tab and confirm a new row appeared. The endpoint is wired and served; the page will show its thank-you either way, because the cross-origin reply is unreadable by design (Layer 3), so **the sheet is the only proof**.
+2. **Delete the test row** this session wrote into the Votes tab — identified in the Outstanding Items table above.
+3. **The remaining Google-side operator actions in Layer 4** — the form's dropdown/"Other" control, email collection, the star-rating question, the missing trades, and the Layer 5.1 formulas.
 
 ---
 
@@ -255,6 +263,24 @@ The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file a
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
 
+**[BUG] 2026-09-18 — the votes `fetch` RESOLVES on failure; `catch` will never fire and `ok`/`status` carry no information**
+Root cause: the votes POST is sent with `mode: 'no-cors'`, which makes the browser return an **opaque** response. Measured 2026-09-18T17:02:32Z from the live Pages origin in a real browser: the promise **resolves** — it does not throw and does not reject — with `Response.type: "opaque"`, `status: 0`, `ok: false`, `redirected: false`, `url: ""` and **zero readable headers**. Those values are returned *whether or not the append succeeded*, so they are not a signal. The `try/catch` in `sendRecommendation()` is therefore dead code for network failures: it can only catch a synchronous throw, which does not occur here.
+Impact: **the page cannot ever tell a villager whether their recommendation was saved**, and any future attempt to add error handling by branching on `ok`, `status` or a `.catch()` will silently do nothing — it will report success on a total failure. This is why the thank-you is optimistic by design, and the optimism is now a measured necessity rather than a guess. The only proof a vote landed is the Votes tab itself.
+Fix applied: none required — the design is correct. The mistaken *reason* in the solution design was corrected: §6.2 previously said Apps Script "does not reliably return CORS headers", but it **does** return `access-control-allow-origin: *` on the 302. The reply is unreadable because `no-cors` discards it, not because the header is missing. `docs/SOLUTION-DESIGN-dunchi-trader.md` §6.2 rewritten with the measurement and the superseded inference preserved; risk-register row 7 closed.
+Diagnosis: in a browser at the Pages origin, `fetch(VOTES_ENDPOINT, {method:'POST', mode:'no-cors', ...}).then(r => console.log(r.type, r.status, r.ok))` → `opaque 0 false`. At the network layer the same request shows `302` → followed `GET` → `200` → `net::ERR_ABORTED`; **that abort is the normal, successful ending**, not a fault.
+
+**[BUG] 2026-09-18 — `GITHUB_TOKEN` in the environment silently overrides the git credential helper and breaks the push to `origin`**
+Root cause: this environment exports `GITHUB_TOKEN`, a **fine-grained** PAT belonging to `gsamwell-personal`. `gh auth git-credential` prefers that env var over the stored `gsamwell-lang` classic token regardless of which account `gh auth switch` has made active, so `git push origin master` was refused with `remote: Write access to repository not granted.` / HTTP 403 — against `gsamwell-lang/dunchi-trader`, a repo the session plainly could push to. Measured this session: the identical push succeeded immediately when run as `GITHUB_TOKEN= git push origin master`.
+Impact: a session can conclude it has lost access to its own development remote, or misread this as the *collab* permission problem recorded below, which it is not. The two failures look alike and have different causes.
+Fix applied: none committed — this is environment behaviour, not repo state. Prefix the push: `GITHUB_TOKEN= git push origin master`. Note `gh auth switch` alone is **not** sufficient; the env var wins.
+Diagnosis: `gh auth status` showing `Logged in to github.com account gsamwell-personal (GITHUB_TOKEN)` with `Active account: true` while a different account is the one you intend. If a push 403s against a repo you own, re-run it as `GITHUB_TOKEN= git push …` before investigating anything else.
+
+**[BUG] 2026-09-18 — the site requests `/favicon.ico` and gets a 404 on every page load**
+Root cause: no `favicon.ico` exists in the repository and `index.html` declares no icon link, so the browser makes its default request and GitHub Pages answers 404. Measured 2026-09-18T17:03Z on a plain load of the live site with no vote placed: exactly one failed request, `https://dunchitrader-collab.github.io/favicon.ico` → 404.
+Impact: cosmetic only — nothing on the page is affected and no villager will see it. It is recorded because **it puts a red error line in the browser console on every load**, and a future session debugging the votes POST will see that 404 and may waste time attributing it to the vote. It is not the vote: the votes POST returns 302→200.
+Fix applied: none — out of scope for this session's tasks. Recorded in Layer 4 as a LOW outstanding item.
+Diagnosis: load the site with the console open; a single 404 for `favicon.ico` and no other failed request is the expected, harmless state.
+
 **[BUG] 2026-09-18 — Published CSV serves the wrong tab**
 Root cause: the published CSV URL recorded for this project is publishing the **Form responses** tab, not the curated **Published** tab. Measured this session: the first line of the fetched CSV is the form's question text — `Timestamp,Email Address,What Trade are you recommending?,...` — not the agreed `id, first_name, last_name, business, phone, trade, extra_trade, status`.
 Impact: if the site were built against this URL today it would read raw, unreviewed form submissions, including villagers' email addresses, and the manual approval gate would be bypassed entirely.
@@ -325,7 +351,7 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 - **GitHub Pages will not serve from a private repository on a free account.** The live repo must be public, so no credential may ever be committed.
 - **GitHub Pages applies Jekyll by default.** The live site is currently serving a default Jekyll page. A `.nojekyll` file at the repo root is required so the committed files are served untouched — otherwise "no build step" is not actually true.
 - **The votes endpoint is necessarily open**, because villagers do not log in. It is append-only to the Votes tab; it cannot read, edit or delete anything, and cannot touch Published. **Worst case is junk rows in a tab only the owner looks at.** This trade-off is explicitly accepted (decision 12a).
-- **Posting to an Apps Script web app from a GitHub Pages origin usually needs `mode: 'no-cors'` with `Content-Type: text/plain`**, meaning the response cannot be read. Show the thank-you optimistically. **This is REPORTED, not measured** — it is the expected behaviour of Apps Script and browser CORS, but it has not been tested on this project. Confirm when Build Plan step 4 is built.
+- ~~**Posting to an Apps Script web app from a GitHub Pages origin usually needs `mode: 'no-cors'` with `Content-Type: text/plain`**, meaning the response cannot be read. Show the thank-you optimistically. **This is REPORTED, not measured** — it is the expected behaviour of Apps Script and browser CORS, but it has not been tested on this project. Confirm when Build Plan step 4 is built.~~ [historical — see Layer 1 for current value] SUPERSEDED 2026-09-18T17:02:32Z → **NOW MEASURED, and the conclusion holds while the stated reason does not.** `mode: 'no-cors'` with `Content-Type: text/plain;charset=utf-8` is correct and the response is indeed unreadable (opaque, `status: 0`, no headers), so the optimistic thank-you stands. But Apps Script **does** return `access-control-allow-origin: *`; the reply is discarded by `no-cors` itself, not missing. Also measured: the promise **resolves** rather than rejecting, so failures cannot be caught. See Layer 3 and solution design §6.2.
 
 ---
 
@@ -338,8 +364,20 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 These sit inside Google and can only be done by the account owner. **They are deliberately not Build Plan sub-tasks.**
 
-**[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: yes**
-**Republish the CSV from the Published tab.** Measured this session: the published CSV URL currently serves the raw Form responses tab, whose header is the form's question text, not the agreed `id, first_name, last_name, business, phone, trade, extra_trade, status`. Until this is corrected, the site would read unreviewed submissions and bypass the approval gate entirely. **This blocks Build Plan step 2.** Either republish from the correct tab and record the new URL here, or confirm the existing URL is repointed.
+~~**[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: yes**~~
+~~**Republish the CSV from the Published tab.** Measured this session: the published CSV URL currently serves the raw Form responses tab, whose header is the form's question text, not the agreed `id, first_name, last_name, business, phone, trade, extra_trade, status`. Until this is corrected, the site would read unreviewed submissions and bypass the approval gate entirely. **This blocks Build Plan step 2.** Either republish from the correct tab and record the new URL here, or confirm the existing URL is repointed.~~ RESOLVED 2026-09-18T15:20:38Z — the owner republished from the Published tab (gid `1915382769`); `app.js` switched at `0267ef3` and verified live. Recorded here 2026-09-18T17:04:41Z; the Layer 1 row was closed at the time but this Layer 4 copy was missed.
+
+**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
+**Place one vote from your phone and confirm it reaches the Votes tab.** This is the sole remaining evidence for Build Plan row 4.2, and nothing in the code blocks it. Open `https://dunchitrader-collab.github.io` on your phone, tap a trade, tap "I recommend them too", type a name and a sentence of at least 15 characters, tap "Add my recommendation" — then open the Sheet's **Votes** tab and confirm a new row appeared. **The page will show its thank-you whether or not the write succeeded** (Layer 3 — the cross-origin reply is opaque and carries no information), so the sheet is the only proof. `apps-script/DEPLOY.md` **step 4 is superseded** — do NOT hand-edit `app.js` in the live repo; the endpoint is already set at `4d67c15` and served.
+
+**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
+**Delete the test row from the Votes tab.** Build Plan row 4.3's measurement deliberately submitted one real recommendation through the live site, so the Votes tab carries a row that is not a villager's. It is labelled for deletion in both text columns: `id` is `T001`, `name` is `TEST - Claude Code 2026-09-18 - please delete`, and `text` begins `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` **If no such row is present, that is itself a finding** — it would mean the append path is not working, and row 4.2 should not be closed.
+
+**[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**
+**The site 404s on `/favicon.ico` on every page load.** No icon file exists and `index.html` declares no icon link. Cosmetic — no villager is affected — but it puts a red error line in the browser console on every load, which will mislead a future session debugging the votes POST. Either add a small `favicon.ico` at the repo root or declare an inline data-URI icon link. See Layer 3.
+
+**[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**
+**The comment above `VOTES_ENDPOINT` in `app.js` is now stale.** Lines 27–29 still read "The Votes endpoint does not exist yet" and lines 287–291 still read "TODAY IT SENDS NOTHING … there is no endpoint to post to", both of which became false at `4d67c15` when the endpoint was wired and measured live. The code is correct; only the prose is wrong. It was deliberately left untouched because the prompt for that change said to alter nothing else in the file, and it is recorded here rather than silently fixed. A future session should correct both comments to describe the deployed endpoint and the measured opaque-response behaviour.
 
 **[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
 **Change form question 1 from a dropdown to Multiple Choice.** It is currently a dropdown with "Other" typed as an ordinary option. A dropdown cannot have a working "Other" — the villager selects the word and gets no text box. It must use the real Add "Other" control.
@@ -509,6 +547,22 @@ The first draft of `PLAN-DUNCHI-TRADER-V1` carried **90 sub-tasks and 231 effort
 | **A QR code** | Too advanced for the audience. Decision 10. |
 | **A login** | The audience is elderly. A login is where they stop. |
 | **A build step of any kind** | Decision 14. Breaks inheritance. |
+
+### 2026-09-18 — Votes endpoint wired in the repository, not in the live repo by hand
+
+**[DECISION]** The Apps Script Web app URL is set in `app.js` **in this repository** and pushed to both remotes, **superseding `apps-script/DEPLOY.md` step 4**, which instructed the owner to hand-edit `app.js` in the live repo after deploying.
+
+**Rationale:** the two repositories must stay byte-identical — Layer 1 records `dunchitrader-collab` as authoritative if they diverge, and a hand-edit in the live repo only would create exactly the divergence that rule exists to arbitrate. It would also put the endpoint in the served file but not in the development remote, so the next session's `app.js` would silently revert it on the next push. Setting it once in source and pushing to both keeps a single origin for the value. DEPLOY.md's own text was deliberately left unaltered this session because correcting it was not in scope; the supersession is recorded here, in Layer 1 and in Layer 4 so nobody follows step 4 by accident.
+
+**Alternatives considered:** having the owner follow DEPLOY.md step 4 as written — rejected for the divergence and revert risks above. Rewriting DEPLOY.md in the same session — deferred rather than rejected; it is the obvious follow-on and is noted for a future session.
+
+**[DECISION]** Build Plan row 4.2 is **held open** even though the endpoint is wired, served and demonstrably reachable.
+
+**Rationale:** the row's own done-when closes it only when a vote placed **on a real phone** appends a row to the Votes tab. This session drove a vote from a server-side browser, which is not a phone; and because the cross-origin response is opaque (Layer 3), even that vote cannot confirm from the browser side that the row was appended. Closing 4.2 would have meant asserting an append this session could not observe. Writing it as open and naming precisely what is missing is the honest record. `[PATTERN CANDIDATE: evidence-matches-claim]` — the general shape is that a row closes on the evidence its own wording names, never on adjacent evidence that merely resembles it; this is the third row in this project held open on that basis (3.3 at 15:06Z, and now 4.2).
+
+**[DECISION]** Solution design §6.2 is corrected to record the measurement, with the superseded inference preserved verbatim inside the section rather than deleted.
+
+**Rationale:** the old text's *conclusion* (use `no-cors`, show the thank-you optimistically) was right, but its *stated reason* (Apps Script "does not reliably return CORS headers") was wrong — the header is present. A silent overwrite would have hidden that a documented mechanism had been disproven, and a future session would have had no way to tell the corrected text from the original guess. Keeping both makes the correction auditable. The genuinely new fact, and the one most likely to cause a future bug, is that the promise **resolves** rather than rejecting, so error handling added later would silently never fire.
 
 ---
 
@@ -1149,3 +1203,165 @@ The plan stands at **31 of 75 effort (41.3%)**. Rows 2.1 and 3.3 hold full measu
 **Effort per prompt for the plan, cumulative: 31 effort done ÷ 10 prompts sent = 3.1.** Both figures recorded, not only the ratio.
 
 This conversation is closed to further sends after this entry. A successor conversation continues the plan.
+
+### 2026-09-18T17:08:55Z — Votes endpoint wired and served; cross-origin behaviour measured; rows 2.1, 3.3 and 4.3 closed
+
+**Source:** Claude Code
+**Started:** 2026-09-18T16:59:00Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH
+**Repos touched this session:** `gsamwell-lang/dunchi-trader` (origin), `dunchitrader-collab/dunchitrader-collab.github.io` (collab). No other repository was read or written.
+
+**Prompt received:**
+
+> Target repo: dunchi-trader
+>
+> Comply with the loaded global CLAUDE.md and the loaded project CLAUDE.md. Both auto-load — do NOT Read either.
+>
+> MODE: IMPLEMENTATION. Package tier (a) hard/ambiguous, model claude-opus-5, effort high.
+>
+> ## CONTEXT TRANSFER BRIEF
+>
+> This is a NEW Claude.ai conversation, successor to https://claude.ai/cowork/cse_01U4wmyQG3nVGNetpsU5i2zw which is closed to further sends. My conversation reference is https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH — use it in the handover entry, never the predecessor's.
+>
+> Plan: PLAN-DUNCHI-TRADER-V1, read via get_build_plan at 2026-09-18T16:32:43Z against head e52e49ec, tree clean, 0 behind. 14 rows, 75 effort, 31 done (41.3%) at compose time. Composed against HEAD e52e49ec9a761c68834dfa22ee236b6f74504960, re-read clean and level at 16:57:57Z.
+>
+> MISSION, as I hold it: a public web app listing local tradespeople recommended by villagers of Dunchideock, Devon — a recommendations list and deliberately not a review site, built for an elderly audience who will mostly use a phone and zoom heavily, where a villager opens a link, taps a trade, and taps a large green Call button. I read that from the project-memory index projection, NOT from the file, so treat it as REPORTED: re-read the MISSION block at source in docs/HANDOVER-dunchi-trader.md as your first task and say so.
+>
+> TWO THINGS HAPPENED OUTSIDE THE REPO since e52e49ec, both from the Owner (Gavin) in my conversation today:
+>
+> 1. THE OWNER'S SIGHTING, 2026-09-18 ~16:50Z. He was asked: open https://dunchitrader-collab.github.io on his phone, tap Plumber, press the largest A, and confirm a card shows name, business and a working green Call button, that it reads correctly, and that the phone number stays in one piece with nothing running off the right edge. His reply, VERBATIM: "Task 1 is a pass." That is the rendered-surface sighting rows 2.1 and 3.3 were held open for.
+>
+> 2. THE APPS SCRIPT IS DEPLOYED. He followed apps-script/DEPLOY.md steps 1–3 under the dunchitrader@gmail.com account: Votes tab created with the four-column header, Code.gs pasted, deployed as a Web app executing as himself with access set to Anyone. He supplied this Web app URL, which I am passing through VERBATIM and which you must paste exactly, never retype or reformat:
+>
+> https://script.google.com/macros/s/AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec
+>
+> The Votes tab's existence and the deployment settings are REPORTED BY THE OWNER, not measured here. Do not write them up as measured.
+>
+> DEPLOY.md step 4 has the Owner hand-editing app.js in the live repo. That is superseded by this prompt so the two repositories stay identical: you make the change in dunchi-trader and push to both remotes. Leave DEPLOY.md's text alone unless task 5 says otherwise.
+>
+> ## TASK 0 — GUARDS
+>
+> Confirm HEAD is e52e49ec, branch master, tree clean, 0 ahead / 0 behind origin. Read the MISSION block at source and state it back. Read rows 2.1, 3.3, 4.2 and 4.3 of docs/BUILD-PLAN-dunchi-trader.md in full — their own wording governs what may close. If any guard fails, STOP and report.
+>
+> ## TASK 1 — wire the endpoint
+>
+> In app.js set VOTES_ENDPOINT to the URL above, exactly as given. Change nothing else in that file. Commit, push to origin master and to collab master:main.
+>
+> Then MEASURE THE SERVED FILE, cache-busted: fetch app.js from https://dunchitrader-collab.github.io and confirm the served copy contains that exact URL and that its sha256 equals the committed file's. Built means live at the URL the Owner opens — do not report this done on the commit alone.
+>
+> ## TASK 2 — close rows 2.1 and 3.3
+>
+> Record the Owner's sighting verbatim, with its date, as the closing evidence, and move both rows to done — BUT read each row's own done-when wording first. If any clause of either row could NOT have been shown by that sighting, leave that row open and say exactly which clause, rather than closing it on evidence that could not have shown it.
+>
+> ## TASK 3 — row 4.3, the cross-origin measurement
+>
+> This row was blocked on 4.2's endpoint and is now unblocked. Drive the LIVE site at https://dunchitrader-collab.github.io in a real browser on the server (Chromium/puppeteer), from that Pages origin, and submit one recommendation through the card's own panel. MEASURE what actually happens at the origin: what the fetch returns or throws, whether the response is opaque, what status and headers are observable, whether any redirect is followed, and how long it takes. Then correct solution design §6.2 to record what was OBSERVED rather than what was expected, naming the date and the measurement.
+>
+> Two constraints. This writes a real row into the Owner's Votes tab — label it clearly in the "What they said" text as a test from this session so he can delete it, and tell him in your summary exactly what to delete. And if the server's browser cannot reach script.google.com, STOP and report that plainly; do not substitute a stand-in endpoint or infer the behaviour.
+>
+> ## TASK 4 — row 4.2 stays OPEN
+>
+> Do not close 4.2. Its wording closes it only when a vote placed ON A REAL PHONE appends a row to the Votes tab, and that is the Owner's next step. Record in the handover that the endpoint is wired and served, and that 4.2 awaits his phone vote. A server-driven browser vote in task 3 is not a phone and does not close it.
+>
+> ## TASK 5 — record and land
+>
+> Update docs/HANDOVER-dunchi-trader.md as you go: a Layer 6 entry for this session citing my conversation reference, Layer 1 current facts (VOTES_ENDPOINT now set, deployment reported by the Owner), and any new Layer 3 issue you hit. Update docs/BUILD-PLAN-dunchi-trader.md rows per tasks 2, 3 and 4 with full STD-00009 row grammar and the delivery fields; never insert or renumber. Commit all of it and push both remotes. Run the plan validator and report its exit code AND its reported sub-task count against the rows the document actually holds — a clean exit is not evidence every row was read.
+>
+> ## RETURN
+>
+> - A detailed written summary.
+> - A formatted table of what was tested and each result, measured values not assertions.
+> - The exact text of the test row for the Owner to delete from the Votes tab.
+> - The plan's new completion position: effort done, effort total, percentage.
+> - The end-of-session summary and any recommended follow-on prompt as a single copy-paste-ready fenced code block.
+> - State the model and effort this session ran on.
+
+**What was done:**
+
+**Task 0 — guards, all passed.** `git rev-parse HEAD` returned `e52e49ec9a761c68834dfa22ee236b6f74504960`; branch `master`; `git status --porcelain` empty; `git rev-list --left-right --count origin/master...HEAD` returned `0 0`. The **MISSION block was re-read at source**, in this file's Layer 1 under "What the System Does" (not from the index projection, and not from the prior sessions' restatements at lines 991 and 1083, which are summaries inside Layer 6 entries rather than the canonical block). It reads: a public web app listing local tradespeople recommended by villagers of Dunchideock, Devon; a recommendations list and deliberately not a review site; villagers open a link, tap a trade, and tap a large green Call button, which is the whole product; built for an elderly audience who will mostly use a phone and will zoom heavily; tradespeople from surrounding parishes count but the site is for Dunchideock; and the wording rule — always "tradesperson", never "tradesman", with "trader" acceptable as the owner's own word. That matches what the prompt held as REPORTED, so the prompt's version is confirmed rather than corrected. Rows 2.1, 3.3, 4.2 and 4.3 were then read in full from the build plan.
+
+**Task 1 — the endpoint is wired and, more importantly, SERVED.** One line changed in `app.js` (line 30), setting `VOTES_ENDPOINT` to the owner's Web app URL. The URL was **byte-compared against the prompt's text with `cmp`** before committing rather than eyeballed, because a single transposed character in an Apps Script deployment id fails silently as a 404 that looks exactly like a working endpoint from the page's side. `git diff --stat` confirmed exactly one file, one insertion, one deletion — nothing else in the file was touched. Committed as `4d67c15` and pushed to both remotes.
+
+The push to `origin` failed first with `remote: Write access to repository not granted` / HTTP 403, against a repository this session plainly owns. That is recorded as a new `[BUG]` in Layer 3: the environment exports `GITHUB_TOKEN`, a fine-grained PAT for `gsamwell-personal`, and `gh auth git-credential` prefers it over the stored `gsamwell-lang` classic token **regardless of which account `gh auth switch` has made active**. `GITHUB_TOKEN= git push origin master` succeeded immediately. It is worth recording because it mimics the pre-existing collab permission bug and would send a future session down the wrong path.
+
+The served-file measurement was then taken as instructed, and it mattered: the **first** cache-busted fetch of `app.js` from the live site returned the OLD file (19454 bytes, `urlhits=0`) — GitHub Pages had not rebuilt. Had this been reported on the commit alone it would have been wrong at that moment. Polling showed the new file live ~40 s after the push. Final state: served `app.js` is 19566 bytes, carries the exact endpoint on line 30, and its sha256 `4c628ce0813e3a4caf4ae6ebbbbb7ad08e162a19cb849cb3071c565733e77c13` is **byte-identical to the committed file** (confirmed by both `sha256sum` and `cmp`).
+
+**Task 2 — rows 2.1 and 3.3 closed, each checked clause by clause against its own wording.** The owner's sighting (2026-09-18 ~16:50Z, verbatim *"Task 1 is a pass."*) was recorded in both rows with the full text of what he was asked, since "a pass" is only meaningful alongside the question it answers.
+
+Row 3.3 closes cleanly: every clause of its done-when maps onto what he was asked to do — largest text size on his phone, nothing scrolling sideways, no text leaving its box, **no phone number breaking mid-digit**, the header not swallowing the screen, the size buttons not growing. The mid-digit clause is the one the 15:04Z sighting had to be rejected for, because no cards were on screen then; this time the feed serves real rows, so real numbers were visible and the clause is genuinely covered.
+
+Row 2.1 needed more care, because its done-when contains structural clauses a single Plumber tap cannot show — every active row under the right heading, a two-trade person under both without being double-counted, inactive rows absent, empty trades absent. Rather than close those on the prior session's measurement (which would be REPORTED here, not measured), **they were independently re-measured in this session against the live site** in a real browser at 320px: 4 trade headings render, each showing a count of 1; `Test Sparky` appears under both `Electrician` and `Heating` from a single feed row and is counted once under each; the hidden row yields no heading and no card; every card carries a working `tel:` anchor. With those measured here and the owner supplying the rendered-surface and name/business confirmation, every clause is satisfied and the row closes. One observation recorded as a note rather than a defect: on the Plumber and Roofer cards the business line is not visually distinct from the name, consistent with those feed rows carrying a business equal to the name.
+
+**Task 3 — the cross-origin behaviour is now measured, and it corrected the design.** Server egress to `script.google.com` was confirmed first (the stop condition): reachable, and notably the endpoint 302-redirects to `script.googleusercontent.com`. No Chromium or puppeteer was installed, but Chrome binaries were cached; `puppeteer-core` was installed into the scratchpad (not into the repo) and pointed at the cached Chrome 148.
+
+The measurement drove **the shipped path, not a synthetic fetch**: the live site was loaded at 320px mobile viewport, Plumber tapped, "I recommend them too" tapped, both boxes filled, and "Add my recommendation" pressed. `window.fetch` was wrapped only to observe what the shipped call returned; the call itself was unaltered. Observations were taken at two independent levels — what page JavaScript can see, and what the browser's network layer records.
+
+What the page sees: the promise **resolves** — it does not throw and does not reject — with `Response.type: "opaque"`, `status: 0`, `ok: false`, `redirected: false`, `url: ""`, and zero readable headers. Round trip **2779.9 ms**. What the network layer records: `POST` to `…/exec` with `referer: https://dunchitrader-collab.github.io/` → **HTTP 302** carrying `access-control-allow-origin: *` and a `location` to `script.googleusercontent.com/macros/echo`; the browser **follows** that redirect as a `GET` → **HTTP 200**; then `net::ERR_ABORTED` as no-cors discards the body, which is the normal successful ending rather than a fault.
+
+Two things in the design were wrong and are now corrected in §6.2. The old text said Apps Script "does not reliably return CORS headers" — it **does** return `access-control-allow-origin: *`; the reply is unreadable because `no-cors` discards it. And the promise **resolving** rather than rejecting is the consequential finding: the existing `try/catch` in `sendRecommendation()` is dead code for network failures, and any future error handling branching on `ok`, `status` or `.catch()` would silently never fire while reporting success on total failure. That is recorded as a `[BUG]` in Layer 3 because it is a trap for a future session, not a defect in current behaviour — the optimistic thank-you is correct and is now measured rather than inferred. §6.2 was rewritten with the superseded inference preserved verbatim inside the section, and risk-register row 7 was closed.
+
+A console `404` appeared during the run. Rather than assume it was the vote, it was isolated on a plain page load with no vote placed: it is `/favicon.ico`, present on every load and unrelated. Recorded as a minor `[BUG]` and a LOW Layer 4 item precisely because it will mislead someone debugging the votes POST.
+
+**Task 4 — row 4.2 deliberately left open.** Its wording closes it only on a vote placed on a real phone appending a row to the Votes tab. A server-driven browser is not a phone, and — the sharper point — because the response is opaque, **even this session's vote could not confirm from the browser that the row was appended**. The row was annotated with the endpoint being wired and served, with the deployment recorded as REPORTED by the owner, and with exactly what remains.
+
+**Task 5 — recorded and landed.** Handover updated in Layer 1 (new Votes endpoint URL row with its measurement and a clear REPORTED marker on the deployment settings; plan position superseded to 61.3%; three Outstanding Items closed with strikethrough and sanctioned markers; three added; the stale "Next Action" block superseded), Layer 2 (the now-disproven CORS gotcha struck through and corrected), Layer 3 (three new `[BUG]` entries), Layer 4 (a missed CRITICAL item closed, four new items), Layer 5 (three `[DECISION]` entries with rationale) and Layer 6 (this entry). Build plan rows 2.1, 3.3 and 4.3 moved to `done` with full evidence; 4.2 annotated and left `new`; the three satellite delivery rows updated. No row was inserted or renumbered.
+
+**Testing performed:**
+
+| # | What was tested (exact action) | Expected | Actual (measured) | Result |
+|---|---|---|---|---|
+| 1 | `git rev-parse HEAD` | `e52e49ec…` | `e52e49ec9a761c68834dfa22ee236b6f74504960` | PASS |
+| 2 | `git status --porcelain`; `git rev-list --left-right --count origin/master...HEAD` | clean, `0 0` | empty output; `0	0` | PASS |
+| 3 | `cmp` of the URL written into `app.js` against the prompt's URL | byte-identical | byte-identical | PASS |
+| 4 | `git diff --stat` after the edit | 1 file, 1 insertion, 1 deletion | `app.js \| 2 +-`, 1 file changed | PASS |
+| 5 | `git push origin master` (first attempt) | succeeds | **HTTP 403 `Write access to repository not granted`** | **FAIL — diagnosed, Layer 3** |
+| 6 | `GITHUB_TOKEN= git push origin master` | succeeds | `e52e49e..4d67c15  master -> master` | PASS |
+| 7 | `git push collab master:main` | succeeds | `e52e49e..4d67c15  master -> main` | PASS |
+| 8 | Cache-busted fetch of live `app.js`, **first attempt** | carries the endpoint | 19454 bytes, **0 endpoint matches — stale** | **FAIL — Pages not yet rebuilt** |
+| 9 | Same fetch after ~40 s | carries the endpoint | 19566 bytes, 1 match, line 30 exact | PASS |
+| 10 | sha256 served vs committed `app.js` | equal | both `4c628ce0813e3a4caf4ae6ebbbbb7ad08e162a19cb849cb3071c565733e77c13`; `cmp` identical | PASS |
+| 11 | Server egress to `script.google.com` (`curl`, POST) | reachable | `connect=0.0116s`, HTTP `302` → `script.googleusercontent.com`, then `405` on the redirected GET | PASS — reachable |
+| 12 | Live site, 320px browser: trade headings rendered | 4 headings | `Electrician1`, `Heating1`, `Plumber1`, `Roofer1` | PASS |
+| 13 | Two-trade person counted once under each heading | under both, once each | `Test Sparky` under `Electrician` and `Heating`, count 1 each | PASS |
+| 14 | Inactive/hidden row excluded | absent | no heading, no card | PASS |
+| 15 | Call button is a working `tel:` link on every card | `tel:` anchors | `tel:07700900456`, `tel:07825736940`, `tel:01392123456`, all `<a>` | PASS |
+| 16 | Recommendation submitted through the card's own panel on the live site | panel opens, sends | panel opened on `Duckers Plumber`, both boxes filled (145 chars), send fired | PASS |
+| 17 | What the votes `fetch` returns to the page | opaque, unreadable | **resolved** (not thrown/rejected); `type: opaque`, `status: 0`, `ok: false`, `redirected: false`, `url: ""`, 0 headers | PASS — measured |
+| 18 | Votes POST round-trip duration | — | **2779.9 ms** | measured |
+| 19 | Network-layer status of the votes POST | — | `302` with `access-control-allow-origin: *` → followed `GET` → `200` → `net::ERR_ABORTED` | measured |
+| 20 | Isolate the console `404` on a plain page load (no vote) | identify source | exactly one failed request: `/favicon.ico` → `404` | PASS — unrelated to votes |
+| 21 | `python3 validate_build_plan.py --verbose` | exit 0 | `OK`, exit `0`, 7 steps, **14 sub-tasks**, done effort **46/75 = 61.3%** | PASS |
+| 22 | Independent row count vs validator's sub-task count | equal | document holds **14** status rows (9 `done`, 5 `new`); validator read **14** | PASS — no rows invisible |
+| 23 | Independent recompute of done effort from the file | matches validator | `46` | PASS |
+
+**What was not tested:**
+
+- **Whether the test recommendation actually appended a row to the Votes tab.** This is the honest limit of task 3 and it is stated plainly rather than glossed: the cross-origin response is opaque, so the browser can prove the request was sent and that the script answered `302`→`200`, but it **cannot** prove `appendRow` ran. Only opening the sheet settles it, and that needs the owner's Google login. If the row is absent, that is a finding about row 4.2, not about this measurement.
+- **The Votes tab's existence, its four-column header, and the deployment settings** (executing as the owner, access Anyone). These are **REPORTED BY THE OWNER** and were not measured here; they are labelled REPORTED everywhere they appear.
+- **A vote from a real phone** — row 4.2's own closing condition, deliberately left to the owner.
+- **The owner's sighting itself** was not reproduced on a physical phone; it is his direct observation, recorded verbatim. This session's browser measurements at 320px are a separate, independent line of evidence, not a substitute for it.
+- **`apps-script/DEPLOY.md` step 4** was left unaltered, as instructed. It now contradicts the live state; the supersession is recorded in Layers 1, 4 and 5 instead, and correcting the file is flagged as follow-on work.
+- **The two stale comments in `app.js`** (lines 27–29 and 287–291) still say the endpoint does not exist and that nothing is sent. Left untouched because the instruction for that file was to change nothing else; recorded as a LOW Layer 4 item.
+
+**Commits:**
+
+- `4d67c15` — `feat: wire VOTES_ENDPOINT to the deployed Apps Script web app`
+
+**Finished:** 2026-09-18T17:08:55Z
+
+**End state:**
+
+The site is live at `https://dunchitrader-collab.github.io`, serving real tradespeople from the Published tab, and **a villager's recommendation now leaves the page** — the votes endpoint is wired at `4d67c15`, verified byte-identical on the served file, and measured reachable from the Pages origin with a `302`→`200` at the network layer.
+
+The plan stands at **46 of 75 effort (61.3%)**, 9 of 14 rows `done`, up from 31/75 (41.3%). Rows 2.1, 3.3 and 4.3 closed this session. **Nothing is blocked on code.**
+
+Three things are needed from the owner, all inside Google, and the first is small and decisive:
+
+1. **Place one vote from your phone and then look at the Votes tab.** That single act closes row 4.2. The page will thank the villager either way — the cross-origin reply carries no information, by design and now by measurement — so the sheet is the only proof.
+2. **Delete the test row** this session wrote: `id` `T001`, `name` `TEST - Claude Code 2026-09-18 - please delete`, `text` beginning `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` If it is not there, row 4.2 must not be closed — its absence is the finding.
+3. **The remaining Google-side operator actions** in Layer 4: the form's dropdown/"Other" control, email collection, the star-rating question, the missing trades, and the 5.1 sheet formulas.
+
+Two documentation debts are recorded rather than silently carried: `apps-script/DEPLOY.md` step 4 now contradicts the live state and must not be followed, and two comments in `app.js` still claim the endpoint does not exist. Both are flagged in Layer 4 for a future session.
+
+**Effort per prompt for the plan, cumulative: 46 effort done ÷ 11 prompts sent = 4.18.** Both figures recorded, not only the ratio.

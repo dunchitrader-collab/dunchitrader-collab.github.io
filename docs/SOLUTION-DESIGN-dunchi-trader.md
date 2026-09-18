@@ -270,17 +270,68 @@ spreadsheet edits cannot break the site.
 
 ### 6.2 The Apps Script response, and a known gotcha
 
-Posting to an Apps Script web app from the GitHub Pages origin is a cross-origin request.
-Apps Script does not reliably return CORS headers, so the request will in practice need
-`mode: 'no-cors'` with `Content-Type: text/plain`.
+**MEASURED 2026-09-18T17:02:32Z against the deployed endpoint, build plan row 4.3.** What
+follows is what was observed, not what was expected. The previous text of this section was an
+inference and is preserved at the end so the correction is visible.
 
-The consequence is that **the response cannot be read**. The page cannot tell whether the
-write succeeded. The design therefore shows the thank-you **optimistically** — it confirms to
-the villager on the basis of having sent the request, not on the basis of a reply.
+Posting to the Apps Script web app from the GitHub Pages origin is a cross-origin request, and
+the shipped call uses `mode: 'no-cors'` with `Content-Type: text/plain;charset=utf-8`.
 
-This is recorded as a *likely* gotcha, inferred from how Apps Script and browser CORS
-normally behave. It has not been measured on this project. **Confirm the actual behaviour
-when Step 4 is built**, and correct this section to record what was observed.
+**Method.** A real Chromium browser (HeadlessChrome 148, 320px mobile viewport) was pointed at
+the live site `https://dunchitrader-collab.github.io`, a trade was tapped, and one
+recommendation was submitted through the card's own panel — the shipped path, not a synthetic
+fetch. `window.fetch` was wrapped only to observe what the shipped call returned; the call
+itself was unaltered. Observations were taken at two levels: what the page's JavaScript can
+see, and what the browser's network layer records.
+
+**What the page can see — an opaque response, as predicted, but the promise RESOLVES:**
+
+| Property | Observed value |
+|---|---|
+| Promise outcome | `resolved` — it does **not** throw or reject |
+| `Response.type` | `opaque` |
+| `Response.status` | `0` |
+| `Response.ok` | `false` |
+| `Response.redirected` | `false` |
+| `Response.url` | `""` (empty) |
+| Readable headers | none — zero entries enumerable |
+| Round trip | **2779.9 ms** |
+
+The design's conclusion therefore **stands, and is now measured rather than assumed**: the page
+cannot tell whether the write succeeded, so the thank-you is shown **optimistically**, on the
+basis of having sent the request rather than on a reply.
+
+Two details matter for anyone maintaining this, and both correct the old wording:
+
+1. **The promise resolves; it does not reject.** A `catch` around the `fetch` will therefore
+   not fire on a failed write, and `try/catch` cannot be used to detect one. `ok` is `false`
+   and `status` is `0` for an opaque response *regardless of whether the append succeeded* —
+   these values carry no information and must never be branched on.
+2. **The stated reason in the old text was wrong.** Apps Script *does* return
+   `access-control-allow-origin: *` here. The reply is unreadable because `mode: 'no-cors'`
+   makes the browser discard it, not because the header is missing.
+
+**What the network layer records** (observable to the browser, never to the page):
+
+- `POST` to `…/exec` with `referer: https://dunchitrader-collab.github.io/` → **HTTP 302**,
+  carrying `access-control-allow-origin: *`, `content-length: 0`, and a `location` pointing at
+  `https://script.googleusercontent.com/macros/echo?user_content_key=…`.
+- **The redirect IS followed** by the browser, as a `GET`, which returns **HTTP 200**.
+- That final response is then `net::ERR_ABORTED` — the no-cors mode discards the body. This
+  abort is the normal, expected end of a successful opaque post and is **not** an error
+  condition.
+
+**The limit of this measurement, stated plainly.** Because the response is opaque, the browser
+proves the request was sent and that the script responded 302→200; it does **not** prove that
+`appendRow` ran and that a row reached the Votes tab. Confirming the row itself requires
+opening the sheet, which is the owner's step and is what build plan row 4.2 closes on. This
+measurement closes row 4.3 — the cross-origin *behaviour* — and does not close 4.2.
+
+> **Superseded text, preserved.** *"Apps Script does not reliably return CORS headers, so the
+> request will in practice need `mode: 'no-cors'` with `Content-Type: text/plain`. … This is
+> recorded as a likely gotcha, inferred from how Apps Script and browser CORS normally behave.
+> It has not been measured on this project."* — inference, SUPERSEDED 2026-09-18 by the
+> measurement above. The `no-cors` conclusion held; the reason given for it did not.
 
 ---
 
@@ -731,7 +782,7 @@ recommendations worth reading.
 | 4 | **CSV fetch fails** (offline, Google outage, URL broken) | Medium | High if unhandled | **A failed fetch must never produce a blank page.** Build Plan 2 requires an explicit fetch-failed state with a human-readable message. |
 | 5 | **Sheet is empty** at launch or after an edit | Medium | Medium | **An empty sheet must never produce a blank page.** Explicit empty state required. |
 | 6 | **Five-minute lag mistaken for a broken site** | High | Low | Stated in the README, in RESTORE, and in §6.1 |
-| 7 | **Apps Script CORS behaves unexpectedly** (§6.2) | Medium | Medium | Optimistic UI; confirm real behaviour during Step 4 and correct §6.2 |
+| 7 | ~~**Apps Script CORS behaves unexpectedly** (§6.2) | Medium | Medium | Optimistic UI; confirm real behaviour during Step 4 and correct §6.2~~ **CLOSED 2026-09-18 — measured, §6.2 corrected.** The response is opaque exactly as designed for; the optimistic UI is correct. One correction to the plan's assumption: the fetch promise **resolves** rather than rejecting, so failures cannot be caught. Risk retired. |
 | 8 | **Votes endpoint abused** | Low | Low | Bounded by design (§8.2); redeploy to recover |
 | 9 | **Someone adds a build step later** | Medium over years | **Severe — breaks inheritance** | §10.3 states the prohibition and the one-sentence test that decides it |
 | 10 | **Two repositories drift** | Medium | Medium | dunchitrader-collab is authoritative (§10.4) |
