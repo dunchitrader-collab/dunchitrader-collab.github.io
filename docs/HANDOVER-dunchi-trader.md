@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T18:34:46Z
+last-updated: 2026-09-18T19:36:47Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T18:34:46Z**
+**Last updated: 2026-09-18T19:36:47Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ SUPERSEDED 2026-09-18T18:30Z → **56 of 79 effort (70.9%)**, 12 of 16 rows done. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ SUPERSEDED 2026-09-18T19:35Z → **58 of 87 effort (66.7%)**, 13 of 18 rows done. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -121,6 +121,8 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 4.2 needs a vote FROM A REAL PHONE.** The script and its numbered steps are committed. Follow [PATH] `apps-script/DEPLOY.md` while signed in as `dunchitrader@gmail.com`. … the owner has deployed it and the endpoint is now wired in `app.js` at `4d67c15` and verified served live. What remains is only the closing evidence: the owner opens the live site on his phone, taps a trade, taps "I recommend them too", fills both boxes, taps "Add my recommendation", then opens the Votes tab and sees the row. Closes on that.~~ RESOLVED 2026-09-18T17:48Z — **Owner confirmation 2026-09-18 (~17:47Z), verbatim:** *"the vote populated"*. He placed the vote from his phone on the live site and confirmed the row reached the Votes tab. Build Plan row 4.2 is `done`. His FIRST attempt at ~17:25Z did not reach the sheet and he retried on a cache-busted URL — see the stale-page `[BUG]` in Layer 3; the endpoint was provably working throughout. |
 | 2026-09-18 | HIGH | no | **Delete the TWO non-villager rows from the Votes tab before launch.** The tab now holds two rows that are not a villager's recommendation, and they are different things: **(1) the automated test row** from Build Plan row 4.3's cross-origin measurement — `id` `T001`, `name` `TEST - Claude Code 2026-09-18 - please delete`, `text` beginning `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` **(2) the owner's own test vote** from ~17:47Z, the one that closed row 4.2 — whatever name and words he typed, against whichever tradesperson he tapped. Only he knows its content; it is the row whose arrival he confirmed. **Both should go before launch**, so the tally on each card counts only real villagers. Deleting rows from the Votes tab is safe and affects nothing else — the site never reads that tab. **Do NOT delete anything from the Published tab in the process**; that is the list itself. His first ~17:25Z attempt produced no row at all, so there is nothing to remove for that one. |
 | 2026-09-18 | MEDIUM | no | **Row 5.1 needs the formulas pasted.** ~~Paste-ready in [PATH] `apps-script/SHEET-FORMULAS.md`.~~ SUPERSEDED 2026-09-18T18:20Z → **the previously committed formulas were WRONG against the real sheet and would have written nonsense into every row.** They assumed phone in E, name in D+J, experience text in G and business in J; the real layout is phone **F**, first name **D**, last name **E**, business **G**, experience text **H**, trade **C**, with **J** the first free column. Rewritten and re-simulated at `bd3f42a` against the owner's three real rows plus nine constructed ones. **They now go in `J2`, `K2`, `L2` on Form responses, with two helper columns in `I2`/`J2` on Published** — the cells changed, so any earlier note about K/L/M/N is superseded. NOT RUN IN GOOGLE SHEETS. Closes when one sample row of each of the four verdicts shows correctly in the real sheet. |
+| 2026-09-18 | **CRITICAL** | no | **Install the automatic publisher — paste `Publish.gs`, add the on-form-submit trigger, run the backfill once.** Full numbered steps in [PATH] `apps-script/DEPLOY.md` **Part 2** (steps 6–9). Until the trigger is installed, nothing publishes itself and the site shows only what is already on the Published tab. `apps-script/Code.gs` is NOT touched by any of this — it stays exactly as deployed. **Tested against a stub only; it has never run in Google Sheets**, so his first real submission is the proof.
+| 2026-09-18 | HIGH | no | **RULE FOR HIS RULING — the form should tell villagers their recommendation goes public.** Recorded, not implemented; changing the form is his alone. A tradesperson's name and telephone number now appear on a public website without anybody asking that tradesperson, and the villager submitting is the only person in a position to have asked them. Suggested: add one line to the form's description saying the recommendation will be shown publicly with the tradesperson's name and number. See solution design §7.3.
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Form email collection is still ON.** Evidence, REPORTED by the owner: the third real response row carries `gsamwell@deverse.co.uk` in column B. This contradicts decision 3 … **Settings → Responses → Collect email addresses → Off.** Only the owner can change it; nobody here can touch the Google Form.~~ RESOLVED 2026-09-18T18:30Z — **REPORTED BY THE OWNER, NOT MEASURED HERE.** He reports having turned email collection off in Google on 2026-09-18. Nobody in this session can verify it: the form's settings are visible only while signed in and editing the form, and the responses tab is not published. It will become observable the first time a new submission arrives with column B empty — worth a glance then, and until then it stands on his report alone. |
 | ~~2026-09-18~~ | ~~MEDIUM~~ | ~~no~~ | ~~**The telephone validation rule is too loose to catch a typo, and may also be absent.** … Recommendation: tighten the rule so it counts digits rather than characters.~~ RESOLVED 2026-09-18T18:30Z — **REPORTED BY THE OWNER, NOT MEASURED HERE.** He reports having installed an **eleven-digit** phone validation rule in Google on 2026-09-18, which is the digit-counting form recommended. Same limitation as the row above: form settings cannot be seen from outside the account, so this stands on his report. The measured finding it replaces is preserved in the record: the old documented rule `^[\d\s\+\(\)\-]{10,20}$` counted *characters*, which is why the twelve-digit `078853335434` passed it — that was never evidence the rule was missing. Solution design §7.1 updated to the new rule, marked REPORTED. |
 | 2026-09-18 | MEDIUM | no | **Row 6.1 needs the runbook WALKED.** [PATH] `docs/RESTORE-dunchi-trader.md` is written and was **reconciled to the deployed state on 2026-09-18T17:40Z at `983525f`** so the walk is not wasted on stale instructions — it had been written before the Apps Script was deployed. It now carries a **walk-through tick list** at the end, one line per step naming what should be seen, usable on a phone beside a laptop. The walk itself needs the Form, Sheet, Apps Script and Pages under the two logins and is the owner's; nothing in the build can substitute for it. **Two steps are honestly marked as not confirmable from outside the Google account** — step 3's email-collection and response-validation settings — with an incognito test given for what can be checked. |
@@ -470,6 +472,16 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 # LAYER 4 — OUTSTANDING WORK
 
+**[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: no**
+**Install the automatic publisher.** Three steps, all inside the spreadsheet, all written out in [PATH] `apps-script/DEPLOY.md` **Part 2**: paste `apps-script/Publish.gs` as a second Apps Script file (step 6), add the **on-form-submit** trigger on `onFormSubmitPublish` (step 7), and run **Village list → Publish any responses not yet on the list** once (step 8). Then check it with **Village list → Check the setup** and one real form submission (step 9). **`apps-script/Code.gs` is not touched** — the votes endpoint stays exactly as deployed. **The publisher has been tested only against a stub and has never run in Google Sheets**; his first real submission is the proof, which is why row 5.2 closes on that and not on this session's tests. Switching it off again is one trigger deletion, also documented.
+
+**[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**
+**`apps-script/Code.gs` still carries `MIN_TEXT = 15`.** Yesterday's owner ruling moved the minimum length of the recommendation text to **seven** characters on the website (`app.js`) and in the sheet verdict (`SHEET-FORMULAS.md`), but the votes endpoint was not in scope for either change and still rejects a recommendation under fifteen characters server-side. **Consequence, and it is small but real:** a villager can type a seven-character note, the page accepts it and thanks them, and the endpoint silently drops it — the opaque cross-origin reply means the page cannot tell, exactly as recorded in Layer 3. Noticed 2026-09-18T19:27Z while reading `Code.gs` for the publisher work and deliberately NOT changed, because that file is the internet-facing endpoint and no prompt has authorised touching it. Fixing it means changing one constant and redeploying the web app, which produces a **new `/exec` URL** unless the existing deployment is edited rather than replaced — see `apps-script/DEPLOY.md`.
+
+**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
+**Rule on whether the Google Form should tell villagers their recommendation goes public.** Recorded as a recommendation and deliberately NOT implemented — the form is his and nobody here can change it. The reason it now matters: before today a human read every submission before anything appeared, and from now on a tradesperson's name and telephone number can reach a public website without that tradesperson ever being asked. The villager filling the form in is the only person positioned to have asked them, and at present the form does not tell them that is what they are doing. Suggested wording is one line in the form's description. See solution design §7.3.
+
+
 ~~**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**~~ RESOLVED 2026-09-18T18:30Z — **REPORTED by the owner, not measured here.** He turned email collection off in Google on 2026-09-18. Form settings cannot be seen from outside the account, so this stands on his report; it becomes observable the first time a new submission arrives with column B empty.
 ~~**Turn form email collection OFF.** Evidence, REPORTED by the owner from his own sheet: the third real response row carries `gsamwell@deverse.co.uk` in column B. It contradicts decision 3, and requiring a Google sign-in is exactly the barrier that stops an elderly villager at the first step. **Settings → Responses → Collect email addresses → Off.** Only he can do it; nobody here can touch the Google Form. Note this also means villagers' email addresses are currently landing in the responses tab — they never reach the site, because the site reads only the Published tab, but they are being collected without need.~~
 
@@ -787,6 +799,30 @@ The first draft of `PLAN-DUNCHI-TRADER-V1` carried **90 sub-tasks and 231 effort
 **[DECISION]** Trade-name normalisation is **measured, recommended, and deliberately NOT implemented** — it awaits the owner's ruling.
 
 **Rationale:** the question left open by the previous session was how close two spellings must be before they merge. **Now measured** (Layer 3): whitespace is forgiven, capitalisation is not, so `Plumber` and `plumber` produce two headings while `Plumber ` and ` Plumber` merge correctly. That makes the risk concrete rather than theoretical, and it lands precisely where the owner works — he retypes the trade when copying a row to Published. The case for lower-casing the grouping key is therefore strong, and the fix is small. It is not implemented here for two reasons: this prompt asked for a recommendation, and it is a behaviour change on a closed row (2.1) that would need its own row and its own served-page evidence, exactly as 4.5 did. **Recommended shape if he rules for it:** group by the lower-cased trade while displaying the first spelling encountered, so `Plumber`/`plumber` merge under one heading without changing what anyone sees. The mitigation already in place is procedural — `docs/PROCESS-seeding-and-launch-dunchi-trader.md` tells him to copy trade names from its list rather than retype them. `[PATTERN CANDIDATE: free-text-key-needs-a-vocabulary-check]`
+
+### 2026-09-18 — D7a, publishing becomes automatic; D6a, trades group ignoring capitals
+
+**[DECISION] D7a — publishing is automatic. The manual review gate is removed.**
+
+**Owner's ruling 2026-09-18 (~19:20Z), verbatim:** *"OK i am not doing this by hand. I said as a design principle this will be no admin. Make it automatic from the form responses. I will routinely check the data and overwrite whatever looks messy. That is easier and can be done in batch. In fact we can write a script for that can we not?"*
+
+**Rationale:** his ruling, and it restates a design principle that predates this project's build — no admin. It outranks the solution design, which is downstream of it, so §7.3 changed rather than the ruling being argued with. The practical case is his own: a sweep of a tidy list, done in batch when it suits him, is less work and more likely to actually happen than a per-row approval that accumulates a backlog and eventually gets skipped. An approval step nobody performs is worse than no approval step, because the documents claim a protection that is not being applied.
+
+**The consequence, recorded factually rather than as an objection, because it is the thing a future session must not discover by surprise:** the Google Form is open to anyone with the link, and what it collects now reaches the live site **with no human in between**. The protection is no longer an approval; it is three hard checks in `apps-script/Publish.gs` plus the owner's batch sweep. A submission passing all three is visible to the village within the republish lag. The directory's *content* is therefore as open as the form is. Its *shape* — ids, columns, which tab the site reads — remains closed to everyone but the account holder, and the site still cannot be written to from the internet.
+
+**What the three hard checks are, and why each:** no usable phone number, defined as not exactly eleven digits after normalisation — a mistyped number sends a villager to a stranger, which is worse than an absent listing, and eleven is what every genuine UK number on this project measures and what the owner put on the form itself. An email address or a web link in any field — a villager has no reason to type either, an advertiser does. A phone already on Published — a second row would split one person's recommendations across two ids. All three publish `hidden` rather than rejecting, so nothing a villager sent is ever lost.
+
+**Alternatives considered:** keeping the dropdown as a gate and automating only the copy — rejected, it still requires him to act on every row, which is the thing he ruled out. Rejecting bad rows outright instead of hiding them — rejected, a villager's submission would vanish with no record and no way to recover a genuine one behind a mistyped digit.
+
+**[DECISION]** `Publish.gs` is a **separate file from `Code.gs`, and the two must stay separate.**
+
+**Rationale:** they have opposite security properties and merging them would destroy both. `Code.gs` is on the internet, reachable by anyone with the URL, and is deliberately bounded so the worst case is junk in the Votes tab — it cannot read, cannot touch Published, and cannot be pointed at another tab. `Publish.gs` writes to Published, which is the directory itself, and is therefore **account-only**: an installable trigger and a menu item, never deployed as a web app, never given a URL, unreachable from the internet. Putting the Published-writing code in the file that is exposed to the internet would put the directory one deployment mistake away from being writable by strangers. Both files say so in their own headers so that a future session reading either one sees the constraint without needing this entry.
+
+**[DECISION] D6a — trades group ignoring capitals, displaying the first spelling encountered.**
+
+**Rationale:** his ruling on the defect measured in the previous session. Without it a row typed `plumber` created a second tile beside `Plumber` with one person under it, invisible to anyone who tapped the first — silent, since nothing errors. It matters more now than it did yesterday: under D7a the trade text arrives straight from a villager's form answer, so free text entered under "Other" reaches Published without anyone tidying it first. Displaying the first spelling met, rather than lower-casing or title-casing the label, keeps ordinary words on screen instead of showing the village a normalised key.
+
+**A limit worth stating:** `Publish.gs` tidies spacing and capitalisation on the way in, but it **cannot map meaning** — it does not know that "boiler" is Heating or "sparky" is Electrician, and a synonym list would be guesswork about what a villager meant. Free text under "Other" therefore still creates a new tile with that exact wording, and the owner's sweep is what catches it. That is written into the script's own comments so nobody later assumes the normalisation is cleverer than it is.
 
 ---
 
@@ -2332,3 +2368,136 @@ A villager can now write *"Fixed gate"* and be thanked rather than refused, on t
 **One ruling is waiting on him:** whether the site should group trade headings case-insensitively. The risk is now measured rather than theoretical, and the fix is small, but it is a behaviour change on a closed row and it is his call.
 
 **Effort per prompt for the plan, cumulative: 56 effort done ÷ 16 prompts sent = 3.5.** Both figures recorded, not only the ratio.
+
+### 2026-09-18T19:35:08Z — The review gate replaced by an automatic publisher; trades group ignoring capitals
+
+**Source:** Claude Code
+**Started:** 2026-09-18T19:26:00Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH
+**Repos touched this session:** `gsamwell-lang/dunchi-trader` (origin), `dunchitrader-collab/dunchitrader-collab.github.io` (collab). No other repository was read or written.
+
+**Prompt received:**
+
+> Target repo: dunchi-trader
+>
+> MODE: IMPLEMENTATION. Package tier (a) hard/ambiguous, model claude-opus-5, effort high.
+>
+> Same conversation as prompts 2665, 2667, 2670, 2671, 2673 and 2675. You landed 2675 at 18:35Z. Repo re-read by me at 19:25:38Z: HEAD c28c50819548cf71670b5fbd4f3ab0586eb6536c, master, tree clean, 0 ahead / 0 behind. Plan at 56/79 = 70.9%, 12 of 16 rows done.
+>
+> MISSION: re-read at source in task 0 and name it back.
+>
+> ## REQUIREMENT AS STATED — THE REVIEW GATE IS BEING REPLACED
+>
+> The Owner has ruled that publishing becomes automatic. His words, verbatim, 2026-09-18 ~19:20Z:
+>
+> "OK i am not doing this by hand. I said as a design principle this will be no admin. Make it automatic from the form responses. I will routinely check the data and overwrite whatever looks messy. That is easier and can be done in batch. In fact we can write a script for that can we not?"
+>
+> This reverses the manual copy-to-Published gate. It is his ruling and it outranks the solution design, which is downstream of it. Where the design describes a manual approval step, the design is what changes. Do not argue the point back at him in the documents; record the change and its consequence factually.
+>
+> He then ruled two decisions:
+>
+> D7a — the automatic gate is NOT wide open. Clean submissions publish themselves; three hard failures land in Published with status hidden instead, off the site and waiting for him: no usable phone number, an email address or a web link in any field, or a duplicate of somebody already listed.
+>
+> D6a — the site groups trades ignoring capitals, displaying the first spelling seen. You measured the defect yourself in 2675: capitals split a tile in two, whitespace already merges.
+>
+> The Owner has also confirmed this evening that he has pasted all four sheet formulas and the dropdown, and that his three real response rows read NEW.
+>
+> [Tasks 0–6 as issued: guards and the eight Published columns; append two plan rows; write apps-script/Publish.gs as a NEW file without touching Code.gs, with id/plain-value/append-only/hard-failure/trade/name constraints and a twice-safe backfill, tested against a stub; add deployment instructions; case-insensitive trade grouping in app.js closed only on served-page evidence; update the documents that describe the old gate; record and land.]
+
+**What was done:**
+
+**Task 0 — guards passed, MISSION re-read at source, and the Published contract stated before writing to it.** HEAD `c28c50819548cf71670b5fbd4f3ab0586eb6536c`, master, clean, `0 0`. The eight Published columns in order: **`id`, `first_name`, `last_name`, `business`, `phone`, `trade`, `extra_trade`, `status`** — columns A to H. Worth noting for anyone writing to that tab later: **`I` and `J` now hold the sheet-formula helper columns**, so the publisher writes A–H only and appends nothing beyond H. `apps-script/Code.gs` was read in full and is untouched by this session.
+
+**A stale value was noticed in `Code.gs` and deliberately left alone:** it carries `MIN_TEXT = 15`, which yesterday's seven-character ruling superseded on the page and in the sheet. It is out of scope here — this prompt says nothing in it goes near that file — so it is recorded as a Layer 4 item rather than silently changed inside the internet-facing endpoint.
+
+**Task 1 — two rows appended, nothing renumbered.** `3.4` (case-insensitive trade grouping, effort 2) after 3.3, and `5.2` (the automatic publisher, effort 6) after 5.1, each with its satellite delivery row. Both provenances are unplanned work entered this session.
+
+**Task 2 — `apps-script/Publish.gs` written as a new file.** It is account-only: an installable on-form-submit trigger plus a `Village list` menu, never deployed as a web app and never given a URL. Each constraint was satisfied and checked rather than asserted:
+
+*Ids.* Derived from the **highest existing id on Published**, never a row count or position. Tested against a deliberately awkward sheet — ids `T004, T001, T009, T003`, out of order, with gaps at 002 and 005–008 and one of them `hidden` — and the next id is `T010`, not `T002` or `T005`. Interior gaps stay gaps forever. **One limit was found in testing and is documented in the file rather than hidden: deleting the HIGHEST id frees that number for reuse.** If `T010` is the last row and is deleted, the next submission becomes `T010` again and any recommendation filed against the old one would attach to the new person. That is inherent to deriving from the sheet, and the sheet is the only durable source given the owner edits by hand; the mitigation is the rule the README already carries — hide rows, never delete them — now repeated in the script and in DEPLOY.md Part 2.
+
+*Plain values.* Every cell written is a plain string. `plain()` additionally prefixes a leading `=` or `+` with an apostrophe, so a villager typing `=1+1` into a name box lands as text rather than becoming a live formula — verified in the stub.
+
+*Append only.* The only write is a single `appendRow` to Published, guarded by a forbidden-tab check. The stub throws if anything writes anywhere else; the Votes tab was byte-unchanged at the end of every test.
+
+*Usable phone number.* **Eleven digits after normalisation.** Stated and justified rather than assumed: every genuine number this project has seen measures eleven — `07825 736940`, `01392 123456`, and the `+44`/`0044` forms once folded — while the one known-bad number, `078853335434`, is twelve. It also matches the eleven-digit rule the owner installed on the form, so form and publisher agree instead of disagreeing silently.
+
+*Trade normalisation.* Trims, collapses runs of spaces, and capitalises the first letter of each word, preserving internal forms like `Carpenter / Joiner`. **What it does NOT do is stated in the file, because assuming otherwise would be a silent defect: it does not understand what a trade means.** It cannot map "boiler" to Heating or "sparky" to Electrician. Free text typed under the form's "Other" option creates a new tile with that exact wording, and the owner's sweep is what catches it.
+
+*Names.* The first-name box frequently carries a full name with the surname blank — two of the three real responses do exactly that, measured. If the last name is blank and the first contains a space, the **last word** becomes the surname: `Bob Samwell` → `Bob` / `Samwell`, `Mary Anne Blythe` → `Mary Anne` / `Blythe`. A single word with no surname stays as it is rather than inventing one.
+
+*Reading the responses tab.* **By header name, not column letter**, using leading-fragment matches. Deliberate: the sheet formulas were once written against guessed letters and were wrong in four places, and adding a form question shifts every letter. Both the trigger path and the backfill use the same matcher, so they cannot drift apart.
+
+*The backfill.* A menu item that publishes everything not yet on Published, matching on the normalised phone. **Run twice in the stub against the owner's three real rows: the first run added 3, the second added 0 and skipped 3, with the row count identical.** It is idempotent by construction rather than by a flag.
+
+**Task 3 — deployment instructions added to `apps-script/DEPLOY.md` as "Part 2" rather than a new document.** Stated and reasoned in the document itself: it is the same job from the owner's side — pasting a script into the same spreadsheet from the same menu — and two documents both beginning "open Extensions → Apps Script" is how they drift apart. Part 2 covers what changes when it is switched on, pasting `Publish.gs` as a second file, installing the trigger (with a warning to choose **On form submit**, not On edit, which would re-fire on his own tidying), running the backfill once, checking it, and deleting the trigger to switch it off again.
+
+**Task 4 — case-insensitive trade grouping, closed on served-page evidence.** All **three** places that keyed on the raw trade were moved to a shared lower-cased key — the tile grid, the autocomplete counts, and the filter applied when a trade is tapped — so none can disagree; a grep confirms no direct `l.trade` keying remains. Measured in a real browser against the LIVE site at 320px with a feed fixture at the network layer, so the owner's sheet was never touched: `Plumber` + `plumber` → **one tile reading `Plumber`, count 2**, tapping it gives heading `Plumber` and **2 cards**. With the lowercase spelling appearing **first**, the tile reads **`plumber`** — which is what actually proves the label is the first spelling met rather than a rewrite. Four spellings including `PLUMBER` and `" Plumber "` → **one tile, count 4, 4 cards**. Regression against the four live trades: still four separate tiles, one each, hidden row still absent, `Heating` still arriving via `extra_trade`, **0px overflow in every case**.
+
+**Task 5 — five documents updated to describe the system that now exists.** Solution design §7.3 rewritten with the ruling quoted, the three checks tabulated with the reason for each, and the consequence recorded plainly — the open form reaches the live site with no human in between, so the protection is those checks plus the sweep. §7.2's `NEW` action corrected: it has published itself. `README.md`'s flow diagram redrawn and the "you copy them across" step replaced. The PROCESS doc's gate paragraph superseded in place, with the seeding section explicitly still a hand job — the publisher handles what villagers send but cannot invent the twelve to fifteen people needed before launch. `SHEET-FORMULAS.md`'s gate sentence superseded: the dropdown is now a note to himself, and the tab is a view rather than a gate.
+
+**Recorded as a recommendation for his ruling and deliberately NOT implemented:** the Google Form's description should tell villagers their recommendation goes public. A tradesperson's name and telephone number now appear on a public website without that tradesperson being asked, and the villager submitting is the only person positioned to have asked them. It is a form wording change, which only he can make.
+
+**Task 6 — recorded and landed.** Layer 1: plan position superseded with the falling-percentage arithmetic explained; two new outstanding items. Layer 4: the same two as full items. Layer 5: three `[DECISION]` entries covering D7a, the separation of `Publish.gs` from `Code.gs`, and D6a.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual (measured) | Result |
+|---|---|---|---|---|
+| 1 | HEAD / branch / tree / sync | `c28c5081…`, master, clean, `0 0` | as expected | PASS |
+| 2 | Clean submission | published `active` | `T005`, Nigel/Hart, `active` | PASS |
+| 3 | Full name in first-name box | split | `Bob Samwell` → `Bob` / `Samwell` | PASS |
+| 4 | Three-part name | split on last word | `Mary Anne Blythe` → `Mary Anne` / `Blythe` | PASS |
+| 5 | Phone 12 digits | `hidden` | `T008`, `hidden` | PASS |
+| 6 | No phone at all | `hidden` | `T009`, `hidden` | PASS |
+| 7 | Email in business field | `hidden` | `T010`, `hidden` | PASS |
+| 8 | Web link in trade field | `hidden` | `T011`, `hidden` | PASS |
+| 9 | Duplicate phone | no row written | not written | PASS |
+| 10 | Duplicate via `+44` form | no row written | not written — normalisation matched | PASS |
+| 11 | Lowercase trade `"  plumber "` | tidied | `Plumber`, `active` | PASS |
+| 12 | Formula injection `=1+1` | inert | written as `'=1+1` | PASS |
+| 13 | Votes tab after all of the above | untouched | header row only, unchanged | PASS |
+| 14 | Id sequence with gaps, out of order | highest+1 | `T004,T001,T009,T003` → **`T010`** | PASS |
+| 15 | Deleting the HIGHEST id | — | **frees it for reuse** | LIMIT — documented |
+| 16 | Backfill, first run, 3 real rows | 3 added | "Added 3… Skipped 0" | PASS |
+| 17 | Backfill, second run | 0 added | "Added 0… Skipped 3", row count identical | **PASS — idempotent** |
+| 18 | Backfill reads the real header row | by name | matched all five fields | PASS |
+| 19 | Trigger path via `e.namedValues` | publishes | `T002`, `Ada` / `Blythe`, `Plumber`, `active` | PASS |
+| 20 | `node --check app.js` | parses | parses OK | PASS |
+| 21 | Direct `l.trade` keying left anywhere | none | 0 matches | PASS |
+| 22 | **SERVED: `Plumber` + `plumber`** | one tile | **1 tile `Plumber`, count 2, 2 cards** | **PASS** |
+| 23 | **SERVED: lowercase first** | label = first seen | **tile reads `plumber`** | **PASS** |
+| 24 | **SERVED: four spellings** | one tile | **1 tile `Plumber`, count 4, 4 cards** | **PASS** |
+| 25 | **SERVED: regression, four live trades** | unchanged | 4 tiles, 1 each, hidden absent, `Heating` present | **PASS** |
+| 26 | **SERVED: overflow at 320px** | 0px | **0px in all four cases** | **PASS** |
+| 27 | Validator after both rows appended | exit 0 | `OK`, **18 sub-tasks**, 58/87 = 66.7% | PASS |
+| 28 | Independent row count vs validator | equal | 18 vs 18 | PASS |
+
+**What was not tested:**
+
+- **`Publish.gs` has never run in Google Sheets.** Everything above is a local `SpreadsheetApp` stub modelling the API surface it uses. Apps Script's own behaviour — trigger authorisation, `getDataRange` on a live sheet, quota, the exact shape of `e.namedValues` from a real submission — is not exercised by any of it. **Row 5.2 closes on a real form submission landing a row on Published and the owner confirming it**, which is why it is `new`.
+- **The trigger has not been installed** and the backfill has not been run against the real sheet. Both are the owner's steps.
+- **The three hard checks have not faced a real adversary.** The email and link patterns catch the obvious shapes; somebody determined would get past them, and the design has always accepted that the worst case is a row the owner hides during his sweep.
+- **Row 5.1 is unchanged and still `new`.** The owner reports having pasted all four formulas and the dropdown, and that his three real rows read `NEW`. That is consistent with this session's simulation but was **not verified here**, and 5.1's own wording closes it on one sample row of each of the four verdicts showing correctly in his sheet.
+- **`Code.gs`'s stale `MIN_TEXT = 15`** was left as found and recorded, not changed.
+- **No Google-side change was made or attempted**, and nothing was written to the owner's sheet: the trade measurement used a substituted feed and the served-page tests blocked the votes POST.
+
+**Commits:**
+
+- `b8b54be` — `feat: automatic publisher, and case-insensitive trade grouping`
+- `c555707` — `docs: the review gate is gone - four documents now describe automatic publishing`
+
+**Finished:** 2026-09-18T19:35:08Z
+
+**End state:**
+
+The plan stands at **58 of 87 effort (66.7%)**, 13 of 18 rows `done`. **The percentage fell while real work landed**, which is arithmetic rather than regression: two rows were appended totalling 8 effort, and only one of them — 3.4, at 2 — closed. Against the old 79 denominator the same work would have read 58/79 = 73.4%. The honest reading is that the plan grew because the owner changed what the system does, not that anything went backwards.
+
+**What this session actually closed: row 3.4 only.** Row 5.2 is built, tested against a stub and documented, but it is `new` and stays `new` until a real submission publishes itself and the owner says so.
+
+The shape of the product has changed. A villager fills in the form and the tradesperson appears on the village list by themselves, within the republish lag, with no human in between — protected by three hard checks and the owner's batch sweep rather than by an approval step. That is his ruling and the documents now describe it plainly, including the part that is a genuine trade-off: the directory's content is as open as the form is.
+
+**Five rows remain, and every one waits on the owner:** **6.1** (9, walk the runbook), **5.2** (6, install the publisher and confirm a real submission), **5.1** (6, confirm the verdicts in his sheet), **7.1** (5, full journey, needs seeding), **7.2** (3, seed to 12–15 across ≥6 trades). Two non-villager rows still need deleting from the Votes tab before launch, one ruling is waiting on him about the form's description, and the launch message stays a draft.
+
+**Effort per prompt for the plan, cumulative: 58 effort done ÷ 17 prompts sent = 3.41.** Both figures recorded, not only the ratio.
