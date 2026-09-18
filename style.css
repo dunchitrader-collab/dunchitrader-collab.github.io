@@ -1,52 +1,497 @@
-/* Dunchideock Village Suppliers — placeholder styling.
-   The real stylesheet is ported from design/wireframe-dunchi-trader.html
-   at build plan sub-task 3.1. Nothing here is the agreed design. */
+/* Dunchideock Village Suppliers.
 
-:root{
-  --ground:#EAEEEB;
-  --card:#FFFFFF;
-  --ink:#101413;
-  --ink2:#3A4641;
-}
+   Ported from design/wireframe-dunchi-trader.html, which is the layout
+   authority. The accessibility rules in docs/SOLUTION-DESIGN-dunchi-trader.md
+   section 9 are the logic authority: where the two disagree, the design wins.
 
-*{box-sizing:border-box}
+   There is no build step. This file is served exactly as it is committed, so
+   it must stay plain CSS that a browser reads directly. */
 
-body{
-  background:var(--ground);
-  color:var(--ink);
-  font-family:"Atkinson Hyperlegible",Verdana,Arial,sans-serif;
-  font-size:20px;
-  line-height:1.55;
-  margin:0;
-  -webkit-text-size-adjust:100%;
-  overflow-wrap:break-word;
-}
+  :root{
+    --fs:20px;
+    font-size:var(--fs);
 
-.wrap{
-  max-width:46rem;
-  margin:0 auto;
-  padding:2rem 1rem 3rem;
-}
+    --ground:#EAEEEB;
+    --card:#FFFFFF;
+    --ink:#101413;
+    --ink2:#3A4641;
+    --line:#8A958F;
+    --line-soft:#C7CFC9;
+    --go:#0A4F2E;
+    --go-ink:#FFFFFF;
+    --note:#6B3A08;
+    --note-bg:#FBF1E3;
+    --note-line:#C8A268;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0F1311;
+      --card:#171C19;
+      --ink:#F2F6F2;
+      --ink2:#B9C4BC;
+      --line:#5D6A63;
+      --line-soft:#39433D;
+      --go:#58BC8B;
+      --go-ink:#06170E;
+      --note:#F0B879;
+      --note-bg:#241C12;
+      --note-line:#6B5330;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0F1311;
+    --card:#171C19;
+    --ink:#F2F6F2;
+    --ink2:#B9C4BC;
+    --line:#5D6A63;
+    --line-soft:#39433D;
+    --go:#58BC8B;
+    --go-ink:#06170E;
+    --note:#F0B879;
+    --note-bg:#241C12;
+    --note-line:#6B5330;
+  }
 
-h1{
-  font-size:1.6rem;
-  font-weight:700;
-  line-height:1.25;
-  margin:0 0 1rem;
-}
+  *{box-sizing:border-box}
 
-.soon{
-  margin:0 0 1.6rem;
-  padding:1rem;
-  font-size:1.05rem;
-  background:var(--card);
-  border:3px solid var(--ink);
-  border-radius:.4rem;
-}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Atkinson Hyperlegible",Verdana,Arial,sans-serif;
+    font-size:1rem;
+    line-height:1.55;
+    margin:0;
+    -webkit-text-size-adjust:100%;
+    overflow-wrap:break-word;
+  }
 
-.smallprint{
-  margin:0;
-  font-size:.95rem;
-  color:var(--ink2);
-  line-height:1.5;
-}
+  .wrap{
+    max-width:46rem;
+    margin:0 auto;
+    padding-inline:1rem;
+    padding-block:0 3rem;
+  }
+
+  /* ---------------- header ---------------- */
+  .top{
+    background:var(--ground);
+    padding-block:0 .2rem;
+  }
+
+  .vh{
+    position:absolute;
+    width:1px;height:1px;
+    margin:-1px;padding:0;border:0;
+    overflow:hidden;
+    clip-path:inset(50%);
+    white-space:nowrap;
+  }
+
+  label.big{
+    display:block;
+    margin:0 0 .3rem;
+    font-size:1.05rem;
+    font-weight:700;
+    line-height:1.3;
+  }
+  #search{
+    width:100%;
+    font-family:inherit;
+    font-size:1.15rem;
+    font-weight:400;
+    padding:.8rem .85rem;
+    min-height:3.2rem;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+  }
+
+  /* ---------------- text size control ----------------
+     Every value here is in px on purpose: this strip must stay the
+     same size whatever the reader sets, or it grows to fill the phone. */
+  .sizer{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:6px 0 8px;
+  }
+  .sizer b{
+    font-size:15px;
+    font-weight:700;
+    line-height:1.2;
+    margin-right:auto;
+  }
+  .sizer button{
+    font-family:inherit;
+    font-weight:700;
+    line-height:1;
+    width:48px;
+    height:44px;
+    padding:0;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--line);
+    border-radius:6px;
+    cursor:pointer;
+  }
+  .sizer button[aria-pressed="true"]{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--ground);
+  }
+  #s1{font-size:15px}
+  #s2{font-size:20px}
+  #s3{font-size:26px}
+
+  /* ---------------- autocomplete ---------------- */
+  #sugg{
+    display:flex;
+    flex-direction:column;
+    gap:.4rem;
+    margin:.5rem 0 0;
+  }
+  #sugg button{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.1rem;
+    width:100%;
+    min-height:3.4rem;
+    padding:.6rem .85rem;
+    text-align:left;
+    font-family:inherit;
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--line);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+  #sugg button > span{min-width:0;overflow-wrap:break-word}
+  #sugg button .kind{
+    font-size:.85rem;
+    font-weight:700;
+    color:var(--ink2);
+  }
+  #sugg mark{
+    background:transparent;
+    color:inherit;
+    text-decoration:underline;
+    text-decoration-thickness:3px;
+    text-underline-offset:3px;
+  }
+
+  /* ---------------- headings ---------------- */
+  h2{
+    font-size:1.3rem;
+    font-weight:700;
+    margin:.9rem 0 .7rem;
+    line-height:1.3;
+  }
+
+  /* ---------------- trade list ---------------- */
+  /* min() stops a track being wider than the screen at the largest
+     text size, which is what pushed the page sideways before. */
+  .trades{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap:.7rem;
+  }
+  .trade{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:.8rem;
+    width:100%;
+    min-height:4rem;
+    padding:.85rem 1rem;
+    text-align:left;
+    font-family:inherit;
+    font-size:1.15rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+  .trade strong{
+    min-width:0;
+    overflow-wrap:break-word;
+  }
+  .trade em{
+    flex:none;
+    font-style:normal;
+    font-size:.9rem;
+    font-weight:700;
+    color:var(--ink2);
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------------- back ---------------- */
+  .back{
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+    width:100%;
+    min-height:3.4rem;
+    margin:1.4rem 0 0;
+    padding:.6rem 1rem;
+    font-family:inherit;
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+
+  /* ---------------- trader cards ---------------- */
+  .cards{display:flex;flex-direction:column;gap:1rem}
+
+  .card{
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+    padding:1rem;
+  }
+  .card h3{
+    margin:0;
+    font-size:1.4rem;
+    font-weight:700;
+    line-height:1.25;
+  }
+  .card .biz{
+    margin:.15rem 0 0;
+    font-size:1.05rem;
+    color:var(--ink2);
+  }
+  .card .does{
+    margin:.5rem 0 0;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--ink2);
+  }
+
+  /* Two stacked lines so a long number never has to break mid-digit. */
+  .call{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:.1rem;
+    margin:.9rem 0 0;
+    padding:.8rem 1rem;
+    min-height:3.8rem;
+    background:var(--go);
+    color:var(--go-ink);
+    border-radius:.4rem;
+    text-decoration:none;
+    text-align:center;
+    font-weight:700;
+  }
+  .call .word{font-size:.95rem;letter-spacing:.06em}
+  .call .num{
+    font-size:1.15rem;
+    font-variant-numeric:tabular-nums;
+    letter-spacing:.01em;
+    overflow-wrap:anywhere;
+  }
+
+  .vote{
+    display:block;
+    width:100%;
+    margin:1rem 0 0;
+    padding:.8rem 1rem;
+    min-height:3.6rem;
+    text-align:center;
+    font-family:inherit;
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+
+  .panel{
+    margin:1rem 0 0;
+    padding:1rem;
+    background:var(--ground);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+  }
+  .panel h4{
+    margin:0 0 .8rem;
+    font-size:1.15rem;
+    font-weight:700;
+    line-height:1.3;
+  }
+  .panel label{
+    display:block;
+    margin:0 0 .3rem;
+    font-size:1rem;
+    font-weight:700;
+  }
+  .panel input, .panel textarea{
+    width:100%;
+    font-family:inherit;
+    font-size:1.1rem;
+    padding:.7rem .75rem;
+    margin:0 0 .9rem;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+  }
+  .panel input{min-height:3.2rem}
+  .panel textarea{min-height:6rem;line-height:1.5;resize:vertical}
+  .panel .send{
+    display:block;
+    width:100%;
+    min-height:3.8rem;
+    padding:.9rem 1rem;
+    font-family:inherit;
+    font-size:1.2rem;
+    font-weight:700;
+    color:var(--go-ink);
+    background:var(--go);
+    border:3px solid var(--go);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+  .panel .cancel{
+    display:block;
+    width:100%;
+    min-height:3.2rem;
+    margin-top:.6rem;
+    padding:.6rem 1rem;
+    font-family:inherit;
+    font-size:1.05rem;
+    font-weight:700;
+    color:var(--ink);
+    background:transparent;
+    border:3px solid var(--line);
+    border-radius:.4rem;
+    cursor:pointer;
+  }
+
+  .thanks{
+    margin:1rem 0 0;
+    padding:1rem;
+    font-size:1.15rem;
+    font-weight:700;
+    color:var(--go-ink);
+    background:var(--go);
+    border-radius:.4rem;
+  }
+
+  .tally{
+    margin:1rem 0 0;
+    padding-top:.7rem;
+    border-top:3px solid var(--ink);
+    font-size:1.05rem;
+    font-weight:700;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .recs{margin:.6rem 0 0;display:flex;flex-direction:column;gap:.9rem}
+  .rec{
+    border-top:2px solid var(--line-soft);
+    padding-top:.7rem;
+  }
+  .rec p{margin:0;font-size:1.05rem}
+  .rec .by{
+    display:block;
+    margin-top:.3rem;
+    font-size:.95rem;
+    font-weight:700;
+    color:var(--ink2);
+  }
+
+  .todo{
+    margin:.9rem 0 0;
+    padding:.7rem .8rem;
+    font-size:.95rem;
+    font-weight:700;
+    color:var(--note);
+    background:var(--note-bg);
+    border:2px solid var(--note-line);
+    border-radius:.4rem;
+  }
+
+  .none{
+    margin:1.2rem 0;
+    padding:1.2rem;
+    font-size:1.1rem;
+    color:var(--ink2);
+    background:var(--card);
+    border:3px solid var(--line);
+    border-radius:.4rem;
+  }
+
+  /* ---------------- message states ----------------
+     Empty sheet, unreachable feed, or a feed whose columns are not the
+     ones expected. Each says something a villager can act on. Never a
+     blank page and never a bare error string. */
+  .notice{
+    margin:1.2rem 0;
+    padding:1.2rem;
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+  }
+  .notice h2{margin:0 0 .6rem}
+  .notice p{margin:0 0 .7rem;font-size:1.05rem}
+  .notice p:last-child{margin-bottom:0}
+  .notice .quiet{font-size:.95rem;color:var(--ink2)}
+
+  .loading{
+    margin:1.2rem 0;
+    padding:1.2rem;
+    font-size:1.1rem;
+    color:var(--ink2);
+  }
+
+  /* ---------------- footer ---------------- */
+  .foot{
+    margin-top:2.4rem;
+    padding-top:1.2rem;
+    border-top:3px solid var(--ink);
+  }
+  .foot p{margin:0 0 .7rem;font-size:1.05rem}
+  .foot .problem{
+    margin:1.4rem 0 0;
+    padding-top:1.2rem;
+    border-top:2px solid var(--line-soft);
+    font-size:1.05rem;
+  }
+  .foot .smallprint{
+    margin:.8rem 0 0;
+    font-size:.95rem;
+    color:var(--ink2);
+    line-height:1.5;
+  }
+  .add{
+    display:block;
+    padding:.9rem 1rem;
+    min-height:3.6rem;
+    text-align:center;
+    font-size:1.15rem;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--card);
+    border:3px solid var(--ink);
+    border-radius:.4rem;
+    text-decoration:none;
+  }
+
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:4px solid var(--go);
+    outline-offset:3px;
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

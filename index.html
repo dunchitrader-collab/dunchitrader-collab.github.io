@@ -4,16 +4,42 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dunchideock Village Suppliers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="wrap">
-  <h1>Dunchideock Village Suppliers</h1>
 
-  <p class="soon">This site is being built. It will list local tradespeople recommended by people in the village.</p>
+  <header class="top">
+    <div class="sizer">
+      <b>Text size</b>
+      <button id="s1" type="button" aria-pressed="true" aria-label="Normal text">A</button>
+      <button id="s2" type="button" aria-pressed="false" aria-label="Large text">A</button>
+      <button id="s3" type="button" aria-pressed="false" aria-label="Largest text">A</button>
+    </div>
 
-  <p class="smallprint">These are recommendations from neighbours &mdash; not checks or endorsements by anyone. Please satisfy yourself before hiring.</p>
+    <h1 class="vh">Dunchideock Village Suppliers</h1>
+
+    <label class="big" for="search">Search for a Dunchideock recommended trader</label>
+    <input id="search" type="search" autocomplete="off" placeholder="plumber"
+           role="combobox" aria-expanded="false" aria-controls="sugg" aria-autocomplete="list">
+    <div id="sugg" role="listbox" aria-label="Suggestions"></div>
+    <p class="vh" id="sugg-count" aria-live="polite"></p>
+  </header>
+
+  <main id="main"></main>
+
+  <footer class="foot">
+    <p>Know a good tradesperson? Add them to the list.</p>
+    <a class="add" href="https://forms.gle/ZyLed4Tue91bzXjD7">Recommend a trader</a>
+
+    <p class="problem">Had a problem with someone on this list? Please mention it on the village chat.</p>
+
+    <p class="smallprint">These are recommendations from neighbours &mdash; not checks or endorsements by anyone. Please satisfy yourself before hiring.</p>
+  </footer>
 </div>
 
 <script src="app.js"></script>
