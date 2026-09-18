@@ -27,9 +27,29 @@ Everything the village sees lives on **one tab: `Published`**. That tab is the
 whole website. If somebody is not on it, they are not on the site.
 
 The other tab, `Form responses`, is where villagers' suggestions land. **Nobody
-ever sees that tab.** You read it, decide, and copy the good ones across to
-`Published` yourself. That gap is deliberate — it is the whole reason nothing
-embarrassing can appear on the site without you putting it there.
+ever sees that tab**, and you no longer copy anything out of it by hand.
+
+**Submissions publish themselves.** ~~You read it, decide, and copy the good ones
+across to `Published` yourself.~~ SUPERSEDED 2026-09-18 — a script adds each new
+response to `Published` automatically. Three kinds arrive with `status` set to
+`hidden` instead of `active`, so they are on the tab but off the website until
+you look: a telephone number that is not eleven digits, an email address or web
+link in any box, or a number already on the list.
+
+**So the thing that keeps the site tidy is your sweep, not a gate.** Nothing
+waits for your approval any more. Open `Published` when it suits you, read down
+it, and overwrite anything that looks wrong — that is the whole job, and it is
+quicker in batch than one row at a time. The `verdict` column on the
+`Form responses` tab is the view to scan while you do it.
+
+**Stated plainly, because it is the consequence:** the form is open to anyone
+with the link, and what it collects now reaches the live site without a person
+in between. The three checks above and your sweep are what stand in the way of
+something wrong being visible for a while.
+
+**Seeding the list is still a hand job**, and the rest of this section is about
+that: the automatic publisher handles what villagers send in from now on, but it
+cannot invent the twelve to fifteen people you need before launch.
 
 ### The eight columns, in this order
 

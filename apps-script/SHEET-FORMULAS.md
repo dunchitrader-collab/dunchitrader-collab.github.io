@@ -158,7 +158,7 @@ arrives.
 
 | What column L says | What it means | What to do |
 |---|---|---|
-| **NEW** | That phone number has never been on the list | Choose **Publish**. Add them to the Published tab with the next free ID. |
+| **NEW** | That phone number has never been on the list | Nothing to do — it has published itself. Glance at it during your sweep. |
 | **ALREADY ON SITE — row 12** | Same number, so the same person | Choose **Add to T0xx**. Their words become a second recommendation for somebody already listed. |
 | **SAME NAME, DIFFERENT NUMBER** | Same name, new number — probably they changed mobile | Have a look. Usually you update the number on the existing row. |
 | **CHECK THIS** | The last name or the business says "Not Known", or the experience text is **under seven characters** | Have a look. You may need to ask on the village chat who it is. |
@@ -172,9 +172,17 @@ arrives.
 `ALREADY ON SITE`, it says `CHECK THIS`, because a row you need to look at
 matters more than a row you can file automatically.
 
-Nothing at all reaches the website until you pick something in column M and copy
-the row across to the **Published** tab yourself. The website only ever reads
-the Published tab.
+~~Nothing at all reaches the website until you pick something in column M and copy
+the row across to the **Published** tab yourself.~~ **SUPERSEDED 2026-09-18 —
+publishing is automatic.** A script adds each new response to the Published tab
+by itself, and three kinds arrive there `hidden` rather than `active`: a
+telephone number that is not eleven digits, an email address or web link in any
+box, or a number already on the list. See `apps-script/DEPLOY.md` Part 2.
+
+**So this tab is now a VIEW, not a gate.** Nothing waits for you here. The
+`verdict` column is what you scan when you sweep the Published tab, and the
+dropdown in column M is a note to yourself about what you decided. The website
+only ever reads the Published tab.
 
 ---
 

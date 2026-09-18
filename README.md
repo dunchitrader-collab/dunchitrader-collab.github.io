@@ -42,18 +42,36 @@ any part of it, and nothing is paid for.
   A villager fills in the form
             |
             v
-  It lands on the "Form responses" tab   <- messy, private, only you see it
+  It lands on the "Form responses" tab   <- the raw answers, only you see it
             |
-            |   you read it and decide
+            |   a script checks it and adds it by itself
             v
-  You copy them to the "Published" tab   <- the tidy list
-            |
+  It appears on the "Published" tab      <- the list the village sees
+            |                                  active  = on the site
+            |                                  hidden  = waiting for you
             v
   The website reads the Published tab and shows them
 ```
 
-**The website can only read.** Nothing a villager does on the site can change,
-add or delete anybody on the list. Only you can, by editing the spreadsheet.
+**Publishing is automatic.** You do not copy anything across. A villager fills
+in the form and the tradesperson is on the site within about five minutes.
+
+**Three kinds of submission wait for you instead of going live.** They are still
+added, so nothing is lost, but with `status` set to `hidden`:
+
+- the telephone number is not eleven digits, so it cannot be right;
+- there is an email address or a web link in one of the boxes;
+- that telephone number is already on the list.
+
+**Your job is a sweep, not an approval.** Look down the Published tab when it
+suits you and overwrite anything messy — a name in the wrong box, an odd
+spelling, a blank business. You are editing plain text and nothing will rewrite
+what you type. The `verdict` column on the Form responses tab is the view to
+scan while you do it.
+
+**The website can only read.** Nothing a villager does *on the site* can change,
+add or delete anybody. The form is what adds people, and it does so through the
+three checks above rather than through you.
 
 The spreadsheet:
 <https://docs.google.com/spreadsheets/d/1j9SVNJG9Zf_iFtl6OrsrcVom5SY13sOiv3vt58jcprc/edit>

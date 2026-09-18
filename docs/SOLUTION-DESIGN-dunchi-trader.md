@@ -380,16 +380,48 @@ The four verdicts are written in plain English, for a human reading a phone scre
 
 | Verdict | Meaning | Owner's action |
 |---|---|---|
-| `NEW` | Number not seen before | Publish as a new tradesperson |
-| `ALREADY ON SITE — row 12` | Same number, same person | Their words become another recommendation |
+| `NEW` | Number not seen before | ~~Publish as a new tradesperson~~ SUPERSEDED 2026-09-18 (D7a) → it has published itself; this is the row to glance at during a sweep |
+| `ALREADY ON SITE — row 12` | Same number, same person | Their words become another recommendation. The publisher does not add a second row — a duplicate phone is one of its three hard checks |
 | `SAME NAME, DIFFERENT NUMBER` | Probably a changed mobile | Needs a look |
 | `CHECK THIS` | Surname **or business** reads "Not Known", or the experience text is **under 7 characters** (~~15~~ SUPERSEDED 2026-09-18 by the owner's ruling — see §7.4) | Needs a look |
 
-### 7.3 Validation layer 3 — the owner is the gate
+### 7.3 Validation layer 3 — ~~the owner is the gate~~ three hard checks, then the owner's batch sweep
 
-One dropdown per row: **Publish** / **Add to T0xx** / **Reject**. Nothing reaches the site
+~~One dropdown per row: **Publish** / **Add to T0xx** / **Reject**. Nothing reaches the site
 until the owner picks one. This is the entire moderation system, and it is deliberately a
-spreadsheet dropdown rather than a queue or an admin interface (§11).
+spreadsheet dropdown rather than a queue or an admin interface (§11).~~ **SUPERSEDED 2026-09-18 — decision D7a.**
+
+**Owner's ruling 2026-09-18 (~19:20Z), verbatim:** *"OK i am not doing this by hand. I said as
+a design principle this will be no admin. Make it automatic from the form responses. I will
+routinely check the data and overwrite whatever looks messy. That is easier and can be done in
+batch. In fact we can write a script for that can we not?"*
+
+**Publishing is automatic.** `apps-script/Publish.gs` runs on an installable on-form-submit
+trigger and appends one row to Published for each new response. The dropdown remains on the
+responses tab and the verdict formulas still compute — they are now the **view the owner scans
+during his sweep**, not a gate anything waits behind.
+
+**What replaces the gate.** Three hard failures publish with `status` `hidden` rather than
+`active`, so the row exists in the sheet and is off the website until he looks at it:
+
+| Hard failure | Why |
+|---|---|
+| No usable phone number — not 11 digits after normalisation | A mistyped number sends a villager to a stranger. Eleven matches the rule on the form itself. |
+| An email address or a web link in any field | A villager has no reason to type either; an advertiser does. |
+| A phone already on Published | A second row would split one person's recommendations in two. |
+
+**Recorded factually, because it is the consequence of the ruling:** the open Google Form now
+reaches the live site **without a human in between**. The protection is no longer an approval
+step; it is these three checks plus the owner's batch sweep. A submission that passes all three
+is visible to the village within the republish lag. The directory's *content* is therefore as
+open as the form is, while the *shape* of it — ids, columns, which tab the site reads — remains
+closed to everyone but the account holder.
+
+**Recommendation awaiting the owner's ruling, not implemented:** the Google Form's description
+should tell villagers that a recommendation goes public. A tradesperson's name and telephone
+number now appear on a public website without anybody asking them, and the person submitting is
+the only one in a position to have asked. This is a wording change on the form, which only the
+owner can make.
 
 ### 7.4 Validation layer 4 — the vote box on the page
 

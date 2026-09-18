@@ -150,3 +150,157 @@ Edit `apps-script/Code.gs` in the repository so the change is kept, paste the
 new version into the Apps Script editor, save, then **Deploy → Manage
 deployments → the pencil icon → Version: New version → Deploy**. The URL stays
 the same, so you do not have to change `app.js` again.
+
+---
+---
+
+# Part 2 — Publishing recommendations automatically
+
+Everything above switches on the **recommend button** on the website. This
+second part switches on **automatic publishing**: a villager fills in the form,
+and the tradesperson appears on the site by themselves, without you copying
+anything across.
+
+It is kept in this same document because it is the same job from your side —
+pasting a script into the same spreadsheet — and having two documents that both
+say "open Extensions → Apps Script" is how they drift apart.
+
+**These are two separate scripts and they stay separate.** `Code.gs` is the one
+the website talks to and it can only add rows to Votes. `Publish.gs` is this
+one; it is never given a web address, nothing on the internet can reach it, and
+it can only add rows to Published. Neither can do the other's job, which is
+deliberate.
+
+Allow about ten minutes.
+
+---
+
+## What changes when you switch this on
+
+**Before:** a recommendation landed on the Form responses tab and sat there
+until you copied it across to Published yourself.
+
+**After:** a recommendation lands on Form responses *and* adds itself to
+Published, so the village can see it within about five minutes.
+
+**Three kinds of submission do NOT go live.** They are still added to Published
+so nothing is lost, but with `status` set to `hidden`, which keeps them off the
+website until you look at them:
+
+1. **No usable telephone number** — anything that is not eleven digits once
+   spaces and brackets are removed. A mistyped number is worse than no number,
+   because a villager rings a stranger.
+2. **An email address or a web link in any box.** A villager has no reason to
+   type either; somebody advertising does.
+3. **A telephone number already on the list.** The person is already there, so
+   a second row would split their recommendations in two.
+
+Everything else publishes itself with `status` `active`.
+
+**Your job becomes a sweep rather than an approval.** Open the Published tab
+when it suits you, look down it, and overwrite anything messy — a name in the
+wrong box, a trade spelled oddly, a business left blank. You are editing plain
+text, and nothing will rewrite what you type.
+
+---
+
+## Step 6 — Paste in the publisher
+
+1. Open the spreadsheet and click **Extensions → Apps Script**.
+2. At the top left of the file list, click the **+** next to "Files", choose
+   **Script**, and name it exactly: **Publish**
+3. Delete the `function myFunction() {}` that appears in the new file.
+4. Open `apps-script/Publish.gs` in the site's GitHub repository, click
+   **Copy raw file**, and paste the whole thing into that empty file.
+5. Click the **save** icon, or press **Ctrl+S**.
+
+**You should now have:** two files in the list on the left — `Code.gs` and
+`Publish.gs`. Leave `Code.gs` exactly as it is.
+
+---
+
+## Step 7 — Switch on automatic publishing
+
+This is the part that makes it happen by itself.
+
+1. In the Apps Script editor, click the **clock icon** in the left-hand bar
+   (**Triggers**).
+2. Click **+ Add Trigger** at the bottom right.
+3. Set the four boxes like this:
+   - **Choose which function to run**: `onFormSubmitPublish`
+   - **Choose which deployment should run**: `Head`
+   - **Select event source**: `From spreadsheet`
+   - **Select event type**: `On form submit`
+4. Click **Save**. Google will ask you to authorise it again — the same
+   **Advanced → Go to (project name) → Allow** as before.
+
+**You should now have:** one trigger listed, showing `onFormSubmitPublish` and
+`On form submit`.
+
+> **It must be "On form submit", not "On edit".** On edit fires every time
+> anybody types anything in the spreadsheet, including you tidying it, and
+> would try to publish the same rows over and over.
+
+---
+
+## Step 8 — Bring across the responses already sitting there
+
+Anything submitted before today is on the Form responses tab but not on
+Published. This brings them across in one go.
+
+1. Go back to the **spreadsheet** tab in your browser and reload the page.
+2. A new menu appears in the menu bar: **Village list**.
+3. Click **Village list → Publish any responses not yet on the list**.
+4. Authorise it if asked.
+
+**You should now have:** a small box telling you how many people were added,
+and those people on the Published tab with the next free IDs.
+
+> **It is safe to click twice.** It matches on the telephone number, so
+> anybody already on the list is skipped rather than added again. If you click
+> it a second time it will say it added 0 and skipped the rest.
+
+---
+
+## Step 9 — Check it is working
+
+1. Click **Village list → Check the setup**. It should say the Published tab
+   was found, the Form responses tab was found, and **Automatic publishing:
+   ON**.
+2. Fill in the form yourself, on your phone, with a made-up name and a real
+   eleven-digit number.
+3. Look at the **Published** tab. A new row should appear within a few seconds,
+   with the next ID and `status` `active`.
+4. Wait five minutes and open the website. They should be on it.
+5. Delete your test row's details by setting its `status` to `hidden`, or
+   overwrite the row when you seed the list properly.
+
+**If no row appears**, check these in order:
+- Is the trigger listed under the clock icon, and does it say **On form
+  submit**?
+- Does the Published tab still have its eight headings in row 1?
+- Click **Village list → Check the setup** and read what it says.
+
+---
+
+## If you ever need to switch automatic publishing off
+
+Click the **clock icon** in the Apps Script editor, find the
+`onFormSubmitPublish` trigger, click the three dots beside it and choose
+**Delete trigger**.
+
+Everything else carries on working: the website, the recommend button, and the
+form. Recommendations go back to sitting on the Form responses tab until you
+copy them across yourself. Nothing already on Published is affected, and you
+can switch it back on later by adding the trigger again.
+
+---
+
+## One thing worth knowing
+
+**Never delete a row from the Published tab — set its `status` to `hidden`
+instead.** IDs are worked out from the highest one already in the list, so
+deleting the last row can let its number be given to somebody else, and every
+recommendation filed against that number would follow it to the wrong person.
+Hiding a row keeps the number safely used up. This is the same rule as in
+`README.md`, and it matters more now that IDs are handed out automatically.
