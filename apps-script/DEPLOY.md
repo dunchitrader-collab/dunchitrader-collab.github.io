@@ -420,3 +420,69 @@ directly under the others, and on the website about five minutes later.
 **Village list → Check the setup** is the thing to click. It now tells you in
 plain words whether anything is stranded and on which row. A script that
 finishes without complaining is not proof that anything happened — the check is.
+
+---
+
+## Step 13 — Putting right the three faults of 2026-09-18
+
+Three things were wrong with the rows already in your sheet. **All three are
+repaired by the same menu item**, and nothing is lost.
+
+### What was wrong
+
+**1. Telephone numbers had lost their leading zero.** This is the serious one.
+Google stored `07887988959` as a *number*, and numbers do not start with a zero,
+so it kept `7887988959`. The website builds the **Call** button from that
+column — so tapping Call would have dialled a wrong number, with nothing on
+screen to say so. Six of your eight numbers were affected. The two that survived
+were the two you had typed with a space in them, which Google could not read as
+a number.
+
+**2. Six people were listed twice.** The same fault as before: the script could
+not see the existing rows, so it added everybody again.
+
+**3. Two trade names did not match the website's list** — "Gas Engineer" and
+"Car Mechanic" rather than "Boiler & heating" and "Car mechanic". They would
+each have made a tile of their own.
+
+### Putting it right
+
+1. **Re-paste the publisher.** **Extensions → Apps Script** → click
+   **`Publish.gs`** → select everything (**Ctrl+A**), delete → open
+   `apps-script/Publish.gs` in GitHub → **Copy raw file** → paste → **Ctrl+S**.
+
+2. **Reload the spreadsheet**, then click **Village list → Check the setup**.
+   Read what it says before changing anything: it lists how many duplicates
+   there are, which telephone numbers look wrong, and which trades are not on
+   the list.
+
+3. Click **Village list → Repair the list (move stray rows back up)**. It moves
+   stray rows up, removes duplicates, puts the zeros back and corrects the trade
+   names, then tells you exactly what it did.
+
+4. Click **Village list → Check the setup** again. It should now say
+   *"Duplicate rows: none"*, *"Telephone numbers: all look right"* and
+   *"Trade names: all match the website's list"*.
+
+5. **Check one number by eye** on the Published tab against the form response it
+   came from, then tap Call on the website to be certain.
+
+### What it does and does not do
+
+- **It never changes an ID.** When it removes a duplicate it keeps the *earliest*
+  ID for that person and moves the later row's recommendation onto it. The
+  removed ID is **retired** and never given to anybody else.
+- **Two different people sharing one telephone number are both kept.** You have
+  exactly that — Ben Franks and John Pilkington on the same number — and it
+  reports it rather than deleting one of them.
+- **Where two rows disagree** on trade or status, it keeps the earlier row's
+  version and *tells you*, rather than quietly choosing.
+- **A telephone number it cannot work out is left alone and reported**, so you
+  can retype it. It will only restore a missing zero to a ten-digit number,
+  because that is the only case with one possible answer.
+
+> **Helen Smith's number is one of those.** It reads `78853335434`, which is the
+> mistyped twelve-digit number with its zero eaten. Putting the zero back would
+> just give a twelve-digit number that is still wrong, so the repair refuses it
+> and says so. Her row is `hidden` either way. **Retype it from her original form
+> answer when you get a moment.**
