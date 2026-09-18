@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T14:02:20Z
+last-updated: 2026-09-18T14:13:45Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T14:02:20Z**
+**Last updated: 2026-09-18T14:13:45Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — design and planning complete as of 2026-09-18. No application code written yet. Build has not started.
+ACTIVE — build started 2026-09-18. The site scaffold and the reviewed wireframe are committed at `c1a4f78`. **Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account. See the first CRITICAL outstanding item.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -114,6 +114,7 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 
 | Date | Priority | Blocking | Description |
 |------|----------|----------|-------------|
+| 2026-09-18 | **CRITICAL** | **YES — blocks Build Plan rows 1.1 and 1.2, and therefore every later row** | **No push credential for the dunchitrader-collab GitHub account.** Measured 2026-09-18T14:13:45Z: both credentials available to the build session report `"push": false` on `dunchitrader-collab/dunchitrader-collab.github.io`, and a dry-run push returns HTTP 403 "Permission denied to gsamwell-personal". Read access works; write does not. Until this is supplied, nothing can reach the live site, so no row can be checked against the URL Gavin opens. |
 | 2026-09-18 | **CRITICAL** | **YES — blocks Build Plan step 2** | **The published CSV serves the WRONG TAB.** Measured this session: it returns the raw Form responses header, not the Published schema. Must be republished from the Published tab. |
 | 2026-09-18 | HIGH | no | Form question 1 is a dropdown with "Other" typed as an ordinary option. Must become Multiple Choice with the real Add "Other" control. |
 | 2026-09-18 | HIGH | no | Email collection is on and required on the form. Must be turned off. |
@@ -125,9 +126,14 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 
 ### Next Action
 
-The owner completes the seven operator actions in Layer 4, starting with the **CRITICAL** republishing of the CSV from the Published tab.
+~~The owner completes the seven operator actions in Layer 4, starting with the **CRITICAL** republishing of the CSV from the Published tab. Then Build Plan `PLAN-DUNCHI-TRADER-V1` step 1 can begin. Step 2 is **blocked** until the CSV serves the correct tab.~~ SUPERSEDED 2026-09-18T14:13:45Z →
 
-Then Build Plan `PLAN-DUNCHI-TRADER-V1` step 1 can begin. Step 2 is **blocked** until the CSV serves the correct tab.
+**Two things are needed from the owner, and the first now blocks everything:**
+
+1. **Supply a push credential for the `dunchitrader-collab` GitHub account** — a Personal Access Token with `repo` scope on `dunchitrader-collab/dunchitrader-collab.github.io`, or add an existing account as a collaborator with write access. **Until this exists nothing can reach the live site**, and because a change is only built when it is visible at the URL Gavin opens, no build plan row can be completed. Rows 1.1 and 1.2 are `blocked` on exactly this. The code for both is written and pushed to `origin` at `c1a4f78`; only the push to the live repo is missing.
+2. **Republish the CSV from the Published tab** — still blocks Build Plan row 2.1.
+
+Plus the remaining Google-side operator actions in Layer 4.
 
 ---
 
@@ -197,20 +203,27 @@ Then Build Plan `PLAN-DUNCHI-TRADER-V1` step 1 can begin. Step 2 is **blocked** 
 
 ### Key Scripts and Files
 
-Planned. None written yet as of 2026-09-18.
+~~Planned. None written yet as of 2026-09-18.~~ SUPERSEDED 2026-09-18T14:13:45Z → the scaffold exists, committed at `c1a4f78`. Files marked *placeholder* are deliberate stubs, not the real thing.
 
-| File | Description |
-|---|---|
-| `index.html` | The whole page |
-| `style.css` | All styling |
-| `app.js` | CSV fetch, parse, render, search, autocomplete, vote posting |
-| `.nojekyll` | Disables Jekyll so Pages serves committed files untouched |
-| Apps Script source | Committed to the repo as well as deployed, per decision 14 |
-| `README.md` | For a non-technical inheritor |
-| `docs/RESTORE-dunchi-trader.md` | Full rebuild runbook |
-| `docs/SOLUTION-DESIGN-dunchi-trader.md` | Architecture and rationale |
-| `docs/BUILD-PLAN-dunchi-trader.md` | `PLAN-DUNCHI-TRADER-V1` |
-| `design/wireframe-dunchi-trader.html` | Layout authority. Arrives in a separate prompt. |
+| File | Description | State |
+|---|---|---|
+| `index.html` | The whole page | **Placeholder** — title and small print only. The wireframe port is Build Plan row 3.1. [VERIFIED 2026-09-18 — `c1a4f78`] |
+| `style.css` | All styling | **Placeholder** [VERIFIED 2026-09-18 — `c1a4f78`] |
+| `app.js` | CSV fetch, parse, render, search, autocomplete, vote posting | **Placeholder stub** — no behaviour yet [VERIFIED 2026-09-18 — `c1a4f78`] |
+| `.nojekyll` | Disables Jekyll so Pages serves committed files untouched. Empty file; **do not delete** | [VERIFIED 2026-09-18 — `c1a4f78`] |
+| `design/wireframe-dunchi-trader.html` | **LAYOUT AUTHORITY.** The reviewed wireframe, landed verbatim | [VERIFIED 2026-09-18 — `c1a4f78`] |
+| `README.md` | For a non-technical inheritor | Partial — carries the push procedure and the no-build-step rule. Full version is Build Plan row 6.1. [VERIFIED 2026-09-18] |
+| Apps Script source | Committed to the repo as well as deployed, per decision 14 | Not written — Build Plan row 4.2 |
+| `docs/RESTORE-dunchi-trader.md` | Full rebuild runbook | Not written — Build Plan row 6.1 |
+| `docs/SOLUTION-DESIGN-dunchi-trader.md` | Architecture and rationale | [VERIFIED 2026-09-18] |
+| `docs/BUILD-PLAN-dunchi-trader.md` | `PLAN-DUNCHI-TRADER-V1` | [VERIFIED 2026-09-18] |
+
+**Two deliberate anti-patterns in `design/wireframe-dunchi-trader.html` that must survive the port.** Both are fixes for defects found by eye, and a tidy-up would silently undo them:
+
+- **The `.sizer` strip is sized in fixed `px`** while everything else is in `rem`. Without this the text-size buttons grow as they are pressed.
+- **The header is NOT sticky.** With `position: sticky` it filled the whole phone screen at the largest text size.
+
+The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file are wireframe scaffolding. They stay there as the reference, and Build Plan row 3.1 drops them when porting.
 
 ### External Service Integrations
 
@@ -266,6 +279,12 @@ Fix applied: **THE HEADER MUST NOT BE STICKY.** ~~Enforced by Build Plan sub-tas
 Root cause 2: the size buttons were themselves sized in `rem`, so they grew as they were pressed and ran away from the user's finger.
 Fix applied: **THAT STRIP MUST BE SIZED IN FIXED PIXELS.** ~~Enforced by Build Plan sub-task 3.9.~~ SUPERSEDED 2026-09-18T14:02:20Z → recorded as a binding rule in solution design §9.9 and checked by Build Plan sub-task 3.3's done-when. (The plan rewrite of decision 18 removed the standalone guard row; the rule itself is unchanged.)
 Diagnosis: set the largest text size on a narrow phone; the header must scroll away and the buttons must not change size.
+
+**[BUG] 2026-09-18 — No push credential for the live repository**
+Root cause: the build session has credentials for `gsamwell-lang` and `gsamwell-personal`. Neither has write access to `dunchitrader-collab/dunchitrader-collab.github.io`. Measured 2026-09-18T14:13:45Z: the GitHub API reports `"permissions": {"push": false, "pull": true}` for both, and `git push --dry-run collab master:main` returns `403 Permission to dunchitrader-collab/dunchitrader-collab.github.io.git denied to gsamwell-personal`.
+Impact: **nothing can reach the live site.** Because a change is only built when it is visible at the URL Gavin opens, this blocks every build plan row, not just rows 1.1 and 1.2. Work can still be written and pushed to `origin`, but it cannot be verified where it must be.
+Fix applied: none — a credential cannot be created by the build session, and none may be committed. Recorded as the first CRITICAL outstanding item in Layer 1. Rows 1.1 and 1.2 are marked `blocked` rather than done.
+Diagnosis: `gh api repos/dunchitrader-collab/dunchitrader-collab.github.io --jq '.permissions'` — `push: true` means it is resolved.
 
 ### Gotchas
 
@@ -596,3 +615,80 @@ Recorded in the commit carrying this session's document work. The commit adding 
 **One reported deviation:** the plan landed at 14 rows against a stated 15–20 band. The instruction to merge rather than shave took precedence, and step 6's README and runbook are genuinely one outcome. Splitting a row back apart purely to reach 15 would reintroduce the decomposition the rewrite exists to remove. Effort is at 75, the top of its band.
 
 Nothing else changed. The CSV feed remains the CRITICAL blocker on step 2, and no code has been written.
+
+### 2026-09-18T14:13:45Z — Wireframe landed; site scaffold built; live push blocked
+**Source:** Claude Code
+**Started:** 2026-09-18T14:09:35Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01U4wmyQG3nVGNetpsU5i2zw
+**Repos touched this session:** dunchi-trader
+
+**Prompt received:**
+First of four prompts to get the site built. Task 1: create `design/wireframe-dunchi-trader.html` containing the reviewed wireframe source exactly as supplied, wrapped only in a minimal standalone document skeleton, with no reformatting, reindenting, linting or "improving" — it is a reviewed artefact and the layout authority for step 3, and two things in it are deliberate and must not be "fixed" (the `.sizer` strip sized in fixed px, and the header not being sticky). Task 2: deliver build plan sub-tasks 1.1 and 1.2, cited not restated, with the placeholder `index.html` kept a placeholder rather than a wireframe port, `.nojekyll` at the root proven by comparing served bytes against committed bytes, and an instruction to STOP and report 1.2 blocked rather than invent a workaround if no credential for the dunchitrader-collab account is available. Do not start step 2 or step 3. Do not mark any row done on the strength of a local check.
+
+**What was done:**
+
+**Credential availability was checked first**, before any work that depended on it. The GitHub API reports `"push": false` on `dunchitrader-collab/dunchitrader-collab.github.io` for **both** credentials available to this session (`gsamwell-lang` and `gsamwell-personal`). That finding shaped the whole session: everything buildable was built, and the two rows were reported blocked rather than claimed.
+
+`design/wireframe-dunchi-trader.html` — created, 916 lines, 26,513 bytes. The supplied source is carried **verbatim**. The only addition is the six-line document skeleton the prompt specified: doctype, `<html lang="en">`, `<head>` with charset and viewport, and `<body>`. Nothing was reformatted, reindented, linted or corrected.
+
+Fidelity was **verified rather than assumed**. Both deliberate anti-patterns were confirmed present: the `.sizer` strip is in fixed `px` throughout (`width:48px`, `height:44px`, `gap:6px`, `padding:6px 0 8px`, `border-radius:6px`, `#s1/#s2/#s3` at 15/20/26px), and a search for `position:sticky` returns **zero** matches. The overflow fix `minmax(min(100%, 15rem), 1fr)` is present, and the two-line Call button spans are present in the JS. Tabs: 0. Trailing-whitespace lines: 0. Unicode preserved — 3 em-dashes, 2 smart quotes, 3 middots, 1 left arrow. The document parses without exception and every tag pair balances.
+
+`index.html`, `style.css`, `app.js` — created as **placeholders**. `index.html` carries the site title and the small print line and nothing else; the wireframe was deliberately **not** ported into it, since that is row 3.1 in the next prompt. `style.css` and `app.js` are stubs whose comments say so and name the rows that fill them.
+
+`.nojekyll` — created empty at the repo root. This is a real change, not a precaution: the GitHub Pages API reports the live repo's `build_type` as `"legacy"`, meaning Jekyll is currently processing it, and the live URL serves markup containing `Jekyll v3.10.0`.
+
+`README.md` — rewritten from its one-line placeholder to carry what row 1.2 requires: the two-repository topology, the publishing procedure including the `master:main` branch-name difference and the warning that it needs a dunchitrader-collab login, how to edit directly in the GitHub web editor, and the no-build-step rule with the reason `.nojekyll` must not be deleted. The full non-technical README remains row 6.1.
+
+`docs/BUILD-PLAN-dunchi-trader.md` — rows 1.1 and 1.2 set to `blocked` in both the canonical and satellite tables, each with a note recording exactly what was delivered and exactly what is missing.
+
+`docs/HANDOVER-dunchi-trader.md` — a `[BUG]` entry for the credential blocker with its diagnosis command; the credential blocker added as the **first CRITICAL** Layer 1 outstanding item; Next Action superseded to lead with it; the Key Scripts table updated to distinguish placeholders from real files and to record the two anti-patterns that must survive the port.
+
+**Testing performed:**
+
+| Test | Expected | Actual | Result |
+|---|---|---|---|
+| HEAD matches the SHA the prompt was composed against | `d6f897b` | `d6f897bfc99d…` | PASS |
+| Working tree clean at start, 0 ahead / 0 behind | clean | clean | PASS |
+| Wireframe: deliberate anti-pattern 1, `.sizer` in fixed px | present | all 9 px values present | PASS |
+| Wireframe: deliberate anti-pattern 2, header not sticky | zero matches | 0 matches for `position:sticky` | PASS |
+| Wireframe: overflow fix `minmax(min(100%, 15rem), 1fr)` | present | present, line 201 | PASS |
+| Wireframe: two-line Call button spans | present | present, lines 666–667 | PASS |
+| Wireframe: no tabs introduced | 0 | 0 | PASS |
+| Wireframe: no trailing whitespace introduced | 0 | 0 | PASS |
+| Wireframe: Unicode preserved | em-dash, quotes, middot, arrow | 3, 2, 3, 1 | PASS |
+| Wireframe: HTML parses and tags balance | no error | parses; html/head/body/div/script/style all balanced | PASS |
+| Wireframe: doctype first | true | true | PASS |
+| `index.html` is a placeholder, not a wireframe port | placeholder | title + small print only | PASS |
+| Credential scan over the whole tree | zero matches | zero | PASS |
+| No `.env`, `.pem`, `.key` or `id_rsa` files | none | none | PASS |
+| All four files serve over HTTP locally | 200 | 200 each | PASS |
+| Served bytes identical to committed bytes (**local**) | identical | all 4 identical by sha256 | PASS |
+| Push to `origin` | succeeds | `d6f897b..c1a4f78` | PASS |
+| `collab` remote fetches (read access) | succeeds | `[new branch] main` | PASS |
+| **Push to `collab` (write access)** | succeeds | **HTTP 403, permission denied** | **FAIL — blocker** |
+| **Live URL serves our committed `index.html`** | byte-identical | **differs; still `Jekyll v3.10.0`** | **FAIL — consequence of the above** |
+| Build plan validates after the row updates | exit 0 | exit 0, 14 sub-tasks, 75 effort | PASS |
+| Handover heading preservation | none removed | none removed | PASS |
+| Append-only layers unaltered | zero L5/L6 deletions | zero | PASS |
+
+**What was not tested:**
+
+- **The phone sighting could not be done and is not claimed.** Row 1.1's done-when requires the page rendering on a phone and on a computer. This session has no phone. It is recorded as outstanding for Gavin, and row 1.1 would remain short of done on that ground alone even if the push were unblocked.
+- **The served-bytes proof was run locally, not against GitHub Pages.** The local check confirms the files are sound; it does **not** satisfy row 1.1, whose done-when is explicitly about the live URL. The live check was run and **failed** — correctly, because the files are not there yet.
+- **The wireframe was not opened in a browser.** It was validated structurally — parse, tag balance, encoding, the specific values that matter — but nobody has looked at it rendered. Whether it *looks* right is for Gavin.
+- **`.nojekyll` has not been proven to work**, because that can only be observed once the file is live. That Jekyll is currently active was measured; that `.nojekyll` stops it is expected, not yet demonstrated.
+- **No CSS or JS behaviour was exercised.** The text-size control, autocomplete and vote panel in the wireframe were not run.
+
+**Commits:**
+- `c1a4f78` — `feat: land reviewed wireframe and placeholder site scaffold`
+
+**Finished:** 2026-09-18T14:13:45Z
+
+**End state:**
+
+The wireframe is landed verbatim and is the layout authority for step 3. The site scaffold — placeholder page, stylesheet, script stub and `.nojekyll` — is committed and pushed to `origin` at `c1a4f78`. The `collab` remote is configured and can read the live repository.
+
+**Neither row 1.1 nor row 1.2 is done, and neither is claimed.** Both are `blocked` on one missing thing: a push credential for the `dunchitrader-collab` GitHub account. Everything else on both rows is delivered. The live site still serves its original Jekyll page, which was measured rather than assumed.
+
+This blocker is more serious than one step. Because a change counts as built only when it is visible at the URL Gavin opens, **no build plan row can be completed until it is resolved** — including the step 3 work in the next prompt, which can be written but not verified.
