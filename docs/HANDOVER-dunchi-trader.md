@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T17:31:02Z
+last-updated: 2026-09-18T17:43:18Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T17:31:02Z**
+**Last updated: 2026-09-18T17:43:18Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -121,7 +121,7 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | 2026-09-18 | HIGH | no | **Row 4.2 needs a vote FROM A REAL PHONE.** ~~The script and its numbered steps are committed. Follow [PATH] `apps-script/DEPLOY.md` while signed in as `dunchitrader@gmail.com`.~~ SUPERSEDED 2026-09-18T17:04:41Z → the owner has deployed it (REPORTED by him, not measured here) and the endpoint is now wired in `app.js` at `4d67c15` and **verified served live**. **DEPLOY.md step 4 is superseded** — the endpoint was set in this repository and pushed to both remotes, so the owner must NOT hand-edit `app.js` in the live repo. What remains is only the closing evidence: the owner opens the live site **on his phone**, taps a trade, taps "I recommend them too", fills both boxes, taps "Add my recommendation", then opens the Votes tab and sees the row. Closes on that. |
 | 2026-09-18 | HIGH | no | **Delete the test row from the Votes tab.** Row 4.3's measurement deliberately submitted one real recommendation through the live site, so the Votes tab now carries a row that is not a villager's. It is labelled for deletion in both text columns. Column `id` is `T001`; column `name` is `TEST - Claude Code 2026-09-18 - please delete`; column `text` begins `TEST ROW - please delete - automated cross-origin measurement from Claude Code session 2026-09-18, build plan row 4.3.` Delete that one row. **Note the caveat:** because the cross-origin response is opaque, this session could not confirm from the browser that the row was actually appended — if the Votes tab has no such row, that is itself the finding, and it means row 4.2's append path is not working. |
 | 2026-09-18 | MEDIUM | no | **Row 5.1 needs the formulas pasted.** Paste-ready in [PATH] `apps-script/SHEET-FORMULAS.md`. Closes when one sample row of each of the four verdicts shows correctly in the real sheet. |
-| 2026-09-18 | MEDIUM | no | **Row 6.1 needs the runbook walked.** [PATH] `docs/RESTORE-dunchi-trader.md` is written; the walk needs the Form, Sheet, Apps Script and Pages under the two logins and is the owner's. |
+| 2026-09-18 | MEDIUM | no | **Row 6.1 needs the runbook WALKED.** [PATH] `docs/RESTORE-dunchi-trader.md` is written and was **reconciled to the deployed state on 2026-09-18T17:40Z at `983525f`** so the walk is not wasted on stale instructions — it had been written before the Apps Script was deployed. It now carries a **walk-through tick list** at the end, one line per step naming what should be seen, usable on a phone beside a laptop. The walk itself needs the Form, Sheet, Apps Script and Pages under the two logins and is the owner's; nothing in the build can substitute for it. **Two steps are honestly marked as not confirmable from outside the Google account** — step 3's email-collection and response-validation settings — with an incognito test given for what can be checked. |
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Row 3.1 needs Gavin's sighting.**~~ RESOLVED 2026-09-18T15:13:20Z — same sighting. Every clause of row 3.1 is visible without data, so the sighting covers it in full. Row 3.1 is `done`. |
 | ~~2026-09-18~~ | ~~**CRITICAL**~~ | ~~**YES**~~ | ~~**The published CSV serves the WRONG TAB.**~~ RESOLVED 2026-09-18T15:20:38Z — the owner republished from the Published tab (gid `1915382769`) and seeded four test rows. `app.js` switched at commit `0267ef3` and verified live. The feed now returns the agreed eight-column header. |
 | ~~2026-09-18~~ | ~~HIGH~~ | ~~no~~ | ~~**Rows 2.1 and 3.3 await the owner's sighting WITH DATA.** Everything on both is measured against the live site — real rows render under the right trades, the hidden row is absent, and at the largest text size no phone number splits mid-digit (0px overflow). Both are rendered surfaces, so neither closes on measurement. The owner opens the site on his phone, taps a trade, and presses the largest A.~~ RESOLVED 2026-09-18T17:04:41Z — **Owner sighting 2026-09-18 (~16:50Z), verbatim:** *"Task 1 is a pass."* He opened the live site on his phone, tapped Plumber, pressed the largest A, and confirmed a card shows name, business and a working green Call button, that it reads correctly, and that the phone number stays in one piece with nothing running off the right edge. Both rows are `done`. |
@@ -235,9 +235,10 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | `design/wireframe-dunchi-trader.html` | **LAYOUT AUTHORITY.** The reviewed wireframe, landed verbatim | [VERIFIED 2026-09-18 — `c1a4f78`] |
 | `README.md` | For a non-technical inheritor | Partial — carries the push procedure and the no-build-step rule. Full version is Build Plan row 6.1. [VERIFIED 2026-09-18] |
 | Apps Script source | Committed to the repo as well as deployed, per decision 14 | Not written — Build Plan row 4.2 |
-| `docs/RESTORE-dunchi-trader.md` | Full rebuild runbook | Not written — Build Plan row 6.1 |
+| ~~`docs/RESTORE-dunchi-trader.md`~~ | ~~Full rebuild runbook~~ | ~~Not written — Build Plan row 6.1~~ SUPERSEDED 2026-09-18T17:40Z → see the row below; it was written 2026-09-18T15:06Z and reconciled to the deployed state at `983525f` |
 | `docs/SOLUTION-DESIGN-dunchi-trader.md` | Architecture and rationale | [VERIFIED 2026-09-18] |
 | `docs/BUILD-PLAN-dunchi-trader.md` | `PLAN-DUNCHI-TRADER-V1` | [VERIFIED 2026-09-18] |
+| `docs/RESTORE-dunchi-trader.md` | Full rebuild runbook, Form → Sheet → tabs → publishing → repository → Pages → Apps Script → formulas, each step with an expected result the walker can see with the two logins alone, plus a walk-through tick list | [VERIFIED 2026-09-18T17:40Z] — reconciled to the deployed state at `983525f`; **the walk itself is still outstanding** (Build Plan row 6.1) |
 | `docs/PROCESS-seeding-and-launch-dunchi-trader.md` | **How the owner fills the list and launches it.** The eight columns, ids starting at `T005` and never reused, `status` must be exactly `active`, `extra_trade` for two-trade people, removing the four test rows, the trade vocabulary, the five-minute lag and the two publishing warnings, and the draft launch message. Written for a non-technical reader. | [VERIFIED 2026-09-18T17:26Z] — created this session; linked from `README.md`. Prefix `PROCESS-` confirmed ACTIVE via `get_active_prefixes` at 2026-09-18T17:25:49Z |
 
 **Two deliberate anti-patterns in `design/wireframe-dunchi-trader.html` that must survive the port.** Both are fixes for defects found by eye, and a tidy-up would silently undo them:
@@ -269,6 +270,23 @@ The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file a
 # LAYER 3 — KNOWN ISSUES AND GOTCHAS
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
+
+**The three "something is wrong" messages, and exactly what each one means — MEASURED 2026-09-18T17:38Z**
+
+Not a bug; a reference that prevents misdiagnosis, and it corrected a wrong expected result in the rebuild runbook. The page never shows a blank screen, so **the message IS the diagnostic**, and the three are easy to confuse. Measured by driving the LIVE site in a real browser with the feed intercepted and replaced, one condition at a time, plus a control:
+
+| Feed condition | Message shown | What it actually means |
+|---|---|---|
+| One or more rows with `status` `active` | *(the list renders)* | Working. |
+| **Header row only, nobody active** | **"Nobody on the list just yet"** | **The feed was reached and parsed correctly.** The address and tab are right; the list is simply empty. |
+| Wrong tab, or headers not the agreed eight | **"The list is being updated"** | The address answers, but what comes back is not a valid list — usually the `gid=` points at the wrong tab. |
+| Unreachable, or HTTP 404 | **"The list will not load at the moment"** | The address could not be fetched at all. |
+
+Control case: a single active row rendered normally, confirming the harness served the intercepted feed rather than breaking it. An earlier run of the same harness returned the unreachable message for all three conditions — that was a broken-interception artefact, not a finding, and it is recorded here because it would look like a real result to the next person who tries it.
+
+Why it matters: *"Nobody on the list just yet"* is the **success** state when a rebuild first points at a fresh sheet, and mistaking it for a failure would send a walker back to re-do working steps. `docs/RESTORE-dunchi-trader.md` steps 5 and 6 were corrected against this measurement — step 5 had claimed the pre-feed state shows *"The list is being updated"*, which is only one of two possible messages and not the likelier one.
+
+Diagnosis: read the message before touching anything. Code reference `app.js` lines 559–566: an unparseable or empty CSV and a `build()` returning `null` both set `badfeed`; a successful parse with zero people sets `empty`; a thrown fetch sets `unreachable`.
 
 **[BUG] 2026-09-18 — the votes `fetch` RESOLVES on failure; `catch` will never fire and `ok`/`status` carry no information**
 Root cause: the votes POST is sent with `mode: 'no-cors'`, which makes the browser return an **opaque** response. Measured 2026-09-18T17:02:32Z from the live Pages origin in a real browser: the promise **resolves** — it does not throw and does not reject — with `Response.type: "opaque"`, `status: 0`, `ok: false`, `redirected: false`, `url: ""` and **zero readable headers**. Those values are returned *whether or not the append succeeded*, so they are not a signal. The `try/catch` in `sendRecommendation()` is therefore dead code for network failures: it can only catch a synchronous throw, which does not occur here.
@@ -589,6 +607,24 @@ The first draft of `PLAN-DUNCHI-TRADER-V1` carried **90 sub-tasks and 231 effort
 **[DECISION]** The launch message is published as a **draft explicitly marked as awaiting the owner's approval and not to be posted**, inside the seeding document rather than as a separate file.
 
 **Rationale:** the words and the preconditions are one decision, not two. The message is only safe once the list is seeded, and a villager sent to a list of four test people does not come back — the link is the one thing that cannot be un-sent. Keeping the draft in the same document as the seeding instructions, behind a checklist, means the owner cannot encounter the message without also encountering what must be true before he posts it. The text is reproduced **byte-exact** as supplied and verified programmatically rather than by eye, because it is his voice and not the build's to edit.
+
+### 2026-09-18 — The runbook is reconciled before the walk, not after it
+
+**[DECISION]** `docs/RESTORE-dunchi-trader.md` was reconciled to the deployed state **before** the owner walks it, as documentation work carrying no plan row and clearing no effort.
+
+**Rationale:** the runbook was written on 2026-09-18T15:06Z, when the Apps Script was not deployed and `VOTES_ENDPOINT` was empty. Row 6.1 closes only on a human walking it end to end, and a walk is expensive — it needs the Form, Sheet, Apps Script and Pages under both logins and takes about ninety minutes. Walking a document that contradicts the deployed reality does not merely waste that time: it **manufactures false defects**, because row 6.1's own wording says *"any step needing anything else is a defect to fix"*. A walker following the old step 7 would have been told to paste a URL that is already set, and told to expect a confirmation the page is measurably incapable of giving. He would have recorded real-looking failures against a system that works. Fixing the document first is the cheap half of the row; the walk is the half only he can do. `[PATTERN CANDIDATE: reconcile-before-the-walk]`
+
+**Alternatives considered:** letting him walk it and correcting what he found — rejected, because the defects he would have found were ours and already known, and his time is the scarce resource. Closing 6.1 on the reconciliation — rejected outright; the row's closing clause is the walk, and nothing else in it can substitute.
+
+**[DECISION]** Step 5's expected result was **measured rather than reasoned**, and both plausible messages are named.
+
+**Rationale:** the runbook asserted that a rebuilt-but-unpointed site says *"The list is being updated"*. That is a claim about program behaviour and was testable, so it was tested rather than argued about — the page's three failure messages were driven one at a time against the live site with the feed intercepted. The assertion turned out to be the less likely of two possibilities: a genuine rebuild copies an `app.js` pointing at a spreadsheet that no longer exists, which yields *"The list will not load at the moment"*. Both are now named as correct at that point, with a statement of what would instead mean step 5 itself is wrong. The same measurement showed that *"Nobody on the list just yet"* is the **success** signal at step 6, which is the single most misreadable state in the whole runbook.
+
+**Alternatives considered:** reasoning it out from the source — it would have reached the right answer for step 6 and probably the wrong one for step 5, because the deciding factor is what the *old* feed URL does after the old sheet is gone, which is not visible in the code.
+
+**[DECISION]** Where two inheritance documents covered the same action, the one the reader reaches first keeps the instruction and the other points at it.
+
+**Rationale:** four documents now address one non-technical reader — `README.md`, `docs/RESTORE-dunchi-trader.md`, `apps-script/DEPLOY.md` and `docs/PROCESS-seeding-and-launch-dunchi-trader.md`. Two copies of an instruction is two things to keep in step, and the estate has repeatedly found that the copies drift rather than staying identical. The three standing warnings are the deliberate exception and are kept in all of them: row 6.1 requires them in the README, a rebuilder needs them at the moment of publishing, and a seeder needs them before touching the tab — they are entry points, not duplicates, and each is a warning rather than a procedure.
 
 ---
 
@@ -1541,3 +1577,143 @@ The live site serves 0 failed requests and 0 console errors on a plain load, dow
 In priority order for him: **seed the list**; place one vote from his phone and check the Votes tab (row 4.2); delete the test row from the 4.3 measurement; then the remaining form and sheet actions in Layer 4. **The launch message must not be posted until step 7 has passed** — it is drafted and waiting for his approval, not ready to send.
 
 **Effort per prompt for the plan, cumulative: 48 effort done ÷ 12 prompts sent = 4.0.** Both figures recorded, not only the ratio.
+
+### 2026-09-18T17:41:58Z — Runbook reconciled to the deployed state before the owner's walk
+
+**Source:** Claude Code
+**Started:** 2026-09-18T17:35:00Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH
+**Repos touched this session:** `gsamwell-lang/dunchi-trader` (origin), `dunchitrader-collab/dunchitrader-collab.github.io` (collab). No other repository was read or written.
+
+**Prompt received:**
+
+> Target repo: dunchi-trader
+>
+> Comply with the loaded global CLAUDE.md and the loaded project CLAUDE.md. Both auto-load — do NOT Read either.
+>
+> MODE: IMPLEMENTATION. Package tier (a) hard/ambiguous, model claude-opus-5, effort high.
+>
+> ## CONTEXT TRANSFER BRIEF
+>
+> Same conversation as prompts 2665 and 2667: https://claude.ai/cowork/cse_01HkJGChdg9xjNavfnTe9USH. You landed 2667 at 17:32Z. Repo re-read by me at 17:35:24Z: HEAD 697a80b2d59f9652299e89cf630d5041d21e65c0, master, tree clean, 0 ahead / 0 behind. Composed against that HEAD. Plan at 48/77 = 62.3%, 10 of 15 rows done.
+>
+> MISSION: re-read it at source in task 0 and name it back. Do not carry it from a previous reply.
+>
+> WHY THIS PROMPT EXISTS, and it is the whole point: the Owner is about to WALK docs/RESTORE-dunchi-trader.md end to end. That walk IS row 6.1, the largest row left at 9 effort, and it closes only when a human has walked it with the two Google logins and nothing else. Your own 2667 summary flagged that the runbook was NOT revisited after the endpoint was deployed. A runbook that contradicts the deployed reality wastes his walk and manufactures false defects. This prompt makes the inheritance package internally consistent BEFORE he walks it. It does not close row 6.1 and must not pretend to.
+>
+> Row 4.2 stays open and untouched: he has not yet confirmed a phone vote reaching the Votes tab. Write no test row into his Votes tab this session, and place no vote.
+>
+> This is documentation work and is exempt from the planning gate as such — no new plan row, no status change on 6.1.
+>
+> ## TASK 0 — GUARDS
+>
+> Confirm HEAD 697a80b2, master, clean, 0/0. Re-read the MISSION block at source and state it back. Read docs/RESTORE-dunchi-trader.md in full, and read row 6.1's own wording in full, because the runbook is judged against that wording and nothing else.
+>
+> ## TASK 1 — reconcile the runbook against what is actually deployed
+>
+> Go through docs/RESTORE-dunchi-trader.md step by step and correct every place where it disagrees with the repo and the live site as they now stand. Known drift to check, not an exhaustive list — find the rest yourself:
+>
+> - the Apps Script web app is DEPLOYED and its URL is live in app.js as of 4d67c15; the runbook was written when it was not
+> - the Votes tab exists with the four-column header
+> - VOTES_ENDPOINT is no longer empty, and step 4 of apps-script/DEPLOY.md no longer says to hand-edit app.js in the live repo
+> - the favicon is now an inline data URI in index.html at 99b66de, so a from-scratch rebuild reproduces it by copying the repo, not by adding a file
+> - docs/PROCESS-seeding-and-launch-dunchi-trader.md now exists and the runbook should point at it where seeding is concerned
+> - the measured opaque-response behaviour means a rebuilt endpoint CANNOT be verified from the page; the only proof is a row appearing in the Votes tab, and the runbook's expected results must say so
+>
+> Every step keeps its expected result, and each expected result must be something the walker can actually see with the two Google logins and nothing else. Where a step cannot be verified that way, say so in the step rather than leaving the walker to discover it.
+>
+> ## TASK 2 — make the inheritance package agree with itself
+>
+> README.md, docs/RESTORE-dunchi-trader.md, apps-script/DEPLOY.md and docs/PROCESS-seeding-and-launch-dunchi-trader.md are now four documents telling one story to a non-technical inheritor. Check them against each other and fix contradictions and dead references. Report a table of every disagreement found and what you did about it. If any two documents give conflicting instructions for the same action, the one the walker would reach first wins and the other points at it rather than repeating it.
+>
+> Keep the plain-English voice throughout. "Tradesperson", never "tradesman". Ids are assigned once and never change.
+>
+> ## TASK 3 — the walk-ready check
+>
+> Produce, at the end of the runbook, a short numbered list the Owner ticks off as he walks it, one line per step, each naming what he should see. Nothing else — no prose block. It must be usable on a phone beside a laptop.
+>
+> ## TASK 4 — record and land
+>
+> Handover Layer 6 entry citing my conversation reference; Layer 1 current facts; any new Layer 3 or Layer 4 item this surfaces. Record against row 6.1 that the runbook was reconciled to the deployed state on this date and that the WALK ITSELF IS STILL OUTSTANDING and the row stays new. Commit and push BOTH remotes — GITHUB_TOKEN= is needed for origin, per the Layer 3 gotcha. Run the validator and report its exit code AND its reported sub-task count against the rows the document actually holds.
+>
+> ## RETURN
+>
+> - A detailed written summary.
+> - The table of disagreements found and resolved, with file and line.
+> - A formatted table of what was tested and each result, measured values not assertions.
+> - The plan's completion position, and state plainly that this prompt clears no effort because it is documentation.
+> - The end-of-session summary and any recommended follow-on prompt as a single copy-paste-ready fenced code block.
+> - State the model and effort this session ran on.
+
+**What was done:**
+
+**Task 0 — guards passed, MISSION re-read at source.** HEAD `697a80b2d59f9652299e89cf630d5041d21e65c0`, branch `master`, `git status --porcelain` empty, `0 0` against origin. The MISSION block was read again from Layer 1 rather than carried from the previous reply. Row 6.1's wording and the whole runbook were read before any edit, because the runbook is judged against that wording and nothing else.
+
+**Task 1 — the runbook reconciled, with one expected result measured rather than reasoned.** The prompt listed six known drifts; all six were addressed and **three further defects were found that the prompt did not name**.
+
+The three found independently were: (1) step 2's example published-CSV address still carried `gid=1583719737`, the **superseded raw form-answers tab** — the exact misconfiguration this project was already caught by on 2026-09-18, which would have had the site serving unreviewed submissions and villagers' email addresses. It now shows `1915382769` with a warning describing how to spot the wrong tab from what the address downloads. (2) Step 5's file list omitted `CLAUDE.md`; it now lists every tracked file, verified against `git ls-files`. (3) **Step 5's expected result was factually wrong**, and this is the substantive find.
+
+Step 5 asserted that a rebuilt-but-not-yet-pointed site says *"The list is being updated"*. That is a claim about program behaviour, so it was tested rather than argued. The page's failure states were driven one at a time against the **live** site with the feed intercepted and replaced, plus a control: a header-only feed gives *"Nobody on the list just yet"*; a wrong-shaped feed gives *"The list is being updated"*; an unreachable or 404 feed gives *"The list will not load at the moment"*; and one active row renders normally, which is what proves the harness served the feed rather than breaking it. A genuine rebuild copies an `app.js` pointing at a spreadsheet that no longer exists, so the **likelier** message at step 5 is the unreachable one — the opposite of what the runbook claimed. Step 5 now names both as correct at that point and says what would instead mean step 5 itself is wrong (a blank page or a GitHub 404, which indicate the files or the Pages setting rather than the list address). The same measurement established that *"Nobody on the list just yet"* is the **success** signal at step 6 — the most misreadable state in the runbook, because it reads like a failure — and step 6 now explains why its message differs from step 5's, which is what makes it proof rather than decoration.
+
+An earlier run of the harness returned the unreachable message for all three conditions. That was a broken-interception artefact rather than a finding; it was caught by adding the control case, and it is recorded in Layer 3 because it would look like a real result to the next person who tries it.
+
+On the six named drifts: step 7 no longer tells the walker to paste into `VOTES_ENDPOINT` unqualified — it distinguishes the **one-repository rebuild** case, where editing `app.js` directly is correct, from the **two-repository live** case, where it is the thing that breaks the site — and it no longer promises a result the page cannot give. Its expected result is now the Votes tab, with the measured reason stated plainly: the reply comes back sealed, the page thanks the villager either way, so the spreadsheet is the only proof. Step 5 gained a note that the favicon is drawn inside `index.html`, so a rebuild reproduces it by copying the repository rather than remembering a file. Step 6 points at `docs/PROCESS-seeding-and-launch-dunchi-trader.md` for seeding while making clear seeding is not part of rebuilding. Step 3 now states which two settings — email collection and the two response-validation rules — **cannot** be confirmed from outside the Google account, and supplies an incognito test that proves the email setting indirectly, rather than leaving the walker to discover the gap. A dated note at the top records that the document was checked against the live site on 2026-09-18 and that the walker is rebuilding something which currently exists and works.
+
+**Task 2 — the four documents made to agree.** Every file reference in all four was extracted and checked to resolve against the filesystem; all resolve. One real contradiction was found: `README.md` still told the reader the recommend button was waiting to be switched on and that recommendations "only stay on their own phone", which has been false since `4d67c15`. It now states the button is switched on, that new recommendations arrive on the Votes tab, and that the Votes tab is the only place that tells the truth. `docs/PROCESS-seeding-and-launch-dunchi-trader.md` gained a table pointing at the single place each day-to-day job is documented, so it stops implicitly competing with the README. The three standing warnings appear in three documents and were **deliberately left duplicated**: row 6.1 requires them in the README, a rebuilder needs them at the moment of publishing and a seeder before touching the tab — they are entry points rather than competing procedures. Consistency of the id rule and the "tradesperson" wording rule was verified mechanically across all four.
+
+**Task 3 — the walk-ready tick list** was added as the last section of the runbook: eleven numbered lines, one per step plus the closing checks, each naming what the owner should see, with no surrounding prose.
+
+**Task 4 — recorded and landed.** Row 6.1 carries a dated note that the runbook was reconciled and that **the walk itself is outstanding**; its status is unchanged at `new` and no effort was cleared. Handover updated in Layer 1 (the runbook's outstanding item rewritten; a stale Key Scripts row saying the runbook was "Not written" superseded, and a current row added), Layer 3 (the measured three-message reference), Layer 5 (three `[DECISION]` entries) and Layer 6 (this entry).
+
+**Testing performed:**
+
+| # | What was tested (exact action) | Expected | Actual (measured) | Result |
+|---|---|---|---|---|
+| 1 | `git rev-parse HEAD` / branch / tree / sync | `697a80b2…`, master, clean, `0 0` | `697a80b2d59f9652299e89cf630d5041d21e65c0`, master, empty, `0	0` | PASS |
+| 2 | Feed state: **control**, one active row | list renders | 1 trade heading `Plumber1`, no notice | PASS — harness valid |
+| 3 | Feed state: **header row only** | some message | **"Nobody on the list just yet"** | measured |
+| 4 | Feed state: **wrong shape / wrong tab** | some message | **"The list is being updated"** | measured |
+| 5 | Feed state: **request aborted** | some message | **"The list will not load at the moment"** | measured |
+| 6 | Feed state: **HTTP 404** | some message | **"The list will not load at the moment"** | measured |
+| 7 | Runbook step 5's asserted expected result vs #3–#6 | matches | **did NOT match** — it named the badfeed message; the likelier is unreachable | **DEFECT — corrected** |
+| 8 | Repo file list vs runbook step 5's list | equal | step 5 omitted `CLAUDE.md`; 15 tracked files vs 10 listed | **DEFECT — corrected** |
+| 9 | `grep` for the superseded gid `1583719737` outside handover history | none | found in runbook step 2 | **DEFECT — corrected** |
+| 10 | Same grep after the fix | none | 0 matches outside handover history | PASS |
+| 11 | `app.js` constants vs runbook claims | both set | `FEED` gid `1915382769`; `VOTES_ENDPOINT` set to the `/exec` URL | PASS |
+| 12 | Every file reference in the four documents resolves | all exist | all resolve; one apparent miss was a shorthand mention, not a link | PASS |
+| 13 | Stale "not switched on" / "endpoint does not exist" claims across the four | none | 0 matches after the README fix | PASS |
+| 14 | Wording rule — "tradesman" in each of the four | 0 | README 0, RESTORE 0, DEPLOY 0, PROCESS 0 | PASS |
+| 15 | Id rule consistency across README / RESTORE / PROCESS | consistent | all three state assigned once, never changed, never reused | PASS |
+| 16 | Runbook step headings sequential after edits | 1–8 in order | Steps 1–8 in order, then closing checks, then the tick list | PASS |
+| 17 | `validate_build_plan.py --verbose` | exit 0 | `OK`, exit `0`, 7 steps, **15 sub-tasks**, **48/77 = 62.3%** | PASS |
+| 18 | Independent row count vs validator's sub-task count | equal | document holds **15** rows (10 `done`, 5 `new`); validator read **15** | PASS |
+| 19 | Independent recompute of done and total effort | matches validator | **48** and **77** — unchanged, as expected for documentation | PASS |
+| 20 | Both remotes pushed and level | equal | `697a80b..983525f` on origin and collab | PASS |
+
+**What was not tested:**
+
+- **The walk itself.** This is the whole point of the session's restraint: the runbook was reconciled, not walked. Every step's expected result is now something the walker should be able to see, but **whether each step is actually achievable with the two logins alone is exactly what row 6.1 exists to establish, and only the owner can establish it.** Nothing here shortens that walk's verdict.
+- **Steps 1–4 and 7–8 of the runbook were not executed.** No spreadsheet was created, no form built, no repository made, no Apps Script deployed. The corrections are to what the document *says*, checked against the repository and the live site, not against a fresh rebuild.
+- **Step 3's two Google-side settings** remain unconfirmable from outside the account. That is now stated in the step rather than left for the walker to trip over, but it is not resolved.
+- **Row 4.2 was left untouched** as instructed: no vote was placed and no test row was written to the Votes tab.
+- **The incognito form test in step 3** was written but not performed — it needs the live form and was not exercised here.
+- **The tick list has not been used on a phone.** It is short enough to be usable there by construction, but that is a design intention rather than a measurement.
+
+**Commits:**
+
+- `983525f` — `docs: reconcile the runbook to the deployed state before the owner walks it`
+
+**Finished:** 2026-09-18T17:41:58Z
+
+**End state:**
+
+The plan is **unchanged at 48 of 77 effort (62.3%)**, 10 of 15 rows `done`. **This session cleared no effort, and that is correct** — it was documentation work against an open row, not delivery. Row 6.1 stays `new` at 9 effort, the largest row left.
+
+What changed is that the runbook now matches the system it describes. Three defects in it would each have cost the owner time during the walk, and one — step 5's expected result — would have had him re-doing correctly completed steps because the message on screen did not match the document. The runbook also no longer promises a confirmation the page is measurably incapable of giving, which is the failure most likely to have been recorded as a genuine defect against a working system.
+
+The inheritance package is four documents telling one story: `README.md` for day-to-day running, `docs/PROCESS-seeding-and-launch-dunchi-trader.md` for filling the list and launching, `apps-script/DEPLOY.md` for the recommend button, and `docs/RESTORE-dunchi-trader.md` for rebuilding from nothing. Each now points at the others rather than repeating them, with the three standing warnings the deliberate exception.
+
+Nothing is blocked on code. For the owner, in priority order: **walk the runbook** (row 6.1, and the tick list at its end is the ticksheet); **seed the list** to 12–15 tradespeople across at least 6 trades; **place one vote from his phone and check the Votes tab** (row 4.2); **delete the test row** from the 4.3 measurement; then the remaining form and sheet actions in Layer 4. The launch message stays a draft and must not be posted until step 7 has passed.
+
+**Effort per prompt for the plan, cumulative: 48 effort done ÷ 13 prompts sent = 3.69.** Both figures recorded, not only the ratio.
