@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T14:40:46Z
+last-updated: 2026-09-18T14:58:46Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T14:40:46Z**
+**Last updated: 2026-09-18T14:58:46Z**
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. The agreed design is ported and live; the page reads the feed and handles every failure state. Plan stands at 7 of 75 effort (9.3%). ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ SUPERSEDED 2026-09-18T14:58:46Z → **20 of 75 effort (26.7%)**. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -116,6 +116,7 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 |------|----------|----------|-------------|
 | ~~2026-09-18~~ | ~~**CRITICAL**~~ | ~~**YES**~~ | ~~**No push credential for the dunchitrader-collab GitHub account.** Measured 2026-09-18T14:13:45Z: both credentials report `"push": false`, and a dry-run push returns HTTP 403.~~ RESOLVED 2026-09-18T14:26:12Z — Gavin added `gsamwell-personal` as a collaborator with Write access. The push landed at `f94d45a` using the `gsamwell-lang` classic token; see Layer 3 for why the fine-grained token still could not, despite the API reporting `push: true`. |
 | 2026-09-18 | MEDIUM | no | **Row 1.1 needs the phone sighting.** Everything else on it is measured and confirmed against the live URL. Gavin opens `https://dunchitrader-collab.github.io` on a phone and confirms it renders; the row closes on that alone. |
+| 2026-09-18 | HIGH | no | **Row 3.3 needs Gavin's sighting.** The zoom and overflow behaviour is measured in a real browser — 0px sideways overflow across six cases at 320px, every digit group intact — but it is a rendered surface. Gavin presses the largest A on his phone and confirms nothing runs off the edge. |
 | 2026-09-18 | HIGH | no | **Row 3.1 needs Gavin's sighting.** The wireframe is ported and live at `d10ae18`, verified byte-identical and checked against every design §9 rule this session could measure. It is a rendered surface, so it is not closed on Claude's reading. Gavin opens the site on a phone AND a computer and says whether it looks right. |
 | 2026-09-18 | **CRITICAL** | **YES — blocks Build Plan step 2** | **The published CSV serves the WRONG TAB.** Measured this session: it returns the raw Form responses header, not the Published schema. Must be republished from the Published tab. |
 | 2026-09-18 | HIGH | no | Form question 1 is a dropdown with "Other" typed as an ordinary option. Must become Multiple Choice with the real Add "Other" control. |
@@ -299,6 +300,18 @@ Root cause: `dunchitrader-collab/dunchitrader-collab.github.io` was created thro
 Impact: the tempting fix is `push --force`, which would discard the live repo's own first commit.
 Fix applied: `git merge collab/main --allow-unrelated-histories` at `f94d45a`, resolving the add/add `README.md` conflict in favour of this repo's version — which carries the publishing procedure and the no-build-step rule that plan row 1.2 requires. **No force-push was used**, and the live repo's `Initial commit` is preserved in the history.
 Diagnosis: `git log HEAD..collab/main --oneline` shows commits the local branch lacks; `git merge-base HEAD collab/main` returning nothing means the histories are unrelated.
+
+**[BUG] 2026-09-18 — rem-scaled padding collapsed the content box, splitting phone numbers mid-digit**
+Root cause: `.wrap`, `.card` and `.call` each carried `1rem` padding. Because `rem` follows the text-size control, at the largest size under 200% browser zoom the three paddings together claimed **174px of a 160px-wide body**, collapsing the card's content box to **0px**. A phone number then had nowhere to sit and broke between digits — measured: `+44 7700 900456` split across **3 lines** at the largest text size and **13 lines** at 200% zoom.
+Impact: directly violates the stated requirement *"In all zoom functions make sure the text never rolls outside the box"*, and a phone number broken mid-digit is unreadable — which on this site is the one thing that must always work.
+Fix applied: padding capped with `min()` in [PATH] `style.css` — `.wrap` `padding-inline:min(1rem, 4vw)`, `.card` `padding:min(1rem, 4vw)`, `.call` `padding:.8rem min(1rem, 3vw)`; and `.call .num` sized `min(1.15rem, 6vw)` so the number shrinks rather than splits. Commit `0418f59`.
+Diagnosis: at 320px with the largest text size and 200% zoom, walk the ancestor chain of `.call .num` and read `clientWidth` at each level. A content box near 0 with large `padding-left`/`padding-right` is this fault. Font size is NOT the lever — verified by measurement: the groups still split at 9px, because the container, not the type, was the constraint.
+
+**[BUG] 2026-09-18 — the fixed-px size strip pushed the page sideways under zoom**
+Root cause: the `.sizer` strip is deliberately sized in fixed px so the buttons do not grow as they are pressed (the BUG 2 fix). Under 200% browser zoom the CSS viewport halves, and the strip's three 48px buttons plus label and gaps needed **108px of a 102px line**, so the page scrolled sideways.
+Impact: the control that exists to spare villagers from pinch-zoom was itself causing the sideways scrolling that pinch-zoom causes.
+Fix applied: `flex-wrap:wrap` on `.sizer` in [PATH] `style.css` — the label drops to its own line and the buttons keep their fixed size. The BUG 2 fix is untouched. Commit `0418f59`.
+Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clientWidth`.
 
 ### Gotchas
 
@@ -862,3 +875,89 @@ The agreed design is live at `https://dunchitrader-collab.github.io`, byte-ident
 **Row 2.2 is `done`.** **Row 3.1 is `blocked` on Gavin's sighting** — it is a rendered surface and is deliberately not closed on Claude's own reading. **Row 2.1 stays `blocked`** on the feed, with its machinery built and tested so it closes with no further code.
 
 Today a visitor to the live site sees *"The list is being updated"*, which is correct and deliberate: the feed still serves the raw responses tab, and the page refuses to render unreviewed villager data. The moment the Published tab is republished, the same code renders the real directory.
+
+### 2026-09-18T14:58:46Z — Search, vote panel, three measured overflow fixes, and the plan's delivery fields
+**Source:** Claude Code
+**Started:** 2026-09-18T14:47:02Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01U4wmyQG3nVGNetpsU5i2zw
+**Repos touched this session:** dunchi-trader
+
+**Prompt received:**
+Deliver plan sub-tasks 3.2, 3.3 and 4.1 — 18 effort — and populate the plan's mandatory delivery fields. Task 1: search and autocomplete per solution design §9.11, ported and verified rather than reinvented, with trades suggested ahead of people, matches underlined never coloured, the trade list staying visible, trade/Back clearing the search, Enter searching and Escape clearing; the live feed still serves the wrong tab, so build against a correct fixture and say plainly that search has never run against real data. Task 2: the zoom and overflow verification per §9.6–§9.10, establishing by MEASUREMENT not inspection — comparing `scrollWidth` against `clientWidth` — that nothing scrolls sideways, no text leaves its box, no phone number breaks mid-digit, the header does not swallow the screen and the size buttons do not grow; drive a real browser and report actual numbers; row 3.3 may not close on measurement alone. Task 3: the vote panel per §7.4 and §7.5, with the network send behind ONE clearly named function that row 4.2 fills in, no invented endpoint URL, and a thank-you that does not claim a recommendation was saved when it was only held in the browser. Task 4: populate Owner (Gavin's account UUID, not a name), Due start, Due end, Actual start and Forecast end on all 14 rows, scheduling FORWARD from today at an assumed 60 minutes per effort point, and verifying the critical path independently.
+
+**What was done:**
+
+Both authorities were read first. The plan was read at 2026-09-18T14:47:02Z at HEAD `fe3b02f`, tree clean.
+
+**The overflow work found three real defects, and the first two diagnoses were wrong.** This is recorded because the sequence matters more than the result.
+
+Measuring at 320px with the largest text size showed a long international number `+44 7700 900456` breaking across **3 lines**, and **13 lines** at 200% zoom. The first fix — `word-break:keep-all` — stopped the split but introduced **117px of sideways overflow**, trading one violation for a worse one. The second — capping the font size — was disproved by experiment: the groups still split at **9px**, which proved the type was never the constraint. Walking the ancestor chain then showed the actual cause: `.wrap`, `.card` and `.call` each carried `1rem` padding, and because `rem` follows the text-size control, the three together claimed **174px of a 160px-wide body**, collapsing the content box to **0px**. Capping the padding with `min()` fixed it at the root, after which the number could be restored to its full design size with a `min()` guard.
+
+A second, separate defect surfaced in the same sweep: the `.sizer` strip — deliberately fixed-px so the buttons do not grow when pressed — needed **108px of a 102px line** under 200% zoom and pushed the page sideways. `flex-wrap:wrap` fixed it without touching the fixed sizing. Both are recorded as `[BUG]` entries in Layer 3 with their diagnosis commands.
+
+Final measurements, six cases at 320px: `scrollWidth` equals `clientWidth` in **all six** — 0px sideways overflow — with **0** elements past the right edge, header `position: static` throughout, size buttons a constant 48×44px, and **every digit group intact**, including at the largest text size under 200% zoom.
+
+`app.js` — the recommendation panel per §7.4/§7.5. **The endpoint does not exist and none was invented.** The send sits behind `sendRecommendation(traderId, name, text)`, which returns `false` immediately while `VOTES_ENDPOINT` is the empty string; the `fetch` body is written but unreached, so row 4.2 is a one-line change. The confirmation deliberately reads *"noted on this page"* and adds that it will not reach the village list until the site is finished — the thank-you does not claim a save that did not happen.
+
+`docs/BUILD-PLAN-dunchi-trader.md` — the satellite tables widened to twelve columns and all 14 rows populated with the account key `222b34c4-7d05-48f4-9d23-cfb47e96d9de`, a due start, a due end, an actual start (blank where a row has not begun) and a forecast end. The critical path was **computed from the Depends-on column rather than trusted**: 49 of 75 effort along `1.1 → 2.1 → 3.1 → 4.1 → 4.2 → 6.1 → 7.1 → 7.2`, matching the figure supplied. Scheduling runs forward from 2026-09-18; the plan lands 2026-09-25.
+
+**Testing performed:**
+
+| Test | Expected | Actual | Result |
+|---|---|---|---|
+| Plan read cited | timestamp + HEAD | 2026-09-18T14:47:02Z, `fe3b02f`, clean | PASS |
+| Sideways overflow, 6 cases at 320px | scrollWidth = clientWidth | 0px in all six | PASS |
+| Elements past right edge | 0 | 0 in all six | PASS |
+| Header position at every size | not sticky | `static` in all six | PASS |
+| Size buttons do not grow | constant | 48×44px at 20px and 29px | PASS |
+| Digit groups, largest text size | intact | 3 of 3 intact | PASS |
+| Digit groups, largest + 200% zoom | intact | 3 of 3 intact | PASS |
+| Trade grid renders | 8 trade slots from 6 people | 8 | PASS |
+| Tapping a trade shows its people | filtered | 1 plumber | PASS |
+| Tapping a trade clears search | empty | empty | PASS |
+| Back clears search, returns to grid | empty, 8 trades | empty, 8 | PASS |
+| Trades suggested ahead of people | trade index < person index | confirmed by index | PASS |
+| Matches UNDERLINED | underline | `text-decoration: underline` | PASS |
+| Matches NOT coloured | colour = parent colour | equal | PASS |
+| Trade list visible under suggestions | still present | present | PASS |
+| Enter searches / Escape clears | both | both | PASS |
+| Panel opens in place, names person | "You are recommending Dave Trelawny" | exact | PASS |
+| Villager never leaves the page | same URL | same URL | PASS |
+| Too-short entry shows error | visible | visible | PASS |
+| Error is UNDER the box | below textarea | below | PASS |
+| Error is plain text not colour | colour = body colour | equal | PASS |
+| Error never clears what was typed | preserved | preserved | PASS |
+| Blank name records "a villager" | present | present | PASS |
+| Tally and words appear | both | both | PASS |
+| Thank-you does not claim a save | no "sent"/"saved" | none | PASS |
+| No invented endpoint URL | 0 | 0 in live `app.js` | PASS |
+| Critical path computed independently | 49 of 75 | 49 of 75, same path | PASS |
+| All 14 rows carry owner and dates | 14 | 14, none missing | PASS |
+| Build plan validates | exit 0 | exit 0 — **20 of 75 done (26.7%)** | PASS |
+| Live files byte-identical (cache-busted) | identical | 3 of 3 identical | PASS |
+| Append-only layers | 0 lines lost | 0 | PASS |
+
+26 browser behaviour tests, all passing.
+
+**What was not tested:**
+
+- **Search has NEVER run against real data.** The live feed still serves the raw Form responses tab, so every search, autocomplete and card test used a correct Published-tab fixture. What the page does with the village's actual entries is unknown until the feed is republished.
+- **Nobody has looked at the rendered page.** Every check was a measurement or an assertion. Row 3.3 in particular is a rendered surface: the numbers say it holds, but whether it *looks* right at the largest size on a real phone is Gavin's call, and the row is not closed on my reading.
+- **The vote has never reached a sheet**, because there is no endpoint and no Votes tab. `sendRecommendation()` posts nothing today; the recommendation lives in the browser for the visit and is gone on refresh. Whether the Apps Script CORS behaviour matches the expectation in §6.2 is still unmeasured — that is row 4.3.
+- **Only Chromium was measured.** No Safari or Firefox, and no real iOS or Android device; `body { zoom }` was used to simulate browser zoom, which is not identical to a pinch-zoom on a phone.
+- **Contrast was not re-measured** — the palette is carried over unchanged from the reviewed wireframe.
+- **The 60-minutes-per-point rate is ASSUMED, not measured.** Every date derived from it is a projection, not a commitment, and is labelled as such in the plan.
+
+**Commits:**
+- `0418f59` — `feat: search, vote panel, and three measured overflow fixes`
+
+**Finished:** 2026-09-18T14:58:46Z
+
+**End state:**
+
+Live at `https://dunchitrader-collab.github.io`, verified cache-busted and byte-identical. Search, autocomplete and the recommendation panel all work; the zoom and overflow behaviour is measured clean across six cases.
+
+**Rows 3.2 and 4.1 are `done`. Row 3.3 is `blocked` on Gavin's sighting** — measured, but a rendered surface. Rows 1.1 and 3.1 remain blocked on his sighting; 2.1 remains blocked on the feed. The plan carries owner, due start, due end, actual start and forecast end on all 14 rows, scheduled forward.
+
+The next build step is row 4.2 — the Apps Script web app and the Votes tab — which turns `sendRecommendation()` from a stub into a real send by setting one constant.
