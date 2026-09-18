@@ -24,10 +24,21 @@
   var main   = document.getElementById("main");
   var search = document.getElementById("search");
 
+  /* The Votes endpoint does not exist yet — build plan row 4.2 creates the
+     Apps Script web app and the Votes tab, and sets this. No URL is invented
+     here; while it is empty, sendRecommendation() sends nothing. */
+  var VOTES_ENDPOINT = "";
+
+  /* "What did they do for you?" is required, minimum 15 characters —
+     solution design §7.4, matching the Google Form's own rule. */
+  var MIN_WORDS = 15;
+
   var PEOPLE = [];         // one entry per tradesperson
   var state = "loading";   // loading | ready | empty | unreachable | badfeed
   var trade = null;
   var committed = false;   // true once a suggestion is chosen or Enter pressed
+  var VOTES = {};          // recommendations added this visit, keyed by trader id
+  var DONE  = {};          // traders this visitor has already recommended
 
   /* ---- text size ----
      Solution design section 9.9. The three sizes and the remembered setting.
@@ -165,7 +176,137 @@
     a.appendChild(el("span","num", l.phone));
     c.appendChild(a);
 
+    var recs = VOTES[l.id] || [];
+
+    if (recs.length){
+      c.appendChild(el("p","tally", recs.length === 1
+        ? "1 villager recommends this tradesperson"
+        : recs.length + " villagers recommend this tradesperson"));
+
+      var box = el("div","recs");
+      recs.forEach(function(r){
+        var d = el("div","rec");
+        d.appendChild(el("p", null, "“" + r.why + "”"));
+        d.appendChild(el("span","by", "Recommended by " + r.by));
+        box.appendChild(d);
+      });
+      c.appendChild(box);
+    }
+
+    if (DONE[l.id]){
+      /* Deliberately does NOT say "saved" or "added to the list". Until the
+         Votes endpoint exists (row 4.2) this recommendation lives only in
+         this browser, and the page must not claim otherwise. */
+      c.appendChild(el("p","thanks","Thank you — your recommendation has been noted on this page."));
+      c.appendChild(el("p","todo","It will not be sent to the village list until the site is finished. Nothing has been lost."));
+      return c;
+    }
+
+    var v = el("button","vote","I recommend them too");
+    v.type = "button";
+    c.appendChild(v);
+
+    v.addEventListener("click", function(){
+      v.remove();
+      c.appendChild(panel(l));
+    });
+
     return c;
+  }
+
+  /* The whole recommendation is two boxes, in place on the card. Nothing the
+     villager already knows is re-typed, and they never leave the page.
+     Solution design §7.4 and §7.5. */
+  function panel(l){
+    var p = el("div","panel");
+    p.appendChild(el("h4","", "You are recommending " + l.name));
+
+    var key = (l.id || l.name).replace(/\W+/g,"");
+    var idN = "n-" + key;
+    var idW = "w-" + key;
+
+    var ln = el("label", null, "Your name");
+    ln.setAttribute("for", idN);
+    var inp = document.createElement("input");
+    inp.id = idN; inp.type = "text"; inp.autocomplete = "name";
+
+    var lw = el("label", null, "What did they do for you?");
+    lw.setAttribute("for", idW);
+    var ta = document.createElement("textarea");
+    ta.id = idW; ta.rows = 3;
+    ta.setAttribute("aria-describedby", idW + "-err");
+
+    /* The error sits UNDER the box as plain text. Colour never carries the
+       meaning on its own, and the message never clears what was typed. */
+    var err = el("p","fielderr","");
+    err.id = idW + "-err";
+    err.setAttribute("role","alert");
+    err.hidden = true;
+
+    var send = el("button","send","Add my recommendation");
+    send.type = "button";
+    var cancel = el("button","cancel","Cancel");
+    cancel.type = "button";
+
+    p.appendChild(ln); p.appendChild(inp);
+    p.appendChild(lw); p.appendChild(ta); p.appendChild(err);
+    p.appendChild(send); p.appendChild(cancel);
+
+    send.addEventListener("click", function(){
+      var by  = inp.value.trim() || "a villager";   // blank becomes "a villager"
+      var why = ta.value.trim();
+
+      if (why.length < MIN_WORDS){
+        err.textContent = "Please write a few more words — what did they do for you?";
+        err.hidden = false;
+        ta.setAttribute("aria-invalid","true");
+        ta.focus();
+        return;                                     // what they typed is untouched
+      }
+
+      err.hidden = true;
+      ta.removeAttribute("aria-invalid");
+
+      (VOTES[l.id] = VOTES[l.id] || []).push({why:why, by:by});
+      DONE[l.id] = true;
+
+      sendRecommendation(l.id, by, why);
+      render();
+    });
+
+    cancel.addEventListener("click", function(){ render(); });
+
+    setTimeout(function(){ inp.focus(); }, 0);
+    return p;
+  }
+
+  /* THE ONLY NETWORK SEND FOR A RECOMMENDATION — build plan row 4.2 fills
+     this in. It posts the trader ID, never the name, because names change and
+     ids do not (solution design §4.1 and §7.5).
+
+     TODAY IT SENDS NOTHING. The Apps Script web app does not exist yet and the
+     sheet has no Votes tab, so there is no endpoint to post to and none is
+     invented here. The recommendation is held in this browser for the rest of
+     the visit and is gone on refresh. The card says exactly that rather than
+     claiming the recommendation was saved. */
+  function sendRecommendation(traderId, name, text){
+    if (!VOTES_ENDPOINT) return false;   // row 4.2: set the endpoint, and the body below goes live
+
+    /* Left in place, unreached, so row 4.2 is a one-line change rather than a
+       rewrite. Apps Script from a GitHub Pages origin is expected to need
+       mode:"no-cors" with a text/plain body, which means the reply cannot be
+       read — solution design §6.2, to be confirmed by measurement at 4.2. */
+    try {
+      fetch(VOTES_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {"Content-Type": "text/plain;charset=utf-8"},
+        body: JSON.stringify({id: traderId, name: name, text: text})
+      });
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   /* ---- the three message states ----

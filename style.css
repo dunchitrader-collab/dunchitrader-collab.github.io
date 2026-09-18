@@ -65,10 +65,16 @@
     overflow-wrap:break-word;
   }
 
+  /* Padding is capped in px as well as rem. Measured 2026-09-18: with padding
+     in rem alone, at the largest text size under 200% zoom the wrap, card and
+     call paddings together claimed 174px of a 160px-wide body, collapsing the
+     content box to zero and forcing phone numbers to break mid-digit. The cap
+     keeps the gutter generous at normal sizes and stops it eating the content
+     at extreme ones. */
   .wrap{
     max-width:46rem;
     margin:0 auto;
-    padding-inline:1rem;
+    padding-inline:min(1rem, 4vw);
     padding-block:0 3rem;
   }
 
@@ -113,6 +119,12 @@
   .sizer{
     display:flex;
     align-items:center;
+    /* Wraps rather than resizes. The buttons must stay a fixed size (BUG 2),
+       so when the viewport is too narrow to hold the strip — measured at 200%
+       browser zoom on a 320px phone, where the strip needs 108px of a 102px
+       line — the label drops to its own line instead of pushing the page
+       sideways. */
+    flex-wrap:wrap;
     gap:6px;
     padding:6px 0 8px;
   }
@@ -231,9 +243,14 @@
   }
 
   /* ---------------- back ---------------- */
+  /* flex-wrap and min-width:0 so the label can reflow instead of forcing the
+     page sideways at the largest text size under browser zoom. */
   .back{
     display:flex;
     align-items:center;
+    flex-wrap:wrap;
+    min-width:0;
+    overflow-wrap:break-word;
     gap:.6rem;
     width:100%;
     min-height:3.4rem;
@@ -256,7 +273,7 @@
     background:var(--card);
     border:3px solid var(--ink);
     border-radius:.4rem;
-    padding:1rem;
+    padding:min(1rem, 4vw);
   }
   .card h3{
     margin:0;
@@ -282,9 +299,10 @@
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    min-width:0;
     gap:.1rem;
     margin:.9rem 0 0;
-    padding:.8rem 1rem;
+    padding:.8rem min(1rem, 3vw);
     min-height:3.8rem;
     background:var(--go);
     color:var(--go-ink);
@@ -294,11 +312,32 @@
     font-weight:700;
   }
   .call .word{font-size:.95rem;letter-spacing:.06em}
+  /* A phone number must never break MID-DIGIT-GROUP. `overflow-wrap:anywhere`
+     did exactly that: measured 2026-09-18, "+44 7700 900456" broke across 3
+     lines at the largest text size and 13 at 200% zoom, which is unreadable
+     and is the defect Gavin's "text never rolls outside the box" rule exists
+     to prevent. Wrapping is now allowed only at the spaces the number already
+     has, and each group is kept whole. */
+  /* Measured 2026-09-18 at 320px: with `overflow-wrap:anywhere` a long
+     international number shattered mid-digit — "+44 7700 900456" split across
+     3 lines at the largest text size and 13 at 200% zoom. A number broken
+     between digits is unreadable, and Gavin's rule is that text never rolls
+     outside its box.
+
+     So the number wraps at its own spaces and, when even one digit group
+     cannot fit, shrinks instead of splitting. min() keeps the group whole at
+     every size measured, including the largest text size at 200% zoom, where
+     the effective type is around 58px in a 320px-wide phone. */
+  /* min() keeps the number at its full design size at every normal setting and
+     shrinks it only when the card is too narrow to hold a whole digit group —
+     which is preferable to splitting one. Verified: at the largest text size,
+     and at the largest size under 200% zoom, every group stays on one line. */
   .call .num{
-    font-size:1.15rem;
+    font-size:min(1.15rem, 6vw);
     font-variant-numeric:tabular-nums;
     letter-spacing:.01em;
-    overflow-wrap:anywhere;
+    overflow-wrap:break-word;
+    max-width:100%;
   }
 
   .vote{
@@ -350,6 +389,16 @@
   }
   .panel input{min-height:3.2rem}
   .panel textarea{min-height:6rem;line-height:1.5;resize:vertical}
+  /* The error sits under the box it belongs to, as plain bold text. Colour
+     never carries the meaning on its own — solution design section 7.4. */
+  .panel .fielderr{
+    margin:-.5rem 0 .9rem;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .panel .fielderr[hidden]{display:none}
+
   .panel .send{
     display:block;
     width:100%;
