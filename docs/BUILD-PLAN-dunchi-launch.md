@@ -183,3 +183,51 @@ result and say *"yes, that is delivered"*?
 | # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 5.1 | When Gavin hands the directory to whoever takes it on and walks away, they can run it without him. | Repair the runbook, then walk it against a throwaway copy | The inheritance requirement is proven rather than asserted | Fix the three measured defects, then verify by rebuilding | new | 2026-10-17 | 2026-10-17 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de |  |  | 2026-09-19 | 2026-10-17 | 2026-09-19 | 2026-10-17 |
+
+---
+
+## Step 6 — The publisher does not lose a villager's recommendation
+
+**Added 2026-09-19 after two real submissions were lost and the cause was measured
+from the Owner's Apps Script Executions log.** They failed for **two different
+reasons four minutes apart**, which is why this step carries both a retry and a
+sweep — a retry alone saves one class and does nothing for the other.
+
+| Time | Submission | Execution log |
+|---|---|---|
+| 20:03:57 | **Murray Angel** | **NO EXECUTION ENTRY — Google never delivered the event** |
+| 20:07:52 | **Stuart Ironside** | **FAILED 0.953s — `Service Spreadsheets failed while accessing document…`** |
+
+**The Requirement as stated governs this step in the Owner's own words**, carried
+verbatim and not paraphrased:
+
+> "the hiding can be completely silent. For example, where somebody put in two
+> phone numbers clearly doesn't work, but there needs to be some kind of
+> notification about why."
+
+> "the system has actually just merged two phone numbers together and created one
+> very, very long number, which is useless to anybody using it."
+
+> "it's frustrating that the system didn't give me a good enough error message to
+> tell me exactly what the problem was."
+
+> "Why can't we make an automated fix for both problems? I don't understand why
+> it's an issue where it would be obvious within one day and one click fixes it.
+> One day is a long time. Surely there's an automated way."
+
+> "once you actually submit details for a trader it's very hard to get back to the
+> original site because you're on the Google form"
+
+| # | Status | Sub-task | Effort |
+|---|---|---|---|
+| 6.1 | new | A recommendation reaches the village list by itself even when Google drops or fails the submission. Done when a transient service failure is retried and recovers without anybody noticing; a submission Google never delivers is picked up by a scheduled sweep within minutes; the sweep costs almost nothing when there is nothing to do, so it can run often without exhausting Google's daily trigger allowance; a sweep and a form submission arriving together cannot both write the same row; and the sweep is installed from a menu item that is safe to click twice. **Two measured failure modes, not one** — `Service Spreadsheets failed` on Stuart Ironside at 20:07:52, and **no execution at all** on Murray Angel at 20:03:57. **A retry cannot save Murray's class and a sweep is the only defence against it.** Closes on the Owner pasting the script and seeing a dropped submission recover by itself. | 8 |
+| 6.2 | new | The Owner can see what happened to every submission, and why, without reading two tabs side by side. Done when the `action` column on Form responses carries one plain line per response — published as an id, merged into an id, hidden with the reason, or failed with the error text — so that **a blank `action` means nothing happened and is itself the alarm**; both silent paths in `onFormSubmitPublish` record where he will see them rather than in a log nobody reads; **Village list → Check the setup** reconciles the two tabs and names any response with no row and no merge; and that check is materially faster than the **38.95 seconds** measured on 2026-09-19. Also fixes the false positive where it flags `+44 7775 726754` as a wrong number while the publisher accepts it — two checks in one file disagreeing about the same number. Owner's words: *"it's frustrating that the system didn't give me a good enough error message to tell me exactly what the problem was."* | 5 |
+| 6.3 | new | A villager's telephone number is never invented, and a recommendation never lands on the wrong person. Done when a field holding more than one number is **refused and flagged with the reason** rather than stitched into a number nobody has — `"07872 065874 or 01392 980312"` currently becomes one 22-digit string; a merge matches on **phone AND name** rather than phone alone, bringing the publisher up to the standard `cleanPublished` already applies in the same file; a merge records what was actually submitted, so when a match is wrong the evidence is not discarded in the same breath; the verdict says **`ON THE LIST BUT HIDDEN`** for a hidden person rather than `ALREADY ON SITE`, because a hidden person is by definition not on the site; and `Code.gs`'s header stops claiming it appends to the Votes tab, which it has not done since D1b. Owner's words: *"the system has actually just merged two phone numbers together and created one very, very long number, which is useless to anybody using it."* | 4 |
+| 6.4 | new | A villager who adds somebody can get back to the village list. Done when the site's "add someone" link opens the Google Form in a **new tab**, so the list stays open behind it, in both `index.html`/`app.js` and the governing wireframe. Owner's words: *"once you actually submit details for a trader it's very hard to get back to the original site because you're on the Google form"*. **The only row in this step that is live on push rather than waiting on a paste.** Closes on his sighting. | 1 |
+
+| # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 6.1 | When a villager recommends a neighbour and Google hiccups, their recommendation must still arrive. | Retry transient failures and sweep for anything missed | No recommendation is lost when Google drops or fails a submission | Retry with backoff, cheap scheduled sweep, script lock | new | 2026-09-26 | 2026-09-26 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de |  |  | 2026-09-19 | 2026-09-26 | 2026-09-19 | 2026-09-26 |
+| 6.2 | When Gavin wonders whether anything was lost, he should get the answer in one click. | Write an outcome line per response and reconcile the tabs | Every submission's fate is visible without cross-checking by hand | action column, plus a faster checkSetup | new | 2026-09-26 | 2026-09-26 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de | 6.1 |  | 2026-09-19 | 2026-09-26 | 2026-09-19 | 2026-09-26 |
+| 6.3 | When a villager taps Call, the number must be one a real person answers. | Refuse multi-number fields and match on phone and name | No invented number, and no recommendation on the wrong person | Refuse and flag rather than stitch together | new | 2026-09-26 | 2026-09-26 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de |  |  | 2026-09-19 | 2026-09-26 | 2026-09-19 | 2026-09-26 |
+| 6.4 | When a villager finishes the form, they should be able to get back to the list. | Open the form in a new tab | The village list is still there when they are done | target=_blank with rel noopener | new | 2026-09-26 | 2026-09-26 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de |  |  | 2026-09-19 | 2026-09-26 | 2026-09-19 | 2026-09-26 |
