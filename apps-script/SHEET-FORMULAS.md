@@ -114,6 +114,49 @@ Hide columns I and J afterwards if you like.
 
 ---
 
+## ⚠️ BEFORE YOU EDIT ANY FORMULA ON THIS PAGE — which functions work per row
+
+**This project has shipped the same class of bug twice in one day. Both times a
+formula looked right, produced plausible answers, and was wrong.** Read this
+before changing anything below.
+
+Inside `ARRAYFORMULA`, some functions are run **once for every row** and some
+are run **once for the whole column**, with that single answer copied down. The
+second kind produces a column of identical values that looks like data.
+
+| Works PER ROW inside `ARRAYFORMULA` | Runs ONCE and copies the answer down |
+|---|---|
+| `COUNTIF` | **`INDEX`** ← caused the 2026-09-19 bug |
+| `MATCH` (returns the right position per row) | |
+| `VLOOKUP` (accepts an array of search keys) | |
+| `IF`, `IFERROR`, `LEN`, `TRIM`, `LOWER` | |
+| `REGEXMATCH`, `REGEXREPLACE`, `LEFT`, `MID`, `TO_TEXT` | |
+
+**`INDEX` is the one that bites.** It is not array-aware over its *position*
+argument: hand it a list of positions and it reads only the **first** and
+ignores the rest. `ARRAYFORMULA` cannot fix that — the limitation is inside
+`INDEX` itself.
+
+**That is exactly what went wrong.** `MATCH` did its job and found the right
+row for every response. `INDEX` then threw all but the first away, so one ID
+was stamped on every row.
+
+**Do not use `INDEX` in any formula on this page.** To fetch a value from
+another column, use `VLOOKUP`. Where the value you want sits to the **left** of
+the column you are searching — as the ID in Published column `A` sits left of
+the phone key in column `I` — build a virtual range with curly braces, putting
+the search column first:
+
+```
+VLOOKUP(pk,{Published!$I$2:$I$500,Published!$A$2:$A$500},2,FALSE)
+```
+
+**How to spot this bug if it ever comes back:** look down the verdict column.
+**If many rows show the same ID, it is broken** — different people cannot all
+be the same person. One ID repeated is the signature.
+
+---
+
 ## Step 3 — The three formulas on the Form responses tab
 
 Go back to the **Form responses** tab. Paste these one at a time, into the exact
@@ -136,10 +179,24 @@ arrives.
 **Click cell `L2` and paste this:**
 
 ```
-=ARRAYFORMULA(LET(digits, REGEXREPLACE(TO_TEXT($F$2:$F),"\D",""),pk, IF(digits="","",IF(LEFT(digits,4)="0044","0"&MID(digits,5,50),IF(LEFT(digits,2)="44","0"&MID(digits,3,50),digits))),nk, LOWER(REGEXREPLACE(TO_TEXT($D$2:$D)&TO_TEXT($E$2:$E),"[^A-Za-z0-9]","")),flag, (REGEXMATCH(LOWER(TRIM(TO_TEXT($E$2:$E))),"^not ?known$"))+(REGEXMATCH(LOWER(TRIM(TO_TEXT($G$2:$G))),"^not ?known$"))+(LEN(TRIM(TO_TEXT($H$2:$H)))<7),hitP, IF(pk="",0,COUNTIF(Published!$I$2:$I$500,pk)),hitN, IF(nk="",0,COUNTIF(Published!$J$2:$J$500,nk)),IF($F$2:$F="","",IF(flag,"CHECK THIS",IF(pk="","CHECK THIS",IF(hitP>0,"ALREADY ON SITE — "&IFERROR(INDEX(Published!$A$2:$A$500,MATCH(pk,Published!$I$2:$I$500,0)),"?"),IF(hitN>0,"SAME NAME, DIFFERENT NUMBER","NEW")))))))
+=ARRAYFORMULA(LET(digits, REGEXREPLACE(TO_TEXT($F$2:$F),"\D",""),pk, IF(digits="","",IF(LEFT(digits,4)="0044","0"&MID(digits,5,50),IF(LEFT(digits,2)="44","0"&MID(digits,3,50),digits))),nk, LOWER(REGEXREPLACE(TO_TEXT($D$2:$D)&TO_TEXT($E$2:$E),"[^A-Za-z0-9]","")),flag, (REGEXMATCH(LOWER(TRIM(TO_TEXT($E$2:$E))),"^not ?known$"))+(REGEXMATCH(LOWER(TRIM(TO_TEXT($G$2:$G))),"^not ?known$"))+(LEN(TRIM(TO_TEXT($H$2:$H)))<7),hitP, IF(pk="",0,COUNTIF(Published!$I$2:$I$500,pk)),hitN, IF(nk="",0,COUNTIF(Published!$J$2:$J$500,nk)),IF($F$2:$F="","",IF(flag,"CHECK THIS",IF(pk="","CHECK THIS",IF(hitP>0,"ALREADY ON SITE — "&IFERROR(VLOOKUP(pk,{Published!$I$2:$I$500,Published!$A$2:$A$500},2,FALSE),"?"),IF(hitN>0,"SAME NAME, DIFFERENT NUMBER","NEW")))))))
 ```
 
-> **This formula was REPLACED on 2026-09-19 and the old one must not be used.**
+> **This formula was REPLACED TWICE on 2026-09-19. Use only the version above.**
+>
+> **Second replacement, 2026-09-19 (afternoon).** The morning's version got the
+> *branch* right on every row but printed **the same ID on all of them** — Gavin's
+> screenshot showed about twelve consecutive rows all reading
+> `ALREADY ON SITE — T005`. Cause: it used `INDEX(...,MATCH(...))`, and
+> **`INDEX` does not work row-by-row inside `ARRAYFORMULA`** (see the warning
+> box above). The lookup is now `VLOOKUP` over a `{...}` virtual range, which
+> does. Nothing else about the formula changed — the branch logic, the
+> precedence and every `CHECK THIS` case were confirmed correct by that same
+> screenshot and were deliberately left alone.
+>
+> ~~`...IFERROR(INDEX(Published!$A$2:$A$500,MATCH(pk,Published!$I$2:$I$500,0)),"?")`~~ — the broken id lookup, kept so it is recognisable.
+>
+> **First replacement, 2026-09-19 (morning).** The version before that matched every row against **itself**.
 > The previous version matched every row against **itself**, so a person nobody
 > had ever heard of read `ALREADY ON SITE — row 15` on row 15 and
 > `ALREADY ON SITE — row 16` on row 16 — each naming its own row number. Gavin
@@ -285,7 +342,8 @@ changing it quietly detaches every recommendation that person has.
 |---|---|
 | Every verdict says `CHECK THIS` | The formula is reading the wrong column for the experience text. Re-read row 1 against the table at the top. |
 | Every verdict says `NEW`, even for people already on the site | The Published helper columns in step 2 are missing, or the phone numbers on Published are in a column other than E. |
-| A verdict says `ALREADY ON SITE — row 15` with a **row number** instead of an ID | You still have the old formula. Re-paste the `L2` formula above — this is the 2026-09-19 defect, where every row matched itself. |
+| A verdict says `ALREADY ON SITE — row 15` with a **row number** instead of an ID | You have the oldest formula. Re-paste the `L2` formula above — this is the first 2026-09-19 defect, where every row matched itself. |
+| **Many rows all show the SAME ID** — a column of `ALREADY ON SITE — T005` | You have the morning's formula, which used `INDEX`. Re-paste the `L2` formula above. Different people cannot all be the same person, so one ID repeated down the column always means this. See the warning box before step 3. |
 | `ALREADY ON SITE — ?` with a question mark | The number was found on Published but the ID could not be read from column A. Check that person's row has an ID. |
 | Somebody near the very bottom of a long Published tab is not being found | The lookup stops at row 500. If the village list ever passes 500 people, ask for the three `$500` in the `L2` formula to be raised. |
 | A `#REF!` or `#N/A` error | Usually a tab name typed differently. The formulas expect the tab to be called exactly `Published`. |
