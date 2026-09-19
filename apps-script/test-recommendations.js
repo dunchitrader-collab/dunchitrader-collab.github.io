@@ -162,6 +162,43 @@ section('1. NEGATIVE CONTROL — the old reader credits people with words they d
 }
 
 /* --------------------------------------------------------------------------
+   1b. THE BLANK IN THE MIDDLE — the case the first 4.9 fix still got wrong.
+
+   Found by measurement on 2026-09-19 with SIX recommendations, after 4.9 was
+   believed fixed. Section 1 puts the blank name FIRST, and section 2's
+   sequences put it first or last — positions where a greedy separator pattern
+   has nothing to eat. A blank in the MIDDLE stores four consecutive newlines,
+   and /\n\s*\n/ swallowed all four as one separator, dropping the entry and
+   sliding every later name up.
+   -------------------------------------------------------------------------- */
+section('1b. A BLANK NAME IN THE MIDDLE keeps its position');
+{
+  const words = ['One','Two','Three','Four','Five','Six'];
+  const names = ['Helen','Bob','','Wendy','Ron','Ben'];
+  const K = words.join(SEP), L = names.join(SEP);
+
+  check('the names cell really does hold four consecutive newlines',
+        L.indexOf('\n\n\n\n') !== -1, JSON.stringify(L));
+  check('splitNames keeps all six entries', splitNames(L).length === 6,
+        JSON.stringify(splitNames(L)));
+  check('the empty entry is still at position 2 (third)',
+        splitNames(L)[2] === '', JSON.stringify(splitNames(L)));
+
+  const shown = pair(K, L);
+  shown.forEach((r, i) => console.log(`       "${r.why}"  ->  ${r.by}`));
+  check('the third recommendation reads "a villager"', shown[2].by === 'a villager', shown[2].by);
+  check('Wendy is on HER OWN words (the fourth)', shown[3].by === 'Wendy Fieldgate' || shown[3].by === 'Wendy',
+        shown[3].by);
+  check('every word keeps its own name', shown.map(r => r.by).join('|') === 'Helen|Bob|a villager|Wendy|Ron|Ben',
+        shown.map(r => r.by).join('|'));
+
+  // The permissive pattern the words still use WOULD have dropped it.
+  const greedy = L.split(/\n\s*\n/).map(x => x.trim());
+  check('a greedy /\\n\\s*\\n/ split WOULD have lost it — so this test can fail',
+        greedy.length === 5, JSON.stringify(greedy));
+}
+
+/* --------------------------------------------------------------------------
    2. THE INVARIANT — K and L always carry the same number of lines.
    -------------------------------------------------------------------------- */
 section('2. THE INVARIANT — same number of lines, every path, every sequence');

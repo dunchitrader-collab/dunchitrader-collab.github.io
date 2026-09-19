@@ -217,10 +217,28 @@
                     .filter(function(s){ return s.length; });
   }
 
-  /* NEVER drops an entry, and never reorders one. Position is the meaning. */
+  /* NEVER drops an entry, and never reorders one. Position is the meaning.
+
+     It splits on the LITERAL separator — exactly two newlines — and not on
+     /\n\s*\n/ the way the words do. That difference is the fix for a defect
+     found by measurement on 2026-09-19 and it is not cosmetic.
+
+     A villager who gives no name stores an empty entry, so the cell reads
+     "Helen\n\nBob\n\n\n\nWendy": two newlines, then the empty entry, then two
+     more. The permissive pattern is greedy across that whitespace and swallows
+     all four newlines as ONE separator, so the empty entry disappears and
+     every later name slides up. Measured on six recommendations with the third
+     name blank: Wendy was shown against words she had not written — the exact
+     misattribution row 4.9 exists to prevent, surviving inside its own fix
+     because the earlier test only ever put the blank FIRST or LAST, where the
+     greediness has nothing to eat.
+
+     The words keep the permissive pattern, and should: they are never blank,
+     so it cannot bite them, and it forgives a stray space the owner may have
+     typed between paragraphs when tidying a cell by hand. */
   function splitNames(v){
     if (!v) return [];
-    return String(v).split(/\n\s*\n/).map(function(s){ return s.trim(); });
+    return String(v).split("\n\n").map(function(s){ return s.trim(); });
   }
 
   /* Trades are grouped IGNORING CAPITALS, showing the first spelling met.
@@ -304,12 +322,33 @@
         ? "1 villager recommends this tradesperson"
         : recs.length + " villagers recommend this tradesperson"));
 
-      /* A popular tradesperson must not become a wall of text. At the largest
-         size a single recommendation already fills much of a 320px screen, so
-         only the two most recent are shown, and the rest sit behind one large
-         button. Nothing is hidden from anybody — it is one tap, and the tap
-         target is a full-width button rather than a link. */
-      var SHOWN = 2;
+      /* EVERY recommendation renders, in order. The villager scrolls.
+         No expander, no "show more", no cap, no truncation.
+
+         Owner's ruling 2026-09-19, verbatim: "it put in a button you had to
+         click on to reveal the 'one more review' which is pointless. Just let
+         it scroll!" Build plan row 4.10.
+
+         What was here before, and why it went. `SHOWN = 2` rendered only the
+         two most recent and put the rest behind a full-width button, on the
+         reasoning that a popular tradesperson must not become a wall of text.
+         The reasoning was wrong for this audience. Scrolling is the one
+         gesture every phone user already has; a button is a thing that must
+         first be NOTICED, then understood to contain something, then tapped.
+         For "the older generation" the Requirement is written for, a control
+         standing between them and the words their neighbours wrote is a
+         barrier, not a tidy-up — and the words are the point of the site.
+
+         It also hid its own cost: a card measured with three recommendations
+         was really showing two and a button, so the measurement that said
+         three were fine had not rendered three. Six are now measured properly
+         — see the handover.
+
+         THE REASON THE WALL-OF-TEXT WORRY DOES NOT BITE: recommendations
+         render BELOW the Call button, so however many there are, the thing a
+         villager came to do — tap a trade, tap Call — never moves. Measured at
+         827px from the top of the card whether it carries none, one, three or
+         six. Length below that point costs a scroll, not a task. */
       var box = el("div","recs");
 
       function addRec(r){
@@ -319,21 +358,8 @@
         box.appendChild(d);
       }
 
-      recs.slice(0, SHOWN).forEach(addRec);
+      recs.forEach(addRec);
       c.appendChild(box);
-
-      if (recs.length > SHOWN){
-        var rest = recs.length - SHOWN;
-        var more = el("button","more", rest === 1
-          ? "Read 1 more recommendation"
-          : "Read " + rest + " more recommendations");
-        more.type = "button";
-        more.addEventListener("click", function(){
-          more.remove();
-          recs.slice(SHOWN).forEach(addRec);
-        });
-        c.appendChild(more);
-      }
     }
 
     if (DONE[l.id]){

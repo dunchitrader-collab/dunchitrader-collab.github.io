@@ -1,7 +1,13 @@
-/* THREE RECOMMENDATIONS ON ONE CARD — measured in a real browser.
+/* SIX RECOMMENDATIONS ON ONE CARD — measured in a real browser.
  *
- * Build plan row 4.8's readability clause: "a card stays readable when three
- * people have recommended the same tradesperson". The Requirement as stated
+ * Build plan rows 4.8 and 4.10. 4.8 asked that a card stay readable with three
+ * recommendations; 4.10 removed the expander that was hiding them, so this now
+ * measures SIX, all rendered, which is what a villager actually meets.
+ *
+ * NOTE ON THE EARLIER NUMBERS: the three-recommendation run of 2026-09-19
+ * midday was taken while `SHOWN = 2` was still in app.js, so the card it
+ * measured was showing TWO recommendations and a button. Those figures were
+ * unrepresentative and are superseded by this file. The Requirement as stated
  * forbids text rolling outside its box at any zoom and demands the site stay
  * quick and simple for an older audience, so this measures both — overflow,
  * and how far the two buttons that matter sit from the top of the card.
@@ -19,13 +25,13 @@
  *   node scripts/test-three-recommendations.js
  */
 
-/* THREE RECOMMENDATIONS ON ONE CARD — measured, not assumed.
+/* SIX RECOMMENDATIONS ON ONE CARD — measured, not assumed.
    Build plan row 4.8's readability clause. Feed stubbed, POST blocked. */
 const { get, WS } = require('./cdp.js');
 const fs=require('fs');
 const REPO=require('path').resolve(__dirname,'..');
 
-let FEED = fs.readFileSync(__dirname + '/fixture-three-recommendations.csv','utf8');
+let FEED = fs.readFileSync(__dirname + '/fixture-six-recommendations.csv','utf8');
 
 (async()=>{
   const tgt=await get('http://127.0.0.1:9333/json/new?about:blank','PUT');
@@ -92,7 +98,7 @@ let FEED = fs.readFileSync(__dirname + '/fixture-three-recommendations.csv','utf
   }
 
   // Baseline: the SAME card with ONE recommendation, so the cost of three is attributable.
-  const one = fs.readFileSync(__dirname+'/fixture-three-recommendations.csv','utf8').split('\n');
+  const one = fs.readFileSync(__dirname+'/fixture-six-recommendations.csv','utf8').split('\n');
   fs.writeFileSync(__dirname+'/.tmp-feed-one.csv',
     one[0]+'\n'+'T001,Duckers,Plumber,Trelawny Plumbing,07825 736940,Plumber,,active,,,"Sorted the leak in the kitchen fast and tidied up after himself",Helen\n');
   fs.writeFileSync(__dirname+'/.tmp-feed-none.csv', one[0]+'\n'+'T001,Duckers,Plumber,Trelawny Plumbing,07825 736940,Plumber,,active,,,,\n');
@@ -111,8 +117,10 @@ let FEED = fs.readFileSync(__dirname + '/fixture-three-recommendations.csv','utf
   const z = await scenario(320,640,2,'320px largest A — NO recommendations');
   FEED = fs.readFileSync(__dirname+'/.tmp-feed-one.csv','utf8');
   const o = await scenario(320,640,2,'320px largest A — ONE recommendation');
-  console.log('\n  recs   cardH   callTop   voteTop   scrollToVote');
-  [['0',z],['1',o],['3',a]].forEach(([n,m])=>
+  console.log('\n  THE NUMBER THAT MATTERS IS callTop: it must not move as recommendations are added,');
+  console.log('  because they render BELOW the Call button. If it ever does move, raise it.\n');
+  console.log('  recs   cardH   callTop   voteTop   scrollToVote');
+  [['0',z],['1',o],['6',a]].forEach(([n,m])=>
     console.log(`   ${n}     ${String(m.cardH).padEnd(7)} ${String(m.callTop).padEnd(9)} ${String(m.voteTop).padEnd(9)} ${m.scrollToVote}`));
   // Tidy the two temporary baseline fixtures away.
   try { fs.unlinkSync(__dirname+'/.tmp-feed-one.csv'); fs.unlinkSync(__dirname+'/.tmp-feed-none.csv'); } catch(e){}
