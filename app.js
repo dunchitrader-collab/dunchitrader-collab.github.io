@@ -286,11 +286,25 @@
     }
 
     if (DONE[l.id]){
-      /* Deliberately does NOT say "saved" or "added to the list". Until the
-         Votes endpoint exists (row 4.2) this recommendation lives only in
-         this browser, and the page must not claim otherwise. */
-      c.appendChild(el("p","thanks","Thank you — your recommendation has been noted on this page."));
-      c.appendChild(el("p","todo","It will not be sent to the village list until the site is finished. Nothing has been lost."));
+      /* WHAT THIS MAY AND MAY NOT CLAIM, and the line between them is measured.
+
+         Under the owner's ruling D1b-6G7f-19092026 the recommendation is now
+         SENT to the village list — the endpoint appends it to that person's row
+         on the Published tab, which is the one feed the site reads. So the old
+         second line, "It will not be sent to the village list until the site is
+         finished", became false and is gone.
+
+         But the page still cannot say it ARRIVED. The reply is opaque by
+         measurement (solution design §6.2): type "opaque", status 0, zero
+         readable headers, and the promise RESOLVES whether the write succeeded
+         or not. The page is told nothing, so it must not claim anything.
+
+         Hence: "has been sent" — which is true of the request and is all the
+         page knows — and the five-minute republish lag named plainly, because a
+         villager who reloads and sees nothing must not think it was lost. That
+         lag is Google's and is normal (handover Layer 1). */
+      c.appendChild(el("p","thanks","Thank you — your recommendation has been sent to the village list."));
+      c.appendChild(el("p","todo","It takes about five minutes to appear on this page. Nothing has been lost."));
       return c;
     }
 
@@ -317,7 +331,50 @@
     var idN = "n-" + key;
     var idW = "w-" + key;
 
-    var ln = el("label", null, "Your name");
+    /* THE GOOGLE FORM'S OWN WORDS, SPLIT ACROSS A LABEL AND A NOTE — and the
+       split is a measurement, not a preference.
+
+       WHY THE WORDS CHANGED AT ALL. Owner's ruling D1b-6G7f-19092026: this
+       panel now feeds the PUBLISHED tab, so what a villager types here reaches
+       column L and is RENDERED ON THE CARD for the whole village to read
+       (row 3.5). The old label said only "Your name", which was honest while
+       the words went to a tab nobody read and is not honest now — it asks for a
+       name without saying where it goes. The form already tells them, in a
+       sentence they have seen before, so both routes must say the same thing:
+
+         "Finally please give your name (if you want to share it on the
+          website) so a fellow villager might reach out to you if they have
+          any questions."
+
+       WHY IT IS ONE LABEL AND NOT A LABEL PLUS A NOTE — this was measured both
+       ways before it was decided, because the sentence is long and the audience
+       zooms. Chrome 148, 320px, the largest A pressed, distance from the top of
+       "Add my recommendation" to the bottom of the screen:
+
+         the shipped panel before this change (label "Your name")   299 px below
+         this change, the form's sentence as ONE label              289 px below
+         a short label plus the rest as a note under the field      542 px below
+
+       Two things follow, and the second is the surprise. First, the send button
+       was ALREADY below the fold at the largest text size — that is shipped
+       behaviour from rows 4.1 and 4.5, not something the longer wording caused,
+       and this change does not make it worse. Second, splitting the sentence in
+       two is the WORST of the three: the note needs its own margins above and
+       below, and that costs more height than the wrapping it saves. So the
+       form's sentence stays in one label, which is both the shortest panel and
+       the plainest reading of the owner's "really simple, really quick".
+       "Finally" is dropped because there are no questions before it here.
+
+       Nothing overflows its box at any of the three text sizes or at 200% zoom
+       on a 320px screen — measured, and that is the owner's absolute rule.
+
+       IT STAYS OPTIONAL, which is what the form's own "(if you want to)" means.
+       A blank becomes "a villager" on the card, exactly as the publisher stores
+       it. Making it required would ask more of a villager on the site than the
+       form asks, and would turn away somebody who wants to recommend a
+       neighbour without putting their own name on a public page. */
+    var ln = el("label", null,
+      "Your name (if you want to share it on the website) so a fellow villager might reach out to you if they have any questions");
     ln.setAttribute("for", idN);
     var inp = document.createElement("input");
     inp.id = idN; inp.type = "text"; inp.autocomplete = "name";
@@ -375,6 +432,13 @@
   /* THE ONLY NETWORK SEND FOR A RECOMMENDATION. It posts the trader ID, never
      the name, because names change and ids do not (solution design §4.1, §7.5).
 
+     WHERE IT LANDS, from 2026-09-19: the endpoint appends the words to column K
+     and the villager's name to column L of that id's row on the PUBLISHED tab,
+     through the same function the automatic publisher uses for a duplicate form
+     submission. Owner's ruling D1b-6G7f-19092026. It used to append a row to a
+     Votes tab that nothing read. The body this function sends is unchanged —
+     {id, name, text} — because the endpoint parses exactly that shape.
+
      THE RETURN VALUE IS NOT A SUCCESS SIGNAL, and nothing may treat it as one.
      `true` means only "the request was handed to the browser". Whether the row
      reached the Votes tab is unknowable from this page — see below. */
@@ -392,8 +456,13 @@
        fire on a network or server failure; it only guards a synchronous throw.
        DO NOT add error handling that branches on `ok`, on `status`, or on a
        .catch(): it would report success on a total failure. The thank-you is
-       optimistic by design and by measurement, and the Votes tab is the only
-       proof a recommendation landed.
+       optimistic by design and by measurement.
+
+       WHERE THE PROOF IS, corrected 2026-09-19 under D1b-6G7f-19092026: the
+       PUBLISHED tab, columns K and L of that trader's row — no longer the Votes
+       tab, which this endpoint stopped writing to. The words also reach the
+       page itself within Google's five-minute republish lag, so the card is a
+       second place to see it. Neither is visible to this function.
 
        At the network layer the POST returns 302 (with
        access-control-allow-origin: *), the browser follows it to a 200, then

@@ -391,11 +391,21 @@
     font-weight:700;
     line-height:1.3;
   }
+  /* The name label carries the Google Form's own sentence, which is long on
+     purpose — it is the promise the villager has already been shown. At 320px
+     with the largest A pressed that sentence wraps to several lines, and the
+     owner's requirement is absolute: "In all zoom functions make sure the text
+     never rolls outside the box." So it wraps rather than overflows, and a long
+     unbroken word (a surname, a pasted address) breaks rather than pushing the
+     panel sideways. Measured at 320px / 200% — see build plan row 3.3. */
   .panel label{
     display:block;
     margin:0 0 .3rem;
     font-size:1rem;
     font-weight:700;
+    line-height:1.4;
+    overflow-wrap:break-word;
+    max-width:100%;
   }
   .panel input, .panel textarea{
     width:100%;
