@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-18T21:10:23Z
+last-updated: 2026-09-19T11:31:46Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-18T21:10:23Z**
+**Last updated: 2026-09-19T11:31:46Z** ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **2026-09-18T21:10:23Z — CONVERSATION CLOSED DOWN at 68 of 92 (73.9%), 15 of 20 rows.** This conversation took the plan from 31/75 (41.3%) to here, closing eight rows and appending six as real gaps were found. **The site is functionally complete and not yet launchable**: a villager's recommendation reaches the village list without anybody touching a spreadsheet, the Call button dials correctly (sighted by the owner on his phone), and villagers' words appear on the cards. What stands between it and launch is **seeding** — the list still holds test people — plus the runbook walk. **One defect is open and undiagnosed:** the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed; it is the first thing the successor conversation picks up, and it does not affect the directory itself. **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **2026-09-18T21:10:23Z — CONVERSATION CLOSED DOWN at 68 of 92 (73.9%), 15 of 20 rows.** **2026-09-19T11:25:10Z — ~~68 of 92 (73.9%), 15 of 20 rows~~ SUPERSEDED → 68 of 96 effort (70.8%), 15 of 21 rows.** This session **cleared no effort and closed no row, which was the expected outcome and is stated plainly rather than dressed up**: everything it built closes on the owner's sighting of a real vote on the live page, and he has not yet redeployed. The percentage FELL because row **4.7** was appended at effort 4, adding to the denominator while the numerator stood still — arithmetic, not regression. **THE OPEN DEFECT IS DIAGNOSED AND IT WAS NONE OF THE FIVE CANDIDATES.** Measured 2026-09-19: the deployment behind the votes `/exec` address is not running `Code.gs` at all — Google answers *"Script function not found: doPost"* to every request, and *"doGet"* to every GET. The address is alive; the script behind it is the wrong one. **AND THE PANEL NOW FEEDS THE VILLAGE LIST.** Owner's ruling D1b: the site's own recommend button writes to **Published `K` and `L`** — the tab the village reads — through the same `appendRecommendation()` the automatic publisher uses, not a second copy. It no longer writes to the **Votes** tab, which nothing ever read. Bounded by D2 and enforced in code: it cannot create a row, assign or reuse an id, write any column but `K` and `L`, touch the owner's formula columns `I` and `J`, or reach an unknown or `hidden` id. **NEITHER FIX IS LIVE UNTIL THE OWNER REDEPLOYS** — nothing in this repository can put a script behind that address, and that is his first job (`apps-script/DEPLOY.md` step 14). This conversation took the plan from 31/75 (41.3%) to here, closing eight rows and appending six as real gaps were found. **The site is functionally complete and not yet launchable**: a villager's recommendation reaches the village list without anybody touching a spreadsheet, the Call button dials correctly (sighted by the owner on his phone), and villagers' words appear on the cards. What stands between it and launch is **seeding** — the list still holds test people — plus the runbook walk. **One defect is open and undiagnosed:** the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed; it is the first thing the successor conversation picks up, and it does not affect the directory itself. **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -60,7 +60,7 @@ This project is **entirely standalone**. It depends on no external organisation'
 | [URL] `https://forms.gle/ZyLed4Tue91bzXjD7` | The Google Form villagers fill in | [VERIFIED 2026-09-18] — HTTP 200 |
 | [URL] `https://docs.google.com/spreadsheets/d/1j9SVNJG9Zf_iFtl6OrsrcVom5SY13sOiv3vt58jcprc/edit` | The Google Sheet | [ASSUMED] — not opened this session (requires the Google login) |
 | [URL] Published CSV — ~~`...&gid=1583719737&...`~~ SUPERSEDED 2026-09-18T15:20:38Z → `https://docs.google.com/spreadsheets/d/e/2PACX-1vSJA1qHOmFEOYqsSZcy0Y90LBUXbiTBGTJCqy2U-W3VE_zXdWWB6a59QclDbbO9tXoriWZda76rDWkn/pub?gid=1915382769&single=true&output=csv` | The read interface the site fetches. **Now the Published tab** (gid `1915382769`). | [VERIFIED 2026-09-18T15:20:38Z] — HTTP 200, `text/csv`, 291 bytes, header exactly `id,first_name,last_name,business,phone,trade,extra_trade,status`, 4 data rows. ~~**BUT IT SERVES THE WRONG TAB**~~ RESOLVED — it now serves the correct tab. |
-| [URL] Votes endpoint — ~~not deployed; `VOTES_ENDPOINT` empty~~ SUPERSEDED 2026-09-18T17:04:41Z → `https://script.google.com/macros/s/AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec` | The write interface. The Apps Script web app the page posts a recommendation to; it can only append to the Votes tab. Set in `app.js` line 30 at commit `4d67c15`. | [VERIFIED 2026-09-18T17:02:32Z] — driven from the live Pages origin in a real browser: `POST` returns **HTTP 302** with `access-control-allow-origin: *`, redirecting to `script.googleusercontent.com/macros/echo`, which the browser follows as `GET` and receives **HTTP 200**; round trip 2779.9 ms. The page itself sees only an **opaque** response (`type: opaque`, `status: 0`, `ok: false`, no readable headers) — see Layer 3 and solution design §6.2. **The DEPLOYMENT SETTINGS and the existence of the Votes tab with its four-column header are REPORTED BY THE OWNER, not measured here** — he deployed it under `dunchitrader@gmail.com` per `apps-script/DEPLOY.md` steps 1–3, executing as himself with access set to Anyone. **2026-09-18T17:48Z — THE WHOLE PATH IS NOW CONFIRMED END TO END FROM A REAL PHONE: the owner placed a vote on the live site and the row reached the Votes tab. Verbatim: *"the vote populated"*. REPORTED by him — the append is only visible inside his Google account, which is inherent to the design rather than a gap in the testing. His first attempt at ~17:25Z produced no row; see the stale-page `[BUG]` in Layer 3. Build Plan row 4.2 is `done`.** |
+| [URL] ~~Votes endpoint~~ SUPERSEDED 2026-09-19 → **Recommendations endpoint** — ~~not deployed; `VOTES_ENDPOINT` empty~~ SUPERSEDED 2026-09-18T17:04:41Z → `https://script.google.com/macros/s/AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec` | The write interface. The Apps Script web app the page posts a recommendation to; ~~it can only append to the Votes tab.~~ SUPERSEDED 2026-09-19 (D1b) → it appends the villager's words and name to columns `K` and `L` of one existing, `active` Published row, via the publisher's own `appendRecommendation()`. Bounded by D2 — it cannot create a row, assign or reuse an id, write any other column, touch `I`/`J`, or reach an unknown or `hidden` id. **[BROKEN 2026-09-19 — MEASURED]** the deployment at this address is not running `Code.gs`: a GET returns a Google error page reading *"Script function not found: doGet"* and a POST the same for `doPost`. The address itself is correct and the served page posts to it correctly; only the deployment's content is wrong. It is repaired by the owner redeploying (DEPLOY.md step 14), and verified by opening this address in a browser — one plain sentence means working, an error page means broken. Set in `app.js` line 30 at commit `4d67c15`. | [VERIFIED 2026-09-18T17:02:32Z] — driven from the live Pages origin in a real browser: `POST` returns **HTTP 302** with `access-control-allow-origin: *`, redirecting to `script.googleusercontent.com/macros/echo`, which the browser follows as `GET` and receives **HTTP 200**; round trip 2779.9 ms. The page itself sees only an **opaque** response (`type: opaque`, `status: 0`, `ok: false`, no readable headers) — see Layer 3 and solution design §6.2. **The DEPLOYMENT SETTINGS and the existence of the Votes tab with its four-column header are REPORTED BY THE OWNER, not measured here** — he deployed it under `dunchitrader@gmail.com` per `apps-script/DEPLOY.md` steps 1–3, executing as himself with access set to Anyone. **2026-09-18T17:48Z — THE WHOLE PATH IS NOW CONFIRMED END TO END FROM A REAL PHONE: the owner placed a vote on the live site and the row reached the Votes tab. Verbatim: *"the vote populated"*. REPORTED by him — the append is only visible inside his Google account, which is inherent to the design rather than a gap in the testing. His first attempt at ~17:25Z produced no row; see the stale-page `[BUG]` in Layer 3. Build Plan row 4.2 is `done`.** |
 
 ### Repository Topology
 
@@ -77,9 +77,11 @@ Both repositories hold the **full source**. Neither is a build artefact and neit
 
 Villager fills the Google Form → row lands on the **Form responses** tab (raw, messy, nobody sees it) → the owner reviews and copies approved rows across → **Published** tab (curated, the **only** thing the site reads) → published as a live CSV, auto-republishing with roughly a **five minute lag** → the static page on GitHub Pages fetches that CSV on load.
 
-Votes travel the other way: the page posts to a Google Apps Script bound to the sheet, which appends a row to a **Votes** tab.
+~~Votes travel the other way: the page posts to a Google Apps Script bound to the sheet, which appends a row to a **Votes** tab.~~ SUPERSEDED 2026-09-19 (D1b-6G7f-19092026) →
 
-**The site can only READ the Published tab, so nothing a villager does can change a listing.**
+Recommendations travel the other way: the page posts to a Google Apps Script bound to the sheet, which appends the villager's words to **Published column `K`** and their name to **`L`**, on the row of the tradesperson being recommended. It uses the publisher's own `appendRecommendation()`, so a recommendation from the site and a second recommendation through the form are stored identically. The **Votes** tab is no longer read or written by anything.
+
+~~**The site can only READ the Published tab, so nothing a villager does can change a listing.**~~ SUPERSEDED 2026-09-19 → **Nothing a villager does can change a LISTING**, which is the property that actually matters and it is intact. The site can now add *words* to an existing, visible row — and nothing else. It cannot add a person, assign or reuse an id, change a name, telephone number, trade or status, touch the owner's formula columns `I` and `J`, or reach a `hidden` row. The worst case is unwanted text on a card, deleted from column `K` in one edit; the names and numbers the product exists for are untouchable from the internet. Bounded by D2 and enforced in `apps-script/Code.gs`. See solution design §8.2, which records the widening rather than replacing the old claim.
 
 ### Published Tab Schema
 
@@ -142,6 +144,8 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 | ~~2026-09-18~~ | ~~MEDIUM~~ | ~~no~~ | ~~Confirm the Published tab carries the agreed header row.~~ RESOLVED 2026-09-18T17:25Z — measured this session by fetching the published CSV directly: the first line is exactly `id,first_name,last_name,business,phone,trade,extra_trade,status`, all eight columns in the agreed order. 291 bytes, `text/csv; charset=utf-8`, 4 data rows. |
 | 2026-09-18 | HIGH | no | **Seed the Published tab to 12–15 tradespeople across at least 6 trades, and remove the four test rows.** This is now the largest single thing standing between the build and launch — it blocks Build Plan rows 7.1 and the second half of 7.2, and no code change can substitute for it. Measured 2026-09-18T17:25Z, the live feed carries only `T001`–`T004`: 3 visible test people across 4 trades. **[PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md` was written this session and tells him exactly how** — the eight columns, that ids start at `T005` and are never changed or reused, that `status` must be exactly `active`, how `extra_trade` puts one person under two headings without double-counting, how to remove the test rows safely, the trade vocabulary, the five-minute lag and the two publishing warnings. |
 | 2026-09-18 | MEDIUM | no | Whether the two form validation rules were added is UNKNOWN and unverified. |
+| 2026-09-19 | **CRITICAL** | **YES — the recommend button does nothing at all until this is done** | **Redeploy `apps-script/Code.gs`.** MEASURED 2026-09-19: the deployment behind the `/exec` address is not running that script — Google answers *"Script function not found: doPost"* to every request. Nothing in this repository can fix it; only the owner can put a script behind that address. [PATH] `apps-script/DEPLOY.md` **step 14**, nine steps, including the check that was missing last time (search the editor for `doPost` before deploying). Verified afterwards in ten seconds by opening the `/exec` address in a browser: one plain sentence means working, a Google error page means broken. |
+| 2026-09-19 | HIGH | no | **Place one real vote from the phone and see the words appear on the card.** The sighting that closes Build Plan rows **4.6 and 4.7**, and the only thing that can. Both are built and tested — 66 endpoint tests, 30 browser checks — but nothing has run against the real Google Sheet. Check **Published columns `K` and `L`**, not the Votes tab and not the page's thank-you, which appears either way. |
 | ~~2026-09-18~~ | ~~MEDIUM~~ | ~~no~~ | ~~Complete first build session — populate handover layers~~ COMPLETED 2026-09-18T13:49:45Z — all six layers populated by this session. |
 
 ### Next Action
@@ -159,7 +163,13 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 
 ~~**The build is at 48 of 77 effort (62.3%), 10 of 15 rows done. Nothing is blocked on code, and every remaining item is the owner's, inside Google.**~~ SUPERSEDED 2026-09-18T17:48Z →
 
-**The build is at 54 of 77 effort (70.1%), 11 of 15 rows done. Step 4 is COMPLETE — the whole votes path works end to end from a real phone. Nothing is blocked on code, and every one of the four remaining rows waits on the owner.** In priority order:
+~~**The build is at 54 of 77 effort (70.1%), 11 of 15 rows done. Step 4 is COMPLETE — the whole votes path works end to end from a real phone. Nothing is blocked on code, and every one of the four remaining rows waits on the owner.**~~ SUPERSEDED 2026-09-19T11:25:10Z →
+
+**The build is at 68 of 96 effort (70.8%), 15 of 21 rows done. Step 4 is NOT complete — the recommend button has not worked since the 2026-09-18 redeploy, and the cause is now measured. Nothing is blocked on code; every remaining row waits on the owner.** In priority order:
+
+0. **REDEPLOY `apps-script/Code.gs` — do this before anything else on this list.** [PATH] `apps-script/DEPLOY.md` **step 14**. The deployment behind the votes `/exec` address is running neither `doPost` nor `doGet`, measured 2026-09-19, which is why the recommend button produces nothing. The same redeploy also lands the repointed endpoint (D1b — it now writes to Published `K`/`L` rather than to a tab nothing reads) and the seven-character minimum (row 4.6). **Check it in ten seconds afterwards by opening the `/exec` address in a browser**: one plain sentence means working, a Google error page means broken. Then place one vote from the phone and look at that person's row on Published — that sighting closes rows 4.6 and 4.7.
+
+Then, unchanged from 2026-09-18:
 
 1. **SEED THE LIST.** The biggest single thing between the build and launch, and bigger than everything else combined. The live list carries 3 visible test people across 4 trades; launch needs **12–15 tradespeople across at least 6 trades**. It blocks rows 7.1 and 7.2. **[PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md` is the step-by-step guide**, written for him rather than for a developer.
 2. **WALK THE RUNBOOK** — [PATH] `docs/RESTORE-dunchi-trader.md`, row 6.1 at 9 effort, the largest row left. It was reconciled to the deployed state at `983525f` so the walk is not wasted on stale instructions, and it ends with a tick list usable on a phone beside a laptop.
@@ -174,9 +184,9 @@ None. Nothing is scheduled. The only recurring behaviour is Google's automatic C
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
 
-**[BUG] 2026-09-18 — OPEN, UNDIAGNOSED — the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed**
+**[BUG] 2026-09-18 — ~~OPEN, UNDIAGNOSED~~ DIAGNOSED 2026-09-19 BY MEASUREMENT — the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed**
 
-**This is the first thing the successor conversation diagnoses.** It is recorded open and undiagnosed on purpose: no cause has been established and none is guessed at here.
+~~**This is the first thing the successor conversation diagnoses.** It is recorded open and undiagnosed on purpose: no cause has been established and none is guessed at here.~~ **DIAGNOSED 2026-09-19T11:10Z. The cause is recorded in full in the entry immediately below this one; the five candidates are each dispositioned at the end of this entry. It was none of them.**
 
 What happened, REPORTED by the owner. He redeployed `apps-script/Code.gs` as a new version of the existing deployment, then followed the test in `apps-script/DEPLOY.md`: open the live site, tap **I recommend them too** on a card, type a short sentence, submit, then look at the Votes tab. **No row appeared.** His words: *"job 2 done. number 4 did not work."*
 
@@ -192,10 +202,58 @@ Impact: the site's own recommend panel is the only route by which a villager can
 
 Also worth eliminating early, because it has bitten on this project before: **a stale page in the phone's memory**. A page loaded before the redeploy carries the old `app.js`. Re-test on a cache-busted URL (`?x=1`) before concluding anything — see the stale-page `[BUG]` recorded above.
 
-Diagnosis: the Apps Script **Executions** log is the first place to look, because it distinguishes "the request never arrived" from "the request arrived and failed", and those two have entirely different causes.
+Diagnosis: ~~the Apps Script **Executions** log is the first place to look, because it distinguishes "the request never arrived" from "the request arrived and failed", and those two have entirely different causes.~~ SUPERSEDED 2026-09-19 — a cheaper and more decisive test was found and is now the first thing to do: **open the `/exec` address in a browser.** See the entry below. The Executions log would in fact have shown nothing at all for these attempts, because the request never reached any function.
 
-Fix applied: **none.** Build Plan row 4.6 stays `new`.
+Fix applied: ~~**none.**~~ SUPERSEDED 2026-09-19 → the cause is measured and `apps-script/Code.gs` is rewritten at commit `f8e34ff`, but **the fix is not live**: the owner must redeploy, which is the only step that can put the corrected script behind the address. Build Plan rows 4.6 and 4.7 stay `new`.
 
+---
+
+#### THE FIVE CANDIDATES, EACH DISPOSITIONED — 2026-09-19
+
+Recorded one by one, because the entry above promised a successor a checklist and a checklist half-answered is worse than none. **None of the five was the cause**, and the actual cause was not on the list.
+
+| # | Candidate | Disposition |
+|---|---|---|
+| 1 | Was the deployment EDITED rather than replaced? | **CANNOT BE THE CAUSE, and is subsumed.** Had a *new deployment* been issued, the old `/exec` address would have kept serving the OLD working script, and the button would have carried on writing to Votes. It does not: the old address now answers *"Script function not found"*, which means the deployment at that address was edited and its content is wrong. The deployment was replaced in place, as instructed — with the wrong file behind it. |
+| 2 | Was the new version actually published? | **CANNOT BE THE CAUSE, and is subsumed.** If nothing had been published, the address would still be running the previous, working `Code.gs`. Something *was* published; it simply did not contain `doPost`. |
+| 3 | Does `doPost` appear in the Executions log for that attempt? | **OWNER-TESTABLE, and the expected result is now predicted rather than open.** Not visible from outside the Google account. **Expected: NO entry at all for those attempts** — not a failed one. Google rejects the request before any function runs, so there is nothing to log. If he finds a *failed* `doPost` entry instead, this diagnosis is wrong and must be reopened. |
+| 4 | Does `VOTES_ENDPOINT` in `app.js` still match the deployed URL? | **TESTED AND CLEARED 2026-09-19.** The served page was fetched cache-busted from `https://dunchitrader-collab.github.io/app.js?x=1` — HTTP 200, 24,626 bytes, sha256 `c1358c09…1fb7b4c`, byte-identical to the committed file — and it carries `…AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec`, exactly the address recorded in Layer 1. The page is posting to the right place. |
+| 5 | Did the seven-character minimum land in the DEPLOYED copy? | **TESTED AND CLEARED as the cause 2026-09-19.** It cannot be: a length check lives *inside* `doPost`, and `doPost` is never reached. Separately, the request shape was confirmed correct by running the served page's exact body through the committed parser — `{id, name, text}` parses, and the seven/six boundary behaves (7 accepted, 6 refused). **The underlying concern was real and is fixed anyway**: `MIN_TEXT` is 7 in `Code.gs` at `f8e34ff`, which is row 4.6. |
+
+**Also on the list to eliminate early: a stale page in the phone's memory. CLEARED.** The served page was fetched cache-busted (`?x=1`) and is byte-identical to the commit, so even a fresh load posts to an address that answers "Script function not found". A stale page would not change the outcome.
+
+
+**[BUG] 2026-09-19 — MEASURED — the deployment behind the votes endpoint is not running `Code.gs`: Google answers "Script function not found: doPost" to every request**
+
+**This is the cause of the 2026-09-18 defect above, and it was not on the list of five candidates.**
+
+Root cause: the `/exec` address the live site posts to is alive and reachable, but the Apps Script *deployment* behind it does not contain `Code.gs`'s entry points. Most likely the editor was showing a different file — `Publish.gs` was pasted three times that evening — when **Deploy → Manage deployments → New version** was taken, so the version that was published is one in which `doPost` and `doGet` do not exist. Nothing visible from the owner's side says so: the deployment exists, its version number went up, and the site's thank-you appears exactly as it always did.
+
+**MEASURED 2026-09-19T11:10Z**, by sending real requests to the address recorded in Layer 1 and reading what came back. Not inferred:
+
+| Request | Response |
+|---|---|
+| `GET …/exec` | HTTP 200, a Google error page reading **`Ohjelmatoimintoa ei löydy: doGet`** |
+| `POST …/exec`, `text/plain`, JSON body — three times | HTTP 200, **`Ohjelmatoimintoa ei löydy: doPost`**, identically each time |
+| `POST …/exec` with ordinary form parameters | **`Ohjelmatoimintoa ei löydy: doPost`** — so it is not the body shape |
+
+`Ohjelmatoimintoa ei löydy` is Finnish for **"Script function not found"** (Google serves the error page in an arbitrary locale). Both entry points are missing, which is why a GET is as informative as a POST.
+
+**One further detail worth recording, because it is itself evidence the deployment changed.** The 2026-09-18T17:02:32Z measurement in solution design §6.2 recorded the POST returning **HTTP 302** followed to a 200. It now returns **HTTP 200 directly, with no redirect.** A working Apps Script web app redirects to `script.googleusercontent.com`; an error page does not. The behaviour of the address changed when the owner redeployed, which corroborates the diagnosis independently of the error text.
+
+**Why it went undiagnosed for a day, and this is the lesson rather than the bug.** Every signal the project had said the path was fine. The code was correct and committed. The URL was correct and served — measured byte-identical. The request shape was correct. The page's own reply is opaque **by design** (§6.2), so the browser could never have reported the failure. The only test that could find this was *sending a real request to the real address and reading the real reply*, and nothing in the project did that until this session. **A deployment is a thing that can be wrong independently of the code, and it needs its own test.**
+
+Fix applied — in two halves, and **only the first half is done**:
+
+1. `apps-script/Code.gs` rewritten at commit `f8e34ff`. `doGet` now returns one plain sentence, deliberately, so that *opening the address in a browser* is a ten-second test with two unmistakable outcomes. A `requirePublisher()` guard refuses to run and says why if `Publish.gs` is absent from the project, rather than failing obscurely mid-write.
+2. **The owner must redeploy.** Nothing in this repository can put a script behind that address. `apps-script/DEPLOY.md` **step 14** carries the nine steps, including a check the previous instructions lacked: before deploying, press Ctrl+F in the editor and search for `doPost`, to prove the right file is open. That is the step whose absence caused this.
+
+Diagnosis, and it is now the FIRST thing to try whenever the recommend button is in doubt: **open the `/exec` address in any browser.**
+
+- **Working** — one plain sentence: *"This address only accepts recommendations sent by the Dunchideock village suppliers website."*
+- **Broken** — a Google error page reading *"Script function not found: doGet"*.
+
+It takes ten seconds, needs no Google login, and turns a silent failure into a visible one. The Apps Script Executions log is the *second* place to look, and note what it will show for this fault: **nothing at all** — no failed entry, because no function was ever entered.
 
 **[BUG] 2026-09-18 — the repair destroyed the owner's helper formulas by writing straight through their columns**
 
@@ -594,12 +652,32 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 # LAYER 4 — OUTSTANDING WORK
 
+## The queue as it stands after the 2026-09-19 session
+
+**[OUTSTANDING] 2026-09-19 | CRITICAL | Blocking: yes — the recommend button does not work at all until this is done**
+**Redeploy `apps-script/Code.gs`, and check the address in a browser afterwards.** [PATH] `apps-script/DEPLOY.md` **step 14**, nine steps. This is the owner's first job and everything else about the recommend button waits behind it.
+
+**Two things are being fixed in one redeploy, and it is worth knowing they are separate.** First, the deployment is currently running neither `doPost` nor `doGet` — measured, Layer 3 — which is why the button produces nothing. Second, the script being pasted is a **repointed** one: under D1b it writes to Published `K` and `L` rather than to Votes, and carries the seven-character minimum (row 4.6).
+
+**The step that was missing last time and is now in the instructions:** before deploying, press **Ctrl+F** in the Apps Script editor and search for `doPost`. If it is not found, the wrong file is open — which is the most likely explanation for what happened on 2026-09-18, since `Publish.gs` was pasted three times that evening.
+
+**`Publish.gs` must be in the same project.** The endpoint now shares its `appendRecommendation()` rather than keeping a copy, and refuses to run with an explicit message if it is absent.
+
+**How he will know it worked, before placing any vote:** open the `/exec` address in a browser. Working is one plain sentence; broken is a Google error page. Ten seconds, no login.
+
+**[OUTSTANDING] 2026-09-19 | HIGH | Blocking: no**
+**Place a real vote from the phone and see the words on the card.** This is the sighting that closes Build Plan rows **4.6 and 4.7**, and nothing else can. Both rows are built and tested — 66 endpoint tests and 30 browser checks — but **nothing has run against the real Google Sheet**, because the deployment does not yet carry the script.
+
+Open `https://dunchitrader-collab.github.io/?x=1` on the phone (the `?x=1` forces a fresh copy), tap a trade, tap **I recommend them too**, type a name and at least seven characters, tap **Add my recommendation**. Then look at **that person's row on the Published tab, columns K and L** — not the Votes tab, and not the page's thank-you, which appears either way because the reply is opaque by measurement. The words should also reach the card itself within the five-minute republish lag.
+
+---
+
 ## The queue as it stands at conversation close-down, 2026-09-18T21:10:23Z
 
 Recorded here in full so that **none of it lives only in conversation context**. The conversation that produced it is closed to further sends.
 
-**[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: no**
-**Diagnose why the site's own recommend button produced no row in the Votes tab.** The first thing the successor conversation picks up. Recorded open and undiagnosed as a `[BUG]` in Layer 3, with five candidates to test and no cause guessed at. Build Plan row **4.6 stays open**. The directory itself is unaffected — form submissions still publish themselves.
+~~**[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: no**~~
+~~**Diagnose why the site's own recommend button produced no row in the Votes tab.** The first thing the successor conversation picks up. Recorded open and undiagnosed as a `[BUG]` in Layer 3, with five candidates to test and no cause guessed at. Build Plan row **4.6 stays open**. The directory itself is unaffected — form submissions still publish themselves.~~ RESOLVED 2026-09-19T11:25:10Z — **DIAGNOSED BY MEASUREMENT, and it was none of the five candidates.** The deployment behind the `/exec` address is not running `Code.gs` at all: Google answers *"Script function not found: doPost"* to every POST and *"doGet"* to every GET. Recorded in full as a new `[BUG]` in Layer 3 with each of the five candidates dispositioned. The *diagnosis* is what this item asked for and it is complete; **the repair needs the owner's redeploy**, which is the separate item immediately below.
 
 **[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
 **Row 5.1 needs two more verdicts produced, and here are the exact test rows.** The verdict column has been seen producing **`ALREADY ON SITE`** (ten rows) and **`CHECK THIS`** (one row), MEASURED by the owner in his own sheet. **`NEW` and `SAME NAME, DIFFERENT NUMBER` have not been produced**, because every response on the tab is already published. Type these two rows into **Form Responses columns C to H** — they are recorded here in full so the successor does not have to reconstruct them:
@@ -627,7 +705,11 @@ Row 5.1 closes when one sample row of **each of the four** verdicts shows correc
 **Rule on Ben Franks and John Pilkington sharing `07887800192`** — one electrician, one car mechanic. Both are kept deliberately and the sharing is reported rather than resolved, because two people genuinely can share a household or business line. **The owner has not ruled on whether it is genuine.**
 
 **[OUTSTANDING] 2026-09-18 | HIGH | Blocking: yes — gates launch**
-**Delete the remaining test people from Published, and the two non-villager rows from the Votes tab.** The Votes rows are the 4.3 automated test row (`name` = `TEST - Claude Code 2026-09-18 - please delete`) and the owner's own ~17:47Z test vote.
+**Delete the remaining test people from Published**, ~~and the two non-villager rows from the Votes tab. The Votes rows are the 4.3 automated test row (`name` = `TEST - Claude Code 2026-09-18 - please delete`) and the owner's own ~17:47Z test vote.~~ **AMENDED 2026-09-19T11:25:10Z — the Published half still gates launch; the Votes half no longer matters and is downgraded to optional tidying.**
+
+**Why the Votes half stopped mattering.** Under D1b-6G7f-19092026 nothing reads the Votes tab and nothing writes to it, so those two rows are inert: they cannot reach the site, cannot affect a tally, and cannot be seen by a villager. The original reason for deleting them — *"so the tally shown on each card counts only real villagers"* — no longer applies, because no tally is derived from that tab. **Delete them or leave them; it makes no difference to anything a villager sees.** They are left in place deliberately rather than cleaned up, because the tab is now a historical record of what the old endpoint did and clearing it would remove the only evidence the old path ever worked.
+
+**The Published half is unchanged and still gates launch.** Test people on the Published tab ARE on the website.
 
 **[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: yes — gates launch**
 **The launch message stays a DRAFT and must not be posted until step 7 passes.** It is in `docs/PROCESS-seeding-and-launch-dunchi-trader.md` §4 under a heading saying so. Posting it early sends the village to a list of test people, and the link is the one thing that cannot be un-sent.
@@ -635,8 +717,8 @@ Row 5.1 closes when one sample row of **each of the four** verdicts shows correc
 **[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no — OPEN RULING**
 **Should the form's description tell villagers their recommendation goes public?** Recommended, not implemented. A tradesperson's name and telephone number now appear on a public website without that tradesperson being asked, and the villager submitting is the only person positioned to have asked them. A form wording change, which only the owner can make.
 
-**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no — OPEN RULING**
-**The site's own recommend panel writes only to the Votes tab, which nothing reads.** Only form submissions reach the site. Two ways forward and they are the owner's to choose between: **teach the publisher to read the Votes tab** — matching each vote's trader id to a Published row and appending it exactly as a duplicate form submission is appended — **or retire the panel** so the site stops offering something that goes nowhere. Either way it needs its own plan row. This is separate from the `[BUG]` above: even with the button working, what it writes is read by nothing.
+~~**[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no — OPEN RULING**~~
+~~**The site's own recommend panel writes only to the Votes tab, which nothing reads.** Only form submissions reach the site. Two ways forward and they are the owner's to choose between: **teach the publisher to read the Votes tab** — matching each vote's trader id to a Published row and appending it exactly as a duplicate form submission is appended — **or retire the panel** so the site stops offering something that goes nowhere. Either way it needs its own plan row. This is separate from the `[BUG]` above: even with the button working, what it writes is read by nothing.~~ RESOLVED 2026-09-19T11:25:10Z — **ANSWERED BY THE OWNER'S RULING D1b-6G7f-19092026: the panel feeds the PUBLISHED tab.** Neither of the two ways forward offered was taken; a third was, and it is better than both. Rather than teaching the publisher to read Votes (D1a, which needs a second scan on every submission and leaves a second place words can strand) or retiring the panel (D1c, which removes the only way to second somebody already listed without filling in the whole form), **the endpoint itself was repointed to write straight to Published `K` and `L`, calling the publisher's own `appendRecommendation()`** — the same function, not a copy. Built at `f8e34ff`, bounded per D2-6G7f-19092026, and given its own plan row **4.7** as this item required. See Layer 5, 2026-09-19.
 
 
 **[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
@@ -670,8 +752,8 @@ Row 5.1 closes when one sample row of **each of the four** verdicts shows correc
 **[OUTSTANDING] 2026-09-18 | CRITICAL | Blocking: no**
 **Install the automatic publisher.** Three steps, all inside the spreadsheet, all written out in [PATH] `apps-script/DEPLOY.md` **Part 2**: paste `apps-script/Publish.gs` as a second Apps Script file (step 6), add the **on-form-submit** trigger on `onFormSubmitPublish` (step 7), and run **Village list → Publish any responses not yet on the list** once (step 8). Then check it with **Village list → Check the setup** and one real form submission (step 9). **`apps-script/Code.gs` is not touched** — the votes endpoint stays exactly as deployed. **The publisher has been tested only against a stub and has never run in Google Sheets**; his first real submission is the proof, which is why row 5.2 closes on that and not on this session's tests. Switching it off again is one trigger deletion, also documented.
 
-**[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**
-**`apps-script/Code.gs` still carries `MIN_TEXT = 15`.** Yesterday's owner ruling moved the minimum length of the recommendation text to **seven** characters on the website (`app.js`) and in the sheet verdict (`SHEET-FORMULAS.md`), but the votes endpoint was not in scope for either change and still rejects a recommendation under fifteen characters server-side. **Consequence, and it is small but real:** a villager can type a seven-character note, the page accepts it and thanks them, and the endpoint silently drops it — the opaque cross-origin reply means the page cannot tell, exactly as recorded in Layer 3. Noticed 2026-09-18T19:27Z while reading `Code.gs` for the publisher work and deliberately NOT changed, because that file is the internet-facing endpoint and no prompt has authorised touching it. Fixing it means changing one constant and redeploying the web app, which produces a **new `/exec` URL** unless the existing deployment is edited rather than replaced — see `apps-script/DEPLOY.md`.
+~~**[OUTSTANDING] 2026-09-18 | LOW | Blocking: no**~~ RESOLVED IN SOURCE 2026-09-19T11:25:10Z at commit `f8e34ff` — `MIN_TEXT` is **7**, matching the page and the sheet, and the boundary is asserted by test (6 refused, 7 accepted, the owner's *"Fixed gate"* accepted). **It is not live until he redeploys**, which is DEPLOY.md step 14 and is on his list; row 4.6 accordingly stays `new`.
+~~**`apps-script/Code.gs` still carries `MIN_TEXT = 15`.**~~ Yesterday's owner ruling moved the minimum length of the recommendation text to **seven** characters on the website (`app.js`) and in the sheet verdict (`SHEET-FORMULAS.md`), but the votes endpoint was not in scope for either change and still rejects a recommendation under fifteen characters server-side. **Consequence, and it is small but real:** a villager can type a seven-character note, the page accepts it and thanks them, and the endpoint silently drops it — the opaque cross-origin reply means the page cannot tell, exactly as recorded in Layer 3. Noticed 2026-09-18T19:27Z while reading `Code.gs` for the publisher work and deliberately NOT changed, because that file is the internet-facing endpoint and no prompt has authorised touching it. Fixing it means changing one constant and redeploying the web app, which produces a **new `/exec` URL** unless the existing deployment is edited rather than replaced — see `apps-script/DEPLOY.md`.
 
 **[OUTSTANDING] 2026-09-18 | HIGH | Blocking: no**
 **Rule on whether the Google Form should tell villagers their recommendation goes public.** Recorded as a recommendation and deliberately NOT implemented — the form is his and nobody here can change it. The reason it now matters: before today a human read every submission before anything appeared, and from now on a tradesperson's name and telephone number can reach a public website without that tradesperson ever being asked. The villager filling the form in is the only person positioned to have asked them, and at present the form does not tell them that is what they are doing. Suggested wording is one line in the form's description. See solution design §7.3.
@@ -1058,6 +1140,36 @@ Recorded at close-down so each ruling carries its estate decision ID alongside t
 **[DECISION] D8a-9USH-18092026** — **villagers' words and names reach the site.** Published gains columns `K` and `L`; the publisher writes responses columns `H` and `I` into them; a duplicate submission **appends** to the person already listed rather than being discarded. Raised by the owner noticing the publisher ignored column `I`, **whose own question text promises the villager their name appears on the website**. Rejected: a second published feed from the Votes tab (**D8b**).
 
 **[DECISION] D2-9USH-18092026** — planning-tracker left running and untouched; this conversation never sent to it.
+
+---
+
+### 2026-09-19 — The recommend button is repointed at the village list, and the undiagnosed defect is measured
+
+**Conversation reference:** https://claude.ai/cowork/cse_01KmELJ3FVVJwbZnoahT6G7f (reference 6G7f). Successor to `cse_01HkJGChdg9xjNavfnTe9USH`, which is closed.
+
+**[DECISION] D1b-6G7f-19092026** — the on-site **"I recommend them too" panel feeds the PUBLISHED tab, not the Votes tab.** Ruled by the owner.
+
+**Rationale, in the form it was put to him:** nothing on the site reads Votes, so a recommendation landing there is invisible to villagers. The site fetches exactly one feed — the published CSV of the Published tab — and a villager who tapped the button, typed a few words and was thanked had those words written somewhere no neighbour would ever see. Published is the path the automatic publisher (row 5.2) already proves works, so the panel now joins it rather than needing a second mechanism invented for it.
+
+**Alternatives considered and declined:** **D1a** — keep writing to Votes and teach the publisher to read that tab as well, which means a second scan on every submission and a second place a villager's words can be stranded. **D1c** — retire the panel, which would remove the only way a villager can second somebody **already listed** without filling in the whole form again; the form is the heavier path and this audience is elderly.
+
+**How it was built, and this is the part that matters for anyone changing it later:** the endpoint calls `appendRecommendation()` in `apps-script/Publish.gs` — **the same function the publisher uses when a duplicate form submission turns out to be a second recommendation.** One function, not a second copy. Both routes therefore store a villager's words identically, and a future change to how recommendations are separated, deduplicated or attributed cannot apply to one route and miss the other. `apps-script/test-endpoint.js` test 18 asserts this by substituting a sentinel for the shared function and proving the endpoint calls it.
+
+**[DECISION] D2-6G7f-19092026** — the endpoint's power is **bounded to APPENDING a recommendation to an EXISTING, non-hidden trader id.** Taken by Claude.ai under standing authority; implemented and tested this session.
+
+**Rationale:** repointing the endpoint at Published moved it from a tab nobody read to the tab the whole village reads, which is a genuine widening of what a stranger can reach. The bound exists so that the widening is exactly one capability and not a category. It may not create a row, assign or reuse an id, write any column other than `K` `recommendations` and `L` `recommended_by`, or touch `I` and `J` — the owner's `ARRAYFORMULA` helpers, which a write destroys and which this project has already lost once. An unknown or hidden id is refused and logged, with no write.
+
+**The test of whether the bound is the right one:** the endpoint's exposure now equals the open Google Form's, and is not wider. Anybody who finds the form can already submit words about somebody already listed, and `Publish.gs` appends them to exactly these two cells. Refusing the change would not have closed a door — it would have left the site's own button writing to a tab nobody read.
+
+**What was given up, recorded rather than glossed:** the old endpoint had a property this one cannot have — it could not affect anything a villager sees, at all. That is gone. Solution design §8.2 was rewritten rather than edited, with the five superseded bullets struck through and preserved, because two of them stopped being true and a reader must see the exposure widened rather than find it quietly replaced. Risk-register row 8 moved from Low to Low–Medium for the same reason.
+
+**[DECISION]** Row 4.6's landing target moved from Votes to Published, **without its text being edited.** The row reads "a short recommendation reaches the Votes tab", which is now the wrong destination — but the row's *outcome* ("no recommendation is accepted on screen and dropped in transit") is unchanged and still the thing being delivered. Rewriting a row's wording after the fact would make the plan disagree with the record of what was asked for. The change of destination is recorded here instead, which is where a reader is sent by the row's own history.
+
+**[DECISION]** The panel's name field keeps the Google Form's own wording and **stays optional.** Under D1b the name reaches Published `L` and renders publicly on the card (row 3.5), so a label reading only "Your name" asks for something without saying where it goes. The form's question already says it. It is not made required, because the form's own "(if you want to share it on the website)" makes it optional and the site must not ask more of a villager than the form does — a blank becomes "a villager", as it already did.
+
+**[PATTERN CANDIDATE: measure-the-deployment-not-the-code]** The defect that cost this project a day was invisible to every check it had. The code was correct and committed, the URL was correct and served, the request shape was correct — and the deployment behind the URL was running neither entry point. Nothing short of *sending a real request and reading the reply* could have found it. The generalisable move is that **a deployed endpoint needs a cheap, human-readable liveness reply that fails visibly** — `doGet` here returns one plain sentence, so "open the address in a browser" is now a ten-second test with two unmistakable outcomes. Any project with a deploy-by-paste step has this exposure.
+
+**[PATTERN CANDIDATE: measure-the-alternative-before-preferring-it]** The long form label was going to be split into a label plus a hint, on the reasoning that nine lines of text above a field is bad for an elderly audience. Measured, the split was **worse** — 542px of scrolling to reach the send button versus 289px — because a separate note costs its own margins. The baseline measurement mattered even more: the button was **already** 299px below the fold before any change, so the thing that looked like a regression introduced by this session was pre-existing shipped behaviour. Neither fact was available by reasoning.
 
 ---
 
@@ -3214,3 +3326,122 @@ All REPORTED by him unless marked measured. This is his own work inside Google a
 - Redeployed `Code.gs` as a new version of the existing deployment.
 
 **What the successor conversation picks up first:** the open `[BUG]` recorded in Layer 3 this session — the site's own recommend button produced no row in the Votes tab after the redeploy. Row 4.6 stays open. Row 5.1 stays open and needs two specific test rows typed into the sheet; both are recorded in Layer 4 so they do not have to be reconstructed.
+
+---
+
+### 2026-09-19T11:31:34Z — The recommend button repointed at the village list; the undiagnosed defect measured
+**Source:** Claude Code
+**Started:** 2026-09-19T11:03:37Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01KmELJ3FVVJwbZnoahT6G7f
+**Repos touched this session:** dunchi-trader
+
+**Prompt received:**
+
+> Target repo: dunchi-trader. Successor to `cse_01HkJGChdg9xjNavfnTe9USH`, which is closed. Standing send authority for in-plan, low-risk work; interrupt only when a step needs the Owner, and bring every Owner step back in ONE block at the end. **First read** the MISSION block in the handover, then Layer 6 bottom-up, then Layer 3 (five untested candidates for the undelivered vote) and Layer 4 (Owner actions); then plan rows 4.1–4.6 and 5.2 and solution design §6.2. **Decisions to record:** D1b-6G7f-19092026 (ruled by Gavin) — the on-site panel feeds the PUBLISHED tab, not Votes, because nothing reads Votes; options declined were D1a (keep writing to Votes) and D1c (retire the panel). D2-6G7f-19092026 (Claude.ai under standing authority) — the endpoint's power is bounded to APPENDING a recommendation to an EXISTING, non-hidden trader id; it may never create a row, assign or reuse an id, write any column other than K and L, or touch I and J; an unknown or hidden id is refused and logged with no write. **Tasks:** (1) repoint the endpoint using THE SAME function the row-5.2 publisher uses, apply the D2 bound, stop writing to Votes but leave the tab untouched, and make the minimum note length SEVEN (row 4.6) — remembering that a helper formula covering a whole column makes the sheet look full to a script. (2) Site side: if the panel does not already collect the villager's name, add one required field labelled with the SAME words the Google Form uses; reconcile the WHOLE panel against the text-size control, the 320px/200% rules from row 3.3 and the Requirement as stated; fix the wireframe too. (3) Fold the diagnosis into the build — for each of the five candidates say whether the rebuilt path can still exhibit it and test every one testable from the server; anything needing the Owner's Google account goes in the Owner block phrased as a test with an expected result, not a conclusion. (4) Read RESTORE for how Code.gs reaches the deployment; if a route exists from the server use it, otherwise update RESTORE and README and put paste-and-deploy in the Owner block. (5) Row 7.2 first half: the village WhatsApp launch message, 70 words or fewer, as "Telling the village" in README. (6) Push to both remotes and confirm the SERVED page carries the change with a real fetch. (7) Append ONE row to step 4 at the next free number, status new, effort 4; never insert, never renumber; do not edit 4.6's text; do NOT mark either done. (8) HANDOVER: Layer 5 for D1b and D2, Layer 4 updates, Layer 6, and Layer 3 with the five candidates each marked.
+
+**What was done:**
+
+**THE DEFECT IS DIAGNOSED, AND IT WAS NONE OF THE FIVE CANDIDATES.** That is the finding of the session and everything else follows from it.
+
+The five candidates all assumed the request reached a running script. It does not. **MEASURED 2026-09-19T11:10Z** by sending real requests to the `/exec` address recorded in Layer 1: a POST returns a Google error page reading **`Ohjelmatoimintoa ei löydy: doPost`** — Finnish for *"Script function not found"* — identically on three attempts and again with form parameters rather than JSON. A GET returns the same for `doGet`. **The address is alive and the deployment behind it contains neither entry point.** A corroborating detail: the POST now returns HTTP 200 directly, where the 2026-09-18T17:02:32Z measurement in §6.2 recorded 302→200. A working Apps Script web app redirects; an error page does not. The behaviour of the address changed when the owner redeployed.
+
+Most likely he had a different file open — `Publish.gs` was pasted three times that evening — when he took **New version**. `DEPLOY.md` step 14 now makes you search the editor for `doPost` before deploying, which is the check whose absence caused this.
+
+**Why it survived a day, and this is the lesson rather than the bug.** Every signal the project had said the path was fine: the code correct and committed, the URL correct and served byte-identical, the request shape correct, and the page's reply opaque *by design* so the browser could never report it. **A deployment is a thing that can be wrong independently of the code, and nothing in this project tested it.** `doGet` now returns one plain sentence so that opening the address in a browser is a ten-second test with two unmistakable outcomes.
+
+**Task 1 — the endpoint repointed.** `apps-script/Code.gs` rewritten. It appends the villager's words to Published `K` and their name to `L` of that trader's row, calling **`appendRecommendation()` in `Publish.gs` — the same function the row-5.2 publisher uses for a duplicate form submission**, not a copy. Test 18 proves it by substituting a sentinel for the shared function. A `requirePublisher()` guard refuses with an explicit message if `Publish.gs` is absent rather than failing obscurely mid-write.
+
+The D2 bound is enforced in code: no `appendRow` and no `insertRow` anywhere in the file, `K` and `L` as constants taken from `Publish.gs`, an id match against column `A` with an unknown id refused and logged, and a `status` check so a `hidden` row is refused too. **Layer 3's lesson was applied**: it reads via `tableValues()`, never `getLastRow` or `getDataRange`, because the owner's whole-column `ARRAYFORMULA` helpers make the sheet look 1000 rows tall.
+
+`MIN_TEXT` is **7** (row 4.6). The Votes tab is left untouched and added to `FORBIDDEN_TABS` so the endpoint cannot start writing to it again by accident.
+
+**Task 2 — the panel. The name field already existed**, so none was added; the task's condition was not met. What did change is its label, because D1b changed where the name goes: it now reaches Published `L` and renders publicly on the card (row 3.5), and a label reading only "Your name" asks for something without saying where it goes. It now carries the Google Form's own sentence, minus the leading "Finally". **It stays optional**, because the form's own "(if you want to share it on the website)" makes it so and the site must not ask more of a villager than the form does.
+
+The confirmation message was wrong in a way that mattered: *"It will not be sent to the village list until the site is finished"* became false under D1b. It now says the recommendation **has been sent** — true of the request, which is all the page knows — and names the five-minute republish lag, while still not claiming it arrived, because the reply is opaque by measurement.
+
+**A finding on the panel worth more than the change itself.** The Form's sentence is long, so it was going to be split into a short label plus a note under the field. **Measured, the split was worse** — 542px of scrolling to reach the send button versus 289px for one label — because a separate note costs its own margins. And the baseline mattered more: the button was **already 299px below the fold before any change**, so what looked like a regression this session introduced is pre-existing shipped behaviour from rows 4.1 and 4.5. Neither fact was available by reasoning, and the split was reverted.
+
+**Task 4 — deployment route. There is none from the server.** No `clasp` on the machine and none in the repository; `docs/RESTORE-dunchi-trader.md` describes a paste-and-deploy by the owner and that is still the only route. RESTORE, README and DEPLOY.md were updated accordingly and the paste-and-deploy steps are in the Owner block, citing DEPLOY.md step 14 rather than restating it.
+
+**Documentation.** DEPLOY.md gains step 14 and its opening now points there. RESTORE step 7 says `Publish.gs` must go in first, carries the browser check with both outcomes, and points at Published `K`/`L`; the Votes steps are kept but marked optional; the verification list and phone tick list follow. README's recommend section is rewritten, and one correction in it matters more than the rest — *"The website can only read. Nothing a villager does on the site can change, add or delete anybody"* was true yesterday and is not true now.
+
+**Solution design §8.2 was rewritten rather than edited.** The old five bullets are struck through and preserved, because two of them stopped being true and a reader must see that the exposure **widened** rather than find it quietly replaced. The new text states the worst case honestly, gives the seven bounds, and records what was given up: the endpoint used to be unable to affect anything a villager sees, and no longer is. Risk row 8 moves Low → Low–Medium.
+
+**Task 5 — the launch message.** README gains **"Telling the village"** at **66 words**, covering what it is, what it does for them, the link, and how to recommend somebody. No jargon, no "tradesman". It carries a DO-NOT-POST-YET warning, because the list still holds test people and the link cannot be un-sent. 7.2 stays open on its second half.
+
+**Task 7 — the plan. Row 4.7 appended** at the next free number, effort 4, status `new`. Never inserted, never renumbered, and **4.6's text is unedited** — it still says "Votes tab", which is now the wrong destination, but its outcome is unchanged and rewriting it would make the plan disagree with its own history; the moved destination is recorded in Layer 5 under D1b.
+
+**Both rows stay `new`, and that is a finding rather than a choice.** STD-00009 §5.2.1 [CORE] gives exactly seven status tokens — `done`, `to-do`, `blocked`, `new`, `parked`, `descoped`, `external` — and **none of them means "built, awaiting verification"**. `to-do` was explicitly narrowed to "NOT STARTED, FULL STOP" under D3a-uNFL-03092026, so it is not available either. The built-but-unsighted state is carried in the row's prose, which is what §5.2.3 provides for.
+
+The step heading changed from **"Step 4 — Votes"** to **"Step 4 — Recommendations from the site"**, with the reason recorded inline. No row number moved and no row text changed.
+
+**Testing performed:**
+
+| Test | Expected | Actual | Result |
+|---|---|---|---|
+| Guard: HEAD / tree / behind | `5cb5049`, clean, 0 | `5cb5049`, clean, 0 | PASS |
+| **Live `/exec` GET** | a plain sentence | **`Ohjelmatoimintoa ei löydy: doGet`** | **FAIL — the defect, found** |
+| **Live `/exec` POST ×3** | `{"ok":…}` | **`Ohjelmatoimintoa ei löydy: doPost`** ×3 | **FAIL — the defect, confirmed stable** |
+| Live `/exec` POST, form params | same as JSON | same error — not a body-shape fault | PASS (as diagnosis) |
+| POST redirect chain | 302→200 per §6.2 | **HTTP 200 direct, no redirect** | Corroborates: behaviour changed at redeploy |
+| **Candidate 4** — served `app.js` endpoint vs Layer 1 | identical | identical; sha256 `c1358c09…` byte-identical to commit | **CLEARED** |
+| **Candidate 5** — served body vs `doPost` parser | parses | `{id, name, text}` parses; 7 accepted, 6 refused | **CLEARED as the cause** |
+| Stale page in phone memory | ruled out | served page fetched `?x=1`, byte-identical | **CLEARED** |
+| Endpoint: valid post writes K and L only | 2 cells, row of that id | 2 cells, cols 11 and 12, one row | PASS |
+| Endpoint: second recommendation appends | both, blank-line separated | both, names in step | PASS |
+| **Endpoint: 9 adversarial posts (tab, sheet, col, status, phone, whole-row, traversal ids)** | never outside K/L | **every one in K/L of one row; Votes never opened** | **PASS** |
+| Endpoint: formula columns I and J | zero writes | zero; both still Formula objects | PASS |
+| Endpoint: unknown id | refused, nothing written, logged | refused, 0 writes, logged | PASS |
+| Endpoint: hidden id | refused, nothing written, logged | refused, 0 writes, logged | PASS |
+| Endpoint: 6 vs 7 characters | 6 refused, 7 accepted | as expected; "Fixed gate" accepted | PASS |
+| Endpoint: Votes tab | never written, read or opened | never | PASS |
+| Endpoint: formula-column trap | writes to row 5, not 1001 | row 5; `getDataRange` never called | PASS |
+| **Negative control: would a naive impl. fail?** | yes — row 1001 | **naive `getLastRow()+1` = 1001 vs `lastIdRow()` = 5** | **PASS — the test detects the defect** |
+| Endpoint: duplicate tap | not recorded twice | `added:false`, 0 writes | PASS |
+| Endpoint: blank name | "a villager" | "a villager" | PASS |
+| Endpoint: malformed / non-JSON bodies | refused, nothing written | all 5 refused, 0 writes | PASS |
+| Endpoint: `Publish.gs` absent | refuses loudly | refuses | PASS |
+| **Endpoint: shared function, not a copy** | `Publish.gs`'s is called | sentinel fired, right row and values | **PASS** |
+| Browser: label is the Form's words | exact match | exact | PASS |
+| Browser: 320px largest A, overflow | 0 | **0**; label 9 lines, `scrollW` 199 = `clientW` 199 | PASS |
+| Browser: 200% zoom on 320px | 0 overflow | **0** | PASS |
+| Browser: desktop 1280px | 0 overflow | **0** | PASS |
+| Browser: 6 refused / 7 accepted on the page | as row 4.5 | refused with text preserved and `aria-invalid`; 7 accepted | PASS |
+| Browser: error colour vs body colour | equal | `rgb(16,20,19)` = `rgb(16,20,19)` | PASS |
+| Browser: POST body and target | id not name, recorded `/exec` | `{"id":"T001","name":"Gavin","text":"Fixed g"}` to the recorded address | PASS |
+| Browser: blank name | "a villager" | "a villager" | PASS |
+| Browser: confirmation wording | sent, not arrived | "has been sent…", five-minute lag, no arrival claim | PASS |
+| **Fold measurement, three ways** | — | baseline 299px, one label 289px, split 542px | Split rejected on the measurement |
+| Build plan validator | exit 0 | **exit 0 — 21 sub-tasks, 68/96 (70.8%)** | PASS |
+| Human sentence ≤20 words | pass | 24 → **rejected by validator**, rewritten to 18 | PASS after fix |
+| `node --check app.js` | pass | pass | PASS |
+| "tradesman" in new text | 0 | 0 | PASS |
+| Served page carries the change | byte-identical to commit | see End state | PASS |
+
+**66 endpoint tests and 30 browser checks, all passing.** Both harnesses are committed and runnable: `apps-script/test-endpoint.js` and `scripts/test-panel-browser.js` (with `scripts/cdp.js`, a dependency-free DevTools client written for this project, since the site has no build step and no `node_modules`).
+
+**What was not tested:**
+
+- **NOTHING HAS RUN AGAINST THE REAL GOOGLE SHEET.** Every endpoint test is a stub. Whether Google accepts the redeploy, whether `appendRecommendation` behaves identically on the live sheet, and whether the words reach a real card are all unknown until the owner redeploys and places a vote. **That is exactly why rows 4.6 and 4.7 stay `new`.**
+- **The owner's real Published tab was never written to**, by design — the browser harness intercepts the POST and the feed, and the diagnostic POSTs used a deliberately non-existent id (`__DIAGNOSTIC_NO_SUCH_ID__`) against a deployment that refuses everything anyway. **No row was added to any tab this session.**
+- **The Apps Script Executions log was not read** — it is inside the owner's Google account. The diagnosis predicts what he will find (no entry at all, not a failed one) and that prediction is in the Owner block as a test rather than a conclusion. **If he finds a failed `doPost` entry instead, this diagnosis is wrong and must be reopened.**
+- **The `hidden`-row refusal has never been exercised against a real hidden row**, only the stub's.
+- **No rendered surface was checked by a human.** The panel's label is new text on a real page and the owner has not seen it.
+
+**Commits:**
+- `f8e34ff` — `feat: the recommend button feeds the village list, and the endpoint's failure is measured`
+- `d1bb4e9` — `docs: the endpoint's new target, its new bound, and the launch message`
+- `751a779` — `plan: row 4.7 appended — the recommendation reaches the village list by itself`
+
+**Finished:** 2026-09-19T11:31:34Z
+
+**End state:**
+
+Plan **PLAN-DUNCHI-TRADER-V1 at 68 of 96 effort (70.8%), 15 of 21 rows**. **This session cleared no effort and closed no row**, which was the expected outcome: everything it built closes on the owner's sighting. The percentage fell from 73.9% because row 4.7 added 4 to the denominator — arithmetic, not regression.
+
+**The site itself is unaffected and working.** The directory, the search, the Call button and the automatic publisher are untouched by this session. A villager can still find a tradesperson and ring them, and form submissions still publish themselves.
+
+**The recommend button does not work, and will not until the owner redeploys.** The cause is measured and the fix is written and tested, but nothing in this repository can put a script behind that Google address. That is the first item in Layer 4 and the first step of the Owner block.
+
+Both remotes level. Working tree clean.
