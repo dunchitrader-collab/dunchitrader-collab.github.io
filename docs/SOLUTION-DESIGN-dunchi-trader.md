@@ -120,11 +120,12 @@ list, directly on the page, without leaving it and without re-typing anything al
   |                     incl. the villager's    |
   |                     words and their name    |
   |         |                                   |
-  |  [ Votes ]          append-only             |
+  |  [ Votes ]          UNUSED from 2026-09-19  |
   +---------------------------------------------+
             |                    ^
-            | published as       | appends one row
-            | CSV (~5 min lag)   |
+            | published as       | appends words + name
+            | CSV (~5 min lag)   | to K/L of ONE existing
+            |                    | Published row (D1b)
             v                    |
   +---------------------+   +---------------------+
   |  Published CSV URL  |   |  Apps Script        |
@@ -151,9 +152,21 @@ Data moves in two directions and they have deliberately different trust levels.
 **Inbound to the site (read).** Sheet → published CSV → page. Strictly one-way. The page
 holds no credential for the sheet and has no write path to it. See §8.1.
 
-**Outbound from the site (write).** Page → Apps Script → Votes tab. Narrow, append-only, and
-cannot reach the Published tab. See §8.2, which states the trade-off plainly rather than
-glossing it.
+~~**Outbound from the site (write).** Page → Apps Script → Votes tab. Narrow, append-only, and
+cannot reach the Published tab.~~ **SUPERSEDED 2026-09-19 — owner's ruling D1b-6G7f-19092026.**
+
+**Outbound from the site (write).** Page → Apps Script → **Published tab, columns K and L of
+one existing row**. The Votes tab is no longer written to, because nothing ever read it: a
+recommendation typed into the site's own panel landed where no villager could see it. The
+endpoint now calls the same `appendRecommendation()` the publisher uses for a duplicate form
+submission, so the two routes store a villager's words identically.
+
+**Still narrow, and bounded in code rather than by promise (D2-6G7f-19092026).** It may append
+to K and L of an existing, `active` row and do nothing else: it cannot create a row, assign or
+reuse an id, write any other column, touch the owner-owned formula columns `I` and `J`, or
+reach a `hidden` row. An unknown or hidden id is refused and logged with nothing written. Its
+exposure therefore equals the open Google Form's — a stranger may add words to somebody already
+listed, exactly as they could by filling the form in — and is no wider. See §8.2.
 
 ### 3.3 Visibility rules
 
@@ -163,18 +176,25 @@ These two paths differ, and the difference is intentional:
 |---|---|---|
 | A **new tradesperson** is submitted via the form | Form responses tab **and Published, automatically** | Within the republish lag, unless one of the two hard checks hides it (§7.3) |
 | A **second recommendation** for somebody already listed, via the form | Appended to that person's existing Published row | Within the republish lag |
-| A **vote** on an existing tradesperson | Votes tab | Immediately |
+| A **vote** on an existing tradesperson, from the site's own panel | ~~Votes tab~~ SUPERSEDED 2026-09-19 → **appended to that person's existing Published row, columns K and L** | Within the republish lag (~5 min). The visitor who typed it also sees it on the card at once, drawn from their own browser. |
 
 ~~A vote appears immediately because it attaches to somebody the owner has *already* approved.
 A new tradesperson never appears without a human decision.~~ **SUPERSEDED 2026-09-18 — D7a.**
 Both now appear without a human decision. A new tradesperson is added by `Publish.gs` subject
-to the two hard checks in §7.3; a vote posted from the page still lands on the Votes tab.
+to the two hard checks in §7.3; ~~a vote posted from the page still lands on the Votes tab.~~
+SUPERSEDED 2026-09-19 (D1b) → a vote posted from the page is appended to that person's existing
+Published row, columns `K` and `L`.
 
-**A gap recorded rather than glossed:** nothing copies the Votes tab into Published, so a
+~~**A gap recorded rather than glossed:** nothing copies the Votes tab into Published, so a
 recommendation typed into the site's own panel is visible only to the visitor who typed it.
 Recommendations arriving through the **form** reach everybody, because `Publish.gs` writes them
 into the Published tab's `recommendations` and `recommended_by` columns. Closing that gap would
-mean the publisher reading Votes as well, which is not built.
+mean the publisher reading Votes as well, which is not built.~~ **RESOLVED 2026-09-19 —
+D1b-6G7f-19092026, and it was closed the other way round.** Rather than teaching the publisher
+to read Votes, the endpoint was repointed to write straight to Published K and L, sharing the
+publisher's own append function. Both routes now reach everybody. The option of retiring the
+panel (D1c) was declined: the panel is the only way a villager can second somebody already
+listed without filling in the whole form again.
 
 ---
 
@@ -186,10 +206,10 @@ mean the publisher reading Votes as well, which is not built.
 | **Form responses tab** | Raw landing area. Messy by nature. Nobody but the owner ever sees it. |
 | **Helper columns** on that tab | `phone_key`, `name_key`, `verdict` — the sheet flags its own duplicates (§7.2). |
 | **Published tab** | The public list. **The only thing the site reads.** Columns `A`–`H` are the tradesperson; `I`–`J` are the duplicate-checker helpers; **`K` `recommendations` and `L` `recommended_by` carry the villagers' own words and their names** (added 2026-09-18, D8a). |
-| **Votes tab** | Append-only record of extra recommendations posted from the page. |
+| **Votes tab** | ~~Append-only record of extra recommendations posted from the page.~~ **[DEPRECATED 2026-09-19]** Nothing reads it and nothing writes to it. It is left in place in the live spreadsheet, neither deleted nor cleared; recommendations from the page now go to Published K and L (D1b). |
 | **Published CSV URL** | The read interface. Public, read-only, auto-republishing. |
 | **index.html / style.css / app.js** | The whole front end. Plain files, no build step. |
-| **Apps Script web app** | The single write endpoint. Appends one row to Votes. Source committed to the repo. |
+| **Apps Script web app** | The single write endpoint. ~~Appends one row to Votes.~~ SUPERSEDED 2026-09-19 → appends a villager's words and name to columns `K` and `L` of one existing, `active` Published row, via the publisher's own `appendRecommendation()`. Bounded per D2 — see §8.2. Source committed to the repo (`apps-script/Code.gs`). |
 | **README.md** | Written for a non-technical inheritor. |
 | **docs/RESTORE-dunchi-trader.md** | Full rebuild-from-zero runbook. |
 
@@ -199,7 +219,7 @@ mean the publisher reading Votes as well, which is not built.
 id, first_name, last_name, business, phone, trade, extra_trade, status
 ```
 
-- `id` — `T001`, `T002`, … Assigned once and **never changed**. Votes reference this id.
+- `id` — `T001`, `T002`, … Assigned once and **never changed**. Recommendations posted from the site reference this id, and it is the only thing the endpoint uses to find a row — so changing an id sends a villager's words to the wrong person or nowhere at all.
 - `extra_trade` — a second trade, so one person appears under both without a duplicate row.
 - `status` — controls whether the row renders.
 
@@ -239,7 +259,7 @@ an omission — see §10.
 |---|---|---|---|---|
 | 1 | Google Form → Sheet | Inbound | Google-internal | Form unavailable; site unaffected |
 | 2 | Published CSV → page | Inbound, read-only | None (public URL) | Handled explicitly (§7.4) |
-| 3 | Page → Apps Script → Votes | Outbound, append-only | None by design (§8.2) | Optimistic UI (§6.2) |
+| 3 | Page → Apps Script → ~~Votes~~ SUPERSEDED 2026-09-19 → **Published `K`/`L` of one existing row** | Outbound, append-only, bounded by D2 | None by design (§8.2) | Optimistic UI (§6.2) |
 | 4 | Google Fonts / self-hosted font | Inbound | None | Falls back to Verdana/Arial |
 
 ### 6.1 The published CSV
@@ -481,28 +501,75 @@ the architecture rather than of any control that could be misconfigured.
 The Apps Script endpoint is **necessarily open**, because villagers do not log in, and
 requiring them to would defeat the entire product.
 
-Stating the exposure without softening it: **anybody who finds that URL can append rows to
+~~Stating the exposure without softening it: **anybody who finds that URL can append rows to
 the Votes tab.** They do not need an account, an invitation or a password. They could append
-one row or a great many.
+one row or a great many.~~
 
-What bounds the damage:
+~~What bounds the damage:~~
 
-- The script is **append-only to the Votes tab**. It is written to do one thing.
-- It **cannot read** any tab.
-- It **cannot edit or delete** anything.
-- It **cannot touch the Published tab**, so it cannot alter, remove or invent a tradesperson.
-- It holds no personal data beyond what a villager chose to type.
+- ~~The script is **append-only to the Votes tab**. It is written to do one thing.~~
+- ~~It **cannot read** any tab.~~
+- ~~It **cannot edit or delete** anything.~~
+- ~~It **cannot touch the Published tab**, so it cannot alter, remove or invent a tradesperson.~~
+- ~~It holds no personal data beyond what a villager chose to type.~~
 
-**Worst case is junk rows in a tab that only the owner looks at.** The directory itself — the
-names, the phone numbers, the trades — is untouchable from the internet.
+~~**Worst case is junk rows in a tab that only the owner looks at.** The directory itself — the
+names, the phone numbers, the trades — is untouchable from the internet.~~
 
-This trade-off has been **explicitly accepted by the project owner**. It is written here in
-full, rather than glossed, so that a future maintainer evaluating the endpoint understands it
-was a considered decision and not an oversight.
+**SUPERSEDED 2026-09-19 — owner's ruling D1b-6G7f-19092026 moved the write target, and the
+exposure changed with it. The superseded text is preserved above because the change is a
+widening and must be visible as one, not quietly replaced.**
+
+#### What is true now
+
+**The endpoint writes to the Published tab — the tab the whole village reads.** That is a real
+widening and is stated first rather than buried. Two of the five bullets above no longer hold:
+it *does* read Published (it has to, to find the row), and it *does* write to Published.
+
+Stating the exposure without softening it: **anybody who finds that URL can add words and a
+name to the card of somebody already on the list.** They need no account, no invitation and no
+password, and they could do it once or a great many times.
+
+**What bounds the damage — and the bound is D2-6G7f-19092026, enforced in code rather than
+promised in a comment:**
+
+- It **cannot create a row.** There is no `appendRow` and no `insertRow` anywhere in the file,
+  so it cannot add a person to the directory.
+- It **cannot assign or reuse an id.** It never calls `nextId()` and never writes column `A`.
+- It **cannot write any column but `K` and `L`.** Those two indices are constants taken from
+  `Publish.gs`; no request parameter can move them.
+- It **cannot touch `I` and `J`** — the owner's `ARRAYFORMULA` helpers. Writing a value into a
+  cell a formula produces destroys that formula, which has already happened once on this
+  project (handover Layer 3, 2026-09-18).
+- It **cannot change a name, a telephone number, a trade or a status.** Those live in `A`–`H`
+  and nothing in the file addresses them.
+- It **cannot reach an unknown or a `hidden` id.** Both are refused outright and logged, with
+  nothing written. A hidden row is one the owner has deliberately set aside — a wrong phone
+  number, somebody taken down — and words must not be attached to it.
+- It **cannot touch the Votes tab or the responses tab.** It opens exactly one tab, named by a
+  hard-coded constant, checked against a forbidden list that now includes Votes.
+
+**The honest framing of the new worst case: unwanted words on a tradesperson's card**, which
+the owner deletes from column `K` in one edit. The directory itself — who is listed, their
+telephone number, their trade, whether they appear at all — remains untouchable from the
+internet, which was the property the old bullets were protecting and it survives intact.
+
+**Why this was judged acceptable, in one sentence: it is the same door the Google Form already
+leaves open.** That form is public and unauthenticated; anybody who finds it can already submit
+words about somebody already listed, and `Publish.gs` will append them to exactly these two
+cells. The endpoint's power is now equal to the form's, not greater. Refusing the change would
+not have closed a door — it would have left the site's own button writing to a tab nobody read.
+
+**What was given up, stated rather than glossed.** The old endpoint had a property this one
+cannot have: it could not affect anything a villager sees, at all. That is gone. The
+compensating controls are the bounds above, the fact that the damage is a text edit away from
+repair, and that no silent harm is possible — unwanted words are visible on the card, unlike a
+wrong telephone number, which is the failure mode this project has actually suffered.
 
 **Recovery, if it is ever abused:** the Apps Script deployment can be deleted or redeployed
-at a new URL from the Google account in under a minute, and the junk rows deleted from the
-Votes tab. The site continues to function throughout — only the vote button stops working.
+at a new URL from the Google account in under a minute, and the unwanted text cleared out of
+column `K`. The site continues to function throughout — only the recommend button stops
+working, and the directory is unaffected either way.
 
 ### 8.3 Personal data
 
@@ -801,7 +868,7 @@ Recorded for completeness, not as anticipated work:
 |---|---|---|
 | ~500+ tradespeople | CSV parse becomes perceptible on an old phone | Keep the architecture; render the list lazily |
 | ~5,000+ | CSV too large to fetch on every load | Replace the CSV read with a real API — a re-architecture, not a tweak |
-| Votes tab abuse at volume | Junk rows accumulate | Redeploy the Apps Script at a new URL (§8.2) |
+| ~~Votes tab abuse at volume~~ SUPERSEDED 2026-09-19 → **Endpoint abuse at volume** | ~~Junk rows accumulate~~ → Unwanted text accumulates in Published column `K`, visible on cards | Clear column `K` for the affected rows; redeploy the Apps Script at a new URL if it persists (§8.2) |
 
 **None of these are expected.** Pre-building for them would add exactly the complexity that
 §10.3 forbids.
@@ -826,7 +893,7 @@ recommendations worth reading.
 | 5 | **Sheet is empty** at launch or after an edit | Medium | Medium | **An empty sheet must never produce a blank page.** Explicit empty state required. |
 | 6 | **Five-minute lag mistaken for a broken site** | High | Low | Stated in the README, in RESTORE, and in §6.1 |
 | 7 | ~~**Apps Script CORS behaves unexpectedly** (§6.2) | Medium | Medium | Optimistic UI; confirm real behaviour during Step 4 and correct §6.2~~ **CLOSED 2026-09-18 — measured, §6.2 corrected.** The response is opaque exactly as designed for; the optimistic UI is correct. One correction to the plan's assumption: the fetch promise **resolves** rather than rejecting, so failures cannot be caught. Risk retired. |
-| 8 | **Votes endpoint abused** | Low | Low | Bounded by design (§8.2); redeploy to recover |
+| 8 | **Recommendations endpoint abused** ~~(Votes)~~ | Low | ~~Low~~ SUPERSEDED 2026-09-19 → **Low–Medium** — since D1b it writes to the tab the village reads, so abuse is now visible to villagers rather than only to the owner | Bounded in code by D2 — cannot add a person, change a number, or reach a hidden row (§8.2); clear column `K`, redeploy to recover |
 | 9 | **Someone adds a build step later** | Medium over years | **Severe — breaks inheritance** | §10.3 states the prohibition and the one-sentence test that decides it |
 | 10 | **Two repositories drift** | Medium | Medium | dunchitrader-collab is authoritative (§10.4) |
 | 11 | **Form still collects email / still has a star-rating question** — both measured present 2026-09-18 | **Confirmed** | Medium — contradicts decisions 3 and 15 | Operator actions in the handover; both are Google-side settings only the owner can change |

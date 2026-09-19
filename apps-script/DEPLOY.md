@@ -2,15 +2,22 @@
 
 Follow these steps once. They take about ten minutes.
 
-**Steps 1 to 4 are already done** — you did 1 to 3 on 2026-09-18, and step 4 was
-done for you in the website's code the same day. What is left is step 5: placing
-one recommendation from your phone and checking it arrives in the Votes tab. The
-whole document is kept so the site can be rebuilt from nothing if it is ever
-needed.
+**START AT STEP 14.** That is the current state of this document as at
+2026-09-19: steps 1 to 4 were done on 2026-09-18, and the button then stopped
+working. The cause has since been measured — the deployment is not running
+`Code.gs` at all — and **step 14 both explains it and puts it right**. It also
+records the one other thing that changed: a recommendation from the website now
+goes to the tradesperson's own row on the **Published** tab rather than to the
+Votes tab, which nothing ever read.
 
-Until the button is working, a recommendation only stays on the villager's own
-phone and disappears when they close the page. The page says so honestly — it
-does not pretend the recommendation was sent.
+Steps 1 to 13 are kept in full, unaltered, so the site can be rebuilt from
+nothing if it is ever needed. Read them in order for a rebuild; for today, go
+to step 14.
+
+> **Where steps 1 to 13 say "Votes tab", that is history rather than
+> instruction.** Creating it (step 1) is harmless and a rebuild may as well keep
+> doing it, but nothing reads or writes it any more. Step 14 is the authority on
+> where a recommendation lands.
 
 **You must be signed in as `dunchitrader@gmail.com` for all of this.** That
 account owns the spreadsheet. If you are signed in as anybody else it will not
@@ -486,3 +493,128 @@ each have made a tile of their own.
 > just give a twelve-digit number that is still wrong, so the repair refuses it
 > and says so. Her row is `hidden` either way. **Retype it from her original form
 > answer when you get a moment.**
+
+---
+
+## Step 14 — The recommend button, fixed and repointed
+
+**2026-09-19. Do this one before any of the others — it is the first thing on
+your list, and it is the only reason the recommend button is dead.**
+
+### What is actually wrong, and it is not what anybody guessed
+
+You redeployed `Code.gs` on 2026-09-18 and the button still produced no row, so
+five possible causes were written down. **None of them was it.** The real cause
+was measured on 2026-09-19 by sending a recommendation to the address the
+website uses and reading what came back:
+
+> **Script function not found: doPost**
+
+Google says the same for `doGet`. In plain English: **the address is alive, but
+the script sitting behind it is not `Code.gs` at all.** When you redeployed,
+the deployment picked up a version of the project that does not contain that
+file's two entry points — most likely the editor was showing a different file
+at the time. Nothing you can see from the outside says so, which is why it took
+a direct test to find.
+
+**You can check this yourself in ten seconds**, and you should, both now and
+after you fix it. Open this address in any browser:
+
+<https://script.google.com/macros/s/AKfycbzvTvZK0QW3YiIOyX3q73-xme3G7AnFEooov3VQugoazt7PU8C9_TewsEsT_rLZT1Tl/exec>
+
+- **Broken** looks like a Google error page reading *"Script function not found:
+  doGet"*.
+- **Working** looks like one plain sentence: *"This address only accepts
+  recommendations sent by the Dunchideock village suppliers website."*
+
+That one line is the whole test. If you see the sentence, the deployment is
+running the right script.
+
+### The other thing that changed — where recommendations now go
+
+They used to be added to the **Votes** tab. **Nothing ever read that tab.** The
+website reads exactly one thing — the published Published tab — so a villager
+who tapped *"I recommend them too"*, typed a few words and was thanked had those
+words land somewhere no neighbour would ever see them.
+
+From now on a recommendation from the website is added to **that person's own
+row on the Published tab**, in columns **K** and **L** — the same two columns a
+second form submission fills in, using the same piece of the script. So the two
+ways of recommending somebody now do the same thing and end up in the same
+place.
+
+**The Votes tab is left exactly as it is.** Nothing reads it, nothing writes to
+it, and nothing deletes it. You can leave it there or remove it later; it makes
+no difference either way.
+
+**What the website can and cannot do to your list, now that it writes to
+Published.** It is worth being precise, because this is the one part of the
+system a stranger can reach:
+
+| It can | It cannot |
+|---|---|
+| Add words to somebody **already on the list** | Add a new person |
+| Add the villager's name next to those words | Assign or re-use an ID |
+| — | Change a name, telephone number, trade or status |
+| — | Touch your two helper formulas in **I** and **J** |
+| — | Reach anybody whose row is `hidden` |
+
+If somebody posts to an ID that is not on the list, or one that is hidden, it is
+refused and **nothing is written**. So the worst anybody can do from outside is
+add unwanted words to a card, which you delete from column K in one edit. That
+is the same thing they could already do by filling in the Google Form — it is no
+wider a door than the one that is already open.
+
+### Putting it right
+
+1. Open the spreadsheet → **Extensions → Apps Script**.
+2. **Look at the file list on the left.** You should see **two** files:
+   **`Code.gs`** and **`Publish.gs`**. If `Publish.gs` is missing, do Part 2
+   step 6 first — the recommend endpoint now shares a piece of it and will
+   refuse to run without it.
+3. Click **`Code.gs`**. Check the tab at the top says `Code.gs` and not
+   `Publish.gs` — getting this wrong is the most likely thing that went wrong
+   last time.
+4. Select everything in it (**Ctrl+A**) and delete it.
+5. Open `apps-script/Code.gs` in the site's GitHub repository, click
+   **Copy raw file**, and paste it in. **Ctrl+S** to save.
+6. **Before deploying, prove the right file is there.** Press **Ctrl+F** in the
+   editor and search for `doPost`. It must be found. If it is not, you are
+   looking at the wrong file — go back to step 3.
+7. Click **Deploy → Manage deployments**.
+8. Click the **pencil icon** on the existing deployment.
+9. Set **Version** to **New version**. Click **Deploy**.
+
+> **Step 9 is the one that matters, and it is the same warning as step 11.**
+> Editing the existing deployment keeps the same `/exec` address, which is the
+> one built into the website. Choosing **New deployment** would give you a
+> different address, the website would carry on posting to the old one, and the
+> button would stop working with nothing on screen to tell you. If you do it by
+> accident, send the new address across to be put into the code.
+
+### Checking it worked
+
+**Do the browser check first** — open the `/exec` address above. If you get the
+plain sentence rather than an error page, the deployment is right. That alone
+tells you more than the old test did, because it fails visibly.
+
+Then the real test:
+
+1. Open <https://dunchitrader-collab.github.io/?x=1> on your phone. **The `?x=1`
+   matters** — it forces the phone to fetch a fresh copy rather than the one it
+   remembers.
+2. Tap a trade, then tap a tradesperson's **I recommend them too**.
+3. Type your name and a few words — **seven characters is enough**, *"Fixed
+   gate"* is fine.
+4. Tap **Add my recommendation**.
+5. Open the **Published** tab and find that person's row. **Columns K and L**
+   should now carry your words and your name. If they already had words from
+   somebody else, yours is added underneath with a blank line between.
+6. Wait about five minutes and reload the website. Your words should be on that
+   person's card, with your name under them.
+
+> **Step 5 is the proof, not step 6.** The website thanks the villager whether or
+> not the recommendation was saved — Google's reply comes back sealed and the
+> page is not allowed to open it. That was measured, not assumed. The spreadsheet
+> is where you look. Step 6 just confirms the five-minute republishing is doing
+> its job as well.

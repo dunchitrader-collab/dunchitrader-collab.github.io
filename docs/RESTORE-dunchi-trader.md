@@ -62,6 +62,13 @@ id	first_name	last_name	business	phone	trade	extra_trade	status
 When	Trader ID	Name	What they said
 ```
 
+> **The Votes tab is no longer used, and steps 6 and 7 are optional.** Until
+> 2026-09-19 a recommendation made on the website was added here; under the
+> owner's ruling D1b it now goes to the tradesperson's own row on **Published**,
+> columns K and L, because nothing ever read this tab. The steps are kept
+> because the tab exists in the live spreadsheet and a rebuild that matches it
+> is easier to compare against. **Skipping them breaks nothing.**
+
 **You should now have:** a spreadsheet with two tabs, Published and Votes, each
 with a row of headings and nothing else.
 
@@ -322,6 +329,21 @@ Follow **`apps-script/DEPLOY.md`** in the repository and do **its steps 1, 2 and
 app with **Execute as: Me** and **Who has access: Anyone**. Copy the `/exec`
 address it gives you at the end.
 
+> **Paste in `Publish.gs` as well, and do it first.** Since 2026-09-19 the
+> recommend endpoint shares a piece of the automatic publisher rather than
+> keeping its own copy, so `Code.gs` will refuse to run if `Publish.gs` is not in
+> the same Apps Script project. That is DEPLOY.md Part 2 step 6, and in a rebuild
+> it belongs before this step rather than after it.
+
+> **Then check the address before you go any further.** Open the `/exec` address
+> in a browser. A working deployment answers with one plain sentence: *"This
+> address only accepts recommendations sent by the Dunchideock village suppliers
+> website."* A Google error page reading *"Script function not found: doGet"*
+> means the deployment is not running `Code.gs` — go back and check which file
+> was open in the editor when you deployed. **This exact failure happened on
+> 2026-09-18 and went undiagnosed for a day**, because nothing else shows it.
+> See DEPLOY.md step 14.
+
 > **Do not paste that address into `app.js` yourself.** `DEPLOY.md` step 4
 > explains why in full, and it matters: the site normally lives in **two** GitHub
 > repositories kept identical, and hand-editing one makes them disagree so the
@@ -334,21 +356,42 @@ address it gives you at the end.
 > did for `var FEED` in step 6. If you have restored both repositories, make the
 > change in one and copy the same file to the other so they stay identical.
 
-**You should now have:** a new row on the **Votes** tab each time somebody taps
-**Add my recommendation** on the website.
+**You should now have:** the villager's words in column **K** and their name in
+column **L** of that tradesperson's own row on the **Published** tab, each time
+somebody taps **Add my recommendation** on the website. Where the person already
+had a recommendation, the new one is added underneath it with a blank line
+between, and the names stay in the same order.
 
+> ~~**Check the spreadsheet, never the website.**~~ SUPERSEDED 2026-09-19 — the
+> advice stands, only the tab has changed. A recommendation used to be appended
+> to the **Votes** tab; since the owner's ruling D1b it goes to **Published K and
+> L** instead, because nothing ever read Votes and a villager's words landed
+> where no neighbour would see them.
+>
 > **Check the spreadsheet, never the website.** The page thanks the villager
 > whether or not the recommendation was saved, and it is not being careless: the
 > reply from Google comes back sealed and the website is not allowed to open it.
-> This was measured on 2026-09-18, not assumed. **The Votes tab is the only
-> proof.**
+> This was measured on 2026-09-18, not assumed. **Published columns K and L are
+> the proof.** The card on the website is a second place to look, but only after
+> the five-minute republishing lag, so the sheet is the quicker answer.
+
+> **What the website can do to your list, stated plainly, because this endpoint
+> is open to anyone who finds its address.** It can add words and a name to
+> somebody **already on the list and visible**. It cannot add a person, cannot
+> assign or re-use an ID, cannot change a name, telephone number, trade or
+> status, cannot touch the helper formulas in columns I and J, and cannot reach a
+> row that is `hidden`. An unknown or hidden ID is refused and nothing is
+> written. That is the same door the Google Form already leaves open, and no
+> wider.
 >
 > So: open the site on your phone, tap a trade, tap **I recommend them too**,
 > type a few words, tap **Add my recommendation** — then go to the spreadsheet
-> and look at the Votes tab. A thank-you on the page tells you nothing on its
-> own.
+> and look at **that person's row on the Published tab, columns K and L**. A
+> thank-you on the page tells you nothing on its own.
 >
-> If no row appears, the checks are in `DEPLOY.md` step 5.
+> If nothing appears, the checks are in `DEPLOY.md` **step 14** — and the very
+> first of them takes ten seconds: open the `/exec` address in a browser and see
+> whether you get the plain sentence or a Google error page.
 
 ---
 
@@ -374,9 +417,9 @@ Check each of these:
 - [ ] The form can be filled in **without signing in to Google** (test it in a
       private/incognito window).
 - [ ] A form answer appears on the Form responses tab.
-- [ ] If you did step 7: a recommendation made on a phone appears as a new row
-      **on the Votes tab**. Judge this in the spreadsheet, never by the
-      thank-you message on the page.
+- [ ] If you did step 7: a recommendation made on a phone appears in **columns
+      K and L of that tradesperson's own row on the Published tab**. Judge this
+      in the spreadsheet, never by the thank-you message on the page.
 
 If every one of those worked using only the two logins, the rebuild is
 complete and the site is genuinely inheritable.
@@ -406,13 +449,13 @@ spreadsheet. There is no server to keep running and nothing to patch.
 
 Tick each line when you have seen the thing it names.
 
-1. [ ] **Spreadsheet** — two tabs, `Published` and `Votes`, each with one row of headings.
+1. [ ] **Spreadsheet** — the `Published` tab with one row of headings. (A second `Votes` tab exists in the live sheet but nothing reads or writes it any more — see step 1.)
 2. [ ] **Publish** — the copied address, pasted into a browser, downloads a file containing your eight headings.
 3. [ ] **Form** — opens in a private window without asking you to sign in; a test answer lands on a new tab in the spreadsheet.
 4. [ ] **Repository** — exists at `https://github.com/<account>/<account>.github.io` and is **Public**.
 5. [ ] **Files and Pages** — the site loads at `https://<account>.github.io` showing the heading, search box and three **A** buttons, and says either *"The list will not load at the moment"* or *"The list is being updated"*.
 6. [ ] **Point at the list** — the site now says *"Nobody on the list just yet"*; after adding one test person and waiting five minutes, that person appears under their trade with a green **CALL** button.
-7. [ ] **Recommend button** (optional) — a recommendation made on a phone appears as a new row **on the Votes tab**. Check the spreadsheet, not the thank-you message.
+7. [ ] **Recommend button** (optional) — the `/exec` address opens in a browser showing one plain sentence rather than a Google error page; then a recommendation made on a phone appears in **columns K and L of that person's row on the Published tab**. Check the spreadsheet, not the thank-you message.
 8. [ ] **Duplicate checker** (optional) — the four extra columns on the Form responses tab show a verdict in plain English.
 9. [ ] **Call button** — tapping **CALL** on a phone dials the right number.
 10. [ ] **Removal** — setting somebody's `status` to anything other than `active` takes them off the site within five minutes.

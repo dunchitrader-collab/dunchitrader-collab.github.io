@@ -79,9 +79,17 @@ spelling, a blank business. You are editing plain text and nothing will rewrite
 what you type. The `verdict` column on the Form responses tab is the view to
 scan while you do it.
 
-**The website can only read.** Nothing a villager does *on the site* can change,
-add or delete anybody. The form is what adds people, and it does so through the
-two checks above rather than through you.
+**The website can add words, and nothing else.** Since 2026-09-19 the
+*"I recommend them too"* button on a card adds that villager's words and name to
+**columns K and L of that person's row**, exactly as a second form submission
+does. It **cannot** add a person, cannot change anybody's name, telephone number,
+trade or status, cannot touch your helper formulas in columns I and J, and cannot
+reach a row you have set to `hidden`. So the worst anybody can do from the
+website is put unwanted words on a card, which you delete from column K in one
+edit — the list of people and numbers cannot be altered from there at all.
+
+Adding a **person** is still the form's job, and it does so through the two
+checks above rather than through you.
 
 The spreadsheet:
 <https://docs.google.com/spreadsheets/d/1j9SVNJG9Zf_iFtl6OrsrcVom5SY13sOiv3vt58jcprc/edit>
@@ -260,20 +268,75 @@ working repository too, so the two do not drift apart.
 
 Villagers can add their own recommendation to somebody already on the list.
 
-**This is switched on.** The small Google script behind it was deployed on
-2026-09-18 and the website has been sending recommendations to it since. New
-recommendations arrive as rows on the **Votes** tab of the spreadsheet.
+**It needs one thing doing before it works — see `apps-script/DEPLOY.md` step
+14.** Measured 2026-09-19: the small Google script behind the button is deployed
+at a live address, but the deployment is not running the right file, so every
+recommendation the website sends is answered with *"Script function not found"*
+and nothing is recorded. Step 14 explains it and puts it right in nine steps.
 
-**Check the Votes tab, not the website.** The page thanks the villager whether or
-not the recommendation was saved — the reply from Google comes back sealed and
-the website is not allowed to open it. That was measured, not assumed. So the
-Votes tab is the only place that tells you the truth.
+**You can check it yourself in ten seconds, and it is worth doing whenever the
+button is in doubt.** Open the script's `/exec` address (it is in
+`apps-script/DEPLOY.md` step 14) in any browser:
+
+- **Working** — one plain sentence: *"This address only accepts recommendations
+  sent by the Dunchideock village suppliers website."*
+- **Broken** — a Google error page saying *"Script function not found: doGet"*.
+
+**Where a recommendation lands.** On the tradesperson's **own row on the
+Published tab**, in columns **K** and **L** — their words and the villager's
+name. That is the same place a second Google Form submission puts them, so both
+routes end up together. It used to go to a **Votes** tab; nothing ever read that
+tab, so a villager's words went where no neighbour would see them. Changed
+2026-09-19. The Votes tab is left alone and can stay where it is.
+
+**Check the spreadsheet, not the website.** The page thanks the villager whether
+or not the recommendation was saved — the reply from Google comes back sealed and
+the website is not allowed to open it. That was measured, not assumed. So
+**Published columns K and L** are the place that tells you the truth. The words
+also reach the card itself, but only after the usual five-minute wait.
+
+**What a stranger can and cannot do through that button**, since the address is
+open to anybody who finds it. They can add words to somebody **already on the
+list and visible**. They cannot add a person, cannot assign or re-use an ID,
+cannot change a name, telephone number, trade or status, cannot touch your two
+helper formulas in columns I and J, and cannot reach anybody whose row is
+`hidden` — an unknown or hidden ID is refused and nothing is written. The worst
+case is unwanted words on a card, which you delete from column K in one edit.
+That is the same door the Google Form already leaves open, and no wider.
 
 If you ever need to set it up again from scratch, or you redeploy the script and
 get a new address, follow **`apps-script/DEPLOY.md`**.
 
 To make the spreadsheet flag duplicate entries for you, follow
 **`apps-script/SHEET-FORMULAS.md`**.
+
+---
+
+## Telling the village
+
+The message to post in the village WhatsApp group when the list is ready. Sixty-six
+words, deliberately — it is read on a phone, by people who will not scroll.
+
+> **DO NOT POST THIS YET.** It goes out only once the list carries **12 to 15
+> real tradespeople across at least 6 trades**. Post it while the list still
+> holds test people and the village opens it once, finds nothing useful, and
+> never opens it again. There is one chance at a first impression and the link
+> cannot be un-sent. `docs/PROCESS-seeding-and-launch-dunchi-trader.md` is the
+> guide to filling the list.
+
+```
+Hello everyone. We have made a simple page listing local tradespeople the village has recommended — plumbers, electricians, gardeners and the rest.
+
+https://dunchitrader-collab.github.io
+
+Tap the kind of work you need, then the green button to ring them. It works on a phone or a computer, and an A button makes the writing bigger.
+
+Had someone good? There is a link on the page to add them.
+```
+
+It says four things and nothing else: what it is, what it does for them, the
+link, and how to recommend somebody. No jargon, nothing about spreadsheets or
+Google, and no instructions anybody has to remember.
 
 ---
 
