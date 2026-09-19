@@ -9,6 +9,20 @@
 | **Live repo** | `dunchitrader-collab/dunchitrader-collab.github.io` |
 | **Created** | `2026-09-19` |
 | **Estimate** | 23 |
+
+> **The `Estimate` stays at 23 and is NOT revised to 41. That is deliberate and it is the rule.**
+> STD-00009 §5.13.5 records the `Estimate` as the expected total effort **written before the rows**
+> — *"a declaration, not a prediction to be graded"*. Its whole value is that it is a **second,
+> independent number**, and the standard names the instinct to revise it to match the rows as the
+> thing that must not happen: *"a session that has just written 90 rows has 90
+> individually-defensible justifications and one vague prior estimate, and will revise the estimate
+> to match the rows every time."*
+>
+> **The arithmetic is the finding, and it is reported rather than corrected away.** 23 was declared
+> before any row was written; step 6 later took the decomposed total to **41**. That is **1.78×** —
+> under the standard's **3×** review threshold, so no review is triggered and the validator raises
+> no advisory. The gap is honest: step 6 was unplanned work commissioned after two real submissions
+> were lost, and a plan that could not grow when the world did would be the less useful record.
 | **Summary** | Take the finished Dunchideock village trades directory from working to launched, and prove it can be inherited. The site is built and live; what remains is real content, a village that knows about it, and a rebuild runbook somebody can actually follow. |
 
 ---
