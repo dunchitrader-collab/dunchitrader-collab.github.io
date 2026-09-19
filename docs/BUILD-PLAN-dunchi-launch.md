@@ -1,0 +1,148 @@
+# BUILD PLAN — dunchi-launch
+
+**Plan ID:** PLAN-DUNCHI-LAUNCH-2026-09-19
+
+| Field | Value |
+|---|---|
+| **Plan ID** | `PLAN-DUNCHI-LAUNCH-2026-09-19` |
+| **Primary repo** | `dunchi-trader` |
+| **Live repo** | `dunchitrader-collab/dunchitrader-collab.github.io` |
+| **Created** | `2026-09-19` |
+| **Estimate** | 23 |
+| **Summary** | Take the finished Dunchideock village trades directory from working to launched, and prove it can be inherited. The site is built and live; what remains is real content, a village that knows about it, and a rebuild runbook somebody can actually follow. |
+
+---
+
+## SUCCESSOR TO PLAN-DUNCHI-TRADER-V1
+
+**This plan is the successor to `PLAN-DUNCHI-TRADER-V1`**, archived at
+[PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-TRADER-V1.md`.
+
+**V1 closed at a TRIMMED 100% on 2026-09-19** — *"Closed at 100% of 21 rows, TRIMMED from 24 on
+2026-09-19; pre-trim position 83.7% (87/104 effort)"*. **It reached 100% by moving three rows here,
+not by building them.** Read V1's closure record before assuming the product is finished: the
+inheritance requirement is unproven and its runbook is known broken.
+
+**Three rows arrived from V1** under the Owner's ruling **D10-6G7f-19092026**. They are renumbered
+fresh from Step 1 per STD-00009 Rule 5.8.5 [CORE]; their old ids stay with the archived plan, and
+the provenance is named in each row's text so a reader following an old citation can find it:
+
+| Here | Was in V1 | Effort | What it is |
+|---|---|---|---|
+| **1.1** | `7.2` | 3 | The village is told |
+| **4.1** | `7.1` | 5 | The journey works on real content |
+| **5.1** | `6.1` | 9 | Someone handed the two logins can rebuild the site |
+
+**Their effort is unchanged** — V1 carried them at 3, 5 and 9, and re-weighting a row on the way
+across would move a percentage without changing any work (Rule 5.4.4 [CORE]).
+
+**Two rows are new**, estimated by Claude.ai under standing authority and **open to the Operator's
+revision**: `2.1` at effort 2 and `3.1` at effort 4.
+
+**WHY THIS PLAN EXISTS AS A PLAN OF ITS OWN.** Owner's ruling **D6b-6G7f-19092026**: the seeding
+and launch work leaves V1. He overruled the recommendation to keep it, **knowing this plan will sit
+open while it waits on villagers.** That is the point — V1's percentage stops being dragged by work
+whose pace is a village's rather than a build's.
+
+---
+
+## REQUIREMENT AS STATED
+
+The following is the project owner's own wording, carried verbatim. It is not paraphrased at
+any layer of this plan, and any sub-task that conflicts with it is wrong.
+
+> "The key to this is really easy navigation. People will be using websites and they will be
+> using their phone. Given it's the older generation, I expect that they will be zooming in
+> quite a lot. So this needs to be a really simple, really quick and extremely easy to use
+> web app."
+
+> "Github pages is fine as long as the site easy VERY easy to search by work type."
+
+> "The site needs to be dynamic. Most will use on their phone. However it must work on a
+> computer too."
+
+> "In all zoom functions make sure the text never rolls outside the box."
+
+> "Nothing on this site must touch deverse. Everything must be registered to the dunchitrader
+> email"
+
+> "I want to be able to hand over the operating site to anyone else who inherits that google
+> email account"
+
+---
+
+---
+
+## HOW TO READ THIS PLAN
+
+**A row is an OUTCOME, not a task.** The test each row must pass: could the owner look at the
+result and say *"yes, that is delivered"*?
+
+- **Most of this plan is NOT code.** It is the Operator's own work inside his Google account and
+  his village — seeding, hiding, posting, walking a runbook. **Where a row is his action, it says
+  so**, and no script here may write to his spreadsheet.
+- **The design says HOW; this plan says WHAT IS DELIVERED.** Rules live in
+  `docs/SOLUTION-DESIGN-dunchi-trader.md` and are cited, never restated.
+- Sub-tasks are numbered `{step}.{n}`. **Numbering is append-only.**
+- **Status** is one of `new`, `to-do`, `done`, `blocked`, `parked`, `descoped`, `external`.
+- **Effort** is an integer 1–10, where 10 is the most work.
+
+---
+
+## Step 1 — The village is told
+
+| # | Status | Sub-task | Effort |
+|---|---|---|---|
+| 1.1 | new | The village knows the directory exists and has the link. Done when the launch message is posted to the village WhatsApp group and the link is live to a list worth opening. The message is drafted at 66 words in the root `README.md` under **"Telling the village"**, and in `docs/PROCESS-seeding-and-launch-dunchi-trader.md` §4. **MOVED FROM `PLAN-DUNCHI-TRADER-V1` row `7.2`**, effort unchanged. **GATED BY 2.1 AND 3.1 — do not post while test people are on the list.** The link is the one thing that cannot be un-sent: post it early and the village opens it once, finds test data, and never opens it again. | 3 |
+
+| # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1.1 | When a villager needs a plumber, they should already know where to look. | Post the launch message to the village group | The village has the link and knows what it is for | Drafted message, posted once the list is worth opening | new | 2026-10-10 | 2026-10-10 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de | 3.1 |  | 2026-09-19 | 2026-10-10 | 2026-09-19 | 2026-10-10 |
+
+---
+
+## Step 2 — Nothing a villager sees is test data
+
+| # | Status | Sub-task | Effort |
+|---|---|---|---|
+| 2.1 | new | No test person is visible on the village list. Done when every test entry and the two duplicates carry `status` `hidden` on the Published tab and the live page shows none of them. **Owner's ruling D7-6G7f-19092026 — HIDE, NEVER DELETE:** ids come from the highest already present, so deleting the highest frees it for reuse and a later submission would inherit every recommendation filed against the old holder. The duplicates are **`T015` Bob Samwell** (`T005` on `07887988959` is the real one) and **Duckers Plumber on `07999222333`** (`T001` on `07825736940` is the real one). **⚠ `07999222333` being a test number was INFERRED from the numbering pattern in the sheet, not measured — confirm by eye before hiding, or a real tradesperson goes off the list.** **THIS IS THE OPERATOR'S OWN ACTION ON HIS SHEET; no script here may write there.** **IT GATES EVERYTHING ELSE IN THIS PLAN** — the link cannot go to the village while test people are on the list. | 2 |
+
+| # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2.1 | When the first villager opens the link, they must not meet Test Sparky and Test Nine. | Hide every test entry and duplicate on Published | The village list shows only real tradespeople | Set status to hidden, never delete | new | 2026-09-26 | 2026-09-26 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de |  |  | 2026-09-19 | 2026-09-26 | 2026-09-19 | 2026-09-26 |
+
+---
+
+## Step 3 — The list carries real people
+
+| # | Status | Sub-task | Effort |
+|---|---|---|---|
+| 3.1 | new | The list is worth opening. Done when **12 to 15 real tradespeople across at least 6 trades** are on the Published tab, every one arrived through the Google Form rather than being typed in by hand, and each has a telephone number of eleven digits starting zero. Arriving through the form matters: it is the route villagers will use, so seeding by it proves the route as well as filling the list. `docs/PROCESS-seeding-and-launch-dunchi-trader.md` is the step-by-step guide. **A directory with four people in it gets opened once and never again**, and there is exactly one chance at a first impression with this audience. **THE SEEDING ROUTE IS UNDECIDED — see handover Layer 4.** | 4 |
+
+| # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 3.1 | When a villager looks for a plasterer, somebody should be there. | Seed 12-15 tradespeople across 6+ trades via the form | The directory is worth the villager's second visit | Submissions through the real form, not typed in | new | 2026-10-10 | 2026-10-10 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de | 2.1 |  | 2026-09-19 | 2026-10-10 | 2026-09-19 | 2026-10-10 |
+
+---
+
+## Step 4 — The journey works on real content
+
+| # | Status | Sub-task | Effort |
+|---|---|---|---|
+| 4.1 | new | The seeded site has been proven end to end on the devices villagers will actually use. Done when, against the **real seeded list rather than a fixture**, the whole journey works on a real phone and on a computer: open the link, find a trade, find a person, tap Call and reach them; search by work type; add a recommendation from a card and see it appear after the republish lag; and the page holds up at the largest text size and at 200% zoom with real names and real numbers on screen. **MOVED FROM `PLAN-DUNCHI-TRADER-V1` row `7.1`**, effort unchanged. **Everything in this row has been proven against test data or a fixture already** — what it adds is real content, which is where surprises live: long business names, unusual trades, numbers that were typed oddly. | 5 |
+
+| # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 4.1 | When the first villager taps the link minutes after Gavin posts it, that first visit works. | Prove the journey against the real seeded list | The site is known to work on real content, not fixtures | Walk it on a real phone and a computer | new | 2026-10-10 | 2026-10-10 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de | 3.1 |  | 2026-09-19 | 2026-10-10 | 2026-09-19 | 2026-10-10 |
+
+---
+
+## Step 5 — The site can be inherited
+
+| # | Status | Sub-task | Effort |
+|---|---|---|---|
+| 5.1 | new | Someone handed only the two account logins can rebuild the site from nothing. **The row is not "walk the runbook" but "MAKE IT WALKABLE, THEN ESTABLISH IT WORKS"**, because three defects are already measured and recorded in handover Layer 4: **step 4** tells the walker to create a GitHub repository whose name is the live site's, so GitHub refuses it and **the walk stops dead**; **steps 7 and 8** delegate to `apps-script/DEPLOY.md` and `apps-script/SHEET-FORMULAS.md`, both of which **open the LIVE spreadsheet by its hard-coded id**; and **there is no cleanup section**, so a rehearsal leaves a second spreadsheet, a second form and **a second public village directory on the internet**. Done when `docs/RESTORE-dunchi-trader.md` can be followed against a **throwaway parallel copy** without touching any live artefact, it names throwaway names for every artefact it creates, it carries a cleanup section covering the public ones, **and somebody has then walked it end to end with the two logins alone** and taken the throwaway copy down afterwards. Any step needing anything else is a defect to fix, not a footnote to add. **MOVED FROM `PLAN-DUNCHI-TRADER-V1` row `6.1`**, effort unchanged at 9 — **the largest row in this plan**, and the one that answers the Owner's own requirement *"I want to be able to hand over the operating site to anyone else who inherits that google email account"*, which is **the only clause of the Requirement as stated that remains unproven**. | 9 |
+
+| # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 5.1 | When Gavin hands the directory to whoever takes it on and walks away, they can run it without him. | Repair the runbook, then walk it against a throwaway copy | The inheritance requirement is proven rather than asserted | Fix the three measured defects, then verify by rebuilding | new | 2026-10-17 | 2026-10-17 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de |  |  | 2026-09-19 | 2026-10-17 | 2026-09-19 | 2026-10-17 |
