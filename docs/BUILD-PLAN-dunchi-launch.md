@@ -73,6 +73,43 @@ any layer of this plan, and any sub-task that conflicts with it is wrong.
 
 ---
 
+## THE ORDER CHANGED ON 2026-09-19 — READ THIS BEFORE THE STEP NUMBERS MISLEAD YOU
+
+**This plan was written assuming the list would be seeded BEFORE the village was
+told. The Owner has ruled the reverse.**
+
+**[DECISION] D9c-6G7f-19092026**, his words: ***"Go - I will manage the content"***.
+He tells the whole village now and curates submissions as they arrive.
+Claude.ai recommended the soft launch — a link to five or six villagers first —
+and **he overruled that recommendation**; his stated mitigation is that he will
+actively manage the content as it comes in. Full record in handover Layer 5.
+
+**So the running order is now:**
+
+| Order | Row | |
+|---|---|---|
+| **1st** | **2.1** | Hide the test people — **the only hard gate, and the last thing before the village is told** |
+| **2nd** | **1.1** | Tell the village |
+| then | **3.1** | The list carries real people — **now reached by villagers submitting, not by seeding** |
+| then | **4.1** | The journey works on real content |
+| any time | **5.1** | Repair the runbook, then walk it — **independent of all of the above** |
+
+**NOTHING IS RENUMBERED, and that is deliberate.** STD-00009 §5.1.4 forbids
+renumbering within a live plan: the numbers are citation targets, and commit
+messages, handover entries and prompts already cite them. **The step numbers no
+longer imply the running order — this table does.**
+
+**Two rows changed character without being renamed:**
+
+- **2.1 was housekeeping and is now the hard gate.** The link cannot be un-sent.
+- **3.1's timing is no longer the Owner's to control.** Its outcome is unchanged
+  — 12–15 tradespeople across at least 6 trades — but it is now reached by
+  villagers filling in a form, so it may sit open for weeks. **That is expected
+  behaviour, not a stalled row**, and it is why D6b put this work in a plan of
+  its own.
+
+---
+
 ## HOW TO READ THIS PLAN
 
 **A row is an OUTCOME, not a task.** The test each row must pass: could the owner look at the
@@ -93,7 +130,7 @@ result and say *"yes, that is delivered"*?
 
 | # | Status | Sub-task | Effort |
 |---|---|---|---|
-| 1.1 | new | The village knows the directory exists and has the link. Done when the launch message is posted to the village WhatsApp group and the link is live to a list worth opening. The message is drafted at 66 words in the root `README.md` under **"Telling the village"**, and in `docs/PROCESS-seeding-and-launch-dunchi-trader.md` §4. **MOVED FROM `PLAN-DUNCHI-TRADER-V1` row `7.2`**, effort unchanged. **GATED BY 2.1 AND 3.1 — do not post while test people are on the list.** The link is the one thing that cannot be un-sent: post it early and the village opens it once, finds test data, and never opens it again. | 3 |
+| 1.1 | new | The village knows the directory exists and has the link. Done when the launch message is posted to the village WhatsApp group and the link is live to a list worth opening. The message is drafted at 66 words in the root `README.md` under **"Telling the village"**, and in `docs/PROCESS-seeding-and-launch-dunchi-trader.md` §4. **MOVED FROM `PLAN-DUNCHI-TRADER-V1` row `7.2`**, effort unchanged. ~~**GATED BY 2.1 AND 3.1 — do not post while test people are on the list.**~~ **SUPERSEDED 2026-09-19 by D9c → GATED BY 2.1 ONLY.** The Owner ruled *"Go - I will manage the content"*, so this row now runs BEFORE 3.1 rather than after it. **2.1 remains an absolute gate** — do not post while test people are on the list. The link is the one thing that cannot be un-sent: post it early and the village opens it once, finds test data, and never opens it again. | 3 |
 
 | # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -105,7 +142,7 @@ result and say *"yes, that is delivered"*?
 
 | # | Status | Sub-task | Effort |
 |---|---|---|---|
-| 2.1 | new | No test person is visible on the village list. Done when every test entry and the two duplicates carry `status` `hidden` on the Published tab and the live page shows none of them. **Owner's ruling D7-6G7f-19092026 — HIDE, NEVER DELETE:** ids come from the highest already present, so deleting the highest frees it for reuse and a later submission would inherit every recommendation filed against the old holder. The duplicates are **`T015` Bob Samwell** (`T005` on `07887988959` is the real one) and **Duckers Plumber on `07999222333`** (`T001` on `07825736940` is the real one). **⚠ `07999222333` being a test number was INFERRED from the numbering pattern in the sheet, not measured — confirm by eye before hiding, or a real tradesperson goes off the list.** **THIS IS THE OPERATOR'S OWN ACTION ON HIS SHEET; no script here may write there.** **IT GATES EVERYTHING ELSE IN THIS PLAN** — the link cannot go to the village while test people are on the list. | 2 |
+| 2.1 | new | No test person is visible on the village list. Done when every test entry and the two duplicates carry `status` `hidden` on the Published tab and the live page shows none of them. **Owner's ruling D7-6G7f-19092026 — HIDE, NEVER DELETE:** ids come from the highest already present, so deleting the highest frees it for reuse and a later submission would inherit every recommendation filed against the old holder. The duplicates are **`T015` Bob Samwell** (`T005` on `07887988959` is the real one) and **Duckers Plumber on `07999222333`** (`T001` on `07825736940` is the real one). **⚠ `07999222333` being a test number was INFERRED from the numbering pattern in the sheet, not measured — confirm by eye before hiding, or a real tradesperson goes off the list.** **THIS IS THE OPERATOR'S OWN ACTION ON HIS SHEET; no script here may write there.** **IT GATES EVERYTHING ELSE IN THIS PLAN** — the link cannot go to the village while test people are on the list. **2026-09-19, D9c: this row's URGENCY has changed. It was housekeeping before a launch weeks away; it is now the LAST THING between the village and the list, and the only hard gate.** Measured the same day: thirteen of fifteen rows are already `hidden` and two remain visible — `T005 Bob Samwell` and `T012 Frank Shelly`. Whether those two are real is the Owner's judgement and nobody else's. | 2 |
 
 | # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -117,7 +154,7 @@ result and say *"yes, that is delivered"*?
 
 | # | Status | Sub-task | Effort |
 |---|---|---|---|
-| 3.1 | new | The list is worth opening. Done when **12 to 15 real tradespeople across at least 6 trades** are on the Published tab, every one arrived through the Google Form rather than being typed in by hand, and each has a telephone number of eleven digits starting zero. Arriving through the form matters: it is the route villagers will use, so seeding by it proves the route as well as filling the list. `docs/PROCESS-seeding-and-launch-dunchi-trader.md` is the step-by-step guide. **A directory with four people in it gets opened once and never again**, and there is exactly one chance at a first impression with this audience. **THE SEEDING ROUTE IS UNDECIDED — see handover Layer 4.** | 4 |
+| 3.1 | new | The list is worth opening. Done when **12 to 15 real tradespeople across at least 6 trades** are on the Published tab, every one arrived through the Google Form rather than being typed in by hand, and each has a telephone number of eleven digits starting zero. Arriving through the form matters: it is the route villagers will use, so seeding by it proves the route as well as filling the list. `docs/PROCESS-seeding-and-launch-dunchi-trader.md` is the step-by-step guide. **A directory with four people in it gets opened once and never again**, and there is exactly one chance at a first impression with this audience. ~~**THE SEEDING ROUTE IS UNDECIDED — see handover Layer 4.**~~ **SUPERSEDED 2026-09-19 → RULED D9c-6G7f-19092026: the village is told first and the list fills from their submissions.** The outcome above is unchanged. **What changed is that the Owner no longer controls when this row finishes** — it is reached by villagers filling in the form, so it may sit open for weeks, which is expected rather than stalled. | 4 |
 
 | # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|

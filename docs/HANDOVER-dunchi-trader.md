@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-19T17:30:52Z
+last-updated: 2026-09-19T18:44:11Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-19T17:30:52Z** ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-19T18:44:11Z** ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -27,7 +27,7 @@ ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from
 
 **What IS delivered and sighted by him, row by row:** a villager opens a link, taps a trade and taps a large green Call button; submissions publish themselves; a recommendation added from a card reaches the village list; the page holds at the largest text size on a 320px phone and at 200% zoom. **The directory works today — it simply cannot yet be launched or handed on.**
 
-**THE SEEDING ROUTE IS UNDECIDED** and is carried in Layer 4 as an open decision with three routes; the soft launch is **Claude.ai's recommendation, not his ruling**. **2026-09-19T17:30:52Z — THE RESTORE RUNBOOK IS REPAIRED AND STILL UNWALKED, and those are different things.** He ruled YES to fixing the known defects, which cost him nothing; **he has NOT agreed to walk it**, so **row 5.1 stays `new`** and closes on the walk rather than on the repair. **Five faults fixed at `3453b78`, all by reading** — the three measured this afternoon (step 4 naming the live repository so a rehearsal stopped dead; steps 7 and 8 reaching into the live spreadsheet by its hard-coded id; no cleanup section) **plus two found while reconciling the whole document**: the form's minimum length said **fifteen** characters against **seven** everywhere else under D4a, and the file list named an archived plan while omitting `apps-script/Publish.gs`, without which step 7 cannot work. **Route taken for the live-id problem: the instructions were carried INTO the runbook**, leaving `DEPLOY.md` and `SHEET-FORMULAS.md` untouched so they keep their job as his live repair guides. **The document now opens by saying it has never been walked**, and tells a walker that finding a fault is the expected outcome of the first walk — a runbook presenting itself as verified invites the walker to doubt themselves instead of the document. **Rehearsing it takes about two hours**, rebuilding about ninety minutes. This conversation took the plan from 31/75 (41.3%) to here, closing eight rows and appending six as real gaps were found. **The site is functionally complete and not yet launchable**: a villager's recommendation reaches the village list without anybody touching a spreadsheet, the Call button dials correctly (sighted by the owner on his phone), and villagers' words appear on the cards. What stands between it and launch is **seeding** — the list still holds test people — plus the runbook walk. **One defect is open and undiagnosed:** the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed; it is the first thing the successor conversation picks up, and it does not affect the directory itself. **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+**THE SEEDING ROUTE IS UNDECIDED** and is carried in Layer 4 as an open decision with three routes; the soft launch is **Claude.ai's recommendation, not his ruling**. **2026-09-19T17:30:52Z — THE RESTORE RUNBOOK IS REPAIRED AND STILL UNWALKED, and those are different things.** He ruled YES to fixing the known defects, which cost him nothing; **he has NOT agreed to walk it**, so **row 5.1 stays `new`** and closes on the walk rather than on the repair. **Five faults fixed at `3453b78`, all by reading** — the three measured this afternoon (step 4 naming the live repository so a rehearsal stopped dead; steps 7 and 8 reaching into the live spreadsheet by its hard-coded id; no cleanup section) **plus two found while reconciling the whole document**: the form's minimum length said **fifteen** characters against **seven** everywhere else under D4a, and the file list named an archived plan while omitting `apps-script/Publish.gs`, without which step 7 cannot work. **Route taken for the live-id problem: the instructions were carried INTO the runbook**, leaving `DEPLOY.md` and `SHEET-FORMULAS.md` untouched so they keep their job as his live repair guides. **The document now opens by saying it has never been walked**, and tells a walker that finding a fault is the expected outcome of the first walk — a runbook presenting itself as verified invites the walker to doubt themselves instead of the document. **Rehearsing it takes about two hours**, rebuilding about ninety minutes. **2026-09-19T18:44:11Z — THE OWNER HAS RULED: GO NOW. D9c-6G7f-19092026, his words: *"Go - I will manage the content"*.** He tells the whole village now and curates submissions as they arrive. **Claude.ai recommended the soft launch and he OVERRULED it** — both are recorded in Layer 5, with his mitigation that he will actively manage the content. **The risk, stated once:** the first villagers see whatever the list holds, and the plan's own reasoning is that this audience may look only once. **THE RUNNING ORDER IS NOW 2.1 → 1.1 → 3.1 → 4.1, with 5.1 independent** — recorded as prose in the plan, **nothing renumbered**. **Row 2.1 was housekeeping and is now the ONLY HARD GATE**, the last thing between the village and the list. **MEASURED the same day: he has already hidden 13 of the 15 rows himself**, leaving **two people visible — `T005 Bob Samwell` (Plumber) and `T012 Frank Shelly` (Carpenter)**. What remains of 2.1 is his judgement on those two, not a list of ids. **Row 3.1's outcome is unchanged and its timing is no longer his to control** — villagers now fill the list, so it may sit open for weeks, which is expected rather than stalled. **ONE MISMATCH REPORTED, NOT FIXED:** the drafted launch message promises *"plumbers, electricians, gardeners and the rest"* and the live list today has **no electrician and no gardener visible**. It was drafted assuming the list would be seeded first. **Whether to soften it or post it as drafted is his call.** This conversation took the plan from 31/75 (41.3%) to here, closing eight rows and appending six as real gaps were found. **The site is functionally complete and not yet launchable**: a villager's recommendation reaches the village list without anybody touching a spreadsheet, the Call button dials correctly (sighted by the owner on his phone), and villagers' words appear on the cards. What stands between it and launch is **seeding** — the list still holds test people — plus the runbook walk. **One defect is open and undiagnosed:** the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed; it is the first thing the successor conversation picks up, and it does not affect the directory itself. **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -871,6 +871,25 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 ## The queue as it stands after the 2026-09-19 session
 
+**[OUTSTANDING] 2026-09-19 | ⚠ CRITICAL | Blocking: YES — THE LAST GATE BEFORE THE VILLAGE IS TOLD | OPERATOR ONLY, his sheet**
+**Finish hiding the test people. `PLAN-DUNCHI-LAUNCH-2026-09-19` row 2.1 — ITS URGENCY HAS CHANGED AND THIS ITEM REPLACES THE EARLIER ONE.**
+
+**It was housekeeping. Under D9c it is the hard gate**, and the only one. The plan assumed the list would be seeded before anybody was told; he has ruled the reverse. **So this is now the last thing standing between the village and the list, and the link cannot be un-sent.**
+
+**MEASURED 2026-09-19T18:4xZ against his live feed — he has already done most of it.** Thirteen of fifteen rows are `hidden`. **Two people are visible:** `T005 Bob Samwell` (Plumber) and `T012 Frank Shelly` (Carpenter). **What remains is his judgement, not a list of ids:** are those two real tradespeople he is content for the village to ring? If either is test data, it wants hiding before the link goes out. Nothing here can tell him — **only he knows which of those two names is a real person.**
+
+**[OUTSTANDING] 2026-09-19 | HIGH | Blocking: no | ⚠ TIMING NO LONGER UNDER HIS CONTROL**
+**Row 3.1 — the list carries real people — is unchanged in its outcome and changed in its character.** Still 12–15 tradespeople across at least 6 trades. But under D9c it is reached by **villagers submitting through the form**, not by him seeding, so **he cannot decide when it finishes.** It was an afternoon's work; it is now paced by how many neighbours happen to fill in a form.
+
+**What that means for the plan:** row 3.1 may sit open for weeks and that is the expected behaviour rather than a stall. It is also why D6b put this work in a plan of its own.
+
+**[OUTSTANDING] 2026-09-19 | HIGH | Blocking: no — but he should read it before posting | ⚠ THE LAUNCH MESSAGE NO LONGER MATCHES THE LIST**
+**The drafted launch message promises more than the list currently holds, and under D9c it will be posted to an unseeded list.**
+
+Its first line reads: *"a simple page listing local tradespeople the village has recommended — **plumbers, electricians, gardeners and the rest**"*. **Measured against the live feed the same day: two active people, two trades — one plumber and one carpenter. No electrician and no gardener is visible.**
+
+**This is reported, not rewritten.** The message was drafted under the assumption the list would be seeded first, which D9c reverses, and **whether to soften the wording or post it as drafted is his call** — he may prefer the words as they are, since they describe what the page is for rather than promising an inventory. **It is recorded so the mismatch is a decision he makes rather than one he discovers** from a villager who went looking for an electrician.
+
 **[OUTSTANDING] 2026-09-19 | HIGH | Blocking: no | ⚠ THE OPERATOR'S, AND HE HAS NOT AGREED TO IT YET**
 **WALK the restore runbook. `PLAN-DUNCHI-LAUNCH-2026-09-19` row 5.1, effort 9 — the largest row in the plan, and the only clause of the Requirement as stated still unproven.**
 
@@ -882,8 +901,8 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 **When he walks it, the expected outcome is that he finds something.** The document says that too. Anything that cannot be done as written is a fault in the document — work around it, finish, and note what changed.
 
-**[OUTSTANDING] 2026-09-19 | HIGH | Blocking: yes — gates `PLAN-DUNCHI-LAUNCH-2026-09-19` row 3.1 | ⚠ OPEN DECISION, NOT YET RULED**
-**How the list gets seeded has NOT been decided, and no route should be assumed.** The village has **already been told the directory exists** and is waiting on Gavin's go signal, so the decision is live rather than hypothetical.
+~~**[OUTSTANDING] 2026-09-19 | HIGH | Blocking: yes — gates `PLAN-DUNCHI-LAUNCH-2026-09-19` row 3.1 | ⚠ OPEN DECISION, NOT YET RULED**~~ RESOLVED 2026-09-19 — **RULED D9c-6G7f-19092026: route C, go now and curate.** His words: *"Go - I will manage the content"*. **Claude.ai's recommendation was route A, the soft launch, and he overruled it** — both are recorded in Layer 5. See the two items below, which are what that ruling changes.
+~~**How the list gets seeded has NOT been decided, and no route should be assumed.**~~ The village has **already been told the directory exists** and is waiting on Gavin's go signal, so the decision is live rather than hypothetical.
 
 **Three routes were put to him. He has not ruled.**
 
@@ -1778,6 +1797,44 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 ---
 
 **[PATTERN CANDIDATE: a-trimmed-100-percent-needs-its-starting-point]** STD-00009 Rule 5.8.10.4 exists because the number people read at a close is the percentage, and a percentage cannot distinguish *built it all* from *moved what was left*. **The rule's form — closed at 100% of N, trimmed from M, pre-trim x%** — is worth borrowing anywhere a completion figure is reported after a scope change. The general failure is quieter than a wrong number: it is a **right** number that answers a different question from the one the reader asked.
+
+---
+
+### 2026-09-19 — D9c: go now and curate, against the recommendation
+
+**Conversation reference:** https://claude.ai/cowork/cse_01KmELJ3FVVJwbZnoahT6G7f (reference 6G7f).
+
+**[DECISION] D9c-6G7f-19092026 — RULED BY GAVIN. His words: *"Go - I will manage the content"*.**
+
+**He tells the whole village now and curates submissions as they arrive**, rather than seeding the list first.
+
+**CLAUDE.AI RECOMMENDED THE SOFT LAUNCH, AND HE OVERRULED IT.** Both halves are recorded because a record that keeps only the ruling makes the reasoning look unanimous when it was not. Three routes were put to him:
+
+| | Route | Status |
+|---|---|---|
+| **A** | **Soft launch** — the link goes to five or six willing villagers, the list reaches 12–15 tradespeople across six trades, then everyone is told | **RECOMMENDED by Claude.ai. OVERRULED.** |
+| **B** | He seeds it himself from names he already holds | Not taken |
+| **C** | **Go now and let it populate live** | **RULED — D9c** |
+
+**His stated mitigation: he will actively manage the content as it comes in.** That is a real mitigation rather than a dismissal — the risk the recommendation was guarding against was an unattended thin list, and an attended one is a different thing.
+
+**THE RISK, RECORDED ONCE, HONESTLY, AS A RISK AND NOT AS AN OBJECTION.** The first villagers to open the link see whatever the list holds at that moment. The plan's own reasoning — written into row 3.1 before this ruling — held that *"a directory with four people in it gets opened once and never again"*, and that with this audience there is **one chance at a first impression**. **He has weighed that and ruled**, which is his to do; it is written down so that if the first impression does go badly, the record shows the trade-off was seen rather than missed.
+
+**Measured at the moment of the ruling, because the number matters to it:** the live list shows **TWO active people across TWO trades** — `T005 Bob Samwell` (Plumber) and `T012 Frank Shelly` (Carpenter). Thirteen of the fifteen rows are already `hidden`, so he has evidently begun the D7 hiding. **A villager opening the link today finds two people.**
+
+---
+
+**THE PLAN'S ORDER CHANGES, AND IT IS RECORDED AS PROSE RATHER THAN BY RENUMBERING.**
+
+`PLAN-DUNCHI-LAUNCH-2026-09-19` was written assuming **3.1 (the list carries real people) → 1.1 (the village is told)**. Under D9c that reverses: **1.1 runs first.** No row is renumbered — STD-00009 §5.1.4 forbids renumbering within a live plan, and the numbers are citation targets. The re-ordering is stated in the plan's own prose and in each affected row.
+
+**Row 3.1's outcome is UNCHANGED** — 12–15 tradespeople across at least 6 trades. What changed is **how it is reached and by whom**: villagers submitting through the form rather than the Operator seeding. **Its timing is therefore no longer under his control**, and that is a genuine change in the row's character rather than a scheduling note. A row he could have finished in an afternoon is now a row that finishes when enough neighbours happen to fill in a form.
+
+**Row 2.1 — hiding the test people — WAS HOUSEKEEPING AND IS NOW THE HARD GATE.** Under the original order it was one tidy-up among several before a launch that was weeks off. Under D9c **it is the last thing standing between the village and the list**, and the link cannot be un-sent. Its priority in Layer 4 is raised to reflect that, and the change is recorded rather than silently applied.
+
+---
+
+**[PATTERN CANDIDATE: a-sequencing-ruling-re-weights-the-rows-it-does-not-name]** D9c named neither 2.1 nor 3.1. It changed both: one from housekeeping to a hard gate, the other from an afternoon's work to something paced by other people. **A decision about ORDER is also a decision about urgency and ownership**, and the rows that change are usually not the ones the ruling mentions. Worth a standing check after any re-ordering: for each row whose position moved relative to another, ask what is now upstream of it and who now controls when it finishes.
 
 ---
 
@@ -4851,5 +4908,69 @@ Both remotes level. Working tree clean.
 **`PLAN-DUNCHI-LAUNCH-2026-09-19` unchanged at 0 of 23 effort, 0 of 5 rows. Effort cleared: zero** — row 5.1 closes on the walk, and the walk has not happened. **`PLAN-DUNCHI-TRADER-V1` remains closed and archived** at 87/87.
 
 **The runbook is now believed rehearsable and is not proven rehearsable.** The distinction is the whole of this session: five faults fixed by reading, in a document whose faults had survived every previous reading.
+
+Both remotes level. Working tree clean.
+
+---
+
+### 2026-09-19T18:43:50Z — D9c: go now and curate; the launch message reported against the live list
+**Source:** Claude Code
+**Started:** 2026-09-19T18:40:36Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01KmELJ3FVVJwbZnoahT6G7f
+**Repos touched this session:** dunchi-trader
+
+**Prompt received:**
+
+> Target repo: dunchi-trader. Conversation 6G7f. Repo read 2026-09-19T18:40:36Z at HEAD `5e9884c1`, clean, 0 behind. Current plan is PLAN-DUNCHI-LAUNCH-2026-09-19. **Two things: record a ruling, and return one piece of text verbatim. No code changes. No row may be marked done.** **(1) RECORD D9c-6G7f-19092026, RULED BY GAVIN. His words: *"Go - I will manage the content"*.** He tells the whole village now and curates submissions as they arrive rather than seeding first. **Claude.ai recommended the soft launch and he overruled it** — record both, with his stated mitigation. **The consequence, once, as a risk rather than an objection:** the first villagers see whatever the list holds; the plan's own reasoning held that a thin directory cannot be launched by accident and this audience may look only once. **The plan's order changes** — 1.1 now runs BEFORE 3.1 — **record it as prose, not by renumbering.** Row 3.1's outcome is unchanged but its timing is no longer under his control. **Row 2.1 was housekeeping and is now the only hard gate** — record that in Layer 4 in those terms. **(2) RETURN THE LAUNCH MESSAGE VERBATIM** from README's *"Telling the village"*, in its own fenced block, read from the committed file. State its word count, whether it contains the live URL and whether that URL is correct, and **if it assumes the list is already seeded, say so plainly** — under D9c it goes to an unseeded list. **Do not rewrite it; report it.**
+
+**What was done:**
+
+**D9c recorded in Layer 5 with the overruled recommendation stated alongside it**, because a record keeping only the ruling makes the reasoning look unanimous when it was not. All three routes are tabulated with which was recommended and which was taken, and his mitigation — that he will actively manage content as it arrives — is recorded as the real mitigation it is rather than as a dismissal. The risk is stated once, as a risk: the first villagers see whatever the list holds, and the plan's own row 3.1 argues *"a directory with four people in it gets opened once and never again"*. **He has weighed that and ruled**, and it is written down so that if the first impression goes badly the record shows the trade-off was seen.
+
+**THE LIVE LIST WAS MEASURED AT THE MOMENT OF THE RULING, because the number is what makes the risk concrete.** The published feed shows **two active people across two trades** — `T005 Bob Samwell` (Plumber) and `T012 Frank Shelly` (Carpenter). **Thirteen of fifteen rows are already `hidden`, so he has evidently begun the D7 hiding himself.** That materially changes what row 2.1 still asks of him: it is no longer a list of ids to hide but a judgement about two names, and **only he knows whether those two are real people.**
+
+**The plan's re-ordering is recorded as prose in three places and nothing is renumbered** — §5.1.4 forbids renumbering in a live plan and the numbers are citation targets. A running-order table sits above *"How to read this plan"*, and rows 1.1, 2.1 and 3.1 each carry a superseded-in-place note. **The step numbers no longer imply the order, and the plan now says so explicitly** rather than leaving a reader to infer it.
+
+**THE LAUNCH MESSAGE WAS READ FROM THE COMMITTED FILE AND REPORTED, NOT REWRITTEN.** 66 words as committed, carrying the live URL, which was fetched and returns HTTP 200 and matches Layer 1's recorded address. **One mismatch found and reported:** its first line promises *"plumbers, electricians, gardeners and the rest"*, and the live list today holds **one plumber and one carpenter — no electrician, no gardener.** The message was drafted when the list was expected to be seeded first, which D9c reverses. **Whether to soften it or post it as drafted is his call**; it is recorded so the mismatch is a decision rather than something a villager discovers for him.
+
+**Testing performed:**
+
+| Check | Expected | Actual | Result |
+|---|---|---|---|
+| Guard: HEAD / tree / behind | `5e9884c`, clean, 0 | as stated | PASS |
+| **No code changed** | none | none | PASS |
+| **No row marked done** | all 5 stay `new` | all 5 `new` | PASS |
+| **Nothing renumbered** | 1.1–5.1 unchanged | unchanged | PASS |
+| Launch message read from the committed file | `git show HEAD:README.md` | read from HEAD, not the worktree | PASS |
+| Message word count | — | **66** | PASS |
+| Message contains the live URL | — | **yes** | PASS |
+| That URL resolves | 200 | **HTTP 200** | PASS |
+| URL matches Layer 1's recorded address | match | match | PASS |
+| Smart quotes introduced | none | **none** — one em-dash, intentional | PASS |
+| **Live list: active people** | — | **2 active, 2 trades** | PASS (finding) |
+| **Message vs list: electrician visible?** | — | **no** | PASS (mismatch reported) |
+| **Message vs list: gardener visible?** | — | **no** | PASS (mismatch reported) |
+| Rows already hidden | — | **13 of 15** | PASS (finding) |
+| Validator | exit 0 | **exit 0, 5 sub-tasks, 0/23** | PASS |
+| Handover heading preservation | none removed | none removed | PASS |
+
+**What was not tested:**
+
+- **Nothing was executed and no code changed.** The only live access was a read of the public feed and a HEAD-style fetch of the site's address.
+- **Whether `T005 Bob Samwell` and `T012 Frank Shelly` are real people is unknown here** and is the Operator's judgement. `Bob Samwell` is his own surname, which is suggestive and is not evidence.
+- **The message was not rewritten**, as instructed. The mismatch is reported.
+- **His hiding work was not verified beyond the feed** — thirteen rows read `hidden` in the published CSV, which is what the site reads, and that is the whole of the claim.
+
+**Commits:**
+- `{SHA}` — `docs: record D9c - go now and curate; report the launch message against the live list`
+
+**Finished:** 2026-09-19T18:43:50Z
+
+**End state:**
+
+**`PLAN-DUNCHI-LAUNCH-2026-09-19` unchanged at 0 of 23 effort, 0 of 5 rows. Effort cleared: zero** — this session recorded a decision and read a file. **`PLAN-DUNCHI-TRADER-V1` remains closed and archived** at 87/87.
+
+**The running order is now 2.1 → 1.1 → 3.1 → 4.1, with 5.1 independent.** **Row 2.1 is the only hard gate**, he has already done most of it, and what remains is a judgement about two visible names rather than a task.
 
 Both remotes level. Working tree clean.
