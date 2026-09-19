@@ -28,6 +28,9 @@
 
 'use strict';
 
+const fs = require('fs');
+const REPO = require('path').resolve(__dirname, '..');
+
 /* ===========================================================================
    ARRAY SEMANTICS — established from Google's documentation and from published
    analysis on 2026-09-19, NOT from this file's convenience.
@@ -604,6 +607,53 @@ section('9. THE HARNESS MODELS THE PLATFORM STRICTLY');
   check('the deployed model is NOT simply the fixed model renamed',
         verdictV2_constantId.length !== verdictV3_fixed.length,
         'V2 takes the whole sheet because INDEX cannot be evaluated per row');
+}
+
+/* --------------------------------------------------------------------------
+   10. 6.3d — A HIDDEN PERSON IS NOT "ON SITE".
+   The formula now reads the status column too. Modelled here the same way:
+   VLOOKUP over a virtual {key, status} range, which vectorises (unlike INDEX).
+   -------------------------------------------------------------------------- */
+section('10. A HIDDEN person reads ON THE LIST BUT HIDDEN, not ALREADY ON SITE');
+{
+  function verdictWithStatus(rowIdx, sheet, statuses) {
+    const row = sheet.rows[rowIdx];
+    if (TO_TEXT(row.F) === '') return '';
+    const pk = phoneKey(row.F), nk = nameKey(row.D, row.E);
+    if (checkFlag(row)) return 'CHECK THIS';
+    if (pk === '') return 'CHECK THIS';
+    if (COUNTIF(sheet.pubI, pk) > 0) {
+      const id = IFERROR(VLOOKUP(pk, LITERAL(sheet.pubI, sheet.pubA), 2), '?');
+      const st = IFERROR(VLOOKUP(pk, LITERAL(sheet.pubI, statuses), 2), '');
+      return (st === 'active' ? 'ALREADY ON SITE — ' : 'ON THE LIST BUT HIDDEN — ') + id;
+    }
+    if (nk !== '' && COUNTIF(sheet.pubJ, nk) > 0) return 'SAME NAME, DIFFERENT NUMBER';
+    return 'NEW';
+  }
+  const statuses = [];
+  for (let r = 0; r < SHEET_ROWS - 1; r++) {
+    const p = PUBLISHED_REAL[r];
+    statuses.push(p ? p[4] : '');
+  }
+  const sheet = buildSheet(PUBLISHED_REAL, [
+    { sheetRow: 50, D:'Duckers', E:'Plumber', F:'07825 736940', G:'', H:'Sorted the leak fast' },   // T001 active
+    { sheetRow: 51, D:'Hidden',  E:'Person',  F:'07700 900999', G:'', H:'They did a good job here' } // T004 hidden
+  ]);
+  const a = verdictWithStatus(0, sheet, statuses);
+  const b = verdictWithStatus(1, sheet, statuses);
+  console.log('    active person  ->', JSON.stringify(a));
+  console.log('    hidden person  ->', JSON.stringify(b));
+  check('an ACTIVE person still reads ALREADY ON SITE', a === 'ALREADY ON SITE — T001', a);
+  check('a HIDDEN person reads ON THE LIST BUT HIDDEN', b === 'ON THE LIST BUT HIDDEN — T004', b);
+  check('and it still names the id either way', /T00\d$/.test(a) && /T00\d$/.test(b));
+
+  // the committed formula must actually carry the new branch
+  const doc = fs.readFileSync(REPO + '/apps-script/SHEET-FORMULAS.md','utf8');
+  const l2 = doc.split('\n').filter(l => l.startsWith('=ARRAYFORMULA(LET('))[0];
+  check('the committed L2 carries the hidden branch', /ON THE LIST BUT HIDDEN/.test(l2));
+  check('the committed L2 reads the status column H', /Published!\$H\$2:\$H\$500/.test(l2));
+  check('the committed L2 is still one line, no smart quotes',
+        !/\n/.test(l2) && !/[\u2018\u2019\u201c\u201d]/.test(l2));
 }
 
 console.log(`\n================  ${pass} passed, ${fail} failed  ================\n`);

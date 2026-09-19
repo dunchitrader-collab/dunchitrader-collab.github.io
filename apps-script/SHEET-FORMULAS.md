@@ -179,10 +179,25 @@ arrives.
 **Click cell `L2` and paste this:**
 
 ```
-=ARRAYFORMULA(LET(digits, REGEXREPLACE(TO_TEXT($F$2:$F),"\D",""),pk, IF(digits="","",IF(LEFT(digits,4)="0044","0"&MID(digits,5,50),IF(LEFT(digits,2)="44","0"&MID(digits,3,50),digits))),nk, LOWER(REGEXREPLACE(TO_TEXT($D$2:$D)&TO_TEXT($E$2:$E),"[^A-Za-z0-9]","")),flag, (REGEXMATCH(LOWER(TRIM(TO_TEXT($E$2:$E))),"^not ?known$"))+(REGEXMATCH(LOWER(TRIM(TO_TEXT($G$2:$G))),"^not ?known$"))+(LEN(TRIM(TO_TEXT($H$2:$H)))<7),hitP, IF(pk="",0,COUNTIF(Published!$I$2:$I$500,pk)),hitN, IF(nk="",0,COUNTIF(Published!$J$2:$J$500,nk)),IF($F$2:$F="","",IF(flag,"CHECK THIS",IF(pk="","CHECK THIS",IF(hitP>0,"ALREADY ON SITE — "&IFERROR(VLOOKUP(pk,{Published!$I$2:$I$500,Published!$A$2:$A$500},2,FALSE),"?"),IF(hitN>0,"SAME NAME, DIFFERENT NUMBER","NEW")))))))
+=ARRAYFORMULA(LET(digits, REGEXREPLACE(TO_TEXT($F$2:$F),"\D",""),pk, IF(digits="","",IF(LEFT(digits,4)="0044","0"&MID(digits,5,50),IF(LEFT(digits,2)="44","0"&MID(digits,3,50),digits))),nk, LOWER(REGEXREPLACE(TO_TEXT($D$2:$D)&TO_TEXT($E$2:$E),"[^A-Za-z0-9]","")),flag, (REGEXMATCH(LOWER(TRIM(TO_TEXT($E$2:$E))),"^not ?known$"))+(REGEXMATCH(LOWER(TRIM(TO_TEXT($G$2:$G))),"^not ?known$"))+(LEN(TRIM(TO_TEXT($H$2:$H)))<7),hitP, IF(pk="",0,COUNTIF(Published!$I$2:$I$500,pk)),hitN, IF(nk="",0,COUNTIF(Published!$J$2:$J$500,nk)),IF($F$2:$F="","",IF(flag,"CHECK THIS",IF(pk="","CHECK THIS",IF(hitP>0,IF(IFERROR(VLOOKUP(pk,{Published!$I$2:$I$500,Published!$H$2:$H$500},2,FALSE),"")="active","ALREADY ON SITE — ","ON THE LIST BUT HIDDEN — ")&IFERROR(VLOOKUP(pk,{Published!$I$2:$I$500,Published!$A$2:$A$500},2,FALSE),"?"),IF(hitN>0,"SAME NAME, DIFFERENT NUMBER","NEW")))))))
 ```
 
-> **This formula was REPLACED TWICE on 2026-09-19. Use only the version above.**
+> **This formula was REPLACED THREE TIMES on 2026-09-19. Use only the version above.**
+>
+> **Third replacement, 2026-09-19 (evening).** It said `ALREADY ON SITE` for
+> people who are **hidden** — and a hidden person is, by definition, not on the
+> site. With most of the list hidden that reading was actively misleading. It
+> now distinguishes the two:
+>
+> | What you see | What it means |
+> |---|---|
+> | `ALREADY ON SITE — T016` | On the list **and visible** to villagers |
+> | `ON THE LIST BUT HIDDEN — T003` | On the list, **not visible** — needs your attention |
+>
+> It reads the `status` column the same way it reads the id, with a second
+> `VLOOKUP` over a virtual `{key, status}` range. Nothing else changed.
+>
+> ~~`...IF(hitP>0,"ALREADY ON SITE — "&IFERROR(VLOOKUP(pk,{Published!$I$2:$I$500,Published!$A$2:$A$500},2,FALSE),"?")...`~~ — the version that could not tell the difference.
 >
 > **Second replacement, 2026-09-19 (afternoon).** The morning's version got the
 > *branch* right on every row but printed **the same ID on all of them** — Gavin's
@@ -254,7 +269,8 @@ arrives.
 | What column L says | What it means | What to do |
 |---|---|---|
 | **NEW** | That phone number has never been on the list | Nothing to do — it has published itself. Glance at it during your sweep. |
-| **ALREADY ON SITE — T012** | Same number, so the same person. It names **their ID**, so you can find them on the site straight away. | Nothing to do — the publisher has already added their words to that person's row as a second recommendation. Glance at it during your sweep. |
+| **ALREADY ON SITE — T012** | Same number, so the same person, **and they are visible on the site.** | Nothing to do — the publisher has already added their words to that person's row as a second recommendation. |
+| **ON THE LIST BUT HIDDEN — T003** | Same person, but their row is `hidden`, so **no villager can see them.** | Look at that row. Usually the telephone number needs fixing; then set `status` to `active`. |
 | **SAME NAME, DIFFERENT NUMBER** | Same name, new number — probably they changed mobile | Have a look. Usually you update the number on the existing row. |
 | **CHECK THIS** | The last name or the business says "Not Known", the experience text is **under seven characters or empty**, or the telephone number has no digits in it at all | Have a look. You may need to ask on the village chat who it is. A row with an unusable number is `hidden` on the site until you retype it. |
 

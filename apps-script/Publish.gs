@@ -369,6 +369,8 @@ function onOpen() {
     .addItem('Publish any responses not yet on the list', 'backfillPublished')
     .addItem('Check the setup', 'checkSetup')
     .addItem('Repair the list (move stray rows back up)', 'repairPublished')
+    .addItem('Turn on automatic checking', 'installSweep')
+    .addItem('Check for missed recommendations now', 'sweepPublished')
     .addToUi();
 }
 
@@ -385,14 +387,290 @@ function onOpen() {
  * responses tab either way.
  */
 function onFormSubmitPublish(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var rowNum = (e && e.range && e.range.getRow) ? e.range.getRow() : 0;
+
+  /* THE LOCK. A sweep and a form submission arriving together would both read
+     "the last row with an id" and both compute the same target, and one would
+     overwrite the other. Nothing in this file used a lock before 2026-09-19. */
+  var lock = LockService.getScriptLock();
+  if (!lock.tryLock(LOCK_WAIT_MS)) {
+    /* Not written off as a failure: the sweep runs every few minutes and will
+       pick this up. Recorded where the owner can see it, not only in a log. */
+    note(ss, rowNum, 'WAITING — the list was busy; the next automatic check will pick this up');
+    Logger.log('form submit could not obtain the lock; leaving it for the sweep');
+    return;
+  }
+
+  try {
+    var row = readSubmission(ss, e);
+
+    /* SILENT PATH ONE, closed. This used to be a bare `return` that logged
+       nothing at all, so a form event arriving without namedValues vanished
+       with no trace anywhere. */
+    if (!row) {
+      note(ss, rowNum, 'FAILED — the submission arrived in a form this script could not read');
+      Logger.log('readSubmission returned null: the event carried no namedValues');
+      return;
+    }
+
+    var outcome = withRetry(function () { return publishOne(ss, row); });
+    note(ss, rowNum, outcome.action);
+
+  } catch (err) {
+    /* SILENT PATH TWO, closed. This used to swallow everything into a log
+       nobody reads — it is how Stuart Ironside's submission disappeared on
+       2026-09-19 with "Service Spreadsheets failed while accessing document". */
+    var msg = (err && err.message) ? err.message : String(err);
+    note(ss, rowNum, 'FAILED — ' + msg);
+    Logger.log('publish failed after retries: ' + msg);
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+/* ===========================================================================
+   RETRY, SWEEP AND THE OUTCOME NOTE — added 2026-09-19 after two real
+   submissions were lost for TWO DIFFERENT reasons four minutes apart.
+
+   Measured from the owner's Apps Script Executions log:
+
+     20:03:57  Murray Angel     NO EXECUTION ENTRY AT ALL
+     20:07:52  Stuart Ironside  FAILED 0.953s, Service Spreadsheets failed
+
+   THE TWO NEED DIFFERENT DEFENCES AND THAT IS WHY THERE ARE TWO.
+   A retry saves Stuart's class: the script ran, Google's Sheets service
+   hiccuped, and trying again a second later would have worked. A retry does
+   NOTHING for Murray's: no code of ours ever ran, because Google never
+   delivered the event. **Only a scheduled sweep can catch that**, and it is the
+   answer to the owner's question: "Why can't we make an automated fix for both
+   problems? ... Surely there's an automated way."
+   =========================================================================== */
+
+/** How long a form submission waits for the lock before leaving it to the sweep. */
+var LOCK_WAIT_MS = 20000;
+
+/** Retry attempts and the pause before each retry. Short: a form submission is
+ *  running inside Google's own trigger budget and must not sit there. */
+var RETRY_ATTEMPTS = 3;
+var RETRY_PAUSE_MS = 1200;
+
+/**
+ * Run `fn`, retrying only what is genuinely transient.
+ *
+ * A LOGIC ERROR MUST NOT BE RETRIED THREE TIMES — it would fail three times,
+ * take three times as long, and log three times as much noise. Only Google's
+ * own service failures are retried; anything else is thrown straight out to the
+ * caller, which records it against the response.
+ */
+function withRetry(fn) {
+  var lastErr = null;
+  for (var attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
+    try {
+      return fn();
+    } catch (err) {
+      lastErr = err;
+      if (!isTransient(err)) throw err;
+      if (attempt < RETRY_ATTEMPTS) Utilities.sleep(RETRY_PAUSE_MS * attempt);
+    }
+  }
+  throw lastErr;
+}
+
+/**
+ * Is this Google being temporarily unavailable, rather than our mistake?
+ *
+ * The measured case is verbatim: "Service Spreadsheets failed while accessing
+ * document with id 1j9SVNJG…". The others are the documented companions.
+ */
+function isTransient(err) {
+  var m = String((err && err.message) || err || '');
+  return /Service Spreadsheets failed/i.test(m)
+      || /Service unavailable/i.test(m)
+      || /internal error/i.test(m)
+      || /try again/i.test(m)
+      || /timed out/i.test(m)
+      || /too many|rate/i.test(m);
+}
+
+/**
+ * Write one plain line into the `action` column of a response row.
+ *
+ * Owner's words: "it's frustrating that the system didn't give me a good enough
+ * error message to tell me exactly what the problem was."
+ *
+ * THE POINT OF THIS COLUMN IS THAT A BLANK MEANS NOTHING HAPPENED. Every path
+ * out of the publisher writes here, so an empty cell beside a real submission
+ * is the alarm — and it is the only way Murray Angel's class is visible at all,
+ * because nothing ran to report anything.
+ */
+function note(ss, rowNum, text) {
+  if (!rowNum || rowNum < 2 || !text) return;
+  try {
+    var sheet = responsesSheet(ss);
+    if (!sheet) return;
+    var col = actionColumn(sheet);
+    if (col > 0) sheet.getRange(rowNum, col).setValue(text);
+  } catch (ignored) {
+    /* Never let recording the outcome become a second failure. */
+  }
+}
+
+/* ===========================================================================
+   THE SWEEP — the only defence against a submission Google never delivered.
+   =========================================================================== */
+
+/** How often the sweep runs. Five minutes is affordable BECAUSE the sweep is
+ *  cheap: it reads Published once and writes nothing when there is nothing to
+ *  do. See the cost note on `sweepPublished`. */
+var SWEEP_MINUTES = 5;
+
+/**
+ * Publish anything the trigger missed. Safe to run at any time, by hand or on
+ * a schedule, and safe to run when there is nothing to do.
+ *
+ * WHY IT MUST BE CHEAP, WITH THE ARITHMETIC. `backfillPublished` calls
+ * `publishOne` per response and each call re-reads the whole Published tab —
+ * measured 2026-09-19 at **120 range reads and 103,920 cells over sixty
+ * responses**, and it grows as responses x published. Google allows roughly
+ * **90 minutes of trigger runtime per day** on a consumer account. At five
+ * minutes that is **288 runs a day**, so a run must cost a second or two, not
+ * thirty. This reads Published ONCE, compares in memory, and writes only what
+ * is missing — an idle sweep does one read and no writes at all.
+ */
+function sweepPublished() {
+  var lock = LockService.getScriptLock();
+  if (!lock.tryLock(LOCK_WAIT_MS)) {
+    Logger.log('sweep skipped: another run holds the lock');
+    return;
+  }
   try {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var row = readSubmission(ss, e);
-    if (!row) return;
-    publishOne(ss, row);
-  } catch (err) {
-    Logger.log('publish failed: ' + (err && err.message));
+    var pub = ss.getSheetByName(PUB_TAB);
+    if (!pub) { Logger.log('sweep: no Published tab'); return; }
+
+    var sheet = responsesSheet(ss);
+    if (!sheet) { Logger.log('sweep: no responses tab'); return; }
+
+    var values = sheet.getDataRange().getValues();
+    if (values.length < 2) return;
+
+    var idx = headerIndex(values[0]);
+    var actionCol = actionColumn(sheet);
+
+    /* READ PUBLISHED ONCE. This single line is the whole optimisation. */
+    var existing = tableValues(pub);
+
+    var added = 0;
+    for (var r = 1; r < values.length; r++) {
+      /* An action already recorded means this response has been dealt with.
+         Cheap to test and it is what keeps an idle sweep free. */
+      if (actionCol > 0 && String(values[r][actionCol - 1] || '').trim() !== '') continue;
+
+      var row = {
+        trade:    cellAt(values[r], idx.trade),
+        first:    cellAt(values[r], idx.first),
+        last:     cellAt(values[r], idx.last),
+        phone:    cellAt(values[r], idx.phone),
+        business: cellAt(values[r], idx.business),
+        words:    cellAt(values[r], idx.words),
+        by:       cellAt(values[r], idx.by)
+      };
+      if (!row.first && !row.last && !row.phone) continue;
+
+      /* Already on the list from an earlier run that could not write its note?
+         Recognise it and record the note now rather than publishing twice. */
+      var key = normalisePhone(row.phone);
+      if (key) {
+        var at = rowIndexForPerson(existing, key, row.first, row.last);
+        if (at !== -1) {
+          if (actionCol > 0) {
+            sheet.getRange(r + 1, actionCol)
+                 .setValue('Merged into ' + existing[at][PUB_COLS.indexOf('id')] +
+                           ' — found by the automatic check');
+          }
+          continue;
+        }
+      }
+
+      var outcome;
+      try {
+        outcome = withRetry(function () { return publishInto(pub, existing, row); });
+      } catch (err) {
+        var msg = (err && err.message) ? err.message : String(err);
+        if (actionCol > 0) sheet.getRange(r + 1, actionCol).setValue('FAILED — ' + msg);
+        Logger.log('sweep failed on response row ' + (r + 1) + ': ' + msg);
+        continue;
+      }
+      if (outcome.added) added++;
+      if (actionCol > 0) {
+        sheet.getRange(r + 1, actionCol)
+             .setValue(outcome.action + ' (by the automatic check)');
+      }
+    }
+
+    if (added) Logger.log('sweep published ' + added + ' missed submission(s)');
+    recordSweepRun();
+
+  } finally {
+    lock.releaseLock();
   }
+}
+
+/** Remember when the sweep last ran, so `checkSetup` can say so. */
+function recordSweepRun() {
+  try {
+    PropertiesService.getScriptProperties()
+      .setProperty('lastSweep', new Date().toISOString());
+  } catch (ignored) {}
+}
+
+/** When did the sweep last run? '' if never or unknown. */
+function lastSweepRun() {
+  try {
+    return PropertiesService.getScriptProperties().getProperty('lastSweep') || '';
+  } catch (ignored) { return ''; }
+}
+
+/**
+ * Turn the automatic checking on, from the menu. SAFE TO CLICK TWICE.
+ *
+ * The owner should never have to build a trigger in the Apps Script interface,
+ * and clicking a menu item a second time because nothing obvious happened is
+ * exactly what a person does — so this removes any existing sweep trigger
+ * before creating one, and can never leave two running.
+ */
+function installSweep() {
+  var removed = 0;
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === 'sweepPublished') {
+      ScriptApp.deleteTrigger(triggers[i]);
+      removed++;
+    }
+  }
+  ScriptApp.newTrigger('sweepPublished').timeBased().everyMinutes(SWEEP_MINUTES).create();
+  say('Automatic checking is ON. Every ' + SWEEP_MINUTES + ' minutes the list ' +
+      'checks for any recommendation that did not arrive, and adds it.' +
+      (removed ? ' (Replaced ' + removed + ' existing check' + (removed === 1 ? '' : 's') + '.)' : ''));
+}
+
+/** Is the sweep installed? */
+function sweepInstalled() {
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === 'sweepPublished') return true;
+  }
+  return false;
+}
+
+/** The 1-based `action` column on the responses tab, or -1. Found by NAME. */
+function actionColumn(sheet) {
+  var header = sheet.getRange(1, 1, 1, sheet.getLastColumn ? sheet.getLastColumn() : 20).getValues()[0];
+  for (var c = 0; c < header.length; c++) {
+    if (String(header[c] || '').trim().toLowerCase() === 'action') return c + 1;
+  }
+  return -1;
 }
 
 /**
@@ -467,7 +745,7 @@ function backfillPublished() {
     };
     if (!row.first && !row.last && !row.phone) { skipped++; continue; }
 
-    if (publishOne(ss, row)) added++; else skipped++;
+    if (publishOne(ss, row).added) added++; else skipped++;
   }
 
   say('Done. Added ' + added + ' new ' + (added === 1 ? 'person' : 'people') +
@@ -572,7 +850,24 @@ function publishOne(ss, row) {
   if (!pub) throw new Error('the "' + PUB_TAB + '" tab does not exist');
 
   var existing = tableValues(pub);
+  return publishInto(pub, existing, row);
+}
+
+/**
+ * Publish one submission into an ALREADY-READ table.
+ *
+ * Split out of `publishOne` on 2026-09-19 so the sweep can read Published ONCE
+ * and pass the same table in for every response. `publishOne` re-read the whole
+ * tab per call, which made the backfill quadratic — measured at 120 range reads
+ * and 103,920 cells over sixty responses, against a five-minute schedule that
+ * would run it 288 times a day.
+ *
+ * Returns {added, action}: `added` is what the caller counts, `action` is the
+ * plain line written into the response's `action` column.
+ */
+function publishInto(pub, existing, row) {
   var phoneKey = normalisePhone(row.phone);
+  var trouble  = phoneProblem(row.phone);
 
   var words = plain(row.words);
   var by    = plain(row.by) || ANON;
@@ -581,12 +876,27 @@ function publishOne(ss, row) {
      This is the whole point of the product. Until 2026-09-18 a duplicate was
      skipped outright and the second villager's words were lost with nothing
      recording that they had ever been sent. Now their words and name are
-     appended to the person already on the list, and no new row is created. */
+     appended to the person already on the list, and no new row is created.
+
+     MATCHED ON PHONE **AND** NAME since 2026-09-19. Ben Franks and John
+     Pilkington share 07887800192, and phone alone put one man's recommendation
+     on the other man's card. */
   if (phoneKey) {
-    var at = rowIndexForPhone(existing, phoneKey);
+    var at = rowIndexForPerson(existing, phoneKey, row.first, row.last);
     if (at !== -1) {
-      if (words) appendRecommendation(pub, existing, at, words, by);
-      return false;   // no new row was added, which is what the backfill counts
+      var id = existing[at][PUB_COLS.indexOf('id')];
+      if (words) {
+        /* WHAT WAS SUBMITTED IS KEPT, not discarded. A merge used to keep the
+           words and the name and throw away the trade, the names and the
+           business — so when a match was WRONG, the evidence that it was wrong
+           went with it. */
+        appendRecommendation(pub, existing, at, words, by);
+        return { added: false,
+                 action: 'Merged into ' + id + ' — second recommendation for ' +
+                         (plain(row.first) + ' ' + plain(row.last)).trim() +
+                         ' (' + plain(row.trade) + ', ' + plain(row.phone) + ')' };
+      }
+      return { added: false, action: 'Merged into ' + id + ' — already on the list, no new words' };
     }
   }
 
@@ -595,7 +905,7 @@ function publishOne(ss, row) {
   /* --- the two hard failures that still hide a row ---
      A duplicate is deliberately NOT one of them any more: it is handled above
      by adding to the existing person rather than by hiding anything. */
-  var badPhone = phoneKey.length !== PHONE_DIGITS;
+  var badPhone = trouble !== '';
   var spammy   = looksLikeContactSpam(row);
 
   var status = (badPhone || spammy) ? 'hidden' : 'active';
@@ -619,9 +929,26 @@ function publishOne(ss, row) {
      The target row is computed from the last real id, so a column of
      formula-produced empty strings cannot push it into the middle of nowhere.
      setValues writes plain values exactly as appendRow did. */
-  var target = lastIdRow(pub) + 1;
+  /* The target row comes from the TABLE WE ALREADY HAVE, not from re-reading
+     the sheet. `lastIdRow` reads the whole of column A, and calling it once per
+     write is what made a sweep over sixty responses cost sixty extra reads.
+     `existing` is header + every row down to the last real id, so its length is
+     exactly the next row number. It is kept in step by the push below. */
+  var target = existing.length + 1;
   writeRowBlocks(pub, target, out);
-  return true;
+
+  /* Keep the in-memory table in step, so a sweep publishing several responses
+     in one pass gives each the next id and spots a duplicate among them. */
+  existing.push(out.slice());
+
+  var newId = out[0];
+  var why = badPhone ? trouble
+          : spammy   ? 'there is an email address or a web link in one of the name fields'
+          : '';
+  return { added: true,
+           action: status === 'active'
+             ? 'Published as ' + newId
+             : 'Hidden as ' + newId + ' — ' + why + '. Fix it on the Published tab and set status to active.' };
 }
 
 /** Which Published row carries this normalised phone? -1 if none. Zero-based
@@ -632,6 +959,44 @@ function rowIndexForPhone(values, phoneKey) {
     if (normalisePhone(values[r][col]) === phoneKey) return r;
   }
   return -1;
+}
+
+/**
+ * Which Published row is THIS PERSON? Phone AND name, never phone alone.
+ *
+ * `cleanPublished` in this same file already refuses to key on the phone alone,
+ * and says why: the owner's sheet holds **Ben Franks the electrician and John
+ * Pilkington the car mechanic on 07887800192** — a shared household or business
+ * line. Matching on the number alone means the second man's recommendation
+ * lands on the first man's card, and the card looks entirely normal.
+ *
+ * The publisher was still keying on the phone alone. This brings it up to the
+ * cleaner's standard: the number narrows the candidates, the name decides.
+ *
+ * Returns -1 when the number is on the list but under a DIFFERENT name — which
+ * is a new person who happens to share a line, and gets their own row.
+ */
+function rowIndexForPerson(values, phoneKey, first, last) {
+  if (!phoneKey) return -1;
+  var pcol = PUB_COLS.indexOf('phone');
+  var fcol = PUB_COLS.indexOf('first_name');
+  var lcol = PUB_COLS.indexOf('last_name');
+  var want = nameKeyOf(first, last);
+
+  for (var r = 1; r < values.length; r++) {
+    if (normalisePhone(values[r][pcol]) !== phoneKey) continue;
+    if (nameKeyOf(values[r][fcol], values[r][lcol]) === want) return r;
+  }
+  return -1;
+}
+
+/** A name squashed for comparison: letters and digits only, lower case.
+ *  Concatenated BEFORE stripping, so a full name typed into the first-name box
+ *  matches a properly split row — the same rule the sheet formulas use. */
+function nameKeyOf(first, last) {
+  var a = String(first === null || first === undefined ? '' : first);
+  var b = String(last  === null || last  === undefined ? '' : last);
+  return (a + b).replace(/[^A-Za-z0-9]/g, '').toLowerCase();
 }
 
 /**
@@ -791,11 +1156,65 @@ function nextId(values) {
  * +44 7887 988959, 0044 7887 988959 and 07887988959 all become 07887988959.
  */
 function normalisePhone(v) {
+  /* A FIELD HOLDING MORE THAN ONE NUMBER IS REFUSED, NEVER WELDED.
+
+     Owner's words, 2026-09-19: "the system has actually just merged two phone
+     numbers together and created one very, very long number, which is useless
+     to anybody using it."
+
+     He is exactly right and it was this function. It stripped every non-digit,
+     so "07872 065874 or 01392 980312" became the 22-digit string
+     0787206587401392980312 — a number belonging to nobody, on a card with a
+     Call button. Two real villagers hit it: Lee Schofield and Murray Angel.
+
+     Returning '' is what makes the caller treat it as unusable, so the row is
+     hidden rather than published with an invented number. `phoneProblem()`
+     below says WHY, in words the owner can read. */
+  if (phoneProblem(v)) return '';
+
   var d = String(v === null || v === undefined ? '' : v).replace(/\D/g, '');
   if (d.indexOf('0044') === 0) return '0' + d.slice(4);
   if (d.indexOf('44') === 0 && d.length > 11) return '0' + d.slice(2);
   return d;
 }
+
+/**
+ * What is wrong with this telephone field, in plain English, or '' if nothing.
+ *
+ * The one place that decides whether a number is usable, so that the publisher
+ * and `checkSetup` cannot disagree about the same number — they did until
+ * 2026-09-19, when `checkSetup` flagged T016's `+44 7775 726754` as wrong while
+ * the publisher accepted it. Two checks in one file, two answers.
+ */
+function phoneProblem(v) {
+  var raw = String(v === null || v === undefined ? '' : v).trim();
+  if (raw === '') return 'no telephone number was given';
+
+  /* MORE THAN ONE NUMBER. Detected from the TEXT, before the digits are
+     stripped, because once they are stripped the join is invisible. A joining
+     word, a slash, a comma or an ampersand between two runs of digits all mean
+     the villager gave two numbers. */
+  if (/\d[\s\S]*?(\bor\b|\band\b|\/|,|&|;)[\s\S]*?\d/i.test(raw)) {
+    return 'looks like two numbers in one box — please leave just one';
+  }
+
+  var d = raw.replace(/\D/g, '');
+  if (d === '') return 'no digits in the telephone number';
+
+  /* Fold the international forms before counting, so +44 and 0044 are judged
+     on the same footing as the 0 form. */
+  if (d.indexOf('0044') === 0) d = '0' + d.slice(4);
+  else if (d.indexOf('44') === 0 && d.length > 11) d = '0' + d.slice(2);
+
+  if (d.length !== PHONE_DIGITS) {
+    return 'the telephone number has ' + d.length + ' digits, and a UK number has ' + PHONE_DIGITS;
+  }
+  if (d.charAt(0) !== '0') return 'the telephone number does not start with a zero';
+  return '';
+}
+
+/** Is this telephone field unusable? The single shared test. */
+function phoneLooksWrong(v) { return phoneProblem(v) !== ''; }
 
 /**
  * Map a trade onto the agreed list.
@@ -1339,12 +1758,16 @@ function checkSetup() {
           else dupes[key] = vid;
         }
 
+        /* THE SHARED TEST, not a second opinion. Until 2026-09-19 this
+           counted RAW digits, so `+44 7775 726754` came to twelve and T016 was
+           reported as a wrong number while the publisher was happily accepting
+           it — two checks in one file disagreeing about the same number, and
+           the owner left to decide which to believe. `phoneProblem` is now the
+           only place that judgement is made, and it says WHY. */
         var praw = String(tv[v][iP] || '').trim();
         if (praw) {
-          var pd = praw.replace(/\D/g, '');
-          if (!(pd.length === PHONE_DIGITS && pd.charAt(0) === '0')) {
-            badPhones.push(vid + ' (' + praw + ')');
-          }
+          var trouble = phoneProblem(praw);
+          if (trouble) badPhones.push(vid + ' (' + praw + ') — ' + trouble);
         }
 
         var tr = String(tv[v][iT] || '').trim();
