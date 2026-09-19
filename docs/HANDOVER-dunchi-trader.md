@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-19T12:21:07Z
+last-updated: 2026-09-19T13:35:54Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-19T12:21:07Z** ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-19T13:35:54Z** ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **2026-09-18T21:10:23Z — CONVERSATION CLOSED DOWN at 68 of 92 (73.9%), 15 of 20 rows.** **2026-09-19T11:25:10Z — ~~68 of 92 (73.9%), 15 of 20 rows~~ SUPERSEDED → 68 of 96 effort (70.8%), 15 of 21 rows.** This session **cleared no effort and closed no row, which was the expected outcome and is stated plainly rather than dressed up**: everything it built closes on the owner's sighting of a real vote on the live page, and he has not yet redeployed. The percentage FELL because row **4.7** was appended at effort 4, adding to the denominator while the numerator stood still — arithmetic, not regression. **THE OPEN DEFECT IS DIAGNOSED AND IT WAS NONE OF THE FIVE CANDIDATES.** Measured 2026-09-19: the deployment behind the votes `/exec` address is not running `Code.gs` at all — Google answers *"Script function not found: doPost"* to every request, and *"doGet"* to every GET. The address is alive; the script behind it is the wrong one. **AND THE PANEL NOW FEEDS THE VILLAGE LIST.** Owner's ruling D1b: the site's own recommend button writes to **Published `K` and `L`** — the tab the village reads — through the same `appendRecommendation()` the automatic publisher uses, not a second copy. It no longer writes to the **Votes** tab, which nothing ever read. Bounded by D2 and enforced in code: it cannot create a row, assign or reuse an id, write any column but `K` and `L`, touch the owner's formula columns `I` and `J`, or reach an unknown or `hidden` id. **NEITHER FIX IS LIVE UNTIL THE OWNER REDEPLOYS** — nothing in this repository can put a script behind that address, and that is his first job (`apps-script/DEPLOY.md` step 14). **2026-09-19T12:17Z — THE BROKEN DEPLOYMENT IS NOW CONFIRMED BY THE OWNER**, on his own phone: he opened the `/exec` address and got `Script function not found: doGet`, independently matching the server-side measurement from a different device and network. **AND A SECOND DEFECT WAS FOUND AND FIXED — ROW 5.1's DELIVERABLE.** He typed the two test rows into Form responses and both reported somebody already on the site when neither was, **each naming its own row number**: `ALREADY ON SITE row 15` on row 15 and `row 16` on row 16. The `verdict` formula was comparing every row against the Form responses tab itself rather than against Published, because it read its comparison keys back out of its own columns `J` and `K`. Fixed at `6e0d4a0` — the keys are now computed inline so a self-match is not expressible, the verdict names the person's **id** rather than a row number, and the lookups are bounded so the helper columns' several hundred empty cells are out of reach. **34 tests pass including a negative control that reproduces the owner's exact readings against the defective formula.** Measured against his real list: both test rows had **already published themselves** as `T014` and `T015`, so `ALREADY ON SITE` is now their correct verdict and **`NEW` is structurally unreachable** on his tab — automatic publishing means every response is on the list within seconds. **Both fixes need a COMPUTER and are bundled into one trip** as DEPLOY.md step 14 Parts A and B. This conversation took the plan from 31/75 (41.3%) to here, closing eight rows and appending six as real gaps were found. **The site is functionally complete and not yet launchable**: a villager's recommendation reaches the village list without anybody touching a spreadsheet, the Call button dials correctly (sighted by the owner on his phone), and villagers' words appear on the cards. What stands between it and launch is **seeding** — the list still holds test people — plus the runbook walk. **One defect is open and undiagnosed:** the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed; it is the first thing the successor conversation picks up, and it does not affect the directory itself. **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **2026-09-18T21:10:23Z — CONVERSATION CLOSED DOWN at 68 of 92 (73.9%), 15 of 20 rows.** **2026-09-19T11:25:10Z — ~~68 of 92 (73.9%), 15 of 20 rows~~ SUPERSEDED → 68 of 96 effort (70.8%), 15 of 21 rows.** This session **cleared no effort and closed no row, which was the expected outcome and is stated plainly rather than dressed up**: everything it built closes on the owner's sighting of a real vote on the live page, and he has not yet redeployed. The percentage FELL because row **4.7** was appended at effort 4, adding to the denominator while the numerator stood still — arithmetic, not regression. **THE OPEN DEFECT IS DIAGNOSED AND IT WAS NONE OF THE FIVE CANDIDATES.** Measured 2026-09-19: the deployment behind the votes `/exec` address is not running `Code.gs` at all — Google answers *"Script function not found: doPost"* to every request, and *"doGet"* to every GET. The address is alive; the script behind it is the wrong one. **AND THE PANEL NOW FEEDS THE VILLAGE LIST.** Owner's ruling D1b: the site's own recommend button writes to **Published `K` and `L`** — the tab the village reads — through the same `appendRecommendation()` the automatic publisher uses, not a second copy. It no longer writes to the **Votes** tab, which nothing ever read. Bounded by D2 and enforced in code: it cannot create a row, assign or reuse an id, write any column but `K` and `L`, touch the owner's formula columns `I` and `J`, or reach an unknown or `hidden` id. **NEITHER FIX IS LIVE UNTIL THE OWNER REDEPLOYS** — nothing in this repository can put a script behind that address, and that is his first job (`apps-script/DEPLOY.md` step 14). **2026-09-19T12:17Z — THE BROKEN DEPLOYMENT IS NOW CONFIRMED BY THE OWNER**, on his own phone: he opened the `/exec` address and got `Script function not found: doGet`, independently matching the server-side measurement from a different device and network. **AND A SECOND DEFECT WAS FOUND AND FIXED — ROW 5.1's DELIVERABLE.** He typed the two test rows into Form responses and both reported somebody already on the site when neither was, **each naming its own row number**: `ALREADY ON SITE row 15` on row 15 and `row 16` on row 16. The `verdict` formula was comparing every row against the Form responses tab itself rather than against Published, because it read its comparison keys back out of its own columns `J` and `K`. Fixed at `6e0d4a0` — the keys are now computed inline so a self-match is not expressible, the verdict names the person's **id** rather than a row number, and the lookups are bounded so the helper columns' several hundred empty cells are out of reach. **34 tests pass including a negative control that reproduces the owner's exact readings against the defective formula.** Measured against his real list: both test rows had **already published themselves** as `T014` and `T015`, so `ALREADY ON SITE` is now their correct verdict and **`NEW` is structurally unreachable** on his tab — automatic publishing means every response is on the list within seconds. **Both fixes need a COMPUTER and are bundled into one trip** as DEPLOY.md step 14 Parts A and B. **2026-09-19T13:35:54Z — THE VERDICT FIX WAS ITSELF WRONG, AND THE OWNER FOUND IT BY LOOKING.** He pasted the morning's formula and photographed the result: **about twelve consecutive rows all reading `ALREADY ON SITE — T005`** — the same id on every row, where rows 15 and 16 must read `T014` and `T015`. The self-match was genuinely gone and every branch was chosen correctly; only the **id** was a broadcast constant. Cause, established from Google's documentation: **`INDEX` does not vectorise inside `ARRAYFORMULA`** — handed an array of positions it reads only the first. `MATCH` and `COUNTIF` both do vectorise, which is why the branches were right. Fixed at `81708cd` by replacing `INDEX`/`MATCH` with **`VLOOKUP` over a curly-brace literal array**; nothing else in the formula changed. **THE DEEPER FINDING: two successive fixes were proven against a hand-written simulator whose Sheets semantics were wrong, so the harness agreed with the code and both were wrong together. The owner found both defects by looking; the repository's tests found neither.** The harness now models `INDEX` as non-vectorising and requires the negative control to fail before a fix is written. **STILL NOT RUN IN GOOGLE SHEETS — treat the new formula as REPORTED until his screen confirms it.** One paste, and it needs a computer. This conversation took the plan from 31/75 (41.3%) to here, closing eight rows and appending six as real gaps were found. **The site is functionally complete and not yet launchable**: a villager's recommendation reaches the village list without anybody touching a spreadsheet, the Call button dials correctly (sighted by the owner on his phone), and villagers' words appear on the cards. What stands between it and launch is **seeding** — the list still holds test people — plus the runbook walk. **One defect is open and undiagnosed:** the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed; it is the first thing the successor conversation picks up, and it does not affect the directory itself. **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -222,6 +222,50 @@ Recorded one by one, because the entry above promised a successor a checklist an
 
 **Also on the list to eliminate early: a stale page in the phone's memory. CLEARED.** The served page was fetched cache-busted (`?x=1`) and is byte-identical to the commit, so even a fresh load posts to an address that answers "Script function not found". A stale page would not change the outcome.
 
+
+**[BUG] 2026-09-19 — MEASURED BY THE OWNER — the `verdict` column printed the SAME id on every row, because `INDEX` does not vectorise inside `ARRAYFORMULA`**
+
+**The second defect in row 5.1's deliverable in one day, and the second one the owner found by looking while the repository's tests said everything passed.**
+
+What he photographed, after pasting the morning's corrected `L2` formula:
+
+| What the column showed | Count |
+|---|---|
+| **`ALREADY ON SITE — T005`** | **roughly TWELVE consecutive rows, all the same id** |
+| `SAME NAME, DIFFERENT NUMBER` | 1 row |
+| `CHECK THIS` | 1 row |
+| blank | 2 rows |
+
+Rows **15** and **16** must read `T014` and `T015` — this session's own live-CSV measurement established that `T014 Test Nine` and `T015 Bob Samwell` are the Published rows those two responses created. **They read `T005` instead.**
+
+**What was RIGHT, and it matters for scoping the fix.** The self-match is genuinely gone — no verdict names a row number any more — and **the branch selection is correct on every row**. One row correctly reads `SAME NAME, DIFFERENT NUMBER`, one correctly reads `CHECK THIS`. The defect is confined to the id printed by the `ALREADY ON SITE` branch.
+
+**Root cause, established from Google's documentation rather than from the test harness.** Claude.ai's diagnosis was right about the outcome and needs one correction about the cause:
+
+| Function | Inside `ARRAYFORMULA` |
+|---|---|
+| `COUNTIF` | **vectorises** — which is exactly why `hitP`/`hitN` chose the right branch per row |
+| `MATCH` | **vectorises** — it correctly produced the right position for every row |
+| **`INDEX`** | **DOES NOT.** It is not array-aware over its **position** argument: handed an array of positions it reads only the **first** and ignores the rest. `ARRAYFORMULA` cannot fix it, because the limitation is inside `INDEX`. |
+
+**So the culprit is `INDEX`, not `MATCH`** — and that is not a pedantic distinction, because it determines the fix. `MATCH` could have stayed; `INDEX` had to go.
+
+**Why this got shipped, stated plainly because it is the more important failure.** Earlier the same day this project wrote, in its own analysis, *"MATCH is not an array-aware function in Sheets — it does not vectorise."* **That sentence was wrong**, and the fix written immediately after it used `INDEX`/`MATCH` anyway. It was then validated against a hand-written simulator that modelled **both** functions as vectorising. **The harness agreed with the code because both encoded the same misunderstanding**, so 34 checks passed on a formula that was already broken. See the Layer 5 entry, `[PATTERN CANDIDATE: a-simulator-is-not-the-platform]`.
+
+Fix applied: `apps-script/SHEET-FORMULAS.md` at commit `81708cd`. **Only the id lookup changed** — proven by character-level diff. The branch logic, the precedence, the seven-character rule and every `CHECK THIS` case are byte-identical, because the owner's screenshot confirms all of them are correct and disturbing them would risk a third defect.
+
+```
+was:  INDEX(Published!$A$2:$A$500,MATCH(pk,Published!$I$2:$I$500,0))
+now:  VLOOKUP(pk,{Published!$I$2:$I$500,Published!$A$2:$A$500},2,FALSE)
+```
+
+`VLOOKUP` **is** array-aware over its search key and spills per row. The id sits in Published column `A`, to the **left** of the phone key in column `I`, and `VLOOKUP` cannot look left — so a curly-brace literal array builds a virtual two-column table with the search column first. Both properties were verified against documentation before the formula was written.
+
+**The harness was rewritten BEFORE the formula, and the negative control shown failing first.** [PATH] `apps-script/test-verdict.js` now models `INDEX` as non-vectorising — `verdictV2_constantId` takes the whole sheet rather than a row index, because **a function that does not vectorise cannot honestly be modelled as if it did**. Against that model the deployed formula stamps one id on all 15 rows and rows 15/16 read wrong, reproducing the screenshot. Three versions are kept side by side: the original self-match, the deployed constant-id, and the fix. **43 checks pass.**
+
+It also carries the property as its own test: **no two response rows may print the same id unless they genuinely name the same published person.** The expected id is derived independently from the fixture rather than from the formula under test, and the same property is asserted to **fail** against the deployed version.
+
+Diagnosis, and it is a one-line eyeball check: **look down the verdict column. If many rows show the same id, it is broken** — different people cannot all be the same person. One id repeated is the signature. `apps-script/SHEET-FORMULAS.md` now carries a warning box before step 3 naming which functions work per row and which do not, plus this symptom in its troubleshooting table.
 
 **[BUG] 2026-09-19 — MEASURED BY THE OWNER — the `verdict` column matched every Form Responses row against ITSELF, so a stranger read `ALREADY ON SITE — row 15` on row 15**
 
@@ -709,6 +753,17 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 # LAYER 4 — OUTSTANDING WORK
 
 ## The queue as it stands after the 2026-09-19 session
+
+**[OUTSTANDING] 2026-09-19 | CRITICAL | Blocking: no | ⚠ NEEDS A COMPUTER — one paste**
+**Re-paste the `L2` verdict formula ONE more time.** The version now in his sheet prints **the same id on every row** — he photographed about twelve consecutive rows reading `ALREADY ON SITE — T005`. Cause: `INDEX` does not vectorise inside `ARRAYFORMULA`. Fixed at `81708cd` in [PATH] `apps-script/SHEET-FORMULAS.md` step 3; the corrected formula is also in the session summary so he does not have to open the repository.
+
+**Only the id lookup changed.** Everything his screenshot confirmed correct — the branches, the precedence, the seven-character rule, the `CHECK THIS` cases — is byte-identical and deliberately untouched.
+
+**Expected after pasting:** rows 15 and 16 read **`ALREADY ON SITE — T014`** and **`ALREADY ON SITE — T015`**, and **different rows show different ids**. If many rows still show one id, the paste did not take.
+
+**PHONE-DOABLE?** The paste is a computer job — the Sheets mobile app will not reliably take a 744-character formula into a specific cell. **Reading the result afterwards is phone work.**
+
+**NOT YET RUN IN GOOGLE SHEETS.** Established from documentation, not measured. This project has been wrong twice about exactly this kind of claim, so the fix is REPORTED until his screen confirms it.
 
 **[OUTSTANDING] 2026-09-19 | CRITICAL | Blocking: yes | ⚠ NEEDS A COMPUTER — cannot be done from a phone**
 **ONE TRIP TO THE LAPTOP, fixing TWO unrelated faults.** [PATH] `apps-script/DEPLOY.md` **step 14**, now in two parts. They are deliberately bundled because both need a computer and neither can be done from a phone, and the owner was on a phone only on 2026-09-19.
@@ -1279,6 +1334,48 @@ But it sent the first look in the wrong direction. `CHECK THIS` on both rows is 
 **[PATTERN CANDIDATE: a-wrong-answer-that-looks-right-survives-testing]** Both defects found in this project in two days share a shape: the system produced a **plausible** wrong answer rather than an error. The publisher wrote rows a thousand lines down and reported success; the verdict named a row number that happened to be the row's own. In both cases every available signal said it had worked. The generalisable move is that **where a system reports a computed locator — a row, an index, a position — the report must be in terms the reader can independently check.** An id can be looked up on the site; a row number can only be believed.
 
 **[PATTERN CANDIDATE: evaluate-the-whole-column-not-the-row]** The previous suite tested this formula row by row and passed twelve cases. A self-match is invisible row-by-row: it appears only when a row is evaluated in the presence of its own key. **A test harness must reproduce the evaluation model of the thing it tests**, not a simplified one — and here the simplified model was also the author's mental model, so the test confirmed the misunderstanding rather than catching it.
+
+---
+
+### 2026-09-19 — Two fixes in a row proven against a simulator whose Sheets semantics were wrong
+
+**Conversation reference:** https://claude.ai/cowork/cse_01KmELJ3FVVJwbZnoahT6G7f (reference 6G7f). Third session of the day in the same conversation.
+
+**[DECISION]** The `ALREADY ON SITE` branch looks the id up with **`VLOOKUP` over a curly-brace literal array**, not with `INDEX`/`MATCH`.
+
+**Rationale.** `INDEX` is not array-aware over its position argument — inside `ARRAYFORMULA` it reads only the first position it is handed and ignores the rest, so a single id is broadcast down the whole column. `VLOOKUP` **is** array-aware over its search key and spills per row. Because the id sits to the left of the key column, a literal `{key_column, id_column}` builds the virtual table `VLOOKUP` needs. Both properties were checked against Google's documentation **before** the formula was written, which is the step that was skipped last time.
+
+**Alternatives considered:** `MAP`/`LAMBDA`, which also evaluates per row and preserves left-lookup — rejected as heavier to read and harder for the owner to re-paste correctly, for no behavioural gain here. Keeping `INDEX` and accepting the constant — not viable, it is the defect.
+
+**[DECISION] The id is KEPT rather than dropped, and this was a real choice.** A verdict of plain `ALREADY ON SITE` with no id **cannot be wrong** and is immune to this entire class of defect. It was implemented and tested as `verdictV4_noId` so the comparison rests on evidence rather than preference.
+
+**Rationale for keeping it.** The id is what makes the verdict *actionable*: `ALREADY ON SITE — T014` tells the owner which row to look at, and the previous session's argument for it still holds — a name can be typed three ways and duplicated (his list has **two** `Bob Samwell` rows and **two** `Duckers Plumber` rows, so "find them by name" is genuinely ambiguous on his real data). Dropping the id would trade a fixable defect for a permanent loss of information. **But the condition attached to keeping it is that the formula must be demonstrably per-row**, which is now asserted by a dedicated test that fails against the broken version.
+
+**The honest counter-argument, recorded rather than buried:** this is the second defect in two days in the id-printing branch specifically, and both were silent. If a third occurs, **drop the id** — the branch text alone has never been wrong, and at that point the evidence would say the fragility is not worth the convenience.
+
+---
+
+**TWO SUCCESSIVE FIXES WERE PROVEN AGAINST A SIMULATOR WHOSE SHEETS SEMANTICS WERE WRONG, AND THE OWNER FOUND BOTH DEFECTS BY LOOKING.**
+
+This is the finding of the session and it is worth more than the formula.
+
+- **Fix one** (morning) replaced a formula that matched every row against itself. It was proven by a harness that evaluated **one row at a time** — and a self-match is invisible row-by-row. Twelve cases passed.
+- **Fix two** (midday) replaced that with a formula using `INDEX`/`MATCH`. It was proven by a harness that modelled **both as vectorising**. 34 checks passed. The formula stamped one id on every row.
+
+**In both cases the harness and the formula encoded the same misunderstanding, so the test could only ever agree.** And in both cases the same session had written the correct fact down and then not acted on it: the midday session's own analysis contains the sentence *"MATCH is not an array-aware function in Sheets — it does not vectorise"*, written hours before it shipped a fix built on exactly that function pair.
+
+**The repository's tests found neither defect. Gavin found both, on a phone, by looking at his screen.** That is the measure of what the harness was worth.
+
+**What changed as a result**, beyond the formula:
+
+1. **The harness now models the platform strictly.** `INDEX` is modelled as non-vectorising, and the function that uses it takes the whole sheet rather than a row index — because a function that does not vectorise cannot honestly be given a per-row signature. The file opens with a rule: *the model of a platform function may only be made more permissive on documented evidence, never on convenience.*
+2. **The negative control must be shown FAILING before the fix is written.** That ordering is now the stated method, not an afterthought. This session ran it and watched the deployed formula fail before touching the document.
+3. **Both broken versions are kept in the harness**, so a future change that reintroduces either is caught rather than re-discovered.
+4. **The semantics are documented where the formula is edited** — a warning box in `apps-script/SHEET-FORMULAS.md` naming which functions work per row, why `INDEX` bites, and the one-line symptom.
+
+**[PATTERN CANDIDATE: a-simulator-is-not-the-platform]** A hand-written model of a platform is a statement of belief about that platform, and a test built on it can only confirm the belief. Where the model and the code are written by the same author in the same session, they will share every misconception, and the suite's passing tells you nothing about the platform — only that the author was self-consistent. **Two defects in one day, both silent, both found by a human looking at a screen.** The mitigations that actually worked here were: establishing semantics from the vendor's documentation before writing code; modelling the platform's *limitations* rather than its capabilities; and requiring the negative control to fail first. Any project simulating a platform it cannot execute against — spreadsheets, cloud APIs, another team's service — has this exposure.
+
+**[PATTERN CANDIDATE: one-value-repeated-is-a-broadcast-bug]** A column of identical computed values is almost never data. Where a per-row lookup silently degrades to a single evaluation, the output is uniform and plausible, and no error is raised. Worth a standing check wherever a computed locator is displayed: **if every row agrees, suspect the machinery, not the data.**
 
 ---
 
@@ -3666,5 +3763,110 @@ Plan **PLAN-DUNCHI-TRADER-V1 unchanged at 68 of 96 effort (70.8%), 15 of 21 rows
 **The site is untouched and working.** No site file changed this session.
 
 **Two things now wait on one trip to a computer**, bundled as DEPLOY.md step 14 Parts A and B: the `Code.gs` redeploy and the `L2` formula paste. The owner was on a phone only today, which is why they are bundled and why every step in his block is marked PHONE or COMPUTER.
+
+Both remotes level. Working tree clean.
+
+---
+
+### 2026-09-19T13:35:39Z — The verdict printed one id on every row; INDEX does not vectorise
+**Source:** Claude Code
+**Started:** 2026-09-19T13:26:45Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01KmELJ3FVVJwbZnoahT6G7f
+**Repos touched this session:** dunchi-trader
+
+**Prompt received:**
+
+> Target repo: dunchi-trader. Same conversation as prompts 2697, 2705 and 2715 today. Repo at `a3b00059`, clean. Work INSIDE open row 5.1 — do not append to the plan, do not renumber, do not mark 5.1 done. **Gavin has deployed Part A and Part B and is now AWAY FROM HIS COMPUTER, on a phone.** **MEASURED: the fix you shipped this session is WRONG IN A NEW WAY.** He pasted the new `L2` and sent a screenshot: **roughly twelve consecutive rows all read `ALREADY ON SITE — T005`**, the same id on every row; one row reads `SAME NAME, DIFFERENT NUMBER`, one reads `CHECK THIS`, two are blank. Rows 15 and 16 MUST read `T014` and `T015` and instead read `T005`. **The self-match is genuinely gone and the branch selection is correct per row** — the defect is confined to the id printed by the `ALREADY ON SITE` branch, which is a CONSTANT. **Claude.ai's diagnosis, to be tested and not accepted on report:** `INDEX`/`MATCH` do not vectorise inside `ARRAYFORMULA`, so `MATCH` is evaluated once and the id broadcast to every row; `COUNTIF` does vectorise, which is why the branch is right. **This is the part to sit with before writing any code.** Your own diagnosis earlier today contained the sentence *"MATCH is not an array-aware function in Sheets — it does not vectorise"* — and the fix you then wrote used `INDEX`/`MATCH` anyway, proven against a simulator that modelled those functions as vectorising. **A simulator that models the platform more generously than the platform behaves proves nothing, and it has now produced two wrong answers in a row.** Treat every claim about Sheets array semantics in your own harness as the primary suspect. **Tasks:** (1) establish from documented behaviour which lookup functions vectorise; verify `VLOOKUP` rather than assume it. (2) Rewrite the `ALREADY ON SITE` branch so the id is per row; change nothing else. (3) Answer explicitly whether printing the id is worth this fragility. (4) **Fix the harness first, then the formula** — it must model `INDEX`/`MATCH` as NON-vectorising so the deployed version FAILS, and that failing run must be shown before the fix is written. (5) Assert as its own test that no two rows print the same id unless they name the same person. (6) Warning in `SHEET-FORMULAS.md` naming the non-vectorising functions; one line, no smart quotes. (7) HANDOVER Layer 3, Layer 5 tagged `[PATTERN CANDIDATE: a-simulator-is-not-the-platform]`, Layer 6 — record plainly that the Owner found both defects by looking and the repo's tests found neither.
+
+**What was done:**
+
+**THE SEMANTICS WERE ESTABLISHED FROM GOOGLE'S DOCUMENTATION BEFORE ANY CODE WAS WRITTEN**, which is the step skipped last time. Claude.ai's diagnosis is **right about the outcome and needs one correction about the cause**:
+
+| Function | Inside `ARRAYFORMULA` |
+|---|---|
+| `COUNTIF` | **vectorises** |
+| `MATCH` | **vectorises** — it correctly produced the right position for every row |
+| **`INDEX`** | **DOES NOT** — not array-aware over its *position* argument; reads only the first and ignores the rest |
+| `VLOOKUP` | **vectorises** over its search key and spills per row |
+
+**The culprit is `INDEX`, not `MATCH`**, and the distinction determined the fix: `MATCH` could have stayed, `INDEX` had to go. Sources: Google's `MATCH` and `VLOOKUP` reference pages for the scalar signatures, and published analysis for the vectorisation behaviour — *"INDEX is not array-aware over its position argument, it reads only the first position and ignores the rest"* and *"ARRAYFORMULA cannot fix this, because the limitation lives inside INDEX itself"*.
+
+**`VLOOKUP` was verified rather than assumed**, including the left-lookup problem: Published's id is in column `A`, left of the phone key in `I`, and `VLOOKUP` cannot look left. The curly-brace literal-array workaround was confirmed before use.
+
+**THE HARNESS WAS FIXED FIRST AND THE NEGATIVE CONTROL SHOWN FAILING BEFORE THE FORMULA WAS TOUCHED.** `verdictV2_constantId` models the deployed formula and **takes the whole sheet rather than a row index** — a function that does not vectorise cannot honestly be given a per-row signature. Run against it, the deployed formula stamps **one id (`T001`) on all 15 rows** with rows 15 and 16 both wrong: the shape of the screenshot. Three versions are now kept side by side — the original self-match, the deployed constant-id, and the fix — so reintroducing either is caught.
+
+**THE FIX CHANGES ONLY THE ID LOOKUP**, proven by character-level diff. Branch logic, precedence, the seven-character rule and every `CHECK THIS` case are byte-identical, because the screenshot confirms they are correct and touching them would risk a third defect.
+
+```
+was:  INDEX(Published!$A$2:$A$500,MATCH(pk,Published!$I$2:$I$500,0))
+now:  VLOOKUP(pk,{Published!$I$2:$I$500,Published!$A$2:$A$500},2,FALSE)
+```
+
+**The id is KEPT, and it was a real choice** — the no-id alternative was implemented and tested (`verdictV4_noId`) so the recommendation rests on a comparison. Reasoning and the counter-argument are in Layer 5; the short version is that his real list has two `Bob Samwell` rows and two `Duckers Plumber` rows, so "find them by name" is genuinely ambiguous on his own data — but **if a third defect occurs in this branch, drop the id**.
+
+**Testing performed:**
+
+| Test | Expected | Actual | Result |
+|---|---|---|---|
+| Guard: HEAD / tree / behind | `a3b0005`, clean, 0 | as expected | PASS |
+| Google `MATCH` docs — search_key | single value | *"The value to search for"* | PASS |
+| Google `VLOOKUP` docs — search_key | single value | *"The value to search for in the first column"* | PASS |
+| Vectorisation behaviour of `INDEX` | establish | **not array-aware over position; reads only the first** | PASS |
+| Vectorisation behaviour of `MATCH` | establish | **DOES vectorise — produces an array of positions** | PASS (corrects Claude.ai) |
+| `VLOOKUP` array search key spills per row | verify | confirmed | PASS |
+| `{a,b}` literal array for a left lookup | verify | confirmed | PASS |
+| **NEG CONTROL: deployed → ≥12 rows `ALREADY ON SITE`** | reproduces | **15 rows** | **PASS** |
+| **NEG CONTROL: deployed → all print the SAME id** | 1 distinct | **1 distinct (`T001`)** | **PASS** |
+| **NEG CONTROL: deployed row 15 is NOT `T014`** | wrong | wrong | **PASS** |
+| **NEG CONTROL: deployed row 16 is NOT `T015`** | wrong | wrong | **PASS** |
+| **NEG CONTROL: deployed violates the id property** | violates | violates | **PASS** |
+| NEG CONTROL: original still self-matches | reproduces | reproduces | PASS |
+| Fixed: row 15 → `ALREADY ON SITE — T014` | T014 | T014 | PASS |
+| Fixed: row 16 → `ALREADY ON SITE — T015` | T015 | T015 | PASS |
+| Fixed: distinct ids printed | >1 | **14 across 15 rows** | PASS |
+| **PROPERTY: every printed id is that row's real person** | all | all | PASS |
+| **PROPERTY: a shared id means a shared number** | holds | holds | PASS |
+| Fixed: `NEW` / `ALREADY ON SITE` / `SAME NAME` / `CHECK THIS` | all four | all four | PASS |
+| Fixed: three DIFFERENT ids in one fixture | T001, T004, T013 | T001, T004, T013 | PASS |
+| Fixed: `+44` form still matches T001 | T001 | T001 | PASS |
+| Fixed: `CHECK THIS` precedence | holds | holds | PASS |
+| Fixed: 7 accepted / under-7 flagged | boundary | correct | PASS |
+| Fixed: blank experience → `CHECK THIS` | fires | fires | PASS |
+| Fixed: unusable phone → `CHECK THIS` | fires | fires | PASS |
+| Fixed: hidden person still counts (T004) | T004 | T004 | PASS |
+| Fixed: all 15 published found by own number | all | all | PASS |
+| Fixed: shared number → first holder T006 | T006 | T006 | PASS |
+| No-id alternative: never prints an id | none | none | PASS |
+| No-id alternative: identical branch selection | identical | identical | PASS |
+| Harness models the platform strictly | V2 ≠ V3 shape | 14 of 15 rows differ | PASS |
+| Formula: one line, no smart quotes | clean | 744 chars, 1 line, none | PASS |
+| Formula: brackets and quotes balanced | balanced | 40/40 parens, 1/1 braces, 46 quotes | PASS |
+| Formula: `INDEX` removed | absent | absent | PASS |
+| Document formula == tested formula | byte-identical | byte-identical | PASS |
+| Plan untouched, 5.1 still `new` | untouched | untouched | PASS |
+
+**43 checks in `apps-script/test-verdict.js`, all passing**, including the negative control against the deployed formula.
+
+**What was not tested:**
+
+- **NOTHING HAS RUN IN GOOGLE SHEETS — and that is the whole point of this session's finding.** The fixed formula has never been evaluated by Sheets. `VLOOKUP`'s per-row behaviour and the curly-brace literal are established from Google's documentation and published analysis, **not measured**, and this project has now been wrong twice about exactly this kind of claim. **Treat the fix as REPORTED until the owner's screen confirms it.**
+- **`LET()` availability is still assumed**, unchanged from the morning.
+- **The screenshot was described to me, not read by me.** The row counts and ids come from Claude.ai's account of it.
+- **The owner's sheet was never written to**; no live access at all this session.
+- **No site file changed**, so nothing user-facing was re-checked.
+
+**Commits:**
+- `81708cd` — `fix: the verdict printed ONE id on every row - INDEX does not vectorise`
+
+**Finished:** 2026-09-19T13:35:39Z
+
+**End state:**
+
+Plan **unchanged at 68 of 96 effort (70.8%), 15 of 21 rows.** No row appended, none renumbered, **5.1 still `new`**. **Effort cleared: zero.**
+
+**One paste stands between this and a correct verdict column**, and it is a computer job. The owner is on a phone, so his block says so.
+
+**The record that matters for whoever reads this next: the owner found both of today's verdict defects by looking at his screen, and the repository's test suite found neither.** The suite has been rewritten to model the platform's limitations rather than its capabilities, and to require the negative control to fail before a fix is written — but it has not yet caught anything the owner did not catch first.
 
 Both remotes level. Working tree clean.
