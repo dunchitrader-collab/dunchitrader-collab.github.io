@@ -4963,7 +4963,7 @@ Both remotes level. Working tree clean.
 - **His hiding work was not verified beyond the feed** — thirteen rows read `hidden` in the published CSV, which is what the site reads, and that is the whole of the claim.
 
 **Commits:**
-- `{SHA}` — `docs: record D9c - go now and curate; report the launch message against the live list`
+- `faa0038` — `docs: record D9c - go now and curate; report the launch message against the live list`
 
 **Finished:** 2026-09-19T18:43:50Z
 
