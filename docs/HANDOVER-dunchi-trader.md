@@ -5,19 +5,19 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-19T11:31:46Z
+last-updated: 2026-09-19T12:21:07Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-19T11:31:46Z** ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-19T12:21:07Z** ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
 ### Project Status
 
-ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **2026-09-18T21:10:23Z — CONVERSATION CLOSED DOWN at 68 of 92 (73.9%), 15 of 20 rows.** **2026-09-19T11:25:10Z — ~~68 of 92 (73.9%), 15 of 20 rows~~ SUPERSEDED → 68 of 96 effort (70.8%), 15 of 21 rows.** This session **cleared no effort and closed no row, which was the expected outcome and is stated plainly rather than dressed up**: everything it built closes on the owner's sighting of a real vote on the live page, and he has not yet redeployed. The percentage FELL because row **4.7** was appended at effort 4, adding to the denominator while the numerator stood still — arithmetic, not regression. **THE OPEN DEFECT IS DIAGNOSED AND IT WAS NONE OF THE FIVE CANDIDATES.** Measured 2026-09-19: the deployment behind the votes `/exec` address is not running `Code.gs` at all — Google answers *"Script function not found: doPost"* to every request, and *"doGet"* to every GET. The address is alive; the script behind it is the wrong one. **AND THE PANEL NOW FEEDS THE VILLAGE LIST.** Owner's ruling D1b: the site's own recommend button writes to **Published `K` and `L`** — the tab the village reads — through the same `appendRecommendation()` the automatic publisher uses, not a second copy. It no longer writes to the **Votes** tab, which nothing ever read. Bounded by D2 and enforced in code: it cannot create a row, assign or reuse an id, write any column but `K` and `L`, touch the owner's formula columns `I` and `J`, or reach an unknown or `hidden` id. **NEITHER FIX IS LIVE UNTIL THE OWNER REDEPLOYS** — nothing in this repository can put a script behind that address, and that is his first job (`apps-script/DEPLOY.md` step 14). This conversation took the plan from 31/75 (41.3%) to here, closing eight rows and appending six as real gaps were found. **The site is functionally complete and not yet launchable**: a villager's recommendation reaches the village list without anybody touching a spreadsheet, the Call button dials correctly (sighted by the owner on his phone), and villagers' words appear on the cards. What stands between it and launch is **seeding** — the list still holds test people — plus the runbook walk. **One defect is open and undiagnosed:** the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed; it is the first thing the successor conversation picks up, and it does not affect the directory itself. **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **2026-09-18T21:10:23Z — CONVERSATION CLOSED DOWN at 68 of 92 (73.9%), 15 of 20 rows.** **2026-09-19T11:25:10Z — ~~68 of 92 (73.9%), 15 of 20 rows~~ SUPERSEDED → 68 of 96 effort (70.8%), 15 of 21 rows.** This session **cleared no effort and closed no row, which was the expected outcome and is stated plainly rather than dressed up**: everything it built closes on the owner's sighting of a real vote on the live page, and he has not yet redeployed. The percentage FELL because row **4.7** was appended at effort 4, adding to the denominator while the numerator stood still — arithmetic, not regression. **THE OPEN DEFECT IS DIAGNOSED AND IT WAS NONE OF THE FIVE CANDIDATES.** Measured 2026-09-19: the deployment behind the votes `/exec` address is not running `Code.gs` at all — Google answers *"Script function not found: doPost"* to every request, and *"doGet"* to every GET. The address is alive; the script behind it is the wrong one. **AND THE PANEL NOW FEEDS THE VILLAGE LIST.** Owner's ruling D1b: the site's own recommend button writes to **Published `K` and `L`** — the tab the village reads — through the same `appendRecommendation()` the automatic publisher uses, not a second copy. It no longer writes to the **Votes** tab, which nothing ever read. Bounded by D2 and enforced in code: it cannot create a row, assign or reuse an id, write any column but `K` and `L`, touch the owner's formula columns `I` and `J`, or reach an unknown or `hidden` id. **NEITHER FIX IS LIVE UNTIL THE OWNER REDEPLOYS** — nothing in this repository can put a script behind that address, and that is his first job (`apps-script/DEPLOY.md` step 14). **2026-09-19T12:17Z — THE BROKEN DEPLOYMENT IS NOW CONFIRMED BY THE OWNER**, on his own phone: he opened the `/exec` address and got `Script function not found: doGet`, independently matching the server-side measurement from a different device and network. **AND A SECOND DEFECT WAS FOUND AND FIXED — ROW 5.1's DELIVERABLE.** He typed the two test rows into Form responses and both reported somebody already on the site when neither was, **each naming its own row number**: `ALREADY ON SITE row 15` on row 15 and `row 16` on row 16. The `verdict` formula was comparing every row against the Form responses tab itself rather than against Published, because it read its comparison keys back out of its own columns `J` and `K`. Fixed at `6e0d4a0` — the keys are now computed inline so a self-match is not expressible, the verdict names the person's **id** rather than a row number, and the lookups are bounded so the helper columns' several hundred empty cells are out of reach. **34 tests pass including a negative control that reproduces the owner's exact readings against the defective formula.** Measured against his real list: both test rows had **already published themselves** as `T014` and `T015`, so `ALREADY ON SITE` is now their correct verdict and **`NEW` is structurally unreachable** on his tab — automatic publishing means every response is on the list within seconds. **Both fixes need a COMPUTER and are bundled into one trip** as DEPLOY.md step 14 Parts A and B. This conversation took the plan from 31/75 (41.3%) to here, closing eight rows and appending six as real gaps were found. **The site is functionally complete and not yet launchable**: a villager's recommendation reaches the village list without anybody touching a spreadsheet, the Call button dials correctly (sighted by the owner on his phone), and villagers' words appear on the cards. What stands between it and launch is **seeding** — the list still holds test people — plus the runbook walk. **One defect is open and undiagnosed:** the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed; it is the first thing the successor conversation picks up, and it does not affect the directory itself. **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -223,6 +223,58 @@ Recorded one by one, because the entry above promised a successor a checklist an
 **Also on the list to eliminate early: a stale page in the phone's memory. CLEARED.** The served page was fetched cache-busted (`?x=1`) and is byte-identical to the commit, so even a fresh load posts to an address that answers "Script function not found". A stale page would not change the outcome.
 
 
+**[BUG] 2026-09-19 — MEASURED BY THE OWNER — the `verdict` column matched every Form Responses row against ITSELF, so a stranger read `ALREADY ON SITE — row 15` on row 15**
+
+**Row 5.1's deliverable was defective, and the defect was invisible because its answers looked right.**
+
+What the owner measured, on his phone, after typing the two Layer 4 test rows into Form Responses at rows **15** and **16**:
+
+| Row | What he typed | Verdict shown |
+|---|---|---|
+| 15 | `Plumber` / `Test` / `Nine` / `07999 888777` | **`ALREADY ON SITE row 15`** |
+| 16 | `Plumber` / `Bob` / `Samwell` / `07999 111222` | **`ALREADY ON SITE row 16`** |
+
+**Each row named its own row number**, and at the time neither person was on the Published list. A row was being compared against itself.
+
+He also observed, first, that with column **H** (the experience text) left blank **both rows read `CHECK THIS`**. That reading was correct behaviour and not part of this bug — see the Layer 5 entry for how that false lead arose.
+
+**Root cause, established from the formula rather than accepted on report.** Claude.ai's reading — that the lookup was searching Form Responses instead of Published — is **correct**, and the arithmetic identifies precisely which range:
+
+| Searching for row 15's key `07999888777` | Result |
+|---|---|
+| in `Published!$I$2:$I` | **`#N/A`** — it was not on Published |
+| in Form Responses `$J$2:$J` (the tab's own `phone_key`) | position **14**, and `14 + 1 = ` **15** — the number he saw |
+
+Four candidate `ARRAYFORMULA` semantics were modelled against his two readings; **only full self-reference — both `COUNTIF` and `MATCH` searching this tab's own `J` column — reproduces both**. The author's intended semantics produce `NEW`, so the formula was not doing what its text describes.
+
+**The structural cause, which is the part worth carrying:** the old formula **read its comparison keys back out of columns `J` and `K` of its own tab** —
+
+```
+COUNTIF(Published!$I$2:$I, $J$2:$J)          <- $J$2:$J is THIS tab
+MATCH($J$2:$J, Published!$I$2:$I, 0) + 1     <- and so is this
+```
+
+— so it carried live same-tab ranges alongside its cross-tab lookups. **One unqualified range turns a Published lookup into a self-search, silently, and produces a number that looks exactly like a correct answer.** `MATCH` position + 1 is arithmetically the row's own number, so the wrong answer is indistinguishable from the right one by inspection. That is why it survived being "tested by local simulation" and twelve passing cases: **the simulation evaluated one row at a time, and a self-match is invisible row-by-row — it appears only when a row is evaluated in the presence of its own key.**
+
+**A second fault in the same formula, not observed but latent.** `Published!$I$2:$I` is open-ended, and the owner's helper columns are `ARRAYFORMULA` over open-ended ranges, so they return an **empty string for ~986 rows** below the data. `COUNTIF(range, "")` counts every one of them. Any response with an unreadable telephone number would therefore have read `ALREADY ON SITE` against a blank cell. **This is Layer 3's whole-column lesson in its second form** — the first cost this project its helper formulas and stranded a thousand rows.
+
+Fix applied: `apps-script/SHEET-FORMULAS.md` at commit `6e0d4a0`, the `L2` formula replaced with a `LET()` version. Three changes, each closing one route:
+
+1. **The keys are computed inline from the row's own cells** (`F`, `D`, `E`), never read out of `J` and `K`. There is no same-tab range left for a lookup to fall onto, so **a self-match is not expressible rather than merely avoided**.
+2. **It reports the person's ID, not a row number** — `ALREADY ON SITE — T014`. An id is checkable against the site in one glance; a row number looked right whether it was or not.
+3. **The lookup ranges are bounded** to `Published!$I$2:$I$500`, so the empty-string cells below the data are out of reach.
+
+Plus: an unreadable phone number now yields `CHECK THIS` rather than falling through to `NEW`, stated as a deliberate rule because the publisher hides such a row.
+
+**Proven with a negative control**, which the previous suite lacked. [PATH] `apps-script/test-verdict.js` implements the **defective** formula alongside the fixed one and asserts the defective version reproduces the owner's exact readings — row 15 says "row 15", row 16 says "row 16", and **every** row names its own number. It evaluates a whole column at once, as `ARRAYFORMULA` does. 34 checks pass. **A fix not shown to turn an observed wrong answer into an observed right one is an assertion, not a proof.**
+
+**Measured against the owner's REAL Published tab**, fetched live 2026-09-19 (15 people, both helper columns alive for every row — so the helpers he re-pasted by hand are healthy). Two findings that change what row 5.1 can show:
+
+- **The two test rows have ALREADY PUBLISHED THEMSELVES**, as `T014 Test Nine` and `T015 Bob Samwell`. So after the fix they correctly read `ALREADY ON SITE — T014` and `— T015`. **Row 15 cannot read `NEW`**, and the expectation that it should is out of date rather than wrong at the time it was written.
+- **`Bob Samwell` is published twice** — `T005` on `07887988959` and `T015` on `07999111222`. A real duplicate, created because the test row's number differed from the existing Bob Samwell's.
+
+Diagnosis: **look at the verdict text.** If it names a **row number** rather than a `T0xx` id, the old formula is still in the sheet. `apps-script/SHEET-FORMULAS.md` carries this in its troubleshooting table.
+
 **[BUG] 2026-09-19 — MEASURED — the deployment behind the votes endpoint is not running `Code.gs`: Google answers "Script function not found: doPost" to every request**
 
 **This is the cause of the 2026-09-18 defect above, and it was not on the list of five candidates.**
@@ -238,6 +290,10 @@ Root cause: the `/exec` address the live site posts to is alive and reachable, b
 | `POST …/exec` with ordinary form parameters | **`Ohjelmatoimintoa ei löydy: doPost`** — so it is not the body shape |
 
 `Ohjelmatoimintoa ei löydy` is Finnish for **"Script function not found"** (Google serves the error page in an arbitrary locale). Both entry points are missing, which is why a GET is as informative as a POST.
+
+**CONFIRMED BY THE OWNER 2026-09-19, independently and on his own phone.** He opened the `/exec` address in his phone browser and got **`Script function not found: doGet`** — the English rendering of the same error, from a different device, a different network and a different locale to the server-side measurement above. That matters for two reasons. It rules out anything peculiar to this server's requests, and it is the first time the ten-second browser check has been used by the person who will need it: **the check works, and it is usable from a phone.** The diagnosis is no longer a single session's measurement.
+
+**Consequence for the five candidates in the entry above: candidates 1 and 2 move from "cannot be the cause, subsumed" to CONFIRMED BY THE OWNER.** Both turned on what the deployment is serving, and he has now seen what it serves.
 
 **One further detail worth recording, because it is itself evidence the deployment changed.** The 2026-09-18T17:02:32Z measurement in solution design §6.2 recorded the POST returning **HTTP 302** followed to a 200. It now returns **HTTP 200 directly, with no redirect.** A working Apps Script web app redirects to `script.googleusercontent.com`; an error page does not. The behaviour of the address changed when the owner redeployed, which corroborates the diagnosis independently of the error text.
 
@@ -654,8 +710,13 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 ## The queue as it stands after the 2026-09-19 session
 
-**[OUTSTANDING] 2026-09-19 | CRITICAL | Blocking: yes — the recommend button does not work at all until this is done**
-**Redeploy `apps-script/Code.gs`, and check the address in a browser afterwards.** [PATH] `apps-script/DEPLOY.md` **step 14**, nine steps. This is the owner's first job and everything else about the recommend button waits behind it.
+**[OUTSTANDING] 2026-09-19 | CRITICAL | Blocking: yes | ⚠ NEEDS A COMPUTER — cannot be done from a phone**
+**ONE TRIP TO THE LAPTOP, fixing TWO unrelated faults.** [PATH] `apps-script/DEPLOY.md` **step 14**, now in two parts. They are deliberately bundled because both need a computer and neither can be done from a phone, and the owner was on a phone only on 2026-09-19.
+
+- **Part A — redeploy `apps-script/Code.gs`.** The deployment behind the `/exec` address is running neither `doPost` nor `doGet`. **CONFIRMED BY THE OWNER 2026-09-19** on his own phone: he opened the address and got `Script function not found: doGet`, independently matching the server-side measurement. The same redeploy also lands the repointed endpoint (D1b) and the seven-character minimum (row 4.6).
+- **Part B — paste one new formula into Form responses `L2`.** The `verdict` column matched every row against itself; see the `[BUG]` in Layer 3. One paste, about thirty seconds, no deployment involved.
+
+**What CAN be done from a phone:** checking the `/exec` address afterwards (one plain sentence versus a Google error page — he has already used this check successfully), reading column `L` to confirm no verdict names a row number, and placing a test vote on the live site. **What CANNOT:** both pastes, and the redeploy.
 
 **Two things are being fixed in one redeploy, and it is worth knowing they are separate.** First, the deployment is currently running neither `doPost` nor `doGet` — measured, Layer 3 — which is why the button produces nothing. Second, the script being pasted is a **repointed** one: under D1b it writes to Published `K` and `L` rather than to Votes, and carries the seven-character minimum (row 4.6).
 
@@ -669,6 +730,15 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 **Place a real vote from the phone and see the words on the card.** This is the sighting that closes Build Plan rows **4.6 and 4.7**, and nothing else can. Both rows are built and tested — 66 endpoint tests and 30 browser checks — but **nothing has run against the real Google Sheet**, because the deployment does not yet carry the script.
 
 Open `https://dunchitrader-collab.github.io/?x=1` on the phone (the `?x=1` forces a fresh copy), tap a trade, tap **I recommend them too**, type a name and at least seven characters, tap **Add my recommendation**. Then look at **that person's row on the Published tab, columns K and L** — not the Votes tab, and not the page's thank-you, which appears either way because the reply is opaque by measurement. The words should also reach the card itself within the five-minute republish lag.
+
+**[OUTSTANDING] 2026-09-19 | HIGH | Blocking: no | PHONE — after the Part B paste**
+**Re-read the two verdicts, and type one more row to see the third.** Row 5.1 closes on the owner seeing all four verdicts correct in his own sheet.
+
+**Rows 15 and 16 should now read `ALREADY ON SITE — T014` and `ALREADY ON SITE — T015`** — naming a person, not a row number. **This is NOT the expectation the 2026-09-18 queue recorded**, and the reason is measured rather than assumed: both test rows **published themselves** while he was testing, so they are genuinely on the list now and `ALREADY ON SITE` is the correct answer. Row 15 can no longer produce `NEW`.
+
+**To see `SAME NAME, DIFFERENT NUMBER`, one more row is needed** — neither test row can produce it. Type into Form Responses C–H: `Plumber` / `Duckers` / `Plumber` / `07700 900123` / *(blank)* / `Came out on a Sunday evening`. It clashes on name with **`T001 Duckers Plumber`** (on the site at `07825 736940`) and on number with nobody — `07700 900123` was checked against the live feed and is unused. Afterwards set that row's `status` to `hidden` on Published, since it will publish itself.
+
+**`NEW` is structurally unreachable on his tab and should not be hunted for.** Measured 2026-09-19: every response he has has already been published, so every one correctly reads `ALREADY ON SITE`. `NEW` is the verdict a row holds only between the form being submitted and the publisher running — real, correct, and nearly always over before anybody looks. **This is a consequence of D7a automatic publishing, not a defect**, and row 5.1's "all four" clause should be read with it in mind.
 
 ---
 
@@ -1170,6 +1240,45 @@ Recorded at close-down so each ruling carries its estate decision ID alongside t
 **[PATTERN CANDIDATE: measure-the-deployment-not-the-code]** The defect that cost this project a day was invisible to every check it had. The code was correct and committed, the URL was correct and served, the request shape was correct — and the deployment behind the URL was running neither entry point. Nothing short of *sending a real request and reading the reply* could have found it. The generalisable move is that **a deployed endpoint needs a cheap, human-readable liveness reply that fails visibly** — `doGet` here returns one plain sentence, so "open the address in a browser" is now a ten-second test with two unmistakable outcomes. Any project with a deploy-by-paste step has this exposure.
 
 **[PATTERN CANDIDATE: measure-the-alternative-before-preferring-it]** The long form label was going to be split into a label plus a hint, on the reasoning that nine lines of text above a field is bad for an elderly audience. Measured, the split was **worse** — 542px of scrolling to reach the send button versus 289px — because a separate note costs its own margins. The baseline measurement mattered even more: the button was **already** 299px below the fold before any change, so the thing that looked like a regression introduced by this session was pre-existing shipped behaviour. Neither fact was available by reasoning.
+
+---
+
+### 2026-09-19 — The verdict column matched every row against itself; the false lead came from Claude.ai
+
+**Conversation reference:** https://claude.ai/cowork/cse_01KmELJ3FVVJwbZnoahT6G7f (reference 6G7f). Same conversation as the morning's session.
+
+**[DECISION]** The `verdict` formula **computes its comparison keys inline from the row's own cells** rather than reading them back out of columns `J` and `K`.
+
+**Rationale, and it is a rule about shape rather than about this bug.** The old formula carried live same-tab ranges (`$J$2:$J`, `$K$2:$K`) in the same expression as its cross-tab lookups into `Published`. That made a self-search *reachable* — one unqualified range is all it takes — and when it happened the answer was a row number, which looks exactly like a correct answer. Computing the keys inline removes the same-tab ranges entirely, so **a row matching itself is no longer something the formula can express**. Closing a route is worth more than fixing an instance.
+
+**Alternatives considered:** re-qualifying the ranges and leaving the shape alone — rejected, because it fixes this occurrence while leaving the next dropped prefix just as silent. Moving the verdict into `Publish.gs` as a written column — rejected, because the owner's helper columns are already formula-owned and a script writing a column a formula also writes is the exact failure recorded in Layer 3 on 2026-09-18.
+
+**[DECISION]** The verdict **reports the person's id, not a row number.** `ALREADY ON SITE — T014` can be checked against the live site in one glance. `— row 15` was indistinguishable from the self-match that produced it, and that indistinguishability is what let the defect survive a session that believed it had tested the formula.
+
+**[DECISION]** The lookup ranges are **bounded** to `Published!$I$2:$I$500` rather than left open-ended. The owner's helper columns are `ARRAYFORMULA` over whole columns and return an empty string for every row to the bottom of the sheet; `COUNTIF` matches an empty criterion against all of them. **Second occurrence of the same class** — the first stranded a thousand rows and destroyed two formulas on 2026-09-18. The bound is a ceiling, not a guess: the real list holds 15 people, and the troubleshooting table says what to do if the village ever passes 500.
+
+**[DECISION]** A telephone number with no digits in it yields **`CHECK THIS`**, not `NEW`. Stated as a rule rather than left to fall through, because the publisher hides such a row and a verdict calling it a clean new person would be untrue.
+
+---
+
+**THE FALSE LEAD CAME FROM CLAUDE.AI, NOT FROM THE SHEET, AND IT IS RECORDED HERE SO THE RECORD SHOWS WHERE IT CAME FROM.**
+
+The owner was instructed — in the Layer 4 test-row table written on 2026-09-18, authored by Claude.ai — to type the two test rows with column **H**, the experience text, shown as one of the fields but with the emphasis on trade, name and phone. He first entered them with **H left blank**. Both rows read **`CHECK THIS`**.
+
+**That reading was correct.** A blank experience box is zero characters, which is fewer than seven, and `CHECK THIS` takes precedence over every other verdict by design — the owner's own ruling D4a set the threshold at seven. The sheet did exactly what it was told to do.
+
+But it sent the first look in the wrong direction. `CHECK THIS` on both rows is indistinguishable from a broken formula if you do not already know the precedence rule, and **it masked the real defect entirely**: `CHECK THIS` short-circuits before any comparison against Published happens, so the self-match could not show itself. The genuine fault only appeared once he filled column H in.
+
+**Two things follow, and both are now written into the documents rather than left as this session's knowledge:**
+
+1. **A test row must always carry a real sentence in the experience box.** Anything else tests the `CHECK THIS` precedence and nothing else. `apps-script/SHEET-FORMULAS.md` now has a section saying exactly this, headed so it is found by somebody testing.
+2. **The instruction that produced the false lead was Claude.ai's, not a fault in the sheet and not the owner's mistake.** Recorded plainly because a future reader looking at this sequence — "he was told to test it, the test said CHECK THIS, then it said something else" — would otherwise reasonably conclude the sheet was unstable. It was not. The test was wrong before the sheet was.
+
+---
+
+**[PATTERN CANDIDATE: a-wrong-answer-that-looks-right-survives-testing]** Both defects found in this project in two days share a shape: the system produced a **plausible** wrong answer rather than an error. The publisher wrote rows a thousand lines down and reported success; the verdict named a row number that happened to be the row's own. In both cases every available signal said it had worked. The generalisable move is that **where a system reports a computed locator — a row, an index, a position — the report must be in terms the reader can independently check.** An id can be looked up on the site; a row number can only be believed.
+
+**[PATTERN CANDIDATE: evaluate-the-whole-column-not-the-row]** The previous suite tested this formula row by row and passed twelve cases. A self-match is invisible row-by-row: it appears only when a row is evaluated in the presence of its own key. **A test harness must reproduce the evaluation model of the thing it tests**, not a simplified one — and here the simplified model was also the author's mental model, so the test confirmed the misunderstanding rather than catching it.
 
 ---
 
@@ -3443,5 +3552,119 @@ Plan **PLAN-DUNCHI-TRADER-V1 at 68 of 96 effort (70.8%), 15 of 21 rows**. **This
 **The site itself is unaffected and working.** The directory, the search, the Call button and the automatic publisher are untouched by this session. A villager can still find a tradesperson and ring them, and form submissions still publish themselves.
 
 **The recommend button does not work, and will not until the owner redeploys.** The cause is measured and the fix is written and tested, but nothing in this repository can put a script behind that Google address. That is the first item in Layer 4 and the first step of the Owner block.
+
+Both remotes level. Working tree clean.
+
+---
+
+### 2026-09-19T12:20:53Z — The verdict column matched every row against itself; the Owner confirms the broken deployment
+**Source:** Claude Code
+**Started:** 2026-09-19T12:08:16Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01KmELJ3FVVJwbZnoahT6G7f
+**Repos touched this session:** dunchi-trader
+
+**Prompt received:**
+
+> Target repo: dunchi-trader. Same conversation that sent prompt 2697 earlier today; read that session's Layer 6 entry rather than re-deriving its work. **Gavin is on a PHONE ONLY today and has no laptop to hand, so every Owner step must say plainly whether it needs a computer.** Repo state 72a5b96, clean. **TWO OWNER SIGHTINGS, MEASURED ON HIS PHONE TODAY — record both:** (1) the broken deployment is CONFIRMED — he opened the /exec address and got `Script function not found: doGet`, independently confirming 2697's server-side measurement; Layer 3's candidates 1 and 2 are now Owner-confirmed. (2) **A NEW DEFECT, self-match in the verdict column** — he typed the two Layer 4 test rows into Form Responses rows 15 and 16; with column H blank both read `CHECK THIS`; with H filled, row 15 read `ALREADY ON SITE row 15` and row 16 read `ALREADY ON SITE row 16`, **each naming ITS OWN row number**, neither person on Published. Claude.ai's reading, to be tested rather than assumed: the verdict lookup is searching Form Responses instead of, or as well as, Published — do not accept that on report, establish it from the actual logic and say which it was. **Tasks:** (1) find and read the verdict logic; establish why a row matches itself and why blank H yields CHECK THIS — the second must be a deliberate stated rule, not an accident. (2) Fix it so the four verdicts are correct against PUBLISHED only; a Form Responses row must never match itself or another Form Responses row; apply Layer 3's whole-column lesson. (3) Prove it with a test harness in the repo including a **negative control** that fails against the defective version. (4) Say plainly whether `SAME NAME, DIFFERENT NUMBER` is reachable with current Published contents; if no Bob Samwell is published, give the exact name and number to type and say who it clashes with. (5) **BUNDLE THE DEPLOYMENT** — the Owner already owes one laptop trip for DEPLOY.md step 14; if this fix needs anything pasted, it rides that SAME trip. (6) HANDOVER: Layer 3, Layer 4, Layer 6, and record in Layer 5 that **Claude.ai's instruction to leave column H blank was wrong** and produced the first CHECK THIS reading. This is work INSIDE open row 5.1 — do not append to the plan, do not renumber, do not mark 5.1 done.
+
+**What was done:**
+
+**THE SELF-MATCH IS ESTABLISHED FROM THE FORMULA, AND CLAUDE.AI'S READING WAS CORRECT.** It was not accepted on report. The verdict is a **sheet formula only** — `Publish.gs` never writes it and only reserves `I`/`J` on Published — so the fault is entirely in the `L2` formula in `apps-script/SHEET-FORMULAS.md`.
+
+**Which range it searched, settled by arithmetic rather than by reading intent:**
+
+| Searching for row 15's key `07999888777` | Result |
+|---|---|
+| in `Published!$I$2:$I` | **`#N/A`** |
+| in Form responses `$J$2:$J` | position **14**, and `14 + 1 =` **15** — exactly what he saw |
+
+Four candidate `ARRAYFORMULA` semantics were modelled against both his readings. **Only full self-reference — `COUNTIF` *and* `MATCH` both searching this tab's own `J` column — reproduces `row 15` on row 15 and `row 16` on row 16.** The author's intended semantics produce `NEW`, so the formula was not doing what its text describes.
+
+**The structural cause, which is the transferable part.** The old formula read its comparison keys back out of columns `J` and `K` **of its own tab**, so it carried live same-tab ranges alongside its cross-tab lookups into Published. One unqualified range turns the lookup into a self-search — silently, and producing `MATCH position + 1`, which is arithmetically the row's own number. **A wrong answer shaped exactly like a right one.**
+
+**A second, latent fault in the same formula.** `Published!$I$2:$I` is open-ended and the owner's helpers are `ARRAYFORMULA` over whole columns, so ~986 rows return an empty string. `COUNTIF(range, "")` counts every one. Any response with an unreadable telephone number would have read `ALREADY ON SITE` against a blank. **Layer 3's whole-column lesson, second occurrence.**
+
+**The fix** (`apps-script/SHEET-FORMULAS.md` at `6e0d4a0`), a `LET()` formula, three changes each closing one route: keys **computed inline** from the row's own cells so no same-tab range remains and a self-match is **not expressible**; the verdict **names the person's id** (`ALREADY ON SITE — T014`) rather than a row number, so it is checkable against the site; lookups **bounded** to `Published!$I$2:$I$500`. Plus an unreadable phone number now yields `CHECK THIS` rather than `NEW`, stated as a rule because the publisher hides such a row.
+
+**Why blank column H gave `CHECK THIS`, and it is correct behaviour.** Zero characters is fewer than seven, and `CHECK THIS` takes precedence over everything by design (owner's ruling D4a). But it **masked the real defect**, because it short-circuits before any comparison against Published happens. The instruction to leave H blank came from Claude.ai's own test-row table, not from the sheet — recorded in Layer 5 so a future reader does not conclude the sheet was unstable. `SHEET-FORMULAS.md` now carries a section saying a test row must always carry a real sentence.
+
+**MEASURED AGAINST THE REAL LIST, and it changed two of the prompt's expectations.** The live CSV was fetched: **15 people, both helper columns alive for every row** — so the helpers he re-pasted by hand on 2026-09-18 are healthy.
+
+- **Both test rows had ALREADY PUBLISHED THEMSELVES**, as `T014 Test Nine` and `T015 Bob Samwell`. So after the fix they correctly read `ALREADY ON SITE — T014` and `— T015`. **The prompt's expectation that row 15 should read `NEW` is out of date**, and the tests assert the correct answer rather than the expected one.
+- **`NEW` is structurally unreachable** on his Form responses tab. Automatic publishing (D7a) puts every response on Published within seconds, so every row correctly reads `ALREADY ON SITE`. `NEW` exists only between submission and the publisher running. Recorded honestly in DEPLOY.md rather than sending him hunting for it.
+- **`SAME NAME, DIFFERENT NUMBER` is NOT reachable from either test row.** An exact row was worked out against the live list and is in his block.
+- Incidentally: **`Bob Samwell` is published twice** — `T005` on `07887988959` and `T015` on `07999111222`.
+
+**The bundle.** `apps-script/DEPLOY.md` step 14 is restructured into **Part A** (redeploy `Code.gs`) and **Part B** (paste the `L2` formula), retitled *"ONE TRIP TO THE LAPTOP"*, with a table of the two faults at the top and an explicit statement of what can and cannot be done from a phone. Both pastes need a computer; the checks afterwards do not.
+
+**Testing performed:**
+
+| Test | Expected | Actual | Result |
+|---|---|---|---|
+| Guard: HEAD / tree / behind | `72a5b96`, clean, 0 | as expected | PASS |
+| Is the verdict written by Apps Script? | formula only | `Publish.gs` never writes it | PASS |
+| Range audit of the committed `L2` | — | 6 same-tab ranges, 3 Published | PASS (found the shape) |
+| Per-row simulation of the committed formula | reproduce his reading | **`NEW`** — did NOT reproduce | Useful negative |
+| Hypothesis A: ranges resolve to Form responses cols I/J | reproduce | `NEW` — no | Rejected |
+| Hypothesis B/S4: both lookups search this tab's `J` | reproduce | **`row 15` / `row 16`** | **CONFIRMED** |
+| S1 author's intended semantics | — | `NEW` / `NEW` | Rejected |
+| S2 `MATCH` takes first cell | — | `NEW` / `NEW` | Rejected |
+| **NEGATIVE CONTROL: defective reproduces row 15 → "row 15"** | reproduces | **reproduces** | **PASS** |
+| **NEGATIVE CONTROL: defective reproduces row 16 → "row 16"** | reproduces | **reproduces** | **PASS** |
+| Negative control: blank H gives `CHECK THIS` both rows | reproduces | reproduces | PASS |
+| Negative control: EVERY row names its own number | all 15 | all 15 | PASS |
+| Fixed: no verdict contains "row {n}" | none | none | PASS |
+| Fixed: row 15 → `ALREADY ON SITE — T014` | T014 | T014 | PASS |
+| Fixed: row 16 → `ALREADY ON SITE — T015` | T015 | T015 | PASS |
+| Fixed: `NEW` for a genuinely unknown person | NEW | NEW | PASS |
+| Fixed: `ALREADY ON SITE — T001` on same number | T001 | T001 | PASS |
+| Fixed: `+44` form of T001's number still matches | T001 | T001 | PASS |
+| Fixed: `SAME NAME, DIFFERENT NUMBER` | fires | fires | PASS |
+| Fixed: `CHECK THIS` — text under 7 chars | fires | fires | PASS |
+| Fixed: `CHECK THIS` — last name "Not Known" | fires | fires | PASS |
+| Fixed: `CHECK THIS` — business "not known" | fires | fires | PASS |
+| Fixed: `CHECK THIS` beats `ALREADY ON SITE` | precedence holds | holds | PASS |
+| Fixed: seven characters accepted, six flagged | boundary | boundary correct | PASS |
+| Fixed: blank experience → `CHECK THIS` | deliberate rule | fires | PASS |
+| Fixed: full name in first-name box still matches | matches | matches | PASS |
+| Fixed: capitals/spaces/punctuation ignored | matches | matches | PASS |
+| Fixed: a `hidden` person still counts as on site | T004 | T004 | PASS |
+| **All four verdict kinds produced by the fixture** | all four | all four | PASS |
+| Fixture reproduces the empty-cell trap | >900 empties | 986 | PASS |
+| `COUNTIF` would match all of them on an empty key | >900 | 986 | PASS |
+| Fixed: unusable phone → `CHECK THIS`, never ALREADY | CHECK THIS | CHECK THIS | PASS |
+| Defective: same row self-matches on the empty key | self-matches | self-matches | PASS |
+| Fixed: all 15 published people found by own number | all 15 | all 15 | PASS |
+| Fixed: shared number resolves to first holder T006 | T006 | T006 | PASS |
+| Fixed vs defective: every row changes verdict | 15 of 15 | 15 of 15 | PASS |
+| Live Published CSV fetched | 200, `text/csv` | 200, 1696 bytes, 15 rows | PASS |
+| Helper columns I and J alive on every row | all populated | all 15 populated | PASS |
+| `07700 900123` unused on the live list | free | free | PASS |
+| "tradesman" in new text | 0 | 0 | PASS |
+| Handover heading preservation | none removed | none removed | PASS |
+
+**34 checks in `apps-script/test-verdict.js`, all passing**, including the negative control.
+
+**What was not tested:**
+
+- **NOTHING HAS RUN IN GOOGLE SHEETS.** The fixed formula has never been pasted into a real sheet. `LET()`, `INDEX`/`MATCH` inside `ARRAYFORMULA`, and the bounded ranges are all modelled from documented behaviour, not observed in Sheets. **That is row 5.1's closing condition and it remains the owner's.**
+- **The `LET()` function is assumed available.** It is standard in current Google Sheets, but that is not measured here. DEPLOY.md tells him what `#NAME?` would mean and that a longer version without `LET` can be supplied.
+- **The mechanism is established from arithmetic, not from reading his sheet.** The simulation proves which *range* was searched; it cannot show *how* the formula in his sheet came to differ from the committed text. The fix does not depend on knowing.
+- **The owner's sheet was never written to.** No row was added and no cell changed; the only live access was a read of the public CSV.
+- **Nothing user-facing changed**, so the served page was not re-checked — no site file was touched this session.
+
+**Commits:**
+- `6e0d4a0` — `fix: the verdict column matched every row against itself`
+
+**Finished:** 2026-09-19T12:20:53Z
+
+**End state:**
+
+Plan **PLAN-DUNCHI-TRADER-V1 unchanged at 68 of 96 effort (70.8%), 15 of 21 rows.** No row was appended, none renumbered, and **row 5.1 is not marked done** — this was work inside its open deliverable. **Effort cleared: zero**, as expected; 5.1 closes only on the owner seeing the verdicts correct in his own sheet.
+
+**The site is untouched and working.** No site file changed this session.
+
+**Two things now wait on one trip to a computer**, bundled as DEPLOY.md step 14 Parts A and B: the `Code.gs` redeploy and the `L2` formula paste. The owner was on a phone only today, which is why they are bundled and why every step in his block is marked PHONE or COMPUTER.
 
 Both remotes level. Working tree clean.
