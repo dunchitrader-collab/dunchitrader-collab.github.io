@@ -15,16 +15,94 @@ No payment card. No other person. No other service. If you reach a step that
 seems to need something else, that is a fault in this document and it should be
 fixed, not worked around.
 
-Allow about an hour and a half.
+**How long it takes, rechecked 2026-09-19 against the repaired document:**
 
-> **This document was checked against the live site on 2026-09-18** and matches
-> what is actually deployed on that date. If you are reading it much later and a
-> screen does not look as described, trust the site and fix this document.
+- **Rebuilding — about an hour and a half**, unchanged. The repair added no work
+  to a rebuild; step 7's instructions were moved into this document rather than
+  added to, and a rebuilder was always going to follow them.
+- **Rehearsing — allow TWO hours.** The extra half hour is the rehearsal
+  preamble, substituting the throwaway names as you go, and the cleanup at the
+  end. **None of it is optional** — the cleanup least of all, since skipping it
+  leaves a second public village directory on the internet.
+
+> **⚠ THIS DOCUMENT HAS NEVER BEEN WALKED. Read that before you rely on it.**
+>
+> It was **read against the live site on 2026-09-18** and **repaired on
+> 2026-09-19** — five faults were found and fixed by reading, including three
+> that made a rehearsal impossible or dangerous. **But nobody has yet followed it
+> from step 1 to the end and built anything.** It is correct as far as reading
+> can establish, and *reading is not proving*: this project has twice had a fix
+> pass its own test and fail on the owner's screen.
+>
+> **So expect to find something.** If a screen does not look as described, or a
+> step cannot be done as written, **that is a fault in this document** — trust
+> what is in front of you, finish by working around it, and write down what you
+> changed. The first walk is the test, and its job is to produce that list.
 >
 > **You are rebuilding something that currently exists and works.** The form, the
 > spreadsheet, the website and the recommend button are all live today. This is
 > the instruction for putting them back if they are lost, or for moving them to a
 > different pair of accounts — not a description of work still to be done.
+
+---
+
+## ⚠️ FIRST — are you REBUILDING, or REHEARSING?
+
+**These are two different jobs and this document does both, but you must decide
+which before step 1.** Read this page once; it takes a minute and it is the
+difference between a safe rehearsal and editing the live village directory by
+accident.
+
+| | **REBUILDING** | **REHEARSING** |
+|---|---|---|
+| Why | The real thing is lost, or you are moving it to different accounts | You want to prove this document works, while the real site carries on |
+| What you end up with | The village directory, working | A throwaway copy you delete afterwards |
+| Names to use | The real ones, exactly as written in each step | **The throwaway names in the table below** |
+| Afterwards | Nothing to undo | **Follow "Cleaning up after a rehearsal" at the end. It matters.** |
+
+**If you are REBUILDING, ignore the rest of this page and start at "Before you
+start".** Every step is written for you already.
+
+---
+
+### If you are REHEARSING, use these names instead
+
+Everything this document tells you to create, you create under a different name,
+so that nothing you do can touch the live site. **Substitute as you go:**
+
+| Step | Where it says… | You create… |
+|---|---|---|
+| 1 | Spreadsheet named **Dunchideock Village Suppliers** | **Dunchideock REHEARSAL — delete me** |
+| 3 | Form named **Recommend a tradesperson** | **REHEARSAL form — delete me** |
+| 4 | Repository named **`dunchitrader-collab.github.io`** | **`dunchi-rehearsal`** |
+
+**The tab names inside the spreadsheet stay exactly as written** — `Published`,
+and the form's own `Form responses 1`. The scripts look for those exact words, so
+changing them would make the rehearsal fail for a reason that has nothing to do
+with this document.
+
+### The one thing that will look wrong and is not
+
+**Your rehearsal website will live at a different kind of address.**
+
+- A repository named exactly `<your-account>.github.io` is served at
+  **`https://<your-account>.github.io`** — the bare address. That is the live
+  site, and there can only be one of them per account.
+- A repository named anything else — `dunchi-rehearsal`, say — is served at
+  **`https://<your-account>.github.io/dunchi-rehearsal`**, with the repository
+  name on the end.
+
+**Both are real, working GitHub Pages websites.** The longer address is not a
+failure, a fallback or a sign that something went wrong — it is simply how GitHub
+names a site that is not the account's main one. **Wherever a step below says
+your site should appear at `https://<account>.github.io`, read it as
+`https://<account>.github.io/dunchi-rehearsal` throughout.**
+
+> **Why you cannot just reuse the real name.** GitHub allows one repository of a
+> given name per account, and `dunchitrader-collab.github.io` is taken — by the
+> live site. If you try, GitHub refuses and the rehearsal stops at step 4 with no
+> way forward. **This is the single thing that made this document unrehearsable
+> until 2026-09-19.**
 
 ---
 
@@ -152,9 +230,18 @@ Window Cleaner, Cleaner, Logs / Firewood, Oil / LPG Supplier, Pest Control.
    - **Question 4 (telephone)** — Regular expression, Matches,
      `^[\d\s\+\(\)\-]{10,20}$`, and set the custom error text to:
      *Please use numbers only, like 07825 736940 or 01392 833471.*
-   - **Question 6 (what they did)** — Length, Minimum character count, `15`,
+   - **Question 6 (what they did)** — Length, Minimum character count, **`7`**,
      and set the custom error text to:
-     *Please write a few more words — what did they do for you?*
+     *Please add a word or two more — even "Fixed gate" is enough.*
+
+> **Seven, not fifteen, and this document said fifteen until 2026-09-19.**
+> Owner's ruling D4a, in his own words: *"I think we can change the check to 7
+> characters. As they can't really put in a sentence without more than that
+> 'Fixed Gate' is about as short as you can get."* The website, the recommend
+> endpoint and the spreadsheet's own verdict column all enforce **seven**. A
+> rebuild that set fifteen here would have turned away honest short answers the
+> rest of the system accepts, and nothing would have flagged the disagreement.
+> Found while repairing this document, not by anybody hitting it.
 
 5. Click **Settings** at the top, open **Responses**, and make sure
    **Collect email addresses** is **switched off**. It forces villagers to sign
@@ -190,20 +277,37 @@ on it. Delete that test answer's row afterwards if you like.
 
 1. Sign in to GitHub as the project account.
 2. Click **+** at the top right, then **New repository**.
-3. **The name matters exactly.** It must be your username followed by
-   `.github.io` — for the current account that is:
+3. **The name.** Which name depends on which job you are doing — see the table at
+   the top of this document.
+
+   **REBUILDING — the name matters exactly.** It must be your username followed
+   by `.github.io`, which for the current account is:
 
 ```
 dunchitrader-collab.github.io
 ```
+
+   **REHEARSING — use a different name**, because the one above already exists
+   and GitHub will refuse it:
+
+```
+dunchi-rehearsal
+```
+
+   > **This is the step that used to stop a rehearsal dead**, before 2026-09-19.
+   > Your rehearsal site will then live at
+   > `https://<account>.github.io/dunchi-rehearsal` rather than at the bare
+   > address — **that is correct and expected**, and the top of this document
+   > explains why.
 
 4. Set it to **Public**. GitHub does not serve free websites from private
    repositories, so this is required rather than a choice.
 5. Tick **Add a README file** so the repository is not empty.
 6. Click **Create repository**.
 
-**You should now have:** an empty repository at
-`https://github.com/<account>/<account>.github.io`.
+**You should now have:** an empty repository — at
+`https://github.com/<account>/<account>.github.io` if rebuilding, or
+`https://github.com/<account>/dunchi-rehearsal` if rehearsing.
 
 > **Because it is public, no password, key or token may ever be put in these
 > files.** The site does not need any: it reads a public address and writes
@@ -238,14 +342,24 @@ CLAUDE.md
 README.md
 design/wireframe-dunchi-trader.html
 apps-script/Code.gs
+apps-script/Publish.gs
 apps-script/DEPLOY.md
 apps-script/SHEET-FORMULAS.md
 docs/HANDOVER-dunchi-trader.md
-docs/BUILD-PLAN-dunchi-trader.md
+docs/BUILD-PLAN-dunchi-launch.md
 docs/SOLUTION-DESIGN-dunchi-trader.md
 docs/RESTORE-dunchi-trader.md
 docs/PROCESS-seeding-and-launch-dunchi-trader.md
+docs/archive/                            <- closed plans; history, not needed to run
 ```
+
+> **Simplest rule: copy the whole repository.** The list above is what you get if
+> you do. It is here so you can check nothing was missed, not so you can pick
+> items out — see the note below.
+
+> **`apps-script/Publish.gs` is easy to overlook and step 7 will fail without
+> it.** The recommend endpoint shares a piece of it and refuses to run if it is
+> absent. It was missing from this list until 2026-09-19.
 
 > **Copy the whole repository, do not pick files out of it.** Everything the
 > site needs is plain text that is served exactly as it is written — there is
@@ -266,8 +380,10 @@ Then switch the website on:
 3. Set the branch to **main** and the folder to **/ (root)**. Click **Save**.
 4. Wait two or three minutes.
 
-**You should now have:** your site loading at `https://<account>.github.io`, with
-the heading, the search box and the three **A** text-size buttons all showing.
+**You should now have:** your site loading — at `https://<account>.github.io` if
+rebuilding, or at **`https://<account>.github.io/dunchi-rehearsal`** if
+rehearsing — with the heading, the search box and the three **A** text-size
+buttons all showing.
 
 Instead of a list of trades you will see one of these two messages, and **either
 one is correct at this point**:
@@ -324,16 +440,69 @@ This one is optional in the sense that the site works fully without it —
 villagers just cannot add their own recommendations. Everything up to here is
 the site; this is the extra.
 
-Follow **`apps-script/DEPLOY.md`** in the repository and do **its steps 1, 2 and
-3**: create the Votes tab, paste in `apps-script/Code.gs`, and deploy it as a web
-app with **Execute as: Me** and **Who has access: Anyone**. Copy the `/exec`
-address it gives you at the end.
+> ~~Follow **`apps-script/DEPLOY.md`** in the repository and do **its steps 1, 2 and 3**.~~
+> **SUPERSEDED 2026-09-19 — DO NOT DO THAT, and the reason matters.**
+> `apps-script/DEPLOY.md` **opens the LIVE spreadsheet by its address** in its own
+> step 1, and it now opens with *"START AT STEP 14"* because it was rewritten as
+> the repair guide for the live site. Following it from here would either edit
+> the real village directory or send you to a step that says to skip the steps
+> you were sent for. **The instructions you need are written out below instead**,
+> so this document no longer depends on it. `DEPLOY.md` is untouched and remains
+> correct for its own job — repairing the live site.
 
-> **Paste in `Publish.gs` as well, and do it first.** Since 2026-09-19 the
-> recommend endpoint shares a piece of the automatic publisher rather than
-> keeping its own copy, so `Code.gs` will refuse to run if `Publish.gs` is not in
-> the same Apps Script project. That is DEPLOY.md Part 2 step 6, and in a rebuild
-> it belongs before this step rather than after it.
+**Everything below works on the spreadsheet YOU created in step 1** — the one you
+have open. Nothing here names any other spreadsheet.
+
+### 7a — Open the script editor on your own spreadsheet
+
+1. Open **your** spreadsheet from step 1 (rehearsing: *Dunchideock REHEARSAL —
+   delete me*).
+2. Menu: **Extensions → Apps Script**. A new tab opens, titled with your
+   spreadsheet's name. **Check that title** — it is how you know you are editing
+   a script attached to your sheet and not to somebody else's.
+
+### 7b — Paste in the publisher FIRST
+
+**Order matters here.** `Code.gs` shares a piece of `Publish.gs` and refuses to
+run without it, so the publisher goes in first.
+
+3. In the file list on the left, click the default file (usually `Code.gs`).
+   Select everything in it and delete it.
+4. Rename that file to **`Publish.gs`** — click the three dots beside it, choose
+   **Rename**.
+5. Open `apps-script/Publish.gs` from the repository, click **Copy raw file**,
+   paste it in, and press **Ctrl+S**.
+
+### 7c — Add the endpoint
+
+6. Click **+** beside *Files*, choose **Script**, and name it **`Code`** (Apps
+   Script adds the `.gs` itself).
+7. Open `apps-script/Code.gs` from the repository, **Copy raw file**, paste it
+   in, **Ctrl+S**.
+8. **Before deploying, prove the right file is open.** Press **Ctrl+F** and
+   search for `doPost`. It must be found. If it is not, you are looking at
+   `Publish.gs` — click `Code.gs` in the list first.
+
+### 7d — Switch on automatic publishing
+
+9. Still in the script editor, click the clock icon (**Triggers**) in the left
+   margin, then **Add Trigger**.
+10. Choose function **`onFormSubmitPublish`**, event source **From
+    spreadsheet**, event type **On form submit**. Save, and grant the permissions
+    Google asks for.
+
+### 7e — Deploy the endpoint
+
+11. **Deploy → New deployment**, choose type **Web app**.
+12. Set **Execute as: Me** and **Who has access: Anyone**. Click **Deploy** and
+    grant permissions.
+13. **Copy the `/exec` address** it shows you at the end.
+
+> **On a REBUILD this is a New deployment, and that is correct.** The warning
+> elsewhere in this project about never choosing "New deployment" applies to
+> *updating an existing* endpoint, where a new one would issue a different
+> address and silently break the live site. Here there is no existing deployment
+> to update — you are creating the first one.
 
 > **Then check the address before you go any further.** Open the `/exec` address
 > in a browser. A working deployment answers with one plain sentence: *"This
@@ -344,17 +513,21 @@ address it gives you at the end.
 > 2026-09-18 and went undiagnosed for a day**, because nothing else shows it.
 > See DEPLOY.md step 14.
 
-> **Do not paste that address into `app.js` yourself.** `DEPLOY.md` step 4
-> explains why in full, and it matters: the site normally lives in **two** GitHub
-> repositories kept identical, and hand-editing one makes them disagree so the
-> next ordinary update silently wipes the change out.
->
-> **In a from-scratch rebuild you may well have only one repository**, and in
-> that case editing `app.js` directly is fine — there is nothing for it to
-> disagree with. Open `app.js`, find the line beginning `var VOTES_ENDPOINT =`,
-> and put your new `/exec` address between the quotation marks, exactly as you
-> did for `var FEED` in step 6. If you have restored both repositories, make the
-> change in one and copy the same file to the other so they stay identical.
+### 7f — Tell the website the address
+
+14. In your repository, open `app.js` and click the pencil icon.
+15. Find the line beginning `var VOTES_ENDPOINT =` and put your new `/exec`
+    address between the quotation marks, exactly as you did for `var FEED` in
+    step 6. Keep the quotation marks and the semicolon.
+16. **Commit changes.**
+
+> **One caution that applies to the LIVE site and not to a rebuild or a
+> rehearsal.** The live site is kept in **two** GitHub repositories that must
+> stay identical, so hand-editing `app.js` in one of them makes them disagree and
+> the next ordinary update silently wipes the change out. **A rebuild or a
+> rehearsal has only one repository**, so editing it directly is correct and
+> there is nothing for it to disagree with. If you ever restore both, change one
+> and copy the same file to the other.
 
 **You should now have:** the villager's words in column **K** and their name in
 column **L** of that tradesperson's own row on the **Published** tab, each time
@@ -389,18 +562,38 @@ between, and the names stay in the same order.
 > and look at **that person's row on the Published tab, columns K and L**. A
 > thank-you on the page tells you nothing on its own.
 >
-> If nothing appears, the checks are in `DEPLOY.md` **step 14** — and the very
-> first of them takes ten seconds: open the `/exec` address in a browser and see
-> whether you get the plain sentence or a Google error page.
+> If nothing appears, the first check takes ten seconds: **open the `/exec`
+> address in a browser** and see whether you get the plain sentence or a Google
+> error page. An error page means the deployment is not running `Code.gs` — go
+> back to 7c step 8 and confirm `doPost` is in the file you deployed.
+> (`DEPLOY.md` step 14 covers the same failure on the live site, and is worth
+> reading if you are repairing rather than rebuilding.)
 
 ---
 
 ## Step 8 — The duplicate checker
 
-Also optional, and it saves a lot of squinting. Follow
-**`apps-script/SHEET-FORMULAS.md`** to add four columns to the Form responses
-tab. They tell you, in plain English, whether each new recommendation is a
-person you already have.
+Also optional, and it saves a lot of squinting. It adds columns that tell you, in
+plain English, whether each new recommendation is somebody you already have.
+
+**Follow `apps-script/SHEET-FORMULAS.md` in the repository — but read this first:**
+
+> **Ignore its opening two lines, which name a spreadsheet address.** That
+> address is the **LIVE** village directory. It is correct for that document's
+> own job — the owner repairing the real sheet — and wrong for you.
+> **Work in the spreadsheet YOU created in step 1**, the one you have open.
+> Everything else in that document is about columns and formulas and applies
+> unchanged, because it names columns by letter and never by spreadsheet.
+
+**Do its check first.** That document opens with a section headed *"FIRST — check
+your sheet matches this layout"*, listing which question sits in which column. If
+you built your form from step 3 above, it will match. **If it does not, stop and
+fix the mismatch rather than editing the formulas** — a formula reading the wrong
+column fills the sheet with confident nonsense and nothing errors.
+
+**You should now have:** a `verdict` column on the Form responses tab reading
+`NEW`, `ALREADY ON SITE — T0xx`, `SAME NAME, DIFFERENT NUMBER` or `CHECK THIS`
+against each response.
 
 ---
 
@@ -423,6 +616,73 @@ Check each of these:
 
 If every one of those worked using only the two logins, the rebuild is
 complete and the site is genuinely inheritable.
+
+---
+
+## Cleaning up after a rehearsal
+
+**Skip this and you have left a second village directory on the public internet.**
+Not a draft, not a private copy — a real website, at a real address, that a search
+engine can find and a villager can open. It will show whatever test people you
+typed in, and it will sit there indefinitely because nothing expires.
+
+**Two of the four things you made are PUBLIC. Do those first.**
+
+### 1. Stop publishing the throwaway CSV — PUBLIC
+
+1. Open your **rehearsal spreadsheet**.
+2. **File → Share → Publish to web**.
+3. Click **Stop publishing**, and confirm.
+
+**Why first:** that address serves your sheet's contents to anybody who has it,
+signed in or not. It keeps working after the spreadsheet is out of your Drive's
+way but before it is truly deleted.
+
+> **Make certain you are in the REHEARSAL spreadsheet.** Clicking *Stop
+> publishing* on the live one takes the real village directory offline
+> immediately. Check the name in the top-left corner before you click.
+
+### 2. Delete the throwaway repository — PUBLIC
+
+1. Go to the **`dunchi-rehearsal`** repository on GitHub.
+2. **Settings**, scroll to the bottom, **Delete this repository**.
+3. Type the name to confirm.
+
+**Why:** while it exists, GitHub serves it at
+`https://<your-account>.github.io/dunchi-rehearsal`. Deleting the repository
+takes the website down with it.
+
+> **Check the name twice.** Deleting `dunchitrader-collab.github.io` deletes the
+> live village directory and its entire history. The one you want has the word
+> **rehearsal** in it.
+
+### 3. Delete the throwaway form — private, but it collects answers
+
+1. Open your **rehearsal form** in Google Forms.
+2. Three dots, top right → **Move to bin**.
+
+**Why:** the form link still works while the form exists, and anybody you sent it
+to during the rehearsal can keep submitting. Nobody but you sees the answers, but
+they keep arriving.
+
+### 4. Delete the throwaway spreadsheet — private
+
+1. In **Google Drive**, find **Dunchideock REHEARSAL — delete me**.
+2. Right-click → **Move to bin**.
+
+**Why last:** deleting it does not stop the published address on its own, which
+is why step 1 comes first. This also removes the Apps Script project attached to
+it, and the web app deployment with it.
+
+### Check you are finished
+
+- [ ] The rehearsal CSV address, pasted into a browser, no longer downloads
+      anything.
+- [ ] `https://<your-account>.github.io/dunchi-rehearsal` shows GitHub's
+      **404** page.
+- [ ] **`https://<your-account>.github.io` — the LIVE site — still loads
+      normally.** Check this one last and check it properly. It is the line that
+      catches a cleanup done on the wrong copy.
 
 ---
 
@@ -452,11 +712,12 @@ Tick each line when you have seen the thing it names.
 1. [ ] **Spreadsheet** — the `Published` tab with one row of headings. (A second `Votes` tab exists in the live sheet but nothing reads or writes it any more — see step 1.)
 2. [ ] **Publish** — the copied address, pasted into a browser, downloads a file containing your eight headings.
 3. [ ] **Form** — opens in a private window without asking you to sign in; a test answer lands on a new tab in the spreadsheet.
-4. [ ] **Repository** — exists at `https://github.com/<account>/<account>.github.io` and is **Public**.
-5. [ ] **Files and Pages** — the site loads at `https://<account>.github.io` showing the heading, search box and three **A** buttons, and says either *"The list will not load at the moment"* or *"The list is being updated"*.
+4. [ ] **Repository** — exists and is **Public**. Rebuilding: `<account>.github.io`. Rehearsing: `dunchi-rehearsal`.
+5. [ ] **Files and Pages** — the site loads showing the heading, search box and three **A** buttons, and says either *"The list will not load at the moment"* or *"The list is being updated"*. Rebuilding: at `https://<account>.github.io`. **Rehearsing: at `https://<account>.github.io/dunchi-rehearsal` — the longer address is correct, not a failure.**
 6. [ ] **Point at the list** — the site now says *"Nobody on the list just yet"*; after adding one test person and waiting five minutes, that person appears under their trade with a green **CALL** button.
 7. [ ] **Recommend button** (optional) — the `/exec` address opens in a browser showing one plain sentence rather than a Google error page; then a recommendation made on a phone appears in **columns K and L of that person's row on the Published tab**. Check the spreadsheet, not the thank-you message.
 8. [ ] **Duplicate checker** (optional) — the four extra columns on the Form responses tab show a verdict in plain English.
 9. [ ] **Call button** — tapping **CALL** on a phone dials the right number.
 10. [ ] **Removal** — setting somebody's `status` to anything other than `active` takes them off the site within five minutes.
 11. [ ] **Two logins only** — you reached the end without needing any other account, password or payment.
+12. [ ] **REHEARSAL ONLY — cleaned up.** The rehearsal CSV address downloads nothing, `https://<account>.github.io/dunchi-rehearsal` shows a 404, the throwaway form and spreadsheet are in the bin, **and the LIVE site at `https://<account>.github.io` still loads normally.**
