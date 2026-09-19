@@ -676,7 +676,15 @@
 
     if (l.todo) c.appendChild(el("p","todo", l.todo));
 
-    var recs = l.recs.concat(VOTES[l.name] || []);
+    /* ONLY what has reached the village list. Owner's ruling D5b-6G7f-19092026,
+       build plan row 4.8. This was `l.recs.concat(VOTES[l.name] || [])`, which
+       drew a villager's own words onto the card the instant they pressed the
+       button. On the live site the endpoint's reply is opaque, so the page
+       cannot tell a successful write from a failure — and a villager left
+       looking at their own words on the card believes the whole village can see
+       them. A message is a claim; a card looks like data. Mirrored in app.js —
+       change both or neither. */
+    var recs = l.recs;
 
     c.appendChild(el("p","tally", recs.length === 1
       ? "1 villager recommends this trader"

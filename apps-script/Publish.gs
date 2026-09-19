@@ -656,20 +656,75 @@ function appendRecommendation(pub, values, rowIdx, words, by) {
     if (blocks[i].trim() === words.trim()) return false;
   }
 
-  var newWords = oldWords ? oldWords + REC_SEP + words : words;
+  /* The words are sanitised for the same reason and in the same way: a blank
+     line inside them would split one recommendation into two entries in K
+     while L gained only one, shifting every name the other way. */
+  var safeWords = sanitise(words);
+  var newWords = oldWords ? oldWords + REC_SEP + safeWords : safeWords;
 
-  // Keep the two columns in step. If the words cell already held blocks with
-  // no matching names — a row the owner typed by hand — pad the names so the
-  // nth name still lines up with the nth recommendation.
+  /* Keep the two columns in step. If the words cell already held blocks with
+     no matching names — a row the owner typed by hand — pad the names so the
+     nth name still lines up with the nth recommendation.
+
+     EVERY LINE WRITTEN HERE MUST BE NON-EMPTY, and that is the whole of the
+     2026-09-19 misattribution fix (build plan row 4.9).
+
+     The columns pair BY LINE POSITION, and the site's reader drops empty
+     entries when it splits them — `splitRecs` in app.js filters out anything
+     that trims to nothing. So an empty name line does not read as "no name for
+     this one"; it VANISHES, and every later name slides up onto somebody
+     else's words. Measured: with words for three people and a blank first
+     name, the site showed Helen credited with the first villager's sentence
+     and Bob with the second's. Neither had written what they were attributed.
+
+     Nothing flags it. The card looks entirely normal.
+
+     So a blank name becomes ANON here rather than an empty string. `sanitise`
+     additionally collapses any blank line INSIDE a value, because a blank line
+     is the separator and a value containing one would forge an extra entry —
+     reachable today by a villager pressing Enter twice in the site's textarea,
+     which nothing strips. */
   var byBlocks = oldBy ? oldBy.split(REC_SEP) : [];
   while (byBlocks.length < blocks.length) byBlocks.push(ANON);
-  byBlocks.push(by);
+  byBlocks.push(sanitise(by) || ANON);
   var newBy = byBlocks.join(REC_SEP);
+
+  /* THE INVARIANT, checked before anything is written rather than promised in
+     a comment: K and L carry the same number of lines. If they ever would not,
+     this refuses to write at all and says so in the log — a missing
+     recommendation the owner can chase beats a recommendation silently
+     attributed to the wrong neighbour. */
+  if (countBlocks(newWords) !== countBlocks(newBy)) {
+    Logger.log('refusing to write misaligned recommendation on row ' + (rowIdx + 1) +
+               ': ' + countBlocks(newWords) + ' words vs ' + countBlocks(newBy) + ' names');
+    return false;
+  }
 
   // setValue writes a plain value, exactly as appendRow does.
   pub.getRange(rowIdx + 1, COL_WORDS + 1).setValue(newWords);
   pub.getRange(rowIdx + 1, COL_BY + 1).setValue(newBy);
   return true;
+}
+
+/**
+ * Make a value safe to store as ONE line-position entry.
+ *
+ * Collapses any run of blank lines to a single newline, so the value cannot
+ * contain the separator and therefore cannot forge an extra entry. Trims the
+ * ends. A value that is nothing but whitespace becomes the empty string, and
+ * the caller substitutes ANON.
+ */
+function sanitise(v) {
+  var s = String(v === null || v === undefined ? '' : v);
+  s = s.replace(/\r\n/g, '\n').replace(/\n\s*\n+/g, '\n');
+  return s.trim();
+}
+
+/** How many line-position entries a cell holds. Empty cell is zero. */
+function countBlocks(v) {
+  var s = String(v === null || v === undefined ? '' : v).trim();
+  if (s === '') return 0;
+  return s.split(REC_SEP).length;
 }
 
 /** Every normalised phone already on Published. */

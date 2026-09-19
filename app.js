@@ -52,7 +52,10 @@
   var state = "loading";   // loading | ready | empty | unreachable | badfeed
   var trade = null;
   var committed = false;   // true once a suggestion is chosen or Enter pressed
-  var VOTES = {};          // recommendations added this visit, keyed by trader id
+  /* Recommendations added during this visit, keyed by trader id. Kept ONLY so
+     a double-tap is not sent twice; it is deliberately NOT drawn on the card
+     any more — see the card() comment and owner's ruling D5b. */
+  var VOTES = {};
   var DONE  = {};          // traders this visitor has already recommended
 
   /* ---- text size ----
@@ -164,7 +167,7 @@
          share one cell, separated by a blank line, and the nth name in
          `recommended_by` belongs to the nth block in `recommendations`. */
       var said  = splitRecs(cell("recommendations"));
-      var byWho = splitRecs(cell("recommended_by"));
+      var byWho = splitNames(cell("recommended_by"));
       var recs  = said.map(function(why, n){
         return { why: why, by: byWho[n] || "a villager" };
       });
@@ -184,13 +187,40 @@
 
   /* One entry per person per trade, so a two-trade person appears under both
      headings. The person themselves is still counted once. */
-  /* Several recommendations live in one spreadsheet cell, separated by a
-     blank line. Split them back out, dropping anything empty so a trailing
-     blank line cannot produce a phantom recommendation. */
+  /* Several recommendations live in one spreadsheet cell, separated by a blank
+     line, and the words and the names pair BY POSITION. That gives the two
+     columns two different jobs, and conflating them was a misattribution bug
+     (build plan row 4.9).
+
+     `splitRecs` — for the WORDS. How many recommendations exist is decided
+     here, so a trailing blank line must not invent a phantom one. Words are
+     never legitimately blank: the panel and the sheet both enforce a seven
+     character minimum, so dropping empties is safe and is what this is for.
+
+     `splitNames` — for the NAMES. An empty entry is MEANINGFUL: it is a
+     villager who did not give a name, and it is holding that recommendation's
+     place. Dropping it slides every later name UP onto somebody else's words.
+
+     Measured 2026-09-19 on three recommendations whose first name was blank:
+     the old shared function credited Helen with the first villager's sentence
+     and Bob with the second's. Neither had written what they were shown as
+     saying, and nothing on the card looked wrong. The owner's live sheet has
+     at least five rows with words and no name, so this is ordinary data.
+
+     The writer no longer emits an empty name at all (`sanitise` in Publish.gs
+     turns one into "a villager"), so these are two independent guards — which
+     matters, because the rows already in his sheet were written by the old
+     code. */
   function splitRecs(v){
     if (!v) return [];
     return String(v).split(/\n\s*\n/).map(function(s){ return s.trim(); })
                     .filter(function(s){ return s.length; });
+  }
+
+  /* NEVER drops an entry, and never reorders one. Position is the meaning. */
+  function splitNames(v){
+    if (!v) return [];
+    return String(v).split(/\n\s*\n/).map(function(s){ return s.trim(); });
   }
 
   /* Trades are grouped IGNORING CAPITALS, showing the first spelling met.
@@ -243,10 +273,31 @@
     a.appendChild(el("span","num", l.phone));
     c.appendChild(a);
 
-    /* The villagers' own words. Those from the sheet come first — everyone
-       sees those — followed by anything this visitor has added in this visit,
-       which only they can see until it reaches the sheet. */
-    var recs = (l.recs || []).concat(VOTES[l.id] || []);
+    /* The villagers' own words, AND ONLY THOSE THAT HAVE REACHED THE VILLAGE
+       LIST. Owner's ruling D5b-6G7f-19092026, build plan row 4.8.
+
+       This used to be `(l.recs || []).concat(VOTES[l.id] || [])` — the sheet's
+       recommendations plus whatever this visitor had added during the visit,
+       drawn straight onto the card the moment they pressed the button.
+
+       Why that had to go. The endpoint's reply is OPAQUE by design and by
+       measurement (solution design §6.2): the page cannot tell a successful
+       write from a total failure. So on a failure the villager was left
+       looking at their own words, on the card, under their own name,
+       indistinguishable from a recommendation the whole village could see.
+       They would never learn otherwise. **A message is a claim the reader can
+       weigh; a card looks like data.** The screen also contradicted itself —
+       the notice says it takes about five minutes to appear, while the page
+       had already shown it.
+
+       Measured 2026-09-19: the owner submitted a recommendation and watched it
+       appear on the card while the Published tab still held nothing.
+
+       So the card now shows exactly what came back through the published feed
+       and nothing else. The thank-you and the five-minute notice stay; they
+       are honest, because they describe what was SENT rather than what is
+       stored. */
+    var recs = l.recs || [];
 
     if (recs.length){
       c.appendChild(el("p","tally", recs.length === 1
