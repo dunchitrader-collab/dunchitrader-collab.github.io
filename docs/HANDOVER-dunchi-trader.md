@@ -4723,7 +4723,7 @@ Both remotes level. Working tree clean.
 - **V1's cross-repo check now reports the service knows no such plan** — expected, since the plan is archived, and advisory only.
 
 **Commits:**
-- `{CLOSE}` — `plan: close PLAN-DUNCHI-TRADER-V1 at a trimmed 100%; create PLAN-DUNCHI-LAUNCH-2026-09-19`
+- `4cea42a` — `plan: close PLAN-DUNCHI-TRADER-V1 at a trimmed 100%; create PLAN-DUNCHI-LAUNCH-2026-09-19`
 
 **Finished:** 2026-09-19T17:19:52Z
 
