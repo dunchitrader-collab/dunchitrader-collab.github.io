@@ -5594,7 +5594,7 @@ Both remotes level. Working tree clean.
 - **Nothing was written to the Owner's sheet**, and no plan row changed.
 
 **Commits:**
-- `{SHA}` — the close-down documentation
+- `a163dc4` — the close-down documentation
 
 **Finished:** 2026-09-19T21:42:52Z
 
