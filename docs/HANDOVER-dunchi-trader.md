@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-19T16:04:42Z
+last-updated: 2026-09-19T16:07:57Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-19T16:04:42Z** ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-19T16:07:57Z** ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -833,6 +833,35 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 # LAYER 4 — OUTSTANDING WORK
 
 ## The queue as it stands after the 2026-09-19 session
+
+**[OUTSTANDING] 2026-09-19 | HIGH | Blocking: no — but row 6.1 CANNOT be walked safely until it is settled | READ-ONLY FINDING, the Operator's call**
+**`docs/RESTORE-dunchi-trader.md` is NOT safe to rehearse as a parallel throwaway copy, and three of its steps would touch live state if followed literally.** Established 2026-09-19 by reading the document end to end; nothing was changed.
+
+**The three collisions:**
+
+| Step | What it says | What happens if followed literally |
+|---|---|---|
+| **4** | Create a GitHub repository named **`dunchitrader-collab.github.io`** — *"The name matters exactly"* | **That is the live site's repository.** GitHub refuses a duplicate name, so the walk **stops dead at step 4**. He cannot proceed without inventing a name the document does not offer. |
+| **7** | *"Follow `apps-script/DEPLOY.md` and do its steps 1, 2 and 3"* | **`DEPLOY.md` step 1 opens the LIVE spreadsheet by its hard-coded document id** and adds a tab to it. A walker doing this is editing the live sheet, not a copy. |
+| **8** | *"Follow `apps-script/SHEET-FORMULAS.md`"* | **Same fault** — that document opens the live spreadsheet by the same hard-coded id in its second line. |
+
+**A fourth problem, not a collision but a blocker:** `DEPLOY.md` now opens with **"START AT STEP 14"**, because it was rewritten as the owner's live repair guide. A rebuilder sent to *"its steps 1, 2 and 3"* meets an instruction to skip them.
+
+**Steps 1, 2, 3, 5 and 6 are clean** — they create new artifacts (a new spreadsheet, a new publish address, a new form) and tread on nothing.
+
+**It needs nothing beyond the two logins** — no token, no local tool, no machine-specific path. Step 5 offers a `git clone` route but gives a browser alternative, so a walker with no git still gets through.
+
+**Size: 8 top-level steps, 45 numbered sub-steps.** The document says **"Allow about an hour and a half"** — **not the half hour the walk was pitched at.**
+
+**There is NO cleanup section.** The document ends at verification and general notes, and never mentions that a rehearsal leaves a second spreadsheet, a second form with its own responses tab, a second published CSV address, a second GitHub repository serving a second public website, and possibly a second Apps Script deployment — **all live, all indexable, all under the same two accounts.** A second public village directory on the internet is the part that matters.
+
+**What would make it safe**, stated for the Operator to rule on rather than done here:
+
+1. **A rehearsal preamble** naming throwaway names for every artifact — including a repository name that is NOT `<account>.github.io`, with a note that such a repo serves at `<account>.github.io/<repo>` rather than the bare domain.
+2. **Steps 7 and 8 stop delegating to documents that hard-code the live sheet** — either inline what a rebuilder needs, or tell them to substitute their own spreadsheet's address.
+3. **A cleanup section** listing everything to delete afterwards, with *"stop publishing the throwaway CSV"* and *"delete the throwaway repository"* called out, since those two are public.
+
+**The Operator's call: fix the document first and then walk it, or walk it knowing steps 4, 7 and 8 must be adapted on the fly.** Row **6.1 is untouched** and stays `new` either way — deliberately, because which of those two he chooses changes what the row is asking for.
 
 **[OUTSTANDING] 2026-09-19 | HIGH | Blocking: YES — GATES LAUNCH | ⚠ OPERATOR ONLY — his sheet, no script may write there**
 **Hide the test people and the two duplicates on Published. Owner's ruling D7-6G7f-19092026: set `status` to `hidden`, NEVER delete.**
@@ -4481,7 +4510,7 @@ Both remotes level. Working tree clean.
 
 **What was done:**
 
-**PART ONE, committed first and separately at `{PART1}`.** Row 4.10 closed on his sighting, his word *"4.10. pass"* recorded verbatim. **Step 4 is now complete** — all ten of its rows are `done`.
+**PART ONE, committed first and separately at `08a7867`.** Row 4.10 closed on his sighting, his word *"4.10. pass"* recorded verbatim. **Step 4 is now complete** — all ten of its rows are `done`.
 
 **D7 recorded in Layer 5** with the reason stated as the data-integrity reason it is, not a tidiness preference: ids come from the highest already present, so deleting the highest frees it and a later submission inherits somebody else's recommendations. **The `07999222333` inference is recorded AS an inference**, with the instruction to confirm by eye standing, because if it is wrong the cost is a real tradesperson taken off the village list.
 
@@ -4491,7 +4520,23 @@ Both remotes level. Working tree clean.
 
 **A residual risk recorded in Layer 3 and deliberately not acted on.** While the two men shared a number, `rowIndexForPhone` returned the first match and stopped, so a recommendation for either attached to whichever row came first — and changing the number fixes the future, not the past. The screenshot suggests nothing is misplaced, and that belief is recorded at exactly the strength it has: **Claude.ai reading a screenshot, not a measurement.** The entry is a check with an expected result, plus what to do if it fails.
 
-**PART TWO is read-only and is reported in the session summary rather than as a change.** `docs/RESTORE-dunchi-trader.md` was read end to end against the four questions. The finding and its consequence for row 6.1 are the Operator's call, so nothing in the plan or the runbook was altered.
+**PART TWO — THE RUNBOOK IS NOT SAFE TO REHEARSE AS WRITTEN.** Read end to end against the four questions; nothing was changed, and row 6.1 is untouched.
+
+**Three steps would touch live state if followed literally**, and the first stops the walk outright:
+
+- **Step 4** tells the walker to create a GitHub repository named **`dunchitrader-collab.github.io`** and says *"The name matters exactly"*. **That is the live site's repository.** GitHub refuses a duplicate name, so **the walk stops dead at step 4** — he cannot continue without inventing a name the document does not offer, and the document gives no hint that the name should differ for a rehearsal.
+- **Step 7** delegates to `apps-script/DEPLOY.md` *"steps 1, 2 and 3"* — and **DEPLOY.md step 1 opens the LIVE spreadsheet by its hard-coded document id** and adds a tab to it. A walker following that is editing the live sheet.
+- **Step 8** delegates to `apps-script/SHEET-FORMULAS.md`, which **hard-codes the same live spreadsheet id in its second line**.
+
+**A fourth problem, not a collision but a blocker:** `DEPLOY.md` now opens with **"START AT STEP 14"**, because it was rewritten this week as the owner's live repair guide. A rebuilder sent to *"its steps 1, 2 and 3"* is met by an instruction to skip them.
+
+**Steps 1, 2, 3, 5 and 6 are clean** — they create new artifacts and tread on nothing. **Nothing beyond the two logins is needed**: no token, no local tool, no machine-specific path, and step 5's `git clone` route has a browser alternative.
+
+**Size: 8 top-level steps, 45 numbered sub-steps, and the document itself says "Allow about an hour and a half"** — not the half hour the walk was pitched at.
+
+**There is NO cleanup section**, and that is the omission with the longest tail. A rehearsal leaves a second spreadsheet, a second form, a second published CSV address, and **a second public GitHub Pages website** — all live, all indexable, all under the same two accounts. The document never mentions removing any of it.
+
+**Not rewritten, per the instruction.** What would make it safe is recorded in Layer 4 as three changes for the Operator to rule on, and **row 6.1 stays `new`** because his choice — fix the document first, or walk it adapting steps 4, 7 and 8 on the fly — changes what that row is asking for.
 
 **Testing performed:**
 
@@ -4519,7 +4564,7 @@ Both remotes level. Working tree clean.
 - **The runbook was assessed by reading, not by walking it.** Whether a step behaves as written can only be established by doing it, which is row 6.1 itself.
 
 **Commits:**
-- `{PART1}` — `plan: row 4.10 closed on the Owner's sighting; D7 hide-never-delete recorded`
+- `08a7867` — `plan: row 4.10 closed on the Owner's sighting; D7 hide-never-delete recorded`
 
 **Finished:** 2026-09-19T16:05:21Z
 
