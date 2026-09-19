@@ -5084,7 +5084,7 @@ Both remotes level. Working tree clean.
 - **`T017` and `T020` were not corrected**, per the read-only instruction.
 
 **Commits:**
-- `{SHA}` — `docs: diagnose "the data has failed" - the site is correct, the list is nearly empty`
+- `9dfbe8b` — `docs: diagnose "the data has failed" - the site is correct, the list is nearly empty`
 
 **Finished:** 2026-09-19T20:24:03Z
 
