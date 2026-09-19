@@ -496,10 +496,30 @@ each have made a tile of their own.
 
 ---
 
-## Step 14 — The recommend button, fixed and repointed
+## Step 14 — ONE TRIP TO THE LAPTOP: the recommend button AND the verdict column
 
-**2026-09-19. Do this one before any of the others — it is the first thing on
-your list, and it is the only reason the recommend button is dead.**
+**2026-09-19. Do this one before any of the others.** It fixes **two separate
+faults** and they are deliberately bundled into a single sitting, because both
+need a computer and neither can be done from a phone.
+
+**The two faults, and they are unrelated to each other:**
+
+| | What is wrong | Where it is fixed |
+|---|---|---|
+| **A** | The recommend button does nothing. The address is alive but the script behind it is not `Code.gs`. | Part A below — paste `Code.gs`, redeploy |
+| **B** | The `verdict` column matches every row against **itself**, so a stranger reads `ALREADY ON SITE — row 15` on row 15. | Part B below — paste one new formula |
+
+**You confirmed fault A yourself on 2026-09-19**, on your phone, by opening the
+`/exec` address and getting *"Script function not found: doGet"*. That matched
+what had already been measured from the server, so the cause is not in doubt.
+
+**Do Part A first, then Part B.** They do not depend on each other, but A is the
+one that leaves the site short of a working feature, and B is a five-second
+paste once you are already in the spreadsheet.
+
+---
+
+# Part A — the recommend button
 
 ### What is actually wrong, and it is not what anybody guessed
 
@@ -618,3 +638,109 @@ Then the real test:
 > page is not allowed to open it. That was measured, not assumed. The spreadsheet
 > is where you look. Step 6 just confirms the five-minute republishing is doing
 > its job as well.
+
+---
+
+# Part B — the verdict column
+
+**Still at the laptop. This is one paste and takes about thirty seconds.**
+
+### What is wrong
+
+You typed the two test rows into Form Responses and both came back saying
+somebody was already on the site when neither was:
+
+- row **15** — `Test Nine`, `07999 888777` — read **`ALREADY ON SITE — row 15`**
+- row **16** — `Bob Samwell`, `07999 111222` — read **`ALREADY ON SITE — row 16`**
+
+**Each row named its own row number.** That is the giveaway: the formula was
+comparing each row against the Form Responses tab itself instead of against the
+Published list, so every row found itself and reported where it found it. The
+number looked plausible, which is why nothing seemed obviously broken.
+
+**The first thing you saw was not a fault.** With the experience box left blank
+both rows said `CHECK THIS`, and that is the rule working correctly — an empty
+box is zero characters, which is under seven. **The instruction to leave it
+blank was wrong**, and it sent you looking at the wrong thing first. Always put
+a real sentence in the experience box when testing.
+
+### Putting it right
+
+1. Open the spreadsheet and go to the **Form responses** tab.
+2. Click cell **`L2`** — the top of the `verdict` column, the row directly under
+   the heading.
+3. Select everything in it and delete it.
+4. Paste this in, and press **Enter**:
+
+```
+=ARRAYFORMULA(LET(digits, REGEXREPLACE(TO_TEXT($F$2:$F),"\D",""),pk, IF(digits="","",IF(LEFT(digits,4)="0044","0"&MID(digits,5,50),IF(LEFT(digits,2)="44","0"&MID(digits,3,50),digits))),nk, LOWER(REGEXREPLACE(TO_TEXT($D$2:$D)&TO_TEXT($E$2:$E),"[^A-Za-z0-9]","")),flag, (REGEXMATCH(LOWER(TRIM(TO_TEXT($E$2:$E))),"^not ?known$"))+(REGEXMATCH(LOWER(TRIM(TO_TEXT($G$2:$G))),"^not ?known$"))+(LEN(TRIM(TO_TEXT($H$2:$H)))<7),hitP, IF(pk="",0,COUNTIF(Published!$I$2:$I$500,pk)),hitN, IF(nk="",0,COUNTIF(Published!$J$2:$J$500,nk)),IF($F$2:$F="","",IF(flag,"CHECK THIS",IF(pk="","CHECK THIS",IF(hitP>0,"ALREADY ON SITE — "&IFERROR(INDEX(Published!$A$2:$A$500,MATCH(pk,Published!$I$2:$I$500,0)),"?"),IF(hitN>0,"SAME NAME, DIFFERENT NUMBER","NEW")))))))
+```
+
+**That is the whole of Part B.** You do not paste it down the column; it fills
+the column itself. Columns `J` and `K` stay exactly as they are.
+
+> **If it says `#NAME?`** the `LET` word was not recognised — that happens only
+> on very old spreadsheets. Say so and a longer version without `LET` will be
+> sent across; it does the same thing.
+
+### Checking Part B worked — and this you CAN do from your phone afterwards
+
+Look down column **L**. Three things should now be true:
+
+1. **No verdict anywhere says "row" followed by a number.** They now name the
+   person's **ID** instead — `ALREADY ON SITE — T014`. If you still see a row
+   number, the paste did not take.
+2. **Row 15 should read `ALREADY ON SITE — T014`** and **row 16 should read
+   `ALREADY ON SITE — T015`**.
+
+> **This is not the same expectation you were given before, and the reason is
+> worth knowing.** Those two test rows have **already published themselves** —
+> they are now `T014 Test Nine` and `T015 Bob Samwell` on your Published tab,
+> added automatically by the publisher when you typed them in. So
+> `ALREADY ON SITE` is the *correct* answer for both of them now. They can no
+> longer produce `NEW`, because they are genuinely on the list.
+
+3. **`SAME NAME, DIFFERENT NUMBER` has still not been seen**, and neither test
+   row can produce it. To see it, type **one more row** into Form Responses
+   columns C to H:
+
+| C trade | D first | E last | F phone | G business | H experience |
+|---|---|---|---|---|---|
+| Plumber | Duckers | Plumber | `07700 900123` | *(blank)* | Came out on a Sunday evening |
+
+**Expected: `SAME NAME, DIFFERENT NUMBER`.** It clashes with **`T001 Duckers
+Plumber`**, who is on the site on `07825 736940` — same name, different number,
+which is exactly the case. The number `07700 900123` was checked against your
+live list and belongs to nobody.
+
+> **This row will publish itself as a new person**, because that is what the
+> publisher does with a number it has not seen. Once you have read the verdict,
+> set that person's `status` to `hidden` on the Published tab so they do not
+> appear on the site. Do not delete the row — hiding keeps the ID retired.
+
+### The four verdicts — and an honest note about `NEW`
+
+Three of the four you can see today:
+
+| Verdict | Which row shows it |
+|---|---|
+| `CHECK THIS` | the two test rows with the experience box blank, 2026-09-19 |
+| `ALREADY ON SITE — T0xx` | rows 15 and 16, once Part B is pasted |
+| `SAME NAME, DIFFERENT NUMBER` | the `Duckers Plumber` / `07700 900123` row above |
+
+**`NEW` is a different matter, and it is worth understanding rather than
+hunting for.** Checked against your live list on 2026-09-19: **every single
+response on your Form responses tab has already been published**, so every one
+of them correctly reads `ALREADY ON SITE`. None can say `NEW`.
+
+That is not a fault — it is automatic publishing working. A submission arrives,
+the publisher adds that person to the site within seconds, and from then on the
+number IS on the list. **`NEW` is the verdict a row holds only in the moments
+between the form being submitted and the publisher running.** It is real, it is
+correct, and it is nearly always over before you look.
+
+**So you will see `NEW` the next time somebody genuinely new is recommended and
+you happen to open the sheet quickly** — or never, which is fine. The verdict
+column earns its keep on the other three. Do not type a row specially to chase
+it; a row typed to produce `NEW` publishes itself and stops being `NEW` while
+you are still looking at it.

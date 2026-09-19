@@ -136,8 +136,46 @@ arrives.
 **Click cell `L2` and paste this:**
 
 ```
-=ARRAYFORMULA(IF($F$2:$F="","",IF((REGEXMATCH(LOWER(TRIM(TO_TEXT($E$2:$E))),"^not ?known$"))+(REGEXMATCH(LOWER(TRIM(TO_TEXT($G$2:$G))),"^not ?known$"))+(LEN(TRIM(TO_TEXT($H$2:$H)))<7),"CHECK THIS",IF(COUNTIF(Published!$I$2:$I,$J$2:$J)>0,"ALREADY ON SITE — row "&IFERROR(MATCH($J$2:$J,Published!$I$2:$I,0)+1,""),IF(COUNTIF(Published!$J$2:$J,$K$2:$K)>0,"SAME NAME, DIFFERENT NUMBER","NEW")))))
+=ARRAYFORMULA(LET(digits, REGEXREPLACE(TO_TEXT($F$2:$F),"\D",""),pk, IF(digits="","",IF(LEFT(digits,4)="0044","0"&MID(digits,5,50),IF(LEFT(digits,2)="44","0"&MID(digits,3,50),digits))),nk, LOWER(REGEXREPLACE(TO_TEXT($D$2:$D)&TO_TEXT($E$2:$E),"[^A-Za-z0-9]","")),flag, (REGEXMATCH(LOWER(TRIM(TO_TEXT($E$2:$E))),"^not ?known$"))+(REGEXMATCH(LOWER(TRIM(TO_TEXT($G$2:$G))),"^not ?known$"))+(LEN(TRIM(TO_TEXT($H$2:$H)))<7),hitP, IF(pk="",0,COUNTIF(Published!$I$2:$I$500,pk)),hitN, IF(nk="",0,COUNTIF(Published!$J$2:$J$500,nk)),IF($F$2:$F="","",IF(flag,"CHECK THIS",IF(pk="","CHECK THIS",IF(hitP>0,"ALREADY ON SITE — "&IFERROR(INDEX(Published!$A$2:$A$500,MATCH(pk,Published!$I$2:$I$500,0)),"?"),IF(hitN>0,"SAME NAME, DIFFERENT NUMBER","NEW")))))))
 ```
+
+> **This formula was REPLACED on 2026-09-19 and the old one must not be used.**
+> The previous version matched every row against **itself**, so a person nobody
+> had ever heard of read `ALREADY ON SITE — row 15` on row 15 and
+> `ALREADY ON SITE — row 16` on row 16 — each naming its own row number. Gavin
+> measured exactly that on his phone. Nothing errored; the answers merely looked
+> plausible, which is why it survived. See the handover Layer 3.
+>
+> **The superseded formula, kept so nobody reinstates it by accident:**
+>
+> ~~`=ARRAYFORMULA(IF($F$2:$F="","",IF((REGEXMATCH(LOWER(TRIM(TO_TEXT($E$2:$E))),"^not ?known$"))+(REGEXMATCH(LOWER(TRIM(TO_TEXT($G$2:$G))),"^not ?known$"))+(LEN(TRIM(TO_TEXT($H$2:$H)))<7),"CHECK THIS",IF(COUNTIF(Published!$I$2:$I,$J$2:$J)>0,"ALREADY ON SITE — row "&IFERROR(MATCH($J$2:$J,Published!$I$2:$I,0)+1,""),IF(COUNTIF(Published!$J$2:$J,$K$2:$K)>0,"SAME NAME, DIFFERENT NUMBER","NEW")))))`~~
+>
+> **What changed, and why each change matters:**
+>
+> 1. **The keys are worked out inside the formula, from the row's own boxes.**
+>    The old one read them back out of columns `J` and `K` of this same tab —
+>    so the formula contained live ranges pointing at its own tab, and a lookup
+>    that should have searched **Published** could search those instead. It did.
+>    Now there is no same-tab range for it to fall onto, so a row matching
+>    itself is not something this formula can express.
+> 2. **It says WHO, not WHERE.** `ALREADY ON SITE — T014` names the person, and
+>    you can check it against the site in one glance. `— row 15` was a number
+>    that looked right whether it was right or not, which is precisely how the
+>    fault hid.
+> 3. **The lookup stops at row 500 instead of running to the bottom.** Your two
+>    helper columns on Published are array formulas covering the whole column,
+>    so they quietly put an empty value in several hundred rows below your
+>    people. An open-ended lookup counts those, and a row with an unreadable
+>    telephone number would match one of them and read `ALREADY ON SITE`
+>    against a blank. 500 is far above any village list this will ever hold.
+> 4. **An unreadable telephone number now says `CHECK THIS`** rather than
+>    falling through to `NEW`. The publisher hides such a row, so telling you it
+>    is a clean new person would be untrue.
+
+> **Columns `J` and `K` are still filled in and are still worth having** — they
+> are what you look at when a verdict surprises you, and step 2's Published
+> helpers are still required, because the lookup compares against them. The
+> verdict simply no longer *reads* `J` and `K`; it works its own keys out.
 
 ---
 
@@ -159,9 +197,9 @@ arrives.
 | What column L says | What it means | What to do |
 |---|---|---|
 | **NEW** | That phone number has never been on the list | Nothing to do — it has published itself. Glance at it during your sweep. |
-| **ALREADY ON SITE — row 12** | Same number, so the same person | Choose **Add to T0xx**. Their words become a second recommendation for somebody already listed. |
+| **ALREADY ON SITE — T012** | Same number, so the same person. It names **their ID**, so you can find them on the site straight away. | Nothing to do — the publisher has already added their words to that person's row as a second recommendation. Glance at it during your sweep. |
 | **SAME NAME, DIFFERENT NUMBER** | Same name, new number — probably they changed mobile | Have a look. Usually you update the number on the existing row. |
-| **CHECK THIS** | The last name or the business says "Not Known", or the experience text is **under seven characters** | Have a look. You may need to ask on the village chat who it is. |
+| **CHECK THIS** | The last name or the business says "Not Known", the experience text is **under seven characters or empty**, or the telephone number has no digits in it at all | Have a look. You may need to ask on the village chat who it is. A row with an unusable number is `hidden` on the site until you retype it. |
 
 > **Why seven and not more.** Seven is deliberately low. *"Fixed gate"* is a perfectly good
 > answer for a small job, and a longer minimum would flag honest short replies as suspect and
@@ -186,7 +224,27 @@ only ever reads the Published tab.
 
 ---
 
-## Two things these formulas cannot do
+## When a verdict is `CHECK THIS` because the experience box is empty
+
+**This is a deliberate rule, not an accident, and it is written down here
+because it caused a false alarm on 2026-09-19.** A blank experience box is zero
+characters, which is fewer than seven, so the row reads `CHECK THIS`.
+
+That is the right answer. An empty box means the villager told you nothing about
+what the person did, and the whole point of the site is that it carries a
+neighbour's words. `CHECK THIS` says *"look at this one"*, which is exactly
+right for a row with no words in it.
+
+**But it does mean a test row with the experience box left blank tells you
+nothing about the other three verdicts**, because `CHECK THIS` wins before any
+comparison against the list happens. If you are testing, always put a real
+sentence in the experience box. On 2026-09-19 Gavin was told to leave it blank,
+both test rows read `CHECK THIS`, and that looked like a fault when it was the
+rule working correctly.
+
+---
+
+## Three things these formulas cannot do
 
 Worth knowing so you are not surprised, rather than faults to fix:
 
@@ -200,6 +258,13 @@ box with the last-name box left empty all match correctly.
 person is recommended twice within an hour and is not on the site yet, both rows
 say `NEW`. That is correct — neither of them is on the list — but you will spot
 the pair by eye when you come to publish.
+
+**Where two people share a telephone number, it names the first one.** You have
+exactly that — Ben Franks (`T006`) and John Pilkington (`T011`) on
+`07887800192` — so a new recommendation for either reads `ALREADY ON SITE —
+T006`. The number genuinely is on the site, which is what the verdict says; it
+simply cannot tell you which of the two the villager meant. Read the name in
+column D and E of the response.
 
 ---
 
@@ -220,6 +285,9 @@ changing it quietly detaches every recommendation that person has.
 |---|---|
 | Every verdict says `CHECK THIS` | The formula is reading the wrong column for the experience text. Re-read row 1 against the table at the top. |
 | Every verdict says `NEW`, even for people already on the site | The Published helper columns in step 2 are missing, or the phone numbers on Published are in a column other than E. |
+| A verdict says `ALREADY ON SITE — row 15` with a **row number** instead of an ID | You still have the old formula. Re-paste the `L2` formula above — this is the 2026-09-19 defect, where every row matched itself. |
+| `ALREADY ON SITE — ?` with a question mark | The number was found on Published but the ID could not be read from column A. Check that person's row has an ID. |
+| Somebody near the very bottom of a long Published tab is not being found | The lookup stops at row 500. If the village list ever passes 500 people, ask for the three `$500` in the `L2` formula to be raised. |
 | A `#REF!` or `#N/A` error | Usually a tab name typed differently. The formulas expect the tab to be called exactly `Published`. |
 | The column does not fill downwards | The formula was pasted into the wrong cell. Each one must go in row **2** of its column, not row 1. |
 | Verdicts stop partway down the sheet | Something has been typed into a cell in that column further down, blocking the array. Clear anything below the formula cell. |
