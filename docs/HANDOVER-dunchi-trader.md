@@ -5451,7 +5451,7 @@ Both remotes level. Working tree clean.
 **Commits:**
 - `a7f54c4` — `plan: step 6 appended - the publisher does not lose a villager's recommendation`
 - `1d50b00` — `feat: the publisher stops losing recommendations - retry, sweep, visibility and correctness`
-- `{SHA}` — the handover
+- `991ecd8` — the handover
 
 **Finished:** 2026-09-19T21:30:48Z
 
