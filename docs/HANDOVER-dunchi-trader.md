@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-19T17:19:01Z
+last-updated: 2026-09-19T17:30:52Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-19T17:19:01Z** ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-19T17:30:52Z** ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -27,7 +27,7 @@ ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from
 
 **What IS delivered and sighted by him, row by row:** a villager opens a link, taps a trade and taps a large green Call button; submissions publish themselves; a recommendation added from a card reaches the village list; the page holds at the largest text size on a 320px phone and at 200% zoom. **The directory works today — it simply cannot yet be launched or handed on.**
 
-**THE SEEDING ROUTE IS UNDECIDED** and is carried in Layer 4 as an open decision with three routes; the soft launch is **Claude.ai's recommendation, not his ruling**. This conversation took the plan from 31/75 (41.3%) to here, closing eight rows and appending six as real gaps were found. **The site is functionally complete and not yet launchable**: a villager's recommendation reaches the village list without anybody touching a spreadsheet, the Call button dials correctly (sighted by the owner on his phone), and villagers' words appear on the cards. What stands between it and launch is **seeding** — the list still holds test people — plus the runbook walk. **One defect is open and undiagnosed:** the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed; it is the first thing the successor conversation picks up, and it does not affect the directory itself. **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
+**THE SEEDING ROUTE IS UNDECIDED** and is carried in Layer 4 as an open decision with three routes; the soft launch is **Claude.ai's recommendation, not his ruling**. **2026-09-19T17:30:52Z — THE RESTORE RUNBOOK IS REPAIRED AND STILL UNWALKED, and those are different things.** He ruled YES to fixing the known defects, which cost him nothing; **he has NOT agreed to walk it**, so **row 5.1 stays `new`** and closes on the walk rather than on the repair. **Five faults fixed at `3453b78`, all by reading** — the three measured this afternoon (step 4 naming the live repository so a rehearsal stopped dead; steps 7 and 8 reaching into the live spreadsheet by its hard-coded id; no cleanup section) **plus two found while reconciling the whole document**: the form's minimum length said **fifteen** characters against **seven** everywhere else under D4a, and the file list named an archived plan while omitting `apps-script/Publish.gs`, without which step 7 cannot work. **Route taken for the live-id problem: the instructions were carried INTO the runbook**, leaving `DEPLOY.md` and `SHEET-FORMULAS.md` untouched so they keep their job as his live repair guides. **The document now opens by saying it has never been walked**, and tells a walker that finding a fault is the expected outcome of the first walk — a runbook presenting itself as verified invites the walker to doubt themselves instead of the document. **Rehearsing it takes about two hours**, rebuilding about ninety minutes. This conversation took the plan from 31/75 (41.3%) to here, closing eight rows and appending six as real gaps were found. **The site is functionally complete and not yet launchable**: a villager's recommendation reaches the village list without anybody touching a spreadsheet, the Call button dials correctly (sighted by the owner on his phone), and villagers' words appear on the cards. What stands between it and launch is **seeding** — the list still holds test people — plus the runbook walk. **One defect is open and undiagnosed:** the site's own recommend button produced no row in the Votes tab after the endpoint was redeployed; it is the first thing the successor conversation picks up, and it does not affect the directory itself. **THE LAUNCH-CRITICAL MISDIAL IS FIXED AND CONFIRMED BY THE OWNER ON THE SERVED PAGE:** he opened the live site on his phone, tapped Plumber, tapped Call, and the dialler showed the full eleven-digit number with its leading zero. His word: *"pass"*. **And a real form submission published itself** — `T013 Ron Suttil` appeared on Published without him touching the spreadsheet. Measured here against his real feed for the first time: 12 of 13 phones are eleven digits starting zero (the exception is `T007`, twelve digits, correctly refused and `hidden`), every trade is on the agreed list, and nine of twelve cards show a villager's words. Three further defects in row 5.2's own deliverable were found in the owner's screenshot and fixed: **telephone numbers had lost their leading zero and the Call button would have misdialled (LAUNCH-CRITICAL)**, six people were listed twice, and two trade names did not match the site's tiles. It fixed a defect in row 5.2's own deliverable: the publisher completed cleanly twice and wrote its rows ~1000 lines below the table, invisible to the owner. Reproduced, fixed, and a recovery added. **Row 5.2 stays open until he submits the form and sees the row himself.** **THE SITE IS NOW A RECOMMENDATIONS LIST RATHER THAN A PHONE LIST.** Until today it carried neither the villager's words nor the villager's name, and the form's own question promises the name appears — *"so a fellow villager might reach out to you if they have any questions"*. Owner's ruling D8a. Published gained columns **K `recommendations`** and **L `recommended_by`**; a duplicate submission is now a SECOND RECOMMENDATION appended to the existing person rather than a hard failure; and the card shows the words with attribution. Two rows were appended (3.5 at effort 4, 4.6 at effort 1) adding 5 to the denominator, of which 3.5's 4 closed. **The percentage FELL while real work landed**, and that is arithmetic rather than regression: two rows were appended this session — 5.2 the automatic publisher (effort 6) and 3.4 case-insensitive trade grouping (effort 2) — adding 8 to the denominator, of which only 3.4's 2 closed. **THE REVIEW GATE IS GONE.** Owner's ruling D7a: publishing is automatic, so a villager's submission reaches the live site with no human in between, protected by three hard checks plus his batch sweep rather than by an approval step. The denominator moved because **row 4.5 was appended this session** (effort 2) — the owner's ruling that the note minimum becomes seven characters is a change to shipped behaviour on a closed row, so it got its own row rather than being slipped in. It added 2 to the numerator and 2 to the denominator, which is why the percentage moved only 70.1% → 70.9%. **Row 4.2 is CLOSED: a villager's recommendation now reaches the sheet from a real phone.** Owner confirmation 2026-09-18 (~17:47Z), verbatim: *"the vote populated"*. The denominator moved because **row 4.4 was appended this session** (effort 2) as unplanned work — the three defects the previous session raised and left unfixed. Without it the position would read 46/75 (61.3%); the row both added 2 to the numerator and 2 to the denominator. Rows 2.1 and 3.3 closed on the owner's sighting; row 4.3 closed on measurement. **The votes endpoint is wired and served** — a villager's recommendation now leaves the page. Row 4.2 stays open by its own wording: it closes only when a vote placed **on a real phone** appends a row to the Votes tab. ~~**Nothing is live yet:** the live site still serves its original Jekyll page, because there is no push credential for the dunchitrader-collab account.~~ SUPERSEDED 2026-09-18T14:26:12Z → **THE SITE IS LIVE.** The placeholder page and the reviewed wireframe are served at `https://dunchitrader-collab.github.io`, verified byte-identical to the committed source at `f94d45a`. Build Plan row 1.2 is `done`; row 1.1 is complete but for Gavin's phone sighting.
 
 The build plan was rejected by the owner on 2026-09-18 and wholly rewritten the same day: ~~90 sub-tasks / 231 effort~~ SUPERSEDED 2026-09-18T14:02:20Z → **14 sub-tasks / 75 effort**, same Plan ID `PLAN-DUNCHI-TRADER-V1`, same seven steps. See Layer 5 decision 18.
 
@@ -234,6 +234,33 @@ Recorded one by one, because the entry above promised a successor a checklist an
 
 **Also on the list to eliminate early: a stale page in the phone's memory. CLEARED.** The served page was fetched cache-busted (`?x=1`) and is byte-identical to the commit, so even a fresh load posts to an address that answers "Script function not found". A stale page would not change the outcome.
 
+
+**[BUG] 2026-09-19 — FIVE FAULTS IN THE RESTORE RUNBOOK — REPAIRED BY READING, AND THE DOCUMENT IS STILL UNWALKED**
+
+**The distinction in that heading is the whole of this entry. Repairing a document is not proving it**, and this project has twice today had a fix pass its own test and fail on the Operator's screen. [PATH] `docs/RESTORE-dunchi-trader.md` is now **correct as far as reading can establish** and **nobody has followed it from step 1 and built anything.**
+
+Repaired at commit `3453b78` under the Owner's ruling that fixing the known defects costs him nothing. **He has NOT agreed to walk it.** Build plan row **5.1 of `PLAN-DUNCHI-LAUNCH-2026-09-19` stays `new`**, and it closes on the walk, not on this repair.
+
+**The three measured defects, all fixed:**
+
+| | Fault | Repair |
+|---|---|---|
+| **1** | **Step 4 stopped a rehearsal dead.** It named the live site's own repository — `dunchitrader-collab.github.io` — and said *"The name matters exactly"*. GitHub refuses a duplicate, so there was no way past step 4. | A rehearsal preamble at the top giving throwaway names for every artifact, **and step 4 branched at the point of use** — the preamble alone was not enough, because step 4 is exactly where the walk died. It explains that a repo not named `<account>.github.io` serves at `<account>.github.io/<repo>`, so the different address reads as expected rather than as failure. Step 5's expected result and the tick list are branched the same way. |
+| **2** | **Steps 7 and 8 reached into live state.** Step 7 delegated to `DEPLOY.md`, whose step 1 opens the **live spreadsheet by its hard-coded id**; step 8 to `SHEET-FORMULAS.md`, which hard-codes the same id. Compounding it, `DEPLOY.md` now opens *"START AT STEP 14"*. | **Step 7 is now self-contained** (7a–7f). Step 8 still points at `SHEET-FORMULAS.md` but tells the walker to **ignore its opening two lines** and work in their own sheet. **`apps-script/` is untouched.** |
+| **3** | **No cleanup section.** A rehearsal left a second spreadsheet, form, published CSV and **public website**, none of it mentioned. | A cleanup section **ordered by risk** — the CSV publish and the repository **first and marked PUBLIC** — saying plainly what skipping it leaves. Each destructive step carries a check-the-name warning, and the final tick is that the **LIVE site still loads**. |
+
+**THE ROUTE TAKEN FOR DEFECT 2, and why.** The instructions were **carried into RESTORE** rather than making the delegated documents id-neutral. `DEPLOY.md` was rewritten this week as the Owner's **live repair guide** and opens by sending him to step 14; making it serve a rebuild as well would have put a fork in a document whose whole job is telling him what to do about the live site, **and he may need it again**. Both delegated documents keep their live-repair role exactly as it was.
+
+**TWO FURTHER FAULTS FOUND WHILE RECONCILING THE WHOLE DOCUMENT**, fixed because leaving them would have made the repair incoherent:
+
+- **The form's minimum-length validation said FIFTEEN characters.** The site, the endpoint and the verdict column all enforce **seven** under ruling **D4a**. A rebuild would have produced a form that turns away honest short answers the rest of the system accepts, **and nothing would have flagged the disagreement** — the form's rule and the code's rule are checked by nobody against each other.
+- **The step 5 file list was stale.** It named `docs/BUILD-PLAN-dunchi-trader.md`, archived this afternoon, and **omitted `apps-script/Publish.gs`** — which step 7 needs and without which `Code.gs` refuses to run. Now matches the repository exactly, checked mechanically rather than by eye.
+
+**The time estimate was rechecked**: rebuilding unchanged at about ninety minutes, since the repair moved step 7's instructions rather than adding work; **rehearsing now stated separately at two hours**, the extra half hour being the preamble, substituting names as you go, and the cleanup.
+
+**The document's own opening now says it is unproven**, in those words, and tells the walker that **finding a fault is the expected outcome of the first walk** rather than a sign they have gone wrong. That was deliberate: a runbook that presents itself as verified invites a walker to doubt themselves instead of the document.
+
+Diagnosis, for whoever walks it: **if a step cannot be done as written, that is a fault in the document.** Work around it, finish, and write down what changed — the first walk's job is to produce that list.
 
 **[BUG] 2026-09-19 — RESIDUAL RISK, NOT ACTED ON: a recommendation filed while two people shared a telephone number may sit on the wrong row, and changing the number now does not move it**
 
@@ -844,6 +871,17 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 ## The queue as it stands after the 2026-09-19 session
 
+**[OUTSTANDING] 2026-09-19 | HIGH | Blocking: no | ⚠ THE OPERATOR'S, AND HE HAS NOT AGREED TO IT YET**
+**WALK the restore runbook. `PLAN-DUNCHI-LAUNCH-2026-09-19` row 5.1, effort 9 — the largest row in the plan, and the only clause of the Requirement as stated still unproven.**
+
+**The document was REPAIRED on 2026-09-19 and has NEVER BEEN WALKED.** Those are different things and the row closes on the second. Five faults were fixed **by reading**; a walk is what finds the sixth.
+
+**What the repair changed, so he knows what he is walking into:** the document now opens by asking whether he is **rebuilding** or **rehearsing**, and a rehearsal uses throwaway names for everything it creates — including a repository called `dunchi-rehearsal` rather than the live site's name, which is what used to stop the walk at step 4. **His rehearsal site will appear at `https://<account>.github.io/dunchi-rehearsal`, not at the bare address, and that is correct.** Step 7 no longer sends him into `DEPLOY.md`; the instructions are in RESTORE itself. There is a cleanup section at the end and **it is not optional** — skipping it leaves a second public village directory on the internet.
+
+**Allow two hours for a rehearsal** (ninety minutes to rebuild, plus the preamble, the name substitutions and the cleanup). The document says so itself now.
+
+**When he walks it, the expected outcome is that he finds something.** The document says that too. Anything that cannot be done as written is a fault in the document — work around it, finish, and note what changed.
+
 **[OUTSTANDING] 2026-09-19 | HIGH | Blocking: yes — gates `PLAN-DUNCHI-LAUNCH-2026-09-19` row 3.1 | ⚠ OPEN DECISION, NOT YET RULED**
 **How the list gets seeded has NOT been decided, and no route should be assumed.** The village has **already been told the directory exists** and is waiting on Gavin's go signal, so the decision is live rather than hypothetical.
 
@@ -859,8 +897,8 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 **This is recorded against `PLAN-DUNCHI-LAUNCH-2026-09-19` row 3.1**, which is gated on 2.1 (hiding the test people) either way — whichever route he picks, the test entries come off the list first.
 
-**[OUTSTANDING] 2026-09-19 | HIGH | Blocking: no — but row 6.1 CANNOT be walked safely until it is settled | READ-ONLY FINDING, the Operator's call**
-**`docs/RESTORE-dunchi-trader.md` is NOT safe to rehearse as a parallel throwaway copy, and three of its steps would touch live state if followed literally.** Established 2026-09-19 by reading the document end to end; nothing was changed.
+~~**[OUTSTANDING] 2026-09-19 | HIGH | Blocking: no — but row 6.1 CANNOT be walked safely until it is settled | READ-ONLY FINDING, the Operator's call**~~ RESOLVED 2026-09-19 at commit `3453b78` — **he ruled YES to repairing the three defects, and all three are fixed, plus two more found while reconciling the whole document.** **THE DOCUMENT IS NOW SAFE TO REHEARSE AS FAR AS READING CAN ESTABLISH, AND IT IS STILL UNWALKED** — see the Layer 3 entry, and the open item below which is the part that remains.
+~~**`docs/RESTORE-dunchi-trader.md` is NOT safe to rehearse as a parallel throwaway copy, and three of its steps would touch live state if followed literally.** Established 2026-09-19 by reading the document end to end; nothing was changed.~~
 
 **The three collisions:**
 
@@ -4734,5 +4772,84 @@ Both remotes level. Working tree clean.
 **`PLAN-DUNCHI-LAUNCH-2026-09-19` is the current plan** at [PATH] `docs/BUILD-PLAN-dunchi-launch.md` — **0 of 23 effort, 0 of 5 rows.** **Effort cleared by this prompt: zero.** Nothing was built; work moved and a plan closed.
 
 **The critical path through the new plan is short and entirely the Operator's:** hide the test people (2.1, gates everything), seed 12–15 tradespeople (3.1, route undecided), prove the journey on real content (4.1), tell the village (1.1). **Row 5.1 — repair the runbook, then walk it — is independent of all four** and is the largest row at effort 9.
+
+Both remotes level. Working tree clean.
+
+---
+
+### 2026-09-19T17:30:32Z — The restore runbook repaired, and still unwalked
+**Source:** Claude Code
+**Started:** 2026-09-19T17:23:58Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01KmELJ3FVVJwbZnoahT6G7f
+**Repos touched this session:** dunchi-trader
+
+**Prompt received:**
+
+> Target repo: dunchi-trader. Conversation 6G7f. Repo read 2026-09-19T17:23:58Z at HEAD `2030d582`, clean, 0 behind. Current plan is **PLAN-DUNCHI-LAUNCH-2026-09-19**; this work sits inside its **row 5.1**, which already owns it — **do not append a row.** **Gavin has ruled YES to repairing the three known defects now.** It is document editing and costs him nothing. **He has NOT agreed to walk it** — that waits for him. **Row 5.1 may NOT be marked done. Repairing a document is not proving it.** When finished the runbook will be *correct as far as reading can establish* and still **unwalked**. Say exactly that in the summary and the handover; **do not let "fixed" read as "proven"** — this project has been bitten twice today by a fix that passed its own test and failed on the Operator's screen. **Defect 1:** step 4 names the live repository and says *"The name matters exactly"*, so a rehearsal cannot pass it — fix with a rehearsal preamble naming throwaway names including a repository that is **NOT** `<account>.github.io`, with a plain-English note that such a repo serves at `<account>.github.io/<repo>`. **Defect 2:** steps 7 and 8 delegate to documents that open the **live spreadsheet by its hard-coded id**, and `DEPLOY.md` now opens *"START AT STEP 14"* — **decide and state which route you took**, and **whatever you choose must not break DEPLOY.md's current job as Gavin's live repair guide.** **Defect 3:** no cleanup section — add one naming the CSV publish and the repository specifically because those two are public, and say what happens if it is skipped. **Also:** recheck the *"hour and a half"*; **reconcile the WHOLE document** and if a fourth problem turns up, **report it, do not quietly fix beyond this brief** unless leaving it would make the repair incoherent, in which case say so. Follow the approved-prefix rule for any new file.
+
+**What was done:**
+
+**All three defects are repaired, two more were found, and THE DOCUMENT IS STILL UNWALKED.** That last clause is not a caveat added at the end — it is written into the document's own opening, in those words, because a runbook that presents itself as verified invites a walker to doubt themselves instead of the document.
+
+**Defect 1 needed fixing in two places, not one.** The rehearsal preamble went in at the top as asked, but **step 4 is also branched at the point of use** — the preamble alone would have left the exact instruction that killed the walk sitting unchanged where the walker meets it, and a reader following steps in order is not re-reading page one. Step 5's expected result and the tick list are branched the same way, so the longer rehearsal address reads as expected rather than as failure at every point it appears.
+
+**Defect 2 — ROUTE TAKEN: the instructions were carried into RESTORE**, not made id-neutral in the delegated documents. **Reason:** `DEPLOY.md` was rewritten this week as the Owner's **live repair guide** and now opens by sending him to step 14. Making it serve a rebuild as well would put a fork in a document whose entire job is telling him what to do about the live site, **and he may need it again** — the prompt's own constraint. Step 7 is now self-contained across 7a–7f, including the ordering trap that `Publish.gs` must go in before `Code.gs`, and the `doPost` check before deploying. Step 8 still uses `SHEET-FORMULAS.md` for the formulas themselves — they are long and column-specific — but tells the walker to **ignore its opening two lines**, which name the live sheet. **`apps-script/` is untouched: measured, zero files changed.**
+
+**Defect 3 — the cleanup section is ordered by risk rather than by the order things were made.** The CSV publish and the repository come first and are marked **PUBLIC**, because those two are reachable by anybody; the form and spreadsheet follow. Each destructive step carries a check-the-name warning, since clicking *Stop publishing* on the wrong sheet takes the real directory offline. **The final tick is that the LIVE site still loads** — the line that catches a cleanup done on the wrong copy.
+
+**TWO FURTHER FAULTS, reported here as the prompt required, and fixed because leaving them would have made the repair incoherent:**
+
+- **The form's minimum-length validation said FIFTEEN characters**, against **seven** in the site, the endpoint and the verdict column under ruling D4a. A rebuild would have produced a form turning away honest short answers the rest of the system accepts. **Fixed** — leaving it would have meant a document repaired for rehearsal that still rebuilds a subtly wrong system, which is not a coherent repair.
+- **The step 5 file list was stale**: it named `docs/BUILD-PLAN-dunchi-trader.md`, archived earlier today, and **omitted `apps-script/Publish.gs`** — which step 7 needs and without which `Code.gs` refuses to run. **Fixed** — and directly incoherent with the step 7 I had just written, which depends on that file being present.
+
+**Time estimate rechecked and now split:** rebuilding unchanged at about ninety minutes, because the repair **moved** step 7's instructions rather than adding work; **rehearsing stated separately at two hours**.
+
+**No new file was created**, so the approved-prefix rule did not apply.
+
+**Testing performed:**
+
+| Check | Expected | Actual | Result |
+|---|---|---|---|
+| Guard: HEAD / tree / behind | `2030d58`, clean, 0 | as stated | PASS |
+| No plan row appended | none | none | PASS |
+| **Row 5.1 NOT marked done** | stays `new` | stays `new` | PASS |
+| Defect 1: rehearsal preamble present | present | present, with the address explanation | PASS |
+| Defect 1: step 4 branched at point of use | branched | branched | PASS |
+| Defect 1: step 5 + tick list branched | branched | branched | PASS |
+| **Defect 2: live sheet id in RESTORE** | 0 | **0** | PASS |
+| Defect 2: step 7 self-contained | no delegation for instructions | 7a–7f inline | PASS |
+| Defect 2: step 8 warns off the live id | warns | warns | PASS |
+| **Defect 2: `apps-script/` untouched** | 0 files changed | **0 files changed** | PASS |
+| Defect 2: DEPLOY.md keeps its live anchor | still present | still present, correct for its job | PASS |
+| Defect 3: cleanup section present | present | present, risk-ordered | PASS |
+| Defect 3: both public artifacts named | 2 | 2, both marked PUBLIC | PASS |
+| Defect 3: says what skipping it leaves | stated | stated | PASS |
+| Defect 3: final tick is the LIVE site | present | present | PASS |
+| **Defect 4: form minimum is 7 not 15** | 7 | 7; zero occurrences of 15 | PASS |
+| **Defect 5: file list matches the repo** | exact | exact, no missing, no duplicates | PASS |
+| Time estimate rechecked | corrected | 90 min rebuild / 2 h rehearsal | PASS |
+| "tradesman" in the document | 0 | 0 | PASS |
+| Document states it is unwalked | up front | in the opening block | PASS |
+| No new file created | none | none | PASS |
+| Handover heading preservation | none removed | none removed | PASS |
+
+**What was not tested — and this is the governing limitation:**
+
+- **THE DOCUMENT HAS NOT BEEN WALKED.** Not one step was executed. Nothing was created in Google or on GitHub, no rehearsal was attempted, and no screen described in it was looked at. **Every repair above was made by reading**, and reading is exactly what missed these five faults for the document's whole life until today.
+- **Whether the repaired step 7 actually works is unknown.** It was written from `DEPLOY.md`'s content and the shipped scripts' requirements, not by performing it. The ordering claim — `Publish.gs` before `Code.gs` — rests on `requirePublisher()` in the committed source, which is a strong basis and still not a performance of the step.
+- **The throwaway names are untried.** Whether `dunchi-rehearsal` behaves as described at `<account>.github.io/dunchi-rehearsal` is GitHub's documented behaviour, not something measured here.
+- **No code changed**, so nothing was run and no served page needed re-checking.
+
+**Commits:**
+- `3453b78` — `docs: repair the restore runbook so it can be rehearsed - REPAIRED, NOT PROVEN`
+
+**Finished:** 2026-09-19T17:30:32Z
+
+**End state:**
+
+**`PLAN-DUNCHI-LAUNCH-2026-09-19` unchanged at 0 of 23 effort, 0 of 5 rows. Effort cleared: zero** — row 5.1 closes on the walk, and the walk has not happened. **`PLAN-DUNCHI-TRADER-V1` remains closed and archived** at 87/87.
+
+**The runbook is now believed rehearsable and is not proven rehearsable.** The distinction is the whole of this session: five faults fixed by reading, in a document whose faults had survived every previous reading.
 
 Both remotes level. Working tree clean.
