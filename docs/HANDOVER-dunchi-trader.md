@@ -7491,7 +7491,7 @@ Working tree clean. Both remotes level.
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `ff9856f` — `test: a tradesperson with no surname — the block is the FORM, not the code` — sixteen regression checks in `apps-script/test-publisher-resilience.js`, the appended row `6.5` in `docs/BUILD-PLAN-dunchi-launch.md`, and the Layer 1/4/5 records plus this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10). ⚠ **NO CODE FILE WAS CHANGED** — `Publish.gs`, `Code.gs` and `app.js` are unmodified, because the measurement established the fix is a form setting rather than code.
 
 **Finished:** 2026-09-21T10:41:20Z
 
