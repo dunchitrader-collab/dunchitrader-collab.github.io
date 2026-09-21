@@ -7163,7 +7163,7 @@ Working tree clean. Both remotes level.
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `f12f5e8` — `docs: close rows 2.1, 6.2 and 6.4 — the plan moves 0/32 to 8/32 (25.0%)` — the three row closures and their satellite dates in `docs/BUILD-PLAN-dunchi-launch.md`, and the Layer 1/5 records plus this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10). ⚠ **NO CODE FILE WAS TOUCHED** — `Publish.gs`, `Code.gs`, `app.js`, `SHEET-FORMULAS.md` and every test file are unmodified; this was a plan update and nothing else.
 
 **Finished:** 2026-09-21T10:05:12Z
 
