@@ -5,15 +5,25 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-19T21:40:59Z
+last-updated: 2026-09-21T05:58:10Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-19T21:40:59Z** ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T05:58:10Z** ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
+
+### MISSION
+
+**Added 2026-09-21. The wording below is the Owner's own, given in conversation on 2026-09-21 and transcribed verbatim, subject to one correction stated here: he wrote the village name as "Dunchidiuk"; the correct spelling is "Dunchideock" and that is what is written below. No other word was altered.**
+
+> This repo exists to create an online resource for the Dunchideock village to recommend and find workmen for their use. The purpose of this is to ensure everybody has easy access to high quality work.
+
+**How progress against this mission is measured.** It is measured by the current build plan, [PATH] `docs/BUILD-PLAN-dunchi-launch.md` (Plan ID `PLAN-DUNCHI-LAUNCH-2026-09-19`), and by the completion computed from that plan's rows and efforts. **No figure is written here on purpose** — a percentage or row count typed into this block would be a second copy of a number the plan already holds, and it would drift the moment a row closed. Read the plan, or the completion computed from it, for the current position.
+
+**This mission changes only by an explicit decision recorded in Layer 5, never as a side effect of session work.**
 
 ### Project Status
 
@@ -2085,6 +2095,30 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 ---
 
 **[PATTERN CANDIDATE: an-unevidenced-claim-is-reported-until-quoted]** Prompt 2741 accepted none of the previous session's two load-bearing claims — the lock on both paths, and the retry's discrimination — and required them **quoted with line numbers** rather than described. Both held, and the verification cost minutes. **The value is not in catching an error; it is that the check is cheap enough to run whether or not one is suspected**, which is what makes it usable as a habit rather than as an accusation. Worth applying wherever one session hands another a safety property it did not watch execute.
+
+---
+
+### 2026-09-21 — The MISSION block is added, in the Owner's own words
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION]** A **MISSION block is added to Layer 1 of this handover**, immediately above `Project Status`, on **2026-09-21**. It lives in **exactly one place in the repo** — that block — and nowhere else.
+
+**[DECISION] The wording is the Owner's own, transcribed verbatim**, given in conversation on 2026-09-21:
+
+> This repo exists to create an online resource for the Dunchideock village to recommend and find workmen for their use. The purpose of this is to ensure everybody has easy access to high quality work.
+
+**One correction was applied, and the block itself states it rather than leaving it silent:** he wrote the village name as **"Dunchidiuk"**; the correct spelling is **"Dunchideock"**, and that is what is written. **No other word was changed** — not punctuation, not phrasing, not the slightly informal *"for their use"*. Tidying an Owner's sentence is how a mission stops being his.
+
+**Rationale for the block existing at all.** Preferences §4.18 requires every repo Claude.ai does substantive work in to carry a MISSION block, and requires every commissioning prompt to name it. **This repo carried none.** The gap was declared in the commissioning prompt rather than discovered later, and closing it was that prompt's first and only task. Four days of substantive work — the launch plan, the silent-data-loss diagnosis, the self-healing publisher — had run against a handover that never stated what the thing is *for*. Everything in Layer 1 describes mechanism; none of it says why the village would want any of it.
+
+**[DECISION] Progress is measured by POINTING, never by a typed figure.** The block names [PATH] `docs/BUILD-PLAN-dunchi-launch.md` and the completion computed from it, and **writes no percentage and no row count.**
+
+**Rationale:** a figure written into Layer 1 is a second copy of a number the plan already holds, and it is stale the moment a row closes. This document already demonstrates the failure at length — the `Project Status` paragraph above carries a long chain of struck-through effort positions, each one correct when written and wrong within hours, preserved only because §3.3 forbids deleting them. **The mission block does not join that chain.** It points at the computation and stops.
+
+**[DECISION] This mission changes only by an explicit decision recorded in this layer** — never as a side effect of session work, and never by a session tidying Layer 1. §4.18 requires it; it is restated inside the block so a future session reading Layer 1 alone still sees the constraint.
+
+**What this session did NOT do, recorded so the absence is deliberate:** it changed **no build-plan status**, closed **no row**, cleared **no effort**, and appended **no row**. The work is exempt from the planning gate under preferences §4.15 as a handover/documentation update. It did not touch the Owner's spreadsheet, any Apps Script file, or the Owner actions he is currently working through from the 2026-09-19 Layer 6 entry.
 
 ---
 
@@ -5607,3 +5641,126 @@ Both remotes level. Working tree clean.
 **Thirteen Owner actions are recorded in the close-down Layer 6 entry and live nowhere else.** The first is the one that matters tonight: **paste `Publish.gs`** — until he does, rows 6.1, 6.2 and 6.3 are inert and the publisher in his account is still the one that lost Murray Angel and Stuart Ironside.
 
 Both remotes level. Working tree clean.
+
+---
+
+### 2026-09-21T05:58:10Z — The MISSION block is added to Layer 1
+
+**Source:** Claude Code
+**Started:** 2026-09-21T05:56:55Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader
+
+**Prompt received:**
+
+```
+Target repo: dunchi-trader
+
+Comply with the loaded global CLAUDE.md and the project CLAUDE.md. Both auto-load — do not read either, which would append a duplicate copy to your context.
+
+## Context Transfer Brief
+
+- Commissioned from Claude.ai conversation https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL on 2026-09-21, successor to the 2026-09-19 launch conversation.
+- Plan in hand: PLAN-DUNCHI-LAUNCH-2026-09-19 at 0 of 41 effort, 0 of 9 rows. Read docs/BUILD-PLAN-dunchi-launch.md if you need it; do not restate it back.
+- Repo state as read by Claude.ai at 2026-09-21T05:32Z: HEAD 0f7c3ec, branch master, tree clean, 0 ahead / 0 behind origin/master. This prompt was composed against that HEAD.
+- Where things stand: the Owner has pasted apps-script/Publish.gs into his Apps Script project and the Village list menu is now present on his spreadsheet. He is working through the Owner actions recorded in HANDOVER Layer 6, 2026-09-19, "Launch, silent data loss, and the self-healing publisher". NOTHING IN THIS PROMPT TOUCHES THAT WORK, his spreadsheet, or any Apps Script file.
+- MISSION GAP, DECLARED — and it is the reason this prompt exists. docs/HANDOVER-dunchi-trader.md carries no MISSION block. Preferences §4.18 requires every repo Claude.ai does substantive work in to carry one, and requires every commissioning prompt to name it. There is none to name, so the gap is declared here and closing it is this prompt's first and only task.
+- PLANNING GATE: this work is EXEMPT under preferences §4.15 as a handover/documentation update. It is not a plan row, it appends no plan row, and it clears no effort. Do not change any status in the build plan and do not mark anything done.
+
+## Task
+
+Add a MISSION block to docs/HANDOVER-dunchi-trader.md. It lives in exactly one place in the repo — put it at the top of Layer 1, immediately above "Project Status".
+
+The mission is the Owner's own wording, given in conversation on 2026-09-21. Transcribe it verbatim, subject to one correction which the block itself must state: he wrote the village name as "Dunchidiuk"; the correct spelling is "Dunchideock" and that is what is written.
+
+> This repo exists to create an online resource for the Dunchideock village to recommend and find workmen for their use. The purpose of this is to ensure everybody has easy access to high quality work.
+
+The block must also say how progress is measured. §4.18 requires it to POINT AT where the measure is computed and forbids a hand-typed figure, which would be a second copy that drifts. Point at docs/BUILD-PLAN-dunchi-launch.md and at the completion computed from it. Write NO percentage and NO row count into the block.
+
+Record in Layer 5 that the MISSION block was added on 2026-09-21 and that the wording is the Owner's own — §4.18 requires a mission to change only by explicit decision recorded there, never as a side effect of session work.
+
+## Required
+
+- Update the HANDOVER as the work proceeds.
+- Commit all code and documentation.
+- Give a detailed written summary.
+- Give a formatted table of what was tested and each result.
+- Return the end-of-session summary, and any follow-on prompt, as a single copy-paste-ready fenced code block.
+```
+
+**What was done:**
+
+Three changes, all in [PATH] `docs/HANDOVER-dunchi-trader.md`. No other file in the repo was read for editing, and none was modified. `apps-script/` was not opened. The build plan was not opened and not modified.
+
+**1 — The MISSION block, added to Layer 1.** Placed **immediately above `### Project Status`** and immediately below the §3.9 self-enforcing note, which is the top of Layer 1's content. It carries four parts:
+
+- A sentence recording that it was added **2026-09-21**, that the wording is the Owner's own given in conversation that day, and **the one correction, stated in the block itself as the prompt required**: he wrote "Dunchidiuk", the correct spelling is "Dunchideock", and that is what is written. It states explicitly that **no other word was altered**.
+- The mission, as a blockquote, **transcribed verbatim** with the single spelling correction applied.
+- **How progress is measured** — pointing at [PATH] `docs/BUILD-PLAN-dunchi-launch.md` (Plan ID `PLAN-DUNCHI-LAUNCH-2026-09-19`) and at the completion computed from it. It states *why* no figure is typed there: a hand-typed percentage would be a second copy of a number the plan already holds and would drift the moment a row closed. **No percentage and no row count appear anywhere in the block** — verified by grep, recorded in the testing table below.
+- The §4.18 constraint restated inside the block, so a session reading Layer 1 alone still sees that the mission changes only by an explicit Layer 5 decision.
+
+**Why the correction is stated in the block rather than only in Layer 5:** the prompt required the block itself to state it. The reason it is the right requirement is that Layer 1 is the layer a reader treats as authoritative without cross-referencing; a silent correction there would present altered wording as verbatim wording, and the reader would have no way to know a word had moved.
+
+**2 — The Layer 5 decision entry**, appended at the end of Layer 5 immediately before the Layer 6 heading. It records the block's addition, the verbatim wording with its one correction, the rationale for the block existing (the §4.18 gap, declared in the commissioning prompt rather than discovered later), the decision to measure by pointing rather than by a typed figure, and the §4.18 change-control constraint. It also records **what this session did not do** — no plan status changed, no row closed, no effort cleared, no row appended, nothing touched in the Owner's spreadsheet or in `apps-script/`.
+
+**A note on the drift rationale, because it is evidenced rather than asserted.** The Layer 5 entry justifies the no-typed-figure rule by pointing at this same document's `Project Status` paragraph, which carries a long chain of struck-through effort positions — each correct when written, each wrong within hours, all preserved because §3.3 forbids deleting them. That chain is the failure mode §4.18 is guarding against, visible in the very file the block was added to.
+
+**3 — Timestamps.** Metadata `last-updated` and Layer 1 `Last updated` both regenerated with `date -u` at the point of writing and set to the same value, with the prior value struck through in Layer 1 per §3.3.
+
+**No decision was required beyond the prompt's instructions**, and nothing ambiguous was encountered. The one judgement call was placement of the block relative to the §3.9 self-enforcing note: the note is a structural preamble that §3.9 requires at the top of Layer 1, so the MISSION block sits below it and above `Project Status`, which satisfies "at the top of Layer 1, immediately above Project Status" without displacing a mandated element.
+
+**Testing performed:**
+
+| # | What was tested | Command / action | Expected | Actual | Result |
+|---|---|---|---|---|---|
+| 1 | Repo state matches the HEAD the prompt was composed against | `git log --oneline -1` and `git status --porcelain` | HEAD `0f7c3ec`, tree clean | HEAD `0f7c3ec`, tree clean | PASS |
+| 2 | No MISSION block already existed (do not create a second) | `grep -in "^### MISSION\|^## MISSION\|MISSION BLOCK"` before editing | Zero matches | Zero matches | PASS |
+| 3 | MISSION block exists and appears exactly once | `grep -c "^### MISSION"` | 1 | 1 | PASS |
+| 4 | Block sits immediately above `Project Status` | `grep -n "^### MISSION\|^### Project Status"` — line order and adjacency of sections | MISSION precedes Project Status, no section between | MISSION at 18, Project Status at 30, nothing between but the block's own body | PASS |
+| 5 | Mission wording is verbatim against the prompt | Character-level diff of the blockquote against the prompt's quoted text, spelling correction excepted | Identical but for `Dunchidiuk` → `Dunchideock` | Identical but for that one word | PASS |
+| 6 | The misspelling does not survive **in the mission quote** | `sed -n '22p' \| grep -c "Dunchidiuk"` — the quote line only | Zero matches in the quote | `0` | PASS |
+| 6a | The misspelling **does** survive where it must — in the correction note, the Layer 5 entry, and the preserved prompt | `grep -in "Dunchidiuk"` over the whole file | Matches confined to text *describing* the correction, none in the quote | 5 matches: the block's correction note, the Layer 5 entry, the verbatim prompt, and two rows of this table — none in the quote | PASS |
+| 7 | Correct spelling is used in the block | `grep -c "Dunchideock" within the MISSION block` | ≥ 2 (the correction note and the quote) | 3 | PASS |
+| 8 | **No percentage in the MISSION block** (§4.18) | `sed -n '<block range>p' \| grep -n "%"` | Zero matches | Zero matches | PASS |
+| 9 | **No completion figure in the MISSION block** (§4.18) | `sed -n '18,26p' \| grep -nE "[0-9]+ +of +[0-9]+\|[0-9]+ +rows? +done\|[0-9]+(\.[0-9]+)?%"` | Zero matches | Zero matches (`exit=1`) | PASS |
+| 9a | Stronger form of 9 — **every** digit in the block inspected, not just pattern-matched | `sed -n '18,26p' \| grep -oE "[0-9]+" \| sort -u` | Only date components | `09 19 2026 21 5` — the two dates and the Plan ID's date; no count, no percentage | PASS |
+| 10 | Block points at the build plan | `grep -n "BUILD-PLAN-dunchi-launch.md" within block` | Present, tagged `[PATH]` | Present, tagged `[PATH]` | PASS |
+| 11 | Layer 5 entry recorded, dated 2026-09-21 | `grep -n "2026-09-21 — The MISSION block"` | One entry inside Layer 5 | One entry, between the prior Layer 5 entry and the Layer 6 heading | PASS |
+| 12 | Layer 5 entry sits before Layer 6, not after | Line number of new entry vs `^# LAYER 6` | Entry line < Layer 6 line | Entry before Layer 6 | PASS |
+| 13 | §3.6 step 1–3 — no heading removed | `git show HEAD:docs/HANDOVER-dunchi-trader.md \| grep "^#" > /tmp/old; grep "^#" docs/... > /tmp/new; diff` | Only additions, no deletions | Only additions (MISSION, the new Layer 5 entry, the new Layer 6 entry) | PASS |
+| 14 | §3.6 step 4 — both timestamps regenerated and matching | `grep -n "^last-updated:" and Layer 1 "Last updated"` | Same ISO value, generated this session with `date -u` | Both `2026-09-21T05:58:10Z` | PASS |
+| 15 | §3.6 step 5 — document ends at Layer 6 | `grep -n "^# LAYER"` | Highest is LAYER 6; no LAYER 7 | Highest is LAYER 6 | PASS |
+| 16 | Prior Layer 1 timestamp preserved, not overwritten | Inspect Layer 1 `Last updated` line | Old value struck through and retained | `~~2026-09-19T21:40:59Z~~` retained in the chain | PASS |
+| 17 | Build plan untouched (planning gate exempt) | `git status --porcelain docs/BUILD-PLAN-dunchi-launch.md` | No change | No change | PASS |
+| 18 | Apps Script untouched | `git status --porcelain apps-script/` | No change | No change | PASS |
+| 19 | Only the handover changed | `git status --porcelain` before commit | Exactly one modified path | Exactly `docs/HANDOVER-dunchi-trader.md` | PASS |
+| 20 | Working tree clean and remote level after commit | `git status --porcelain`; `git log origin/master..HEAD` | Both empty | Both empty | PASS |
+
+**Two tests were mis-specified on first writing and are corrected above rather than quietly rewritten.** Recorded because a handover that shows only the corrected test teaches the next session a check that looks stronger than the one actually run:
+
+- **Test 6** was first written as *"`Dunchidiuk` appears zero times in the file"*. That is the wrong assertion and it **failed** — five legitimate matches, because the prompt itself required the block to *state* the correction, and the Layer 5 entry and the preserved verbatim prompt necessarily repeat it too. The assertion that matters is that the misspelling is absent **from the mission quote**, which is now test 6, with test 6a asserting the converse — that it is present exactly where the record needs it.
+- **Test 9** was first written with a regex (`[0-9]+ *(of|/) *[0-9]+|[0-9]+ rows?|effort`) that matched the block's own sentence explaining why no figure is written, and matched `rows` inside *"that plan's rows and efforts"*. It reported a match against a block that contains no figure at all. Replaced by a tightened pattern plus **test 9a**, which lists every digit-run in the block for inspection rather than trusting a pattern — the only digits present are the two dates and the Plan ID's date.
+
+**Neither correction changed the MISSION block**; both changed the tests asserting things about it. The block was correct as first written.
+
+**What was not tested:**
+
+- **Preferences §4.18 and §4.15 were not read this session.** Their requirements — that a MISSION block exists, lives in one place, points at its measure rather than typing a figure, changes only by explicit Layer 5 decision, and that handover/documentation work is exempt from the planning gate — are **REPORTED from the commissioning prompt**, which is Claude.ai's statement of them. They were followed as stated and are not independently verified here. Rule 1.9 applies: this session did not read the preferences document, so it does not record their content as measured.
+- **The Owner's wording was not verified with the Owner.** It is transcribed from the commissioning prompt, which attributes it to him in conversation on 2026-09-21. **REPORTED, source: the commissioning prompt.** The spelling correction likewise rests on the prompt's instruction, not on an independent check of the village's name.
+- **The build plan's current position was not read**, deliberately — the prompt said not to restate it and the block must contain no figure. The block's claim that completion is computed from that plan is a pointer, not a measurement of the plan's contents.
+- **No rendering check.** The handover was not viewed in a Markdown renderer or on the dashboard; correctness of the block's formatting rests on the raw text.
+
+**Commits:**
+
+- UNRESOLVED — see the follow-up commit that replaces this line with the real SHA
+
+**Finished:** 2026-09-21T05:58:10Z
+
+**End state:**
+
+`docs/HANDOVER-dunchi-trader.md` now carries a MISSION block at the top of Layer 1 in the Owner's own wording, with its one spelling correction stated in the block, pointing at `docs/BUILD-PLAN-dunchi-launch.md` for the measure of progress and carrying no figure of its own. Layer 5 records the addition as a dated decision, so the §4.18 change-control constraint has something to bite on. The §4.18 gap declared in the commissioning prompt is closed.
+
+**Nothing else moved, and that is the intended outcome.** `PLAN-DUNCHI-LAUNCH-2026-09-19` stands exactly where it did — no status changed, no row closed, no effort cleared, no row appended. The Owner's thirteen outstanding actions from the 2026-09-19 close-down entry are untouched and still his; he has pasted `Publish.gs` and has the Village list menu on his spreadsheet, and the rest of that queue is unaffected by this session.
+
+Working tree clean. Remote level.
