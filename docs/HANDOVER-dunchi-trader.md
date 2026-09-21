@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T11:32:10Z
+last-updated: 2026-09-21T11:47:05Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T11:32:10Z** ~~2026-09-21T10:53:24Z~~ ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T11:47:05Z** ~~2026-09-21T11:32:10Z~~ ~~2026-09-21T10:53:24Z~~ ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -203,11 +203,29 @@ When he deliberately submitted a two-number field this morning to test this row,
 
 **Rows `1.1`, `3.1`, `4.1` and `6.1` are untouched and still `new`; `5.1` remains `external`.** **STEP 6 IS NOW COMPLETE BUT FOR `6.1`** — and `6.1` closes only when the Owner sees a dropped submission recover by itself, which nothing has done since the fix landed. **`3.1` remains the live gate on launch.**
 
+**2026-09-21T11:47:05Z — ROW 6.1 AMENDED AND CLOSED UNDER `D11a-VCWL-21092026`. THE PLAN MOVES 16/36 (44.4%) → 24/36 (66.7%), 7 of 11 rows done. STEP 6 IS COMPLETE.** Verified five ways: validator `exit=0` with `sub-tasks: 11` and `done effort: 24 / 36 = 66.7%`; the same figure recomputed from the document's rows; every row re-checked as four cells; every satellite `State` reconciled; and the original wording confirmed still present, struck through.
+
+**His ruling, verbatim: *"D11a"***. He was offered three routes and chose the first.
+
+**THE ACCEPTANCE WAS AMENDED BECAUSE IT COULD NOT BE MET AS WRITTEN — and the reason is that the fix works.** The original clause closed on the Owner *"seeing a dropped submission recover by itself"*. **Nothing has been dropped since the retry and the sweep landed**, so the row would have sat open indefinitely — **not because the work was unfinished but because the fault it guards against stopped happening.** Waiting for it means wanting Google to fail again.
+
+**NEW ACCEPTANCE: the sweep installed, firing on its schedule, and completing cleanly.**
+
+⚠ **THE AMENDED BAR IS DELIBERATELY WEAKER THAN THE ORIGINAL, and this is stated rather than left to be inferred.** The original required him to SEE a recovery; the amended one requires only that the machinery which would recover is installed and running. **What was traded away is proof that recovery works on a FRESH fault. What was kept is everything observable without wanting Google to fail.** The original wording is preserved struck through in the row itself, so a later reader can see exactly what the bar was and what it became.
+
+**Precedent, and it is his own:** `D4b-6G7f-19092026`, where he corrected a row's acceptance rather than leave it unmeetable; and `D9a-VCWL-21092026` earlier today, closing a row on an upstream control with a recorded not-witnessed split.
+
+**CLOSED on evidence he has already sighted, all from 2026-09-21:** he pasted `Publish.gs` and installed the sweep; the first scheduled run at **07:11** logged ***"sweep published 8 missed submission(s)"*** and those eight lost submissions reached the village list by themselves; **`Stuart Ironside`, lost on 19 September, became visible on the live site**; and since he removed the column `M` validation rule at about **08:21**, every sweep has completed cleanly.
+
+⚠ **NOT WITNESSED, and it is the substantive gap: NO SUBMISSION HAS BEEN DROPPED SINCE THE FIX, so the RETRY path on a fresh transient failure is UNEXERCISED IN PRODUCTION.** The **sweep's** recovery path *was* exercised — by the eight — but a retry quietly recovering a `Service Spreadsheets failed` has not happened since the code landed.
+
+**STEP 6 IS NOW COMPLETE — all six rows `done`.** **Rows `1.1`, `3.1` and `4.1` are untouched and still `new`; `5.1` remains `external`.** **`3.1` is the live gate**, standing at 10 people across 8 trades as at 11:26Z against a bar of 12–15 across at least 6.
+
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
 | Plan ID | Path | Position [VERIFIED 2026-09-21, validator] |
 |---|---|---|
-| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, 10 sub-tasks, row `6.5` appended~~ ~~SUPERSEDED 2026-09-21T10:53:24Z → **12 / 36 = 33.3%**, 11 sub-tasks, 4 `done`~~ SUPERSEDED 2026-09-21T11:32:10Z → **16 / 36 = 44.4%**, **11 sub-tasks** (1 `external`, excluded), **6 `done`** | 
+| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, 10 sub-tasks, row `6.5` appended~~ ~~SUPERSEDED 2026-09-21T10:53:24Z → **12 / 36 = 33.3%**, 11 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T11:32:10Z → **16 / 36 = 44.4%**, 6 `done`~~ SUPERSEDED 2026-09-21T11:47:05Z → **24 / 36 = 66.7%**, **11 sub-tasks** (1 `external`, excluded), **7 `done`** | 
 | `PLAN-DUNCHI-INHERITANCE-2026-09-21` | `docs/BUILD-PLAN-dunchi-inheritance.md` | **0 / 9 = 0.0%**, 1 sub-task |
 
 **The launch plan's denominator fell 41 → 32 and that is SCOPE LEAVING, not progress.** Done effort was 0 before and is 0 after; the 9 effort was excluded **by the row's `external` status**, never by re-weighting it (STD-00009 Rules 5.4.2 and 5.2.5 [CORE]).
@@ -3025,6 +3043,37 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **Why a partly-lifted caveat is worth the edit at all.** An *installed but not witnessed* note is a standing invitation to re-test. **Leaving it unqualified after the thing was witnessed would send a later session hunting for evidence that already exists**, and would understate how much of step 6 has now met real traffic. **Equally, deleting it would overstate the case** — the multi-number arm is still untested and is now untestable through the form. Narrowing is the only honest option.
 
 **[PATTERN CANDIDATE: a-caveat-is-a-living-record-not-a-closing-stamp]** Rows close, but the evidence behind them keeps moving. **A not-witnessed note should be revisited when production witnesses it**, and narrowed rather than deleted — the difference between *"we never saw this work"* and *"we saw this half work"* is exactly what the next session needs.
+
+---
+
+### 2026-09-21 — D11a: row 6.1's acceptance is amended because the fix worked too well to be proven
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION] `D11a-VCWL-21092026` — the Owner's ruling. His word, verbatim: *"D11a"***. He was offered three routes and chose the first.
+
+**THE PROBLEM PUT TO HIM, and it is an unusual one worth stating precisely.** Row 6.1 closed on his *"seeing a dropped submission recover by itself"*. **Nothing has been dropped since the retry and the sweep landed. That is the fix working.** So the row could not close — **not because the work was incomplete, but because the fault it was built to survive had stopped occurring.** The only route to the original clause was to wait for Google to fail again, which is to say: to want the product to break in order to tick a box.
+
+**[DECISION] THE ACCEPTANCE IS AMENDED TO WHAT CAN ACTUALLY BE OBSERVED:** the sweep installed, firing on its schedule, and completing cleanly. **The original wording is preserved STRUCK THROUGH in the row rather than deleted**, so the record shows what the bar was and what it became.
+
+**[DECISION] ⚠ THE AMENDED BAR IS DELIBERATELY WEAKER, AND THE RECORD SAYS SO RATHER THAN READING AS THOUGH THE ORIGINAL WAS MET.** This is the clause a later reader most needs:
+
+| | |
+|---|---|
+| **Original bar** | The Owner SEES a dropped submission recover by itself |
+| **Amended bar** | The machinery that would recover it is installed, scheduled and running cleanly |
+| **What was traded away** | **Proof that recovery works on a FRESH fault** |
+| **What was kept** | Everything observable without wanting Google to fail again |
+
+**The trade is defensible and it is still a trade.** A row that can only close on a failure is a row whose closure the project should not want; but a row closed on *"the machinery is installed"* has demonstrably less evidence behind it than one closed on *"I watched it work"*. **Both halves of that are true and both are recorded.**
+
+**[FINDING] WHAT WAS ACTUALLY SIGHTED IS STRONGER THAN THE AMENDED BAR REQUIRES, and that is worth separating from the amendment itself.** The sweep did not merely run — **it recovered eight real lost submissions on its first scheduled firing at 07:11**, and `Stuart Ironside`, lost on 19 September, **became visible on the live site**. **So the sweep's recovery path is not theoretical: it was exercised on real data, in production, and the result reached the village.** The amendment was needed only for the *retry* path.
+
+**[FINDING] ⚠ THE RETRY PATH REMAINS UNEXERCISED IN PRODUCTION, and it is the substantive gap.** The two failure modes of 2026-09-19 needed different defences: a **sweep** for Murray Angel's class, where Google never delivered the event, and a **retry** for Stuart Ironside's, where the script ran and Sheets failed. **The sweep's half has been witnessed. The retry's half has not** — no `Service Spreadsheets failed` has occurred since the code landed, so no retry has quietly recovered anything. **It is covered by the committed harness and has never run against Google.**
+
+**Precedent, and both are the Owner's own.** `D4b-6G7f-19092026` corrected a row's acceptance rather than leave it unmeetable, for the same structural reason — automatic publishing had made the `NEW` verdict unreachable. `D9a-VCWL-21092026`, earlier today, closed a row on an upstream control with a recorded not-witnessed split. **This is the third instance of the same pattern in three days**, which is itself worth noticing.
+
+**[PATTERN CANDIDATE: a-row-that-closes-only-on-failure-is-mis-specified]** An acceptance clause requiring the operator to witness the fault the work prevents **becomes unmeetable exactly when the work succeeds**, and the better the fix the longer the row stays open. **Write such rows to close on the guard being demonstrably in place**, with the recovery evidenced by whatever real occurrence exists, and record separately which failure classes have and have not been seen. **Three rows on this project have now needed this correction after the fact.**
 
 ---
 
@@ -7836,6 +7885,80 @@ Working tree clean. Both remotes level.
 **STEP 6 IS COMPLETE BUT FOR `6.1`.** Five of its six rows are `done`. **`6.1` closes only when the Owner sees a dropped submission recover by itself**, and nothing has been dropped since the retry and sweep landed. **That row may have no reachable sighting**, and putting its acceptance wording to him is the obvious next decision — the D4b-6G7f-19092026 precedent, where he corrected a row's acceptance rather than leaving it unmeetable, is the one to cite.
 
 **`3.1` remains the live gate on launch** — 12–15 real tradespeople across at least 6 trades, standing at 10 across 8 as at 11:26Z.
+
+**Nothing else moved.** No code file touched, no row appended, no effort re-weighted, nothing written to the Owner's spreadsheet, nothing redeployed.
+
+Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T11:47:05Z — Row 6.1 amended and closed: 16/36 → 24/36, step 6 complete
+
+**Source:** Claude Code
+**Started:** 2026-09-21T11:36:20Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only)
+
+**Prompt received:** *(preserved in the Claude.ai conversation above. A plan update and nothing else: amend row 6.1's acceptance under D11a-VCWL-21092026, close it on evidence already sighted, and record two things plainly — that no submission has been dropped since the fix so the retry path is unexercised, and that the amended acceptance is deliberately weaker than the original.)*
+
+**What was done:**
+
+**Staleness check first:** `GITHUB_TOKEN= git fetch collab main && GITHUB_TOKEN= git diff FETCH_HEAD..HEAD --stat -- apps-script/` → **no output, exit 0.** HEAD `312cf4f`, tree clean — **did not differ from the prompt.**
+
+**Baseline measured before editing:** validator `exit=0`, **11 sub-tasks, 16/36 = 44.4%**. **Rows enumerated independently: 11.** **Predicted post-change figure computed BEFORE the edit: 24 of 36 = 66.7%**, so the validator was tested against a prediction rather than trusted.
+
+**Row 6.1 amended and closed.** Its closing clause — *"Closes on the Owner pasting the script and seeing a dropped submission recover by itself."* — is **struck through, not deleted**, and followed by the amendment, the ruling, the reason the original was unmeetable, the explicit statement that the new bar is weaker, the precedents, the sighted evidence, and the unexercised retry path. **Status `new` → `done`; satellite `State` → `done`, `Forecast` and `Forecast end` → 2026-09-21.**
+
+**On the dates.** **`Actual start` left at `2026-09-19`** — the work genuinely began then, when step 6 was appended after Murray Angel and Stuart Ironside were lost. **`Forecast end` moved to 2026-09-21**, the date it completed. **`Due` and `Planned end` NOT rewritten**: a baseline is a promise, and rewriting it to match the outcome is the same error as re-weighting effort to move a percentage. **The row finished five days inside its promise.**
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | Staleness check | clean | **no output, exit 0** | PASS |
+| 2 | Repo matches prompt HEAD | `312cf4f`, clean | did not differ | PASS |
+| 3 | Baseline position before edits | a comparison | **11 sub-tasks, 16/36 = 44.4%**, exit 0 | PASS |
+| 4 | Rows enumerated from the document | 11 | **11** | PASS |
+| 5 | Predicted figure, computed before editing | a prediction | **24 of 36 = 66.7%** | PASS |
+| 6 | **§3.10 validator after the edits** | exit 0 | **`exit=0`** | PASS |
+| 7 | **Validator sub-task count** | 11 | **11** | PASS |
+| 8 | **Validator completion figure** | verify, not confirm | **`24 / 36 = 66.7%`** — matches the prediction | PASS |
+| 9 | **Count cross-checked against rows the file holds** | must match | **document 11, validator 11 — MATCH** | PASS |
+| 10 | **Figure recomputed independently from the document** | must match | **24 of 36 = 66.7%** | PASS |
+| 11 | Every row parses to exactly four cells | all 11 | **all 11** — no literal pipe introduced | PASS |
+| 12 | **Satellite `State` matches four-column status** | consistent | **consistent on all 11** | PASS |
+| 13 | **Original acceptance wording preserved, struck through** | present once | **present once** | PASS |
+| 14 | Exactly seven rows `done` | 2.1, 6.1–6.6 | exactly those | PASS |
+| 15 | Untouched rows still `new` | 1.1, 3.1, 4.1 | all three still `new` | PASS |
+| 16 | `5.1` still `external` | unchanged | `external` | PASS |
+| 17 | No row appended, none renumbered, no effort re-weighted | unchanged | `3 2 4 5 9 8 5 4 1 2 2` | PASS |
+| 18 | **No code file touched** | none | `apps-script/` and `app.js` unmodified | PASS |
+| 19 | Test suites green (control) | no regression | **300 passed, 0 failed** | PASS |
+| 20 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `11:47:05Z`; 6 layers | PASS |
+| 21 | Nothing written to the Owner's sheet | nothing | no Apps Script run at all | PASS |
+
+**What was not tested:**
+
+- **⚠ THE RETRY PATH REMAINS UNEXERCISED IN PRODUCTION.** No submission has been dropped since the fix, so no `Service Spreadsheets failed` has been retried and quietly recovered on his account. **It is covered by the committed harness and has never run against Google.** **The sweep's recovery path WAS exercised** — eight real lost submissions at 07:11 — and that distinction is the whole substance of the gap.
+- **⚠ THE AMENDED ACCEPTANCE IS WEAKER THAN THE ORIGINAL.** Recorded in the row, in Layer 1 and in Layer 5. **Nothing here should be read as the original bar having been met.**
+- **NO SESSION SAW THE 07:11 SWEEP OR ITS LOG.** That it published eight missed submissions is **REPORTED** from the Owner's execution log via earlier prompts; that `Stuart Ironside` became visible is **REPORTED** from Claude.ai's browser read. **This session ran no browser and read no feed** — it was a plan update.
+- **THE OWNER'S RULING IS REPORTED** from the commissioning prompt, which is Claude.ai's record of the conversation.
+- **NO CODE WAS RUN OR CHANGED.** The suites were executed only as a control to confirm this plan-only session broke nothing.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T11:47:05Z
+
+**End state:**
+
+**`PLAN-DUNCHI-LAUNCH-2026-09-19` stands at 24 of 36 effort (66.7%), 7 of 11 rows done** — verified by the validator at exit 0, recomputed independently, row count cross-checked, satellites reconciled, and the struck-through original confirmed present.
+
+**STEP 6 IS COMPLETE. All six rows are `done`** — the publisher no longer loses a villager's recommendation, and five of the six closures rest on something the Owner saw on his own screen.
+
+**WHAT REMAINS IS THE VILLAGE, NOT THE CODE.** Three rows: **`3.1`** the live gate (10 people across 8 trades at 11:26Z against 12–15 across 6+), **`1.1`** telling the village, and **`4.1`** walking the journey on real content. **None of them is a code task** — they are the Owner's, and their pace is a village's.
 
 **Nothing else moved.** No code file touched, no row appended, no effort re-weighted, nothing written to the Owner's spreadsheet, nothing redeployed.
 
