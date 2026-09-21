@@ -23,7 +23,14 @@
 > under the standard's **3×** review threshold, so no review is triggered and the validator raises
 > no advisory. The gap is honest: step 6 was unplanned work commissioned after two real submissions
 > were lost, and a plan that could not grow when the world did would be the less useful record.
-| **Summary** | Take the finished Dunchideock village trades directory from working to launched, and prove it can be inherited. The site is built and live; what remains is real content, a village that knows about it, and a rebuild runbook somebody can actually follow. |
+>
+> **2026-09-21 — the DENOMINATOR is now 32, and the `Estimate` still stays at 23.** Row `5.1`
+> became `external` under D3c-VCWL-21092026, so its 9 effort left the denominator
+> (`0/41` → `0/32`). **The 41 above is preserved rather than corrected**: it was the true
+> decomposed total on 2026-09-19 and the 1.78× reasoning is the record of that moment. Against
+> the live denominator the ratio is now **32 ÷ 23 = 1.39×**, further below the 3× threshold than
+> before. **Neither figure is revised to flatter the other** (Rule 5.4.4 [CORE]).
+| **Summary** | Take the finished Dunchideock village trades directory from working to launched. The site is built and live; what remains is real content and a village that knows about it. |
 
 ---
 
@@ -45,7 +52,7 @@ the provenance is named in each row's text so a reader following an old citation
 |---|---|---|---|
 | **1.1** | `7.2` | 3 | The village is told |
 | **4.1** | `7.1` | 5 | The journey works on real content |
-| **5.1** | `6.1` | 9 | Someone handed the two logins can rebuild the site |
+| **5.1** | `6.1` | 9 | Someone handed the two logins can rebuild the site — **left this plan 2026-09-21 under D3c-VCWL-21092026; now `1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`, effort still 9. It has now moved twice, and both hops are named in that plan so an old citation to `6.1` or to `5.1` still resolves.** |
 
 **Their effort is unchanged** — V1 carried them at 3, 5 and 9, and re-weighting a row on the way
 across would move a percentage without changing any work (Rule 5.4.4 [CORE]).
@@ -106,7 +113,7 @@ actively manage the content as it comes in. Full record in handover Layer 5.
 | **2nd** | **1.1** | Tell the village |
 | then | **3.1** | The list carries real people — **now reached by villagers submitting, not by seeding** |
 | then | **4.1** | The journey works on real content |
-| any time | **5.1** | Repair the runbook, then walk it — **independent of all of the above** |
+| ~~any time~~ | ~~**5.1**~~ | ~~Repair the runbook, then walk it — **independent of all of the above**~~ **LEFT THIS PLAN 2026-09-21 under D3c-VCWL-21092026 — now `1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`. It was already independent of every row above, so the running order of what remains is UNCHANGED.** |
 
 **NOTHING IS RENUMBERED, and that is deliberate.** STD-00009 §5.1.4 forbids
 renumbering within a live plan: the numbers are citation targets, and commit
@@ -190,13 +197,39 @@ result and say *"yes, that is delivered"*?
 
 ## Step 5 — The site can be inherited
 
+**⚠ THIS STEP'S ONLY ROW LEFT THIS PLAN ON 2026-09-21. IT IS NOT BUILT AND IT IS NOT DROPPED.**
+
+**[DECISION] `D3c-VCWL-21092026`** — the Owner's words: ***"D3c. Handover is less of a concern
+than getting this live!"*** Row `5.1` is now owned by **`PLAN-DUNCHI-INHERITANCE-2026-09-21`**
+at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, where it is renumbered `1.1` at the same
+effort of 9.
+
+**The position, stated because the arithmetic alone would mislead** (STD-00009 Rule 5.10.5 [CORE]
+form, adapted to a status change rather than a removal — the row is still here and still readable):
+
+```
+Re-homed 2026-09-21 on the Owner's ruling D3c-VCWL-21092026.
+Was 9 rows, 0/41 = 0.0%. Now 9 rows, 0/32 = 0.0%.
+The movement is SCOPE REMOVED, not progress gained — done effort is unchanged at 0,
+and the percentage did not move because nothing was ever done in either figure.
+```
+
+**Nothing is renumbered and no row was deleted.** The row keeps its id `5.1`, its full text and
+its effort of 9; only its **status** changed, and that is what removes its weight
+(Rule 5.2.5 [CORE]). **The denominator fell 41 → 32 because `external` is excluded entirely
+(Rule 5.4.2 [CORE]), not because anybody re-weighted anything.**
+
+**⚠ AND THE THING THAT MATTERS MOST: the inheritance requirement is UNPROVEN.** Moving the row
+changed who owns it, not whether it is done. **Nothing in this plan, this repo or any handover
+may describe it as satisfied.**
+
 | # | Status | Sub-task | Effort |
 |---|---|---|---|
-| 5.1 | new | Someone handed only the two account logins can rebuild the site from nothing. **The row is not "walk the runbook" but "MAKE IT WALKABLE, THEN ESTABLISH IT WORKS"**, because three defects are already measured and recorded in handover Layer 4: **step 4** tells the walker to create a GitHub repository whose name is the live site's, so GitHub refuses it and **the walk stops dead**; **steps 7 and 8** delegate to `apps-script/DEPLOY.md` and `apps-script/SHEET-FORMULAS.md`, both of which **open the LIVE spreadsheet by its hard-coded id**; and **there is no cleanup section**, so a rehearsal leaves a second spreadsheet, a second form and **a second public village directory on the internet**. Done when `docs/RESTORE-dunchi-trader.md` can be followed against a **throwaway parallel copy** without touching any live artefact, it names throwaway names for every artefact it creates, it carries a cleanup section covering the public ones, **and somebody has then walked it end to end with the two logins alone** and taken the throwaway copy down afterwards. Any step needing anything else is a defect to fix, not a footnote to add. **MOVED FROM `PLAN-DUNCHI-TRADER-V1` row `6.1`**, effort unchanged at 9 — **the largest row in this plan**, and the one that answers the Owner's own requirement *"I want to be able to hand over the operating site to anyone else who inherits that google email account"*, which is **the only clause of the Requirement as stated that remains unproven**. | 9 |
+| 5.1 | external | [owner: PLAN-DUNCHI-INHERITANCE-2026-09-21] Someone handed only the two account logins can rebuild the site from nothing. **The row is not "walk the runbook" but "MAKE IT WALKABLE, THEN ESTABLISH IT WORKS"**, because three defects are already measured and recorded in handover Layer 4: **step 4** tells the walker to create a GitHub repository whose name is the live site's, so GitHub refuses it and **the walk stops dead**; **steps 7 and 8** delegate to `apps-script/DEPLOY.md` and `apps-script/SHEET-FORMULAS.md`, both of which **open the LIVE spreadsheet by its hard-coded id**; and **there is no cleanup section**, so a rehearsal leaves a second spreadsheet, a second form and **a second public village directory on the internet**. Done when `docs/RESTORE-dunchi-trader.md` can be followed against a **throwaway parallel copy** without touching any live artefact, it names throwaway names for every artefact it creates, it carries a cleanup section covering the public ones, **and somebody has then walked it end to end with the two logins alone** and taken the throwaway copy down afterwards. Any step needing anything else is a defect to fix, not a footnote to add. **MOVED FROM `PLAN-DUNCHI-TRADER-V1` row `6.1`**, effort unchanged at 9 — ~~**the largest row in this plan**~~ **[historical — true until 2026-09-21; it now carries no weight here, and the largest weighted row in this plan is `6.1` at 8]**, and the one that answers the Owner's own requirement *"I want to be able to hand over the operating site to anyone else who inherits that google email account"*, which is **the only clause of the Requirement as stated that remains unproven**. **MOVED OUT OF THIS PLAN 2026-09-21 under the Owner's ruling D3c-VCWL-21092026, and NOT descoped.** His words: ***"D3c. Handover is less of a concern than getting this live!"*** The work still matters and is owned by **`PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, where it is renumbered `1.1`; this row records the dependency and carries none of the weight (STD-00009 Rules 5.2.1, 5.2.2 and 5.2.4 [CORE] — `external` is the sanctioned token for work another Plan ID owns, `descoped` would have meant the work was dropped). Its effort is unchanged at 9 per Rule 5.2.5 [CORE] and is excluded from this plan's denominator **by its status, never by re-weighting**. **Claude.ai recommended that Frank walk the runbook — the Owner's own walk being the weakest test of a document written for somebody who knows nothing — and the Owner OVERRULED that recommendation**, reprioritising against it rather than disputing it. ⚠ **THE INHERITANCE REQUIREMENT IS THEREFORE UNPROVEN AND MUST NOT BE DESCRIBED ANYWHERE AS SATISFIED.** **Its text is preserved here in full so a reader following a citation to `5.1` still finds what it referred to.** | 9 |
 
 | # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 5.1 | When Gavin hands the directory to whoever takes it on and walks away, they can run it without him. | Repair the runbook, then walk it against a throwaway copy | The inheritance requirement is proven rather than asserted | Fix the three measured defects, then verify by rebuilding | new | 2026-10-17 | 2026-10-17 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de |  |  | 2026-09-19 | 2026-10-17 | 2026-09-19 | 2026-10-17 |
+| 5.1 | When Gavin hands the directory to whoever takes it on and walks away, they can run it without him. | Repair the runbook, then walk it against a throwaway copy | The inheritance requirement is proven rather than asserted | Fix the three measured defects, then verify by rebuilding | external | 2026-10-17 | 2026-10-17 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de |  |  | 2026-09-19 | 2026-10-17 | 2026-09-19 | 2026-10-17 |
 
 ---
 

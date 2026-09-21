@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T05:58:10Z
+last-updated: 2026-09-21T06:08:30Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T05:58:10Z** ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T06:08:30Z** ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -29,7 +29,18 @@ status: active
 
 ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **2026-09-18T21:10:23Z — CONVERSATION CLOSED DOWN at 68 of 92 (73.9%), 15 of 20 rows.** **2026-09-19T11:25:10Z — ~~68 of 92 (73.9%), 15 of 20 rows~~ SUPERSEDED → 68 of 96 effort (70.8%), 15 of 21 rows.** This session **cleared no effort and closed no row, which was the expected outcome and is stated plainly rather than dressed up**: everything it built closes on the owner's sighting of a real vote on the live page, and he has not yet redeployed. The percentage FELL because row **4.7** was appended at effort 4, adding to the denominator while the numerator stood still — arithmetic, not regression. **THE OPEN DEFECT IS DIAGNOSED AND IT WAS NONE OF THE FIVE CANDIDATES.** Measured 2026-09-19: the deployment behind the votes `/exec` address is not running `Code.gs` at all — Google answers *"Script function not found: doPost"* to every request, and *"doGet"* to every GET. The address is alive; the script behind it is the wrong one. **AND THE PANEL NOW FEEDS THE VILLAGE LIST.** Owner's ruling D1b: the site's own recommend button writes to **Published `K` and `L`** — the tab the village reads — through the same `appendRecommendation()` the automatic publisher uses, not a second copy. It no longer writes to the **Votes** tab, which nothing ever read. Bounded by D2 and enforced in code: it cannot create a row, assign or reuse an id, write any column but `K` and `L`, touch the owner's formula columns `I` and `J`, or reach an unknown or `hidden` id. **NEITHER FIX IS LIVE UNTIL THE OWNER REDEPLOYS** — nothing in this repository can put a script behind that address, and that is his first job (`apps-script/DEPLOY.md` step 14). **2026-09-19T12:17Z — THE BROKEN DEPLOYMENT IS NOW CONFIRMED BY THE OWNER**, on his own phone: he opened the `/exec` address and got `Script function not found: doGet`, independently matching the server-side measurement from a different device and network. **AND A SECOND DEFECT WAS FOUND AND FIXED — ROW 5.1's DELIVERABLE.** He typed the two test rows into Form responses and both reported somebody already on the site when neither was, **each naming its own row number**: `ALREADY ON SITE row 15` on row 15 and `row 16` on row 16. The `verdict` formula was comparing every row against the Form responses tab itself rather than against Published, because it read its comparison keys back out of its own columns `J` and `K`. Fixed at `6e0d4a0` — the keys are now computed inline so a self-match is not expressible, the verdict names the person's **id** rather than a row number, and the lookups are bounded so the helper columns' several hundred empty cells are out of reach. **34 tests pass including a negative control that reproduces the owner's exact readings against the defective formula.** Measured against his real list: both test rows had **already published themselves** as `T014` and `T015`, so `ALREADY ON SITE` is now their correct verdict and **`NEW` is structurally unreachable** on his tab — automatic publishing means every response is on the list within seconds. **Both fixes need a COMPUTER and are bundled into one trip** as DEPLOY.md step 14 Parts A and B. **2026-09-19T13:35:54Z — THE VERDICT FIX WAS ITSELF WRONG, AND THE OWNER FOUND IT BY LOOKING.** He pasted the morning's formula and photographed the result: **about twelve consecutive rows all reading `ALREADY ON SITE — T005`** — the same id on every row, where rows 15 and 16 must read `T014` and `T015`. The self-match was genuinely gone and every branch was chosen correctly; only the **id** was a broadcast constant. Cause, established from Google's documentation: **`INDEX` does not vectorise inside `ARRAYFORMULA`** — handed an array of positions it reads only the first. `MATCH` and `COUNTIF` both do vectorise, which is why the branches were right. Fixed at `81708cd` by replacing `INDEX`/`MATCH` with **`VLOOKUP` over a curly-brace literal array**; nothing else in the formula changed. **THE DEEPER FINDING: two successive fixes were proven against a hand-written simulator whose Sheets semantics were wrong, so the harness agreed with the code and both were wrong together. The owner found both defects by looking; the repository's tests found neither.** The harness now models `INDEX` as non-vectorising and requires the negative control to fail before a fix is written. **STILL NOT RUN IN GOOGLE SHEETS — treat the new formula as REPORTED until his screen confirms it.** One paste, and it needs a computer. **2026-09-19T13:41:12Z — THE RECOMMENDATION PATH IS CLOSED, SIGHTED END TO END BY THE OWNER ON THE LIVE SITE.** At ~13:35Z he placed a recommendation on **`Frank Shelly`** from the cache-busted live page, confirmed it reached **Published `K` and `L`**, then reloaded with a **FRESH** cache-busting parameter and saw his words and his name **on Frank Shelly's card**. The second cache-bust is what makes it a sighting of the path rather than of his browser's memory: the page that showed his words had never seen his submission. **Villager taps, the endpoint writes Published, the village sees it, and nobody touches a spreadsheet.** Build Plan rows **4.6 and 4.7 are `done`** at `5883164`; the plan moves **68 of 96 (70.8%) → 73 of 96 (76.0%), 17 of 21 rows**. **What remains is row 5.1's verdict formula** — one paste, needing a computer, and still unsighted. **2026-09-19T14:02:06Z — TWO MORE DEFECTS FIXED, BOTH IN WHAT A VILLAGER SEES, AND BOTH DEPLOYED.** Rows **4.8** and **4.9** appended at effort 3 each. **4.8, the Owner's ruling D5b:** the card drew a villager's own words the instant they pressed the button, from an in-page object — and because the endpoint's reply is opaque the page cannot know the write succeeded, so on a failure they were left believing permanently that the village could see words that had gone nowhere. The card now renders from the published feed alone; the thank-you and the five-minute notice stay. **4.9, misattribution:** the predicted cause was wrong — the writer keeps the blank line, but the READER dropped it, sliding every later name onto somebody else's words. Measured: **Helen and Bob were each credited with words they never wrote.** Fixed as two independent guards, and **the Owner's five existing rows with an empty `L` are safe as they stand — no repair needed.** **Three recommendations measured: ZERO overflow at every size, and the Call button sits at 827px whether a card carries 0, 1 or 3 — recommendations render below it, so the core action never moves.** **The Votes tab is safe to rename:** nothing opens it on any path. Deployed and **confirmed on the served page by real fetch**. Both rows stay `new` — they change what he sees. Plan **73 of 102 (71.6%), 17 of 23**. **2026-09-19T15:44:39Z — ROWS 4.8 AND 5.1 CLOSED; STEP 5 IS COMPLETE.** **4.8** closed on his sighting — he submitted a recommendation on the live site and the card showed nothing new while both messages appeared; his words: ***"CHECK 1 PASS."*** **5.1** closed under the Owner's ruling **D4b-6G7f-19092026**, which **corrected the row's acceptance** rather than leaving it unmeetable: automatic publishing under D7a means a response holds the verdict `NEW` only in the seconds between submission and publication, so the original *"all four cases"* clause could never be satisfied by looking at the sheet. Acceptance is now **three verdicts sighted by the Operator, with `NEW` evidenced by the committed harness**. He has sighted `CHECK THIS`, `SAME NAME, DIFFERENT NUMBER` and `ALREADY ON SITE` with per-row ids, and reported of the corrected formula: *"I have now pasted the correct code. And it seems to work."* **Recorded rather than glossed: he did NOT quote the readings of rows 15 and 16 back**, so the row does not claim he confirmed `T014`/`T015` individually. **Row 4.9 stays `new`** — he has confirmed named recommendations pair correctly but has **not** tested a nameless recommendation sitting above a named one, which is the only arrangement the defect lived in; the exact test is in Layer 4. Plan **82 of 102 (80.4%), 19 of 23** — **9 effort cleared.** **2026-09-19T15:55:48Z — ROW 4.9 CLOSED, AND A CONTROL NOBODY ASKED FOR REMOVED.** **4.9** closed on his sighting done in the exact order the defect required — nameless recommendation first, named one second, and on reload the first reads *"a villager"* while the second carries the right name. **Then he found drift:** *"it put in a button you had to click on to reveal the 'one more review' which is pointless. Just let it scroll!"* **Traced from history rather than assumed** — the expander came in at `91a3f4c` on 2026-09-18 in the row 3.5 work, **eighteen hours before** prompt 2718, so 2718 did not invent it. **But 2718's three-recommendation measurement was taken against a card rendering only two and a button, and is therefore superseded.** Removed entirely: no expander, no cap, no truncation — row **4.10** carries the ruling. **Six recommendations measured: zero overflow at every size, and the Call button stays at 827px with none, one or six, because recommendations render below it.** **A SECOND DEFECT WAS FOUND BY THAT MEASUREMENT, LIVING INSIDE 4.9's OWN FIX** — a blank name in the MIDDLE stores four consecutive newlines and the greedy split ate all four as one separator, so Wendy was credited with words she had not written; 4.9's tests only ever put the blank first or last. `splitNames` now splits on the literal separator. Deployed and **confirmed on the served page by real fetch**. Plan **85 of 104 (81.7%), 20 of 24**. **2026-09-19T16:04:42Z — ROW 4.10 CLOSED; STEP 4 IS COMPLETE.** His word: ***"4.10. pass"*** — he opened a card with more than two recommendations and every one rendered in order with nothing to tap. **Owner's ruling D7-6G7f-19092026 recorded: HIDE, NEVER DELETE.** Duplicates and test entries get `status` `hidden`, because deleting the highest id frees it for reuse and a later submission would inherit somebody else's recommendations. **The hiding itself is NOT done — it is his action on his own sheet and it GATES LAUNCH**, because the village list still shows test people. **Three things he resolved directly in his sheet:** the shared `07887800192` (*"I have changed the number"*), `T007`'s twelve-digit number (*"fixed"*), and the **`Publish.gs` re-paste** — which **corrects the previous session's summary**, since that said it was still outstanding and it is not: **both halves of the misattribution guard, writer and reader, are now live.** **One residual risk recorded and NOT acted on** (Layer 3): a recommendation filed while two people shared a number may sit on the wrong row, and changing the number does not move it — a one-off eyeball check for him, with its expected result written down. Plan **87 of 104 (83.7%), 21 of 24**. **2026-09-19T17:19:01Z — PLAN-DUNCHI-TRADER-V1 IS CLOSED AND ARCHIVED, AND A SUCCESSOR PLAN NOW GOVERNS.**
 
-**THE CURRENT PLAN IS `PLAN-DUNCHI-LAUNCH-2026-09-19`** at [PATH] `docs/BUILD-PLAN-dunchi-launch.md` — **0 of 23 effort, 0 of 5 rows.** V1 is archived at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-TRADER-V1.md` and is frozen.
+**THE CURRENT PLAN IS `PLAN-DUNCHI-LAUNCH-2026-09-19`** at [PATH] `docs/BUILD-PLAN-dunchi-launch.md` — ~~**0 of 23 effort, 0 of 5 rows.**~~ ~~SUPERSEDED 2026-09-19 → 0 of 41 effort, 0 of 9 rows (step 6 appended four rows)~~ **SUPERSEDED 2026-09-21T06:06:37Z → 0 of 32 effort, 9 rows in the table of which 1 is `external`.** V1 is archived at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-TRADER-V1.md` and is frozen.
+
+**THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
+
+| Plan ID | Path | Position [VERIFIED 2026-09-21, validator] |
+|---|---|---|
+| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | **0 / 32 = 0.0%**, 9 sub-tasks (1 `external`, excluded) |
+| `PLAN-DUNCHI-INHERITANCE-2026-09-21` | `docs/BUILD-PLAN-dunchi-inheritance.md` | **0 / 9 = 0.0%**, 1 sub-task |
+
+**The launch plan's denominator fell 41 → 32 and that is SCOPE LEAVING, not progress.** Done effort was 0 before and is 0 after; the 9 effort was excluded **by the row's `external` status**, never by re-weighting it (STD-00009 Rules 5.4.2 and 5.2.5 [CORE]).
+
+⚠ **THE INHERITANCE REQUIREMENT IS UNPROVEN AND IS NOT OWNED BY ANY PLAN THAT IS BEING WORKED.** The Owner's own clause — *"I want to be able to hand over the operating site to anyone else who inherits that google email account"* — **remains the only clause of the Requirement as stated that is unmet**, and moving it between plans did not advance it by one step. **Nothing anywhere may describe it as satisfied.**
 
 **V1 CLOSED AT A TRIMMED 100% AND THAT PHRASE MATTERS: *"Closed at 100% of 21 rows, TRIMMED from 24 on 2026-09-19; pre-trim position 83.7% (87/104 effort)"*.** It reached 100% by **moving 17 effort across three rows** to the successor (STD-00009 Rule 5.2.4 `external`), **not by building them.** Owner's rulings **D6b** (seeding and launch leave V1) and **D10** (the runbook test moves rather than being descoped, superseding **D8b**).
 
@@ -2119,6 +2130,51 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **[DECISION] This mission changes only by an explicit decision recorded in this layer** — never as a side effect of session work, and never by a session tidying Layer 1. §4.18 requires it; it is restated inside the block so a future session reading Layer 1 alone still sees the constraint.
 
 **What this session did NOT do, recorded so the absence is deliberate:** it changed **no build-plan status**, closed **no row**, cleared **no effort**, and appended **no row**. The work is exempt from the planning gate under preferences §4.15 as a handover/documentation update. It did not touch the Owner's spreadsheet, any Apps Script file, or the Owner actions he is currently working through from the 2026-09-19 Layer 6 entry.
+
+---
+
+### 2026-09-21 — D3c: the inheritance walk leaves the launch plan, and the requirement stays unproven
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION] `D3c-VCWL-21092026` — the Owner's ruling, his words verbatim:**
+
+> ***"D3c. Handover is less of a concern than getting this live!"***
+
+**What he was choosing between.** Row `5.1` of `PLAN-DUNCHI-LAUNCH-2026-09-19` — repair the restore runbook, then walk it — at **effort 9, the largest row in that plan**. Three routes were put to him:
+
+| Route | What it was | Outcome |
+|---|---|---|
+| D3a | Repair the runbook, then **he** walks it | Declined |
+| D3b | Repair the runbook, then **Frank** walks it | **Claude.ai's recommendation — OVERRULED** |
+| **D3c** | **Move the row into a successor plan of its own** | **CHOSEN** |
+
+**[DECISION] The recommendation was OVERRULED, and the grounds it was made on are recorded rather than summarised away.** Claude.ai recommended **D3b** because the row's own acceptance test is *"someone handed only the two logins"*, and **the Owner knows too much about this system for his own walk to be a valid test of it** — he would supply from memory whatever the runbook fails to say, which is precisely the defect class the walk exists to find. **He did not dispute that reasoning. He reprioritised against it:** getting the directory in front of the village is worth more to him now than proving it can be handed on.
+
+**Recorded because an overruled recommendation is only useful if a later reader can see what was argued.** A future session reading only *"the row moved"* would not know that the question of **who can credibly walk it** is still open, and would be at risk of closing the row on the weakest available evidence.
+
+**[DECISION] ⚠ THE INHERITANCE REQUIREMENT IS UNPROVEN AND MUST NOT BE DESCRIBED ANYWHERE AS SATISFIED.** The Owner's own clause — *"I want to be able to hand over the operating site to anyone else who inherits that google email account"* — is **the only clause of the Requirement as stated that remains unmet**. Moving the row changed **who owns it**, not whether it is done. **It is now owned by a plan nobody is working**, which is a weaker position than it was in this morning, and that is the honest reading rather than a pessimistic one.
+
+**[DECISION] The mechanism is the standard's, not this prompt's, and it differs from what was anticipated.** The commissioning prompt expected the row to *move out* and the denominator to fall 41 → 32. **The denominator does fall to 32 — but not by the row leaving.** Established by reading STD-00009 directly this session:
+
+- **Rule 5.2.2 and the §5.2 status table [CORE]** — `external` means *"not this plan's work at all. Another Plan ID owns it and is accountable for it. This plan records the dependency so the reader can see it, but carries none of the weight."* The status table's own denominator column reads **"No — excluded entirely (§5.4)"**.
+- **Rule 5.4.2 [CORE]** — the denominator is the sum of effort of rows *"NEITHER `parked` NOR `external`"*. **The exclusion is done by the status, in the arithmetic.**
+- **Rule 5.2.5 [CORE]** — an `external` row *"still carries an integer effort 1-10 like every other row"*, and *"The weight of an `external` row is removed by its **status**… never by writing an effort value the grammar does not permit."*
+- **Rule 5.4.4 [CORE]** — a weight is never revised to move a completion figure.
+
+**So the row STAYS IN THE TABLE at id `5.1`, with its full text and its effort of 9, and only its status changes.** Nothing is deleted and nothing is renumbered.
+
+**[DECISION] §5.10 — re-cutting a live plan — was read and deliberately NOT used, and the reason is the important part.** §5.10 is the section that governs work *leaving* a plan that continues, so it looked like the governing rule. **It is not, because §5.10.1 [CORE] permits removal for exactly two lawful causes**: the governing design no longer exists (evidenced by a named Solution Design commit), or the row cannot be falsified (Rule 5.10.8). **Row 5.1 satisfies neither.** Its design exists, and it is one of the most precisely falsifiable rows in the estate. §5.10.1 names the *unlawful* causes explicitly, and *"a row someone has lost interest in"* and *"inconvenient to the percentage"* are on that list.
+
+**Had the row been REMOVED, this would have been the falsification §5.8.10.3 names.** It was not removed. **An `external` status change is not a §5.10 removal at all** — the row is still in the plan, still readable, still cited — so §5.10's causes never engage. **This is the distinction that made the work lawful, and it was reached by reading the standard rather than by assuming the prompt's framing was the mechanism.**
+
+**[DECISION] The precedent followed is this repo's own, set four days ago.** `PLAN-DUNCHI-TRADER-V1` moved these same rows out under **D10-6G7f-19092026** using exactly this mechanism — `external`, `[owner: …]` marker, text preserved in full, effort unchanged, *"excluded from this plan's denominator by its status, never by re-weighting"*. **Row 5.1 is in fact the same row making its second hop**, V1 `6.1` → launch `5.1` → inheritance `1.1`, and all three ids are named in the new plan so any old citation resolves.
+
+**[DECISION] The launch plan's `Summary` was corrected, and this is a change of substance rather than tidying.** It read *"…from working to launched, **and prove it can be inherited**"*. **That promise left with the row.** Leaving it would have had the launch plan claiming ownership of the very requirement this ruling made unowned — the false-satisfaction claim the ruling's own terms forbid. The `Estimate` of 23 was **not** revised (§5.13.5), and the historical 41 figure is preserved with the new 32 recorded beside it.
+
+**Alternatives considered and rejected:** `descoped` — rejected, it means the work was **dropped**, and the Owner deprioritised it rather than dropping it. `parked` — rejected, it means *this plan's* work set aside, but the work is now another plan's entirely. Deleting the row — rejected as falsification under §5.8.10.3 and unlawful under §5.10.1. Renumbering the remaining rows to close the gap — rejected under §5.1.4 and §5.10.4; ids are citation targets and gaps are correct and permanent.
+
+**[PATTERN CANDIDATE: a-prompts-expected-mechanism-is-a-hypothesis]** The prompt predicted the right **number** (32) and the wrong **mechanism** (the row leaving the table). Both were checkable against the standard in minutes, and the instruction to *"check it rather than confirming it"* is what made the difference — a session that had confirmed the arithmetic would have reported a correct figure reached by an unlawful route, and the error would have been invisible in the percentage. **Worth applying wherever a commissioning prompt states an expected outcome: the figure and the mechanism are separate claims and need separate verification.**
 
 ---
 
@@ -5762,5 +5818,145 @@ Three changes, all in [PATH] `docs/HANDOVER-dunchi-trader.md`. No other file in 
 `docs/HANDOVER-dunchi-trader.md` now carries a MISSION block at the top of Layer 1 in the Owner's own wording, with its one spelling correction stated in the block, pointing at `docs/BUILD-PLAN-dunchi-launch.md` for the measure of progress and carrying no figure of its own. Layer 5 records the addition as a dated decision, so the §4.18 change-control constraint has something to bite on. The §4.18 gap declared in the commissioning prompt is closed.
 
 **Nothing else moved, and that is the intended outcome.** `PLAN-DUNCHI-LAUNCH-2026-09-19` stands exactly where it did — no status changed, no row closed, no effort cleared, no row appended. The Owner's thirteen outstanding actions from the 2026-09-19 close-down entry are untouched and still his; he has pasted `Publish.gs` and has the Village list menu on his spreadsheet, and the rest of that queue is unaffected by this session.
+
+Working tree clean. Remote level.
+
+---
+
+### 2026-09-21T06:08:30Z — D3c: the inheritance row is re-homed into a plan of its own
+
+**Source:** Claude Code
+**Started:** 2026-09-21T06:00:12Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader (read-only: deverse-standards)
+
+**Prompt received:**
+
+```
+Target repo: dunchi-trader
+
+Comply with the loaded global CLAUDE.md and the project CLAUDE.md. Both auto-load — do not read either, which would append a duplicate copy to your context.
+
+## Context Transfer Brief
+
+- Commissioned from Claude.ai conversation https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL on 2026-09-21. Your previous prompt in this conversation was 2745, the MISSION block.
+- MISSION: docs/HANDOVER-dunchi-trader.md now carries a MISSION block at the top of Layer 1, established by prompt 2745 earlier this morning and read by Claude.ai from that prompt's reply. This work advances it only indirectly — it is plan bookkeeping, not product.
+- Repo state as read by Claude.ai at 2026-09-21T06:00Z from your 2745 reply: HEAD 5dae7de, pushed, tree clean. Re-read the live state yourself before editing and say so if it differs.
+- Plan in hand: PLAN-DUNCHI-LAUNCH-2026-09-19 at 0 of 41 effort, 0 of 9 rows. docs/BUILD-PLAN-dunchi-launch.md.
+- PLANNING GATE: this is a plan-structure change executing an Owner ruling. It is its own lean prompt per §4.15. It closes no row, clears no effort and changes no row's status.
+
+## The Owner's ruling — D3c-VCWL-21092026, 2026-09-21
+
+He was offered three routes for row 5.1 (repair the restore runbook, then walk it — effort 9, the largest row in the plan). Claude.ai recommended that Frank walk it, on the grounds that the row's own test is "someone handed only the two logins" and the Owner knows too much for his own walk to be a valid test. **He overruled that recommendation and chose option D3c: move row 5.1 out of this plan into a successor plan of its own.**
+
+His words, verbatim: ***"D3c. Handover is less of a concern than getting this live!"***
+
+Record that the recommendation was overruled and on what grounds. The inheritance requirement — *"I want to be able to hand over the operating site to anyone else who inherits that google email account"* — therefore remains UNPROVEN and must not be described anywhere as satisfied.
+
+## Task
+
+**1. READ STD-00009 FIRST AND DO NOT GUESS THE MECHANISM.** Claude.ai has deliberately not specified how this is done, because the governing rules are the standard's and restating them here would create a second source that drifts. Establish from the standard itself: how a row moves between plans, renumbering (5.8.5), effort preservation on the move (5.4.4), what happens to the source plan's denominator, and what a closure or trim record must carry (5.8.10.4). Apply what you read. If the standard forbids or constrains what this prompt asks for, **say so and stop rather than working around it** — the ruling is the Owner's but the mechanism is the standard's.
+
+**2. Move row 5.1 into a new plan in this repo.** Effort stays at 9. Its outcome wording is unchanged. Name its provenance in the row text so an old citation resolves, exactly as this plan does for the three rows it took from PLAN-DUNCHI-TRADER-V1.
+
+**3. Every row in the new plan carries all five delivery fields, no exceptions** — this is the Owner's ruling D1a-i2zw-18092026: an OWNER as a stable account UUID that resolves to a person (never a display name, email or role word), a DUE START DATE, a DUE END DATE, an ACTUAL START, and a FORECAST END. The Owner's account UUID is `222b34c4-7d05-48f4-9d23-cfb47e96d9de`. Follow the column grammar the existing plan already uses.
+
+**4. Update PLAN-DUNCHI-LAUNCH-2026-09-19** so its record shows the row left, by whichever mechanism the standard prescribes. Do not renumber anything that remains.
+
+**5. Record the ruling in handover Layer 5**, with the verbatim quote, the overruled recommendation, and the consequence that the inheritance requirement is now unproven and unowned by any live plan.
+
+**6. Report back, computed from the documents rather than asserted:** the new Plan ID, and PLAN-DUNCHI-LAUNCH-2026-09-19's row count and effort denominator after the change. Claude.ai expects the denominator to fall from 41 to 32 but has NOT verified that against the standard — check it rather than confirming it.
+
+## Required
+
+- Update the HANDOVER as the work proceeds.
+- Commit all code and documentation.
+- Give a detailed written summary.
+- Give a formatted table of what was tested and each result.
+- Return the end-of-session summary, and any follow-on prompt, as a single copy-paste-ready fenced code block.
+```
+
+**What was done:**
+
+**Repo state confirmed to match the prompt before editing**, as instructed: HEAD `5dae7de`, tree clean, nothing unpushed. **It did not differ.**
+
+**Task 1 — the standard was read first, and it changed how the work was done.** The prompt's framing (*"move row 5.1 OUT of this plan"*, denominator *"falls from 41 to 32"*) implies the row leaves the table. **Reading STD-00009 established that it does not, and that the arithmetic nevertheless lands where the prompt predicted.** Rules read directly this session, not via summary:
+
+- **§5.2 status table + Rule 5.2.2 [CORE]** — `external` = *"not this plan's work at all. Another Plan ID owns it and is accountable for it."* Denominator column: **"No — excluded entirely (§5.4)"**.
+- **Rule 5.2.4 [CORE]** — an `external` row **must** name its owner as `[owner: {plan-id}]` inside the text cell, and *"An `external` row without an owner is an error, not a note"* — the validator exits 1.
+- **Rule 5.2.5 [CORE]** — effort stays 1–10; *"The weight of an `external` row is removed by its **status**… never by writing an effort value the grammar does not permit."*
+- **Rule 5.4.2 [CORE]** — denominator = effort of rows *"NEITHER `parked` NOR `external`"*.
+- **Rule 5.4.4 [CORE]** — *"A ROW'S EFFORT WEIGHT IS NEVER REVISED IN ORDER TO MOVE A COMPLETION FIGURE."*
+- **Rule 5.8.5 [CORE]** — carried rows are *"RENUMBERED FRESH from Step 1"*; *"A successor is a new document, not a rearranged one"*; provenance goes in the successor's prose.
+- **Rule 5.8.10.4 [CORE]** — the pre-trim position line. **Established as NOT APPLICABLE here:** it governs a **close** record, and this plan does not close. Its live-plan analogue is **Rule 5.10.5**, whose form was used instead.
+- **§5.10 and Rule 5.10.1 [CORE]** — read in full **and deliberately not used**. See the constraint reported below.
+
+**A CONSTRAINT WAS FOUND AND IS REPORTED RATHER THAN WORKED AROUND, as the prompt required.** §5.10 governs work leaving a live plan and looked like the governing section. **It permits removal for exactly two lawful causes** — the governing design no longer exists (named Solution Design commit), or the row cannot be falsified (Rule 5.10.8). **Row 5.1 satisfies neither**, and §5.10.1's list of **unlawful** causes explicitly includes *"a row someone has lost interest in"* and one *"inconvenient to the percentage"*. **Had the row been deleted from the table, this session would have committed the falsification §5.8.10.3 names.** The resolution is that **an `external` status change is not a §5.10 removal at all** — nothing is removed, the row stays at id `5.1` with its full text and its effort — so §5.10's causes never engage and the work is lawful. **The prompt's requested outcome is achievable; its implied mechanism was not, and the difference is recorded in Layer 5.**
+
+**Task 2 — the new plan.** Created [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, Plan ID **`PLAN-DUNCHI-INHERITANCE-2026-09-21`**. Both the filename and the Plan ID were **verified free** before use (`grep` across the repo, zero matches). The date component is 2026-09-21 per **Rule 5.5.1.1 [CORE]** — the date the plan's work originated, which for a plan brought into being by today's ruling is today; this matches how the launch plan was named on its own ruling date. The row is **renumbered `1.1`** per 5.8.5, **effort unchanged at 9** per 5.4.4, and **its outcome wording is carried across unaltered** — not rewritten, not softened, not re-scoped. **Provenance names BOTH hops** (V1 `6.1` → launch `5.1` → here `1.1`) in a table and in the row text, because this row has now moved twice and a citation could be to either old id.
+
+**Task 3 — all five delivery fields on every row.** The new plan's single row carries the full satellite table in the same column grammar the launch plan uses: `Owner` = `222b34c4-7d05-48f4-9d23-cfb47e96d9de` (the account UUID, not a name), `Due start` = 2026-09-21, `Planned end`/`Due` = 2026-10-17, `Actual start` = 2026-09-21, `Forecast end`/`Forecast` = 2026-10-17. The validator's shape check passes; its UUID-resolution advisory is expected and is a shape-only tool limitation (Rule 5.12.2), not a defect.
+
+**Task 4 — the launch plan's record.** Row `5.1`: status `new` → **`external`**, `[owner: PLAN-DUNCHI-INHERITANCE-2026-09-21]` prepended to the text cell per 5.2.4, and a disposition paragraph appended recording the ruling, the verbatim quote, the overruled recommendation, and the warning that the requirement is unproven. The satellite row's `State` cell moved to `external` to match. **Nothing was renumbered and nothing was deleted.** Three other places that described 5.1 as this plan's work were updated: the running-order table (struck through, noting the row was already independent so the remaining order is unchanged), the V1-provenance table, and a now-false *"the largest row in this plan"* phrase, marked `[historical]` with the measured replacement (`6.1` at 8). **A Rule 5.10.5-form position statement was added at the Step 5 heading**, stating the movement is **scope removed, not progress gained**.
+
+**One change of substance beyond the four tasks, flagged because it was a judgement call.** The launch plan's `Summary` read *"…from working to launched, **and prove it can be inherited**"*. **That promise left with the row**, and leaving it would have had the launch plan claiming ownership of the exact requirement this ruling made unowned — the false-satisfaction claim the ruling's own terms forbid. The clause was removed. **The `Estimate` of 23 was NOT revised** (§5.13.5 forbids revising it to match the rows); the historical 41 is preserved with the new 32 recorded beside it and the ratio recomputed to 1.39×.
+
+**Task 5 — Layer 5.** A dated entry records the ruling with the verbatim quote, the three routes, the overruled D3b recommendation **with the grounds it was made on**, the unproven-requirement consequence, the mechanism established from the standard, the §5.10 constraint and why it does not apply, the precedent followed, the `Summary` correction, and four rejected alternatives.
+
+**Testing performed:**
+
+| # | What was tested | Command / action | Expected | Actual | Result |
+|---|---|---|---|---|---|
+| 1 | Repo matches the HEAD the prompt names | `git log --oneline -1`; `git status --porcelain` | `5dae7de`, clean | `5dae7de`, clean — **did not differ** | PASS |
+| 2 | Baseline launch-plan position, measured not assumed | `validate_build_plan.py --verbose` before any edit | A number to compare against | **9 sub-tasks, 0/41, exit=0** | PASS |
+| 3 | New plan filename free (§1.4 no variants) | `ls docs/BUILD-PLAN-dunchi-inheritance.md` | Absent | Absent | PASS |
+| 4 | New Plan ID free (§5.8.5 no reuse) | `grep -rn PLAN-DUNCHI-INHERITANCE .` | Zero matches | Zero matches | PASS |
+| 5 | New plan validates (§3.10 gate) — **first attempt** | `validate_build_plan.py --verbose` | exit 0 | **exit=1 — `Summary` 3 sentences, over the 2-sentence bound (Rule 5.5.8)** | **FAIL — fixed, not worked around** |
+| 6 | New plan validates after fixing the Summary | same | exit 0 | **exit=0** | PASS |
+| 7 | New plan's rows are actually recognised (§3.10 count check) | `--verbose` sub-task count | 1, not 0 | **`steps: 1 · sub-tasks: 1`, 0/9** | PASS |
+| 8 | Launch plan validates after the status change | `validate_build_plan.py --verbose` | exit 0 | **exit=0** | PASS |
+| 9 | **Denominator after the change — the prompt's open question** | `--verbose` output, computed by the tool | Checked, not confirmed | **`0 / 32 (excl. 0 parked, 9 external)`** — falls 41 → 32 **as predicted** | PASS |
+| 10 | **Row count after the change** | `--verbose` output | Checked | **9 sub-tasks — UNCHANGED**, because the row stays in the table | PASS |
+| 11 | Arithmetic reproduced independently of the tool | `python3` sum of the 8 weighted rows | 32 | 32 | PASS |
+| 12 | Largest remaining weighted row (claim made in the plan) | `python3` max over remaining rows | Some row | **`6.1` at 8** — matches what was written | PASS |
+| 13 | `external` row names its owner (Rule 5.2.4, validator exits 1 otherwise) | validator + `grep '\[owner:'` | Marker present | Present on `5.1` | PASS |
+| 14 | Effort preserved across the move (Rule 5.4.4) | Compare both plans' effort cells | 9 in both | 9 in the launch plan, 9 in the new plan | PASS |
+| 15 | No row renumbered in the launch plan (§5.1.4) | `grep` the four-column tables' ids | 1.1 2.1 3.1 4.1 5.1 6.1 6.2 6.3 6.4 | Exactly that, unchanged | PASS |
+| 16 | Old citations resolve — id `5.1` still in the plan | `grep -n '^| 5.1'` | Present with prose | Present, full text, disposition appended | PASS |
+| 17 | Old citation `6.1` (V1) still resolves | Check new plan names both hops | Both named | Both named in a table and in the row text | PASS |
+| 18 | Nothing claims inheritance is satisfied | `grep -in "inheritance requirement is \(proven\|satisfied\|met\|done\)"` across `docs/*.md` | Zero matches | **Two matches, both examined and both correct** — see note below | PASS |
+| 18a | Those two matches are not false claims | Read both lines in context | They are goal statements, not assertions of current state | Both are the satellite table's **`Outcome`** column — *"The inheritance requirement is proven rather than asserted"* is what will be TRUE WHEN THE ROW CLOSES. Both rows are `new`/`external`, i.e. not done. Wording carried verbatim from V1 as the prompt required | PASS |
+| 19 | §3.6 1–3 — no handover heading removed | `git show HEAD:… \| grep '^#'` vs new, diff | Additions only | Additions only | PASS |
+| 20 | §3.6 4 — both timestamps regenerated and matching | `grep` metadata + Layer 1 | Same ISO value | Both `2026-09-21T06:08:30Z` | PASS |
+| 21 | §3.6 5 — document ends at Layer 6 | `grep -n '^# LAYER'` | Highest is 6 | Highest is 6 | PASS |
+| 22 | Prior Layer 1 timestamp preserved | inspect | Struck through, retained | Retained in the chain | PASS |
+| 23 | `apps-script/` untouched | `git status --porcelain` | Absent | Absent | PASS |
+| 24 | Tree clean and remote level after push | `git status`; `git log origin/master..HEAD` | Both empty | Both empty | PASS |
+
+**Test 5 is recorded as a FAIL rather than folded into test 6.** The validator rejected the first version of the new plan — a 3-sentence `Summary` against Rule 5.5.8's 2-sentence bound. **The plan was fixed and the check was not weakened**, per §3.10. Recording only the passing re-run would have presented a first-time pass that did not happen.
+
+**What was not tested:**
+
+- **The `lucinda` subagent was dispatched for STD-00009's rules and had not returned when the work completed.** Its answer was **not used**; every rule quoted above was read by this session directly from `~/projects/deverse-standards/standards/STD-00009-build-plan-authoring.md`. **This is not a lucinda miss** — no wrong or insufficient answer was received, so per the estate rule a nil return is not a miss-log entry. Recorded so the dispatch is not mistaken for the source.
+- **Rule 5.10.8's four requirements were not read in full.** They govern cause 2 of a §5.10 re-cut (unfalsifiability), and this session established it was not performing a §5.10 removal at all. **The conclusion that §5.10 does not apply rests on 5.10.1's two-cause list, which was read in full**; 5.10.8's internals would only matter to a session actually citing cause 2.
+- **The Owner's UUID was not resolved to a person.** The validator's advisory says it enforces shape only. The UUID was taken from the prompt and matches the one every existing row in the launch plan already carries — **consistency verified, identity REPORTED**.
+- **Preferences §4.15 and §4.18 were not read** (not present in this repo). Their content is **REPORTED from the commissioning prompt**.
+- **The Owner's ruling and the three routes offered are REPORTED from the prompt**, which is Claude.ai's record of the conversation. This session did not witness it.
+- **Nothing was run against the live site, the spreadsheet or Apps Script.** This session changed documents only.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T06:08:30Z
+
+**End state:**
+
+**Two live plans in this repo.** `PLAN-DUNCHI-LAUNCH-2026-09-19` at **0/32, 9 sub-tasks of which `5.1` is `external`**; `PLAN-DUNCHI-INHERITANCE-2026-09-21` at **0/9, 1 sub-task**. Both validate at exit 0 with their sub-task counts confirmed non-zero.
+
+**No row closed, no effort cleared, no status advanced toward done.** The only status that changed is `5.1`'s `new` → `external`, which is the re-homing itself rather than progress.
+
+⚠ **The inheritance requirement is UNPROVEN and is now owned by a plan nobody is working.** That is a weaker position than this morning and it is stated plainly rather than presented as tidy bookkeeping. **Who walks the runbook remains undecided** — the Owner's ruling moved the row but did not answer that question, and the new plan carries it as an open section rather than burying it.
 
 Working tree clean. Remote level.
