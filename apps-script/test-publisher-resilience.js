@@ -933,5 +933,123 @@ section('2026-09-21 — D7a: clearing BOTH tabs disarms the backfill trap');
   }
 }
 
+/* -------------------------------------------------------------------------
+   2026-09-21 — A TRADESPERSON WITH NO SURNAME.
+
+   FOUND IN LIVE TESTING by the Owner's testers while filling row 3.1. His
+   words: "testing has thrown up something interesting. If they do not have a
+   surname the process does not really work".
+
+   Many tradespeople trade under one name — "Dave the window cleaner" — or
+   under a business name with no personal surname. The form carries two
+   REQUIRED name fields, so such a person cannot be submitted at all.
+
+   ESTABLISHED: the block is the FORM, not the code. The publisher, the
+   matching and the site all handle a blank surname correctly today. These
+   assert that, so the Owner can make the field optional without a code
+   change, and so a later edit cannot silently break it.
+   ------------------------------------------------------------------------- */
+section('2026-09-21 — a tradesperson with no surname');
+{
+  const P = load(makeSheet([], 'Published'), makeResponses([]));
+  const one = { trade:'Window cleaner', first:'Dave', last:'',
+                phone:'07700900123', business:'Dave the Window Cleaner',
+                words:'Does a lovely job', by:'Tim' };
+
+  /* splitName must NOT invent a surname out of a single word. */
+  const s1 = P.splitName('Dave', '');
+  check('splitName leaves a single first name alone',
+        s1.first === 'Dave' && s1.last === '', JSON.stringify(s1));
+
+  /* It DOES split a multi-word name — recorded because it is surprising. */
+  const s2 = P.splitName('Dave the window cleaner', '');
+  check('splitName splits a multi-word name on the last word (known behaviour)',
+        s2.first === 'Dave the window' && s2.last === 'cleaner', JSON.stringify(s2));
+
+  /* The publisher must ACCEPT and must not hide. */
+  const pub = makeSheet([], 'Published');
+  const P2  = load(pub, makeResponses([]));
+  const out = P2.publishInto(pub.sheet, P2.tableValues(pub.sheet), one);
+  check('a one-name tradesperson publishes as ACTIVE, not hidden',
+        out.added === true && /Published as/.test(out.action), JSON.stringify(out));
+  check('the surname cell is left EMPTY rather than filled with something invented',
+        pub.grid[1][2] === '', JSON.stringify(pub.grid[1][2]));
+  check('the business name is kept',
+        pub.grid[1][3] === 'Dave the Window Cleaner', JSON.stringify(pub.grid[1][3]));
+
+  /* Matching must still work for that person. */
+  const existing = [HDR.slice(),
+    ['T001','Dave','','Dave the Window Cleaner','07700900123','Window cleaner','','active','','','Lovely','Tim']];
+  check('the phone+name merge FINDS a one-name person',
+        P.rowIndexForPerson(existing, P.normalisePhone('07700900123'), 'Dave', '') === 1);
+  check('and does NOT merge a DIFFERENT one-name person on the same number',
+        P.rowIndexForPerson(existing, P.normalisePhone('07700900123'), 'Steve', '') === -1);
+  check('the name+trade fallback also finds a one-name person',
+        P.rowIndexForUnusablePhone(existing, 'Dave', '', 'Window cleaner') === 1);
+  check('the fallback REFUSES to match when there is no name at all',
+        P.rowIndexForUnusablePhone(existing, '', '', 'Window cleaner') === -1);
+
+  /* THE ONE REAL WEAKNESS, asserted so it is not forgotten: two rows with no
+     name at all and the same phone would merge, because both name keys are
+     ''. It needs BOTH to be nameless, which the site already refuses to show. */
+  const nameless = [HDR.slice(),
+    ['T001','','','Duckers Plumbing','07700900111','Plumber','','active','','','','']];
+  check('KNOWN LIMIT: two entirely NAMELESS rows on one number would merge',
+        P.rowIndexForPerson(nameless, P.normalisePhone('07700900111'), '', '') === 1,
+        'if this ever returns -1 the limit has been fixed and the note can go');
+  check('nameKeyOf("","") is empty, which is why that happens',
+        P.nameKeyOf('', '') === '');
+}
+
+/* THE SITE. `build()` in app.js decides who is shown at all. */
+section('2026-09-21 — the site renders a one-name tradesperson');
+{
+  const src = fs.readFileSync(REPO + '/app.js', 'utf8');
+  const grab = name => {
+    const i = src.indexOf('function ' + name + '(');
+    if (i < 0) return null;
+    let d = 0;
+    for (let k = src.indexOf('{', i); k < src.length; k++) {
+      if (src[k] === '{') d++;
+      else if (src[k] === '}') { d--; if (!d) return src.slice(i, k + 1); }
+    }
+    return null;
+  };
+  const box = { console, String, Number, Array, Object, JSON, RegExp,
+                parseInt, parseFloat, isNaN, Math };
+  vm.createContext(box);
+  src.split('\n').forEach(ln => {
+    if (/^\s*var (REQUIRED|OPTIONAL|REC_SEP)\s*=/.test(ln)) vm.runInContext(ln.trim(), box);
+  });
+  ['normaliseHeader','splitRecs','splitNames','tidyTrade','digits','build'].forEach(n => {
+    const body = grab(n); if (body) { try { vm.runInContext(body, box); } catch (ignored) {} }
+  });
+
+  const H = HDR.slice();
+  const render = row => {
+    const people = box.build([H, row]);
+    return (people && people.length) ? people[0] : null;
+  };
+
+  /* CONTROL FIRST — if this fails the harness is broken, not the code. */
+  const control = render(['T003','Real','Villager','','07700900124','Plumber','','active','','','Great','Tim']);
+  check('CONTROL: a normal two-part name renders',
+        !!control && control.name === 'Real Villager', control && control.name);
+
+  const dave = render(['T001','Dave','','Dave the Window Cleaner','07700900123','Window cleaner','','active','','','Lovely','Tim']);
+  check('a one-name tradesperson IS shown on the site',
+        !!dave, 'dropped from the feed');
+  check('and the name reads "Dave" — no stray space, no doubled name',
+        !!dave && dave.name === 'Dave', dave && JSON.stringify(dave.name));
+  check('and the business name still shows beside it',
+        !!dave && dave.biz === 'Dave the Window Cleaner', dave && dave.biz);
+
+  /* A row with NO name at all is DROPPED — which is why the surname may be
+     optional but the first-name field must stay required. */
+  const nameless = render(['T002','','','Duckers Plumbing','07700900111','Plumber','','active','','','Good','Lin']);
+  check('a row with NO name at all is DROPPED from the site (keep first name required)',
+        nameless === null, 'it rendered, so the guard has changed');
+}
+
 console.log(`\n================  ${pass} passed, ${fail} failed  ================\n`);
 process.exit(fail === 0 ? 0 : 1);

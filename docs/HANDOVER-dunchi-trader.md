@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T10:18:44Z
+last-updated: 2026-09-21T10:37:33Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T10:18:44Z** ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T10:37:33Z** ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -146,11 +146,36 @@ When he deliberately submitted a two-number field this morning to test this row,
 
 **Rows `1.1`, `3.1`, `4.1` and `6.1` are untouched and still `new`; `5.1` remains `external`; `2.1`, `6.2` and `6.4` remain `done`.** **`3.1` is still the live gate** — the list is empty, so the village cannot usefully be told.
 
+**2026-09-21T10:37:33Z — THE TESTERS ARE SUBMITTING REAL TRADESPEOPLE RIGHT NOW, AND THEY HIT A DEFECT: A TRADESPERSON WITH NO SURNAME CANNOT BE SUBMITTED AT ALL.**
+
+**The Owner's words, REPORTED:** ***"testing has thrown up something interesting. If they do not have a surname the process does not really work"***. Many trade under one name — "Dave the window cleaner" — or under a business name with no personal surname. **The form's surname question is REQUIRED**, so the form refuses them at the door.
+
+**⚠ THE BLOCK IS THE FORM, NOT THE CODE — established by executing the real code, not by reading it.** The publisher, the matching and the site **all handle a blank surname correctly today**:
+
+| Checked | Result |
+|---|---|
+| `splitName('Dave','')` | **`{first:'Dave', last:''}`** — leaves a single name alone, invents nothing |
+| `publishInto` | Publishes **`active`**, surname cell left empty, business name kept |
+| The site — real `build()` | **Renders as `Dave`** with the business beside it. **No stray space, no doubled name** (control case passed first) |
+| Phone-and-name merge | **Finds** the one-name person; **refuses** a different one-name person on the same number |
+| `rowIndexForUnusablePhone` fallback | **Finds** them by name and trade |
+| `verdict` column | **`NEW`** when absent, **`ALREADY ON SITE — T001`** when listed — correct both ways |
+
+**SO THE FIX IS ONE FORM SETTING AND NEEDS NO CODE.** **NO CODE FILE WAS CHANGED THIS SESSION.**
+
+**⚠ THE FIRST-NAME QUESTION MUST STAY REQUIRED, and this is the load-bearing detail.** `app.js` drops any row whose name is entirely empty (`if (!name || !phone) return;`), so a business-only submission would publish to the sheet and then be **invisible on the site** — an entry nobody could see to fix. **Measured: a row with no name at all is dropped.** A second reason: two entirely nameless rows sharing a telephone number would **merge into one**, because both name keys are empty.
+
+**ONE KNOWN BEHAVIOUR WORTH KNOWING BEFORE HE CHANGES THE FORM:** a multi-word name typed into the first-name box is **split on its last word** — *"Dave the window cleaner"* becomes `first_name` *"Dave the window"*, `last_name` *"cleaner"*. **The card still reads correctly** because the site rejoins them, but the sheet columns look odd. Harmless today; it is why the larger single-field option is worth his consideration.
+
+**Row `6.5` was appended to the plan** (effort 2, `new`) under the §4.15 unplanned-work rule. **The percentage FELL 37.5% → 35.3% and that is SCOPE ADDED, not progress lost** — done effort is **unchanged at 12**; the denominator moved 32 → 34.
+
+**THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].**
+
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
 | Plan ID | Path | Position [VERIFIED 2026-09-21, validator] |
 |---|---|---|
-| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks (1 `external`, excluded), **4 `done`** |
+| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, **10 sub-tasks** (1 `external`, excluded), **4 `done`** — row `6.5` appended | 
 | `PLAN-DUNCHI-INHERITANCE-2026-09-21` | `docs/BUILD-PLAN-dunchi-inheritance.md` | **0 / 9 = 0.0%**, 1 sub-task |
 
 **The launch plan's denominator fell 41 → 32 and that is SCOPE LEAVING, not progress.** Done effort was 0 before and is 0 after; the 9 effort was excluded **by the row's `external` status**, never by re-weighting it (STD-00009 Rules 5.4.2 and 5.2.5 [CORE]).
@@ -1261,6 +1286,32 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ## The queue as it stands after the 2026-09-21 session
 
 *The 2026-09-19 queue follows below this section, under its own original heading, unchanged except where an item has been closed in place.*
+
+**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — testers are submitting NOW and cannot enter these people | COMPUTER, about two minutes**
+
+**MAKE THE SURNAME QUESTION OPTIONAL ON THE FORM. This is the whole fix and it needs no code.**
+
+**Click by click, in his own account:**
+
+1. Open the Google **Form** (not the spreadsheet) — the form his testers are using.
+2. Find the question **"What is their Last name?"**
+3. Click it to select it. At the bottom right of that question there is a **Required** toggle.
+4. **Turn Required OFF.** The toggle greys out.
+5. **Leave "What is their First name?" REQUIRED.** ⚠ **Do not turn that one off** — see the warning below.
+6. The form saves itself. **Nothing else changes and no republish is needed.**
+
+**Then ask a tester to submit a one-name tradesperson** — first name only, surname blank, business name filled in if they have one — and check the village list five minutes later. **They should appear under the name they actually use.**
+
+⚠ **WHY THE FIRST-NAME QUESTION MUST STAY REQUIRED.** `app.js` drops any row whose name is entirely blank, so a submission with no personal name at all would reach the Published tab and then be **invisible on the site** — an entry nobody can see in order to fix it. Measured 2026-09-21. There is a second reason: two entirely nameless rows sharing a telephone number would be merged into one, because the duplicate check's name key would be empty for both.
+
+**What the testers should do MEANWHILE, so nothing is lost and no junk reaches a live list:**
+
+- **Do NOT type the person straight into the Published tab** to work around it. A hand-typed row skips the publisher's phone checks and its duplicate merge, and those are the only defences on that route.
+- **Do NOT put a placeholder in the surname box** — no `.`, no `-`, no `n/a`, and not the trade. Whatever they type becomes that person's surname on the card and on the village list, and the id is assigned immediately, so it is awkward to undo cleanly.
+- **Instead: keep a short list of the ones they cannot submit** — name, telephone number, trade, and their few words — **and submit them through the form once the surname question is optional.** Five minutes of waiting costs nothing; a bad row on a live list is seen by villagers.
+- **If somebody trades under a business name with no personal name at all**, put the name they are known by in the **first name** box — *"Dave"*, or the business name itself — and the business in the business box. **Something must go in the first-name box.**
+
+---
 
 **[OUTSTANDING] 2026-09-21 | HIGH | Blocking: no — the list and the publisher are fine without it | COMPUTER, two pastes, about two minutes**
 
@@ -2794,6 +2845,45 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **[DECISION] Nothing was re-tested to justify the closure, and that is deliberate.** The five unwitnessed clauses were already covered by the committed suites; re-running them would demonstrate the same thing again and could be mistaken for the sighting the row actually wanted. **The honest record is that the row closes on the Owner's ruling plus one witnessed upstream control — not on new evidence produced this session.**
 
 **[PATTERN CANDIDATE: an-upstream-control-can-close-a-row-but-cannot-prove-it]** Where a validation upstream makes a downstream guard's trigger unreachable, the downstream guard becomes untestable in production rather than unnecessary — **the two are easy to conflate and they differ exactly at the routes the upstream control does not cover.** Worth recording both the closure and the uncovered routes whenever a row is closed this way.
+
+---
+
+### 2026-09-21 — A tradesperson with no surname: the block is the form, not the code
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[FINDING] FOUND IN LIVE TESTING, BY REAL TESTERS, ON A LIVE SYSTEM.** The Owner's testers are submitting real tradespeople through the form right now, filling row 3.1. His words, REPORTED: ***"testing has thrown up something interesting. If they do not have a surname the process does not really work"***. Many tradespeople trade under one name, or under a business name with no personal surname. **The form's surname question is required, so they cannot be submitted at all.**
+
+**[FINDING] THE HYPOTHESIS PUT TO THIS SESSION WAS RIGHT, AND IT WAS TESTED RATHER THAN ADOPTED.** Claude.ai's reading was that the smallest fix is to make the surname field optional — *"but only if the publisher, the site and the matching all cope with a blank surname"*, and that establishing which was this prompt's job. **Established by executing the real code: they all cope. No code change is needed.**
+
+- `splitName('Dave','')` returns `{first:'Dave', last:''}` — **it does not invent a surname**.
+- `publishInto` publishes **`active`**; the surname cell is left empty; the business name is kept.
+- The real `build()` from `app.js` renders the person as **`Dave`**, with the business beside it — **no stray space, no doubled name**. **The control case (a normal two-part name) was asserted first**, so the harness is known to work before the result is trusted.
+- The **phone-and-name merge finds** the one-name person and **refuses** a different one-name person on the same number.
+- The **name-and-trade fallback** (`rowIndexForUnusablePhone`) finds them too.
+- The **`verdict` column** reads `NEW` when absent and `ALREADY ON SITE — T001` when listed.
+
+**[DECISION] NO CODE WAS WRITTEN, and that is the finding rather than an omission.** The temptation on a prompt that says *"if they do not cope, the code must be made to cope, and that is this prompt's build work"* is to find something to build. **The measurement says the build work does not exist.** Sixteen regression checks were added instead, so the property is guarded and a later edit cannot silently break what the Owner is about to rely on.
+
+**[DECISION] THE FIRST-NAME QUESTION MUST STAY REQUIRED, and this is the load-bearing detail of the whole finding.** `app.js` contains `if (!name || !phone) return;`, so **a row whose name is entirely blank is dropped from the site**. A business-only submission would therefore publish to the sheet and be **invisible to every villager** — an entry nobody could see in order to repair. **A second, independent reason:** two entirely nameless rows sharing a telephone number would **merge into one**, because `nameKeyOf('','')` is empty for both. **Both are asserted as tests**, including the known limit, so that if a future session ever fixes the merge the note can be retired deliberately rather than forgotten.
+
+**[FINDING] One surprising behaviour, recorded because it affects his choice.** A multi-word name typed into the first-name box is **split on its last word**: *"Dave the window cleaner"* becomes `first_name` *"Dave the window"* and `last_name` *"cleaner"*. **The card still reads correctly**, because the site rejoins the two columns — but the sheet looks odd, and an Owner scanning his list would reasonably think something was wrong. **Harmless today. It is the strongest argument for the larger option below.**
+
+**[RECOMMENDATION — NOT A DECISION] The larger option: one "Name or business name" field instead of two.** Put to the Owner with its costs, for him to weigh against the two-minute form change:
+
+| What it would touch | Cost |
+|---|---|
+| **The form** | Delete two questions, add one. His own work, minutes |
+| **`Publish.gs`** | `splitName` becomes unnecessary; `readSubmission`'s `FIELD_MATCH` needs the new question title; the `last` field drops out of `publishInto`. **A real code change, needing a paste and a redeploy** |
+| **Published columns** | `first_name` and `last_name` are in `PUB_COLS`, which the code calls *"a contract"*. Collapsing them is a schema change touching the site's reader, the endpoint and both helper formulas |
+| **The site** | `build()` joins the two columns; it would read one. Small |
+| **The matching key** | `nameKeyOf(first,last)` concatenates before stripping, so a single field produces **the same key** — this part is already compatible |
+| **⚠ The rows already on the list** | Every existing person has their name across two columns. **A migration, on live data, while villagers are submitting** |
+| **The `verdict` formula** | Reads `$D$2:$D` and `$E$2:$E` on Form responses. Would need rewriting and re-pasting |
+
+**The recommendation is to take the two-minute form change NOW and consider the single field later, if at all** — the testers are blocked this minute, the small fix unblocks them with no code and no migration, and the larger change is far safer once the list has stopped moving. **But it is his call and is recorded as open.**
+
+**[PATTERN CANDIDATE: the-build-work-that-turns-out-not-to-exist]** A prompt framed *"establish whether the code copes; if not, fix it"* invites building. **Executing the real code first showed the fix was one setting in somebody else's UI.** The honest output of a build prompt is sometimes a measurement and a test, and saying so plainly is worth more than a plausible change nobody needed.
 
 ---
 
@@ -7311,5 +7401,106 @@ Working tree clean. Both remotes level.
 **What gates launch is unchanged: `3.1`.** The list is empty, so the village cannot usefully be told (`1.1`) and the journey cannot be walked on real content (`4.1`).
 
 **Nothing else moved.** No code file touched, no row appended, no effort re-weighted, nothing written to the Owner's spreadsheet, nothing redeployed.
+
+Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T10:41:20Z — The no-surname defect: measured, guarded, and no code needed
+
+**Source:** Claude Code
+**Started:** 2026-09-21T10:28:05Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only)
+
+**Prompt received:** *(preserved in the Claude.ai conversation above. Unplanned work found in live testing: a tradesperson with no surname cannot be submitted. Tasks — establish the end-to-end behaviour, recommend the minimal change, cost the larger option without deciding it, give the Owner his steps, and say what the testers do meanwhile. Then append a new row to step 6 per §4.15.)*
+
+**PROVENANCE OF ROW 6.5, recorded here rather than in the row id or the row text:** **found in live testing by the Owner's testers on 2026-09-21**, while they were submitting real tradespeople to fill row 3.1. It is unplanned work, entered after the first attempt per preferences §4.15.
+
+**What was done:**
+
+**Staleness check first:** no output, exit 0 — copy-source current. HEAD `a69c939`, tree clean — **did not differ from the prompt.**
+
+**TASK 1 — what happens today, established by EXECUTION against the real code.**
+
+| Question | Answer, measured |
+|---|---|
+| **Does the publisher refuse or hide a blank surname?** | **Neither.** The only name guard is `!row.first && !row.last && !row.phone` (`Publish.gs:632`, `820`) — it needs **all three** empty. `splitName` (`1339`) returns `{first:'Dave', last:''}` for a single word and **invents nothing**. The row publishes **`active`** |
+| **What does the site render?** | **`Dave`**, with the business beside it. `app.js:156-157` filters empties before joining, so there is **no stray space and no doubled name**. ⚠ But `app.js:159` — `if (!name || !phone) return;` — **DROPS a row whose name is entirely blank** |
+| **Does duplicate matching break?** | **No.** `rowIndexForPerson` **finds** the one-name person and **refuses** a different one-name person on the same number. `rowIndexForUnusablePhone` **finds** them by name and trade, and **refuses** when there is no name at all |
+| **What does `verdict` show?** | **`NEW`** when absent, **`ALREADY ON SITE — T001`** when listed. Correct both ways |
+
+**One known limit found and recorded:** two rows carrying **no name at all** and the same telephone number **would merge into one**, because `nameKeyOf('','')` is empty for both. It needs both to be nameless, which the site already refuses to display — and it is a second reason the first-name question must stay required.
+
+**TASK 2 — the minimal change: MAKE THE SURNAME QUESTION OPTIONAL. NO CODE CHANGE IS NEEDED.** Claude.ai's hypothesis was correct and was **tested rather than adopted**. `Publish.gs`, `Code.gs` and `app.js` are **unmodified by this session**.
+
+**TASK 3 — the larger option (one "Name or business name" field) is COSTED IN LAYER 5 AND NOT DECIDED.** It would touch the form, `readSubmission`'s `FIELD_MATCH`, `splitName`, `PUB_COLS` (which the code calls *"a contract"*), the site's reader, the `verdict` formula, and **every row already on the list — a migration on live data while villagers are submitting.** The matching key is already compatible. **Recommendation: take the two-minute form change now; consider the single field later, if at all.** His call.
+
+**TASK 4 — his click-by-click steps are in Layer 4**, including the explicit warning not to turn the first-name question off.
+
+**TASK 5 — what the testers do meanwhile is in Layer 4:** keep a short list of the ones they cannot submit and enter them once the field is optional; **do not** type them straight into Published (it skips the phone checks and the merge); **do not** put a placeholder in the surname box (it becomes their surname on the card, and the id is assigned immediately).
+
+**THE PLAN ROW.** `6.5` appended at the **next free number in step 6**, status **`new`**, effort **2**. **Nothing was inserted and nothing renumbered.** Effort justified: the Owner's action is a two-minute form toggle, the code work is zero, and what remains is a tester submitting a one-name tradesperson and it appearing correctly — the same shape as `6.4`, which carries 1, plus the extra verification that matching still works, so 2.
+
+**Sixteen regression checks added** so the property is guarded: `splitName` leaves a single name alone, the row publishes `active`, the site renders `Dave` with no stray space, both matching paths find them, a nameless row is dropped, and the known merge limit is asserted so it can be retired deliberately.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | Staleness check | clean | **no output, exit 0** | PASS |
+| 2 | Repo matches prompt HEAD | `a69c939`, clean | did not differ | PASS |
+| 3 | Baseline all suites | green | **267 passed, 0 failed** | PASS |
+| 4 | Any branch refusing a blank surname? | establish | **None** — guard needs first AND last AND phone empty | PASS |
+| 5 | `splitName('Dave','')` | invents nothing | `{first:'Dave', last:''}` | PASS |
+| 6 | `splitName('Dave the window cleaner','')` | known behaviour | **splits to `'Dave the window'` / `'cleaner'`** — recorded | PASS |
+| 7 | `publishInto` with blank surname | accepted | **`active`**, surname empty, business kept | PASS |
+| 8 | **Site `build()` — CONTROL first** | renders | **`Real Villager`** — harness proven before results trusted | PASS |
+| 9 | **Site `build()` — one-name person** | renders cleanly | **`Dave`**, business beside it, **no stray space** | PASS |
+| 10 | **Site `build()` — no name at all** | establish | **DROPPED from the site** | PASS |
+| 11 | Phone+name merge, one-name person | finds | found (index 1) | PASS |
+| 12 | Phone+name merge, different one-name person, same number | refuses | `-1` — correctly not merged | PASS |
+| 13 | `rowIndexForUnusablePhone`, one-name person | finds | found | PASS |
+| 14 | …with no name at all | refuses | `-1` | PASS |
+| 15 | **Known limit: two nameless rows, one number** | establish | **merge into one** — recorded and asserted | PASS |
+| 16 | `verdict` for a one-name person | correct | `NEW` / `ALREADY ON SITE — T001` | PASS |
+| 17 | Sixteen new checks added | pass | **100 passed in that suite** | PASS |
+| 18 | Full regression | no regression | **283 passed, 0 failed** (267→283) | PASS |
+| 19 | **No code file changed** | none | `Publish.gs`, `Code.gs`, `app.js` **unmodified** | PASS |
+| 20 | Row 6.5 appended at next free number | 6.5, not inserted | 6.5, appended to both tables | PASS |
+| 21 | New rows' cell counts | 4 and 15 | **4 and 15** — no literal pipe | PASS |
+| 22 | **§3.10 validator** | exit 0 | **`exit=0`** | PASS |
+| 23 | **Validator sub-task count** | 10 | **10** | PASS |
+| 24 | **Count vs rows the document holds** | must match | **document 10, validator 10 — MATCH** | PASS |
+| 25 | **Figure recomputed from the document** | must match | **12 of 34 = 35.3%** | PASS |
+| 26 | Every row parses to 4 cells | all 10 | all 10 | PASS |
+| 27 | No existing row's status changed | unchanged | 2.1/6.2/6.3/6.4 `done`; 1.1/3.1/4.1/6.1 `new`; 5.1 `external` | PASS |
+| 28 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `10:37:33Z`; 6 layers | PASS |
+| 29 | Nothing written to the Owner's sheet | nothing | no Apps Script run at all | PASS |
+
+**The percentage FELL and that is scope, not regression.** 12/32 (37.5%) → **12/34 (35.3%)**. **Done effort is UNCHANGED at 12**; the denominator moved 32 → 34 because row 6.5 was appended. Stated here because a falling figure reads as work lost.
+
+**What was not tested:**
+
+- **NOTHING RAN INSIDE GOOGLE AND NOTHING WAS WRITTEN TO THE OWNER'S SHEET** — testers are submitting to it as this ran.
+- **⚠ THE FORM ITSELF WAS NEVER SEEN.** That the surname question is required, and that it blocks these submissions, is **REPORTED** from the Owner. No session can read his form. **The click-by-click steps name the question by its exact title** — *"What is their Last name?"* — from the recorded column layout, but the button positions are from Google's standard form editor and are **[ASSUMED]**, not verified on his screen.
+- **The site was driven through the extracted `build()`, not a browser.** That function is the decision point for who appears at all, and the control case was asserted first — **but no rendered card was inspected this session.** The earlier full-DOM harness could not capture cards and was discarded rather than reported as evidence.
+- **No one-name tradesperson has been submitted or published for real.** Row 6.5 closes on exactly that, and it has not happened.
+- **The Owner's quotation is REPORTED** from the commissioning prompt.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T10:41:20Z
+
+**End state:**
+
+**The defect is real, the diagnosis is measured, and the fix is a two-minute form change the Owner makes himself.** The publisher, the matching and the site already handle a blank surname; **the form is the only thing in the way.** **No code file was changed**, and sixteen new checks guard that conclusion.
+
+**⚠ HIS TESTERS ARE BLOCKED THIS MINUTE.** The form change and what the testers should do meanwhile are both in Layer 4. **The most important line in it: leave the first-name question REQUIRED** — a nameless row publishes to the sheet and is then invisible on the site.
+
+**Plan: 12 of 34 effort (35.3%), 4 of 10 rows done**, validator exit 0, count cross-checked. **Row 6.5 is `new` and closes on the Owner's sighting**, like every other row in step 6.
 
 Working tree clean. Both remotes level.
