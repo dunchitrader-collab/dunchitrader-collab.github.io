@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T11:47:05Z
+last-updated: 2026-09-21T11:58:30Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T11:47:05Z** ~~2026-09-21T11:32:10Z~~ ~~2026-09-21T10:53:24Z~~ ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T11:58:30Z** ~~2026-09-21T11:47:05Z~~ ~~2026-09-21T11:32:10Z~~ ~~2026-09-21T10:53:24Z~~ ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -221,11 +221,19 @@ When he deliberately submitted a two-number field this morning to test this row,
 
 **STEP 6 IS NOW COMPLETE — all six rows `done`.** **Rows `1.1`, `3.1` and `4.1` are untouched and still `new`; `5.1` remains `external`.** **`3.1` is the live gate**, standing at 10 people across 8 trades as at 11:26Z against a bar of 12–15 across at least 6.
 
+**2026-09-21T11:58:30Z — ROW 4.1 CLOSED ON THE OWNER'S OWN WALKTHROUGH. THE PLAN MOVES 24/36 (66.7%) → 29/36 (80.6%), 8 of 11 rows done. ONLY `3.1` AND `1.1` REMAIN, AND BOTH ARE HIS.** Verified four ways: validator `exit=0` with `sub-tasks: 11` and `done effort: 29 / 36 = 80.6%`; the same figure recomputed from the document's rows; every row re-checked as four cells; every satellite `State` reconciled.
+
+**He walked it against the REAL list of eleven tradespeople across eight trades, not a fixture.** On his own phone: open the link, find a trade, find a person, tap Call, search by work type, add a recommendation from a card and see it appear, the add-someone link opening in a new tab, and the page holding at the largest text size. On a computer, asked specifically about 200% zoom and a wide screen: ***"4.1 yes to both"*** — **no text spills outside its box at 200%, and the layout is sensible at normal zoom on a wide window.**
+
+⚠ **NO SESSION WITNESSED ANY OF IT.** Every part is **REPORTED by the Owner**. Claude.ai read the served page through the morning and confirmed the list renders and the counts move, but **saw no card, no dialler and no zoom behaviour.** **Whether a call actually connected is his report alone.**
+
+**⚠ AND A PERMANENT CONSTRAINT IS NOW RECORDED IN LAYER 3: DUNCHIDEOCK HAS NO MOBILE SIGNAL.** His words: ***"not on a mobile signal because the village has no signal. Everyone relies on wifi."*** **This changes what "works" means here.** Three consequences, all in Layer 3: **testing on mobile data is the wrong test** (and Claude.ai's advice to turn wifi off was **wrong**, corrected there so it is not repeated); **tapping Call connects only for a villager with wifi calling enabled**, which many will not have; and therefore **the telephone number being LEGIBLE on the card is load-bearing** — checked and passed 2026-09-21. **The number must never be reduced to a tap-only control.**
+
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
 | Plan ID | Path | Position [VERIFIED 2026-09-21, validator] |
 |---|---|---|
-| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, 10 sub-tasks, row `6.5` appended~~ ~~SUPERSEDED 2026-09-21T10:53:24Z → **12 / 36 = 33.3%**, 11 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T11:32:10Z → **16 / 36 = 44.4%**, 6 `done`~~ SUPERSEDED 2026-09-21T11:47:05Z → **24 / 36 = 66.7%**, **11 sub-tasks** (1 `external`, excluded), **7 `done`** | 
+| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, 10 sub-tasks, row `6.5` appended~~ ~~SUPERSEDED 2026-09-21T10:53:24Z → **12 / 36 = 33.3%**, 11 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T11:32:10Z → **16 / 36 = 44.4%**, 6 `done`~~ ~~SUPERSEDED 2026-09-21T11:47:05Z → **24 / 36 = 66.7%**, 7 `done`~~ SUPERSEDED 2026-09-21T11:58:30Z → **29 / 36 = 80.6%**, **11 sub-tasks** (1 `external`, excluded), **8 `done`** | 
 | `PLAN-DUNCHI-INHERITANCE-2026-09-21` | `docs/BUILD-PLAN-dunchi-inheritance.md` | **0 / 9 = 0.0%**, 1 sub-task |
 
 **The launch plan's denominator fell 41 → 32 and that is SCOPE LEAVING, not progress.** Done effort was 0 before and is 0 after; the 9 effort was excluded **by the row's `external` status**, never by re-weighting it (STD-00009 Rules 5.4.2 and 5.2.5 [CORE]).
@@ -997,6 +1005,25 @@ The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file a
 # LAYER 3 — KNOWN ISSUES AND GOTCHAS
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
+
+**[CONSTRAINT] 2026-09-21 — ⚠ DUNCHIDEOCK HAS NO MOBILE SIGNAL. EVERYONE RELIES ON WIFI. This is a standing fact about the operating environment, not a bug, and it changes what "works" means for this site.**
+
+**The Owner's words, REPORTED, 2026-09-21:** ***"not on a mobile signal because the village has no signal. Everyone relies on wifi."***
+
+**Recorded as a CONSTRAINT rather than a `[BUG]` because nothing is broken and nothing can be fixed** — it is the condition the village lives in, and whoever inherits this site needs to know it before they change anything or test anything.
+
+**1. TESTING ON MOBILE DATA IS THE WRONG TEST FOR THIS VILLAGE.** **Wifi is the real-world condition**, so a walkthrough conducted over 4G is testing an environment no villager is in. ⚠ **CORRECTION RECORDED SO IT IS NOT REPEATED: Claude.ai advised the Owner to turn wifi OFF in order to test "properly". That advice was WRONG** — it would have tested the one condition that never occurs here. **The right instruction is the opposite: test on wifi, because that is what a villager will be on.**
+
+**2. TAPPING CALL ONLY CONNECTS FOR A VILLAGER WHOSE PHONE HAS WIFI CALLING ENABLED.** Many will not have it switched on, and some will be reading the site on a phone or tablet and then walking to a landline in another room. **For all of those people the `tel:` link is inert**, and what matters instead is that **the telephone number is legible on the card so it can be read and written down.**
+
+**3. LEGIBILITY OF THE NUMBER IS THEREFORE LOAD-BEARING FOR THIS AUDIENCE, and it was checked and passed on 2026-09-21** — the Owner confirmed the number is clearly readable on a card **without tapping anything**.
+
+⚠ **THE DESIGN RULE THIS IMPLIES, stated so a future change cannot quietly break it: the telephone number must never be reduced to a tap-only control.** Hiding it behind the Call button, rendering it only as an `aria-label`, showing it solely on hover, or replacing the visible digits with an icon would each be a regression **for the majority of this village**, however well it tested elsewhere. **The number is shown as text on the card today and must stay that way.**
+
+**Why this is worth a permanent entry:** every prior measurement of the Call button on this project — the misdial fix of 2026-09-18, the leading-zero guard of 2026-09-21 — has been about the number being *correct*. **This constraint is about it being *visible*.** A site that dials perfectly and shows nothing would pass all of those checks and fail most of the village.
+
+Diagnosis: open a card on the live site and read the number **without tapping**. If the digits are not plainly visible as text, this constraint has been violated.
+
 
 **[GOTCHA] 2026-09-21 — `checkSetup`'s "THE DUPLICATE CHECKER IS BROKEN" alarm is CORRECT and is EXPECTED after a D7a reset. It does NOT mean live duplicate protection has failed, and the Owner does not need to stop submitting.**
 
@@ -3074,6 +3101,30 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **Precedent, and both are the Owner's own.** `D4b-6G7f-19092026` corrected a row's acceptance rather than leave it unmeetable, for the same structural reason — automatic publishing had made the `NEW` verdict unreachable. `D9a-VCWL-21092026`, earlier today, closed a row on an upstream control with a recorded not-witnessed split. **This is the third instance of the same pattern in three days**, which is itself worth noticing.
 
 **[PATTERN CANDIDATE: a-row-that-closes-only-on-failure-is-mis-specified]** An acceptance clause requiring the operator to witness the fault the work prevents **becomes unmeetable exactly when the work succeeds**, and the better the fix the longer the row stays open. **Write such rows to close on the guard being demonstrably in place**, with the recovery evidenced by whatever real occurrence exists, and record separately which failure classes have and have not been seen. **Three rows on this project have now needed this correction after the fact.**
+
+---
+
+### 2026-09-21 — Row 4.1 closed on the Owner's walkthrough, and the village's real operating condition is recorded
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION] Row 4.1 closed on the Owner's own walkthrough, against the real list.** Eleven tradespeople across eight trades — **not a fixture**, which is the entire point of the row. Everything in it had already been proven against test data; what it added was real content, *"which is where surprises live: long business names, unusual trades, numbers that were typed oddly."* **He found none.**
+
+**On his phone:** open the link, find a trade, find a person, tap Call, search by work type, add a recommendation from a card and see it appear, the add-someone link opening in a new tab, the page holding at the largest text size. **On a computer**, asked specifically about 200% zoom and a wide screen: ***"4.1 yes to both"***.
+
+**[DECISION] ⚠ NO SESSION WITNESSED ANY OF IT, and the closure record says so in the row itself rather than only here.** Claude.ai read the served page through the morning and confirmed the list renders and the counts move — **but saw no card, no dialler and no zoom behaviour.** **Whether a call connected to a tradesperson is his report alone.** That is the correct basis for this row: it was written to close on a human walking the journey on real devices, and the 2026-09-19 delegation limit says a session may verify its own code but may not sight its own effect on his screen. **What would be wrong is a record implying corroboration that did not occur.**
+
+**[CONSTRAINT] ⚠ DUNCHIDEOCK HAS NO MOBILE SIGNAL, and this is the most durable thing recorded today.** His words: ***"not on a mobile signal because the village has no signal. Everyone relies on wifi."*** **Recorded in Layer 3 as a constraint, not a bug** — nothing is broken and nothing can be fixed; it is the condition the village lives in.
+
+**Three consequences, and the third is a design rule:**
+
+1. **Testing on mobile data is the wrong test for this village.** ⚠ **Claude.ai advised turning wifi OFF to test "properly", and that advice was WRONG** — it would have tested the one condition that never occurs here. **The correction is recorded so it is not repeated.**
+2. **Tapping Call connects only for a villager whose phone has wifi calling enabled.** Many will not; some will read the site and then walk to a landline. **For them the `tel:` link is inert.**
+3. **Therefore the telephone number being LEGIBLE on the card is load-bearing** — confirmed 2026-09-21 that it reads clearly **without tapping anything**. ⚠ **The number must never be reduced to a tap-only control:** hiding it behind the button, rendering it only as an `aria-label`, showing it on hover, or replacing the digits with an icon would each be a regression **for the majority of this village**, however well it tested elsewhere.
+
+**Why it earns a permanent entry.** Every prior measurement of the Call button here — the misdial fix of 2026-09-18, the leading-zero guard of 2026-09-21 — has been about the number being **correct**. **This is about it being visible.** **A site that dials perfectly and shows nothing would pass every one of those checks and fail most of the village.**
+
+**[PATTERN CANDIDATE: the-operating-environment-is-part-of-the-requirement]** A constraint like *"this village has no mobile signal"* is invisible in code, absent from every test, and decisive about what correct behaviour is. **It arrived as an aside in conversation and would have been lost.** Where a product serves one specific place or population, the environment's own limits belong in the permanent record beside the architecture — **and any advice that contradicts them should be corrected in writing, not silently dropped**, because the next session will otherwise give the same wrong instruction.
 
 ---
 
@@ -7959,6 +8010,85 @@ Working tree clean. Both remotes level.
 **STEP 6 IS COMPLETE. All six rows are `done`** — the publisher no longer loses a villager's recommendation, and five of the six closures rest on something the Owner saw on his own screen.
 
 **WHAT REMAINS IS THE VILLAGE, NOT THE CODE.** Three rows: **`3.1`** the live gate (10 people across 8 trades at 11:26Z against 12–15 across 6+), **`1.1`** telling the village, and **`4.1`** walking the journey on real content. **None of them is a code task** — they are the Owner's, and their pace is a village's.
+
+**Nothing else moved.** No code file touched, no row appended, no effort re-weighted, nothing written to the Owner's spreadsheet, nothing redeployed.
+
+Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T11:58:30Z — Row 4.1 closed: 24/36 → 29/36, and the no-signal constraint recorded
+
+**Source:** Claude Code
+**Started:** 2026-09-21T11:42:10Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only)
+
+**Prompt received:** *(preserved in the Claude.ai conversation above. A plan update plus one constraint: close row 4.1 on the Owner's walkthrough against the real list, recording plainly that no session witnessed it; and record as a permanent Layer 3 constraint that Dunchideock has no mobile signal, including the correction to Claude.ai's wifi-off advice and the consequence that the telephone number must stay legible on the card.)*
+
+**What was done:**
+
+**Staleness check first:** `GITHUB_TOKEN= git fetch collab main && GITHUB_TOKEN= git diff FETCH_HEAD..HEAD --stat -- apps-script/` → **no output, exit 0.** HEAD `8b5434c`, tree clean — **did not differ from the prompt.**
+
+**Baseline measured before editing:** validator `exit=0`, **11 sub-tasks, 24/36 = 66.7%**. **Rows enumerated independently: 11.** **Predicted post-change figure computed BEFORE the edit: 29 of 36 = 80.6%**, so the validator was tested against a prediction rather than trusted.
+
+**Row 4.1 closed.** Its sub-task cell now carries the walkthrough against the real eleven-across-eight list, his verbatim *"4.1 yes to both"* on zoom and wide screen, **and both caveats in the row itself** — that no session witnessed any of it, and that whether a call connected is his report alone. It also cross-references the new Layer 3 constraint, because "tap Call and reach them" means something different in a village with no mobile signal.
+
+**Satellite updated:** `State` → `done`, `Forecast` and `Forecast end` → **2026-09-21**.
+
+**On the dates, and this row differs from the others closed today.** **`Actual start` moved from `2026-09-19` to `2026-09-21`** — unlike the step 6 build rows, **this row's work is the walkthrough itself**, which began and ended today. Nothing was done against it on 2026-09-19; that date was the plan's creation date, not a start. **`Due` and `Planned end` NOT rewritten** — the baseline promise stands, and the row finished nineteen days inside it.
+
+**THE CONSTRAINT RECORDED IN LAYER 3**, as `[CONSTRAINT] 2026-09-21`, at the top of the layer: the village has no mobile signal and runs on wifi; testing on mobile data is the wrong test and **Claude.ai's wifi-off advice is recorded as wrong**; Call connects only with wifi calling enabled; **the number's legibility is load-bearing** and must never become a tap-only control. It carries its own diagnosis line — open a card and read the number without tapping.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | Staleness check | clean | **no output, exit 0** | PASS |
+| 2 | Repo matches prompt HEAD | `8b5434c`, clean | did not differ | PASS |
+| 3 | Baseline position before edits | a comparison | **11 sub-tasks, 24/36 = 66.7%**, exit 0 | PASS |
+| 4 | Rows enumerated from the document | 11 | **11** | PASS |
+| 5 | Predicted figure, computed before editing | a prediction | **29 of 36 = 80.6%** | PASS |
+| 6 | **§3.10 validator after the edits** | exit 0 | **`exit=0`** | PASS |
+| 7 | **Validator sub-task count** | 11 | **11** | PASS |
+| 8 | **Validator completion figure** | verify, not confirm | **`29 / 36 = 80.6%`** — matches the prediction | PASS |
+| 9 | **Count cross-checked against rows the file holds** | must match | **document 11, validator 11 — MATCH** | PASS |
+| 10 | **Figure recomputed independently from the document** | must match | **29 of 36 = 80.6%** | PASS |
+| 11 | Every row parses to exactly four cells | all 11 | **all 11** — no literal pipe introduced | PASS |
+| 12 | **Satellite `State` matches four-column status** | consistent | **consistent on all 11** | PASS |
+| 13 | Exactly eight rows `done` | 2.1, 4.1, 6.1–6.6 | exactly those | PASS |
+| 14 | Untouched rows still `new` | 1.1, 3.1 | both still `new` | PASS |
+| 15 | `5.1` still `external` | unchanged | `external` | PASS |
+| 16 | Constraint present in Layer 3 | one entry | **one `[CONSTRAINT] 2026-09-21` entry** | PASS |
+| 17 | No row appended, none renumbered, no effort re-weighted | unchanged | `3 2 4 5 9 8 5 4 1 2 2` | PASS |
+| 18 | **No code file touched** | none | `apps-script/` and `app.js` unmodified | PASS |
+| 19 | Test suites green (control) | no regression | **300 passed, 0 failed** | PASS |
+| 20 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `11:58:30Z`; 6 layers | PASS |
+| 21 | Nothing written to the Owner's sheet | nothing | no Apps Script run at all | PASS |
+
+**What was not tested:**
+
+- **⚠ NO SESSION WITNESSED THE WALKTHROUGH.** Every part of row 4.1's closure is **REPORTED by the Owner** — the phone journey, the dialler, the 200% zoom, the wide-screen layout. Claude.ai's browser reads through the morning confirmed the list renders and counts move; **they saw no card, no dialler and no zoom behaviour.**
+- **⚠ WHETHER A CALL CONNECTED TO A TRADESPERSON IS HIS REPORT ALONE.** Not separately confirmed, and not confirmable by any session.
+- **THE NO-SIGNAL CONSTRAINT IS REPORTED**, from the Owner. **No session has measured signal coverage in Dunchideock** and none could.
+- **THE NUMBER'S LEGIBILITY WAS NOT RE-MEASURED HERE.** That it reads clearly on a card without tapping is his confirmation of 2026-09-21. **What this repo has measured on other days is that the number is rendered as text in the card markup** — the human legibility judgement is his.
+- **NO BROWSER RUN AND NO FEED READ THIS SESSION.** The "eleven across eight" figure is REPORTED from Claude.ai's 11:44Z read, not measured here.
+- **NO CODE WAS RUN OR CHANGED.** The suites were executed only as a control.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T11:58:30Z
+
+**End state:**
+
+**`PLAN-DUNCHI-LAUNCH-2026-09-19` stands at 29 of 36 effort (80.6%), 8 of 11 rows done** — verified by the validator at exit 0, recomputed independently, count cross-checked, satellites reconciled.
+
+**TWO ROWS REMAIN AND BOTH ARE THE OWNER'S.** **`3.1`** — 12 to 15 tradespeople across at least 6 trades, standing at **11 across 8** on Claude.ai's 11:44Z read, **one person short**. **`1.1`** — tell the village.
+
+⚠ **BEFORE HE POSTS, THE DRAFTED LAUNCH MESSAGE MUST BE CHECKED AGAINST WHAT THE LIST ACTUALLY HOLDS.** It is in the root `README.md` under *"Telling the village"* and in [PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md` §4, and it promises *"plumbers, electricians, gardeners and the rest"*. **There is no gardener on the list.** The same mismatch was raised on 2026-09-19 and is still open. **The link cannot be un-sent**, so the mismatch should be put to him rather than found by a villager.
 
 **Nothing else moved.** No code file touched, no row appended, no effort re-weighted, nothing written to the Owner's spreadsheet, nothing redeployed.
 
