@@ -510,9 +510,59 @@ function note(ss, rowNum, text) {
     var sheet = responsesSheet(ss);
     if (!sheet) return;
     var col = actionColumn(sheet);
-    if (col > 0) sheet.getRange(rowNum, col).setValue(text);
+    if (col > 0) noteInto(sheet, rowNum, col, text);
   } catch (ignored) {
     /* Never let recording the outcome become a second failure. */
+  }
+}
+
+/**
+ * Write one line into the action column and NEVER throw.
+ *
+ * ---------------------------------------------------------------------------
+ * 2026-09-21 — AN AUDIT-TRAIL WRITE MUST NEVER ABORT THE RECOVERY IT AUDITS.
+ *
+ * MEASURED IN THE OWNER'S ACCOUNT on the sweep's first live run:
+ *
+ *   07:11:10  Info   sweep published 8 missed submission(s)
+ *   07:11:11  Error  The data you entered in cell M2 violates the data
+ *                    validation rules set on this cell. Please enter one of
+ *                    the following values: Publish, Add to T0xx, Reject.
+ *
+ * Column M carried a leftover data-validation dropdown from the manual triage
+ * era. `sweepPublished` wrote its outcome note with a bare `setValue`, Sheets
+ * refused it, and the throw escaped the loop — so ROW 6.2's VISIBILITY
+ * MECHANISM KILLED ROW 6.1's RECOVERY FUNCTION. Reproduced in the test file:
+ * the sweep published the FIRST missed submission and never reached the
+ * second, and `recordSweepRun()` never ran.
+ *
+ * `note()` already had this guard. The sweep did not, and the asymmetry is the
+ * whole defect: the same write, protected on one path and bare on three.
+ *
+ * WHY THIS IS NOT SWALLOWING AN ERROR, which is the failure this step exists
+ * to fix. A refused note is recorded in THREE places a person can reach:
+ *   1. the Logger, with the row number and the refusal text;
+ *   2. a counter the sweep reports in its own summary line;
+ *   3. the `action` column stays BLANK, which is already the documented
+ *      alarm — "a blank means nothing happened".
+ * What is deliberately NOT done is re-throwing, because the recommendation is
+ * already safely on the list by the time this runs. Losing the note costs the
+ * Owner a line of audit text; losing the sweep costs a villager their
+ * tradesperson, and that is the trade this function makes.
+ * ---------------------------------------------------------------------------
+ *
+ * @return {boolean} true if the note landed, false if it was refused.
+ */
+function noteInto(sheet, rowNum, col, text) {
+  try {
+    sheet.getRange(rowNum, col).setValue(text);
+    return true;
+  } catch (err) {
+    var msg = (err && err.message) ? err.message : String(err);
+    Logger.log('COULD NOT RECORD THE OUTCOME on response row ' + rowNum +
+               ' — the action cell refused the write: ' + msg +
+               ' || the outcome itself was: ' + text);
+    return false;
   }
 }
 
@@ -562,6 +612,9 @@ function sweepPublished() {
     var existing = tableValues(pub);
 
     var added = 0;
+    /* Notes the action column refused. Counted rather than thrown, and
+       reported in the summary line below — see `noteInto`. */
+    var unrecorded = 0;
     for (var r = 1; r < values.length; r++) {
       /* An action already recorded means this response has been dealt with.
          Cheap to test and it is what keeps an idle sweep free. */
@@ -584,10 +637,11 @@ function sweepPublished() {
       if (key) {
         var at = rowIndexForPerson(existing, key, row.first, row.last);
         if (at !== -1) {
-          if (actionCol > 0) {
-            sheet.getRange(r + 1, actionCol)
-                 .setValue('Merged into ' + existing[at][PUB_COLS.indexOf('id')] +
-                           ' — found by the automatic check');
+          if (actionCol > 0 &&
+              !noteInto(sheet, r + 1, actionCol,
+                        'Merged into ' + existing[at][PUB_COLS.indexOf('id')] +
+                        ' — found by the automatic check')) {
+            unrecorded++;
           }
           continue;
         }
@@ -598,18 +652,32 @@ function sweepPublished() {
         outcome = withRetry(function () { return publishInto(pub, existing, row); });
       } catch (err) {
         var msg = (err && err.message) ? err.message : String(err);
-        if (actionCol > 0) sheet.getRange(r + 1, actionCol).setValue('FAILED — ' + msg);
+        if (actionCol > 0 && !noteInto(sheet, r + 1, actionCol, 'FAILED — ' + msg)) {
+          unrecorded++;
+        }
         Logger.log('sweep failed on response row ' + (r + 1) + ': ' + msg);
         continue;
       }
       if (outcome.added) added++;
-      if (actionCol > 0) {
-        sheet.getRange(r + 1, actionCol)
-             .setValue(outcome.action + ' (by the automatic check)');
+      if (actionCol > 0 &&
+          !noteInto(sheet, r + 1, actionCol, outcome.action + ' (by the automatic check)')) {
+        unrecorded++;
       }
     }
 
     if (added) Logger.log('sweep published ' + added + ' missed submission(s)');
+
+    /* LOUD, because a blank action cell is the documented alarm and this is
+       the one case where a blank does NOT mean nothing happened. */
+    if (unrecorded) {
+      Logger.log('⚠ THE LIST IS CORRECT BUT THE AUDIT TRAIL IS NOT: ' + unrecorded +
+                 ' outcome note(s) were refused by the action column, so those ' +
+                 'rows still read blank. The submissions themselves were handled. ' +
+                 'Check the action column for a data-validation rule — the ' +
+                 'triage dropdown (Publish / Add to T0xx / Reject) refuses ' +
+                 'anything else and must be removed from that column.');
+    }
+
     recordSweepRun();
 
   } finally {

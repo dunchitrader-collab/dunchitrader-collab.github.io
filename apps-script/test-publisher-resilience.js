@@ -477,5 +477,169 @@ section('REGRESSION — today\'s guards still hold');
         P.nextId([[], ['T001'], ['T020'], ['T003']]) === 'T021', P.nextId([[], ['T001'], ['T020'], ['T003']]));
 }
 
+/* -------------------------------------------------------------------------
+   2026-09-21 — THE AUDIT TRAIL MUST NOT KILL THE RECOVERY IT IS AUDITING.
+
+   MEASURED IN THE OWNER'S OWN ACCOUNT, first live run of the sweep:
+
+     07:11:10  Info   sweep published 8 missed submission(s)
+     07:11:11  Error  The data you entered in cell M2 violates the data
+                      validation rules set on this cell. Please enter one of
+                      the following values: Publish, Add to T0xx, Reject.
+
+   Column M carried a leftover data-validation dropdown from the manual triage
+   era. The sweep published 8 rows, then threw one second later writing the
+   audit note — so ROW 6.2's MECHANISM KILLED ROW 6.1's FUNCTION.
+
+   The controls below reproduce that exact throw with a stub cell that refuses
+   the write the same way Sheets does. In CONTROL mode they assert the OLD
+   behaviour: the throw escapes and `recordSweepRun` never runs.
+   ------------------------------------------------------------------------- */
+section('2026-09-21 — a refused action write must never abort the sweep');
+
+/* A Form responses stub whose `action` column (M, index 13) refuses every
+   write exactly as a data-validation rule does. Everything else behaves. */
+function makeResponsesRefusingAction(rows) {
+  const r = makeResponses(rows);
+  const inner = r.sheet.getRange.bind(r.sheet);
+  const VALIDATION_MSG =
+    'The data you entered in cell M2 violates the data validation rules set ' +
+    'on this cell. Please enter one of the following values: Publish, Add to T0xx, Reject.';
+  r.refused = 0;
+  r.sheet.getRange = function (row, col, nr, nc) {
+    const rng = inner(row, col, nr, nc);
+    if (col === 13) {
+      return Object.assign({}, rng, {
+        setValue() { r.refused++; throw new Error(VALIDATION_MSG); },
+        setValues() { r.refused++; throw new Error(VALIDATION_MSG); },
+        getValues: rng.getValues
+      });
+    }
+    return rng;
+  };
+  return r;
+}
+
+/* Two real submissions nobody has published, matching the Owner's shape. */
+const TWO_MISSED = [
+  ['2026-09-20 20:03', '', 'Plumber', 'Murray', 'Angel', '07700900222', '',
+   'Turned up when he said he would', 'Tim', '', '', '', ''],
+  ['2026-09-20 20:07', '', 'Carpenter', 'Stuart', 'Ironside', '07700900333', '',
+   'Made a lovely job of the gate', 'Lin', '', '', '', '']
+];
+
+{
+  PROPS = {};
+  const pub  = makeSheet(PUBLISHED, 'Published');
+  const resp = makeResponsesRefusingAction(TWO_MISSED);
+  const P    = load(pub, resp);
+
+  let threw = null;
+  try { P.sweepPublished(); } catch (e) { threw = e; }
+
+  if (CONTROL) {
+    check('CONTROL: the refused note throws straight out of the sweep',
+          threw !== null, 'no throw escaped');
+    check('CONTROL: recordSweepRun never runs, so the run is not remembered',
+          !PROPS.lastSweep, 'lastSweep was set to ' + PROPS.lastSweep);
+  } else {
+    check('a refused action write does NOT throw out of the sweep',
+          threw === null, threw && threw.message);
+    check('the sweep still completed and remembered the run',
+          !!PROPS.lastSweep, 'lastSweep not set');
+  }
+
+  /* THE PUBLISHING ITSELF MUST HAPPEN EITHER WAY — that is what was at risk. */
+  const ids = pub.grid.slice(1).map(r => r[0]).filter(Boolean);
+  check('both missed submissions were published despite the refused note',
+        ids.includes('T021') && ids.includes('T022'),
+        'ids present: ' + ids.join(','));
+  check('the stub really did refuse the write (the control is live)',
+        resp.refused > 0, 'refused count ' + resp.refused);
+}
+
+/* THE SECOND FIRING. This is the duplicate question, and it is the one that
+   matters most: the action column is still blank (every write was refused),
+   so the next sweep reconsiders the very same rows. */
+{
+  PROPS = {};
+  const pub  = makeSheet(PUBLISHED, 'Published');
+  const resp = makeResponsesRefusingAction(TWO_MISSED);
+  const P    = load(pub, resp);
+
+  try { P.sweepPublished(); } catch (ignored) {}
+  const afterFirst = pub.grid.slice(1).map(r => r[0]).filter(Boolean).length;
+
+  /* Re-load against the SAME published sheet, as the next timer firing would. */
+  const P2 = load(pub, resp);
+  try { P2.sweepPublished(); } catch (ignored) {}
+  const afterSecond = pub.grid.slice(1).map(r => r[0]).filter(Boolean).length;
+
+  check('a SECOND firing adds no duplicate rows to Published',
+        afterSecond === afterFirst,
+        'rows went ' + afterFirst + ' -> ' + afterSecond);
+
+  const ids = pub.grid.slice(1).map(r => r[0]).filter(Boolean);
+  check('no id appears twice on Published after two firings',
+        new Set(ids).size === ids.length, ids.join(','));
+
+  /* And the words are not doubled on the merged row either. */
+  const murray = pub.grid.slice(1).find(r => String(r[1]).indexOf('Murray') === 0);
+  const blocks = murray ? String(murray[10]).split('\n\n').filter(s => s.trim()).length : -1;
+  check('the recommendation text is not appended twice by the second firing',
+        blocks === 1, 'recommendation blocks = ' + blocks);
+}
+
+/* THE DUPLICATE QUESTION, answered against the REAL merge functions rather
+   than against a re-run of the whole sweep.
+
+   The situation on the Owner's sheet: the 07:11 run published some rows and
+   then threw, so their action cells are still BLANK and every later firing
+   reconsiders them. What stops a duplicate is not the action cell — it is the
+   phone-AND-name merge finding the row the aborted run already wrote. */
+{
+  const HDR_ = HDR.slice();
+  const already = [HDR_,
+    ['T021','Murray','Angel','','07700900222','Plumber','','active','','',
+     'Turned up when he said','Tim']];
+  const same = { trade:'Plumber', first:'Murray', last:'Angel', phone:'07700900222',
+                 business:'', words:'Turned up when he said', by:'Tim' };
+
+  const P = load(makeSheet(PUBLISHED,'Published'), makeResponses([]));
+  const key = P.normalisePhone(same.phone);
+  const at  = P.rowIndexForPerson(already, key, same.first, same.last);
+
+  check('the merge finds a row an aborted run already published',
+        at === 1, 'rowIndexForPerson returned ' + at);
+
+  const out = P.publishInto({getRange:()=>({setValue(){},setValues(){}})}, already, same);
+  check('re-publishing the same person MERGES rather than adding a row',
+        out.added === false, JSON.stringify(out));
+
+  const before = already[1][10];
+  const appended = P.appendRecommendation({getRange:()=>({setValue(){}})},
+                                          already, 1, same.words, same.by);
+  check('identical words are refused, so the text is not doubled',
+        appended === false && already[1][10] === before,
+        'returned ' + appended);
+}
+
+/* THE FORM-SUBMIT PATH was already protected — `note()` swallows its own
+   failure. Asserted here so a later edit cannot quietly remove that guard. */
+{
+  PROPS = {};
+  const pub  = makeSheet(PUBLISHED, 'Published');
+  const resp = makeResponsesRefusingAction([]);
+  const P    = load(pub, resp);
+
+  let threw = null;
+  try {
+    P.note({ getSheetByName: () => resp.sheet, getSheets: () => [resp.sheet] },
+           2, 'Published as T021');
+  } catch (e) { threw = e; }
+  check('note() still swallows a refused write rather than throwing',
+        threw === null, threw && threw.message);
+}
+
 console.log(`\n================  ${pass} passed, ${fail} failed  ================\n`);
 process.exit(fail === 0 ? 0 : 1);

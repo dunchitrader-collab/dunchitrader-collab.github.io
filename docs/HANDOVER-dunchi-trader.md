@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T06:08:30Z
+last-updated: 2026-09-21T07:23:59Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T06:08:30Z** ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T07:23:59Z** ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -30,6 +30,14 @@ status: active
 ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **2026-09-18T21:10:23Z — CONVERSATION CLOSED DOWN at 68 of 92 (73.9%), 15 of 20 rows.** **2026-09-19T11:25:10Z — ~~68 of 92 (73.9%), 15 of 20 rows~~ SUPERSEDED → 68 of 96 effort (70.8%), 15 of 21 rows.** This session **cleared no effort and closed no row, which was the expected outcome and is stated plainly rather than dressed up**: everything it built closes on the owner's sighting of a real vote on the live page, and he has not yet redeployed. The percentage FELL because row **4.7** was appended at effort 4, adding to the denominator while the numerator stood still — arithmetic, not regression. **THE OPEN DEFECT IS DIAGNOSED AND IT WAS NONE OF THE FIVE CANDIDATES.** Measured 2026-09-19: the deployment behind the votes `/exec` address is not running `Code.gs` at all — Google answers *"Script function not found: doPost"* to every request, and *"doGet"* to every GET. The address is alive; the script behind it is the wrong one. **AND THE PANEL NOW FEEDS THE VILLAGE LIST.** Owner's ruling D1b: the site's own recommend button writes to **Published `K` and `L`** — the tab the village reads — through the same `appendRecommendation()` the automatic publisher uses, not a second copy. It no longer writes to the **Votes** tab, which nothing ever read. Bounded by D2 and enforced in code: it cannot create a row, assign or reuse an id, write any column but `K` and `L`, touch the owner's formula columns `I` and `J`, or reach an unknown or `hidden` id. **NEITHER FIX IS LIVE UNTIL THE OWNER REDEPLOYS** — nothing in this repository can put a script behind that address, and that is his first job (`apps-script/DEPLOY.md` step 14). **2026-09-19T12:17Z — THE BROKEN DEPLOYMENT IS NOW CONFIRMED BY THE OWNER**, on his own phone: he opened the `/exec` address and got `Script function not found: doGet`, independently matching the server-side measurement from a different device and network. **AND A SECOND DEFECT WAS FOUND AND FIXED — ROW 5.1's DELIVERABLE.** He typed the two test rows into Form responses and both reported somebody already on the site when neither was, **each naming its own row number**: `ALREADY ON SITE row 15` on row 15 and `row 16` on row 16. The `verdict` formula was comparing every row against the Form responses tab itself rather than against Published, because it read its comparison keys back out of its own columns `J` and `K`. Fixed at `6e0d4a0` — the keys are now computed inline so a self-match is not expressible, the verdict names the person's **id** rather than a row number, and the lookups are bounded so the helper columns' several hundred empty cells are out of reach. **34 tests pass including a negative control that reproduces the owner's exact readings against the defective formula.** Measured against his real list: both test rows had **already published themselves** as `T014` and `T015`, so `ALREADY ON SITE` is now their correct verdict and **`NEW` is structurally unreachable** on his tab — automatic publishing means every response is on the list within seconds. **Both fixes need a COMPUTER and are bundled into one trip** as DEPLOY.md step 14 Parts A and B. **2026-09-19T13:35:54Z — THE VERDICT FIX WAS ITSELF WRONG, AND THE OWNER FOUND IT BY LOOKING.** He pasted the morning's formula and photographed the result: **about twelve consecutive rows all reading `ALREADY ON SITE — T005`** — the same id on every row, where rows 15 and 16 must read `T014` and `T015`. The self-match was genuinely gone and every branch was chosen correctly; only the **id** was a broadcast constant. Cause, established from Google's documentation: **`INDEX` does not vectorise inside `ARRAYFORMULA`** — handed an array of positions it reads only the first. `MATCH` and `COUNTIF` both do vectorise, which is why the branches were right. Fixed at `81708cd` by replacing `INDEX`/`MATCH` with **`VLOOKUP` over a curly-brace literal array**; nothing else in the formula changed. **THE DEEPER FINDING: two successive fixes were proven against a hand-written simulator whose Sheets semantics were wrong, so the harness agreed with the code and both were wrong together. The owner found both defects by looking; the repository's tests found neither.** The harness now models `INDEX` as non-vectorising and requires the negative control to fail before a fix is written. **STILL NOT RUN IN GOOGLE SHEETS — treat the new formula as REPORTED until his screen confirms it.** One paste, and it needs a computer. **2026-09-19T13:41:12Z — THE RECOMMENDATION PATH IS CLOSED, SIGHTED END TO END BY THE OWNER ON THE LIVE SITE.** At ~13:35Z he placed a recommendation on **`Frank Shelly`** from the cache-busted live page, confirmed it reached **Published `K` and `L`**, then reloaded with a **FRESH** cache-busting parameter and saw his words and his name **on Frank Shelly's card**. The second cache-bust is what makes it a sighting of the path rather than of his browser's memory: the page that showed his words had never seen his submission. **Villager taps, the endpoint writes Published, the village sees it, and nobody touches a spreadsheet.** Build Plan rows **4.6 and 4.7 are `done`** at `5883164`; the plan moves **68 of 96 (70.8%) → 73 of 96 (76.0%), 17 of 21 rows**. **What remains is row 5.1's verdict formula** — one paste, needing a computer, and still unsighted. **2026-09-19T14:02:06Z — TWO MORE DEFECTS FIXED, BOTH IN WHAT A VILLAGER SEES, AND BOTH DEPLOYED.** Rows **4.8** and **4.9** appended at effort 3 each. **4.8, the Owner's ruling D5b:** the card drew a villager's own words the instant they pressed the button, from an in-page object — and because the endpoint's reply is opaque the page cannot know the write succeeded, so on a failure they were left believing permanently that the village could see words that had gone nowhere. The card now renders from the published feed alone; the thank-you and the five-minute notice stay. **4.9, misattribution:** the predicted cause was wrong — the writer keeps the blank line, but the READER dropped it, sliding every later name onto somebody else's words. Measured: **Helen and Bob were each credited with words they never wrote.** Fixed as two independent guards, and **the Owner's five existing rows with an empty `L` are safe as they stand — no repair needed.** **Three recommendations measured: ZERO overflow at every size, and the Call button sits at 827px whether a card carries 0, 1 or 3 — recommendations render below it, so the core action never moves.** **The Votes tab is safe to rename:** nothing opens it on any path. Deployed and **confirmed on the served page by real fetch**. Both rows stay `new` — they change what he sees. Plan **73 of 102 (71.6%), 17 of 23**. **2026-09-19T15:44:39Z — ROWS 4.8 AND 5.1 CLOSED; STEP 5 IS COMPLETE.** **4.8** closed on his sighting — he submitted a recommendation on the live site and the card showed nothing new while both messages appeared; his words: ***"CHECK 1 PASS."*** **5.1** closed under the Owner's ruling **D4b-6G7f-19092026**, which **corrected the row's acceptance** rather than leaving it unmeetable: automatic publishing under D7a means a response holds the verdict `NEW` only in the seconds between submission and publication, so the original *"all four cases"* clause could never be satisfied by looking at the sheet. Acceptance is now **three verdicts sighted by the Operator, with `NEW` evidenced by the committed harness**. He has sighted `CHECK THIS`, `SAME NAME, DIFFERENT NUMBER` and `ALREADY ON SITE` with per-row ids, and reported of the corrected formula: *"I have now pasted the correct code. And it seems to work."* **Recorded rather than glossed: he did NOT quote the readings of rows 15 and 16 back**, so the row does not claim he confirmed `T014`/`T015` individually. **Row 4.9 stays `new`** — he has confirmed named recommendations pair correctly but has **not** tested a nameless recommendation sitting above a named one, which is the only arrangement the defect lived in; the exact test is in Layer 4. Plan **82 of 102 (80.4%), 19 of 23** — **9 effort cleared.** **2026-09-19T15:55:48Z — ROW 4.9 CLOSED, AND A CONTROL NOBODY ASKED FOR REMOVED.** **4.9** closed on his sighting done in the exact order the defect required — nameless recommendation first, named one second, and on reload the first reads *"a villager"* while the second carries the right name. **Then he found drift:** *"it put in a button you had to click on to reveal the 'one more review' which is pointless. Just let it scroll!"* **Traced from history rather than assumed** — the expander came in at `91a3f4c` on 2026-09-18 in the row 3.5 work, **eighteen hours before** prompt 2718, so 2718 did not invent it. **But 2718's three-recommendation measurement was taken against a card rendering only two and a button, and is therefore superseded.** Removed entirely: no expander, no cap, no truncation — row **4.10** carries the ruling. **Six recommendations measured: zero overflow at every size, and the Call button stays at 827px with none, one or six, because recommendations render below it.** **A SECOND DEFECT WAS FOUND BY THAT MEASUREMENT, LIVING INSIDE 4.9's OWN FIX** — a blank name in the MIDDLE stores four consecutive newlines and the greedy split ate all four as one separator, so Wendy was credited with words she had not written; 4.9's tests only ever put the blank first or last. `splitNames` now splits on the literal separator. Deployed and **confirmed on the served page by real fetch**. Plan **85 of 104 (81.7%), 20 of 24**. **2026-09-19T16:04:42Z — ROW 4.10 CLOSED; STEP 4 IS COMPLETE.** His word: ***"4.10. pass"*** — he opened a card with more than two recommendations and every one rendered in order with nothing to tap. **Owner's ruling D7-6G7f-19092026 recorded: HIDE, NEVER DELETE.** Duplicates and test entries get `status` `hidden`, because deleting the highest id frees it for reuse and a later submission would inherit somebody else's recommendations. **The hiding itself is NOT done — it is his action on his own sheet and it GATES LAUNCH**, because the village list still shows test people. **Three things he resolved directly in his sheet:** the shared `07887800192` (*"I have changed the number"*), `T007`'s twelve-digit number (*"fixed"*), and the **`Publish.gs` re-paste** — which **corrects the previous session's summary**, since that said it was still outstanding and it is not: **both halves of the misattribution guard, writer and reader, are now live.** **One residual risk recorded and NOT acted on** (Layer 3): a recommendation filed while two people shared a number may sit on the wrong row, and changing the number does not move it — a one-off eyeball check for him, with its expected result written down. Plan **87 of 104 (83.7%), 21 of 24**. **2026-09-19T17:19:01Z — PLAN-DUNCHI-TRADER-V1 IS CLOSED AND ARCHIVED, AND A SUCCESSOR PLAN NOW GOVERNS.**
 
 **THE CURRENT PLAN IS `PLAN-DUNCHI-LAUNCH-2026-09-19`** at [PATH] `docs/BUILD-PLAN-dunchi-launch.md` — ~~**0 of 23 effort, 0 of 5 rows.**~~ ~~SUPERSEDED 2026-09-19 → 0 of 41 effort, 0 of 9 rows (step 6 appended four rows)~~ **SUPERSEDED 2026-09-21T06:06:37Z → 0 of 32 effort, 9 rows in the table of which 1 is `external`.** V1 is archived at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-TRADER-V1.md` and is frozen.
+
+**2026-09-21T07:23:59Z — THE SWEEP RAN INSIDE GOOGLE FOR THE FIRST TIME, RECOVERED 8 MISSED SUBMISSIONS, AND THEN KILLED ITSELF ON ITS OWN AUDIT TRAIL.** The Owner pasted `Publish.gs` and installed the sweep this morning; at **07:11:08** the timer fired, the log reads ***"sweep published 8 missed submission(s)"*** at 07:11:10, and at 07:11:11 it threw — *"The data you entered in cell M2 violates the data validation rules set on this cell. Please enter one of the following values: Publish, Add to T0xx, Reject."* **Column `M` carries a leftover triage dropdown; the publisher writes free text.** [REPORTED from his Executions log — the validation rule is inside his account and no session can read it.]
+
+**THE DEFECT IS A DESIGN DEFECT AND IT IS WORSE THAN THE LOG IMPLIES: row 6.2's visibility mechanism killed row 6.1's recovery function.** `sweepPublished` wrote its outcome note with a **bare `setValue`** at three sites while `note()` — the form-submit path's identical write — had been guarded since it was written. **Measured here by reproducing the exact Sheets refusal against the real code: the sweep does not merely lose the notes, it ABORTS MID-LOOP.** With two missed submissions due, only the first published; the second was never reached, and **`recordSweepRun()` never ran.** Fixed at [PATH] `apps-script/Publish.gs:556` — new `noteInto()`, which cannot throw; the sweep's three sites route through it, count refusals, and emit a loud summary naming the probable cause. **Writes to Published itself stay fatal, because a failure there IS a lost recommendation.** **227 checks pass across four suites**, including two negative controls that **pass against the broken file and fail against the fixed one**.
+
+⚠ **NOT LIVE — THE FIX IS COMMITTED, THE COPY THAT RUNS IS IN HIS ACCOUNT.** He must re-paste `Publish.gs`. Until then every sweep still risks abandoning submissions after the first refused note.
+
+**THE DUPLICATE QUESTION IS ANSWERED AND THE ANSWER IS NO, ON EVIDENCE.** The sweep has fired repeatedly since 07:11 with the action column still blank, so every firing reconsidered the same rows. **Measured against the real functions: `rowIndexForPerson` matches on phone AND name and finds the row the aborted run already wrote, so the sweep `continue`s; `publishInto` returns `added: false` if reached; and `appendRecommendation` refuses identical words.** Three independent layers, any one sufficient. **What his sheet needs is a look, not a repair** — the check is in Layer 4.
 
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
@@ -808,6 +816,39 @@ The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file a
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
 
+**[BUG] 2026-09-21 — the audit-trail write aborted the recovery it was auditing: a refused `action` note threw out of `sweepPublished` MID-LOOP, so the sweep published some missed submissions and silently abandoned the rest**
+
+**This is a design defect, not a typo, and it is the most serious class this project has produced: row 6.2's visibility mechanism killed row 6.1's recovery function.**
+
+Root cause: `sweepPublished` wrote its outcome note into the `action` column with a **bare `sheet.getRange(...).setValue(...)`** at three sites, with nothing around them. `note()` — the form-submit path's equivalent — had carried a `try/catch` since it was written, with the comment *"Never let recording the outcome become a second failure."* **The sweep never got that guard, and the asymmetry is the whole defect: the same write, protected on one path and bare on three.** When Sheets refused the write, the exception propagated out of the `for` loop, past `recordSweepRun()`, to the `finally` that released the lock — and out of the function.
+
+**What refused the write, on the Owner's sheet:** column `M` carried a **leftover data-validation dropdown from the manual triage era**, permitting only `Publish`, `Add to T0xx` and `Reject`. The publisher writes free text such as `Published as T021 (by the automatic check)`, which that rule rejects. **REPORTED from the Owner's execution log, not measured here** — the validation rule is inside his account and no session can read it. **The fix does not depend on that diagnosis being right**, and deliberately so: it survives a refused write whatever the reason.
+
+**MEASURED in the Owner's own account — the sweep's first live run, his Executions log, quoted verbatim:**
+
+```
+Sep 21, 2026, 7:11:08 AM   sweepPublished   Time-Driven   3.128 s   Failed
+  07:11:10  Info    sweep published 8 missed submission(s)
+  07:11:11  Error   The data you entered in cell M2 violates the data validation
+                    rules set on this cell. Please enter one of the following
+                    values: Publish, Add to T0xx, Reject.
+```
+
+**REPRODUCED AND MEASURED HERE, and the reproduction found the failure to be WORSE than the log alone implies.** A negative control in [PATH] `apps-script/test-publisher-resilience.js` drives the real `sweepPublished` against a stub whose column M throws the identical Sheets message. Against the unfixed file, with **two** missed submissions due:
+
+| What the log suggested | What the reproduction measured |
+|---|---|
+| The notes were lost after the publishing succeeded | **The sweep aborted MID-LOOP.** Only `T021` was written; the second submission was never reached and never published |
+| The run failed at the end | `recordSweepRun()` **never ran**, so the run was not remembered at all |
+
+**The Info line at 07:11:10 is not proof all 8 landed.** It reports `added`, incremented as each row publishes — the throw came one second later, so the count is of work genuinely done, but **any submissions after the one that threw were abandoned**. On his sheet the throw was on `M2`, the FIRST data row, which is consistent with the 8 having published before the first note was attempted; the ordering cannot be established from outside his account.
+
+Fix applied: **new function `noteInto(sheet, rowNum, col, text)` at [PATH] `apps-script/Publish.gs:556`**, which writes the note and returns `true`, or catches, logs and returns `false` — it **cannot throw**. The sweep's three write sites — `Publish.gs:641` (merge note), `655` (FAILED note) and `663` (outcome note) — now call it and increment an `unrecorded` counter declared at `617`; `note()` routes through it too at `513`, keeping one mechanism rather than four. The loud summary is at `672-673`, and `recordSweepRun()` at `681` is now reachable on the refused-note path where before it was not. **A non-zero `unrecorded` produces a loud summary line naming the probable cause**, so a refused note is visible in three places — the log, the summary count, and the action cell staying blank, which is already the documented alarm.
+
+**This is NOT swallowing an error, and the distinction is the design.** The recommendation is already safely on Published by the time the note is written. **Losing the note costs a line of audit text; losing the sweep costs a villager their tradesperson.** Writes to **Published itself remain fatal** — `writeRowBlocks`, `writeRangeBlocks` and `appendRecommendation` are untouched, because a failure there *is* a lost recommendation and is correctly handled by the retry and the `FAILED —` note.
+
+Diagnosis: `node apps-script/test-publisher-resilience.js` — the section *"2026-09-21 — a refused action write must never abort the sweep"*. Run `CONTROL=1 node apps-script/test-publisher-resilience.js` to assert the OLD behaviour; **those two controls pass against the pre-fix file and FAIL against the fixed one**, which is what proves they test the mechanism rather than themselves.
+
 **[BUG] 2026-09-18 — trade headings are grouped case-SENSITIVELY, so `Plumber` and `plumber` become two separate headings**
 
 Root cause: the site has no fixed trade vocabulary — headings are built from whatever text sits in the Published tab's `trade` and `extra_trade` columns. `app.js` line 139 trims every cell (`function cell(name){ return (r[index[name]] || "").trim(); }`) and line 141 lower-cases `status` before comparing it, **but nothing lower-cases the trade**, so the grouping key is the trimmed string with its original capitalisation intact.
@@ -1003,10 +1044,59 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 # LAYER 4 — OUTSTANDING WORK
 
+## The queue as it stands after the 2026-09-21 session
+
+*The 2026-09-19 queue follows below this section, under its own original heading, unchanged except where an item has been closed in place.*
+
+**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — the fix is committed but the copy that RUNS is in his account | COMPUTER, one paste**
+
+**Re-paste `apps-script/Publish.gs`.** The version he pasted this morning is the one whose audit-trail write aborts the sweep mid-loop — see the `[BUG] 2026-09-21` entry in Layer 3. **Until he re-pastes, every five-minute sweep still risks abandoning submissions after the first refused note.**
+
+**And remove the data validation from the `action` column** (his own action, on his own sheet): select column `M` on **Form responses** → **Data → Data validation** → remove the rule permitting only `Publish`, `Add to T0xx`, `Reject`. **That rule is a leftover from the manual triage era and nothing uses it now.** ⚠ **The re-paste does not depend on him doing this** — the fixed code survives the refusal either way — but until the rule is gone the `action` column stays blank and he loses the audit trail that tells him what happened to each submission.
+
+---
+
+**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — he needs to know whether 8 real submissions actually landed | COMPUTER or phone, about three minutes**
+
+**THE CHECK: did the 8 land, and has anything been duplicated?** The sweep reported *"published 8 missed submission(s)"* at 07:11:10 and threw one second later. **The publishing is believed to have completed, and the throw to have been on the audit note — but that must be confirmed by looking, not assumed.**
+
+**Step 1 — open the Published tab and look at the bottom.** Scroll to the last row carrying an id.
+
+| What he finds | What it means |
+|---|---|
+| **Ids running consecutively with no gaps**, e.g. `T021`…`T028` | **Good. The 8 landed.** This is the expected result |
+| **The same person on two rows with two different ids** | **A duplicate — send the two ids across.** The code says this cannot happen (evidence below); if it has, the evidence is wrong and it is a defect |
+| **Fewer new rows than 8** | The sweep aborted earlier than believed. **Send the count** — the remainder will need the recovery below |
+
+**Step 2 — specifically, are `Murray Angel` and `Stuart Ironside` there?** These are the two lost on 2026-09-19 and they are the test of whether the recovery worked at all.
+
+- **Expected:** both present, each **once**. Murray's row should read `status` **`hidden`**, because his telephone field holds **two numbers joined by "Or"** and the publisher refuses rather than welds them — he needs one of them retyped into the cell, then `status` set to `active`. Stuart's should be **`active`**.
+- **Their ids depend on what else published first and cannot be predicted from outside the account.** The previous session's estimate of `T022`/`T023` assumed nothing else arrived; 8 submissions published this morning, so **read the ids off the sheet rather than expecting particular ones**.
+
+**Step 3 — has the repeated sweeping duplicated anything?** It has now fired roughly a dozen times since 07:11 with the action column still blank, so **every firing reconsidered the same rows.**
+
+**MEASURED HERE AGAINST THE REAL CODE — there is no duplicate-row risk, and this is evidence rather than reassurance:**
+
+| Guard | Measured behaviour |
+|---|---|
+| `rowIndexForPerson(existing, key, first, last)` | Finds the row the aborted run already published — **matching on phone AND name** — so the sweep hits `continue` and never republishes |
+| `publishInto()` if it were reached | Returns **`added: false`** — a merge into the existing id, never a new row |
+| `appendRecommendation()` | **Refuses identical words**, so the recommendation text is not doubled either |
+
+**Three independent layers, any one of which prevents a duplicate.** Committed as permanent tests in [PATH] `apps-script/test-publisher-resilience.js`.
+
+**What the repeated firing DOES cost:** nothing on the list, but each run burns a little of Google's ~90 minutes of daily trigger time. **Not urgent, and not a reason to turn the sweep off** — the sweep is the only defence against Murray's failure class.
+
+---
+
+**⚠ ONE THING THIS SESSION COULD NOT ESTABLISH, and it needs his eyes.** Whether all 8 published **before** the throw, or whether some were abandoned after it. The reproduction here shows the sweep **aborts mid-loop**, so the order matters. **His Executions log for the runs AFTER 07:11:08 is where the answer is** — if later runs report `published 0 missed submission(s)` and completed, everything landed; if a later run reports a further non-zero count, the earlier one had abandoned work that a subsequent sweep then recovered. **Either way the list ends up correct; the question is only whether the 07:11 run did it all.**
+
+---
+
 ## The queue as it stands after the 2026-09-19 session
 
-**[OUTSTANDING] 2026-09-19 | ⚠ CRITICAL | Blocking: YES — the publisher in his account is still the one that lost two recommendations | COMPUTER, one paste and two clicks**
-**Paste the new `Publish.gs` and turn on automatic checking. Until he does, NOTHING from build plan rows 6.1, 6.2 or 6.3 is running.** The code is committed at `1d50b00` and tested; the copy that runs is in his Apps Script project.
+~~**[OUTSTANDING] 2026-09-19 | ⚠ CRITICAL | Blocking: YES — the publisher in his account is still the one that lost two recommendations | COMPUTER, one paste and two clicks**~~
+~~**Paste the new `Publish.gs` and turn on automatic checking. Until he does, NOTHING from build plan rows 6.1, 6.2 or 6.3 is running.** The code is committed at `1d50b00` and tested; the copy that runs is in his Apps Script project.~~ **COMPLETED 2026-09-21T07:23:59Z — he pasted it and installed the sweep.** REPORTED from his Executions log: `installSweep` Completed at 07:08:34, `onOpen` Completed at 06:53:06, and `sweepPublished` fired on the five-minute timer at 07:11:08. **The paste is done; a RE-paste is now outstanding above because that version carries the 2026-09-21 defect.**
 
 **What the paste brings:** a retry for Google's transient failures (Stuart's class), a five-minute sweep that catches anything Google never delivered (Murray's class — **the only defence against it**), a line in the `action` column for every submission so **a blank cell is the alarm**, a refusal to weld two telephone numbers into one, and merging on name as well as number.
 
@@ -2175,6 +2265,32 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **Alternatives considered and rejected:** `descoped` — rejected, it means the work was **dropped**, and the Owner deprioritised it rather than dropping it. `parked` — rejected, it means *this plan's* work set aside, but the work is now another plan's entirely. Deleting the row — rejected as falsification under §5.8.10.3 and unlawful under §5.10.1. Renumbering the remaining rows to close the gap — rejected under §5.1.4 and §5.10.4; ids are citation targets and gaps are correct and permanent.
 
 **[PATTERN CANDIDATE: a-prompts-expected-mechanism-is-a-hypothesis]** The prompt predicted the right **number** (32) and the wrong **mechanism** (the row leaving the table). Both were checkable against the standard in minutes, and the instruction to *"check it rather than confirming it"* is what made the difference — a session that had confirmed the arithmetic would have reported a correct figure reached by an unlawful route, and the error would have been invisible in the percentage. **Worth applying wherever a commissioning prompt states an expected outcome: the figure and the mechanism are separate claims and need separate verification.**
+
+---
+
+### 2026-09-21 — An audit-trail write may never abort the recovery it audits
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION] The action-column write is made NON-FATAL, and every other write is deliberately left fatal.** The distinction is the whole design and it is stated as a rule rather than as a patch:
+
+> **A write whose failure loses a villager's recommendation must throw. A write whose failure loses only the record of what happened must not.**
+
+**Rationale.** By the time the outcome note is written, the recommendation is already safely on Published. **Losing the note costs the Owner a line of audit text; losing the sweep costs a villager their tradesperson** — and the sweep is the only defence in existence against Murray Angel's failure class, where Google never delivers the event at all. The mechanism built to make failures *visible* became the thing that made a recovery *fail*, which inverts its purpose.
+
+**So `writeRowBlocks`, `writeRangeBlocks` and `appendRecommendation` are untouched.** They write to Published; a failure there is a lost recommendation and is correctly handled by the existing retry and the `FAILED —` note. **Only the audit write changed.**
+
+**[DECISION] It is a counted, logged refusal — NOT a swallowed error**, and the difference was made explicit because the brief named swallowing as the failure mode this step exists to fix. A refused note is recorded in **three** places a person can reach: the Logger with the row number and the refusal text; an `unrecorded` counter the sweep reports in a loud summary line naming the probable cause; and the action cell staying **blank**, which is already the documented alarm. **What is deliberately not done is re-throwing.**
+
+**[DECISION] The fix does not depend on the diagnosis being right.** The refusal is believed to come from a leftover data-validation dropdown on column `M`, and the Owner is removing it. **That is REPORTED from his execution log — the rule is inside his account and no session can read it.** The code was written to survive a refused write **whatever the reason**, per the brief's explicit instruction not to design around his sheet's current state. If the cause turns out to be something else entirely, the fix still holds.
+
+**[DECISION] One shared writer rather than three inline try/catches.** `noteInto()` is the only place that writes the action column, and `note()` routes through it too. **The defect existed precisely because the same write was protected on one path and bare on three** — a second mechanism would have recreated the asymmetry that caused it.
+
+**[PATTERN CANDIDATE: audit-writes-must-not-be-able-to-fail-their-subject]** This is a general and project-agnostic defect class: an instrumentation, logging, telemetry or audit-trail write placed inside the transaction it observes, where a failure in the observer aborts the observed work. **It is especially dangerous when the audit exists BECAUSE the subject was previously unreliable**, which is exactly this case — the action column was added on 2026-09-19 to make lost submissions visible, and on its first live run it lost them itself. **Worth a pattern: observation must be strictly weaker than the thing observed.**
+
+**What was tried and rejected.** Wrapping the whole sweep body in a try/catch — rejected: it would have caught the refusal but also every genuine Published write failure, converting real lost recommendations into silent ones, which is the opposite of the intent. Validating the note text against the dropdown's permitted values before writing — rejected: it designs around one spreadsheet's current configuration, which the brief forbade, and it would break again on the next validation rule. Removing the action write from the sweep entirely — rejected: it is row 6.2's deliverable and the Owner asked for it in his own words.
+
+**[DECISION] The duplicate risk was ESTABLISHED, not estimated, and the answer is no.** `recordSweepRun()` does sit **after** the throw point, so the run was never remembered — but that only feeds `checkSetup`'s display and does **not** drive the re-scan decision. The re-scan is driven by the blank action cell, so every subsequent firing genuinely reconsidered the same rows. **Three independent guards prevent a duplicate**, each measured against the real functions rather than reasoned about: `rowIndexForPerson` matches on phone **and** name and finds the row the aborted run already wrote, so the loop `continue`s; `publishInto` returns `added: false` if reached; `appendRecommendation` refuses identical words. **All three are now committed as permanent tests**, because the evidence for "no duplicates" was worth more as a regression guard than as a paragraph.
 
 ---
 
@@ -5958,5 +6074,180 @@ Record that the recommendation was overruled and on what grounds. The inheritanc
 **No row closed, no effort cleared, no status advanced toward done.** The only status that changed is `5.1`'s `new` → `external`, which is the re-homing itself rather than progress.
 
 ⚠ **The inheritance requirement is UNPROVEN and is now owned by a plan nobody is working.** That is a weaker position than this morning and it is stated plainly rather than presented as tidy bookkeeping. **Who walks the runbook remains undecided** — the Owner's ruling moved the row but did not answer that question, and the new plan carries it as an open section rather than burying it.
+
+Working tree clean. Remote level.
+
+---
+
+### 2026-09-21T07:26:40Z — The sweep's first live run, and the audit trail that killed it
+
+**Source:** Claude Code
+**Started:** 2026-09-21T07:20:44Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader
+
+**Prompt received:**
+
+```
+Target repo: dunchi-trader
+
+Comply with the loaded global CLAUDE.md and the project CLAUDE.md. Both auto-load — do not read either.
+
+## Context Transfer Brief
+
+- Commissioned from Claude.ai conversation https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL on 2026-09-21. Your previous prompts this morning were 2745 (MISSION block) and 2746 (D3c re-home of row 5.1).
+- MISSION, established by prompt 2745 and recorded at the top of Layer 1: this repo exists to give Dunchideock village an online resource to recommend and find workmen, so everybody has easy access to high quality work. This work advances it directly — a recommendation that is lost is a tradesperson the village cannot find.
+- Repo state as read by Claude.ai at 2026-09-21T07:20Z: HEAD a7c3f68 per your 2746 reply. Re-read live state yourself and say so if it differs.
+- Plans in hand: PLAN-DUNCHI-LAUNCH-2026-09-19 at 0 of 32 effort, 9 sub-tasks, one `external`. PLAN-DUNCHI-INHERITANCE-2026-09-21 at 0 of 9. This work is IN PLAN against launch rows 6.1 and 6.2 and sits within their own wording — 6.1 requires the sweep to recover "without anybody noticing", 6.2 requires the action column to record every outcome. Neither row is done. Append no row and change no status.
+
+## WHAT HAPPENED THIS MORNING — the first time any of this ran inside Google
+
+The Owner pasted `apps-script/Publish.gs` and installed the sweep. These are his Apps Script Executions, REPORTED from his own screenshot and execution log, quoted verbatim, not measured by Claude.ai. Times are his local clock, UTC+1:
+
+```
+Head       sweepPublished   Time-Driven     Sep 21, 2026, 7:11:08 AM   3.128 s   Failed
+Version 3  doGet            Web App         Sep 21, 2026, 7:10:29 AM   0.689 s   Completed
+Head       installSweep     Menu            Sep 21, 2026, 7:08:34 AM   6.48  s   Completed
+Head       onOpen           Simple Trigger  Sep 21, 2026, 6:53:06 AM   0.787 s   Completed
+```
+
+The failed run's log, verbatim:
+
+```
+Sep 21, 2026, 7:11:10 AM   Info    sweep published 8 missed submission(s)
+Sep 21, 2026, 7:11:11 AM   Error   The data you entered in cell M2 violates the data validation rules set on this cell. Please enter one of the following values: Publish, Add to T0xx, Reject.
+```
+
+Claude.ai's reading, offered as a hypothesis to TEST and not as a conclusion to implement: the sweep did its job and published 8 missed submissions, then threw one second later when writing the action text into column M of Form responses, because that column carries a leftover data-validation dropdown from the manual triage era whose only permitted values are `Publish`, `Add to T0xx` and `Reject`. The Owner is removing that validation from his sheet himself. **Do not design around his sheet's current state — the code must survive a refused write whatever the reason.**
+
+Note also that roughly an hour has passed since that run and the timer has kept firing, so his Executions log now holds further `sweepPublished` rows whose outcome Claude.ai has not seen. Where the duplicate question below turns on those, say exactly what you need him to look at rather than guessing.
+
+## Tasks
+
+**1. Establish the code path before changing anything.** Read `apps-script/Publish.gs` and state, with function and line references: where `sweepPublished` writes the action column; whether that write sits inside or outside the guarded region; and whether a throw there aborts the sweep AFTER the publishing has already happened. Quote the code. If the log's reading above is wrong, say so and stop.
+
+**2. THE DEFECT, and it is a design defect rather than a typo.** An audit-trail write must never be able to abort the recovery it is auditing. Row 6.2's mechanism killed row 6.1's function. Make the action-column write non-fatal: a write that is refused must be recorded somewhere the Owner will see it and must never throw out of the sweep or out of `onFormSubmitPublish`. Apply the same reasoning to every other write whose failure is not itself a lost recommendation. Do not swallow errors silently — a swallowed error is the failure mode this whole step exists to fix.
+
+**3. ESTABLISH THE DUPLICATE RISK. Do not guess it, and do not reassure.** The sweep published 8 rows and then threw. Determine from the code whether the run was recorded as having happened — `recordSweepRun`, `lastSweepRun` or equivalent — BEFORE or AFTER the point of the throw. If after, each subsequent firing may treat those 8 as still missing, and there have now been several. State whether the phone-and-name merge would produce duplicate rows on Published or merge harmlessly, and give the evidence. If there is a real risk of duplicates, fixing it is part of this prompt.
+
+**4. Tell the Owner what to look for.** He needs to know whether the 8 actually landed and whether anything has since been duplicated. Give him a short, concrete check on his own sheet — what to look at and what good looks like — including whether `Stuart Ironside` and `Murray Angel` are now on Published and what ids they took.
+
+## Constraints
+
+- **Write nothing to the Owner's Google Sheet.** No session may.
+- Change no plan row's status and append no plan row.
+- Do not redeploy anything and do not touch `Code.gs`'s deployment.
+
+## Required
+
+- Update the HANDOVER as the work proceeds.
+- Commit all code and documentation.
+- Give a detailed written summary.
+- Give a formatted table of what was tested and each result.
+- Return the end-of-session summary, and any follow-on prompt, as a single copy-paste-ready fenced code block.
+```
+
+**What was done:**
+
+**Repo state confirmed before editing:** HEAD `a7c3f68`, tree clean. **It did not differ from the prompt.**
+
+**TASK 1 — the code path, established by reading before changing anything. The hypothesis is CONFIRMED, and the reproduction found it to be WORSE than the log implies.**
+
+`sweepPublished` wrote the action column at **three** sites, every one a bare `setValue` with nothing around it:
+
+- `Publish.gs:588-590` (pre-fix) — the merge note
+- `Publish.gs:601` (pre-fix) — the `FAILED —` note
+- `Publish.gs:607-608` (pre-fix) — the outcome note
+
+**All three sit INSIDE the `try { ... } finally { lock.releaseLock(); }` — but a `finally` with no `catch` releases the lock and RE-THROWS.** So the throw escaped the loop, escaped the function, and — critically — **passed `recordSweepRun()` at line 613 without executing it.**
+
+**The asymmetry that IS the defect:** `note()`, the form-submit path's identical write, had carried its own `try/catch` since it was written, with the comment *"Never let recording the outcome become a second failure."* **The same write was protected on one path and bare on three.**
+
+**MEASURED, not reasoned.** A negative control drives the real `sweepPublished` against a stub whose column M throws the Owner's exact Sheets message. With **two** missed submissions due, against the unfixed file:
+
+| The log suggests | The reproduction measured |
+|---|---|
+| Notes lost after publishing succeeded | **The sweep ABORTS MID-LOOP** — only the first published; the second was never reached |
+| The run failed at the end | **`recordSweepRun()` never ran** |
+
+**So the answer to the prompt's third question is: a throw there aborts the sweep after SOME publishing has happened, not after all of it.** On his sheet the throw was on `M2`, the first data row, which is consistent with all 8 having published before the first note was attempted — **but the ordering cannot be established from outside his account**, and Layer 4 tells him exactly what to look at.
+
+**TASK 2 — the fix.** New function **`noteInto(sheet, rowNum, col, text)` at `Publish.gs:556`**. It writes the note and returns `true`, or catches, logs and returns `false`. **It cannot throw.** The sweep's three sites now call it at `641`, `655` and `663`, each incrementing an `unrecorded` counter declared at `617`; `note()` routes through it at `513`, so there is **one** mechanism rather than four. A non-zero count produces a loud summary at `672-673` naming the probable cause and telling him which column to check.
+
+**Not swallowing, and the brief named swallowing as the thing to avoid.** A refusal is recorded in three reachable places: the Logger with row number and refusal text; the counter and summary line; and the action cell staying blank, which is already the documented alarm.
+
+**Every other write was assessed and deliberately left fatal.** `grep` found four remaining write sites — `writeRowBlocks:164`, `writeRangeBlocks:176`, and `appendRecommendation:1137-1138` — **all of which write to Published, i.e. the recommendation itself.** A failure there IS a lost recommendation and is correctly handled by the existing retry and `FAILED —` note. **Only audit writes changed.**
+
+**TASK 3 — the duplicate risk, ESTABLISHED against the real functions.** `recordSweepRun()` is at line 681 (post-fix), **after** the throw point, so the run was never remembered. **But that only feeds `checkSetup`'s display — it does NOT drive the re-scan decision**, which is driven by the blank action cell at `568`. So every subsequent firing did genuinely reconsider the same rows.
+
+**There is no duplicate-row risk. Three independent guards, each measured by executing the real code:**
+
+| Guard | Measured |
+|---|---|
+| `rowIndexForPerson` | Returns the row the aborted run already published — matching phone **AND** name — so the sweep `continue`s and never republishes |
+| `publishInto` if reached | Returns `added: false` — a merge into the existing id, never a new row |
+| `appendRecommendation` | Returns `false` for identical words; the text is not doubled |
+
+**All three committed as permanent tests** rather than left as a paragraph, because the evidence was worth more as a regression guard.
+
+**TASK 4 — the Owner's check** is written into Layer 4 as three numbered steps with a what-he-finds/what-it-means table, covering whether the 8 landed, whether Murray and Stuart are present, and what their status should read. **It explicitly does NOT predict their ids** — the previous session's `T022`/`T023` estimate assumed nothing else arrived, and 8 submissions published this morning, so it tells him to read the ids off the sheet instead.
+
+**Testing performed:**
+
+| # | What was tested | Command | Expected | Actual | Result |
+|---|---|---|---|---|---|
+| 1 | Repo matches prompt's HEAD | `git log --oneline -1`; `git status --porcelain` | `a7c3f68`, clean | `a7c3f68`, clean — **did not differ** | PASS |
+| 2 | Baseline before any change | all four suites | all green | **216 passed, 0 failed** | PASS |
+| 3 | **Negative control reproduces the Owner's exact failure** | new stub throwing the verbatim Sheets message, vs **unfixed** file | the throw escapes | **FAIL ×3 — throw escaped, `lastSweep` unset, only `T021` published** | **Control fired correctly** |
+| 4 | CONTROL mode asserts OLD behaviour vs unfixed file | `CONTROL=1 node …` | both controls pass | **both PASS** | PASS |
+| 5 | The stub genuinely refuses (control is live, not vacuous) | `resp.refused > 0` | > 0 | > 0 | PASS |
+| 6 | **Mid-loop abort measured** — the finding beyond the log | ids on Published after the throw | some subset | **only `T021`; second submission never reached** | PASS (defect confirmed) |
+| 7 | After fix — refused note does not throw out of the sweep | `node …` | no throw | no throw | PASS |
+| 8 | After fix — the sweep completes and remembers the run | `PROPS.lastSweep` | set | set | PASS |
+| 9 | **After fix — BOTH submissions publish despite the refusal** | ids on Published | `T021` and `T022` | both present | PASS |
+| 10 | Second firing adds no duplicate rows | row count before/after | unchanged | unchanged | PASS |
+| 11 | No id appears twice after two firings | `new Set(ids).size === ids.length` | true | true | PASS |
+| 12 | Recommendation text not doubled | block count on merged row | 1 | 1 | PASS |
+| 13 | `rowIndexForPerson` finds the already-published row | real function, direct call | index 1 | **1 → `T021`** | PASS |
+| 14 | `publishInto` merges rather than adds | real function | `added:false` | `added:false`, *"Merged into T021"* | PASS |
+| 15 | `appendRecommendation` refuses identical words | real function | `false`, cell unchanged | `false`, unchanged | PASS |
+| 16 | `note()` guard still present (regression) | direct call against refusing stub | no throw | no throw | PASS |
+| 17 | **Controls INVERT against the fixed file** | `CONTROL=1` vs fixed | both now fail | **both FAIL** — proves they test the mechanism, not themselves | PASS |
+| 18 | Full regression, all four suites | `node` each | no regression | **227 passed, 0 failed** (216 → 227, +11 new) | PASS |
+| 19 | Only audit writes made non-fatal | `grep setValue/setValues` | Published writes untouched | 4 remaining sites, all Published | PASS |
+| 20 | Handover line references are real | `grep -n` each cited symbol | match the text | corrected `551-561`→`556`, `~600/615/620`→`641/655/663` | PASS after correction |
+| 21 | §3.6 1–3 no heading removed | heading diff vs HEAD | additions only | additions only | PASS |
+| 22 | §3.6 4 timestamps regenerated and matching | `grep` both | same ISO | both `2026-09-21T07:23:59Z` | PASS |
+| 23 | §3.6 5 ends at Layer 6 | `grep -n '^# LAYER'` | highest is 6 | highest is 6 | PASS |
+| 24 | No plan row status changed, none appended | `git diff` both plans | no change | **neither plan file modified** | PASS |
+| 25 | Owner's sheet untouched | no write path executed | nothing | nothing — all tests use stubs | PASS |
+| 26 | `Code.gs` untouched | `git status` | unmodified | unmodified | PASS |
+| 27 | Clean and level after push | `git status`; `git log origin/master..HEAD` | both empty | both empty | PASS |
+
+**Test 20 is recorded because it caught a real error in my own work:** the first draft of the Layer 3 entry cited `Publish.gs:551-561` and *"lines ~600, ~615, ~620"* from memory. Verified by `grep` and corrected to the measured `556`, `641`, `655`, `663`. **An unverified line reference in a bug record is the kind of small falsehood that wastes the next session's time.**
+
+**What was not tested:**
+
+- **NOTHING WAS RUN INSIDE GOOGLE.** Every measurement here is against the real `Publish.gs` executed in a Node `vm` with a stub spreadsheet. **The fix is NOT live** — the copy that runs is in the Owner's Apps Script project and he must re-paste it.
+- **The data-validation rule on column `M` was never read.** It is inside his account. Its existence and its permitted values are **REPORTED from his execution log**. The fix was deliberately written not to depend on that diagnosis.
+- **Whether all 8 submissions actually landed is NOT established.** The reproduction proves the sweep aborts mid-loop, so the ordering matters. The Info line reports `added` at the moment of the throw, which is work genuinely done — but whether any submission followed the one that threw **cannot be determined from outside his account**. Layer 4 names exactly what he must look at.
+- **The ids Murray and Stuart took are NOT predicted.** The earlier `T022`/`T023` estimate assumed nothing else arrived; 8 published this morning. Layer 4 tells him to read them off the sheet.
+- **The Owner's Executions log after 07:11:08 has not been seen** by anybody — Claude.ai said so and it remains true. Later runs would show whether a subsequent sweep recovered anything the first abandoned.
+- **No browser, no live site, no feed fetch** this session. Nothing on the served page changed.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T07:26:40Z
+
+**End state:**
+
+**The defect is found, reproduced, fixed and regression-guarded — and it is not live.** `apps-script/Publish.gs` carries `noteInto()`; the sweep can no longer be killed by its own audit trail, and a refused note is counted and reported instead of thrown. **227 checks pass across four suites**, including two negative controls that pass against the broken file and fail against the fixed one.
+
+**The Owner has two things to do, both in Layer 4:** re-paste `Publish.gs`, and remove the data-validation rule from column `M`. **The re-paste is the one that matters** — the fix survives the refusal either way, but until he re-pastes, the publisher in his account is still the one that abandons submissions after the first refused note.
+
+**No plan row status changed and no row was appended**, as instructed. Rows 6.1 and 6.2 stay `new`; this work sits inside their existing wording. `Code.gs` and its deployment were not touched. **Nothing was written to the Owner's spreadsheet.**
 
 Working tree clean. Remote level.
