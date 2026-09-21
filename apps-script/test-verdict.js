@@ -656,5 +656,110 @@ section('10. A HIDDEN person reads ON THE LIST BUT HIDDEN, not ALREADY ON SITE')
         !/\n/.test(l2) && !/[\u2018\u2019\u201c\u201d]/.test(l2));
 }
 
+/* -------------------------------------------------------------------------
+   2026-09-21 — SHEET-FORMULAS.md IS AUDITED MECHANICALLY.
+
+   A session reported that the Published `I2` and `J2` formulas were identical
+   to each other, and that a person following `checkSetup`'s repair
+   instruction would paste the same formula twice and believe the duplicate
+   checker was repaired. MEASURED: they are NOT identical, and no two cells in
+   that document share a formula.
+
+   The report was wrong, but the failure mode it describes is real and cheap
+   to guard, and this document HAS been wrong before — it was once authored
+   against an assumed column layout and every cell reference was incorrect.
+   So the property is asserted mechanically rather than trusted:
+
+     - no two documented cells carry the same formula;
+     - each phone key reads its own tab's PHONE column;
+     - each name key reads its own tab's two NAME columns;
+     - `checkSetup`'s repair message points at a step that exists.
+   ------------------------------------------------------------------------- */
+section('2026-09-21 — the documented formulas are right for their own tab');
+{
+  const doc = fs.readFileSync(REPO + '/apps-script/SHEET-FORMULAS.md', 'utf8');
+  const lines = doc.split('\n');
+
+  /* Pair each "click cell X and paste" instruction with the next fenced
+     block, tracking which tab's section we are in. */
+  const found = [];
+  let tab = null;
+  for (let i = 0; i < lines.length; i++) {
+    if (/Published tab|on the \*\*Published/i.test(lines[i])) tab = 'Published';
+    if (/Form responses tab|back to the \*\*Form responses/i.test(lines[i])) tab = 'Form responses';
+    const m = lines[i].match(/[Cc]lick cell \*?\*?`?([A-Z]\d)`?\*?\*?.*paste/);
+    if (!m) continue;
+    let j = i + 1;
+    while (j < lines.length && !lines[j].startsWith('```')) j++;
+    let k = j + 1; const body = [];
+    while (k < lines.length && !lines[k].startsWith('```')) body.push(lines[k++]);
+    found.push({ tab, cell: m[1], body: body.join('\n').trim() });
+    i = k;
+  }
+
+  check('every documented formula cell was located',
+        found.length >= 6, found.length + ' found');
+
+  /* NO TWO CELLS MAY CARRY THE SAME FORMULA. */
+  const byBody = {};
+  found.filter(f => f.body.indexOf('=') === 0).forEach(f => {
+    (byBody[f.body] = byBody[f.body] || []).push(f.tab + '!' + f.cell);
+  });
+  const shared = Object.values(byBody).filter(v => v.length > 1);
+  check('no two documented cells carry an IDENTICAL formula',
+        shared.length === 0, JSON.stringify(shared));
+
+  /* Which columns does a given cell's formula read on its own tab? */
+  const readsOf = body => {
+    const out = {};
+    (body.match(/\$([A-Z])\$?\d*:\$?[A-Z]/g) || []).forEach(s => { out[s[1]] = 1; });
+    return Object.keys(out).sort();
+  };
+  const cellOf = (tab, cell) => found.find(f => f.tab === tab && f.cell === cell);
+
+  /* PUBLISHED: A id, B first, C last, D business, E phone … so the phone key
+     reads E and the name key reads B and C. */
+  const pI2 = cellOf('Published', 'I2');
+  const pJ2 = cellOf('Published', 'J2');
+  check('Published I2 exists and is the PHONE key — reads column E only',
+        !!pI2 && JSON.stringify(readsOf(pI2.body)) === '["E"]',
+        pI2 && JSON.stringify(readsOf(pI2.body)));
+  check('Published J2 exists and is the NAME key — reads columns B and C',
+        !!pJ2 && JSON.stringify(readsOf(pJ2.body)) === '["B","C"]',
+        pJ2 && JSON.stringify(readsOf(pJ2.body)));
+  check('Published I2 and J2 are DIFFERENT formulas',
+        !!pI2 && !!pJ2 && pI2.body !== pJ2.body);
+
+  /* FORM RESPONSES: D first, E last, F phone … so the phone key reads F and
+     the name key reads D and E. */
+  const fJ2 = cellOf('Form responses', 'J2');
+  const fK2 = cellOf('Form responses', 'K2');
+  check('Form responses J2 is the PHONE key — reads column F only',
+        !!fJ2 && JSON.stringify(readsOf(fJ2.body)) === '["F"]',
+        fJ2 && JSON.stringify(readsOf(fJ2.body)));
+  check('Form responses K2 is the NAME key — reads columns D and E',
+        !!fK2 && JSON.stringify(readsOf(fK2.body)) === '["D","E"]',
+        fK2 && JSON.stringify(readsOf(fK2.body)));
+
+  /* The two tabs hold the SAME IDEA at DIFFERENT letters, which is exactly
+     why a reader comparing them by eye can think one is wrong. */
+  check('the phone keys differ between tabs BECAUSE the phone column differs',
+        !!pI2 && !!fJ2 && pI2.body !== fJ2.body &&
+        JSON.stringify(readsOf(pI2.body)) === '["E"]' &&
+        JSON.stringify(readsOf(fJ2.body)) === '["F"]');
+
+  /* checkSetup tells the Owner to open "step 2" of this document. */
+  const repair = fs.readFileSync(REPO + '/apps-script/Publish.gs', 'utf8')
+                   .match(/SHEET-FORMULAS\.md, step (\d+)/);
+  check('checkSetup names a step number', !!repair, 'no step reference found');
+  if (repair) {
+    const want = new RegExp('^## Step ' + repair[1] + ' — ', 'm');
+    check('that step exists in SHEET-FORMULAS.md, and is the Published one',
+          want.test(doc) &&
+          /^## Step 2 — Two helper columns on the Published tab/m.test(doc),
+          'step ' + repair[1]);
+  }
+}
+
 console.log(`\n================  ${pass} passed, ${fail} failed  ================\n`);
 process.exit(fail === 0 ? 0 : 1);

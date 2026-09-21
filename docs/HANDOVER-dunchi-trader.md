@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T09:26:45Z
+last-updated: 2026-09-21T09:43:07Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T09:26:45Z** ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T09:43:07Z** ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -91,6 +91,26 @@ ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from
 **Build plan row `2.1` Approach and sub-task text AMENDED; its STATUS is untouched and still `new`** — it closes on his sighting of a clean list, not on the ruling. Validator exit 0, 9 sub-tasks, position unchanged at **0/32**.
 
 **THE PROCEDURE IS IN [PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md`** under *"Starting the list completely clean — the full reset"*, eleven steps. **No session may run it — it is his action on his own sheet.**
+
+**2026-09-21T09:43:07Z — THE D7a RESET IS DONE AND THE LIST IS LIVE AT `T001`. `checkSetup`'s "DUPLICATE CHECKER IS BROKEN" ALARM IS CORRECT, EXPECTED, AND NARROWER THAN IT SOUNDS.**
+
+**REPORTED from the Owner:** he completed the reset himself; Published holds one real submission at **`T001`** on row 2, it renders on the live site, and his initial row-23 gap was his own clearing-versus-deleting and is fixed. ***"Check the setup"* now takes a few seconds against the 38.95 seconds measured on 2026-09-19.**
+
+**⚠ HE DOES NOT NEED TO STOP SUBMITTING, and this is the operational answer:**
+
+| Mechanism | Affected by the dead `I`/`J`? |
+|---|---|
+| **The publisher's duplicate merge** | **NO** — `rowIndexForPerson` reads columns **E, B, C** and normalises in JavaScript. **Executed with both cells empty: a repeat still merges, `added: false`, no second row** |
+| **The site, `Code.gs`, the endpoint** | **NO** — zero references to either column |
+| **The `verdict` column he reads** | **YES, and this is the whole impact** — a person already listed reads **`NEW`** instead of `ALREADY ON SITE — T001` |
+
+**THE ALARM'S WORDING OVERSTATES IT.** *"EVERY new form submission will look like a new person"* is true of **the verdict column**, false of **the publisher**. **Nothing gets published twice.**
+
+**THE REPORTED DEFECT IN THE REMEDY IS REFUTED BY MEASUREMENT.** It was reported that `SHEET-FORMULAS.md` gives identical formulas for Published `I2` and `J2`. **Hashing every documented formula in that file: no two cells share one.** `I2` (291 chars, reads column **E**) and `J2` (121 chars, reads **B**+**C**) differ in hash, length and source columns; the live raw copy is byte-identical to the repo. **The document is CORRECT and was NOT changed.** `checkSetup`'s pointer to *"step 2"* resolves to the right section.
+
+**Why it looked wrong:** the same idea sits at different letters on the two tabs — phone is `E` on Published and `F` on Form responses; names are `B`/`C` versus `D`/`E`. **Comparing Published `I2` against Form responses `J2` shows two different formulas, and both are right for their own tab.**
+
+**THE REPAIR IS TWO PASTES and is in Layer 4**, with the verbatim formulas and how he confirms it took.
 
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
@@ -869,6 +889,29 @@ The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file a
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
 
+**[GOTCHA] 2026-09-21 — `checkSetup`'s "THE DUPLICATE CHECKER IS BROKEN" alarm is CORRECT and is EXPECTED after a D7a reset. It does NOT mean live duplicate protection has failed, and the Owner does not need to stop submitting.**
+
+**Reported as a possible defect in the documented remedy; MEASURED as a false alarm about the document and a TRUE alarm about the sheet.** Both halves are recorded because the distinction is what the Owner needs.
+
+**WHAT IS ACTUALLY TRUE.** The Owner ran *Village list → Check the setup* after completing the D7a reset and it reported `I2 has no formula in it` / `J2 has no formula in it`. **That report is right.** `checkSetup` reads `pub.getRange(2, 9, 1, 2).getFormulas()` at `Publish.gs:1932` — row 2, columns I and J — and the D7a reset cleared row 2's data cells. **If the formulas went with it, they are genuinely gone.**
+
+**WHAT IS NOT TRUE, AND IT WAS THE REASON THIS WAS INVESTIGATED.** It was reported that `SHEET-FORMULAS.md` gives **identical** formulas for Published `I2` and `J2`, so anybody following the repair instruction would paste the same formula twice. **MEASURED 2026-09-21 by hashing every documented formula in that file: no two cells share a formula, and `I2` and `J2` differ in hash, in length (291 vs 121 characters) and in the columns they read.** The live raw copy is byte-identical to the repo. **The document is correct and was not changed.**
+
+**WHAT ACTUALLY BREAKS WHILE `I`/`J` ARE DEAD — and what does not.** This is the part that matters:
+
+| Mechanism | Affected? | Evidence |
+|---|---|---|
+| **The publisher's duplicate merge** | **NO** | `rowIndexForPerson` reads Published columns **E, B and C** and normalises them *in JavaScript*; it never touches I or J. **Executed with both cells empty: a repeat submission still returns `added: false`, "Merged into T001", and no second row.** |
+| **The site** | **NO** | `app.js` has zero references to `pub_phone_key` / `pub_name_key`; it maps by header name and ignores unknown columns |
+| **`Code.gs` / the recommendation endpoint** | **NO** | zero references |
+| **The `verdict` column on Form responses** | **YES — this is the whole impact** | `L2` reads `Published!$I$2:$I$500` and `$J$2:$J$500`. With them blank, a person already listed reads **`NEW`**. Measured against the committed verdict harness: `NEW` with the helpers dead, `ALREADY ON SITE — T001` with them alive |
+
+**So the alarm's own wording overstates it.** It says *"EVERY new form submission will look like a new person, even somebody already on the list"* — true of the **verdict column he reads**, and **false of the publisher**, which keeps merging correctly. **Nothing gets published twice.** Recorded rather than fixed, because the message is right about the consequence he can see and erring loud is the correct bias for a setup check.
+
+**Why the two tabs' formulas look wrong when compared side by side, which is the trap this class of report falls into:** the same idea sits at different letters, because the phone column is `E` on Published and `F` on Form responses, and the names are `B`/`C` versus `D`/`E`. **A reader comparing Published `I2` against Form responses `J2` sees two different formulas and can conclude one is broken. Both are right for their own tab.**
+
+Diagnosis: `node apps-script/test-verdict.js` — section *"2026-09-21 — the documented formulas are right for their own tab"*, which hashes every documented formula, asserts no two are identical, and asserts each key reads the correct columns **for the tab it belongs to**. **Mutation-tested: making `J2` identical to `I2` is killed by three of those checks, naming the exact cells.**
+
 **[GOTCHA] 2026-09-21 — "Publish any responses not yet on the list" IGNORES the `action` column and republishes EVERYTHING. It is the first item in the Owner's menu, and after a list-clear its wording actively invites the click that undoes the clear.**
 
 **Not a code defect — it does exactly what it says — but it is a trap with a live blast radius, so it is recorded as one.**
@@ -1184,6 +1227,38 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ## The queue as it stands after the 2026-09-21 session
 
 *The 2026-09-19 queue follows below this section, under its own original heading, unchanged except where an item has been closed in place.*
+
+**[OUTSTANDING] 2026-09-21 | HIGH | Blocking: no — the list and the publisher are fine without it | COMPUTER, two pastes, about two minutes**
+
+**PUT THE TWO DUPLICATE-CHECKER FORMULAS BACK.** The D7a reset cleared them from Published row 2. `checkSetup` reports it correctly.
+
+⚠ **This is NOT urgent and nothing is at risk while it waits.** Measured 2026-09-21: the publisher's duplicate merge does not use these columns and still works with them empty — a repeat submission merges rather than creating a second row. **What is affected is only the `verdict` column he reads**, which will say `NEW` for somebody already on the list.
+
+**Open the Published tab. Click cell `I2` and paste this ONE line:**
+
+```
+=ARRAYFORMULA(IF($E$2:$E="","",IF(LEFT(REGEXREPLACE(TO_TEXT($E$2:$E),"\D",""),4)="0044","0"&MID(REGEXREPLACE(TO_TEXT($E$2:$E),"\D",""),5,50),IF(LEFT(REGEXREPLACE(TO_TEXT($E$2:$E),"\D",""),2)="44","0"&MID(REGEXREPLACE(TO_TEXT($E$2:$E),"\D",""),3,50),REGEXREPLACE(TO_TEXT($E$2:$E),"\D","")))))
+```
+
+**Then click cell `J2` and paste this ONE line:**
+
+```
+=ARRAYFORMULA(IF(($B$2:$B="")*($C$2:$C="") ,"",LOWER(REGEXREPLACE(TO_TEXT($B$2:$B)&TO_TEXT($C$2:$C),"[^A-Za-z0-9]",""))))
+```
+
+⚠ **They are DIFFERENT formulas and must not be swapped.** `I2` is the **phone** key and reads column **E**; `J2` is the **name** key and reads columns **B** and **C**. **Paste each into its own cell and check the formula bar afterwards** — `I2` should mention `$E$2:$E`, `J2` should mention `$B$2:$B`.
+
+**How he confirms the repair took:** run **Village list → Check the setup** again. The block that read *"THE DUPLICATE CHECKER IS BROKEN"* should be replaced by:
+
+```
+Duplicate-checker columns (I and J): working.
+```
+
+**If it instead says "THE DUPLICATE CHECKER IS NOT FILLING IN for: T001"**, the formula is in `I2` but is not reaching that row — most likely `I2` was pasted into `I3` or lower, or a stray value sits in `I3` blocking the spill. Clear anything below `I2`/`J2` and re-paste.
+
+**Also worth a glance while he is there:** the `verdict` column on Form responses should go back to reading `ALREADY ON SITE — T001` for a resubmission of the same person, rather than `NEW`.
+
+---
 
 **[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — the last thing before the village is told | COMPUTER, about fifteen minutes**
 
@@ -2595,6 +2670,38 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **[PATTERN CANDIDATE: disarm-beats-document]** 2758 found a one-click trap and mitigated it with a warning. The Owner's ruling removed the fuel instead. **Where a hazard depends on state you can delete, deleting the state beats documenting the hazard** — a warning must be read every time, a removed precondition works even when nobody reads anything.
 
 **[PATTERN CANDIDATE: a-procedure-that-verifies-after-destroying-is-not-a-procedure]** *"Delete X, then check Y survived"* is a defect whenever Y lives inside X. The ordering must make destruction impossible, not detectable.
+
+---
+
+### 2026-09-21 — A reported defect in the documented remedy is REFUTED by measurement, and the real alarm is narrowed
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[FINDING] THE REPORTED DEFECT DOES NOT EXIST, and it is recorded as refuted rather than quietly dropped.** The commissioning prompt reported that `apps-script/SHEET-FORMULAS.md` gives **identical** formulas for Published `I2` and `J2`, so anyone following `checkSetup`'s repair instruction would paste the same formula twice and believe the duplicate checker repaired.
+
+**Measured by hashing every documented formula in that file: no two cells share one.** `I2` is 291 characters and reads column `E`; `J2` is 121 characters and reads `B` and `C`. The live raw copy is **byte-identical** to the repo. **Nothing in the document was changed, because nothing in it was wrong.**
+
+**Rule 1.9 applies in the mirror direction and is worth naming: a refutation is a claim like any other.** This session did not accept the report and did not accept its negation on authority either — it hashed the formulas, diffed the live file, and mapped every cell reference against the column layout the code enforces.
+
+**[FINDING] Why the report was a reasonable mistake, which is why a guard was added rather than a correction issued.** The same idea sits at **different letters on the two tabs**: phone is `E` on Published and `F` on Form responses; names are `B`/`C` versus `D`/`E`. **Published `I2` and Form responses `J2` are both "the phone key" and are necessarily different formulas.** A reader comparing across tabs sees a mismatch that is correct behaviour. **And this document has been wrong before in exactly this class** — it was once authored against an assumed column layout and every cell reference was incorrect (`[BUG] 2026-09-18`). **A report of this shape deserves testing, not dismissal.**
+
+**[DECISION] The property is now asserted mechanically instead of trusted.** Ten checks in `apps-script/test-verdict.js` hash every documented formula, assert no two are identical, assert each phone key reads its own tab's phone column and each name key its own two name columns, and assert `checkSetup`'s *"step 2"* pointer resolves to a heading that exists. **Mutation-tested: making `J2` identical to `I2` is killed by three of them, naming the exact cells.** The next such report is answered by running one command.
+
+**[FINDING] THE ALARM ITSELF IS CORRECT, AND ITS WORDING OVERSTATES THE CONSEQUENCE.** `checkSetup` reads `getRange(2, 9, 1, 2).getFormulas()` at `Publish.gs:1932`; the D7a reset cleared row 2, so the formulas are genuinely gone and the report is right.
+
+**But the impact is narrower than the message says, and the Owner needed that distinction to know whether to stop submitting.** Established by reading every consumer and then by execution:
+
+- **`rowIndexForPerson` never reads `I` or `J`.** It reads Published columns `E`, `B` and `C` and normalises them in JavaScript. **Run with both cells empty, a repeat submission still returns `added: false` / "Merged into T001" and creates no second row.**
+- **`app.js` and `Code.gs` have zero references** to `pub_phone_key` / `pub_name_key`.
+- **The only true consumer is the `verdict` formula**, which reads `Published!$I$2:$I$500` and `$J$2:$J$500`. With them blank a listed person reads `NEW`.
+
+**So the message's *"EVERY new form submission will look like a new person"* is true of the verdict column and false of the publisher.** **Nothing gets published twice.**
+
+**[DECISION] The alarm's wording is NOT softened, and that is deliberate.** It is a setup check; **erring loud is the correct bias**, and the sentence is accurate about the thing the Owner actually looks at. **Narrowing it to "your verdict column is affected" would understate a real repair he should make.** The precision belongs in the handover, which is where a session reads it, rather than in a one-line alert on his screen. **Recorded so a later session does not "fix" the wording and lose the prompt to repair.**
+
+**This also reconciles two earlier reports that looked contradictory.** 2758 established that no publisher write reaches `I` or `J`; 2760 established that no code reads the `verdict` column. Both stand. **`checkSetup` can still call the duplicate checker broken, because the thing it is reporting on is neither of those** — it is the formula-fed verdict the Owner reads with his own eyes, which is precisely the audience the setup check is written for.
+
+**[PATTERN CANDIDATE: the-same-idea-at-different-addresses-reads-as-a-bug]** Two tabs implementing one concept over differently-lettered columns produce formulas that look mismatched on inspection and are both correct. **Where a document carries parallel-but-not-identical instructions, assert the parallelism mechanically** — the human comparison is the unreliable step, and it fails toward false alarms.
 
 ---
 
@@ -6851,5 +6958,107 @@ Working tree clean. Both remotes level.
 **Both ambiguities are closed:** every delete starts at row 3 with row 2 cleared by hand in two pieces, on both tabs; and the `L2` paste is folded in as step 6, established as worth doing but not a blocker because nothing reads the column.
 
 ⚠ **NOTHING IS RUN.** The reset is the Owner's action. Build plan row 2.1 is still `new`. Nothing was written to his spreadsheet, `Code.gs` was not touched, nothing was redeployed.
+
+Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T09:47:55Z — The documented remedy was reported broken; measurement says it is right, and the real alarm is narrowed
+
+**Source:** Claude Code
+**Started:** 2026-09-21T09:38:30Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only)
+
+**Prompt received:** *(preserved in the Claude.ai conversation above. It carried the Owner's verbatim `checkSetup` output after his D7a reset, and a report that `SHEET-FORMULAS.md` gives identical formulas for Published `I2` and `J2`, offered as a hypothesis to test rather than implement.)*
+
+**What was done:**
+
+**The prescribed staleness check ran first:** `GITHUB_TOKEN= git fetch collab main && GITHUB_TOKEN= git diff FETCH_HEAD..HEAD --stat -- apps-script/` → **no output, exit 0.** Copy-source current. HEAD `0ec1c95`, tree clean — **did not differ from the prompt.**
+
+**TASK 1 — who actually reads Published `I` and `J`. Established by reading every consumer, then by execution.**
+
+| Consumer | Reads `I`/`J`? | Evidence |
+|---|---|---|
+| `rowIndexForPerson` — **the duplicate merge** | **NO** | Reads `PUB_COLS.indexOf('phone')`, `'first_name'`, `'last_name'` = columns **E, B, C**, and calls `normalisePhone` / `nameKeyOf` in JavaScript |
+| `publishInto`, `appendRecommendation`, the sweep | **NO** | `FORMULA_COLS = [8,9]`; `writableBlocks()` = A–H, K–L. Index `[8]` appears once outside declarations — inside `checkSetup` itself |
+| `app.js` | **NO** | zero matches for `pub_phone_key` / `pub_name_key`; maps by header name, ignores unknown columns |
+| `Code.gs` | **NO** | zero matches |
+| **`verdict` `L2` on Form responses** | **YES** | `COUNTIF(Published!$I$2:$I$500, …)`, `$J$2:$J$500`, and two `VLOOKUP`s over `{Published!$I$2:$I$500, …}` |
+
+**Executed to settle it rather than argued:** a repeat submission against a `T001` row whose `I` and `J` cells are **empty** returns `{"added":false,"action":"Merged into T001 — second recommendation for Real Villager"}` and the table length does not grow. **His live duplicate protection is NOT weakened and he does not need to stop submitting.**
+
+**Against the committed verdict harness:** with the helpers dead the verdict reads **`NEW`**; with them alive, **`ALREADY ON SITE — T001`**. **That is the entire impact.**
+
+**This reconciles the two earlier reports the prompt asked about.** 2758 (no publisher *write* reaches I/J) and 2760 (no code *reads* the verdict column) both stand. `checkSetup` can still call the duplicate checker broken because it is reporting on neither — it reports on the **formula-fed verdict the Owner reads with his own eyes**, which is exactly who a setup check is written for.
+
+**TASK 2 — the correct formula for each cell. They are NOT identical and the current document is right.**
+
+- **`I2` is the PHONE key** — 291 characters, reads `$E$2:$E`, folds `+44` / `0044` / `0` to one form. Published column `E` is `phone` per `PUB_COLS`.
+- **`J2` is the NAME key** — 121 characters, reads `$B$2:$B` and `$C$2:$C`, concatenated then lower-cased with punctuation stripped. Published `B` and `C` are `first_name` and `last_name`.
+
+**The mirror on Form responses is the same idea at different letters**, which is why a cross-tab comparison looks like a defect: phone is `F` there (so `J2` reads `$F$2:$F`), names are `D` and `E` (so `K2` reads both). **All four verified against the column layouts the code enforces** — `PUB_COLS` for Published, the `FR_HDR` real header carried in the committed test harness for Form responses.
+
+**TASK 3 — no fix was needed, and nothing was changed.** Hashing every documented formula: **no two cells share one.** The live raw file is **byte-identical** to the repo. `checkSetup`'s *"step 2"* pointer resolves to `## Step 2 — Two helper columns on the Published tab`, which is the correct section. **`SHEET-FORMULAS.md` is unmodified by this session**, verified by `diff` after the mutation test restored it.
+
+**TASK 4 — the same class of defect elsewhere: NONE.** Every `Click cell X and paste` instruction in the document was paired with its fenced block and audited: **7 formulas, 7 distinct hashes, no cell documented twice, and every cell reference consistent with the layout its own tab uses.**
+
+**TASK 5 — the two formulas are in Layer 4**, extracted **programmatically from the source document** rather than retyped, with the tab, the cell, the warning that they must not be swapped, a formula-bar check for each, and what `checkSetup` should say afterwards.
+
+**A regression guard was added** — ten checks in `apps-script/test-verdict.js` asserting the whole property mechanically. **Mutation-tested:** making `J2` identical to `I2` is killed by three of them, naming the exact cells. The next report of this shape is answered by one command.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | **Prescribed staleness check** | clean | **no output, exit 0** | PASS |
+| 2 | Repo matches prompt HEAD | `0ec1c95`, clean | did not differ | PASS |
+| 3 | Baseline all suites | green | **257 passed, 0 failed** | PASS |
+| 4 | **Are `I2` and `J2` identical?** — the reported defect | establish | **NO.** sha `93656f4ab755` vs `0219a5886321`; 291 vs 121 chars | **Report REFUTED** |
+| 5 | Live raw file vs repo | compare | **byte-identical**, 19,615 bytes both | PASS |
+| 6 | **Every documented formula hashed** | no duplicates | **7 formulas, 7 distinct hashes** | PASS |
+| 7 | No cell documented twice | none | none | PASS |
+| 8 | Published `I2` reads the phone column | `E` | `["E"]`, and `PUB_COLS[4]` = `phone` | PASS |
+| 9 | Published `J2` reads the name columns | `B`,`C` | `["B","C"]`, `PUB_COLS[1..2]` = first/last | PASS |
+| 10 | Form responses `J2` / `K2` | `F` / `D`,`E` | `["F"]` / `["D","E"]`, matching `FR_HDR` | PASS |
+| 11 | **Does `rowIndexForPerson` read I or J?** | establish | **NO** — reads E, B, C; normalises in JS | PASS |
+| 12 | **Merge with `I`/`J` EMPTY** — the operational question | still merges | **`added:false`, "Merged into T001"**, no second row | PASS |
+| 13 | `app.js` / `Code.gs` references | none | zero matches in both | PASS |
+| 14 | Verdict with helpers dead vs alive | differ | **`NEW`** vs **`ALREADY ON SITE — T001`** | PASS |
+| 15 | `checkSetup`'s step pointer resolves | step 2 exists | `## Step 2 — Two helper columns on the Published tab` | PASS |
+| 16 | Ten new document-audit checks | pass | **59 passed in that suite** | PASS |
+| 17 | **Mutation: make `J2` identical to `I2`** | controls fire | **3 FAIL, naming `Published!I2`,`Published!J2`** | PASS |
+| 18 | Document restored after mutation | byte-identical | byte-identical | PASS |
+| 19 | Full regression | no regression | **267 passed, 0 failed** (257→267) | PASS |
+| 20 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `09:43:07Z`; 6 layers | PASS |
+| 21 | No plan row changed, none appended | untouched | neither plan file modified | PASS |
+| 22 | Owner's sheet untouched; `Code.gs` untouched | nothing | both untouched, nothing redeployed | PASS |
+
+**Test 4 is the finding of the session and is recorded as a REFUTATION rather than a fix.** Rule 1.9 applies in the mirror direction: accepting a falsification on report is the same error as accepting a claim on report. The report was tested, not dismissed and not adopted.
+
+**What was not tested:**
+
+- **NOTHING RAN INSIDE GOOGLE AND NOTHING WAS WRITTEN TO THE OWNER'S SHEET.** All measurement is the real `Publish.gs`, the real `SHEET-FORMULAS.md` and the committed verdict harness, executed in Node.
+- **⚠ WHETHER THE PASTE WILL ACTUALLY TAKE IS UNVERIFIED.** The formulas are correct as documented; whether Google accepts them into his `I2`/`J2` on his sheet can only be seen on his screen. **That is why Layer 4 gives him a formula-bar check per cell and a `checkSetup` re-run rather than declaring it done.**
+- **His `L2` verdict version is still unconfirmed** — carried from 2760, unchanged. It does not affect this repair.
+- **`checkSetup`'s "NOT FILLING IN" branch was not exercised.** It is the path taken when a formula exists but does not reach a row; Layer 4 names it and the likely cause, from reading `Publish.gs:1936-1952` rather than from running it.
+- **The site was not re-read this session.** That Published renders `T001` is **REPORTED** from the Owner and from Claude.ai's browser read.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T09:47:55Z
+
+**End state:**
+
+**The documented remedy was not broken and was not changed.** The reported defect is refuted by measurement and the refutation is itself evidenced — hashes, byte-comparison of the live file, and a column-by-column audit against the layouts the code enforces.
+
+**The alarm the Owner saw is correct and now has its true scope written down:** the publisher still merges duplicates with the helper columns dead, so **nothing gets published twice and he need not stop submitting**; what is affected is the `verdict` column he reads. **The repair is two pastes, in Layer 4, verbatim from the source document.**
+
+**The property is now guarded mechanically** — ten checks, mutation-tested, so the next report of this shape costs one command instead of a session.
+
+⚠ **Nothing is repaired on his sheet.** That is his action. Build plan rows unchanged; no status moved; `Code.gs` untouched; nothing redeployed.
 
 Working tree clean. Both remotes level.
