@@ -147,15 +147,54 @@ result and say *"yes, that is delivered"*?
 
 ---
 
+**STATUS: SIGNED-OFF 2026-09-21**
+
+## CLOSURE RECORD — read this before reading the 100%
+
+**Closed at 100% of 11 rows on 2026-09-21. 36 of 36 counted effort. ⚠ THIS IS NOT "EVERYTHING WAS BUILT".**
+
+**It opened at a denominator of 32 and closed at 36, and one row of 9 effort left it without being built.** The three things a reader needs before trusting the figure:
+
+**1. ⚠ ONE REQUIREMENT WAS MOVED OUT, NOT DELIVERED.** Row `5.1` is **`external`** and carries **9 effort excluded from the denominator** (STD-00009 Rule 5.4.2 [CORE]). It is the Owner's own requirement, verbatim from the Requirement as stated:
+
+> *"I want to be able to hand over the operating site to anyone else who inherits that google email account"*
+
+**It was moved to `PLAN-DUNCHI-INHERITANCE-2026-09-21` on 2026-09-21 under the Owner's ruling `D3c-VCWL-21092026`**, his words *"D3c. Handover is less of a concern than getting this live!"*, **which overruled Claude.ai's recommendation to have the runbook walked.** **That plan stands at 0 of 9. The inheritance requirement remains UNPROVEN and its runbook, though repaired, has never been walked.** Counting the excluded row, the work this plan was ever asked to cover totals **45 effort, of which 36 was delivered.**
+
+**2. THE DENOMINATOR GREW DURING THE PLAN'S LIFE, and that is a record of real defects rather than scope creep.** It opened at **32** and closed at **36**:
+
+| When | Change | Why |
+|---|---|---|
+| Opened 2026-09-19 | 41 effort, 9 rows | Including row `5.1` |
+| 2026-09-21 | **41 → 32** | Row `5.1` became `external` under `D3c-VCWL-21092026` |
+| 2026-09-21 | **32 → 34** | Row `6.5` appended — **a tradesperson with no surname could not be submitted at all**, found by the Owner's testers in live traffic |
+| 2026-09-21 | **34 → 36** | Row `6.6` appended — **a mobile typed without its leading zero**, found in live traffic the same morning |
+
+**Both appended rows came from real villagers' submissions failing, not from planning.** Each was entered after the first attempt per the unplanned-work rule, appended at the next free number, never inserted and never renumbered.
+
+**3. ⚠ TWO ROWS CLOSED ON ACCEPTANCE WORDING THAT WAS DELIBERATELY WEAKENED, and a clean 100% must not imply otherwise.**
+
+- **Row `6.1`** — `D11a-VCWL-21092026`. Original bar: the Owner **sees** a dropped submission recover by itself. **It became unmeetable because the fix worked** — nothing has been dropped since, so waiting meant wanting Google to fail again. Amended to: the sweep installed, firing on schedule, completing cleanly. **The sweep's recovery path WAS exercised on real data — eight lost submissions recovered at 07:11 — but the RETRY path remains unexercised in production.**
+- **Row `6.3`** — `D9a-VCWL-21092026`. Closed on an **upstream control**: the form's own validation now refuses a multi-number telephone field at the door, so the publisher's refusal of one cannot be reached through the form. **The publisher's refusal of a bad number HAS since been witnessed in live traffic** (the missing zero), but **the two-numbers-in-one-box case specifically remains unwitnessed.**
+
+**Both amendments are the Owner's rulings, both are recorded in the rows with the original wording struck through rather than deleted, and both traded proof-on-a-fresh-fault for proof-the-guard-is-in-place.**
+
+**WHAT WAS DELIVERED, plainly.** A villager opens a link, finds a trade, finds a person and taps Call. Twelve real tradespeople across nine trades reached the list through the form, published automatically with no human in between. A recommendation added from a card reaches the village list by itself. The publisher survives Google dropping or failing a submission, refuses a telephone number it cannot trust rather than inventing one, and records what happened to every submission where the Owner can read it. **The village has been told.**
+
+**WHAT WAS NOT.** The site has never been handed to anybody else, and nobody has rebuilt it from the runbook. **That is row `5.1`, and it is somebody else's plan now.**
+
+---
+
+
 ## Step 1 — The village is told
 
 | # | Status | Sub-task | Effort |
 |---|---|---|---|
-| 1.1 | new | The village knows the directory exists and has the link. Done when the launch message is posted to the village WhatsApp group and the link is live to a list worth opening. The message is drafted at 66 words in the root `README.md` under **"Telling the village"**, and in `docs/PROCESS-seeding-and-launch-dunchi-trader.md` §4. **MOVED FROM `PLAN-DUNCHI-TRADER-V1` row `7.2`**, effort unchanged. ~~**GATED BY 2.1 AND 3.1 — do not post while test people are on the list.**~~ **SUPERSEDED 2026-09-19 by D9c → GATED BY 2.1 ONLY.** The Owner ruled *"Go - I will manage the content"*, so this row now runs BEFORE 3.1 rather than after it. **2.1 remains an absolute gate** — do not post while test people are on the list. The link is the one thing that cannot be un-sent: post it early and the village opens it once, finds test data, and never opens it again. | 3 |
+| 1.1 | done | The village knows the directory exists and has the link. Done when the launch message is posted to the village WhatsApp group and the link is live to a list worth opening. The message is drafted at 66 words in the root `README.md` under **"Telling the village"**, and in `docs/PROCESS-seeding-and-launch-dunchi-trader.md` §4. **MOVED FROM `PLAN-DUNCHI-TRADER-V1` row `7.2`**, effort unchanged. ~~**GATED BY 2.1 AND 3.1 — do not post while test people are on the list.**~~ **SUPERSEDED 2026-09-19 by D9c → GATED BY 2.1 ONLY.** The Owner ruled *"Go - I will manage the content"*, so this row now runs BEFORE 3.1 rather than after it. **2.1 remains an absolute gate** — do not post while test people are on the list. The link is the one thing that cannot be un-sent: post it early and the village opens it once, finds test data, and never opens it again. **CLOSED 2026-09-21T12:06:45Z — THE VILLAGE HAS BEEN TOLD.** He wrote and posted the launch message to the village WhatsApp group on 2026-09-21. His words: ***"I have written and sent the message to the Village"***. **Its gate, row 2.1, was closed earlier the same day, so no test person was on the list when the link went out.** **[DECISION] `D13c-VCWL-21092026` — THE TRADE MISMATCH IS KNOWN AND ACCEPTED AT THE OWNER'S DECISION, not an oversight that slipped through.** Claude.ai raised that the drafted message promises *"plumbers, electricians, gardeners and the rest"* while the list holds **no gardener**, and recommended rewriting it to name the trades actually present. **He OVERRULED that and ruled D13c — post as drafted.** ⚠ **HE WROTE THE MESSAGE HIMSELF rather than copying the draft verbatim, so the exact wording that went to the village is NOT IN THIS REPOSITORY and no session has seen it.** The mismatch is therefore recorded against the DRAFT; whether his own wording carried it across is unknown. | 3 |
 
 | # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.1 | When a villager needs a plumber, they should already know where to look. | Post the launch message to the village group | The village has the link and knows what it is for | Drafted message, posted once the list is worth opening | new | 2026-10-10 | 2026-10-10 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de | 3.1 |  | 2026-09-19 | 2026-10-10 | 2026-09-19 | 2026-10-10 |
+| 1.1 | When a villager needs a plumber, they should already know where to look. | Post the launch message to the village group | The village has the link and knows what it is for | Drafted message, posted once the list is worth opening | done | 2026-10-10 | 2026-09-21 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de | 3.1 |  | 2026-09-19 | 2026-10-10 | 2026-09-21 | 2026-09-21 |
 
 ---
 
@@ -175,11 +214,11 @@ result and say *"yes, that is delivered"*?
 
 | # | Status | Sub-task | Effort |
 |---|---|---|---|
-| 3.1 | new | The list is worth opening. Done when **12 to 15 real tradespeople across at least 6 trades** are on the Published tab, every one arrived through the Google Form rather than being typed in by hand, and each has a telephone number of eleven digits starting zero. Arriving through the form matters: it is the route villagers will use, so seeding by it proves the route as well as filling the list. `docs/PROCESS-seeding-and-launch-dunchi-trader.md` is the step-by-step guide. **A directory with four people in it gets opened once and never again**, and there is exactly one chance at a first impression with this audience. ~~**THE SEEDING ROUTE IS UNDECIDED — see handover Layer 4.**~~ **SUPERSEDED 2026-09-19 → RULED D9c-6G7f-19092026: the village is told first and the list fills from their submissions.** The outcome above is unchanged. **What changed is that the Owner no longer controls when this row finishes** — it is reached by villagers filling in the form, so it may sit open for weeks, which is expected rather than stalled. | 4 |
+| 3.1 | done | The list is worth opening. Done when **12 to 15 real tradespeople across at least 6 trades** are on the Published tab, every one arrived through the Google Form rather than being typed in by hand, and each has a telephone number of eleven digits starting zero. Arriving through the form matters: it is the route villagers will use, so seeding by it proves the route as well as filling the list. `docs/PROCESS-seeding-and-launch-dunchi-trader.md` is the step-by-step guide. **A directory with four people in it gets opened once and never again**, and there is exactly one chance at a first impression with this audience. ~~**THE SEEDING ROUTE IS UNDECIDED — see handover Layer 4.**~~ **SUPERSEDED 2026-09-19 → RULED D9c-6G7f-19092026: the village is told first and the list fills from their submissions.** The outcome above is unchanged. **What changed is that the Owner no longer controls when this row finishes** — it is reached by villagers filling in the form, so it may sit open for weeks, which is expected rather than stalled. **CLOSED 2026-09-21T12:06:45Z — ALL THREE CLAUSES SATISFIED AND ALL THREE MEASURED.** **(1) TWELVE real tradespeople against a target of 12-15, across NINE distinct trades against a minimum of six** — counted from the published CSV feed in a live browser at 11:52Z: Chimney sweep 1, Electrician 1, Heating oil & gas 1, Pet care & kennels 1, Plumber 2, Roof & gutters 1, Trees & hedges 2, Welding & metal 1, Window cleaner 2. **(2) EVERY ONE ARRIVED THROUGH THE GOOGLE FORM rather than being typed in** — his *Check the setup* reports `Last ID in use: T012` and `The list fills rows 2 to 13` with `Stranded rows below the list: none`, i.e. **twelve people holding twelve consecutive ids, which is what the publish route produces and hand-typing does not.** **(3) EACH HAS A TELEPHONE NUMBER OF ELEVEN DIGITS STARTING ZERO** — his check reports `Telephone numbers: all look right (11 digits starting 0)`, with `Duplicate rows: none`, `Trade names: all match the website's list`, and `Duplicate-checker columns (I and J): working`. **The list reached the bar by villagers using the form, which is what the row was written to prove.** | 4 |
 
 | # | Human | Machine | Outcome | Approach | State | Due | Forecast | Owner | Depends on | Pinned start | Due start | Planned end | Actual start | Forecast end |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 3.1 | When a villager looks for a plasterer, somebody should be there. | Seed 12-15 tradespeople across 6+ trades via the form | The directory is worth the villager's second visit | Submissions through the real form, not typed in | new | 2026-10-10 | 2026-10-10 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de | 2.1 |  | 2026-09-19 | 2026-10-10 | 2026-09-19 | 2026-10-10 |
+| 3.1 | When a villager looks for a plasterer, somebody should be there. | Seed 12-15 tradespeople across 6+ trades via the form | The directory is worth the villager's second visit | Submissions through the real form, not typed in | done | 2026-10-10 | 2026-09-21 | 222b34c4-7d05-48f4-9d23-cfb47e96d9de | 2.1 |  | 2026-09-19 | 2026-10-10 | 2026-09-19 | 2026-09-21 |
 
 ---
 

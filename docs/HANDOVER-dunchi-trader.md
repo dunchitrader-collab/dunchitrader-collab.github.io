@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T11:58:30Z
+last-updated: 2026-09-21T12:06:45Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T11:58:30Z** ~~2026-09-21T11:47:05Z~~ ~~2026-09-21T11:32:10Z~~ ~~2026-09-21T10:53:24Z~~ ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T12:06:45Z** ~~2026-09-21T11:58:30Z~~ ~~2026-09-21T11:47:05Z~~ ~~2026-09-21T11:32:10Z~~ ~~2026-09-21T10:53:24Z~~ ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -229,11 +229,25 @@ When he deliberately submitted a two-number field this morning to test this row,
 
 **⚠ AND A PERMANENT CONSTRAINT IS NOW RECORDED IN LAYER 3: DUNCHIDEOCK HAS NO MOBILE SIGNAL.** His words: ***"not on a mobile signal because the village has no signal. Everyone relies on wifi."*** **This changes what "works" means here.** Three consequences, all in Layer 3: **testing on mobile data is the wrong test** (and Claude.ai's advice to turn wifi off was **wrong**, corrected there so it is not repeated); **tapping Call connects only for a villager with wifi calling enabled**, which many will not have; and therefore **the telephone number being LEGIBLE on the card is load-bearing** — checked and passed 2026-09-21. **The number must never be reduced to a tap-only control.**
 
-**THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
+**2026-09-21T12:06:45Z — THE VILLAGE HAS BEEN TOLD. `PLAN-DUNCHI-LAUNCH-2026-09-19` IS SIGNED OFF AT 36 OF 36 (100.0%).** Verified four ways: validator `exit=0`, `sub-tasks: 11`, `done effort: 36 / 36 = 100.0%`; the figure recomputed from the document's rows; every row four cells; every satellite `State` reconciled. **The marker was written only AFTER 100% was confirmed** (STD-00009 Rule 5.8.3).
+
+**Row `3.1` closed — all three clauses measured.** **Twelve real tradespeople across NINE distinct trades** (target 12–15 across at least 6), counted from the published CSV in a live browser at 11:52Z. **Every one arrived through the form** — `Last ID in use: T012`, `The list fills rows 2 to 13`, `Stranded rows below the list: none`: twelve people holding twelve consecutive ids, which the publish route produces and hand-typing does not. **Every number eleven digits starting zero**, no duplicates, trade names all matching, duplicate-checker working.
+
+**Row `1.1` closed — he wrote and posted the launch message to the village WhatsApp group.** His words: ***"I have written and sent the message to the Village"***. **[DECISION] `D13c-VCWL-21092026`:** Claude.ai raised that the draft promises *"plumbers, electricians, gardeners and the rest"* while the list holds **no gardener**, and recommended rewriting it. **He OVERRULED that — post as drafted.** ⚠ **The mismatch is KNOWN AND ACCEPTED AT HIS DECISION, not an oversight.** **He wrote the message himself rather than copying the draft, so the exact wording that reached the village is NOT in this repository and no session has seen it.**
+
+⚠ **100% DOES NOT MEAN EVERYTHING WAS BUILT, and the plan's own closure record says so in plain words.** Three things a reader needs:
+
+1. **ONE REQUIREMENT WAS MOVED OUT, NOT DELIVERED.** Row `5.1` is `external`, **9 effort excluded from the denominator** — the Owner's own *"I want to be able to hand over the operating site to anyone else who inherits that google email account"*. Moved under **`D3c-VCWL-21092026`**, which overruled Claude.ai. **`PLAN-DUNCHI-INHERITANCE-2026-09-21` stands at 0 of 9; the requirement is UNPROVEN and its repaired runbook has never been walked.** Counting it, the work this plan was ever asked to cover totals **45 effort, of which 36 was delivered**.
+2. **THE DENOMINATOR GREW 32 → 34 → 36 during the plan's life**, as rows `6.5` and `6.6` were appended from **defects found by the Owner's testers in live traffic** — a tradesperson with no surname who could not be submitted, and a mobile typed without its leading zero.
+3. **TWO ROWS CLOSED ON DELIBERATELY WEAKENED ACCEPTANCE** — `6.1` under `D11a-VCWL-21092026` and `6.3` under `D9a-VCWL-21092026`. Both are the Owner's rulings, both keep the original wording struck through, and both traded proof-on-a-fresh-fault for proof-the-guard-is-in-place.
+
+**`PLAN-DUNCHI-INHERITANCE-2026-09-21` IS NOW THE ONLY LIVE PLAN IN THIS REPO**, at **0 of 9**.
+
+**THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** ~~SUPERSEDED 2026-09-21T12:06:45Z~~ → **ONE live plan and one signed off.** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
 | Plan ID | Path | Position [VERIFIED 2026-09-21, validator] |
 |---|---|---|
-| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, 10 sub-tasks, row `6.5` appended~~ ~~SUPERSEDED 2026-09-21T10:53:24Z → **12 / 36 = 33.3%**, 11 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T11:32:10Z → **16 / 36 = 44.4%**, 6 `done`~~ ~~SUPERSEDED 2026-09-21T11:47:05Z → **24 / 36 = 66.7%**, 7 `done`~~ SUPERSEDED 2026-09-21T11:58:30Z → **29 / 36 = 80.6%**, **11 sub-tasks** (1 `external`, excluded), **8 `done`** | 
+| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, 10 sub-tasks, row `6.5` appended~~ ~~SUPERSEDED 2026-09-21T10:53:24Z → **12 / 36 = 33.3%**, 11 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T11:32:10Z → **16 / 36 = 44.4%**, 6 `done`~~ ~~SUPERSEDED 2026-09-21T11:47:05Z → **24 / 36 = 66.7%**, 7 `done`~~ ~~SUPERSEDED 2026-09-21T11:58:30Z → **29 / 36 = 80.6%**, 8 `done`~~ **SUPERSEDED 2026-09-21T12:06:45Z → 36 / 36 = 100.0% — SIGNED OFF.** 11 sub-tasks, **10 `done`**, 1 `external` (excluded). ⚠ **Not "everything built" — see the closure record** | 
 | `PLAN-DUNCHI-INHERITANCE-2026-09-21` | `docs/BUILD-PLAN-dunchi-inheritance.md` | **0 / 9 = 0.0%**, 1 sub-task |
 
 **The launch plan's denominator fell 41 → 32 and that is SCOPE LEAVING, not progress.** Done effort was 0 before and is 0 after; the 9 effort was excluded **by the row's `external` status**, never by re-weighting it (STD-00009 Rules 5.4.2 and 5.2.5 [CORE]).
@@ -1363,6 +1377,16 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ## The queue as it stands after the 2026-09-21 session
 
 *The 2026-09-19 queue follows below this section, under its own original heading, unchanged except where an item has been closed in place.*
+
+**[OUTSTANDING] 2026-09-21 | MEDIUM | Blocking: no | a session task, not the Owner's**
+
+**ARCHIVE THE CLOSED PLAN.** `PLAN-DUNCHI-LAUNCH-2026-09-19` was signed off at 36 of 36 on 2026-09-21 but **has not been moved to `docs/archive/`**. STD-00009 **Rule 5.8.4 [CORE]** requires a closed plan to move there, with **5.8.4.1** requiring `mkdir -p docs/archive/` first and **5.8.4.2** requiring a test that the derived target does not already exist. **Archiving was not in the closing prompt's scope and was deliberately not improvised.**
+
+**Nothing is at risk while it waits** — the plan is signed off, frozen under 5.8.7, and its closure record is in place. **The precedent is in this repo:** `PLAN-DUNCHI-TRADER-V1` sits at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-TRADER-V1.md`.
+
+⚠ **Read 5.8.4, 5.8.4.1 and 5.8.4.2 before doing it** — the naming is derived, not chosen, and the existing-target test is mandatory.
+
+---
 
 **[OUTSTANDING] 2026-09-21 | MEDIUM | Blocking: no — nothing is broken while it waits | COMPUTER, about one minute**
 
@@ -3125,6 +3149,32 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **Why it earns a permanent entry.** Every prior measurement of the Call button here — the misdial fix of 2026-09-18, the leading-zero guard of 2026-09-21 — has been about the number being **correct**. **This is about it being visible.** **A site that dials perfectly and shows nothing would pass every one of those checks and fail most of the village.**
 
 **[PATTERN CANDIDATE: the-operating-environment-is-part-of-the-requirement]** A constraint like *"this village has no mobile signal"* is invisible in code, absent from every test, and decisive about what correct behaviour is. **It arrived as an aside in conversation and would have been lost.** Where a product serves one specific place or population, the environment's own limits belong in the permanent record beside the architecture — **and any advice that contradicts them should be corrected in writing, not silently dropped**, because the next session will otherwise give the same wrong instruction.
+
+---
+
+### 2026-09-21 — D13c, and PLAN-DUNCHI-LAUNCH-2026-09-19 signed off at 36 of 36
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION] Row `3.1` closed on measurement, not on report** — which is right, because its wording is a count and a count is checkable from the published CSV without touching his sheet. **Twelve real tradespeople across nine distinct trades**, against a bar of 12–15 across at least six. **Every one arrived through the form**, evidenced structurally rather than by assertion: `Last ID in use: T012` with `The list fills rows 2 to 13` and no stranded rows means **twelve people holding twelve consecutive ids**, which is what the publish route produces and hand-typing does not. Numbers, duplicates, trade names and the duplicate-checker all clean on his own *Check the setup*.
+
+**[DECISION] Row `1.1` closed — the village has been told.** His words: ***"I have written and sent the message to the Village"***. Its gate, row `2.1`, had closed earlier the same day, so **no test person was on the list when the link went out** — which was the whole reason `2.1` was made the hard gate.
+
+**[DECISION] `D13c-VCWL-21092026` — the trade mismatch is KNOWN AND ACCEPTED, not an oversight.** Claude.ai raised that the drafted message promises *"plumbers, electricians, gardeners and the rest"* while the list holds **no gardener**, and recommended rewriting it to name the trades actually present. **He overruled that and ruled post-as-drafted.**
+
+**Recorded this way deliberately.** The mismatch was first raised on 2026-09-19 and carried forward through four sessions; a later reader finding a promise the list does not keep would reasonably assume it slipped through. **It did not — it was put to him and he decided.** ⚠ **And a second fact narrows what the record can even claim: he WROTE THE MESSAGE HIMSELF rather than copying the draft, so the exact wording that reached the village is not in this repository and no session has seen it.** **The mismatch is therefore recorded against the DRAFT; whether his own words carried it across is unknown and is not asserted either way.**
+
+**[DECISION] THE CLOSURE RECORD IS WRITTEN AGAINST 5.8.10.4's REASONING, and the distinction is stated rather than fudged.** That rule's literal form governs a **trim** — rows *removed* to reach 100% — and **this plan was not trimmed: no row was removed.** Row `5.1` became `external`, a status change under `D3c-VCWL-21092026`, which is §5.8.2 territory: *"a plan reading 100% may still hold `parked` and `external` rows, and this is correct, not a loophole."*
+
+**But 5.8.10.4's reasoning applies exactly** — *"without it a reader sees 100% and concludes everything was built"* — **so the close record carries the same disclosure a trim would owe**, following this repo's own V1 precedent. It states the opening denominator, what was added and why, what left and under whose ruling, and that **the inheritance requirement was moved rather than delivered**.
+
+**[FINDING] Scope grew from real failures, and the record distinguishes that from scope creep.** The denominator went 32 → 34 → 36 as rows `6.5` and `6.6` were appended — **a tradesperson with no surname who could not be submitted at all, and a mobile typed without its leading zero.** **Both were found by the Owner's testers in live traffic, not by planning**, and neither required a code change: the first was a form setting, the second was already guarded.
+
+**[FINDING] Two rows closed on weakened acceptance and the closure record names them**, because a clean 100% otherwise implies every row met its original bar. `6.1` (`D11a`) and `6.3` (`D9a`) both kept their original wording struck through. **Three rows on this project have now needed an acceptance correction after the fact** — `D4b` on 2026-09-19 was the first — which is the pattern already recorded as *a row that closes only on failure is mis-specified*.
+
+**[OBSERVED, not explained] The validator's cross-repo line changed from `LIVE` to `not checked — service knows no plan`** between the pre-edit and post-edit runs. **It is advisory and the exit code is unaffected**, this is a single-repo plan so cross-repo coherence is not load-bearing, and the Plan ID is intact in the header. **Tested: removing the sign-off marker does NOT restore the earlier reading**, so the marker is not the cause. The likely explanation is the coherence service re-scanning and dropping a plan that now reads 100%, **but that was not established and is recorded as observed rather than diagnosed.**
+
+**[PATTERN CANDIDATE: a-hundred-percent-owes-the-reader-its-history]** A plan reaching 100% says nothing about whether the work was done or moved. **This one closed complete while its single largest requirement left unbuilt**, and the only thing between the figure and a false impression is a closure record that states the opening denominator, what was added, what left, and on whose ruling. **Worth writing for every close, not only for a trim where the standard compels it.**
 
 ---
 
@@ -8091,5 +8141,88 @@ Working tree clean. Both remotes level.
 ⚠ **BEFORE HE POSTS, THE DRAFTED LAUNCH MESSAGE MUST BE CHECKED AGAINST WHAT THE LIST ACTUALLY HOLDS.** It is in the root `README.md` under *"Telling the village"* and in [PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md` §4, and it promises *"plumbers, electricians, gardeners and the rest"*. **There is no gardener on the list.** The same mismatch was raised on 2026-09-19 and is still open. **The link cannot be un-sent**, so the mismatch should be put to him rather than found by a villager.
 
 **Nothing else moved.** No code file touched, no row appended, no effort re-weighted, nothing written to the Owner's spreadsheet, nothing redeployed.
+
+Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T12:06:45Z — The village has been told; the launch plan is signed off at 36 of 36
+
+**Source:** Claude Code
+**Started:** 2026-09-21T11:57:30Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only)
+
+**Prompt received:** *(preserved in the Claude.ai conversation above. Close rows 3.1 and 1.1, record ruling D13c-VCWL-21092026, and write the plan's closure record per STD-00009's closure rules — read rather than assumed — so that a 100% reached with work moved out is not mistaken for everything built.)*
+
+**What was done:**
+
+**Staleness check first:** no output, exit 0 — copy-source current. HEAD `3bf2b01`, tree clean — **did not differ from the prompt.**
+
+**THE CLOSURE RULES WERE READ BEFORE WRITING ANYTHING**, as instructed. **Rule 5.8.1 [CORE]** — a plan closes only at 100%, tested immediately before sign-off. **Rule 5.8.2 [CORE]** — *"a plan reading 100% may still hold `parked` and `external` rows, and this is correct, not a loophole"*, since §5.4 excludes both from the denominator. **Rule 5.8.3 [CORE]** — the marker `STATUS: SIGNED-OFF YYYY-MM-DD` goes in the header block above the first `## Step` heading, written *"at the moment the plan closes under 5.8.1, and never before"*.
+
+**⚠ AND ONE RULE WAS FOUND NOT TO APPLY LITERALLY, which is reported rather than fudged.** **Rule 5.8.10.4** mandates the pre-trim position in a close record — but it governs a **TRIM**, rows *removed* to reach 100%. **This plan was not trimmed; no row was removed.** Row `5.1` became `external`, a status change under `D3c-VCWL-21092026`, which §5.8.2 expressly sanctions. **Its reasoning nonetheless applies exactly** — *"without it a reader sees 100% and concludes everything was built"* — **so the close record carries the same disclosure a trim would owe**, following this repo's own V1 precedent of 2026-09-19.
+
+**Two rows closed.** `3.1` on measurement (twelve people, nine trades, consecutive ids `T012`, all numbers clean); `1.1` on his posting the message, carrying **`D13c-VCWL-21092026`** with the overruled recommendation and the note that **he wrote the message himself, so its exact wording is not in this repository.**
+
+**Satellites updated for both**: `State` → `done`, `Forecast` and `Forecast end` → 2026-09-21. **`Actual start`: `3.1` left at `2026-09-19`** (villagers had been submitting since then); **`1.1` moved to `2026-09-21`**, because writing and posting the message is the work and it happened today. **`Due` and `Planned end` NOT rewritten** — both finished nineteen days inside their promise.
+
+**THE CLOSURE RECORD** was written above the first `## Step` heading, headed *"read this before reading the 100%"*, stating: the opening denominator of 32 and the close at 36; the **9 effort excluded** as `external` and that it is the Owner's own inheritance requirement, **moved under D3c and NOT built**; the denominator's growth 32 → 34 → 36 from two defects found by his testers in live traffic; and the two rows that closed on **deliberately weakened acceptance** under `D11a` and `D9a`. It ends with what was delivered and what was not, in plain words.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | Staleness check | clean | **no output, exit 0** | PASS |
+| 2 | Repo matches prompt HEAD | `3bf2b01`, clean | did not differ | PASS |
+| 3 | Baseline before edits | a comparison | **11 sub-tasks, 29/36 = 80.6%**, exit 0 | PASS |
+| 4 | Predicted figure, computed before editing | a prediction | **36 of 36 = 100.0%** | PASS |
+| 5 | **STD-00009 closure rules read, not assumed** | 5.8.1/5.8.2/5.8.3 | read and quoted | PASS |
+| 6 | **5.8.10.4's scope checked against this case** | establish | **governs a TRIM; this plan was not trimmed** — reasoning applied, form not claimed | PASS |
+| 7 | **100% confirmed BEFORE the marker was written** (5.8.3) | ordered correctly | validator run first, marker second | PASS |
+| 8 | **§3.10 validator after all edits** | exit 0 | **`exit=0`** | PASS |
+| 9 | **Validator sub-task count** | 11 | **11** | PASS |
+| 10 | **Validator completion figure** | verify, not confirm | **`36 / 36 = 100.0%`** — matches the prediction | PASS |
+| 11 | **Count cross-checked against rows the file holds** | must match | **document 11, validator 11 — MATCH** | PASS |
+| 12 | **Figure recomputed independently** | must match | **36 of 36 = 100.0%** | PASS |
+| 13 | Every row parses to four cells | all 11 | **all 11** — no literal pipe introduced | PASS |
+| 14 | **Satellite `State` matches four-column status** | consistent | **consistent on all 11** | PASS |
+| 15 | Exactly one sign-off marker | 1 | **1** | PASS |
+| 16 | **Marker above the first `## Step`** (5.8.3) | inside header block | **line 150 vs `## Step 1` at 189 — INSIDE** | PASS |
+| 17 | Ten rows `done`, one `external` | as instructed | **10 `done`, `5.1` `external`** | PASS |
+| 18 | Plan ID intact after edits | unchanged | present in both header positions | PASS |
+| 19 | No row appended, none renumbered, no effort re-weighted | unchanged | `3 2 4 5 9 8 5 4 1 2 2` | PASS |
+| 20 | **No code file touched** | none | `apps-script/` and `app.js` unmodified | PASS |
+| 21 | Test suites green (control) | no regression | **300 passed, 0 failed** | PASS |
+| 22 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `12:06:45Z`; 6 layers | PASS |
+| 23 | Nothing written to the Owner's sheet | nothing | no Apps Script run at all | PASS |
+
+**One observation reported rather than explained.** The validator's **cross-repo line changed from `LIVE` to `not checked — service knows no plan`** between the pre-edit and post-edit runs. **Advisory, exit code unaffected**; this is a single-repo plan so cross-repo coherence is not load-bearing; the Plan ID is intact. **Tested: removing the sign-off marker does NOT restore the earlier reading**, so the marker is not the cause. Most likely the coherence service re-scanned and dropped a plan now reading 100% — **but that was not established, and it is recorded as observed rather than diagnosed.**
+
+**What was not tested:**
+
+- **⚠ NO SESSION SAW THE LAUNCH MESSAGE.** He wrote it himself rather than copying the draft. **Its exact wording is not in this repository**, so whether the gardener promise reached the village is **unknown and is not asserted either way.**
+- **THE TWELVE-ACROSS-NINE COUNT IS REPORTED** from Claude.ai's 11:52Z browser read of the published CSV. **This session ran no browser and read no feed** — it was a plan update.
+- **HIS *Check the setup* OUTPUT IS REPORTED** from the commissioning prompt. This repo has measured that the tool produces those lines; the run on his sheet is his.
+- **THAT THE MESSAGE REACHED THE WHATSAPP GROUP IS HIS REPORT ALONE**, and is not confirmable by any session.
+- **NO CODE WAS RUN OR CHANGED.** The suites were executed only as a control.
+- **THE PLAN FILE WAS NOT ARCHIVED.** Rule 5.8.4 moves a closed plan to `docs/archive/`; **that was not in this prompt's scope and has not been done.** It is carried in Layer 4.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T12:06:45Z
+
+**End state:**
+
+**`PLAN-DUNCHI-LAUNCH-2026-09-19` IS SIGNED OFF AT 36 OF 36 (100.0%)** — validator exit 0, count cross-checked, figure recomputed, marker conformant and written only after 100% was confirmed.
+
+**The village has been told, and twelve real tradespeople across nine trades are on the list.**
+
+⚠ **The 100% is not "everything was built", and the plan's own closure record says so.** **Row `5.1` — the inheritance requirement in the Owner's own words — was moved out under `D3c-VCWL-21092026` and NOT delivered.** `PLAN-DUNCHI-INHERITANCE-2026-09-21` stands at **0 of 9** and is now **the only live plan in this repo.** Counting the excluded row, this plan was asked to cover **45 effort and delivered 36.**
+
+**Two things remain outstanding and neither blocks anything:** archiving the closed plan to `docs/archive/` under Rule 5.8.4, and formatting the two telephone columns as plain text.
 
 Working tree clean. Both remotes level.
