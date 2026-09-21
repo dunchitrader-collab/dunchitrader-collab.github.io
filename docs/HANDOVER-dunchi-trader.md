@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T10:05:12Z
+last-updated: 2026-09-21T10:18:44Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T10:05:12Z** ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T10:18:44Z** ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -124,11 +124,33 @@ ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from
 
 **Rows `1.1`, `3.1`, `4.1`, `6.1` and `6.3` are untouched and still `new`; `5.1` remains `external`.**
 
+**2026-09-21T10:18:44Z — ROW 6.3 CLOSED ON THE OWNER'S RULING `D9a-VCWL-21092026`. THE PLAN MOVES 8/32 (25.0%) → 12/32 (37.5%), 4 of 9 rows done.** Verified three ways: validator `exit=0` with `sub-tasks: 9` and `done effort: 12 / 32 = 37.5%`; the same figure recomputed from the document's own rows; and every row re-checked as parsing to exactly four cells.
+
+**His ruling, verbatim: *"D9a - no point testing functionality that is not needed."*** He was offered three routes and chose the first. **Claude.ai recommended D9b — briefly disabling the form validation to witness the publisher's own refusal — and he overruled it.**
+
+**WHY THE INTENDED SIGHTING IS NO LONGER REACHABLE.** Row 6.3 was to close on the publisher refusing a two-number telephone field and writing the reason into the `action` column. **The Owner has response validation on the form's telephone question**, this expression:
+
+```
+^[-() ]*(\+44|0)[-() ]*(\d[-() ]*){9,10}$
+```
+
+When he deliberately submitted a two-number field this morning to test this row, **the form rejected it at the door and nothing reached the sheet.** His ruling is that an upstream control making a bad number unsubmittable removes the need to test the downstream one.
+
+**THE THREE-WAY SPLIT, recorded because closing a row on an upstream control is not the same as closing it on the row's own behaviour:**
+
+| | |
+|---|---|
+| **WITNESSED** | The form refuses a multi-number telephone field at submission. **He saw it happen.** |
+| **INSTALLED BUT NOT WITNESSED** | The publisher's OWN refusal and its `action`-column reason; the merge matching on phone AND name; the merge recording what was submitted; the verdict reading `ON THE LIST BUT HIDDEN`; and `Code.gs`'s header no longer claiming it appends to the Votes tab. **Committed at `4f4e88f` and `04e9b54`, covered by the test suite — none has been seen to run inside Google.** |
+| ⚠ **RESIDUAL RISK** | **The form's validation protects the FORM ROUTE ONLY.** Any row reaching Published another way — the Owner typing into the sheet, or a future recovery path such as the backfill — is **not** covered by it, and for those the publisher's unwitnessed refusal is the only defence. |
+
+**Rows `1.1`, `3.1`, `4.1` and `6.1` are untouched and still `new`; `5.1` remains `external`; `2.1`, `6.2` and `6.4` remain `done`.** **`3.1` is still the live gate** — the list is empty, so the village cannot usefully be told.
+
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
 | Plan ID | Path | Position [VERIFIED 2026-09-21, validator] |
 |---|---|---|
-| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 9 sub-tasks (1 `external`, excluded), **3 `done`** |
+| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks (1 `external`, excluded), **4 `done`** |
 | `PLAN-DUNCHI-INHERITANCE-2026-09-21` | `docs/BUILD-PLAN-dunchi-inheritance.md` | **0 / 9 = 0.0%**, 1 sub-task |
 
 **The launch plan's denominator fell 41 → 32 and that is SCOPE LEAVING, not progress.** Done effort was 0 before and is 0 after; the 9 effort was excluded **by the row's `external` status**, never by re-weighting it (STD-00009 Rules 5.4.2 and 5.2.5 [CORE]).
@@ -2738,6 +2760,40 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **What was deliberately NOT done.** Rows `1.1`, `3.1`, `4.1`, `6.1` and `6.3` were not touched and remain `new`; `5.1` remains `external`; **no row was appended and no effort re-weighted.** In particular **row 6.1 stays open** — the retry and the sweep have run in production, but the row closes on the Owner *seeing a dropped submission recover by itself*, and no submission has been dropped since the fix went in.
 
 **[PATTERN CANDIDATE: the-diagnostic-that-earns-its-place-finds-what-the-authors-missed]** Row 6.2's tool was built to reconcile two tabs faster. **Its first real run found a fault that four separate reviewing sessions had walked past** — the helper formulas the reset had silently taken. A diagnostic proven against fixtures proves the fixtures; one that surprises its own authors on first contact with production is the stronger evidence, and is worth distinguishing when deciding whether such a row is really done.
+
+---
+
+### 2026-09-21 — D9a: row 6.3 closes on an upstream control, and what that does and does not prove
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION] `D9a-VCWL-21092026` — the Owner's ruling, verbatim:**
+
+> ***"D9a - no point testing functionality that is not needed."***
+
+**He was offered three routes and chose the first. Claude.ai recommended D9b — briefly disabling the form validation so the publisher's own refusal could be witnessed — and he OVERRULED it.**
+
+**The recommendation's grounds are recorded rather than summarised away**, because an overruled recommendation is only useful if a later reader can see what was argued: the row's wording is about **the publisher's** behaviour, and the only way to see it is to let a bad number through. **His ruling does not dispute that. It declines to manufacture a fault in a working control in order to exercise a downstream one**, which is a defensible position and his to take.
+
+**[DECISION] WHY THE INTENDED SIGHTING IS NO LONGER REACHABLE THROUGH THE FORM.** Row 6.3 was to close on the publisher refusing a field holding two telephone numbers and writing the reason into the `action` column. The Owner has response validation on the form's telephone question:
+
+```
+^[-() ]*(\+44|0)[-() ]*(\d[-() ]*){9,10}$
+```
+
+**He deliberately submitted a two-number field this morning to test this row, and the form rejected it at the door — nothing reached the sheet.** The control the row was written against has been made unreachable by a control upstream of it.
+
+**[DECISION] THE THREE-WAY SPLIT IS RECORDED IN FULL, because closing a row on an upstream control is NOT the same as closing it on the row's own behaviour.**
+
+- **WITNESSED.** The form refuses a multi-number telephone field at submission. **He saw it happen.** That is one real, sighted control standing between a villager and an invented number.
+- **INSTALLED BUT NOT WITNESSED.** Five clauses of this row's own wording: the publisher's own refusal of a multi-number field and its `action`-column reason; the merge matching on **phone AND name**; the merge recording what was actually submitted; the verdict reading `ON THE LIST BUT HIDDEN` for a hidden person; and `Code.gs`'s header no longer claiming it appends to the Votes tab. **All committed at `4f4e88f` and `04e9b54` and covered by the test suite. None has been seen to run inside Google.**
+- ⚠ **RESIDUAL RISK, stated rather than buried.** **The form's validation protects the FORM ROUTE ONLY.** Any row reaching Published by another route — the Owner typing into the sheet by hand, or a future recovery path such as `backfillPublished` — is **not** covered by it. **For those routes the publisher's unwitnessed refusal is the only defence**, and it remains unwitnessed.
+
+**Why this matters to the MISSION rather than only to the plan.** A villager who taps Call must reach a real person. **The form route is now protected twice — once visibly and once on trust. Every other route is protected once, on trust.** That is a materially better position than this morning and it is not the same as proven.
+
+**[DECISION] Nothing was re-tested to justify the closure, and that is deliberate.** The five unwitnessed clauses were already covered by the committed suites; re-running them would demonstrate the same thing again and could be mistaken for the sighting the row actually wanted. **The honest record is that the row closes on the Owner's ruling plus one witnessed upstream control — not on new evidence produced this session.**
+
+**[PATTERN CANDIDATE: an-upstream-control-can-close-a-row-but-cannot-prove-it]** Where a validation upstream makes a downstream guard's trigger unreachable, the downstream guard becomes untestable in production rather than unnecessary — **the two are easy to conflate and they differ exactly at the routes the upstream control does not cover.** Worth recording both the closure and the uncovered routes whenever a row is closed this way.
 
 ---
 
@@ -7174,5 +7230,86 @@ Working tree clean. Both remotes level.
 **What remains, and what now gates launch.** Rows `1.1` (tell the village, 3), `3.1` (the list carries real people, 4), `4.1` (the journey works on real content, 5), `6.1` (a dropped submission recovers by itself, 8) and `6.3` (no invented number, no misattributed recommendation, 4) are all still `new`. **`3.1` is now the live gate** — the list is empty, so the village cannot usefully be told until real tradespeople are on it. **`6.1` closes only when the Owner sees a dropped submission recover by itself**, and nothing has been dropped since the fix.
 
 **Nothing else moved.** No code file was touched, no row appended, no effort re-weighted, nothing written to the Owner's spreadsheet, nothing redeployed.
+
+Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T10:18:44Z — Row 6.3 closed on D9a: 8/32 → 12/32
+
+**Source:** Claude Code
+**Started:** 2026-09-21T10:12:30Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only)
+
+**Prompt received:** *(preserved in the Claude.ai conversation above. A plan update and nothing else: close row 6.3 on the Owner's ruling D9a-VCWL-21092026, record the three-way witnessed / installed-not-witnessed / residual-risk split, change no code, touch no other row.)*
+
+**What was done:**
+
+**Staleness check first:** `GITHUB_TOKEN= git fetch collab main && GITHUB_TOKEN= git diff FETCH_HEAD..HEAD --stat -- apps-script/` → **no output, exit 0.** HEAD `ed944b2`, tree clean — **did not differ from the prompt.**
+
+**Baseline measured before editing:** validator `exit=0`, **9 sub-tasks, 8/32 = 25.0%**. **Rows enumerated from the document independently: 9.** **Predicted post-change figure computed BEFORE the edit: 12 of 32 = 37.5%**, so the validator was tested against a prediction rather than trusted.
+
+**Row 6.3 → `done`.** Its sub-task cell now carries the ruling verbatim, why the intended sighting is unreachable, and the full three-way split. The satellite row's `State` → `done`, `Forecast` and `Forecast end` → **2026-09-21**. **`Actual start` left at `2026-09-19`** — when the work began — and **`Due` and `Planned end` NOT rewritten**, per the argument made in 2762: a baseline is a promise, and rewriting it to match the outcome is the same error as re-weighting effort to move a percentage. **The row finished five days inside its promise and the record shows it.**
+
+**⚠ A DEFECT WAS INTRODUCED AND CAUGHT BY THE §3.10 GATE, and it is recorded rather than quietly fixed.** The first version of the closure quoted the Owner's validation regex verbatim inside the sub-task cell. **That regex contains a literal `|`** — `(\+44|0)` — which **split the four-column row into five cells**. The validator failed at `exit=1` and reported precisely what had happened:
+
+> *"line is inside a declared sub-task table but does not parse as a four-column row (found 5 cells, expected 4)… THE ROW IS NOT COUNTED and every completion figure over this plan is wrong until it is fixed"*
+
+**Measured while broken: `sub-tasks: 8`, `done effort: 8 / 28 = 28.6%`** — the row had vanished and the figure was silently wrong in the flattering direction. **The plan was fixed, not the check.** The regex is described in words inside the table cell and quoted **verbatim in handover Layer 5**, where it is not inside a table row. **Escaping was NOT attempted**: STD-00009 §6.1 FINDING 2026-07-31-A records that `\|` does not work and must not be used.
+
+**This is the exact failure §3.10 exists to catch**, and it is worth stating that the gate earned its place this session: a clean-looking edit removed a row from the plan entirely, and nothing else would have noticed.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | Staleness check | clean | **no output, exit 0** | PASS |
+| 2 | Repo matches prompt HEAD | `ed944b2`, clean | did not differ | PASS |
+| 3 | Baseline position before edits | a comparison | **9 sub-tasks, 8/32 = 25.0%**, exit 0 | PASS |
+| 4 | Rows enumerated from the document | 9 | **9** | PASS |
+| 5 | Predicted figure, computed before editing | a prediction | **12 of 32 = 37.5%** | PASS |
+| **6** | **§3.10 validator — FIRST attempt** | exit 0 | **`exit=1` — literal `\|` in the quoted regex split the row into 5 cells; `sub-tasks: 8`, figure wrong at `8/28 = 28.6%`** | **FAIL — plan fixed, check not weakened** |
+| 7 | Validator after removing the pipe | exit 0 | **`exit=0`** | PASS |
+| 8 | **Validator sub-task count** | 9 | **9** | PASS |
+| 9 | **Validator completion figure** | verify, not confirm | **`12 / 32 = 37.5%`** — matches the prediction | PASS |
+| 10 | **Count cross-checked against rows the file holds** | must match | **document 9, validator 9 — MATCH** | PASS |
+| 11 | **Figure recomputed independently from the document** | must match | **12 of 32 = 37.5%**, done `['2.1','6.2','6.3','6.4']` | PASS |
+| 12 | **Every row parses as exactly four cells** | all 9 | **all 9** — added after the defect above | PASS |
+| 13 | Exactly four rows `done` | 2.1, 6.2, 6.3, 6.4 | exactly those | PASS |
+| 14 | Untouched rows still `new` | 1.1, 3.1, 4.1, 6.1 | all four still `new` | PASS |
+| 15 | `5.1` still `external` | unchanged | `external` | PASS |
+| 16 | Satellite `State` matches four-column status | consistent on all 9 | consistent | PASS |
+| 17 | No row appended, none renumbered, no effort re-weighted | unchanged | `3 2 4 5 9 8 5 4 1` | PASS |
+| 18 | **No code file touched** | none | `apps-script/` and `app.js` unmodified | PASS |
+| 19 | Test suites green (control) | no regression | **267 passed, 0 failed** | PASS |
+| 20 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `10:18:44Z`; 6 layers | PASS |
+| 21 | Nothing written to the Owner's sheet | nothing | no Apps Script run at all | PASS |
+
+**What was not tested:**
+
+- **⚠ FIVE CLAUSES OF THIS ROW'S OWN WORDING REMAIN UNWITNESSED IN PRODUCTION**, and the closure rests on the Owner's ruling rather than on their having been seen: the publisher's own refusal of a multi-number field and its `action`-column reason; the merge matching on phone AND name; the merge recording what was submitted; the verdict reading `ON THE LIST BUT HIDDEN`; and `Code.gs`'s header. **Committed at `4f4e88f` and `04e9b54`, covered by the suites, never seen to run inside Google.**
+- **⚠ THE RESIDUAL RISK IS REAL AND UNMITIGATED.** The form's validation covers the form route only. **A row typed into the sheet by hand, or arriving via `backfillPublished`, is not protected by it** — the publisher's unwitnessed refusal is the only defence on those routes.
+- **NOTHING WAS RE-TESTED TO JUSTIFY THE CLOSURE, deliberately.** Re-running the existing suites would demonstrate the same coverage again and risk being read as the sighting the row actually wanted.
+- **THE FORM VALIDATION ITSELF WAS NOT OBSERVED BY ANY SESSION.** That it rejected his two-number test is **REPORTED** from the Owner via the commissioning prompt. The regex is likewise his, quoted as supplied.
+- **The Owner's quotation is REPORTED** from the prompt, which is Claude.ai's record of the conversation.
+- **No code was run or changed.** The suites were executed only as a control.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T10:18:44Z
+
+**End state:**
+
+**`PLAN-DUNCHI-LAUNCH-2026-09-19` stands at 12 of 32 effort (37.5%), 4 of 9 rows done** — verified by the validator at exit 0, recomputed independently from the document, and with every row re-checked as parsing to four cells after the pipe defect.
+
+**Step 6 is now three-quarters closed:** `6.2`, `6.3` and `6.4` are `done`; **`6.1` alone remains**, and it closes only when the Owner sees a dropped submission recover by itself — which nothing has done since the fix landed. **That row may have no reachable sighting**, and it is the obvious next thing to put to him.
+
+**What gates launch is unchanged: `3.1`.** The list is empty, so the village cannot usefully be told (`1.1`) and the journey cannot be walked on real content (`4.1`).
+
+**Nothing else moved.** No code file touched, no row appended, no effort re-weighted, nothing written to the Owner's spreadsheet, nothing redeployed.
 
 Working tree clean. Both remotes level.
