@@ -8078,7 +8078,7 @@ Working tree clean. Both remotes level.
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `f34c59d` — `docs: close row 4.1 and record the no-signal constraint — 24/36 to 29/36` — row 4.1's closure and satellite dates, the `[CONSTRAINT] 2026-09-21` no-mobile-signal entry in Layer 3, and the Layer 1/5 records plus this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10). ⚠ **NO CODE FILE WAS TOUCHED** — `Publish.gs`, `Code.gs`, `app.js`, `SHEET-FORMULAS.md` and every test file are unmodified; this was a plan update and a constraint record, nothing else.
 
 **Finished:** 2026-09-21T11:58:30Z
 
