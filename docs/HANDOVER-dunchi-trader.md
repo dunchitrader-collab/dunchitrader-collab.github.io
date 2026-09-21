@@ -6238,7 +6238,7 @@ Note also that roughly an hour has passed since that run and the timer has kept 
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `4f4e88f` — `fix: an audit-trail write can no longer abort the recovery it audits` — `noteInto()` and the sweep's three call sites, the negative controls and duplicate tests, the Layer 1/3/4/5 records and this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10).
 
 **Finished:** 2026-09-21T07:26:40Z
 
