@@ -624,6 +624,103 @@ const TWO_MISSED = [
         'returned ' + appended);
 }
 
+/* -------------------------------------------------------------------------
+   2026-09-21 — THE RUNAWAY DUPLICATE, and it CONTRADICTS what the previous
+   session concluded. Recorded here rather than quietly corrected.
+
+   That session tested a re-run with a FRESH stub each time and concluded
+   "no duplicate risk". It was testing the wrong thing: with a fresh sheet the
+   merge guard was always consulted. THE LIVE CONDITION is the SAME sheet
+   swept again and again, and there the guard is not always reachable.
+
+   MEASURED FROM THE OWNER'S EXECUTION LOG: fourteen consecutive sweeps, every
+   five minutes 07:11 -> 08:16, each logging "sweep published 8 missed
+   submission(s)" and then failing on M2.
+
+   THE MECHANISM: `normalisePhone` returns '' for a phone it REFUSES — two
+   numbers in one box, a damaged leading zero, the wrong digit count. The
+   sweep's duplicate check was written `if (key) { ...rowIndexForPerson... }`,
+   so for exactly those rows THE CHECK NEVER RAN. Each sweep republished them.
+
+   Reproduced below: 8 refused-phone responses with the action column also
+   refusing its notes produce 112 rows over 14 sweeps on the pre-fix file.
+   ------------------------------------------------------------------------- */
+section('2026-09-21 — a refused phone must not disable the duplicate check');
+{
+  /* A phone the normaliser refuses: two numbers in one box. This is real —
+     it is Murray Angel's, and Lee Schofield's. */
+  const TWO_NUMBERS = '07872 065874 or 01392 980312';
+  const P = load(makeSheet(PUBLISHED,'Published'), makeResponses([]));
+
+  check('the normaliser really does refuse this phone (the premise holds)',
+        P.normalisePhone(TWO_NUMBERS) === '', JSON.stringify(P.normalisePhone(TWO_NUMBERS)));
+
+  /* The row as `publishInto` writes it — phone stored verbatim, status hidden. */
+  const already = [HDR.slice(),
+    ['T021','Murray','Angel','', "'" + TWO_NUMBERS, 'Plumber','','hidden','','','Good','Tim']];
+
+  const viaPhone = P.rowIndexForPerson(already, P.normalisePhone(TWO_NUMBERS), 'Murray', 'Angel');
+  check('CONTROL: the phone-based guard CANNOT find it — this is the defect',
+        viaPhone === -1, 'returned ' + viaPhone);
+
+  if (CONTROL) {
+    check('CONTROL: no fallback existed, so the row republished every sweep',
+          typeof P.rowIndexForUnusablePhone !== 'function',
+          'rowIndexForUnusablePhone already exists');
+  } else {
+    /* Called through a guard so this file still RUNS against a pre-fix
+       Publish.gs and reports a clean FAIL rather than crashing the suite —
+       which is what it must do to be usable as a negative control. */
+    const has = typeof P.rowIndexForUnusablePhone === 'function';
+    check('the fallback exists at all', has,
+          'rowIndexForUnusablePhone is not defined — this is the pre-fix file');
+
+    check('the name+trade fallback FINDS the row the phone guard cannot',
+          has && P.rowIndexForUnusablePhone(already, 'Murray', 'Angel', 'Plumber') === 1,
+          has ? 'returned ' + P.rowIndexForUnusablePhone(already, 'Murray', 'Angel', 'Plumber')
+              : 'no fallback');
+
+    check('a DIFFERENT person with an unusable phone is NOT matched',
+          has && P.rowIndexForUnusablePhone(already, 'Stuart', 'Ironside', 'Carpenter') === -1,
+          has ? 'matched wrongly' : 'no fallback');
+
+    /* publishInto must now merge rather than add. */
+    const before = already.length;
+    const out = P.publishInto({getRange:()=>({setValue(){},setValues(){}})}, already,
+      { trade:'Plumber', first:'Murray', last:'Angel', phone:TWO_NUMBERS,
+        business:'', words:'Good', by:'Tim' });
+    check('publishInto MERGES a refused-phone person rather than adding a row',
+          out.added === false, JSON.stringify(out));
+    check('and no row was appended to the table',
+          already.length === before, already.length + ' vs ' + before);
+  }
+}
+
+/* THE END-TO-END RUNAWAY: the same sheet, swept repeatedly, with BOTH the
+   refused phone and the refused note — the Owner's actual combination. */
+{
+  PROPS = {};
+  const pub  = makeSheet([], 'Published');
+  const TWO  = '07872 065874 or 01392 980312';
+  const resp = makeResponsesRefusingAction([
+    ['2026-09-20 20:03','','Plumber','Murray','Angel',TWO,'','Turned up','Tim','','','',''],
+    ['2026-09-20 20:07','','Carpenter','Stuart','Ironside',TWO.replace('874','875'),'','Nice gate','Lin','','','','']
+  ]);
+
+  for (let run = 0; run < 6; run++) {
+    const P = load(pub, resp);
+    try { P.sweepPublished(); } catch (ignored) {}
+  }
+  const ids = pub.grid.slice(1).map(r => r[0]).filter(Boolean);
+  const names = pub.grid.slice(1).filter(r => r[0]).map(r => r[1] + ' ' + r[2]);
+  const dups = names.filter((n,i) => names.indexOf(n) !== i);
+
+  check('six sweeps of two refused-phone responses produce exactly two rows',
+        ids.length === 2, ids.length + ' rows: ' + ids.join(','));
+  check('and nobody appears twice',
+        dups.length === 0, dups.join(' | '));
+}
+
 /* THE FORM-SUBMIT PATH was already protected — `note()` swallows its own
    failure. Asserted here so a later edit cannot quietly remove that guard. */
 {

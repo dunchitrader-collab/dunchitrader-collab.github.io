@@ -634,8 +634,14 @@ function sweepPublished() {
       /* Already on the list from an earlier run that could not write its note?
          Recognise it and record the note now rather than publishing twice. */
       var key = normalisePhone(row.phone);
-      if (key) {
-        var at = rowIndexForPerson(existing, key, row.first, row.last);
+      /* AN UNUSABLE PHONE MUST NOT MEAN "NO DUPLICATE CHECK AT ALL".
+         `normalisePhone` returns '' for a field it refuses, and until
+         2026-09-21 that made `if (key)` false and skipped this block
+         entirely — so a refused-phone response republished on EVERY sweep.
+         Measured: 8 such responses became 112 rows over 14 runs. */
+      var at = key ? rowIndexForPerson(existing, key, row.first, row.last)
+                   : rowIndexForUnusablePhone(existing, row.first, row.last, row.trade);
+      {
         if (at !== -1) {
           if (actionCol > 0 &&
               !noteInto(sheet, r + 1, actionCol,
@@ -949,8 +955,12 @@ function publishInto(pub, existing, row) {
      MATCHED ON PHONE **AND** NAME since 2026-09-19. Ben Franks and John
      Pilkington share 07887800192, and phone alone put one man's recommendation
      on the other man's card. */
-  if (phoneKey) {
-    var at = rowIndexForPerson(existing, phoneKey, row.first, row.last);
+  /* 2026-09-21 — the same runaway-duplicate guard as the sweep's. A refused
+     phone yields no key, and without this fallback EVERY caller of this
+     function republishes such a person on every pass. */
+  var at = phoneKey ? rowIndexForPerson(existing, phoneKey, row.first, row.last)
+                    : rowIndexForUnusablePhone(existing, row.first, row.last, row.trade);
+  {
     if (at !== -1) {
       var id = existing[at][PUB_COLS.indexOf('id')];
       if (words) {
@@ -1044,6 +1054,51 @@ function rowIndexForPhone(values, phoneKey) {
  * Returns -1 when the number is on the list but under a DIFFERENT name — which
  * is a new person who happens to share a line, and gets their own row.
  */
+/**
+ * Which Published row is this person, when their telephone number is UNUSABLE?
+ *
+ * ---------------------------------------------------------------------------
+ * 2026-09-21 — THE RUNAWAY-DUPLICATE DEFECT. This is the guard of last resort
+ * and it exists because the phone-based one cannot fire at all for these rows.
+ *
+ * `rowIndexForPerson` needs a phone key. `normalisePhone` deliberately returns
+ * '' for a field it refuses — two numbers in one box, a damaged leading zero,
+ * a wrong digit count — so for exactly those submissions the caller's
+ * `if (key)` is false and THE DUPLICATE CHECK NEVER RUNS. The row is published
+ * `hidden`, the sweep comes round again five minutes later, finds no action
+ * note and no matching phone, and publishes it AGAIN. And again.
+ *
+ * MEASURED against the real code: eight such responses with the action column
+ * refusing its notes produced **112 rows over 14 sweeps** — the Owner's own
+ * log, "sweep published 8 missed submission(s)" repeated every five minutes
+ * from 07:11 to 08:16.
+ *
+ * Matching on NAME + TRADE is weaker than name + phone, and that is accepted
+ * deliberately: the alternative is not a stricter match, it is no match at all
+ * and a list that grows without bound. A false match here costs one merged
+ * recommendation on a row the Owner must fix by hand anyway, because every row
+ * reaching this path is `hidden` with an unusable number.
+ * ---------------------------------------------------------------------------
+ */
+function rowIndexForUnusablePhone(values, first, last, trade) {
+  var fcol = PUB_COLS.indexOf('first_name');
+  var lcol = PUB_COLS.indexOf('last_name');
+  var tcol = PUB_COLS.indexOf('trade');
+  var want = nameKeyOf(first, last);
+  if (!want) return -1;
+  var wantTrade = normaliseTrade(trade);
+
+  for (var r = 1; r < values.length; r++) {
+    if (nameKeyOf(values[r][fcol], values[r][lcol]) !== want) continue;
+    /* Trade is a secondary check, not a requirement: an Owner who has tidied
+       the trade on a hidden row must not cause a second copy to appear. */
+    if (wantTrade && normaliseTrade(values[r][tcol]) &&
+        normaliseTrade(values[r][tcol]) !== wantTrade) continue;
+    return r;
+  }
+  return -1;
+}
+
 function rowIndexForPerson(values, phoneKey, first, last) {
   if (!phoneKey) return -1;
   var pcol = PUB_COLS.indexOf('phone');

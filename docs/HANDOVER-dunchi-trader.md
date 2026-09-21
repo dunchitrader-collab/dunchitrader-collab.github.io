@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T07:23:59Z
+last-updated: 2026-09-21T08:05:27Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T07:23:59Z** ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T08:05:27Z** ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -38,6 +38,14 @@ ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from
 ⚠ **NOT LIVE — THE FIX IS COMMITTED, THE COPY THAT RUNS IS IN HIS ACCOUNT.** He must re-paste `Publish.gs`. Until then every sweep still risks abandoning submissions after the first refused note.
 
 **THE DUPLICATE QUESTION IS ANSWERED AND THE ANSWER IS NO, ON EVIDENCE.** The sweep has fired repeatedly since 07:11 with the action column still blank, so every firing reconsidered the same rows. **Measured against the real functions: `rowIndexForPerson` matches on phone AND name and finds the row the aborted run already wrote, so the sweep `continue`s; `publishInto` returns `added: false` if reached; and `appendRecommendation` refuses identical words.** Three independent layers, any one sufficient. **What his sheet needs is a look, not a repair** — the check is in Layer 4.
+
+**2026-09-21T08:05:27Z — TWO FINDINGS FROM PRODUCTION, AND ONE OF THEM OVERTURNS YESTERDAY'S CONCLUSION.**
+
+**(A) THE OWNER RE-PASTED AND RE-INSTALLED THE UNFIXED FILE.** Measured: the live repo `dunchitrader-collab/dunchitrader-collab.github.io` — **the copy-source he is told to use** — stood at `0f7c3ec` (2026-09-19) and its `apps-script/Publish.gs` was **byte-identical to `1d50b00`**, the original publisher missing BOTH of today's fixes. **Nothing automates `origin` → `collab`; it is a manual push that had not been run.** ⚠ **Every conclusion drawn from his execution log this morning is a conclusion about `1d50b00`.** **RESOLVED THIS SESSION — the push was performed**, verified by dry run first.
+
+**(B) THERE IS A RUNAWAY DUPLICATE DEFECT, AND YESTERDAY'S "NO DUPLICATE RISK" WAS WRONG.** `normalisePhone` returns `''` for a phone it refuses, and the duplicate check was guarded by `if (key)` — so **for refused-phone rows the check never ran at all** and the sweep republished them every five minutes. **Measured by reproducing the LIVE condition — the same sheet swept repeatedly, which is what yesterday's fresh-stub test did not do: 8 responses became 112 rows over 14 sweeps on `4f4e88f`.** That is the Owner's log exactly — *"sweep published 8 missed submission(s)"* fourteen times, 07:11 to 08:16. ⚠ **`4f4e88f` made it worse:** the abort it removed had been accidentally limiting the damage to one row per run. Fixed by `rowIndexForUnusablePhone()`, a name+trade fallback. **Same scenario now yields 8 rows and no duplicates.**
+
+**WHAT HIS SHEET SHOULD SHOW, and it is the good case:** he is running `1d50b00`, whose abort stopped each sweep after the first new row — so **roughly 14 extra rows, not 112**. The count to check is in Layer 4.
 
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
@@ -816,6 +824,64 @@ The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file a
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
 
+**[BUG] 2026-09-21 — COMMITTING A FIX TO `origin` DOES NOT PUT IT WHERE THE OWNER COPIES FROM. He re-pasted believing he was installing a fix, and re-installed the unfixed file.**
+
+**This is a distribution defect, not a code defect, and it silently wasted a session's work.**
+
+Root cause: there are **two** repositories and **no automation between them**. `gsamwell-lang/dunchi-trader` (`origin`) is where sessions commit. `dunchitrader-collab/dunchitrader-collab.github.io` (`collab`) serves GitHub Pages **and carries a full copy of `apps-script/`** — and **that is the one the Owner is told to copy from**, because it is the account he is signed into. **Nothing pushes `origin` → `collab`.** It is a manual `git push collab master:main`, and it had not been run since 2026-09-19.
+
+**MEASURED 2026-09-21T08:0xZ:**
+
+| Check | Result |
+|---|---|
+| `git fetch collab main`; `git log -1 FETCH_HEAD` | **`0f7c3ec`, 2026-09-19T21:43:38Z** |
+| `git show FETCH_HEAD:apps-script/Publish.gs \| grep -c noteInto` | **`0`** — the audit-trail fix is absent |
+| `diff` live copy against each local commit | **byte-identical to `1d50b00`** — the ORIGINAL publisher, missing BOTH 2026-09-21 fixes |
+
+**So when the Owner re-pasted this morning he installed `1d50b00`** — the version with the bare `setValue` and the unguarded duplicate check. **Every conclusion drawn from his subsequent execution log is a conclusion about `1d50b00`, not about the committed fix.**
+
+**The `apps-script/` copy in the live repo serves no runtime purpose.** GitHub Pages serves `index.html`, `app.js` and the assets; Apps Script code is pasted by hand into a Google project. It is there as **the Owner's copy-source**, which is precisely why it must not be allowed to go stale.
+
+Fix applied: **the push was performed this session** — this repo has write access to `collab` (Gavin added `gsamwell-personal` as a collaborator on 2026-09-18; see the RESOLVED Layer 1 row), verified by `git push --dry-run collab master:main` returning `0f7c3ec..ed70407` at exit 0 **before** anything was written.
+
+⚠ **`GITHUB_TOKEN=` MUST BE CLEARED ON EVERY PUSH TO EITHER REMOTE.** The environment exports a fine-grained PAT that overrides the credential helper — the `[BUG] 2026-09-18` entry below records this and it applies to `collab` exactly as it does to `origin`. `GITHUB_TOKEN= git push collab master:main` succeeds; the same command without the prefix fails with HTTP 403 and looks like a permissions problem it is not.
+
+Diagnosis: `GITHUB_TOKEN= git fetch collab main && GITHUB_TOKEN= git diff FETCH_HEAD..HEAD --stat -- apps-script/` — **any output means the Owner's copy-source is stale.** Run it before telling him to paste anything.
+
+**[BUG] 2026-09-21 — A REFUSED PHONE DISABLED THE DUPLICATE CHECK ENTIRELY, so the sweep republished the same people every five minutes. MEASURED: 8 responses became 112 rows over 14 sweeps.**
+
+⚠ **THIS CORRECTS THE PREVIOUS SESSION'S CONCLUSION, which was wrong.** The 2026-09-21 audit-trail session concluded *"no duplicate-row risk"* on three measured guards. **The measurement was sound and the conclusion did not follow**, because the test drove each re-run against a **fresh stub**, where the merge guard is always consulted. **The live condition is the SAME sheet swept again and again**, and there the guard is not always reachable. **The earlier entry's guards are real; they are simply not the only path.**
+
+Root cause: `normalisePhone` **deliberately returns `''`** for a field it refuses — two numbers in one box, a damaged leading zero, a wrong digit count. That is correct behaviour and is itself a 2026-09-19 fix. But the sweep's duplicate check was written:
+
+```javascript
+var key = normalisePhone(row.phone);
+if (key) {                                  // <-- FALSE for a refused phone
+  var at = rowIndexForPerson(existing, key, row.first, row.last);
+  if (at !== -1) { ...record the merge and continue... }
+}
+```
+
+**For exactly those rows the duplicate check NEVER RAN.** The response published `hidden`, the sweep came round five minutes later, found no action note and never consulted the guard, and published it **again**. `publishInto` carried the identical `if (phoneKey)` structure, so every caller was affected.
+
+**Why it needed BOTH conditions, which is why it was not seen sooner.** A row is skipped at the top of the loop if its `action` cell is non-empty. So a refused phone alone is harmless — the note lands, the row is skipped next time. **The runaway needs a refused phone AND a refused note**, and the Owner had both: `T017 Lee Schofield`'s number is *"07872 065874 or 01392 980312"*, and column `M` carried the triage dropdown that refused every note.
+
+**MEASURED, reproducing the live condition — the same sheet swept repeatedly, not a fresh stub:**
+
+| File | 14 sweeps, 8 refused-phone responses, notes refused | Duplicates |
+|---|---|---|
+| `1d50b00` (original, **what the Owner is running**) | **14 rows** — one new person per sweep, because the abort stopped it after the first | Yes, growing |
+| `4f4e88f` (yesterday's audit fix) | **112 rows** | **Yes — all 8, every sweep** |
+| This fix | **8 rows** | **None** |
+
+⚠ **`4f4e88f` MADE THIS WORSE AND THAT IS RECORDED RATHER THAN GLOSSED.** Removing the abort was correct on its own terms — it stopped the sweep truncating — but the abort had been accidentally *limiting* the duplication to one row per run. **Fixing the abort without fixing the guard turned a slow leak into a flood.** This is the exact reason the Owner's log showed `published 8` fourteen times rather than `published 1`.
+
+Fix applied: **new `rowIndexForUnusablePhone(values, first, last, trade)` at [PATH] `apps-script/Publish.gs:1083`** — a name + trade fallback used when and only when the phone yields no key. Both call sites now read `var at = <key> ? rowIndexForPerson(...) : rowIndexForUnusablePhone(...)`: the sweep at `Publish.gs:642-643`, and `publishInto` at `961-962`.
+
+**The fallback is deliberately weaker than name + phone**, and that trade is stated rather than hidden: the alternative is not a stricter match but **no match at all and a list that grows without bound**. A false match costs one merged recommendation on a row that is `hidden` with an unusable number and which the Owner must edit by hand regardless.
+
+Diagnosis: `node apps-script/test-publisher-resilience.js` — section *"2026-09-21 — a refused phone must not disable the duplicate check"*. **Against the pre-fix file those controls fail and the suite reproduces the runaway**: six sweeps of two responses produce twelve rows with each person five times over.
+
 **[BUG] 2026-09-21 — the audit-trail write aborted the recovery it was auditing: a refused `action` note threw out of `sweepPublished` MID-LOOP, so the sweep published some missed submissions and silently abandoned the rest**
 
 **This is a design defect, not a typo, and it is the most serious class this project has produced: row 6.2's visibility mechanism killed row 6.1's recovery function.**
@@ -1047,6 +1113,41 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ## The queue as it stands after the 2026-09-21 session
 
 *The 2026-09-19 queue follows below this section, under its own original heading, unchanged except where an item has been closed in place.*
+
+**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — duplicate rows are on the list NOW | COMPUTER, five minutes**
+
+**COUNT THE ROWS ON PUBLISHED. This is the one specific thing to do, and it distinguishes every hypothesis.**
+
+**Open the Published tab and count the data rows** (ignore the header). Then count how many are **`Murray Angel`** and how many are **`Stuart Ironside`**.
+
+| What he counts | What it means | What follows |
+|---|---|---|
+| **~22 rows**, Murray once and Stuart once | Everything worked; the 8 landed cleanly and nothing duplicated | **Best case.** Nothing to undo |
+| **~30–40 rows**, with **one or two names repeated a dozen times** | **EXPECTED, and it is the measured behaviour of the file he is running.** `1d50b00` aborts after the first new row each sweep, so ~14 sweeps added ~14 extra rows — mostly copies of whichever response sits first with an unusable phone | Hide the copies; see below |
+| **100+ rows**, all 8 names repeated ~14 times | He is somehow running `4f4e88f` rather than `1d50b00` | **Send the count across** — it changes which file was installed |
+| **Murray or Stuart appearing 5+ times** | The runaway hit them specifically | Hide the copies; keep the **lowest** id of each |
+
+**⚠ HIDE THE COPIES, NEVER DELETE THEM** — Owner's standing ruling **D7-6G7f-19092026**. Deleting the highest id frees it for reuse and a later submission inherits somebody else's recommendations. **Keep the LOWEST id for each real person** (it holds the original recommendation) and set `status` to `hidden` on the rest.
+
+**Why this happened, in one line:** a telephone number the system refuses — two numbers in one box, like `T017 Lee Schofield`'s *"07872 065874 or 01392 980312"* — produced no usable key, and the duplicate check only ran when there was a key. **Fixed in the code this session; he needs the re-paste below for the fix to be running.**
+
+---
+
+**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — stops the duplication recurring | COMPUTER, one paste**
+
+**RE-PASTE `Publish.gs` — and this time the copy-source is correct.** ⚠ **The file he pasted this morning was the ORIGINAL publisher**, not a fix: the live repo had not been updated since 2026-09-19 (see the `[BUG] 2026-09-21` distribution entry in Layer 3). **That has been fixed — the push was performed this session**, so the copy at the URL below now carries both of today's fixes.
+
+**Copy from:**
+
+```
+https://raw.githubusercontent.com/dunchitrader-collab/dunchitrader-collab.github.io/main/apps-script/Publish.gs
+```
+
+**Click-by-click:** open that URL → **Ctrl+A**, **Ctrl+C** → open the spreadsheet → **Extensions → Apps Script** → click **`Publish.gs`** in the left-hand file list → **Ctrl+A**, **Ctrl+V** → **Ctrl+S**. **Do not touch `Code.gs`** and **do not redeploy** — neither is involved.
+
+**How he knows it worked:** press **Ctrl+F** in the editor and search for **`rowIndexForUnusablePhone`**. **Present = the fix is installed. Absent = the paste did not take.**
+
+**Then remove the data validation from column `M`** on Form responses (**Data → Data validation →** remove the rule permitting only `Publish` / `Add to T0xx` / `Reject`). The fix survives without this, but until it is gone the `action` column stays blank and he has no audit trail.
 
 **[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — the fix is committed but the copy that RUNS is in his account | COMPUTER, one paste**
 
@@ -2291,6 +2392,34 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **What was tried and rejected.** Wrapping the whole sweep body in a try/catch — rejected: it would have caught the refusal but also every genuine Published write failure, converting real lost recommendations into silent ones, which is the opposite of the intent. Validating the note text against the dropdown's permitted values before writing — rejected: it designs around one spreadsheet's current configuration, which the brief forbade, and it would break again on the next validation rule. Removing the action write from the sweep entirely — rejected: it is row 6.2's deliverable and the Owner asked for it in his own words.
 
 **[DECISION] The duplicate risk was ESTABLISHED, not estimated, and the answer is no.** `recordSweepRun()` does sit **after** the throw point, so the run was never remembered — but that only feeds `checkSetup`'s display and does **not** drive the re-scan decision. The re-scan is driven by the blank action cell, so every subsequent firing genuinely reconsidered the same rows. **Three independent guards prevent a duplicate**, each measured against the real functions rather than reasoned about: `rowIndexForPerson` matches on phone **and** name and finds the row the aborted run already wrote, so the loop `continue`s; `publishInto` returns `added: false` if reached; `appendRecommendation` refuses identical words. **All three are now committed as permanent tests**, because the evidence for "no duplicates" was worth more as a regression guard than as a paragraph.
+
+---
+
+### 2026-09-21 — A correction: "no duplicate risk" was wrong, and the test that proved it was testing the wrong thing
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION] The previous session's conclusion is CORRECTED, not defended.** It concluded *"no duplicate-row risk"* from three guards measured against the real functions. **The guards are real and the measurements were honest. The conclusion did not follow**, and the gap is specific and worth naming because it is a general testing error:
+
+> **The test drove each re-run against a FRESH stub. The live condition is the SAME sheet swept again and again.** With a fresh sheet the merge guard was always consulted, so it always fired. On a real sheet a refused phone means the guard is **never consulted at all**.
+
+**The production log was right and the test was wrong.** Fourteen sweeps logging `published 8` was not consistent with "no duplicates", and the correct response to that inconsistency was to reproduce the live condition rather than re-assert the test.
+
+**[DECISION] The mechanism, established rather than assumed.** `normalisePhone` returns `''` for a phone it refuses — itself a deliberate 2026-09-19 fix so a two-number field is never welded. The duplicate check was `if (key) { ...rowIndexForPerson... }`. **For a refused phone `key` is `''`, so the entire block was skipped** and the response republished on every sweep. `publishInto` carried the same structure, so every caller was affected.
+
+**It required BOTH a refused phone AND a refused note**, which is why it survived earlier testing: a row with a written action note is skipped at the top of the loop before the phone is ever consulted. The Owner had both conditions simultaneously.
+
+**[DECISION] ⚠ YESTERDAY'S FIX MADE THIS WORSE, and that is recorded rather than glossed.** `4f4e88f` removed the abort so the sweep would stop truncating. Correct on its own terms — **but the abort had been accidentally limiting the duplication to one row per run.** Measured over 14 sweeps of 8 refused-phone responses: `1d50b00` → 14 rows, `4f4e88f` → **112 rows**, this fix → 8 rows. **Fixing a symptom without understanding the whole loop turned a slow leak into a flood.**
+
+**[DECISION] The fallback matches on NAME + TRADE, and is deliberately weaker than name + phone.** The alternative is not a stricter match; it is **no match at all and a list that grows without bound.** A false match costs one merged recommendation on a row that is `hidden` with an unusable number and which the Owner must edit by hand regardless. **Trade is a secondary check rather than a requirement**, so an Owner who tidies the trade on a hidden row does not thereby cause a second copy.
+
+**Alternatives considered and rejected.** Keying on the form Timestamp — rejected: the sweep reads submissions whose timestamps it cannot match to Published, which stores none. Writing the response row number into Published — rejected: it adds a column to the Owner's sheet for the publisher's convenience and breaks if he ever sorts. Refusing to publish a bad-phone row at all — rejected: it loses the villager's recommendation entirely, which is the thing this whole step exists to prevent. Making `normalisePhone` return something for a refused phone — rejected: it would re-open the welded-number defect the Owner reported in his own words.
+
+**[DECISION] `apps-script/` in the live repo is a DISTRIBUTION CHANNEL and is now treated as one.** It serves no runtime purpose — Pages serves the site, and Apps Script code is pasted by hand. **It exists as the Owner's copy-source**, and a stale copy there means a session's fix silently never reaches production. **He re-pasted this morning and installed `1d50b00`.** The push `origin` → `collab` is manual and was 2 days stale; it has been performed this session and the diagnosis command is recorded in Layer 3 so it is checked before anybody is told to paste again.
+
+**[PATTERN CANDIDATE: test-the-steady-state-not-the-first-run]** A guard that runs on a fresh fixture every time is tested in the one state where it is least likely to fail. **Idempotence claims must be tested by running the operation repeatedly against the SAME accumulated state**, which is the condition production is always in. This session's error and its correction are both instances.
+
+**[PATTERN CANDIDATE: committed-is-not-deployed]** Work reaching `origin` is not work reaching the person who installs it. Where a human copies code from somewhere, **that somewhere is production** and needs the same staleness checks as a deploy target.
 
 ---
 
@@ -6251,3 +6380,106 @@ Note also that roughly an hour has passed since that run and the timer has kept 
 **No plan row status changed and no row was appended**, as instructed. Rows 6.1 and 6.2 stay `new`; this work sits inside their existing wording. `Code.gs` and its deployment were not touched. **Nothing was written to the Owner's spreadsheet.**
 
 Working tree clean. Remote level.
+
+---
+
+### 2026-09-21T08:12:05Z — The runaway duplicate, and the fix that never reached the Owner
+
+**Source:** Claude Code
+**Started:** 2026-09-21T07:48:30Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only, no new content authored there)
+
+**Prompt received:** *(the full commissioning prompt for this session, carrying Findings A and B and their verbatim execution-log extracts, is preserved in the Claude.ai conversation above. Its two findings are reproduced in full in the Layer 3 bug entries and the Layer 5 decision for this date, which carry the verbatim log quotations.)*
+
+**What was done:**
+
+**Repo state confirmed first:** HEAD `ed70407`, tree clean. **It did not differ from the prompt.**
+
+**FINDING B — TAKEN FIRST, because a duplicated list is live damage.**
+
+**1. Verified Claude.ai's reading of `added` against the file rather than trusting it.** `Publish.gs:661` reads `if (outcome.added) added++`, and `outcome.added` is `true` only on the new-row path of `publishInto` (`1016`); both merge paths return `false` (`962`, `967`). **Claude.ai's reading is correct.** Only line 668 emits the `published N missed submission(s)` message, so the log line is unambiguously `sweepPublished`.
+
+**2. Reproduced the live condition — repeated sweeps against ONE persistent sheet.** This is the step the previous session omitted. Findings, in order:
+
+- The **fixed** file (`4f4e88f`) against a *clean* 8-response sheet: `published 8` once, then silence, 8 rows. **Does not match his log.**
+- The **unfixed** file (`1d50b00`) with the whole action column refusing: **1 row**, throwing on the first note. **Does not match his log either** — it can never print `published 8`.
+- Varying which row refuses: refusing the **last** response gives 8 rows then a throw, but still logs `published 8` only once, because runs 2+ find every row already present.
+
+**3. Found the real mechanism by testing the guard itself.** Driving `rowIndexForPerson` across seven ways a sheet can read back differently, **six matched and one missed**: a phone the normaliser refuses. `normalisePhone('07872 065874 or 01392 980312')` returns `''`, `phoneProblem` naming it as two numbers in one box. **The sweep's check is `if (key) {...}`, so for exactly those rows the duplicate check never ran.**
+
+**4. Reproduced the Owner's log exactly.** 8 refused-phone responses + refused notes, 14 sweeps:
+
+| File | Rows after 14 sweeps | Log |
+|---|---|---|
+| `1d50b00` — **what he is running** | **14** | one new row per run |
+| `4f4e88f` — yesterday's fix | **112** | **`published 8` every run — his log exactly** |
+| This fix | **8** | `published 8` once |
+
+**5. Fixed it.** `rowIndexForUnusablePhone()` at `Publish.gs:1083`, wired in at `642-643` (sweep) and `961-962` (`publishInto`).
+
+**FINDING A — the distribution gap.**
+
+**Established by measurement, not assumption.** `git fetch collab main` → live repo at **`0f7c3ec`, 2026-09-19T21:43:38Z**. `grep -c noteInto` on its `Publish.gs` → **`0`**. `diff` against every local commit → **byte-identical to `1d50b00`**. **The Owner re-pasted the original publisher.**
+
+**The handover's own record resolved the access question.** Layer 1 carries a RESOLVED row: Gavin added `gsamwell-personal` as a collaborator with Write access on 2026-09-18, and a push landed at `f94d45a`. **This session therefore CAN push.** Verified with `git push --dry-run collab master:main` → `0f7c3ec..ed70407`, exit 0, **before writing anything**. The push was then performed. **The Owner needs no manual route** — but the exact copy-from URL and click-by-click paste steps are in Layer 4 regardless, with a `Ctrl+F` string to confirm the paste took.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | Repo matches prompt HEAD | `ed70407`, clean | **did not differ** | PASS |
+| 2 | Baseline all suites | green | **227 passed, 0 failed** | PASS |
+| 3 | `added++` reachable only for new rows | verify Claude.ai's reading | confirmed at `661`/`1016`/`962`/`967` | PASS |
+| 4 | Only one emitter of the log line | `sweepPublished` alone | line `668` only | PASS |
+| 5 | Fixed file, clean sheet, 14 sweeps | no repeat | 8 rows, logged once | PASS |
+| 6 | Unfixed file, all notes refused | reproduce log | **1 row — does NOT match** | Hypothesis rejected |
+| 7 | Unfixed file, only last row refuses | reproduce log | 8 rows, logged once — **still no match** | Hypothesis rejected |
+| 8 | Merge guard across 7 read-back variations | find the hole | **6 match, 1 misses: refused phone** | **Root cause found** |
+| 9 | `normalisePhone` on a two-number field | `''` | `''` | PASS |
+| 10 | **`4f4e88f` + refused phones + refused notes, 14 sweeps** | reproduce his log | **112 rows, `published 8` ×14 — EXACT MATCH** | **Reproduced** |
+| 11 | `1d50b00` under the same conditions | bound the live damage | **14 rows** | PASS |
+| 12 | **After fix, same conditions** | no runaway | **8 rows, no duplicates** | PASS |
+| 13 | Fallback finds what the phone guard cannot | index 1 | 1 | PASS |
+| 14 | Fallback does NOT match a different person | -1 | -1 | PASS |
+| 15 | `publishInto` merges a refused-phone person | `added:false` | `added:false` | PASS |
+| 16 | Six sweeps of two refused-phone responses | 2 rows | 2 rows, no dups | PASS |
+| 17 | **New controls fail against pre-fix file** | clean FAIL | **7 FAIL, runaway reproduced in-suite (12 rows)** | PASS |
+| 18 | Suite still runs against an older file | no crash | degrades to clean FAILs after guard added | PASS after fix |
+| 19 | Full regression | no regression | **236 passed, 0 failed** (227→236) | PASS |
+| 20 | Live repo staleness | measure | **`0f7c3ec`, identical to `1d50b00`, no `noteInto`** | PASS |
+| 21 | Push access to collab | dry run before writing | `0f7c3ec..ed70407`, exit 0 | PASS |
+| 22 | Handover line refs are real | match | **corrected `1047`→`1083`, `637-643/1000-1005`→`642-643/961-962`** | PASS after correction |
+| 23 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `08:05:27Z`; 6 layers | PASS |
+| 24 | No plan row changed or appended | no change | neither plan file modified | PASS |
+| 25 | Owner's sheet untouched | nothing | all tests use stubs | PASS |
+| 26 | `Code.gs` untouched, nothing redeployed | unmodified | unmodified | PASS |
+
+**Test 22 caught my own error for the second session running** — line numbers cited from memory in a bug entry. Verified by `grep` and corrected. **The lesson is now recorded twice; it should be a habit, not a catch.**
+
+**What was not tested:**
+
+- **NOTHING RAN INSIDE GOOGLE.** All measurement is the real `Publish.gs` in a Node `vm` against stub sheets. **The duplicate fix is committed and pushed to both repos, but is NOT installed** until the Owner re-pastes.
+- **His actual Published row count is unknown.** The prediction that he will see ~14 extra rows rather than ~112 rests on his running `1d50b00`, which is established from the live repo's contents and his re-paste — **not from reading his sheet**, which no session may do. Layer 4 asks him to count.
+- **The column-M validation rule has still never been read** — inside his account. REPORTED.
+- **Which specific responses carry unusable phones on his sheet is not known.** `T017 Lee Schofield` is named from the 2026-09-19 record as a known instance; there may be others.
+- **The push to `collab` moved existing commits only.** No content was authored in that repo, and its `main` now equals this repo's `master`.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T08:12:05Z
+
+**End state:**
+
+**Two defects found, both real, one of them a correction to yesterday's work.** The runaway duplicate is fixed and regression-guarded; the distribution gap is closed by pushing to the live repo and is now a documented pre-paste check.
+
+**236 checks pass across four suites.** The new controls reproduce the runaway against the pre-fix file — six sweeps of two responses giving twelve rows — and pass against the fixed one.
+
+⚠ **NOT INSTALLED.** The Owner must re-paste from the live-repo URL in Layer 4, and confirm with `Ctrl+F` for `rowIndexForUnusablePhone`. **He also has duplicate rows on his list right now** — Layer 4 tells him what to count and to hide rather than delete, keeping the lowest id.
+
+**No plan row status changed and no row was appended.** Rows 6.1 and 6.2 stay `new`. `Code.gs` untouched, nothing redeployed, nothing written to the Owner's spreadsheet.
+
+Working tree clean. Both remotes level.
