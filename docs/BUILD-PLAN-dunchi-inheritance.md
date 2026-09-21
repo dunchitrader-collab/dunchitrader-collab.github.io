@@ -116,3 +116,17 @@ one thing standing between this plan and a closed row.
 own walk is the weakest available test of a runbook written for somebody who knows nothing. When
 this plan is next picked up, that is the decision to put to him — **not whether the work matters,
 which he has not disputed, but who can credibly perform it.**
+
+**THE QUESTION WAS PUT TO HIM ON 2026-09-21 AS `D15-VCWL-21092026`, AND IT WAS NOT ANSWERED
+BEFORE THAT CONVERSATION CLOSED TO FURTHER SENDS.** Three options were offered: **(a)** Frank
+walks it — a real test, because he holds the two logins and none of the Owner's context, so
+anything the runbook fails to say he hits rather than fills in; **this was Claude.ai's
+recommendation**; **(b)** the Owner walks it — fast and needing no coordination, but he would
+supply from memory whatever the runbook leaves out, which is precisely the defect class the walk
+exists to find; **(c)** park it — costing nothing now, leaving this plan at 0% indefinitely and
+the risk unchanged.
+
+⚠ **NO DEFAULT IS RECORDED AND NONE MAY BE INFERRED.** The full statement of the options and
+their effects is in handover Layer 4 under `D15-VCWL-21092026`, recorded there because the
+conversation in which it was raised is closed. **Row `1.1` is untouched by this note** — its
+status, wording, effort and acceptance are unchanged, and it still closes on the walk.

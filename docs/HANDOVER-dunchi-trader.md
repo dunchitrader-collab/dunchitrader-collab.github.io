@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T12:23:13Z
+last-updated: 2026-09-21T12:38:31Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T12:23:13Z** ~~2026-09-21T12:06:45Z~~ ~~2026-09-21T11:58:30Z~~ ~~2026-09-21T11:47:05Z~~ ~~2026-09-21T11:32:10Z~~ ~~2026-09-21T10:53:24Z~~ ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T12:38:31Z** ~~2026-09-21T12:23:13Z~~ ~~2026-09-21T12:06:45Z~~ ~~2026-09-21T11:58:30Z~~ ~~2026-09-21T11:47:05Z~~ ~~2026-09-21T11:32:10Z~~ ~~2026-09-21T10:53:24Z~~ ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -26,6 +26,24 @@ status: active
 **This mission changes only by an explicit decision recorded in Layer 5, never as a side effect of session work.**
 
 ### Project Status
+
+**⚠ 2026-09-21T12:38:31Z — LAUNCH DAY. THE SITE IS LIVE AND THE VILLAGE HAS BEEN TOLD.** This supersedes every "not yet launched" reading below it.
+
+| Fact | Value |
+|---|---|
+| **Status** | **LIVE AND LAUNCHED** [VERIFIED 2026-09-21] |
+| **[URL] The directory** | `https://dunchitrader-collab.github.io` [VERIFIED 2026-09-21] |
+| **On the list** | **12 tradespeople across 9 trades** — `Last ID in use: T012`, rows 2 to 13, no stranded rows |
+| **The village** | **TOLD.** The Owner wrote and posted the launch message himself on 2026-09-21. ⚠ **Its wording is NOT in this repo and no session has seen it** |
+| **Live plan** | `PLAN-DUNCHI-INHERITANCE-2026-09-21` at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md` — **0 of 9, the only live plan** |
+| **Archived plan** | ~~`docs/BUILD-PLAN-dunchi-launch.md`~~ **ARCHIVED 2026-09-21** → [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-LAUNCH-2026-09-19.md`, signed off at **36 of 36 = 100.0%** under `D14a-VCWL-21092026` |
+
+⚠ **THAT 100% IS NOT "EVERYTHING WAS BUILT", and the reading matters more now the plan is archived.** **One requirement was MOVED OUT, not delivered** — row `5.1`, the Owner's own *"I want to be able to hand over the operating site to anyone else who inherits that google email account"*, at effort 9, under `D3c-VCWL-21092026`. **The launch plan was asked to cover 45 effort and delivered 36.** The denominator also **grew 32 → 34 → 36** from two defects his testers found in live traffic, and **two rows closed on deliberately weakened acceptance** under `D11a` and `D9a`.
+
+**WHAT IS STILL UNPROVEN:** the inheritance requirement. **The restore runbook is repaired and re-verified but HAS NEVER BEEN WALKED.** Row `1.1` closes on the walk and nothing less, and **the decision blocking it — WHO WALKS IT, put as `D15-VCWL-21092026` — is OPEN AND UNANSWERED.**
+
+**The Claude.ai conversation that drove today's work is CLOSED TO FURTHER SENDS:** `https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL`
+
 
 ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from the Published tab.** The design is live, the page reads the feed, search and the recommendation panel work, and the zoom/overflow behaviour is measured. Plan stands at ~~7 of 75 effort (9.3%)~~ ~~20 of 75 effort (26.7%)~~ ~~31 of 75 effort (41.3%)~~ ~~46 of 75 effort (61.3%), 9 of 14 rows done~~ ~~48 of 77 effort (62.3%), 10 of 15 rows done~~ ~~54 of 77 effort (70.1%), 11 of 15 rows done~~ ~~56 of 79 effort (70.9%), 12 of 16 rows done~~ ~~58 of 87 effort (66.7%), 13 of 18 rows done~~ SUPERSEDED 2026-09-18T19:45Z → **62 of 92 effort (67.4%)**, 14 of 20 rows done. **2026-09-18T20:08Z — position UNCHANGED at 62/92 (67.4%); this session closed no rows.** **2026-09-18T20:18Z — STILL 62/92 (67.4%), still no rows closed.** **2026-09-18T20:46Z → 68 of 92 effort (73.9%), 15 of 20 rows done — ROW 5.2 IS CLOSED.** **2026-09-18T21:10:23Z — CONVERSATION CLOSED DOWN at 68 of 92 (73.9%), 15 of 20 rows.** **2026-09-19T11:25:10Z — ~~68 of 92 (73.9%), 15 of 20 rows~~ SUPERSEDED → 68 of 96 effort (70.8%), 15 of 21 rows.** This session **cleared no effort and closed no row, which was the expected outcome and is stated plainly rather than dressed up**: everything it built closes on the owner's sighting of a real vote on the live page, and he has not yet redeployed. The percentage FELL because row **4.7** was appended at effort 4, adding to the denominator while the numerator stood still — arithmetic, not regression. **THE OPEN DEFECT IS DIAGNOSED AND IT WAS NONE OF THE FIVE CANDIDATES.** Measured 2026-09-19: the deployment behind the votes `/exec` address is not running `Code.gs` at all — Google answers *"Script function not found: doPost"* to every request, and *"doGet"* to every GET. The address is alive; the script behind it is the wrong one. **AND THE PANEL NOW FEEDS THE VILLAGE LIST.** Owner's ruling D1b: the site's own recommend button writes to **Published `K` and `L`** — the tab the village reads — through the same `appendRecommendation()` the automatic publisher uses, not a second copy. It no longer writes to the **Votes** tab, which nothing ever read. Bounded by D2 and enforced in code: it cannot create a row, assign or reuse an id, write any column but `K` and `L`, touch the owner's formula columns `I` and `J`, or reach an unknown or `hidden` id. **NEITHER FIX IS LIVE UNTIL THE OWNER REDEPLOYS** — nothing in this repository can put a script behind that address, and that is his first job (`apps-script/DEPLOY.md` step 14). **2026-09-19T12:17Z — THE BROKEN DEPLOYMENT IS NOW CONFIRMED BY THE OWNER**, on his own phone: he opened the `/exec` address and got `Script function not found: doGet`, independently matching the server-side measurement from a different device and network. **AND A SECOND DEFECT WAS FOUND AND FIXED — ROW 5.1's DELIVERABLE.** He typed the two test rows into Form responses and both reported somebody already on the site when neither was, **each naming its own row number**: `ALREADY ON SITE row 15` on row 15 and `row 16` on row 16. The `verdict` formula was comparing every row against the Form responses tab itself rather than against Published, because it read its comparison keys back out of its own columns `J` and `K`. Fixed at `6e0d4a0` — the keys are now computed inline so a self-match is not expressible, the verdict names the person's **id** rather than a row number, and the lookups are bounded so the helper columns' several hundred empty cells are out of reach. **34 tests pass including a negative control that reproduces the owner's exact readings against the defective formula.** Measured against his real list: both test rows had **already published themselves** as `T014` and `T015`, so `ALREADY ON SITE` is now their correct verdict and **`NEW` is structurally unreachable** on his tab — automatic publishing means every response is on the list within seconds. **Both fixes need a COMPUTER and are bundled into one trip** as DEPLOY.md step 14 Parts A and B. **2026-09-19T13:35:54Z — THE VERDICT FIX WAS ITSELF WRONG, AND THE OWNER FOUND IT BY LOOKING.** He pasted the morning's formula and photographed the result: **about twelve consecutive rows all reading `ALREADY ON SITE — T005`** — the same id on every row, where rows 15 and 16 must read `T014` and `T015`. The self-match was genuinely gone and every branch was chosen correctly; only the **id** was a broadcast constant. Cause, established from Google's documentation: **`INDEX` does not vectorise inside `ARRAYFORMULA`** — handed an array of positions it reads only the first. `MATCH` and `COUNTIF` both do vectorise, which is why the branches were right. Fixed at `81708cd` by replacing `INDEX`/`MATCH` with **`VLOOKUP` over a curly-brace literal array**; nothing else in the formula changed. **THE DEEPER FINDING: two successive fixes were proven against a hand-written simulator whose Sheets semantics were wrong, so the harness agreed with the code and both were wrong together. The owner found both defects by looking; the repository's tests found neither.** The harness now models `INDEX` as non-vectorising and requires the negative control to fail before a fix is written. **STILL NOT RUN IN GOOGLE SHEETS — treat the new formula as REPORTED until his screen confirms it.** One paste, and it needs a computer. **2026-09-19T13:41:12Z — THE RECOMMENDATION PATH IS CLOSED, SIGHTED END TO END BY THE OWNER ON THE LIVE SITE.** At ~13:35Z he placed a recommendation on **`Frank Shelly`** from the cache-busted live page, confirmed it reached **Published `K` and `L`**, then reloaded with a **FRESH** cache-busting parameter and saw his words and his name **on Frank Shelly's card**. The second cache-bust is what makes it a sighting of the path rather than of his browser's memory: the page that showed his words had never seen his submission. **Villager taps, the endpoint writes Published, the village sees it, and nobody touches a spreadsheet.** Build Plan rows **4.6 and 4.7 are `done`** at `5883164`; the plan moves **68 of 96 (70.8%) → 73 of 96 (76.0%), 17 of 21 rows**. **What remains is row 5.1's verdict formula** — one paste, needing a computer, and still unsighted. **2026-09-19T14:02:06Z — TWO MORE DEFECTS FIXED, BOTH IN WHAT A VILLAGER SEES, AND BOTH DEPLOYED.** Rows **4.8** and **4.9** appended at effort 3 each. **4.8, the Owner's ruling D5b:** the card drew a villager's own words the instant they pressed the button, from an in-page object — and because the endpoint's reply is opaque the page cannot know the write succeeded, so on a failure they were left believing permanently that the village could see words that had gone nowhere. The card now renders from the published feed alone; the thank-you and the five-minute notice stay. **4.9, misattribution:** the predicted cause was wrong — the writer keeps the blank line, but the READER dropped it, sliding every later name onto somebody else's words. Measured: **Helen and Bob were each credited with words they never wrote.** Fixed as two independent guards, and **the Owner's five existing rows with an empty `L` are safe as they stand — no repair needed.** **Three recommendations measured: ZERO overflow at every size, and the Call button sits at 827px whether a card carries 0, 1 or 3 — recommendations render below it, so the core action never moves.** **The Votes tab is safe to rename:** nothing opens it on any path. Deployed and **confirmed on the served page by real fetch**. Both rows stay `new` — they change what he sees. Plan **73 of 102 (71.6%), 17 of 23**. **2026-09-19T15:44:39Z — ROWS 4.8 AND 5.1 CLOSED; STEP 5 IS COMPLETE.** **4.8** closed on his sighting — he submitted a recommendation on the live site and the card showed nothing new while both messages appeared; his words: ***"CHECK 1 PASS."*** **5.1** closed under the Owner's ruling **D4b-6G7f-19092026**, which **corrected the row's acceptance** rather than leaving it unmeetable: automatic publishing under D7a means a response holds the verdict `NEW` only in the seconds between submission and publication, so the original *"all four cases"* clause could never be satisfied by looking at the sheet. Acceptance is now **three verdicts sighted by the Operator, with `NEW` evidenced by the committed harness**. He has sighted `CHECK THIS`, `SAME NAME, DIFFERENT NUMBER` and `ALREADY ON SITE` with per-row ids, and reported of the corrected formula: *"I have now pasted the correct code. And it seems to work."* **Recorded rather than glossed: he did NOT quote the readings of rows 15 and 16 back**, so the row does not claim he confirmed `T014`/`T015` individually. **Row 4.9 stays `new`** — he has confirmed named recommendations pair correctly but has **not** tested a nameless recommendation sitting above a named one, which is the only arrangement the defect lived in; the exact test is in Layer 4. Plan **82 of 102 (80.4%), 19 of 23** — **9 effort cleared.** **2026-09-19T15:55:48Z — ROW 4.9 CLOSED, AND A CONTROL NOBODY ASKED FOR REMOVED.** **4.9** closed on his sighting done in the exact order the defect required — nameless recommendation first, named one second, and on reload the first reads *"a villager"* while the second carries the right name. **Then he found drift:** *"it put in a button you had to click on to reveal the 'one more review' which is pointless. Just let it scroll!"* **Traced from history rather than assumed** — the expander came in at `91a3f4c` on 2026-09-18 in the row 3.5 work, **eighteen hours before** prompt 2718, so 2718 did not invent it. **But 2718's three-recommendation measurement was taken against a card rendering only two and a button, and is therefore superseded.** Removed entirely: no expander, no cap, no truncation — row **4.10** carries the ruling. **Six recommendations measured: zero overflow at every size, and the Call button stays at 827px with none, one or six, because recommendations render below it.** **A SECOND DEFECT WAS FOUND BY THAT MEASUREMENT, LIVING INSIDE 4.9's OWN FIX** — a blank name in the MIDDLE stores four consecutive newlines and the greedy split ate all four as one separator, so Wendy was credited with words she had not written; 4.9's tests only ever put the blank first or last. `splitNames` now splits on the literal separator. Deployed and **confirmed on the served page by real fetch**. Plan **85 of 104 (81.7%), 20 of 24**. **2026-09-19T16:04:42Z — ROW 4.10 CLOSED; STEP 4 IS COMPLETE.** His word: ***"4.10. pass"*** — he opened a card with more than two recommendations and every one rendered in order with nothing to tap. **Owner's ruling D7-6G7f-19092026 recorded: HIDE, NEVER DELETE.** Duplicates and test entries get `status` `hidden`, because deleting the highest id frees it for reuse and a later submission would inherit somebody else's recommendations. **The hiding itself is NOT done — it is his action on his own sheet and it GATES LAUNCH**, because the village list still shows test people. **Three things he resolved directly in his sheet:** the shared `07887800192` (*"I have changed the number"*), `T007`'s twelve-digit number (*"fixed"*), and the **`Publish.gs` re-paste** — which **corrects the previous session's summary**, since that said it was still outstanding and it is not: **both halves of the misattribution guard, writer and reader, are now live.** **One residual risk recorded and NOT acted on** (Layer 3): a recommendation filed while two people shared a number may sit on the wrong row, and changing the number does not move it — a one-off eyeball check for him, with its expected result written down. Plan **87 of 104 (83.7%), 21 of 24**. **2026-09-19T17:19:01Z — PLAN-DUNCHI-TRADER-V1 IS CLOSED AND ARCHIVED, AND A SUCCESSOR PLAN NOW GOVERNS.**
 
@@ -1400,6 +1418,26 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ## The queue as it stands after the 2026-09-21 session
 
 *The 2026-09-19 queue follows below this section, under its own original heading, unchanged except where an item has been closed in place.*
+
+**[OUTSTANDING] 2026-09-21 | ⚠ HIGH | Blocking: YES — it blocks the only live plan | AWAITING THE OWNER'S RULING, not a task**
+
+**`D15-VCWL-21092026` — WHO WALKS THE RESTORE RUNBOOK? OPEN AND UNANSWERED.**
+
+**Recorded here because it was put to the Owner in the Claude.ai conversation of 2026-09-21 and that conversation is now CLOSED TO FURTHER SENDS.** Without this entry the question would exist nowhere a session can reach. **`PLAN-DUNCHI-INHERITANCE-2026-09-21` row `1.1` sits at 0 of 9 until it is answered** — the runbook is repaired and re-verified, but **repairing is not walking**, and the row closes on the walk and on nothing less.
+
+**The three options as they were put to him, with their effects:**
+
+| | Option | Effect |
+|---|---|---|
+| **(a)** | **Frank walks it** — ⭐ **this was Claude.ai's recommendation** | **A real test.** He has the two logins and **none of the Owner's context**, so anything the runbook fails to say he **hits** rather than fills in. **Costs him a couple of hours** |
+| **(b)** | **The Owner walks it** | **Fast, needs no coordination** — but he would **supply from memory whatever the runbook leaves out**, which is *precisely the defect class the walk exists to find*. **It proves the steps run without proving they are sufficient for a stranger** |
+| **(c)** | **Park it** | **Costs nothing now.** The plan sits at **0% indefinitely** and **the risk is unchanged** — nobody can take this site on |
+
+⚠ **THE OWNER DID NOT RULE. NO DEFAULT IS RECORDED HERE, and none may be inferred.** A later session must put the question to him rather than pick one.
+
+**Why it matters beyond the plan's percentage:** this is the only clause of the Requirement as stated that remains unproven — *"I want to be able to hand over the operating site to anyone else who inherits that google email account"*. **The site is live and serving the village; what is untested is whether anybody but him could keep it running.**
+
+---
 
 ~~**[OUTSTANDING] 2026-09-21 | MEDIUM | Blocking: no | a session task, not the Owner's**~~ ~~ARCHIVE THE CLOSED PLAN.~~ **COMPLETED 2026-09-21T12:23:13Z — archived under the Owner's ruling `D14a-VCWL-21092026` to [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-LAUNCH-2026-09-19.md`.** Rule 5.8.4's derived name was used rather than the shorter one the commissioning prompt suggested; 5.8.4.1 and 5.8.4.2 were both applied; git records a rename so history follows.
 
@@ -3216,6 +3254,34 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **[DECISION] THE WALK WAS DELIBERATELY NOT PERFORMED, as instructed, and the reason is worth keeping.** A runbook gets **one clean first read**: the walker who has never seen it is the only person who can find the steps that are clear on the page and impossible at the screen. **Spending that on a session that already knows the system would destroy the evidence the row exists to gather.** Row `1.1` remains `new`.
 
 **[PATTERN CANDIDATE: verify-the-defect-still-exists-before-repairing-it]** This prompt named three defects with measured detail and asked for them to be fixed. **All three had been fixed two days earlier, and the row's own text said so.** Reading each against the current file cost minutes and prevented a session from "repairing" working text and reporting progress that was not made. **Where a brief names a defect from a prior record, confirm it is still present before touching anything.**
+
+---
+
+### 2026-09-21 — Close-down: the decisions ruled in conversation, and one option abandoned outright
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**This entry lands the decisions that were ruled in the Claude.ai conversation and never reached a Claude Code prompt of their own.** The rest of today's rulings — `D3c`, `D7a`, `D9a`, `D10a`, `D11a`, `D13c`, `D14a` — already carry their own Layer 5 entries above, written by the sessions that executed them, and are **not duplicated here.** Every decision below is the Owner's, ruled in conversation, and carries the conversation reference above.
+
+**[DECISION] `D2c-VCWL-21092026`, then `D2b-VCWL-21092026` — the plan's zero-percent reading was a VALIDATOR VISIBILITY FAULT, not a work fault.**
+
+**Rationale.** The plan reported zero despite real work having been done. **The cause was that rows were not being SEEN**, not that they were not done — a table shape the validator could not parse, so the rows existed on the page and not in the arithmetic. **`D2c` ruled the diagnosis; `D2b` ruled the sequence: fix the plan's tables so the rows are seen, then proceed.** Fixing the reading first mattered because every later percentage would otherwise have been computed over a denominator that silently omitted rows.
+
+**Why it is worth recording even though it is long fixed:** this is the same failure class that recurred at prompt 2763, when a literal `|` inside a sub-task cell split a row into five columns and **deleted it from the plan's arithmetic while the validator exited 0**. **A row that is invisible to the validator is not a cosmetic problem — the percentage goes wrong in the flattering direction.**
+
+**[DECISION] `D5a-VCWL-21092026` — proceed on the messy seeded data rather than stop to analyse it.**
+
+**Rationale.** The seeded list was untidy and the alternative was to pause and work out exactly how it had got that way. **He ruled to press on.** The judgement was that the mess was a symptom of test data rather than of a defect, and that analysing it would spend time on data about to be discarded — **which `D7a` then discarded entirely a short time later.** The ruling proved correct in the narrow sense that nothing was lost by not analysing it.
+
+**[FINDING] AN OPTION WAS ADOPTED AND THEN ABANDONED OUTRIGHT, which is recorded because a later session would otherwise re-propose it.** A **Google Forms regex response-validation rule** on the telephone question was put in place, and then **removed**. **Two reasons, both discovered in use:** Forms permits **only ONE response-validation rule per question**, so the regex consumed the single slot available; and **the regex blocked real numbers** that villagers were legitimately entering.
+
+**What stands in its place:** the publisher's own **normalisation and hold-back behaviour** — a number that is not eleven digits starting zero is published `hidden` with the reason written into the `action` column, rather than being refused at the door or silently corrected. **That control is measured and witnessed in live traffic** (2026-09-21, the missing leading zero). ⚠ **Recorded as ABANDONED rather than superseded: it was tried, it failed in use, and the form-level control does not exist today.** This also narrows the record of `D9a`, which closed row `6.3` partly on the strength of an upstream form control — **that control was subsequently removed, so the publisher's refusal is now the only defence on every route.**
+
+**[PATTERN CANDIDATE — NOT PROMOTED] `verify-the-defect-still-exists-before-repairing-it`.** Raised by the Claude Code session at prompt 2771. **A prompt named three defects with measured detail and asked for them to be fixed; all three had been fixed two days earlier, and the plan row's own text said so.** Reading each against the current file cost minutes and **prevented a session from "repairing" working text and reporting progress that had not been made.**
+
+⚠ **Recorded as a CANDIDATE and explicitly NOT PROMOTED.** Promotion to `gsamwell-lang/deverse-standards/patterns/` is the Owner's decision and has not been taken. **This entry is the flag, not the pattern.**
+
+**[VALIDATION] Claude Code summary for prompt 2771 ACCEPTED.** It **diverged from its prompt twice and was right both times**, which is recorded because it reflects on the prompt rather than on the session: it **derived the archive filename from Rule 5.8.4 rather than the shorter name the prompt gave**, matching the repo's own precedent; and it **verified the three named runbook defects against the current files rather than taking the prompt's word**, finding all three already repaired. **No corrections to its account.**
 
 ---
 
@@ -8362,3 +8428,41 @@ Sequence, exactly as 5.8.4.1 prescribes: **5.8.4.2's existing-target test first*
 **`PLAN-DUNCHI-INHERITANCE-2026-09-21` is the only live plan, at 0 of 9. Row `1.1` is `new` and is NOT closed by this session** — the runbook is repaired, and **repairing is not walking.** ⚠ **Nobody has ever followed that document end to end**, and the first walk should expect to find faults a read-through cannot.
 
 **No code file was touched. No live artefact was touched.** Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21 — Claude.ai + Gavin — LAUNCH DAY
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader
+
+The Dunchideock village trades directory went live and the village was told. The
+Owner wrote and sent the launch message himself, so its wording is not in this
+repo and no session has seen it.
+
+PLAN-DUNCHI-LAUNCH-2026-09-19 closed at 36 of 36 = 100.0%, signed off under
+D14a-VCWL-21092026, and is archived at
+docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-LAUNCH-2026-09-19.md.
+
+Three things the closure record states and this entry repeats, because a plan at
+100% invites the wrong reading:
+
+1. ONE REQUIREMENT WAS MOVED OUT, NOT DELIVERED. Row 5.1, the inheritance
+   requirement at effort 9, went to PLAN-DUNCHI-INHERITANCE-2026-09-21 under
+   D3c-VCWL-21092026. The plan was asked to cover 45 effort and delivered 36.
+2. The denominator grew 32 to 34 to 36 during the session, from two defects the
+   Owner's own testers found in live traffic — a one-name tradesperson, and a
+   mobile number that lost its leading zero.
+3. Two rows closed on weakened acceptance, under D11a-VCWL-21092026 and
+   D9a-VCWL-21092026.
+
+Effort-per-prompt for the closed plan, final and handed forward: 36 effort
+cleared, 19 prompts sent, 1.89.
+
+PLAN-DUNCHI-INHERITANCE-2026-09-21 is now the only live plan, at 0 of 9. Row 1.1
+is new. The runbook is repaired and re-verified; IT HAS NEVER BEEN WALKED, and
+the row closes on the walk and on nothing less. The decision blocking it — WHO
+WALKS IT — is open and was put to the Owner as D15-VCWL-21092026; it was not
+answered before this conversation closed.
+
+This conversation is CLOSED TO FURTHER SENDS.
