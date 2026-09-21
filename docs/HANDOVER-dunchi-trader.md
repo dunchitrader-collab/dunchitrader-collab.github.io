@@ -8351,7 +8351,7 @@ Sequence, exactly as 5.8.4.1 prescribes: **5.8.4.2's existing-target test first*
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `88aa0cf` — `docs: D14a — archive the launch plan; repair the restore runbook's apps-script guards` — the `git mv` to [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-LAUNCH-2026-09-19.md` with the `D14a` ruling in its closure record, the WHICH SPREADSHEET tables in `apps-script/DEPLOY.md` and `apps-script/SHEET-FORMULAS.md`, the no-signal constraint in `docs/RESTORE-dunchi-trader.md`, and the Layer 1/3/4/5 records plus this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10). ⚠ **NO CODE FILE WAS TOUCHED** — `Publish.gs`, `Code.gs`, `app.js` and every test file are unmodified. **`git log --follow` on the archive path returns 15 commits after this commit, so the plan's history survived the move** — verified, not assumed.
 
 **Finished:** 2026-09-21T12:23:13Z
 
