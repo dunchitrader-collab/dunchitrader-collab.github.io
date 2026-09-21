@@ -6,8 +6,28 @@ seen that person before — and gives you one box to tick to decide what happens
 
 You only do this once. It takes about ten minutes.
 
+### ⚠️ WHICH SPREADSHEET — read this before you open anything
+
+**This document is used for two different jobs, and they open two different
+spreadsheets. Getting this wrong edits the real village directory.**
+
+| You are… | Open |
+|---|---|
+| **A MAINTAINER of the live site** — repairing or setting up the real directory | **The LIVE spreadsheet, at the address below.** That is the correct one for this job |
+| **A REHEARSAL WALKER** following `docs/RESTORE-dunchi-trader.md` | ⚠ **NOT the address below.** Open **the throwaway spreadsheet YOU created** in that runbook's step 1 — *Dunchideock REHEARSAL — delete me*. **Nothing in this document may be applied to the live sheet during a rehearsal** |
+
+**Everything else in this document works by COLUMN LETTER and never names a
+spreadsheet**, so once you have the right sheet open, every instruction below
+applies unchanged to either.
+
+---
+
 Sign in as **dunchitrader@gmail.com** and open the spreadsheet:
 <https://docs.google.com/spreadsheets/d/1j9SVNJG9Zf_iFtl6OrsrcVom5SY13sOiv3vt58jcprc/edit>
+
+**↑ That address is the LIVE village directory.** A rehearsal walker substitutes
+their own throwaway sheet here and nowhere else — this is the only address in
+this document.
 
 ---
 

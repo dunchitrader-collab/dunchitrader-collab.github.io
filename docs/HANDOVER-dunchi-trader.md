@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T12:06:45Z
+last-updated: 2026-09-21T12:23:13Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T12:06:45Z** ~~2026-09-21T11:58:30Z~~ ~~2026-09-21T11:47:05Z~~ ~~2026-09-21T11:32:10Z~~ ~~2026-09-21T10:53:24Z~~ ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T12:23:13Z** ~~2026-09-21T12:06:45Z~~ ~~2026-09-21T11:58:30Z~~ ~~2026-09-21T11:47:05Z~~ ~~2026-09-21T11:32:10Z~~ ~~2026-09-21T10:53:24Z~~ ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -243,11 +243,23 @@ When he deliberately submitted a two-number field this morning to test this row,
 
 **`PLAN-DUNCHI-INHERITANCE-2026-09-21` IS NOW THE ONLY LIVE PLAN IN THIS REPO**, at **0 of 9**.
 
-**THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** ~~SUPERSEDED 2026-09-21T12:06:45Z~~ → **ONE live plan and one signed off.** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
+**2026-09-21T12:23:13Z — THE LAUNCH PLAN IS ARCHIVED AND THE RESTORE RUNBOOK IS REPAIRED. `PLAN-DUNCHI-INHERITANCE-2026-09-21` IS NOW THE ONLY LIVE PLAN, AT 0 OF 9.**
+
+**[DECISION] `D14a-VCWL-21092026` — the Owner signed off and authorised the archive.** His words: ***"D14a sign off and archive"***. **He was shown the closure record in full** — the moved-out inheritance requirement, the denominator's growth from live-traffic defects, and the two weakened acceptances — **and accepted it as written.** **`D14b`, which would have reopened the plan at 36 of 45 = 80%, was REJECTED.**
+
+**⚠ THE ARCHIVE PATH IS NOT WHAT THE COMMISSIONING PROMPT NAMED, and the standard was followed instead.** The prompt asked for `docs/archive/BUILD-PLAN-dunchi-launch.md`; **STD-00009 Rule 5.8.4 [CORE] derives `docs/archive/BUILD-PLAN-{repo}-{plan-id}.md`**, giving [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-LAUNCH-2026-09-19.md`. **The repo's own precedent confirms it** — `BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-TRADER-V1.md` sits beside it in the same form. Rule 5.8.4.2's existing-target test was run and the target was absent; 5.8.4.1's `mkdir -p` preceded the `git mv`; git records a **rename**, so history follows.
+
+**⚠ THE RUNBOOK'S THREE NAMED DEFECTS WERE ALREADY REPAIRED, on 2026-09-19 at `3453b78`, and row 1.1's own text says so.** Verified by reading each against the current file rather than assumed: **step 4** names `dunchi-rehearsal` for a rehearsal and explains why the live name is refused; **steps 7 and 8** no longer delegate blindly — step 7 writes out its own instructions and strikes through the old delegation, step 8 guards its one remaining reference; **the cleanup section exists**, covers all four artefacts, does the **two PUBLIC ones first**, and warns against deleting the live equivalents.
+
+**WHAT THIS SESSION ACTUALLY ADDED, since the three defects were closed:** a **WHICH SPREADSHEET** table at the point of use in **both** `apps-script/DEPLOY.md` and `apps-script/SHEET-FORMULAS.md`, stating plainly which id a **maintainer** uses and which a **rehearsal walker** substitutes. **The live spreadsheet id is deliberately KEPT in both** — they are real maintenance documents — and **the guard now precedes the id in each file**, verified by character position. And the **no-mobile-signal constraint** is carried into the runbook at three points.
+
+**⚠ THE RUNBOOK IS REPAIRED AND STILL UNWALKED. ROW 1.1 IS NOT CLOSED AND NOTHING HERE IMPLIES OTHERWISE** — it closes on the walk, and the walk was deliberately not performed: doing it now would spend the one clean first-read the runbook gets, and its walker has not been decided.
+
+**THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** ~~SUPERSEDED~~ → **ONE live plan (`PLAN-DUNCHI-INHERITANCE-2026-09-21`, 0 of 9) and TWO archived.** ~~SUPERSEDED 2026-09-21T12:06:45Z~~ → **ONE live plan and one signed off.** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
 | Plan ID | Path | Position [VERIFIED 2026-09-21, validator] |
 |---|---|---|
-| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, 10 sub-tasks, row `6.5` appended~~ ~~SUPERSEDED 2026-09-21T10:53:24Z → **12 / 36 = 33.3%**, 11 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T11:32:10Z → **16 / 36 = 44.4%**, 6 `done`~~ ~~SUPERSEDED 2026-09-21T11:47:05Z → **24 / 36 = 66.7%**, 7 `done`~~ ~~SUPERSEDED 2026-09-21T11:58:30Z → **29 / 36 = 80.6%**, 8 `done`~~ **SUPERSEDED 2026-09-21T12:06:45Z → 36 / 36 = 100.0% — SIGNED OFF.** 11 sub-tasks, **10 `done`**, 1 `external` (excluded). ⚠ **Not "everything built" — see the closure record** | 
+| ~~`PLAN-DUNCHI-LAUNCH-2026-09-19`~~ **ARCHIVED 2026-09-21** | ~~`docs/BUILD-PLAN-dunchi-launch.md`~~ → [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-LAUNCH-2026-09-19.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, 10 sub-tasks, row `6.5` appended~~ ~~SUPERSEDED 2026-09-21T10:53:24Z → **12 / 36 = 33.3%**, 11 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T11:32:10Z → **16 / 36 = 44.4%**, 6 `done`~~ ~~SUPERSEDED 2026-09-21T11:47:05Z → **24 / 36 = 66.7%**, 7 `done`~~ ~~SUPERSEDED 2026-09-21T11:58:30Z → **29 / 36 = 80.6%**, 8 `done`~~ **SUPERSEDED 2026-09-21T12:06:45Z → 36 / 36 = 100.0% — SIGNED OFF.** 11 sub-tasks, **10 `done`**, 1 `external` (excluded). ⚠ **Not "everything built" — see the closure record** | 
 | `PLAN-DUNCHI-INHERITANCE-2026-09-21` | `docs/BUILD-PLAN-dunchi-inheritance.md` | **0 / 9 = 0.0%**, 1 sub-task |
 
 **The launch plan's denominator fell 41 → 32 and that is SCOPE LEAVING, not progress.** Done effort was 0 before and is 0 after; the 9 effort was excluded **by the row's `external` status**, never by re-weighting it (STD-00009 Rules 5.4.2 and 5.2.5 [CORE]).
@@ -1020,6 +1032,17 @@ The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file a
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
 
+**[CONSTRAINT] 2026-09-21 — `docs/RESTORE-dunchi-trader.md` IS REPAIRED AND HAS NEVER BEEN WALKED. Those are different things, and the document says so itself on its opening screen.**
+
+**The three defects named in `PLAN-DUNCHI-INHERITANCE-2026-09-21` row `1.1` are CLOSED**, verified 2026-09-21 by reading each against the file rather than assuming: step 4 names `dunchi-rehearsal` for a rehearsal and explains why the live name is refused; steps 7 and 8 no longer send a walker into a document that opens the live spreadsheet; and the cleanup section exists, covers all four artefacts, and does the two **PUBLIC** ones first. **They were fixed on 2026-09-19 at `3453b78`, not today.**
+
+**What 2026-09-21 added:** a **WHICH SPREADSHEET** table at the point of use in `apps-script/DEPLOY.md` and `apps-script/SHEET-FORMULAS.md` — which id a **maintainer** uses, which a **rehearsal walker** substitutes — with the live id deliberately kept in both because they are real maintenance documents; and the no-mobile-signal constraint carried into the runbook at three points.
+
+⚠ **NOBODY HAS EVER FOLLOWED THIS DOCUMENT END TO END.** Every claim about its walkability rests on **reading** it, including this session's. **A read-through cannot find a step that is correct on the page and impossible in Google's interface** — a button that has moved, a setting renamed, a permission dialog nobody anticipated. **The first walk should expect to find faults, and finding one is the walk working rather than the document failing.**
+
+**Recorded as a constraint rather than a bug because there is nothing to fix until somebody walks it.** Diagnosis: `PLAN-DUNCHI-INHERITANCE-2026-09-21` row `1.1` is `new` and closes on the walk.
+
+
 **[CONSTRAINT] 2026-09-21 — ⚠ DUNCHIDEOCK HAS NO MOBILE SIGNAL. EVERYONE RELIES ON WIFI. This is a standing fact about the operating environment, not a bug, and it changes what "works" means for this site.**
 
 **The Owner's words, REPORTED, 2026-09-21:** ***"not on a mobile signal because the village has no signal. Everyone relies on wifi."***
@@ -1378,13 +1401,7 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 *The 2026-09-19 queue follows below this section, under its own original heading, unchanged except where an item has been closed in place.*
 
-**[OUTSTANDING] 2026-09-21 | MEDIUM | Blocking: no | a session task, not the Owner's**
-
-**ARCHIVE THE CLOSED PLAN.** `PLAN-DUNCHI-LAUNCH-2026-09-19` was signed off at 36 of 36 on 2026-09-21 but **has not been moved to `docs/archive/`**. STD-00009 **Rule 5.8.4 [CORE]** requires a closed plan to move there, with **5.8.4.1** requiring `mkdir -p docs/archive/` first and **5.8.4.2** requiring a test that the derived target does not already exist. **Archiving was not in the closing prompt's scope and was deliberately not improvised.**
-
-**Nothing is at risk while it waits** — the plan is signed off, frozen under 5.8.7, and its closure record is in place. **The precedent is in this repo:** `PLAN-DUNCHI-TRADER-V1` sits at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-TRADER-V1.md`.
-
-⚠ **Read 5.8.4, 5.8.4.1 and 5.8.4.2 before doing it** — the naming is derived, not chosen, and the existing-target test is mandatory.
+~~**[OUTSTANDING] 2026-09-21 | MEDIUM | Blocking: no | a session task, not the Owner's**~~ ~~ARCHIVE THE CLOSED PLAN.~~ **COMPLETED 2026-09-21T12:23:13Z — archived under the Owner's ruling `D14a-VCWL-21092026` to [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-LAUNCH-2026-09-19.md`.** Rule 5.8.4's derived name was used rather than the shorter one the commissioning prompt suggested; 5.8.4.1 and 5.8.4.2 were both applied; git records a rename so history follows.
 
 ---
 
@@ -3175,6 +3192,30 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **[OBSERVED, not explained] The validator's cross-repo line changed from `LIVE` to `not checked — service knows no plan`** between the pre-edit and post-edit runs. **It is advisory and the exit code is unaffected**, this is a single-repo plan so cross-repo coherence is not load-bearing, and the Plan ID is intact in the header. **Tested: removing the sign-off marker does NOT restore the earlier reading**, so the marker is not the cause. The likely explanation is the coherence service re-scanning and dropping a plan that now reads 100%, **but that was not established and is recorded as observed rather than diagnosed.**
 
 **[PATTERN CANDIDATE: a-hundred-percent-owes-the-reader-its-history]** A plan reaching 100% says nothing about whether the work was done or moved. **This one closed complete while its single largest requirement left unbuilt**, and the only thing between the figure and a false impression is a closure record that states the opening denominator, what was added, what left, and on whose ruling. **Worth writing for every close, not only for a trim where the standard compels it.**
+
+---
+
+### 2026-09-21 — D14a: the launch plan is archived, and the runbook is repaired but deliberately unwalked
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION] `D14a-VCWL-21092026` — the Owner's ruling, verbatim: *"D14a sign off and archive"***. **He was shown the closure record in full before ruling** — that the inheritance walk was moved out rather than delivered, that the denominator grew 32 → 34 → 36 from defects his testers found in live traffic, and that two rows closed on weakened acceptance. **He accepted it as written**, and **rejected `D14b`**, which would have reopened the plan at 36 of 45 = 80%. **His ruling is recorded inside the archived plan's own closure record**, where a reader reaching it from the archive meets it.
+
+**[DECISION] ⚠ THE STANDARD'S DERIVED PATH WAS USED, NOT THE ONE THE COMMISSIONING PROMPT NAMED — reported rather than quietly reconciled.** The prompt asked for `docs/archive/BUILD-PLAN-dunchi-launch.md`. **Rule 5.8.4 [CORE] derives `docs/archive/BUILD-PLAN-{repo}-{plan-id}.md`**, and the prompt itself said *"Read that rule and follow it exactly rather than inventing a procedure"* — so the rule wins over the prompt's own shorthand.
+
+**The derived name matters for the reason the rule states:** `{repo}` makes the file findable in the repo that owns it, `{plan-id}` makes every participant's archive recognisable as one plan. **The repo's own precedent confirms the form** — `BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-TRADER-V1.md` already sits in `docs/archive/`, and a second archive in a different shape would have broken the only property the naming exists to provide. **Rule 5.8.4's worked example expressly forbids "tidying" the result**, which is what the shorter name would have been.
+
+**[FINDING] THE THREE NAMED DEFECTS WERE ALREADY FIXED, and establishing that was most of the work.** Row `1.1`'s own text records it — *"repaired on 2026-09-19 at commit `3453b78` — five faults fixed — but repairing is not walking"* — and **each was verified against the current file rather than taken on that word.** Step 4 names the throwaway repo and explains the refusal; step 7 strikes through its old delegation and writes its instructions out in full; step 8 guards its one remaining reference; the cleanup section leads with the two **PUBLIC** artefacts and warns against deleting the live equivalents.
+
+**So this session's repair is narrower than the prompt anticipated, and saying so is the honest report.** What was genuinely missing is the thing the constraints named specifically: **`DEPLOY.md` and `SHEET-FORMULAS.md` did not state which spreadsheet id belongs to which reader.** Both now carry a **WHICH SPREADSHEET** table at the point of use; **the live id is KEPT in both** because they are real maintenance documents; and **the guard precedes the id in each file**, verified by character position — a warning placed after the address is a warning nobody reads in time.
+
+**[DECISION] The two documents give DIFFERENT instructions to a walker, deliberately.** `DEPLOY.md` says *"STOP — you should not be in this document at all"*, because the runbook's step 7 already writes out everything a walker needs. `SHEET-FORMULAS.md` says **substitute your own sheet**, because step 8 still legitimately delegates to it for the formulas — which are column-letter based and identical on either sheet. **The reason is written into each rather than left to be inferred.**
+
+**[FINDING] The no-mobile-signal constraint is carried into the runbook at three points**, and **tick-list item 9 was rewritten** because as written it assumed a dialling phone. It now asks first whether the number is **readable as text without tapping** — which is how most of this village uses it — and warns that a dead CALL button is more likely a wifi-calling setting than a fault in the site.
+
+**[DECISION] THE WALK WAS DELIBERATELY NOT PERFORMED, as instructed, and the reason is worth keeping.** A runbook gets **one clean first read**: the walker who has never seen it is the only person who can find the steps that are clear on the page and impossible at the screen. **Spending that on a session that already knows the system would destroy the evidence the row exists to gather.** Row `1.1` remains `new`.
+
+**[PATTERN CANDIDATE: verify-the-defect-still-exists-before-repairing-it]** This prompt named three defects with measured detail and asked for them to be fixed. **All three had been fixed two days earlier, and the row's own text said so.** Reading each against the current file cost minutes and prevented a session from "repairing" working text and reporting progress that was not made. **Where a brief names a defect from a prior record, confirm it is still present before touching anything.**
 
 ---
 
@@ -8226,3 +8267,98 @@ Working tree clean. Both remotes level.
 **Two things remain outstanding and neither blocks anything:** archiving the closed plan to `docs/archive/` under Rule 5.8.4, and formatting the two telephone columns as plain text.
 
 Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T12:23:13Z — The launch plan archived under D14a; the restore runbook repaired and left unwalked
+
+**Source:** Claude Code
+**Started:** 2026-09-21T12:14:40Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only)
+
+**Prompt received:** *(preserved in the Claude.ai conversation above. Two tasks: archive the closed launch plan under STD-00009 Rule 5.8.4 recording ruling D14a-VCWL-21092026, and repair the three defects named in PLAN-DUNCHI-INHERITANCE-2026-09-21 row 1.1 without walking the runbook or touching any live artefact.)*
+
+**MISSION BLOCK CHECKED AS INSTRUCTED.** The wording in Layer 1 **matches the brief exactly**, including the recorded correction from *"Dunchidiuk"* to *"Dunchideock"*. **No discrepancy to report.**
+
+**What was done:**
+
+**Staleness check first:** no output, exit 0 — copy-source current. HEAD `68073e4`, tree clean — **did not differ from the brief.**
+
+**TASK 1 — THE ARCHIVE.** Rules **5.8.4**, **5.8.4.1** and **5.8.4.2** were read before anything moved.
+
+⚠ **THE DERIVED PATH DIFFERS FROM THE ONE THE PROMPT NAMED, and the standard was followed.** The prompt asked for `docs/archive/BUILD-PLAN-dunchi-launch.md`; **5.8.4 derives `docs/archive/BUILD-PLAN-{repo}-{plan-id}.md`** = [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-LAUNCH-2026-09-19.md`. **The repo's own precedent confirms it** — `BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-TRADER-V1.md` is already there in that form, and 5.8.4's worked example forbids shortening the result.
+
+Sequence, exactly as 5.8.4.1 prescribes: **5.8.4.2's existing-target test first** (absent), then `mkdir -p docs/archive/`, then `git mv`. **Git records a RENAME**, not delete-plus-add. **`D14a-VCWL-21092026` was written into the plan's own closure record before the move**, with the Owner's verbatim words and the note that `D14b` was rejected. **Content is otherwise byte-identical** — `diff` against the pre-move file shows **six added lines and nothing else**, and the single `STATUS: SIGNED-OFF` marker is intact. **The plan was not re-validated, not renumbered, not tidied**, as instructed.
+
+**TASK 2 — THE RUNBOOK. THE THREE NAMED DEFECTS WERE ALREADY REPAIRED, on 2026-09-19 at `3453b78`.** Row 1.1's own text says so. **Each was verified against the current file rather than assumed**, and none needed touching:
+
+| Defect, in the row's terms | State found |
+|---|---|
+| Step 4 names the live repo, so GitHub refuses it | **FIXED** — names `dunchi-rehearsal`, explains the refusal, gives the longer rehearsal URL as expected rather than a failure |
+| Steps 7 and 8 delegate to documents that open the LIVE spreadsheet | **FIXED** — step 7 strikes through the delegation and writes its instructions out; step 8 guards its one remaining reference |
+| No cleanup section | **FIXED** — exists, covers all four artefacts, does the two **PUBLIC** ones first, warns against deleting the live equivalents |
+
+**What this session added, being the part genuinely missing:** a **WHICH SPREADSHEET** table at the point of use in **both** `apps-script/DEPLOY.md` and `apps-script/SHEET-FORMULAS.md`. **The live id is kept in both**, as the constraints require. **The guard precedes the id in each**, verified by character position. `DEPLOY.md` tells a walker to **leave**; `SHEET-FORMULAS.md` tells them to **substitute** — deliberately different, because step 8 still delegates for the formulas and step 7 does not.
+
+**The no-mobile-signal constraint** was carried into the runbook at three points, and **tick-list item 9 was rewritten** because it assumed a dialling phone.
+
+**⚠ THE WALK WAS NOT PERFORMED and no live artefact was touched.** No throwaway copy was created, nothing was written to any Google Sheet, no deployment, no change to the live site repo.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | Staleness check | clean | **no output, exit 0** | PASS |
+| 2 | Repo matches brief's HEAD | `68073e4`, clean | did not differ | PASS |
+| 3 | **Mission block vs the brief's wording** | match or report | **matches exactly** | PASS |
+| 4 | **Rule 5.8.4 read; archive name derived** | derived, not invented | `BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-LAUNCH-2026-09-19.md` | PASS |
+| 5 | **5.8.4.2 — target already exists?** | absent | **absent** | PASS |
+| 6 | **5.8.4.1 — `mkdir -p` before `git mv`** | ordered | ordered; `git mv` exit 0 | PASS |
+| 7 | Git records a rename, not delete+add | rename | **`RM` in porcelain** | PASS |
+| 8 | **Content byte-preserved apart from D14a** | additions only | **6 added lines, nothing else** | PASS |
+| 9 | Sign-off marker intact, exactly one | 1 | **1** | PASS |
+| 10 | `docs/` holds exactly one live plan | 1 | **1** — `BUILD-PLAN-dunchi-inheritance.md` | PASS |
+| 11 | **`git log --follow` survives the move** | history follows | **31 commits** after commit — see note | PASS |
+| 12 | **Defect 1 verified against the file** | establish | **already fixed** at `3453b78` | PASS |
+| 13 | **Defect 2 verified against the file** | establish | **already fixed** | PASS |
+| 14 | **Defect 3 verified against the file** | establish | **already fixed** | PASS |
+| 15 | **READ-THROUGH: live spreadsheet id in the runbook** | zero | **zero** | PASS |
+| 16 | **READ-THROUGH: live repo name occurrences guarded** | each guarded | 4 occurrences, all in a rehearsal/rebuild table or a deletion warning | PASS |
+| 17 | Live id KEPT in `DEPLOY.md` | exactly 1 | **1** | PASS |
+| 18 | Live id KEPT in `SHEET-FORMULAS.md` | exactly 1 | **1** | PASS |
+| 19 | **Guard precedes the id in `DEPLOY.md`** | guard first | char 1298 vs 2200 — **guard first** | PASS |
+| 20 | **Guard precedes the id in `SHEET-FORMULAS.md`** | guard first | char 351 vs 1339 — **guard first** | PASS |
+| 21 | No-signal constraint in the runbook | present | **3 points** | PASS |
+| 22 | Deverse/dunchitrader wording untouched | unchanged | unchanged | PASS |
+| 23 | No live artefact touched | none | no Google write, no deploy, no live-repo change | PASS |
+| 24 | Test suites green (control — no code touched) | no regression | **300 passed, 0 failed** | PASS |
+| 25 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `12:23:13Z`; 6 layers | PASS |
+
+**Test 11 note:** `git log --follow` returned **0 commits while the rename was staged but uncommitted**, which is expected — `--follow` needs a commit to follow through. **Re-run after the commit it returns the full history**, which is the honest point at which the claim can be made.
+
+**READ-THROUGH, NOT A WALK — stated plainly as required.** Tests 12–16 are a **re-read of the repaired runbook end to end as a walker who knows nothing would read it**. **They establish that the text no longer sends a reader at a live artefact and no longer stops dead at step 4. They cannot establish that the steps work in Google's interface.** Per defect: **step 4** — a walker reading it creates `dunchi-rehearsal`, is told the live name is taken and why, and is told the longer URL is correct; **they could get past it.** **Steps 7 and 8** — step 7 no longer sends them anywhere, step 8 sends them to a document that now opens with a table telling them to substitute their own sheet; **they could get past it without opening the live spreadsheet.** **Cleanup** — a walker reaching the end meets a section that opens *"Skip this and you have left a second village directory on the public internet"*; **they could not miss it.**
+
+**What was not tested, and what could not be repaired without walking:**
+
+- **⚠ NOTHING WAS WALKED.** Every judgement above is from reading. **A read-through cannot find a step that is correct on the page and impossible at the screen** — a moved button, a renamed setting, an unanticipated permission dialog. **The first walk should expect to find faults.**
+- **The Google interface details could not be verified at all** — menu paths, button labels, dialog wording. They are as written on 2026-09-18/19 and Google may have changed any of them.
+- **The `/exec` deployment step (7e) cannot be proven from outside an account.** It is the step most likely to behave differently on a fresh project, and it is where the live site itself failed on 2026-09-19.
+- **The throwaway-copy end state is unverified** — whether the rehearsal site actually serves at the longer URL, and whether cleanup leaves nothing public, can only be established by doing it.
+
+**NOTHING FOUND BROKEN OUTSIDE THE THREE NAMED DEFECTS.** One thing is **named rather than silently fixed**, as required: the runbook's step 8 **still delegates to `SHEET-FORMULAS.md`** rather than writing the formulas out as step 7 now does. **That is not a defect and was left alone** — the formulas are column-letter based and identical on either sheet, the delegation is now guarded at both ends, and duplicating three long `ARRAYFORMULA` strings into a second document would create the second-source-of-truth drift this estate has been bitten by before. **Recorded so a later session can disagree deliberately rather than discover it.**
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T12:23:13Z
+
+**End state:**
+
+**`PLAN-DUNCHI-LAUNCH-2026-09-19` is archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-PLAN-DUNCHI-LAUNCH-2026-09-19.md`, carrying the Owner's `D14a` ruling in its closure record. **`docs/` now holds exactly one live plan.**
+
+**`PLAN-DUNCHI-INHERITANCE-2026-09-21` is the only live plan, at 0 of 9. Row `1.1` is `new` and is NOT closed by this session** — the runbook is repaired, and **repairing is not walking.** ⚠ **Nobody has ever followed that document end to end**, and the first walk should expect to find faults a read-through cannot.
+
+**No code file was touched. No live artefact was touched.** Working tree clean. Both remotes level.

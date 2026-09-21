@@ -151,6 +151,12 @@ result and say *"yes, that is delivered"*?
 
 ## CLOSURE RECORD — read this before reading the 100%
 
+**[DECISION] `D14a-VCWL-21092026`, 2026-09-21 — the Owner signed this plan off and authorised its archiving. His words, verbatim:**
+
+> **"D14a sign off and archive"**
+
+**He was shown this closure record IN FULL before ruling** — including that the inheritance walk (9 effort) was moved out rather than delivered, that the denominator grew 32 → 34 → 36 from defects his testers found in live traffic, and that two rows closed on weakened acceptance. **He accepted the sign-off as written.** **`D14b`, which would have REOPENED this plan at 36 of 45 = 80% by pulling the inheritance row back in, was REJECTED.**
+
 **Closed at 100% of 11 rows on 2026-09-21. 36 of 36 counted effort. ⚠ THIS IS NOT "EVERYTHING WAS BUILT".**
 
 **It opened at a denominator of 32 and closed at 36, and one row of 9 effort left it without being built.** The three things a reader needs before trusting the figure:

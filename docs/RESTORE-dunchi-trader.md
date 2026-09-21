@@ -557,6 +557,7 @@ between, and the names stay in the same order.
 > written. That is the same door the Google Form already leaves open, and no
 > wider.
 >
+> ⚠ **On wifi, not mobile data — the village has no mobile signal.**
 > So: open the site on your phone, tap a trade, tap **I recommend them too**,
 > type a few words, tap **Add my recommendation** — then go to the spreadsheet
 > and look at **that person's row on the Published tab, columns K and L**. A
@@ -703,6 +704,23 @@ whoever inherits the site change a word in the browser and see it live.
 web address and the security certificate; Google provides the form and the
 spreadsheet. There is no server to keep running and nothing to patch.
 
+**⚠️ THE VILLAGE HAS NO MOBILE SIGNAL. EVERYONE RELIES ON WIFI.** Recorded
+2026-09-21 from the owner. This changes how you test, and it is not a fault to
+be fixed:
+
+- **Test on WIFI, not on mobile data.** A walkthrough done on 4G tests a
+  condition no villager in Dunchideock is ever in. **Do not turn wifi off to
+  test "properly"** — that advice was given once on this project and was wrong.
+- **Tapping CALL only dials for somebody whose phone has wifi calling switched
+  on.** Many villagers will not have it, and some will read the site on a phone
+  and then walk to a landline in another room. **If CALL does nothing on your
+  test phone, that is very likely your phone's wifi-calling setting and not a
+  fault in the site.**
+- **So the telephone number must be READABLE on the card without tapping
+  anything.** For most of this village that is how the number actually gets
+  used. **It is shown as plain text today and must stay that way** — never hide
+  it behind the button, behind a hover, or behind an icon.
+
 ---
 
 ## Walk-through tick list
@@ -717,7 +735,7 @@ Tick each line when you have seen the thing it names.
 6. [ ] **Point at the list** — the site now says *"Nobody on the list just yet"*; after adding one test person and waiting five minutes, that person appears under their trade with a green **CALL** button.
 7. [ ] **Recommend button** (optional) — the `/exec` address opens in a browser showing one plain sentence rather than a Google error page; then a recommendation made on a phone appears in **columns K and L of that person's row on the Published tab**. Check the spreadsheet, not the thank-you message.
 8. [ ] **Duplicate checker** (optional) — the four extra columns on the Form responses tab show a verdict in plain English.
-9. [ ] **Call button** — tapping **CALL** on a phone dials the right number.
+9. [ ] **Call button** — the telephone number is **readable as text on the card without tapping anything** (this is how most of this village uses it — see *Things worth knowing*), and tapping **CALL** on a phone offers to dial the right number. ⚠ **Test on wifi, not mobile data — the village has no mobile signal.** If tapping does nothing, check your phone's **wifi calling** setting before recording a fault.
 10. [ ] **Removal** — setting somebody's `status` to anything other than `active` takes them off the site within five minutes.
 11. [ ] **Two logins only** — you reached the end without needing any other account, password or payment.
 12. [ ] **REHEARSAL ONLY — cleaned up.** The rehearsal CSV address downloads nothing, `https://<account>.github.io/dunchi-rehearsal` shows a 404, the throwaway form and spreadsheet are in the bin, **and the LIVE site at `https://<account>.github.io` still loads normally.**

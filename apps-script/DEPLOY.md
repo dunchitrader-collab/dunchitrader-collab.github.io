@@ -24,12 +24,29 @@ account owns the spreadsheet. If you are signed in as anybody else it will not
 work, and it would tie the site to somebody else's account, which is exactly
 what this project avoids.
 
+### ⚠️ WHICH SPREADSHEET — read this before you open anything
+
+**This document is used for two different jobs, and they open two different
+spreadsheets. Getting this wrong edits the real village directory.**
+
+| You are… | Open |
+|---|---|
+| **A MAINTAINER of the live site** — the normal use of this document | **The LIVE spreadsheet, at the address in step 1.** That is the correct one for this job |
+| **A REHEARSAL WALKER** following `docs/RESTORE-dunchi-trader.md` | ⚠ **STOP — you should not be in this document at all.** That runbook's **step 7 writes out everything you need** and deliberately does not send you here. If you arrived here from it, go back |
+
+**The live spreadsheet address appears exactly ONCE in this document, in step 1.**
+It is deliberately kept, because a maintainer needs it.
+
 ---
 
 ## Step 1 — Add the Votes tab
 
 1. Open the spreadsheet:
    <https://docs.google.com/spreadsheets/d/1j9SVNJG9Zf_iFtl6OrsrcVom5SY13sOiv3vt58jcprc/edit>
+
+   > ⚠️ **That is the LIVE village directory**, and it is the right sheet for a
+   > maintainer. **A rehearsal walker must not open it** — see the table above;
+   > the runbook writes out its own instructions and does not send you here.
 2. At the bottom of the screen, click the **+** to add a new tab.
 3. Double-click the new tab's name and rename it to exactly: **Votes**
    (capital V, no spaces, no "s" missing — the script looks for that exact word).
