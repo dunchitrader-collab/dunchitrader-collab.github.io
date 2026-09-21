@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T09:43:07Z
+last-updated: 2026-09-21T10:05:12Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T09:43:07Z** ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T10:05:12Z** ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -112,11 +112,23 @@ ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from
 
 **THE REPAIR IS TWO PASTES and is in Layer 4**, with the verbatim formulas and how he confirms it took.
 
+**2026-09-21T10:05:12Z — THREE ROWS CLOSED ON THE OWNER'S SIGHTINGS AND ONE RULING. THE PLAN MOVES 0/32 (0.0%) → 8/32 (25.0%), 3 of 9 rows done.** Verified two independent ways: the §3.10 validator reports `exit=0`, `sub-tasks: 9`, `done effort: 8 / 32 = 25.0%`, and the same figure recomputed directly from the document's own rows. **The row count was cross-checked against the rows the file actually holds — 9 and 9 — because a clean exit is not evidence every row was read.**
+
+| Row | Effort | Closed on |
+|---|---|---|
+| **2.1** — no test person is visible | 2 | **His own clearing of the list.** He completed the D7a reset, then removed the last made-up entry — ***"The electrician is made up so I will be deleting it."*** — re-ran the tab clean and pasted the `I2`/`J2` helpers back. **Published holds no data rows, and the live page renders the empty state** [VERIFIED 2026-09-21T10:00Z, REPORTED from Claude.ai's browser read] |
+| **6.2** — every submission's fate is visible | 5 | **Owner's ruling `D10a-VCWL-21092026`.** *Check the setup* ran in **"a few seconds"** against **38.95s** on 2026-09-19, reconciled both tabs, **and correctly reported a real fault three Claude Code sessions and Claude.ai had all missed** — the dead `I2`/`J2` helper formulas |
+| **6.4** — a villager can get back to the list | 1 | **His sighting on the live site:** ***"yes it opens in a new tab"***, with the village list still behind it |
+
+⚠ **TWO THINGS WERE NOT WITNESSED AND ARE STATED RATHER THAN GLOSSED.** **(1) Row 6.2's blank-`action`-cell alarm has NOT fired since the reset** — every publisher path writes one line into the `action` column so a blank is the alarm, and that clause is **installed and covered by the harness but has not been SEEN to fire on his sheet**, because nothing has been lost since. It closes on his ruling with that gap named. **(2) Row 2.1's outcome is met by an EMPTY list rather than a curated one** — no test person is visible because nobody is. That satisfies the row's wording, and it is worth a reader knowing which of the two it was.
+
+**Rows `1.1`, `3.1`, `4.1`, `6.1` and `6.3` are untouched and still `new`; `5.1` remains `external`.**
+
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
 | Plan ID | Path | Position [VERIFIED 2026-09-21, validator] |
 |---|---|---|
-| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | **0 / 32 = 0.0%**, 9 sub-tasks (1 `external`, excluded) |
+| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 9 sub-tasks (1 `external`, excluded), **3 `done`** |
 | `PLAN-DUNCHI-INHERITANCE-2026-09-21` | `docs/BUILD-PLAN-dunchi-inheritance.md` | **0 / 9 = 0.0%**, 1 sub-task |
 
 **The launch plan's denominator fell 41 → 32 and that is SCOPE LEAVING, not progress.** Done effort was 0 before and is 0 after; the 9 effort was excluded **by the row's `external` status**, never by re-weighting it (STD-00009 Rules 5.4.2 and 5.2.5 [CORE]).
@@ -2702,6 +2714,30 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **This also reconciles two earlier reports that looked contradictory.** 2758 established that no publisher write reaches `I` or `J`; 2760 established that no code reads the `verdict` column. Both stand. **`checkSetup` can still call the duplicate checker broken, because the thing it is reporting on is neither of those** — it is the formula-fed verdict the Owner reads with his own eyes, which is precisely the audience the setup check is written for.
 
 **[PATTERN CANDIDATE: the-same-idea-at-different-addresses-reads-as-a-bug]** Two tabs implementing one concept over differently-lettered columns produce formulas that look mismatched on inspection and are both correct. **Where a document carries parallel-but-not-identical instructions, assert the parallelism mechanically** — the human comparison is the unreliable step, and it fails toward false alarms.
+
+---
+
+### 2026-09-21 — D10a: three rows closed, and the check found what four sessions missed
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION] `D10a-VCWL-21092026` — the Owner rules row 6.2 closed.** Claude.ai recommended closing and he ruled it. **The evidence is his own run of the tool the row delivers**, not a harness result:
+
+- **Speed:** he reported *Check the setup* took **"a few seconds"** against the **38.95 seconds** measured on 2026-09-19. The row's wording requires it be *"materially faster"* than that figure. **Met on his own stopwatch.**
+- **Reconciliation:** its output reconciled both tabs in one view — `People on the list: 1`, `Last ID in use: T001`, `The list fills rows 2 to 2.`, `Stranded rows below the list: none.`, `Duplicate rows: none.`, telephone numbers and trade names both checked.
+- **And it earned its place by finding a REAL fault that three Claude Code sessions and Claude.ai had all missed:** `*** THE DUPLICATE CHECKER IS BROKEN *** / I2 has no formula in it. / J2 has no formula in it.` **The D7a reset had cleared his helper formulas and nobody had noticed.** The row exists so the Owner learns what happened and why without reading two tabs side by side. **It did exactly that, against a live fault rather than a fixture.**
+
+**⚠ WHAT WAS NOT WITNESSED, recorded because the row's own wording rests on it.** Row 6.2 requires that *"a blank `action` means nothing happened and is itself the alarm"*. **That alarm has NOT fired since the reset.** Every path out of the publisher writes one line into the `action` column, the behaviour is covered by the committed harness, and it was measured working on 2026-09-21 — **but nobody has SEEN a blank cell signal a real loss on his sheet, because nothing has been lost since.** The clause is **installed and evidenced by tests, not sighted in production.** The row closes on the Owner's ruling with that gap named rather than absorbed.
+
+**[DECISION] Row 2.1 closed on the Owner's own clearing of the list.** He completed the D7a reset, then removed the one remaining made-up entry — his words: ***"The electrician is made up so I will be deleting it."*** — re-ran the Published tab clean, and pasted the `I2`/`J2` helper formulas back. **Published now holds no data rows**, and the served page renders the empty state, [VERIFIED 2026-09-21T10:00Z and REPORTED from Claude.ai's live browser read]: *"Nobody on the list just yet / The list is being put together…"*.
+
+**⚠ Stated plainly rather than glossed: the row's outcome is met by an EMPTY list, not a curated one.** Its wording is *"No test person is visible on the village list"*, and none is — because nobody is. **That genuinely satisfies the clause**, and its Approach was amended under **D7a-VCWL-21092026** to sanction the complete clear, so the route taken is the sanctioned one. But a reader should know which of the two situations closed it, because **the list being empty is also why row 3.1 is now the live gate on launch.**
+
+**[DECISION] Row 6.4 closed on the Owner's sighting.** He tapped the add-someone link on the live site: ***"yes it opens in a new tab"***, with the village list still behind it. **That is the clause and nothing less** — the `target="_blank"` attribute's presence in the source had already been measured, and measuring an attribute is not the same as a person getting a new tab on a real device.
+
+**What was deliberately NOT done.** Rows `1.1`, `3.1`, `4.1`, `6.1` and `6.3` were not touched and remain `new`; `5.1` remains `external`; **no row was appended and no effort re-weighted.** In particular **row 6.1 stays open** — the retry and the sweep have run in production, but the row closes on the Owner *seeing a dropped submission recover by itself*, and no submission has been dropped since the fix went in.
+
+**[PATTERN CANDIDATE: the-diagnostic-that-earns-its-place-finds-what-the-authors-missed]** Row 6.2's tool was built to reconcile two tabs faster. **Its first real run found a fault that four separate reviewing sessions had walked past** — the helper formulas the reset had silently taken. A diagnostic proven against fixtures proves the fixtures; one that surprises its own authors on first contact with production is the stronger evidence, and is worth distinguishing when deciding whether such a row is really done.
 
 ---
 
@@ -7060,5 +7096,83 @@ Working tree clean. Both remotes level.
 **The property is now guarded mechanically** — ten checks, mutation-tested, so the next report of this shape costs one command instead of a session.
 
 ⚠ **Nothing is repaired on his sheet.** That is his action. Build plan rows unchanged; no status moved; `Code.gs` untouched; nothing redeployed.
+
+Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T10:05:12Z — Three rows closed: 0/32 → 8/32
+
+**Source:** Claude Code
+**Started:** 2026-09-21T09:58:40Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only)
+
+**Prompt received:** *(preserved in the Claude.ai conversation above. A plan update and nothing else: close rows 2.1, 6.2 and 6.4 on the Owner's sightings and his ruling D10a-VCWL-21092026, change no code, touch no other row, append nothing.)*
+
+**What was done:**
+
+**Staleness check first:** `GITHUB_TOKEN= git fetch collab main && GITHUB_TOKEN= git diff FETCH_HEAD..HEAD --stat -- apps-script/` → **no output, exit 0.** HEAD `817af0c`, tree clean — **did not differ from the prompt.**
+
+**Baseline measured before editing**, so the movement is attributable: validator `exit=0`, **9 sub-tasks, 0/32 = 0.0%**.
+
+**Three rows closed, and nothing else touched.**
+
+- **`2.1` → `done`** (effort 2). Closure record appended to its sub-task cell: his own clearing of the list, his verbatim *"The electrician is made up so I will be deleting it."*, the empty-state render at 2026-09-21T10:00Z, and the note that its Approach was amended under D7a so the route taken is sanctioned.
+- **`6.2` → `done`** (effort 5). Records ruling **`D10a-VCWL-21092026`**, the *"a few seconds"* against 38.95s, the full reconciliation output, **and that the check found a real fault four sessions had missed.** Carries the not-witnessed caveat in the row itself.
+- **`6.4` → `done`** (effort 1). Records his verbatim *"yes it opens in a new tab"* and why an attribute measurement was not sufficient.
+
+**Satellite rows updated for the same three**: `State` → `done`, `Forecast` and `Forecast end` → **2026-09-21**.
+
+**On the dates, because the prompt asked them to be justifiable rather than invented.** **`Actual start` was LEFT at `2026-09-19`** on all three — that is when the work genuinely began, recorded when the rows were written, and closing a row is no reason to restate when it started. **`Forecast end` moved from `2026-09-26` to `2026-09-21`**, the date the work actually completed, which is the honest forecast for a finished row. **`Due` and `Planned end` were NOT altered** — they are the baseline promise (STD-00009 Rule 5.12.1), and rewriting a baseline to match the outcome is the same class of error as re-weighting effort to move a percentage. **The rows finished five days inside their promise and the record now shows that.**
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | Staleness check | clean | **no output, exit 0** | PASS |
+| 2 | Repo matches prompt HEAD | `817af0c`, clean | did not differ | PASS |
+| 3 | Baseline position before edits | a figure to compare | **9 sub-tasks, 0/32 = 0.0%**, exit 0 | PASS |
+| 4 | Rows enumerated from the document itself | 9 | **9** — 1.1, 2.1, 3.1, 4.1, 5.1, 6.1, 6.2, 6.3, 6.4 | PASS |
+| 5 | Predicted post-change figure, computed before editing | a prediction to test | **8 of 32 = 25.0%** | PASS |
+| 6 | **§3.10 validator after the edits** | exit 0 | **`exit=0`** | PASS |
+| 7 | **Validator sub-task count** | 9 | **9** | PASS |
+| 8 | **Validator completion figure** | verify, not confirm | **`done effort: 8 / 32 = 25.0%`** — matches the prediction | PASS |
+| 9 | **Count cross-checked against rows the file holds** | must match | **document 9, validator 9 — MATCH.** A clean exit is not evidence every row was read; this is | PASS |
+| 10 | **Completion recomputed independently from the document** | must match | **8 of 32 = 25.0%**, done rows `['2.1','6.2','6.4']` | PASS |
+| 11 | Exactly three rows are `done` | 2.1, 6.2, 6.4 | exactly those three | PASS |
+| 12 | Untouched rows still `new` | 1.1, 3.1, 4.1, 6.1, 6.3 | all five still `new` | PASS |
+| 13 | `5.1` still `external` | unchanged | `external` | PASS |
+| 14 | Satellite `State` matches four-column status on all 9 | consistent | consistent | PASS |
+| 15 | No row appended, none renumbered | 9 ids unchanged | unchanged | PASS |
+| 16 | No effort re-weighted | 3,2,4,5,9,8,5,4,1 | unchanged | PASS |
+| 17 | **No code file touched** | none | `Publish.gs`, `Code.gs`, `app.js`, `SHEET-FORMULAS.md` all unmodified | PASS |
+| 18 | Test suites still green (no code changed, so a control) | no regression | **267 passed, 0 failed** | PASS |
+| 19 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `10:05:12Z`; 6 layers | PASS |
+| 20 | Nothing written to the Owner's sheet | nothing | nothing — this session ran no Apps Script at all | PASS |
+
+**What was not tested:**
+
+- **⚠ ROW 6.2's BLANK-`action`-CELL ALARM HAS NOT FIRED SINCE THE RESET.** The clause is installed, covered by the committed harness, and was measured working on 2026-09-21 — **but nobody has seen a blank cell signal a real loss on his sheet, because nothing has been lost since.** Installed, not sighted. **The row closes on the Owner's ruling with that gap named.**
+- **⚠ ROW 2.1's OUTCOME IS MET BY AN EMPTY LIST, not a curated one.** No test person is visible because nobody is. That satisfies the wording, and a reader should know which of the two it was.
+- **THE EMPTY-STATE RENDER IS REPORTED, NOT MEASURED HERE.** Claude.ai read the served page in a live browser at 2026-09-21T10:00Z. **This session ran no browser and did not fetch the feed** — it was a plan update and reading the site was not in scope. Rule 1.9: REPORTED, source named.
+- **THE OWNER'S QUOTATIONS ARE REPORTED** from the commissioning prompt, which is Claude.ai's record of the conversation. No session witnessed them.
+- **THE `Check the setup` TIMING IS THE OWNER'S OWN REPORT** — *"a few seconds"* is his impression, not an instrumented measurement. The 38.95s it is compared against WAS measured, on 2026-09-19.
+- **NO CODE WAS RUN OR CHANGED.** The test suites were executed only as a control to confirm this plan-only session broke nothing.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T10:05:12Z
+
+**End state:**
+
+**`PLAN-DUNCHI-LAUNCH-2026-09-19` stands at 8 of 32 effort (25.0%), 3 of 9 rows done** — verified by the validator at exit 0 and independently recomputed from the document, with the row count cross-checked against the rows the file actually holds.
+
+**What remains, and what now gates launch.** Rows `1.1` (tell the village, 3), `3.1` (the list carries real people, 4), `4.1` (the journey works on real content, 5), `6.1` (a dropped submission recovers by itself, 8) and `6.3` (no invented number, no misattributed recommendation, 4) are all still `new`. **`3.1` is now the live gate** — the list is empty, so the village cannot usefully be told until real tradespeople are on it. **`6.1` closes only when the Owner sees a dropped submission recover by itself**, and nothing has been dropped since the fix.
+
+**Nothing else moved.** No code file was touched, no row appended, no effort re-weighted, nothing written to the Owner's spreadsheet, nothing redeployed.
 
 Working tree clean. Both remotes level.
