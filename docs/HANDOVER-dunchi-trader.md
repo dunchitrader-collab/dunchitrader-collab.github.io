@@ -7692,7 +7692,7 @@ Working tree clean. Both remotes level.
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `ace0cd3` — `test: a mobile without its leading zero — the guard held, no code needed` — seventeen regression checks in `apps-script/test-publisher-resilience.js` including two negative controls, the appended row `6.6` in `docs/BUILD-PLAN-dunchi-launch.md`, and the Layer 1/4/5 records plus this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10). ⚠ **NO CODE FILE WAS CHANGED** — `Publish.gs`, `Code.gs` and `app.js` are unmodified, because the measurement established the existing refusal is correct and the recovery route already exists.
 
 **Finished:** 2026-09-21T10:57:40Z
 
