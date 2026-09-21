@@ -6838,7 +6838,7 @@ Working tree clean. Both remotes level.
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `5ca7ad9` — `docs: D7a - the Owner rules for a complete reset, and it is the safer option` — the D7a ruling in Layer 5, the narrow supersession, build plan row 2.1's Approach and sub-task text, the rewritten eleven-step reset procedure, nine new regression tests, and the Layer 1/4 records plus this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10). ⚠ **No code file was modified** — `Publish.gs`, `Code.gs` and `app.js` are untouched; the only `apps-script/` change is the test file.
 
 **Finished:** 2026-09-21T09:31:20Z
 
