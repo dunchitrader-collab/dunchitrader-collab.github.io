@@ -7047,7 +7047,7 @@ Working tree clean. Both remotes level.
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `0387daa` — `test: the documented I2/J2 formulas are right — report refuted, guard added` — ten mutation-tested document-audit checks in `apps-script/test-verdict.js`, and the Layer 1/3/4/5 records plus this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10). ⚠ **`apps-script/SHEET-FORMULAS.md` was NOT modified** — the reported defect was refuted by measurement, so there was nothing to fix. `Publish.gs`, `Code.gs`, `app.js` and both build plans are likewise untouched.
 
 **Finished:** 2026-09-21T09:47:55Z
 
