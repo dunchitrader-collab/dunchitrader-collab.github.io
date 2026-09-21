@@ -5753,7 +5753,7 @@ Three changes, all in [PATH] `docs/HANDOVER-dunchi-trader.md`. No other file in 
 
 **Commits:**
 
-- UNRESOLVED — see the follow-up commit that replaces this line with the real SHA
+- `201a5ae` — `docs: the MISSION block, in the Owner's own words` — the MISSION block, the Layer 5 decision, both timestamps, and this Layer 6 entry. **This is the commit §3.3 says is structurally unrecordable at write time**; it is resolved here by a follow-up commit rather than left as a placeholder, per rule 1.10.
 
 **Finished:** 2026-09-21T05:58:10Z
 
