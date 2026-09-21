@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T10:53:24Z
+last-updated: 2026-09-21T11:32:10Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T10:53:24Z** ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T11:32:10Z** ~~2026-09-21T10:53:24Z~~ ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -190,11 +190,24 @@ When he deliberately submitted a two-number field this morning to test this row,
 
 **Row `6.6` was appended** (effort 2, `new`). **The percentage FELL 35.3% → 33.3%: SCOPE ADDED, not progress lost** — done effort **unchanged at 12**, denominator 34 → 36.
 
+**2026-09-21T11:32:10Z — ROWS 6.5 AND 6.6 CLOSED ON THE OWNER'S SIGHTINGS. THE PLAN MOVES 12/36 (33.3%) → 16/36 (44.4%), 6 of 11 rows done.** Verified four ways: validator `exit=0` with `sub-tasks: 11` and `done effort: 16 / 36 = 44.4%`; the same figure recomputed from the document's own rows; every row re-checked as parsing to four cells; and every satellite `State` checked against its four-column status.
+
+| Row | Effort | Closed on |
+|---|---|---|
+| **6.5** — a tradesperson who goes by one name | 2 | ***"6.5 done and pass"***. He made the surname question **optional** and left the first-name question **required**, which is the constraint measured on 2026-09-21. A tester submitted a one-name tradesperson and he confirmed they appear correctly. **No code change was ever needed and none was made** |
+| **6.6** — the telephone number missing its leading zero | 2 | ***"A37 pass"***. He ran *Village list → Repair the list*, **set that person's `status` back to `active`**, and checked the live site: eleven digits starting zero, and the Call button dials it. **Both steps done — the repair never reactivates a row, so stopping at step one would have left the tradesperson invisible** |
+
+⚠ **NEITHER CARD WAS INDEPENDENTLY CORROBORATED, and that is stated rather than implied otherwise.** Claude.ai read the served page at **11:26Z** and the counts were **unchanged from 11:07Z — 10 people across 8 trades**. That is consistent with the five-minute republish lag, or with the one-name tradesperson being one of the ten already counted. **It is not evidence against either sighting, and these rows close on the Owner's sightings** — but no session saw either card, and the record says so.
+
+**⚠ A CORRECTION TO ROW 6.3's CLOSING NOTE — the caveat is PARTLY LIFTED.** It was closed under **D9a-VCWL-21092026** with the publisher's refusal of a bad telephone number recorded as *installed but never witnessed*. **It has since been witnessed in live traffic**: a villager submitted a mobile missing its leading zero, the publisher **hid the row and wrote the reason into the `action` column**, and the Owner had to go and look at it — his words, ***"it was caught and I had to look at it"***. **That is the clause's own mechanism seen working on a real submission rather than a fixture.** **The row stays `done`; only the caveat narrows.** ⚠ **The two-numbers-in-one-box case specifically REMAINS UNWITNESSED**, because the form's own validation now refuses it at the door — which is what D9a closed the row on.
+
+**Rows `1.1`, `3.1`, `4.1` and `6.1` are untouched and still `new`; `5.1` remains `external`.** **STEP 6 IS NOW COMPLETE BUT FOR `6.1`** — and `6.1` closes only when the Owner sees a dropped submission recover by itself, which nothing has done since the fix landed. **`3.1` remains the live gate on launch.**
+
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
 | Plan ID | Path | Position [VERIFIED 2026-09-21, validator] |
 |---|---|---|
-| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, 10 sub-tasks, row `6.5` appended~~ SUPERSEDED 2026-09-21T10:53:24Z → **12 / 36 = 33.3%**, **11 sub-tasks** (1 `external`, excluded), **4 `done`** — row `6.6` appended | 
+| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, 10 sub-tasks, row `6.5` appended~~ ~~SUPERSEDED 2026-09-21T10:53:24Z → **12 / 36 = 33.3%**, 11 sub-tasks, 4 `done`~~ SUPERSEDED 2026-09-21T11:32:10Z → **16 / 36 = 44.4%**, **11 sub-tasks** (1 `external`, excluded), **6 `done`** | 
 | `PLAN-DUNCHI-INHERITANCE-2026-09-21` | `docs/BUILD-PLAN-dunchi-inheritance.md` | **0 / 9 = 0.0%**, 1 sub-task |
 
 **The launch plan's denominator fell 41 → 32 and that is SCOPE LEAVING, not progress.** Done effort was 0 before and is 0 after; the 9 effort was excluded **by the row's `external` status**, never by re-weighting it (STD-00009 Rules 5.4.2 and 5.2.5 [CORE]).
@@ -1306,7 +1319,18 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 *The 2026-09-19 queue follows below this section, under its own original heading, unchanged except where an item has been closed in place.*
 
-**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — that tradesperson is invisible to the village until it is done | COMPUTER, about five minutes**
+**[OUTSTANDING] 2026-09-21 | MEDIUM | Blocking: no — nothing is broken while it waits | COMPUTER, about one minute**
+
+**FORMAT BOTH TELEPHONE COLUMNS AS PLAIN TEXT.** This is the durable prevention for the missing-zero fault, and it is the one part of that repair NOT confirmed done.
+
+On **Published**: click the **`E`** column heading → **Format → Number → Plain text**.
+On **Form responses**: click the **`F`** column heading → **Format → Number → Plain text**.
+
+**Why it matters and why it is not urgent:** Sheets eats a leading zero only when it reads a cell as a number. Until the columns are plain text the fault can recur — **but the publisher catches it every time**, hiding the row with the reason in the `action` column, which is exactly what happened on 2026-09-21 and was witnessed by the Owner. **So the cost of not doing it is another repair, not a wrong number on the village list.**
+
+---
+
+~~**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — that tradesperson is invisible to the village until it is done | COMPUTER, about five minutes**~~ **RESOLVED 2026-09-21T11:32:10Z — he ran the repair, set `status` back to `active`, and saw eleven digits starting zero with the Call button dialling on the live site. His words: *"A37 pass"*. Build plan row 6.6 is `done`. ⚠ **Step 4 — formatting both phone columns as plain text — is the durable prevention and is NOT confirmed done.** It is carried forward below. The steps are preserved as they stood.**
 
 **PUT THE LEADING ZERO BACK, AND REACTIVATE THE ROW. It is TWO steps — the repair alone leaves the person hidden.**
 
@@ -1345,7 +1369,7 @@ On **Form responses**: click the **`F`** column heading → **Format → Number 
 
 **If a villager submits a bad number again:** nothing needs doing urgently. **The publisher will hide it and write the reason in the `action` column**, and the person simply will not appear until he repairs and reactivates them. **That is the system working, not failing.**
 
-**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — testers are submitting NOW and cannot enter these people | COMPUTER, about two minutes**
+~~**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — testers are submitting NOW and cannot enter these people | COMPUTER, about two minutes**~~ **RESOLVED 2026-09-21T11:32:10Z — he made the surname question optional, left the first-name question required, and a tester's one-name tradesperson appeared correctly. His words: *"6.5 done and pass"*. Build plan row 6.5 is `done`. The steps below are preserved as they stood.**
 
 **MAKE THE SURNAME QUESTION OPTIONAL ON THE FORM. This is the whole fix and it needs no code.**
 
@@ -2973,6 +2997,34 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **A note on that fixture, because it nearly produced a false bug report.** The first recovery test stored a literal leading apostrophe in the response cell and the repair appeared to double it. **That fixture cannot occur** — real Sheets never returns the apostrophe from `getValues()`, as the code's own comment states. **The fixture was corrected and the assertion kept**, so the property is now guarded either way.
 
 **[PATTERN CANDIDATE: the-guard-that-held-is-worth-as-much-record-as-the-one-that-failed]** Four sessions today recorded defects. **This one records a guard working**, on live traffic, against a fault nobody had rehearsed. **The measurement was worth making precisely because the alternative was so much worse**, and a record that only ever contains failures gives a false picture of where the risk actually sits.
+
+---
+
+### 2026-09-21 — Rows 6.5 and 6.6 closed, and row 6.3's caveat partly lifted by live traffic
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION] Row 6.5 closed on the Owner's sighting.** His words: ***"6.5 done and pass"***. He made the surname question **optional** on the form and **left the first-name question required** — the constraint established by measurement on 2026-09-21, because `app.js` drops a row whose name is entirely blank and such a person would publish to the sheet and then be invisible on the site. A tester submitted a one-name tradesperson and he confirmed they appear correctly.
+
+**Worth recording for the shape of the work rather than the outcome:** this row was opened, investigated, guarded with sixteen tests and closed **without a single line of product code changing**. The fix was one toggle in his form, and the session's output was the measurement that proved no code was needed plus the tests that keep it true.
+
+**[DECISION] Row 6.6 closed on the Owner's sighting.** His words: ***"A37 pass"***. He ran *Village list → Repair the list*, **set that person's `status` back to `active`**, and checked the live site: eleven digits starting zero, Call button dialling.
+
+**Both steps mattered and both were done.** The repair restores the number but **deliberately never reactivates a row** — who appears on the village list is a human decision — so a fix that stopped at the repair would have left the tradesperson repaired and still invisible. **The Layer 4 entry made reactivation its own numbered step for exactly that reason, and he did it.**
+
+**[DECISION] ⚠ NEITHER CARD WAS INDEPENDENTLY CORROBORATED, and this is recorded rather than glossed.** Claude.ai read the served page at **11:26Z**; the counts were **unchanged from 11:07Z — 10 people across 8 trades.** Two readings are consistent with that: the five-minute republish lag had not yet carried the change, or the one-name tradesperson was already among the ten counted. **Neither is evidence against his sighting.**
+
+**These rows close on his sighting and that is correct** — every row in step 6 was written to close on what he sees, and the delegation limit recorded on 2026-09-19 says a session may verify its own code but may not sight its own effect on his screen. **What would have been wrong is letting the summary imply a corroboration that did not happen.** No session saw either card.
+
+**[FINDING] ROW 6.3's CAVEAT IS PARTLY LIFTED BY LIVE TRAFFIC, and the record is corrected in place.** It closed under **D9a-VCWL-21092026** with a three-way split, one arm of which was *installed but never witnessed*: the publisher's own refusal of a bad telephone number and its `action`-column reason.
+
+**That arm has now been witnessed.** A villager submitted a mobile missing its leading zero; the publisher **hid the row and wrote the reason into the `action` column**, and the Owner went and looked at it. His words: ***"it was caught and I had to look at it"***. **That is the clause's own mechanism, on a real submission, unrehearsed.**
+
+**The row stays `done` and only the caveat narrows** — it was already closed, so nothing about its status changes. ⚠ **The two-numbers-in-one-box case specifically REMAINS UNWITNESSED**, and that is the arm D9a was actually about: the form's validation refuses it at the door, which is why the Owner ruled *"no point testing functionality that is not needed"*. **The narrowing is recorded against the row itself, not only here**, so a reader meeting `6.3` in the plan sees the current state of its evidence rather than the state at closure.
+
+**Why a partly-lifted caveat is worth the edit at all.** An *installed but not witnessed* note is a standing invitation to re-test. **Leaving it unqualified after the thing was witnessed would send a later session hunting for evidence that already exists**, and would understate how much of step 6 has now met real traffic. **Equally, deleting it would overstate the case** — the multi-number arm is still untested and is now untestable through the form. Narrowing is the only honest option.
+
+**[PATTERN CANDIDATE: a-caveat-is-a-living-record-not-a-closing-stamp]** Rows close, but the evidence behind them keeps moving. **A not-witnessed note should be revisited when production witnesses it**, and narrowed rather than deleted — the difference between *"we never saw this work"* and *"we saw this half work"* is exactly what the next session needs.
 
 ---
 
@@ -7703,5 +7755,88 @@ Working tree clean. Both remotes level.
 **The Owner has a four-step repair in Layer 4**, and the step that matters most is the second: **the repair never reactivates a row**, so without it the tradesperson stays invisible.
 
 **Plan: 12 of 36 effort (33.3%), 4 of 11 rows done**, validator exit 0, count cross-checked against the document. **Row 6.6 is `new`** and closes on his sighting of that person on the live site with a working Call button.
+
+Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T11:32:10Z — Rows 6.5 and 6.6 closed: 12/36 → 16/36
+
+**Source:** Claude Code
+**Started:** 2026-09-21T11:24:40Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only)
+
+**Prompt received:** *(preserved in the Claude.ai conversation above. A plan update and nothing else: close rows 6.5 and 6.6 on the Owner's sightings, record the corroboration caveat honestly, and correct row 6.3's closing note because its never-witnessed caveat has been partly lifted by live traffic.)*
+
+**What was done:**
+
+**Staleness check first:** `GITHUB_TOKEN= git fetch collab main && GITHUB_TOKEN= git diff FETCH_HEAD..HEAD --stat -- apps-script/` → **no output, exit 0.** HEAD `ba506fc`, tree clean — **did not differ from the prompt.**
+
+**Baseline measured before editing:** validator `exit=0`, **11 sub-tasks, 12/36 = 33.3%**. **Rows enumerated independently from the document: 11.** **Predicted post-change figure computed BEFORE the edit: 16 of 36 = 44.4%**, so the validator was tested against a prediction rather than trusted.
+
+**Two rows closed, and nothing else's status touched.**
+
+- **`6.5` → `done`** (effort 2). Closure record carries his verbatim *"6.5 done and pass"*, that he left the first-name question required, and that **no code change was ever needed**.
+- **`6.6` → `done`** (effort 2). Carries his verbatim *"A37 pass"* and records that **both** steps were done — the repair and the reactivation — with the note that the repair never reactivates a row.
+
+**Both closure records carry the corroboration caveat**, not only the handover: Claude.ai's 11:26Z read showed counts unchanged from 11:07Z, and **no session saw either card**.
+
+**Satellite rows updated for both**: `State` → `done`, `Forecast` and `Forecast end` → **2026-09-21**. **`Actual start` left at `2026-09-21`** — both rows were created today, so that genuinely is when the work began. **`Due` and `Planned end` NOT rewritten**: a baseline is a promise, and rewriting it to match the outcome is the same error as re-weighting effort to move a percentage.
+
+**ROW 6.3's CAVEAT NARROWED IN PLACE.** Its *installed but never witnessed* note now records that the publisher's refusal of a bad telephone number **has been witnessed in live traffic** — the Owner's *"it was caught and I had to look at it"* — while stating that **the two-numbers-in-one-box case specifically remains unwitnessed**. **The row's status is untouched and stays `done`.**
+
+**Two Layer 4 items closed in place** with `RESOLVED` markers and ISO timestamps, their original steps preserved. **One part was carried forward rather than absorbed:** formatting both phone columns as plain text is *prevention*, not repair, and is **not confirmed done** — it is now its own MEDIUM, non-blocking item, with the reason it is not urgent (the publisher catches the fault every time).
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | Staleness check | clean | **no output, exit 0** | PASS |
+| 2 | Repo matches prompt HEAD | `ba506fc`, clean | did not differ | PASS |
+| 3 | Baseline position before edits | a comparison | **11 sub-tasks, 12/36 = 33.3%**, exit 0 | PASS |
+| 4 | Rows enumerated from the document | 11 | **11** | PASS |
+| 5 | Predicted figure, computed before editing | a prediction | **16 of 36 = 44.4%** | PASS |
+| 6 | **§3.10 validator after the edits** | exit 0 | **`exit=0`** | PASS |
+| 7 | **Validator sub-task count** | 11 | **11** | PASS |
+| 8 | **Validator completion figure** | verify, not confirm | **`16 / 36 = 44.4%`** — matches the prediction | PASS |
+| 9 | **Count cross-checked against rows the file holds** | must match | **document 11, validator 11 — MATCH** | PASS |
+| 10 | **Figure recomputed independently from the document** | must match | **16 of 36 = 44.4%** | PASS |
+| 11 | Every row parses to exactly four cells | all 11 | **all 11** | PASS |
+| 12 | **Satellite `State` matches four-column status** | consistent | **consistent on all 11** | PASS |
+| 13 | Exactly six rows `done` | 2.1, 6.2, 6.3, 6.4, 6.5, 6.6 | exactly those | PASS |
+| 14 | Untouched rows still `new` | 1.1, 3.1, 4.1, 6.1 | all four still `new` | PASS |
+| 15 | `5.1` still `external` | unchanged | `external` | PASS |
+| 16 | **Row 6.3 still `done` after the caveat edit** | status unchanged | `done` | PASS |
+| 17 | No row appended, none renumbered, no effort re-weighted | unchanged | `3 2 4 5 9 8 5 4 1 2 2` | PASS |
+| 18 | **No code file touched** | none | `apps-script/` and `app.js` unmodified | PASS |
+| 19 | Test suites green (control) | no regression | **300 passed, 0 failed** | PASS |
+| 20 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `11:32:10Z`; 6 layers | PASS |
+| 21 | Nothing written to the Owner's sheet | nothing | no Apps Script run at all | PASS |
+
+**What was not tested:**
+
+- **⚠ NEITHER CARD WAS SEEN BY ANY SESSION.** Claude.ai read the served page at 11:26Z and the counts were **unchanged from 11:07Z — 10 people across 8 trades**, consistent with the republish lag or with the one-name tradesperson already being among the ten. **Both rows close on the Owner's sightings, which is what they were written for** — but the corroboration did not happen and the record says so in the rows themselves, not only here.
+- **THE OWNER'S QUOTATIONS ARE REPORTED** from the commissioning prompt, which is Claude.ai's record of the conversation. No session witnessed them.
+- **THE 6.3 WITNESSING IS REPORTED.** That the publisher hid the zero-less row and the Owner looked at it comes from him. **What this repo measured on 2026-09-21 was that the code does hide such a row** — the live occurrence is his account of it.
+- **NO CODE WAS RUN OR CHANGED.** The suites were executed only as a control to confirm this plan-only session broke nothing.
+- **The plain-text column formatting is NOT confirmed done** and is carried in Layer 4.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T11:32:10Z
+
+**End state:**
+
+**`PLAN-DUNCHI-LAUNCH-2026-09-19` stands at 16 of 36 effort (44.4%), 6 of 11 rows done** — verified by the validator at exit 0, recomputed independently from the document, with the row count cross-checked and every satellite `State` reconciled against its four-column status.
+
+**STEP 6 IS COMPLETE BUT FOR `6.1`.** Five of its six rows are `done`. **`6.1` closes only when the Owner sees a dropped submission recover by itself**, and nothing has been dropped since the retry and sweep landed. **That row may have no reachable sighting**, and putting its acceptance wording to him is the obvious next decision — the D4b-6G7f-19092026 precedent, where he corrected a row's acceptance rather than leaving it unmeetable, is the one to cite.
+
+**`3.1` remains the live gate on launch** — 12–15 real tradespeople across at least 6 trades, standing at 10 across 8 as at 11:26Z.
+
+**Nothing else moved.** No code file touched, no row appended, no effort re-weighted, nothing written to the Owner's spreadsheet, nothing redeployed.
 
 Working tree clean. Both remotes level.
