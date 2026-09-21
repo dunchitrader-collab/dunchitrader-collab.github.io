@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T10:37:33Z
+last-updated: 2026-09-21T10:53:24Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T10:37:33Z** ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T10:53:24Z** ~~2026-09-21T10:37:33Z~~ ~~2026-09-21T10:18:44Z~~ ~~2026-09-21T10:05:12Z~~ ~~2026-09-21T09:43:07Z~~ ~~2026-09-21T09:26:45Z~~ ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -169,13 +169,32 @@ When he deliberately submitted a two-number field this morning to test this row,
 
 **Row `6.5` was appended to the plan** (effort 2, `new`) under the §4.15 unplanned-work rule. **The percentage FELL 37.5% → 35.3% and that is SCOPE ADDED, not progress lost** — done effort is **unchanged at 12**; the denominator moved 32 → 34.
 
-**THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].**
+**2026-09-21T10:53:24Z — A MOBILE WAS TYPED WITHOUT ITS LEADING ZERO. THE SAFETY NET HELD: IT WAS PUBLISHED `hidden`, NEVER `active`.**
+
+**The Owner's words, REPORTED:** ***"Someone put a mobile without the leading zero and it has caused a formatting issue now that is not easy to resolve. I have managed to resolve it on the Form responses but it is staying without a leading zero in the Published"***.
+
+**⚠ THE QUESTION THAT MATTERED MOST, ANSWERED FIRST: the village was NEVER shown a number that cannot connect.** `phoneProblem` counts digits and refuses anything that is not eleven starting zero, so the row published **`hidden`** with *"the telephone number has 10 digits, and a UK number has 11"* in the `action` column. **Measured by execution, including the numeric form Sheets produces after eating the zero.** This is therefore **not** the most serious class of defect — the opposite: the guard built on 2026-09-18 did exactly its job on live traffic.
+
+**NO CODE CHANGE WAS NEEDED AND NONE WAS MADE.** `Publish.gs`, `Code.gs` and `app.js` are unmodified.
+
+**THE RECOMMENDATION ON REFUSE-VERSUS-REPAIR: KEEP REFUSING on the publish path.** Ten digits starting `7` is an unambiguous missing zero, and `repairPhoneValue` already restores it correctly — **but repairing silently at publish time would put a number on the village list that no human ever confirmed.** The existing rule already refuses nine and twelve digits rather than guessing. **Refusing loudly, with the reason in a column he reads, is the safer design and it is what is already built.** The repair stays where it is: a deliberate, reported action he triggers.
+
+**⚠ A RECOVERY ROUTE ALREADY EXISTS AND HE HAS IT — but it is NOT the sweep.** Measured both ways:
+
+| Route | Does a corrected Form responses row reach Published? |
+|---|---|
+| **The five-minute sweep** | **NO.** It skips any response whose `action` cell is filled. **By design** — and it is exactly why correcting the source changed nothing |
+| **Village list → Repair the list** | **YES.** `cleanPublished` re-derives the number from the responses tab, and falls back to restoring the zero by rule when ten digits are unambiguous. Reports *"Put the missing 0 back on 1 telephone number."* |
+
+**⚠ THE REPAIR NEVER REACTIVATES ANYBODY.** The row stays `hidden` and the Owner must set `status` to `active` himself. **Correct — a human should decide who goes on the village list — but it makes this a TWO-step fix**, and a session that told him "run the repair" and stopped would leave the person invisible.
+
+**Row `6.6` was appended** (effort 2, `new`). **The percentage FELL 35.3% → 33.3%: SCOPE ADDED, not progress lost** — done effort **unchanged at 12**, denominator 34 → 36.
 
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
 | Plan ID | Path | Position [VERIFIED 2026-09-21, validator] |
 |---|---|---|
-| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, **10 sub-tasks** (1 `external`, excluded), **4 `done`** — row `6.5` appended | 
+| `PLAN-DUNCHI-LAUNCH-2026-09-19` | `docs/BUILD-PLAN-dunchi-launch.md` | ~~**0 / 32 = 0.0%**~~ ~~SUPERSEDED 2026-09-21T10:05:12Z → **8 / 32 = 25.0%**, 3 `done`~~ ~~SUPERSEDED 2026-09-21T10:18:44Z → **12 / 32 = 37.5%**, 9 sub-tasks, 4 `done`~~ ~~SUPERSEDED 2026-09-21T10:37:33Z → **12 / 34 = 35.3%**, 10 sub-tasks, row `6.5` appended~~ SUPERSEDED 2026-09-21T10:53:24Z → **12 / 36 = 33.3%**, **11 sub-tasks** (1 `external`, excluded), **4 `done`** — row `6.6` appended | 
 | `PLAN-DUNCHI-INHERITANCE-2026-09-21` | `docs/BUILD-PLAN-dunchi-inheritance.md` | **0 / 9 = 0.0%**, 1 sub-task |
 
 **The launch plan's denominator fell 41 → 32 and that is SCOPE LEAVING, not progress.** Done effort was 0 before and is 0 after; the 9 effort was excluded **by the row's `external` status**, never by re-weighting it (STD-00009 Rules 5.4.2 and 5.2.5 [CORE]).
@@ -1286,6 +1305,45 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ## The queue as it stands after the 2026-09-21 session
 
 *The 2026-09-19 queue follows below this section, under its own original heading, unchanged except where an item has been closed in place.*
+
+**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — that tradesperson is invisible to the village until it is done | COMPUTER, about five minutes**
+
+**PUT THE LEADING ZERO BACK, AND REACTIVATE THE ROW. It is TWO steps — the repair alone leaves the person hidden.**
+
+⚠ **First, the reassurance, because it changes how urgent this feels:** that row went on as **`hidden`, never `active`**. **No villager was ever shown a number that cannot connect.** The publisher counted the digits, refused it, and wrote the reason into the `action` column. **Nothing is broken; somebody is simply missing from the list.**
+
+---
+
+**Step 1 — run the repair.** In the spreadsheet: **Village list → "Repair the list (move stray rows back up)"**.
+
+**What it does, measured 2026-09-21:** it looks the number up on the **Form responses** tab — which he has already corrected — and copies the corrected value into Published. If the response is not usable it falls back to a rule: **ten digits, unambiguous missing zero, put the zero back.** It refuses nine or twelve digits rather than guessing.
+
+**What he should see:** an alert reading **"Repaired." … "Put the missing 0 back on 1 telephone number."** ⚠ **If it says "Nothing to repair", the number on Published is already eleven digits** — go straight to step 2.
+
+---
+
+**Step 2 — set that person back to `active`.** ⚠ **This is the step that is easy to miss, and without it nothing changes on the site.**
+
+On the **Published** tab, find that person's row and change the **`status`** cell from `hidden` to `active`. **The repair deliberately never does this** — who appears on the village list is a human decision, not a script's.
+
+---
+
+**Step 3 — check the site five minutes later.** Open `https://dunchitrader-collab.github.io/?x=2` (the `?x=2` defeats any saved copy). **That person should appear under their trade, and the Call button should dial the full eleven digits starting zero.**
+
+---
+
+**Step 4 — stop it happening again: format the telephone columns as plain text.**
+
+On **Published**: click the **`E`** column heading → **Format → Number → Plain text**.
+On **Form responses**: click the **`F`** column heading → **Format → Number → Plain text**.
+
+**This is worth doing and it is the durable fix for the cause** — Sheets eats a leading zero only when it reads the cell as a number.
+
+⚠ **Verified, and one piece of earlier advice is CORRECTED here.** He was told to prefix the value with an apostrophe when retyping. **That is right, and it is what the publisher itself does** — but **the apostrophe is not part of the value**: Sheets strips it on read, and it is not displayed. So **he should not be alarmed to find it apparently missing after typing it, and he must not type a second one** thinking the first was lost. **Measured 2026-09-21: the repair writes exactly one apostrophe, never a doubled one.** With the column set to plain text he does not need the apostrophe at all for new entries.
+
+---
+
+**If a villager submits a bad number again:** nothing needs doing urgently. **The publisher will hide it and write the reason in the `action` column**, and the person simply will not appear until he repairs and reactivates them. **That is the system working, not failing.**
 
 **[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — testers are submitting NOW and cannot enter these people | COMPUTER, about two minutes**
 
@@ -2884,6 +2942,37 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **The recommendation is to take the two-minute form change NOW and consider the single field later, if at all** — the testers are blocked this minute, the small fix unblocks them with no code and no migration, and the larger change is far safer once the list has stopped moving. **But it is his call and is recorded as open.**
 
 **[PATTERN CANDIDATE: the-build-work-that-turns-out-not-to-exist]** A prompt framed *"establish whether the code copes; if not, fix it"* invites building. **Executing the real code first showed the fix was one setting in somebody else's UI.** The honest output of a build prompt is sometimes a measurement and a test, and saying so plainly is worth more than a plausible change nobody needed.
+
+---
+
+### 2026-09-21 — A mobile without its leading zero: the guard held, and refusing stays the right design
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[FINDING] THE HEADLINE IS WHAT DID NOT HAPPEN.** The prompt asked this to be named as the most serious defect of the day **if such a row published as `active`**. **Measured: it does not.** `phoneProblem` folds the international forms, counts the digits, and returns *"the telephone number has 10 digits, and a UK number has 11"*; `publishInto` therefore sets `status` `hidden` and writes that sentence into the `action` column. **Driven end to end, including the NUMBER form that Sheets produces after eating the zero — `hidden` both ways.** **The village was never shown a number that cannot connect, and the guard built on 2026-09-18 did its job on live traffic.**
+
+**[DECISION] REFUSING IS KEPT OVER REPAIRING ON THE PUBLISH PATH, and this is the judgement the prompt asked to be argued rather than assumed.**
+
+**The case for repairing:** ten digits beginning `7` is, in UK numbering, an unambiguous mobile that has lost its zero. `repairPhoneValue` already does it correctly and idempotently — **verified, including both negative controls: nine digits and twelve digits are REFUSED, not padded or truncated.**
+
+**The case for refusing, which wins:** a repaired number goes onto the village list **without any human having confirmed it**, and the thing at the end of it is a Call button in the hands of an elderly villager. **The existing design already states the principle** — *"a confidently wrong phone number is worse than an obviously missing one"* — and the failure mode of silent repair is the one that cannot be noticed. **A hidden row with a readable reason is a problem the Owner can see; a wrong number that dials is not.** The repair therefore stays where it is: **a deliberate action he triggers, which reports what it changed.**
+
+**Where repair could be wrong, stated so the argument is checkable:** a ten-digit value could be a mis-typed landline, a foreign number, or a mobile with a digit dropped rather than a zero. **Prepending a zero to any of those produces a plausible eleven-digit number that dials somebody else.** That is the specific harm refusal avoids.
+
+**[FINDING] A RECOVERY ROUTE EXISTS, AND IT IS NOT THE ONE THE HYPOTHESIS NAMED.** The prompt's reading was that repairing the source cannot reach Published because the sweep skips a response whose `action` cell is filled. **The first half is confirmed and the second half is incomplete.**
+
+- **The sweep does skip it** — measured over six runs, Published unchanged. **By design.**
+- **But `cleanPublished`, reached from *Village list → Repair the list*, re-derives the number from the responses tab** — `byKey[digits] || byKey['0' + digits]` — and copies the corrected value across. **Measured: the corrected number reaches Published.** With no usable response it falls back to the ten-digit rule and still restores the zero.
+
+**So the answer to "does ANY route exist" is YES, and he already has it.** Recorded plainly because a session that had only checked the sweep would have told him to edit Published by hand.
+
+**[FINDING] THE REPAIR NEVER REACTIVATES A ROW**, and that makes this a two-step fix. `cleanPublished` reads the status column only to compare duplicates; it never writes it. **This is correct design** — who appears on the village list should be a human's decision — **but a session that says "run the repair" and stops leaves the tradesperson invisible.** The Layer 4 entry makes reactivation its own numbered step for exactly that reason.
+
+**[DECISION] One piece of earlier advice is CORRECTED rather than repeated.** He was told to prefix the value with an apostrophe and to set both phone columns to plain text. **Both are right** — the publisher's own `phoneText` does the same thing — **but the apostrophe is not part of the value.** Sheets strips it on read and does not display it. **He must not type a second one believing the first was lost**, and with the column set to plain text he does not need it at all for new entries. **Measured: the repair writes exactly one apostrophe, never a doubled one** — a check added after a fixture of this session's own briefly suggested otherwise.
+
+**A note on that fixture, because it nearly produced a false bug report.** The first recovery test stored a literal leading apostrophe in the response cell and the repair appeared to double it. **That fixture cannot occur** — real Sheets never returns the apostrophe from `getValues()`, as the code's own comment states. **The fixture was corrected and the assertion kept**, so the property is now guarded either way.
+
+**[PATTERN CANDIDATE: the-guard-that-held-is-worth-as-much-record-as-the-one-that-failed]** Four sessions today recorded defects. **This one records a guard working**, on live traffic, against a fault nobody had rehearsed. **The measurement was worth making precisely because the alternative was so much worse**, and a record that only ever contains failures gives a false picture of where the risk actually sits.
 
 ---
 
@@ -7502,5 +7591,117 @@ Working tree clean. Both remotes level.
 **⚠ HIS TESTERS ARE BLOCKED THIS MINUTE.** The form change and what the testers should do meanwhile are both in Layer 4. **The most important line in it: leave the first-name question REQUIRED** — a nameless row publishes to the sheet and is then invisible on the site.
 
 **Plan: 12 of 34 effort (35.3%), 4 of 10 rows done**, validator exit 0, count cross-checked. **Row 6.5 is `new` and closes on the Owner's sighting**, like every other row in step 6.
+
+Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T10:57:40Z — The missing leading zero: the guard held, no code needed
+
+**Source:** Claude Code
+**Started:** 2026-09-21T10:46:15Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only)
+
+**Prompt received:** *(preserved in the Claude.ai conversation above. Unplanned work found in live testing: a mobile typed without its leading zero. Tasks — establish what the publisher did with it, argue refuse versus repair, establish whether a corrected response reaches Published, give the Owner his repair, build the fix and cover it with tests including a negative control. Then append a row to step 6 per §4.15.)*
+
+**PROVENANCE OF ROW 6.6:** **found in live testing on 2026-09-21**, while row 3.1 was filling with real tradespeople. Unplanned work, entered after the first attempt per preferences §4.15.
+
+**What was done:**
+
+**Staleness check first:** no output, exit 0 — copy-source current. HEAD `f6eb378`, tree clean — **did not differ from the prompt.**
+
+**TASK 1 — what the publisher did. IT HID THE ROW. It did not publish it as `active`.**
+
+`phoneProblem` (`Publish.gs:1289`) strips non-digits, folds `0044`/`44`, then applies two tests: `if (d.length !== PHONE_DIGITS)` and `if (d.charAt(0) !== '0')`. Ten digits fails the first. `phoneLooksWrong` is the single shared test, and `publishInto` sets `status = (badPhone || spammy) ? 'hidden' : 'active'`.
+
+**Measured end to end, with the phone supplied both as text and as the JavaScript NUMBER Sheets produces after eating the zero:**
+
+| Input | `phoneProblem` | Published status |
+|---|---|---|
+| `'7700900123'` | *"has 10 digits, and a UK number has 11"* | **`hidden`** |
+| `7700900123` (number) | same | **`hidden`** |
+| `'07700900123'` (control) | `''` | `active` |
+
+**So the prompt's conditional does not fire.** ⚠ **This is the opposite of the most serious defect — it is a guard working on live traffic**, and it is recorded as such rather than folded into a list of faults.
+
+**TASK 2 — REFUSE, and keep refusing. Recommendation argued in Layer 5**, with the case for repair stated fairly and the specific harm that decides it: a ten-digit value could be a mis-typed landline, a foreign number, or a mobile missing a digit rather than a zero, and **prepending a zero to any of those produces a plausible number that dials somebody else.** A hidden row with a readable reason is visible; a wrong number that dials is not.
+
+**TASK 3 — a route DOES exist, and it is not the sweep.** The prompt's hypothesis was half right:
+
+| Route | Result, measured |
+|---|---|
+| The five-minute sweep, 6 runs | **Published unchanged.** It skips a response whose `action` cell is filled — by design |
+| **Village list → Repair the list** | **The corrected number reaches Published.** `cleanPublished` looks it up as `byKey[digits] \|\| byKey['0' + digits]` |
+| Repair with NO usable response | **Still restores the zero**, by the ten-digit rule |
+
+**TASK 4 — his click-by-click repair is in Layer 4, as FOUR steps** — repair, **reactivate**, check the site, then format both phone columns as plain text. **The reactivation step is called out because the repair deliberately never writes the status column**, and a fix that stopped at step 1 would leave the tradesperson invisible. **The apostrophe advice is verified and corrected**: right in substance, but the apostrophe is not part of the value and he must not type a second one.
+
+**TASK 5 — seventeen checks added, including two negative controls** (nine digits and twelve digits both refused rather than guessed). **No code change was needed and none was made.**
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | Staleness check | clean | **no output, exit 0** | PASS |
+| 2 | Repo matches prompt HEAD | `f6eb378`, clean | did not differ | PASS |
+| 3 | Baseline all suites | green | **283 passed, 0 failed** | PASS |
+| 4 | `phoneProblem` on ten digits (text) | refused | *"has 10 digits…"* | PASS |
+| 5 | `phoneProblem` on ten digits as a NUMBER | refused | same | PASS |
+| 6 | `normalisePhone` on ten digits | no key | `''` | PASS |
+| 7 | Correct eleven digits (CONTROL) | accepted | `''` problem, key returned | PASS |
+| **8** | **`publishInto` — does it go on as `active`?** | establish | **`hidden`**, both text and number forms | PASS |
+| 9 | The action line names the fault | readable | *"Hidden as T001 — the telephone number has 10 digits…"* | PASS |
+| 10 | Digits preserved for later repair | kept | `7700900123` retained | PASS |
+| 11 | `repairPhoneValue` on ten digits | restores zero | `07700900123`, `changed:true` | PASS |
+| 12 | …on a correct number | idempotent | `changed:false` | PASS |
+| **13** | **NEGATIVE CONTROL: twelve digits** | refused | `ok:false` | PASS |
+| **14** | **NEGATIVE CONTROL: nine digits** | refused | `ok:false` | PASS |
+| **15** | **Sweep × 6 against a corrected response** | does not carry | **Published unchanged** | PASS |
+| **16** | **"Repair the list" against the same** | carries it | **corrected number reaches Published** | PASS |
+| 17 | Apostrophe count after repair | exactly one | exactly one | PASS |
+| 18 | Status after repair | stays `hidden` | `hidden` | PASS |
+| 19 | Repair with no response to consult | rule restores zero | restored | PASS |
+| 20 | Seventeen new checks | pass | **117 passed in that suite** | PASS |
+| 21 | Full regression | no regression | **300 passed, 0 failed** (283→300) | PASS |
+| **22** | **No code file changed** | none | `Publish.gs`, `Code.gs`, `app.js` **unmodified** | PASS |
+| 23 | Row 6.6 appended at next free number | 6.6, appended | both tables | PASS |
+| 24 | New rows' cell counts | 4 and 15 | **4 and 15** — no literal pipe | PASS |
+| 25 | **§3.10 validator** | exit 0 | **`exit=0`** | PASS |
+| 26 | **Validator sub-task count** | 11 | **11** | PASS |
+| 27 | **Count vs rows the document holds** | must match | **11 and 11 — MATCH** | PASS |
+| 28 | **Figure recomputed from the document** | must match | **12 of 36 = 33.3%** | PASS |
+| 29 | Every row parses to 4 cells | all 11 | all 11 | PASS |
+| 30 | No existing row's status changed | unchanged | 4 `done`, 6 `new`, 1 `external` | PASS |
+| 31 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `10:53:24Z`; 6 layers | PASS |
+| 32 | Nothing written to the Owner's sheet | nothing | no Apps Script run at all | PASS |
+
+**A fixture of this session's own briefly produced a false result, and it is recorded.** The first recovery test stored a literal leading apostrophe in the response cell, and the repair appeared to double it. **That fixture cannot occur** — Sheets strips the apostrophe on read, as `Publish.gs:234` states. The fixture was corrected and **an assertion was kept for the property**, so it is guarded either way. **A test built on an impossible input would have produced a bug report about nothing.**
+
+**The percentage FELL and that is scope, not regression.** 12/34 (35.3%) → **12/36 (33.3%)**. Done effort **unchanged at 12**; denominator 34 → 36 for row 6.6.
+
+**What was not tested:**
+
+- **NOTHING RAN INSIDE GOOGLE AND NOTHING WAS WRITTEN TO THE OWNER'S SHEET** — his testers are submitting to it as this ran.
+- **⚠ THE DAMAGED ROW ITSELF WAS NEVER SEEN.** Which id it is, what the number should be, and whether his correction on Form responses is in fact eleven digits are all **REPORTED** from the Owner. The repair steps are written to work whatever the row turns out to be.
+- **"Repair the list" HAS NOT BEEN RUN ON HIS SHEET.** It is proven against stubs modelling his tab shape. **It is his action and the row closes on his sighting, not on this measurement.**
+- **The Format → Number → Plain text steps are [ASSUMED]** from Google Sheets' standard menus. No session can see his screen.
+- **No browser run this session.** That the site would show the reactivated person is inference from the `status` rule, already measured on other days — not measured here.
+- **The Owner's quotation is REPORTED** from the commissioning prompt.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T10:57:40Z
+
+**End state:**
+
+**A villager typed a mobile without its zero, and the system refused it exactly as designed.** No wrong number reached the village list. **No code change was needed and none was made**; seventeen checks now guard the behaviour, including two negative controls.
+
+**The Owner has a four-step repair in Layer 4**, and the step that matters most is the second: **the repair never reactivates a row**, so without it the tradesperson stays invisible.
+
+**Plan: 12 of 36 effort (33.3%), 4 of 11 rows done**, validator exit 0, count cross-checked against the document. **Row 6.6 is `new`** and closes on his sighting of that person on the live site with a working Call button.
 
 Working tree clean. Both remotes level.

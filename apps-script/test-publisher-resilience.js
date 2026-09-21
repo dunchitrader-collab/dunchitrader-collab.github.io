@@ -1051,5 +1051,125 @@ section('2026-09-21 — the site renders a one-name tradesperson');
         nameless === null, 'it rendered, so the guard has changed');
 }
 
+/* -------------------------------------------------------------------------
+   2026-09-21 — A MOBILE TYPED WITHOUT ITS LEADING ZERO.
+
+   FOUND IN LIVE TESTING while row 3.1 was filling. The Owner's words:
+   "Someone put a mobile without the leading zero and it has caused a
+   formatting issue now that is not easy to resolve. I have managed to resolve
+   it on the Form responses but it is staying without a leading zero in the
+   Published".
+
+   THE QUESTION THAT MATTERED MOST: did such a row go onto the village list as
+   ACTIVE? If it did, a villager would tap Call and reach nobody, and nothing
+   would flag it. MEASURED: it does NOT. `phoneProblem` counts the digits and
+   the row is published HIDDEN with the reason in the `action` column. The
+   safety net held and this section asserts that it keeps holding.
+   ------------------------------------------------------------------------- */
+section('2026-09-21 — a mobile typed without its leading zero');
+{
+  const P = load(makeSheet([], 'Published'), makeResponses([]));
+
+  /* The judgement, asserted directly. */
+  check('ten digits starting 7 is REFUSED, not silently accepted',
+        P.phoneLooksWrong('7700900123') === true);
+  check('and the reason names the digit count, in words the Owner can read',
+        /10 digits/.test(P.phoneProblem('7700900123')), P.phoneProblem('7700900123'));
+  check('normalisePhone yields NO key for it, so it cannot be matched on',
+        P.normalisePhone('7700900123') === '');
+  check('the same number typed correctly is accepted (CONTROL)',
+        P.phoneLooksWrong('07700900123') === false);
+
+  /* Sheets stores a bare number as a NUMBER, which is how the zero is lost.
+     The publisher must judge the numeric form exactly as it judges the text. */
+  check('a NUMBER (how Sheets stores it after eating the zero) is refused too',
+        P.phoneLooksWrong(7700900123) === true);
+
+  /* END TO END: the row must be HIDDEN, never active. */
+  const pub = makeSheet([], 'Published');
+  const P2  = load(pub, makeResponses([]));
+  const out = P2.publishInto(pub.sheet, P2.tableValues(pub.sheet),
+    { trade:'Plumber', first:'Dave', last:'Smith', phone:7700900123,
+      business:'', words:'Good job', by:'Tim' });
+
+  check('*** a zero-less mobile publishes HIDDEN, never active ***',
+        pub.grid[1][7] === 'hidden', pub.grid[1][7]);
+  check('and the action line tells the Owner what is wrong with it',
+        /10 digits/.test(out.action), out.action);
+  check('the digits are preserved rather than discarded, so it can be repaired',
+        String(pub.grid[1][4]).replace(/\D/g, '') === '7700900123',
+        JSON.stringify(pub.grid[1][4]));
+
+  /* THE REPAIR RULE. Ten digits is an unambiguous missing zero; anything else
+     is refused rather than guessed. */
+  const r10 = P.repairPhoneValue('7700900123');
+  check('repairPhoneValue RESTORES the zero on ten digits',
+        r10.ok === true && r10.changed === true && r10.value === '07700900123',
+        JSON.stringify(r10));
+  const r11 = P.repairPhoneValue('07700900123');
+  check('and reports NO CHANGE on a number that is already right (idempotent)',
+        r11.ok === true && r11.changed === false, JSON.stringify(r11));
+  const r12 = P.repairPhoneValue('077009001234');
+  check('NEGATIVE CONTROL: twelve digits is REFUSED, not guessed at',
+        r12.ok === false, JSON.stringify(r12));
+  const r9 = P.repairPhoneValue('770090012');
+  check('NEGATIVE CONTROL: nine digits is REFUSED, not padded',
+        r9.ok === false, JSON.stringify(r9));
+}
+
+/* THE RECOVERY ROUTE. The Owner corrected the Form responses cell and
+   Published did not change. Which route, if any, carries the correction? */
+section('2026-09-21 — does a corrected response reach Published?');
+{
+  /* Sheets STRIPS a leading apostrophe on read, so a corrected cell comes back
+     as a plain eleven-digit string. Modelling it with the apostrophe still
+     attached would be a fixture that cannot occur. */
+  const damaged  = ['T006','Dave','Smith','','7700900123','Plumber','','hidden','','','Good','Tim'];
+  const corrected = [['2026-09-21','','Plumber','Dave','Smith','07700900123','',
+                      'Good job','Tim','','','','Hidden as T006 — the telephone number has 10 digits']];
+
+  /* ROUTE 1 — the five-minute sweep. It must NOT pick this up, because the
+     response's action cell is filled. Asserted so the limitation is a
+     recorded fact rather than a surprise. */
+  {
+    const pub = makeSheet([damaged], 'Published');
+    const resp = makeResponses(corrected);
+    for (let i = 0; i < 6; i++) {
+      const Q = load(pub, resp);
+      try { Q.sweepPublished(); } catch (ignored) {}
+    }
+    check('the SWEEP does NOT carry a corrected response to Published',
+          String(pub.grid[1][4]).replace(/\D/g, '') === '7700900123',
+          'it changed to ' + JSON.stringify(pub.grid[1][4]));
+  }
+
+  /* ROUTE 2 — "Repair the list". It re-derives from the responses tab. */
+  {
+    const pub = makeSheet([damaged], 'Published');
+    const resp = makeResponses(corrected);
+    const Q = load(pub, resp);
+    try { Q.repairPublished(); } catch (ignored) {}
+
+    check('"Repair the list" DOES carry the corrected number to Published',
+          String(pub.grid[1][4]).replace(/\D/g, '') === '07700900123',
+          JSON.stringify(pub.grid[1][4]));
+    check('and it writes exactly ONE apostrophe, not a doubled one',
+          (String(pub.grid[1][4]).match(/^'*/)[0] || '').length <= 1,
+          JSON.stringify(pub.grid[1][4]));
+    check('the row stays HIDDEN — the repair never reactivates anybody',
+          pub.grid[1][7] === 'hidden', pub.grid[1][7]);
+  }
+
+  /* And with NO corrected response to draw on, the rule still restores it. */
+  {
+    const pub = makeSheet([damaged], 'Published');
+    const Q = load(pub, makeResponses([]));
+    try { Q.repairPublished(); } catch (ignored) {}
+    check('with no response to consult, the ten-digit RULE still restores the zero',
+          String(pub.grid[1][4]).replace(/\D/g, '') === '07700900123',
+          JSON.stringify(pub.grid[1][4]));
+  }
+}
+
 console.log(`\n================  ${pass} passed, ${fail} failed  ================\n`);
 process.exit(fail === 0 ? 0 : 1);
