@@ -738,5 +738,107 @@ section('2026-09-21 — a refused phone must not disable the duplicate check');
         threw === null, threw && threw.message);
 }
 
+/* -------------------------------------------------------------------------
+   2026-09-21 — IS A FULL CLEAR OF PUBLISHED SAFE?
+
+   The Owner has stated every row on Published is test data and wants to start
+   clean. That contradicts his own standing ruling D7-6G7f-19092026, HIDE
+   NEVER DELETE, whose reason is that ids come from the highest present — so
+   deleting the highest frees it for reuse and a later submission inherits
+   recommendations filed against the old holder.
+
+   The hypothesis under test: a TOTAL clear is safe precisely because nothing
+   survives to inherit a reused id, while a PARTIAL delete is the dangerous
+   case the ruling was written for. These assert the safe half.
+   ------------------------------------------------------------------------- */
+section('2026-09-21 — a fully cleared Published tab');
+{
+  const P = load(makeSheet([], 'Published'), makeResponses([]));
+  const HDR_ONLY = [HDR.slice()];
+
+  check('id generation on an empty tab yields T001, not a throw',
+        P.nextId(HDR_ONLY) === 'T001', P.nextId(HDR_ONLY));
+  check('id generation survives a table with no header either',
+        P.nextId([]) === 'T001', P.nextId([]));
+  check('ids do NOT restart while a higher one survives (the ruling\'s case)',
+        P.nextId([HDR.slice(), ['T029']]) === 'T030',
+        P.nextId([HDR.slice(), ['T029']]));
+
+  check('no lookup throws against an empty table',
+        P.rowIndexForPerson(HDR_ONLY, '07700900111', 'A', 'B') === -1 &&
+        P.rowIndexForUnusablePhone(HDR_ONLY, 'A', 'B', 'Plumber') === -1 &&
+        P.existingPhones(HDR_ONLY).length === 0);
+
+  /* A real villager publishing into the cleared tab. */
+  const pub = makeSheet([], 'Published');
+  const P2  = load(pub, makeResponses([]));
+  const existing = P2.tableValues(pub.sheet);
+  check('tableValues on a cleared tab returns header only',
+        existing.length === 1, 'length ' + existing.length);
+
+  const out = P2.publishInto(pub.sheet, existing,
+    { trade:'Plumber', first:'Real', last:'Villager', phone:'07700900123',
+      business:'Villager Plumbing', words:'Came out the same day', by:'Tim' });
+  check('the first real submission publishes as T001',
+        out.added === true && /T001/.test(out.action), JSON.stringify(out));
+  check('and it lands on row 2, the first data row',
+        pub.grid.findIndex(r => r[0] === 'T001') === 1,
+        'landed at index ' + pub.grid.findIndex(r => r[0] === 'T001'));
+
+  /* THE OWNER'S FORMULAS. Nothing here may write to I or J. */
+  const hitFormula = pub.log.writes.filter(w => w.col === 9 || w.col === 10);
+  check('publishing into a cleared tab writes NOTHING to columns I or J',
+        hitFormula.length === 0, JSON.stringify(hitFormula));
+  check('writable blocks are still A-H and K-L only',
+        JSON.stringify(P2.writableBlocks()) === '[{"start":0,"len":8},{"start":10,"len":2}]');
+}
+
+/* THE TRAP: do the old test responses come back after the wipe? */
+section('2026-09-21 — what would bring the test data back');
+{
+  /* 6 test responses whose action cells are FILLED — they published once. */
+  const filled = [];
+  for (let i = 1; i <= 6; i++) {
+    filled.push(['2026-09-20','','Plumber','Test'+i,'Person'+i,'077009'+(10000+i),'',
+                 'Some words '+i,'Tim','','','','Published as T'+String(i).padStart(3,'0')]);
+  }
+  const blank = filled.map(r => { const c = r.slice(); c[12] = ''; return c; });
+
+  /* (a) action cells left alone — the sweep must leave Published empty. */
+  {
+    const pub = makeSheet([], 'Published');
+    const resp = makeResponses(filled);
+    for (let i = 0; i < 6; i++) {
+      const P = load(pub, resp);
+      try { P.sweepPublished(); } catch (ignored) {}
+    }
+    const rows = pub.grid.slice(1).filter(r => r[0]).length;
+    check('action cells left FILLED: six sweeps bring nothing back',
+          rows === 0, rows + ' rows returned');
+  }
+
+  /* (b) action column cleared — everything returns. This is the trap. */
+  {
+    const pub = makeSheet([], 'Published');
+    const resp = makeResponses(blank);
+    const P = load(pub, resp);
+    try { P.sweepPublished(); } catch (ignored) {}
+    const rows = pub.grid.slice(1).filter(r => r[0]).length;
+    check('CLEARING the action column brings ALL the test data back',
+          rows === 6, rows + ' rows (expected all 6 to return)');
+  }
+
+  /* (c) the backfill menu item ignores the action column entirely. */
+  {
+    const pub = makeSheet([], 'Published');
+    const resp = makeResponses(filled);
+    const P = load(pub, resp);
+    try { P.backfillPublished(); } catch (ignored) {}
+    const rows = pub.grid.slice(1).filter(r => r[0]).length;
+    check('the BACKFILL menu item republishes even with action cells filled',
+          rows === 6, rows + ' rows (expected all 6 — backfill has no action check)');
+  }
+}
+
 console.log(`\n================  ${pass} passed, ${fail} failed  ================\n`);
 process.exit(fail === 0 ? 0 : 1);

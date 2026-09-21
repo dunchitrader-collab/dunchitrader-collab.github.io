@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T08:05:27Z
+last-updated: 2026-09-21T09:16:32Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T08:05:27Z** ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T09:16:32Z** ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -46,6 +46,28 @@ ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from
 **(B) THERE IS A RUNAWAY DUPLICATE DEFECT, AND YESTERDAY'S "NO DUPLICATE RISK" WAS WRONG.** `normalisePhone` returns `''` for a phone it refuses, and the duplicate check was guarded by `if (key)` — so **for refused-phone rows the check never ran at all** and the sweep republished them every five minutes. **Measured by reproducing the LIVE condition — the same sheet swept repeatedly, which is what yesterday's fresh-stub test did not do: 8 responses became 112 rows over 14 sweeps on `4f4e88f`.** That is the Owner's log exactly — *"sweep published 8 missed submission(s)"* fourteen times, 07:11 to 08:16. ⚠ **`4f4e88f` made it worse:** the abort it removed had been accidentally limiting the damage to one row per run. Fixed by `rowIndexForUnusablePhone()`, a name+trade fallback. **Same scenario now yields 8 rows and no duplicates.**
 
 **WHAT HIS SHEET SHOULD SHOW, and it is the good case:** he is running `1d50b00`, whose abort stopped each sweep after the first new row — so **roughly 14 extra rows, not 112**. The count to check is in Layer 4.
+
+**2026-09-21T09:16:32Z — EVERY ROW ON PUBLISHED IS TEST DATA, AND A FULL CLEAR IS ESTABLISHED SAFE. THE OWNER HAS NOT YET RULED.**
+
+**The new fact, REPORTED from the Owner:** all twenty-nine data rows on Published are test data from him and three family members. **There has never been live village traffic.** His words: ***"I would rather delete all test data if I can and seed real data. Is there an approach to do this? As this set of data is very messy!"***
+
+**⚠ THIS CONFLICTS WITH HIS OWN STANDING RULING D7-6G7f-19092026 — HIDE, NEVER DELETE — and with build plan row 2.1's Approach column. NOTHING HAS BEEN CHANGED AND NO DECISION IS RECORDED AS MADE.** The conflict is real, the analysis is done, and **the ruling is his to make.**
+
+**VERDICT: THE FULL CLEAR IS SAFE — and the ruling it overturns is right about the case it was written for.** Established by executing the real code, not by reading it:
+
+| Question | Measured |
+|---|---|
+| Id generation on an empty tab | **`T001`** — `nextId` starts `highest = 0`; no throw |
+| Does it restart while a higher id survives? | **No — `T030` after `T029`.** The ruling's hazard is real for a PARTIAL delete |
+| First real submission after a clear | Publishes **`T001`**, lands on **row 2** |
+| Owner's `I`/`J` formulas | **Zero writes reach them.** `writableBlocks()` = A–H and K–L |
+| The site with a cleared tab | **"Nobody on the list just yet"** — the calm empty state, driven through the real `app.js` |
+
+**WHY IT IS SAFE, IN ONE LINE: if nothing survives, there is nothing left to inherit a reused id.** The dangerous case is the **partial** delete — remove the highest id and the next submission takes that number back. **All of it, or none of it.**
+
+**⚠ THE TRAP, AND IT IS A ONE-CLICK TRAP.** The `action` column genuinely protects against the sweep — twelve sweeps of an emptied tab brought **nothing** back. But **"Publish any responses not yet on the list"**, the FIRST item in the Owner's Village list menu, **ignores the `action` column entirely**: one click republished all 29 and reported *"Added 29 new people to the list."* **After a clear, that menu item's wording describes exactly what he would want and does exactly what he must not do.** Recorded as a `[GOTCHA]` in Layer 3.
+
+**The procedure is written, click by click, in [PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md`** under *"Starting the list completely clean"*. **No session may run it — it is his action on his own sheet.**
 
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
@@ -824,6 +846,32 @@ The `<section class="demo">` block and the `RAW` / `CLEAN` arrays in that file a
 
 ~~None recorded yet.~~ SUPERSEDED 2026-09-18 → recorded below.
 
+**[GOTCHA] 2026-09-21 — "Publish any responses not yet on the list" IGNORES the `action` column and republishes EVERYTHING. It is the first item in the Owner's menu, and after a list-clear its wording actively invites the click that undoes the clear.**
+
+**Not a code defect — it does exactly what it says — but it is a trap with a live blast radius, so it is recorded as one.**
+
+`sweepPublished` skips a response whose `action` cell is non-empty, at `Publish.gs:621`:
+
+```javascript
+if (actionCol > 0 && String(values[r][actionCol - 1] || '').trim() !== '') continue;
+```
+
+**`backfillPublished` has no such test.** Defined at `Publish.gs:797`, its loop runs `810-822`, reads every response row, skips only rows with no name and no phone, and calls `publishOne` on the rest at `822`. The `action` column is never consulted.
+
+**MEASURED 2026-09-21** against an emptied Published tab with 29 test responses whose `action` cells were all filled:
+
+| Action | Rows on Published afterwards |
+|---|---|
+| Twelve five-minute sweeps | **0** — the `action` cells held; nothing came back |
+| Clearing the `action` column, then one sweep | **29** — everything returned |
+| **One click of "Publish any responses not yet on the list"** | **29** — everything returned, and the alert read *"Done. Added 29 new people to the list. Skipped 0 already there or empty."* |
+
+**Why the wording is the hazard.** The menu item is described as publishing *"any responses not yet on the list"*. After a deliberate clear the list is empty, so every response is literally "not yet on the list" — the description is accurate and the behaviour is catastrophic for the Owner's intent. **The reassuring alert compounds it**: it reports 29 additions as a success.
+
+Diagnosis: `node apps-script/test-publisher-resilience.js` — section *"2026-09-21 — what would bring the test data back"*, which asserts all three behaviours above as facts.
+
+**Not fixed, and deliberately not.** The function is correct for its actual purpose — recovering responses that genuinely never published — and it is the documented recovery route in `DEPLOY.md` and the restore runbook. **Changing it to consult the `action` column would break that purpose**, because a response that failed to publish has a blank action cell only when the publisher never ran at all. The mitigation is documentation: the full-clear procedure in [PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md` names this menu item as the one click not to make, and says the Owner will not need it again.
+
 **[BUG] 2026-09-21 — COMMITTING A FIX TO `origin` DOES NOT PUT IT WHERE THE OWNER COPIES FROM. He re-pasted believing he was installing a fix, and re-installed the unfixed file.**
 
 **This is a distribution defect, not a code defect, and it silently wasted a session's work.**
@@ -1113,6 +1161,26 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 ## The queue as it stands after the 2026-09-21 session
 
 *The 2026-09-19 queue follows below this section, under its own original heading, unchanged except where an item has been closed in place.*
+
+**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — gates seeding, which gates launch | AWAITING THE OWNER'S RULING, not a task**
+
+**OPEN QUESTION: may the Published tab be cleared completely?** The Owner has asked to; his own standing ruling **D7-6G7f-19092026 (HIDE, NEVER DELETE)** says no. **Both cannot stand and he has not yet ruled.**
+
+**What he would be overturning, stated so the ruling is made knowingly:**
+
+| Artefact | What it currently says |
+|---|---|
+| **D7-6G7f-19092026** (Layer 5, 2026-09-19) | Hide, never delete — *"deleting the highest id frees it for reuse and a later submission would inherit every recommendation filed against the old holder"* |
+| **Build plan row 2.1**, Approach column | *"Set status to hidden, never delete"* |
+| **Row 2.1's Sub-task text** | *"every test entry and the two duplicates carry `status` `hidden`"* |
+
+**The analysis says the clear is SAFE and the ruling is still RIGHT about its own case** — they do not actually contradict once the cases are separated: a **total** clear leaves nothing to inherit a reused id; a **partial** delete is exactly the hazard D7 names. **The proposed supersession is therefore narrow: D7 continues to govern every partial removal, and is set aside only for a complete clear.**
+
+⚠ **NO PLAN ROW HAS BEEN CHANGED AND NO DECISION RECORDED AS MADE.** Row 2.1 still reads `new` with its original Approach. If he rules yes, a later session amends row 2.1 and records the supersession in Layer 5 — **not this one.**
+
+**If he rules NO**, the cost is small and worth stating: hiding all 29 leaves them in the sheet forever, the next real person is `T030` rather than `T001`, and the Form responses tab stays as it is either way. **Nothing breaks.** It is untidiness versus a rule he wrote for good reasons.
+
+---
 
 **[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — duplicate rows are on the list NOW | COMPUTER, five minutes**
 
@@ -2420,6 +2488,30 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **[PATTERN CANDIDATE: test-the-steady-state-not-the-first-run]** A guard that runs on a fresh fixture every time is tested in the one state where it is least likely to fail. **Idempotence claims must be tested by running the operation repeatedly against the SAME accumulated state**, which is the condition production is always in. This session's error and its correction are both instances.
 
 **[PATTERN CANDIDATE: committed-is-not-deployed]** Work reaching `origin` is not work reaching the person who installs it. Where a human copies code from somewhere, **that somewhere is production** and needs the same staleness checks as a deploy target.
+
+---
+
+### 2026-09-21 — The full clear is established safe; the ruling it would overturn is NOT recorded as made
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**NO DECISION WAS TAKEN THIS SESSION, and that is the point of this entry.** The Owner asked to clear the Published tab. His own ruling **D7-6G7f-19092026** forbids it. **The analysis is recorded here so his ruling can be made knowingly; the ruling itself is his and is not pre-empted.** Nothing was changed on any plan row and no supersession is recorded.
+
+**[FINDING] The full clear is SAFE, established by executing the real code rather than reading it.** `nextId` yields `T001` on an empty tab (`highest` starts at 0, no throw); `tableValues` returns header-only and `lastIdRow` returns 1; the first real submission publishes as `T001` onto row 2; `writableBlocks()` remains A–H and K–L so **zero writes reach the Owner's `I`/`J` formulas**; and the real `app.js`, driven end to end, shows **"Nobody on the list just yet"** — the calm empty state, not an error.
+
+**[FINDING] D7 IS NOT WRONG, AND THE HYPOTHESIS PUT TO THIS SESSION WAS RIGHT.** Claude.ai offered *"a total wipe is the safe case and a partial delete is the dangerous one"* as a hypothesis to test rather than implement. **Tested: it holds.** `nextId` after `T029` survives as `T030`, so the reuse hazard D7 names is real and present for any partial removal. **The two rules do not contradict once the cases are separated** — which is why the proposed supersession is narrow rather than a repeal.
+
+**[FINDING] THE REAL DANGER IS NOT THE CLEAR — IT IS ONE MENU ITEM.** The `action` column protects against the sweep, measured: twelve sweeps of an emptied tab brought nothing back. **But `backfillPublished` never consults it.** One click of *"Publish any responses not yet on the list"* — the **first** item in the Owner's menu — republished all 29 and reported *"Added 29 new people to the list."* **After a clear its wording describes precisely what he wants and does precisely what he must not do.** Recorded as a `[GOTCHA]` in Layer 3 and named in the procedure as the one click not to make.
+
+**[DECISION] `backfillPublished` is deliberately NOT changed.** Making it consult the `action` column would break its actual purpose: a response that genuinely failed to publish has a blank action cell **only when the publisher never ran at all**, which is Murray Angel's class and the reason the function exists. It is also the documented recovery route in `DEPLOY.md` and the restore runbook. **The mitigation is documentation, not code** — and that is a deliberate choice rather than an omission.
+
+**[DECISION] The procedure goes in the existing `PROCESS-` document, not a new file.** `docs/PROCESS-seeding-and-launch-dunchi-trader.md` already carries the Owner-facing runbook including a *"Removing the four test people before launch"* section. A second document would have split his instructions across two files with no rule for which to read.
+
+**[FINDING] That existing section carried advice that is now unsafe in general, and it was corrected in place rather than left.** It offered *"or delete the four rows outright… leave the gap"* as equally safe. **That held only because `T001`–`T004` were the LOWEST ids.** A correction note now records that deleting the **highest** id frees it for reuse, and points to hiding, or to the full clear.
+
+**What was NOT done, deliberately:** build plan row 2.1 is untouched and still reads `new` with its original *"Set status to hidden, never delete"* Approach; no Layer 1 supersession marker was written against D7; and nothing was written to the Owner's spreadsheet. **If he rules yes, a later session amends the row and records the supersession.**
+
+**[PATTERN CANDIDATE: a-rule-and-its-exception-are-usually-two-cases-not-a-contradiction]** D7 and the Owner's request looked like a head-on conflict. Separating *partial* from *total* showed both correct over disjoint domains, and the resolution preserved the rule rather than repealing it. **Worth reaching for before overturning any standing rule: ask what case it was written for, and whether the new request is actually that case.**
 
 ---
 
@@ -6482,5 +6574,103 @@ Working tree clean. Remote level.
 ⚠ **NOT INSTALLED.** The Owner must re-paste from the live-repo URL in Layer 4, and confirm with `Ctrl+F` for `rowIndexForUnusablePhone`. **He also has duplicate rows on his list right now** — Layer 4 tells him what to count and to hide rather than delete, keeping the lowest id.
 
 **No plan row status changed and no row was appended.** Rows 6.1 and 6.2 stay `new`. `Code.gs` untouched, nothing redeployed, nothing written to the Owner's spreadsheet.
+
+Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T09:22:40Z — Is a full clear of Published safe? Established: yes, with one one-click trap
+
+**Source:** Claude Code
+**Started:** 2026-09-21T09:05:10Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader
+
+**Prompt received:** *(the commissioning prompt for this session is preserved in the Claude.ai conversation above. Its new fact — that every row on Published is test data, with the Owner's verbatim request — and its six tasks are reproduced in the Layer 1 summary and the Layer 5 findings entry for this date.)*
+
+**What was done:**
+
+**Repo state confirmed first:** HEAD `2239272`, tree clean. **It did not differ from the prompt.**
+
+**TASK 1 — is a full clear safe? YES, established by EXECUTING the code rather than reading it.**
+
+- **Id generation.** `nextId` at `Publish.gs:1256` initialises `var highest = 0` and scans column A for `^T(\d+)$`. With no data rows nothing matches, so `next = 1` and it returns **`T001`**. Executed against header-only, completely-empty, and header-plus-blank-row tables: **`T001` in all three, no throw.** ⚠ **And `T030` after `T029`** — ids do NOT restart while a higher one survives, which is exactly the hazard D7 was written for.
+- **Table reading.** `lastIdRow` returns **1** when no id exists; `tableValues` branches on `if (last < 2)` and returns the header alone. `publishInto` computes `target = existing.length + 1` = **row 2**. Driven end to end: a real submission into a cleared tab published **`T001` on row 2**.
+- **The Owner's `I`/`J` formulas.** `writableBlocks()` returns `[{start:0,len:8},{start:10,len:2}]` — A–H and K–L. **Measured with a stub that flags any write landing on a formula cell: zero such writes.** Both cells remained formulas after a full publish. **The publisher cannot touch them.** Separately established from `SHEET-FORMULAS.md`: they live in **`I2`/`J2` only** as whole-column `ARRAYFORMULA`s, so a row-clear that includes row 2 **would delete them** — hence the explicit check in the procedure, with the note that the `verdict` formula reads `Published!$I$2:$I$500` and breaks with them.
+- **The site on an empty feed.** Driven through the **real unmodified `app.js`** in a stubbed DOM: a **header-only** feed renders **"Nobody on the list just yet"** (the calm empty state), while a **completely empty** file renders **"The list is being updated"** (the error state). **The header row is therefore load-bearing** and the procedure says so twice.
+
+**TASK 2 — the trap. The `action` column DOES protect against the sweep, and does NOT protect against the menu.**
+
+| Scenario | Published rows afterwards |
+|---|---|
+| Wiped, `action` cells left filled, **12 sweeps** | **0** — nothing came back |
+| Wiped, **`action` column cleared**, 3 sweeps | **29** — everything returned |
+| Wiped, `action` cells filled, **one click of the backfill menu item** | **29** — everything returned |
+
+The sweep's guard is `Publish.gs:621`. **`backfillPublished` (defined `797`, loop `810-822`) never consults it** — it skips only rows with no name and no phone. Its alert read *"Done. Added 29 new people to the list. Skipped 0 already there or empty."*
+
+**So what would bring the 29 back, stated exhaustively for the Owner:** clearing or deleting the `action` column; deleting the response rows in a way that misaligns the action cells; and **clicking "Publish any responses not yet on the list"**, which is the first item in his own menu and whose wording after a clear describes exactly what he wants.
+
+**TASK 3 — the Form responses tab. RECOMMENDATION, not a decision: leave it exactly as it is.**
+
+The test responses are harmless where they sit **as long as their `action` cells stay filled**, which is measured above. They are also the only record of what was submitted. **The trap is not the rows — it is the `action` column and the backfill menu item**, so the recommendation is to touch neither. **Stated as a residual risk rather than hidden:** a future session running the backfill for a legitimate recovery would republish all 29 alongside whatever it was recovering. That is now recorded as a `[GOTCHA]` in Layer 3 so the next session meets it before running anything.
+
+**TASK 4 — the procedure** is written click by click in [PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md` under *"Starting the list completely clean"*: seven steps covering which rows to select, delete-rows rather than the Delete key, checking `I2`/`J2` survived, leaving Form responses alone with a table of what not to touch, the cache-busted site check with the exact wording he should see, a ten-minute re-check, and seeding through the form. **No script writes to his sheet.**
+
+**TASK 5 — what a yes would overturn** is recorded in Layer 4 as an open question with the three artefacts named: D7-6G7f-19092026, build plan row 2.1's Approach column, and row 2.1's sub-task text. **Nothing was changed and no decision recorded as made.**
+
+**TASK 6 — not applicable:** the wipe is safe, so this session did not stop. The cost of a NO is recorded anyway in Layer 4.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | Repo matches prompt HEAD | `2239272`, clean | **did not differ** | PASS |
+| 2 | Baseline all suites | green | **236 passed, 0 failed** | PASS |
+| 3 | `nextId` on header-only / empty / blank-row table | `T001`, no throw | `T001` ×3 | PASS |
+| 4 | `nextId` after `T029` — the ruling's own case | `T030` | `T030` | PASS |
+| 5 | Lookups against an empty table | no throw, -1 / [] | `-1`, `-1`, `[]` | PASS |
+| 6 | `lastIdRow` / `tableValues` on cleared tab | 1 / header only | 1 / length 1 | PASS |
+| 7 | First submission after a clear | `T001` on row 2 | `T001`, row 2 | PASS |
+| 8 | **Writes reaching columns I or J** | **zero** | **zero; both still formulas** | PASS |
+| 9 | `writableBlocks()` unchanged | A–H, K–L | `[{0,8},{10,2}]` | PASS |
+| 10 | **Site on a header-only feed** | calm empty state | **"Nobody on the list just yet"** | PASS |
+| 11 | **Site on a completely empty file** | distinguish | **"The list is being updated"** — header is load-bearing | PASS |
+| 12 | 12 sweeps, action cells filled | nothing returns | **0 rows** | PASS |
+| 13 | Action column cleared, then sweep | everything returns | **29 rows** | PASS |
+| 14 | **One backfill click, action cells filled** | everything returns | **29 rows**, alert claims success | PASS |
+| 15 | Twelve new checks committed as regression tests | pass | **75 passed in that suite** | PASS |
+| 16 | Full regression | no regression | **248 passed, 0 failed** (236→248) | PASS |
+| 17 | Handover line refs are real | match | **corrected `750-762`→`797`/`810-822`; `621` confirmed** | PASS after correction |
+| 18 | Docs prefix is permitted | active prefix | `PROCESS-` active per `/api/prefixes` | PASS |
+| 19 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `09:16:32Z`; 6 layers | PASS |
+| 20 | **No plan row changed, none appended** | untouched | **neither plan file modified** | PASS |
+| 21 | Owner's sheet untouched | nothing | all tests use stubs | PASS |
+| 22 | `Code.gs` untouched, nothing redeployed | unmodified | unmodified | PASS |
+
+**Test 17 caught my own error for the third session running** — line numbers written from memory. It is now a standing habit rather than a catch: cite nothing without a `grep`.
+
+**What was not tested:**
+
+- **NOTHING RAN INSIDE GOOGLE, AND NOTHING WAS WRITTEN TO THE OWNER'S SHEET.** All measurement is the real `Publish.gs` and the real `app.js` executed in Node against stubs.
+- **⚠ THE POSITIVE RENDER PATH WAS NOT CONFIRMED BY THIS SESSION'S HARNESS.** The stub DOM captures `notice()` text but not rendered cards, so the "header + one real person" case showed only *"Loading the list…"*. **The two empty-state results are sound** — both are `notice()` calls on the same code path, and they differ from each other correctly. **But this harness cannot prove the list still renders after a clear-and-reseed.** That rests on the live site already doing so, which is a prior measurement and not this one's.
+- **The claim that all 29 rows are test data is REPORTED from the Owner.** No session can read his sheet. The procedure's safety does not depend on it — a full clear is safe either way — but **whether he WANTS it cleared does**.
+- **The `I2`/`J2` formulas' current presence is unverified.** Their definitions come from `SHEET-FORMULAS.md`; whether they are live on his tab today is inside his account. The procedure therefore tells him to check rather than assume.
+- **Exact row numbers on his sheet are unknown.** The procedure says "rows 2 to the last one with an id" and has him read the number off the screen.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T09:22:40Z
+
+**End state:**
+
+**The question is answered and the ruling is left to the Owner.** A full clear is safe; a partial delete is not; D7 is right about the case it was written for and the proposed supersession is narrow rather than a repeal. **248 checks pass across four suites**, twelve of them new and asserting both the safety and the trap as facts.
+
+**The one-click trap is the substantive finding of this session** — the first item in his own menu would undo the whole clear and report it as a success.
+
+⚠ **NOTHING IS DECIDED.** Build plan row 2.1 is untouched and still reads *"Set status to hidden, never delete"*. No supersession is recorded against D7. Nothing was written to the Owner's spreadsheet, `Code.gs` was not touched, and nothing was redeployed.
 
 Working tree clean. Both remotes level.
