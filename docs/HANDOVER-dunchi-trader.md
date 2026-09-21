@@ -5947,7 +5947,7 @@ Record that the recommendation was overruled and on what grounds. The inheritanc
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `aa08e53` — `docs: D3c - the inheritance walk leaves the launch plan for a plan of its own` — the new plan, the launch plan's amendments, the Layer 5 decision, both timestamps, and this Layer 6 entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10).
 
 **Finished:** 2026-09-21T06:08:30Z
 
