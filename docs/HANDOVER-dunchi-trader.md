@@ -6661,7 +6661,7 @@ The test responses are harmless where they sit **as long as their `action` cells
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `cdfb28c` — `docs: a full clear of Published is established safe; the ruling is the Owner's` — the twelve new regression tests, the click-by-click procedure and the correction to the older delete advice in `PROCESS-seeding-and-launch-dunchi-trader.md`, and the Layer 1/3/4/5 records plus this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10). ⚠ **`apps-script/Publish.gs` was NOT modified this session** — the question was whether existing behaviour is safe, and it is; no code change was warranted.
 
 **Finished:** 2026-09-21T09:22:40Z
 
