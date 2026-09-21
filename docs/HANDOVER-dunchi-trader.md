@@ -8211,7 +8211,7 @@ Working tree clean. Both remotes level.
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `62d3c9d` — `docs: PLAN-DUNCHI-LAUNCH-2026-09-19 signed off at 36 of 36 — the village has been told` — rows `3.1` and `1.1` closed with their satellite dates, the `STATUS: SIGNED-OFF 2026-09-21` marker and the closure record in `docs/BUILD-PLAN-dunchi-launch.md`, and the Layer 1/4/5 records plus this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10). ⚠ **NO CODE FILE WAS TOUCHED** — `Publish.gs`, `Code.gs`, `app.js`, `SHEET-FORMULAS.md` and every test file are unmodified.
 
 **Finished:** 2026-09-21T12:06:45Z
 
