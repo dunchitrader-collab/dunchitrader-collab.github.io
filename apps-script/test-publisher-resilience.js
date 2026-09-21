@@ -840,5 +840,98 @@ section('2026-09-21 — what would bring the test data back');
   }
 }
 
+/* -------------------------------------------------------------------------
+   2026-09-21 — D7a-VCWL-21092026. THE OWNER RULED: clear BOTH tabs.
+
+   His words: "I am going to do D7a. It feels cleaner", and of the hidden
+   rows: "Surely it is just messy noise?"
+
+   This CONTRADICTS what the previous session recommended. 2758 said to leave
+   the Form responses rows in place because their filled `action` cells stop
+   the 29 coming back, and it recorded the backfill menu item as a residual
+   risk. The Owner's ruling clears those rows instead.
+
+   THE RULING IS RIGHT AND THE RECOMMENDATION WAS WRONG, and these assert why:
+   with the response rows GONE, `backfillPublished` has nothing to republish,
+   so the one-click trap is DISARMED rather than merely documented.
+   ------------------------------------------------------------------------- */
+section('2026-09-21 — D7a: clearing BOTH tabs disarms the backfill trap');
+{
+  /* Six test responses whose action cells are filled — 2758's shape. */
+  const filled = [];
+  for (let i = 1; i <= 6; i++) {
+    filled.push(['2026-09-20','','Plumber','Test'+i,'Person'+i,'077009'+(10000+i),'',
+                 'Some words '+i,'Tim','','','','Published as T'+String(i).padStart(3,'0')]);
+  }
+
+  /* (a) 2758's shape — rows left in place. The sweep holds, the menu does not. */
+  {
+    const pub  = makeSheet([], 'Published');
+    const resp = makeResponses(filled);
+    for (let i = 0; i < 12; i++) {
+      const P = load(pub, resp);
+      try { P.sweepPublished(); } catch (ignored) {}
+    }
+    check('rows LEFT: twelve sweeps bring nothing back',
+          pub.grid.slice(1).filter(r => r[0]).length === 0);
+
+    const P = load(pub, resp);
+    try { P.backfillPublished(); } catch (ignored) {}
+    check('rows LEFT: ONE backfill click still republishes everything',
+          pub.grid.slice(1).filter(r => r[0]).length === 6,
+          pub.grid.slice(1).filter(r => r[0]).length + ' rows');
+  }
+
+  /* (b) the Owner's D7a shape — rows cleared. The trap cannot fire. */
+  {
+    const pub  = makeSheet([], 'Published');
+    const resp = makeResponses([]);
+    for (let i = 0; i < 12; i++) {
+      const P = load(pub, resp);
+      try { P.sweepPublished(); } catch (ignored) {}
+    }
+    check('rows CLEARED: twelve sweeps bring nothing back',
+          pub.grid.slice(1).filter(r => r[0]).length === 0);
+
+    const P = load(pub, resp);
+    try { P.backfillPublished(); } catch (ignored) {}
+    check('rows CLEARED: a backfill click has NOTHING to republish — trap disarmed',
+          pub.grid.slice(1).filter(r => r[0]).length === 0,
+          pub.grid.slice(1).filter(r => r[0]).length + ' rows');
+  }
+
+  /* (c) a genuinely new submission after the reset still works end to end. */
+  {
+    const pub  = makeSheet([], 'Published');
+    const resp = makeResponses([
+      ['2026-09-21','','Plumber','Real','Villager','07700900123','',
+       'Came out the same day','Tim','','','','']
+    ]);
+    const P = load(pub, resp);
+    let threw = null;
+    try { P.sweepPublished(); } catch (e) { threw = e; }
+
+    check('after the reset, a new submission publishes without throwing',
+          threw === null, threw && threw.message);
+    check('and it takes id T001 on a freshly cleared list',
+          pub.grid[1] && pub.grid[1][0] === 'T001',
+          pub.grid[1] && pub.grid[1][0]);
+    check('and it is ACTIVE, not hidden',
+          pub.grid[1] && pub.grid[1][7] === 'active',
+          pub.grid[1] && pub.grid[1][7]);
+    check('and its action line is written back to the response row',
+          /T001/.test(String(resp.grid[1][12])), JSON.stringify(resp.grid[1][12]));
+  }
+
+  /* (d) an EMPTY responses tab must not throw anywhere. */
+  {
+    const P = load(makeSheet([], 'Published'), makeResponses([]));
+    let threw = null;
+    try { P.sweepPublished(); P.backfillPublished(); } catch (e) { threw = e; }
+    check('an empty responses tab throws nowhere (values.length < 2 guard)',
+          threw === null, threw && threw.message);
+  }
+}
+
 console.log(`\n================  ${pass} passed, ${fail} failed  ================\n`);
 process.exit(fail === 0 ? 0 : 1);

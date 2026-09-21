@@ -135,109 +135,156 @@ recommended separately, which is not what you want.
 If someone genuinely does three or more, pick the two they are most likely to be
 called for.
 
-### Starting the list completely clean — the full clear
+### Starting the list completely clean — the full reset
 
-> **Added 2026-09-21, for the situation where EVERY row on Published is test
-> data and you want to start from nothing.** This is not the same as the
-> "removing the four test people" section below, which is about taking a few
-> rows off an otherwise real list. If only some rows are test rows, use that
-> section and **hide** them — do not use this one.
+> **Added 2026-09-21. Replaces the first version of this section written earlier
+> the same day, which told you to delete rows and *then* check whether your
+> formulas survived — by which time they would already be gone.** The order
+> below is deliberate and it protects them.
 >
-> ⚠ **This procedure contradicts the standing rule "hide, never delete".**
-> Read "Why this is safe, and when it would not be" at the end before you run
-> it. It is safe **only** because you are clearing *everything*.
+> **Owner's ruling D7a-VCWL-21092026**, his words: ***"I am going to do D7a. It
+> feels cleaner"***. Both tabs are cleared, so they agree with each other and
+> ids restart at `T001`.
+>
+> ⚠ **This overturns the earlier rule "hide, never delete" — but only for a
+> COMPLETE clear.** If you ever want to take just a few people off the list,
+> go back to hiding them. See "Why this is safe" at the end.
 
-**Before you start.** This takes about ten minutes. You need a computer, not a
-phone. Nothing here is urgent — if you are interrupted half way, stop and pick
-it up later; the site will simply show an empty list in the meantime.
-
----
-
-#### Step 1 — Look at the Published tab and count
-
-Open the spreadsheet and click the **Published** tab at the bottom.
-
-**Row 1 is the header** — `id`, `first_name`, `last_name`, and so on. Your data
-starts at **row 2**.
-
-Scroll to the bottom of the data and note the last row number that has an `id`
-in column A. **Write that number down.** If the last row with an id is row 30,
-your data occupies **rows 2 to 30**.
+**Before you start.** About fifteen minutes, on a computer — not a phone.
+Nothing is urgent. If you stop half way the site simply shows an empty list.
 
 ---
 
-#### Step 2 — Select rows 2 to the last one, and DELETE THE ROWS
+#### ⚠ THE ONE THING TO UNDERSTAND FIRST — row 2 holds your formulas
 
-Click the row number **2** in the grey margin on the left, then scroll down,
-hold **Shift**, and click the last data row number (30 in the example). The
-whole block goes blue.
+Your formulas do not sit in a column. **Each one sits in a single cell in row 2
+and fills its own column downwards by itself.**
 
-Right-click anywhere in the blue and choose **Delete rows 2 - 30**.
-
-> ⚠ **Do NOT start at row 1.** Row 1 is the header. If the header goes, the
-> site stops showing "Nobody on the list just yet" and starts showing "The list
-> is being updated", which is the message for something being broken. Measured
-> 2026-09-21: header present → the gentle empty message; header gone → the
-> error message.
-
-> ⚠ **Use "Delete rows", not the Delete key.** Pressing Delete clears the
-> contents but leaves the rows there. Either works for the site, but deleting
-> the rows keeps the sheet tidy and is what the rest of this assumes.
-
----
-
-#### Step 3 — Check your two helper formulas are still alive
-
-Click cell **`I2`**, then look at the formula bar at the top.
-
-- **If you see a long formula starting `=ARRAYFORMULA(`** — good, nothing more
-  to do. Check **`J2`** the same way and move on.
-- **If `I2` is empty**, the delete took the formula with it. **Put it back**:
-  the exact text for `I2` and `J2` is in `apps-script/SHEET-FORMULAS.md` under
-  the Published helper columns. Paste `I2` first, then `J2`.
-
-**Why this matters.** Those two formulas are what the `verdict` column on the
-Form responses tab reads to tell you whether somebody is already on the list.
-Without them the verdict column stops working. **The publishing script never
-writes to columns I or J** — verified 2026-09-21 — so they are yours alone and
-nothing will restore them for you.
-
----
-
-#### Step 4 — LEAVE THE FORM RESPONSES TAB COMPLETELY ALONE
-
-Click the **Form responses 1** tab and **do nothing at all on it.** This is the
-most important step and it is the one that is easy to get wrong, because the tab
-now looks untidy and the natural instinct is to clean it up too.
-
-**Specifically, do NOT:**
-
-| Do not | What happens if you do |
+| Tab | Cells holding formulas |
 |---|---|
-| **Clear or delete the `action` column (column M)** | **Every test response publishes itself again within five minutes.** The filled `action` cell is the only thing telling the automatic check "this one is dealt with" |
-| **Delete the test response rows** | The rows are your record of what was submitted. Deleting them also risks shifting the `action` cells out of line with the responses |
-| **Click "Publish any responses not yet on the list"** | See the warning below — this is the big one |
+| **Published** | `I2` and `J2` |
+| **Form responses** | `J2`, `K2` and `L2` |
 
-> ⚠ **THE ONE CLICK THAT UNDOES ALL OF THIS.** In the **Village list** menu the
-> first item reads **"Publish any responses not yet on the list"**. After a
-> clear, that description sounds exactly like what you want — the list *is*
-> empty, after all. **Do not click it.** Measured 2026-09-21: that menu item
-> **ignores the `action` column completely** and republishes every response on
-> the tab, test data and all, and then tells you cheerfully that it "Added 29
-> new people to the list."
->
-> **You will not need that menu item again.** New form submissions publish
-> themselves, and the automatic five-minute check catches anything missed.
+**So if you delete row 2, you delete the formulas.** That is why every delete
+below starts at **row 3**, and row 2 is cleared by hand afterwards — a different
+action that leaves the formula cells alone.
+
+**One more thing, and it is the opposite trap:** when you clear row 2 by hand,
+select **only the columns that hold data** and never the formula cells. On
+Published that is **A2 to H2** and then **K2 to L2**. On Form responses it is
+**A2 to I2** and then **M2**.
 
 ---
 
-#### Step 5 — Wait five minutes, then look at the site
+#### Step 1 — Published: find your last row
 
-Publishing to the website takes about five minutes (see section 3).
+Open the spreadsheet and click the **Published** tab.
 
-Open `https://dunchitrader-collab.github.io` and add `?x=1` to the end of the
-address — `https://dunchitrader-collab.github.io/?x=1` — so you are sure you are
-not looking at a saved copy in your phone's memory.
+Scroll down and find the **last row that has an id in column A** (`T001`,
+`T014`, and so on). **Write that number down.** Say it is row 30.
+
+---
+
+#### Step 2 — Published: delete rows 3 to the last one
+
+Click row number **3** in the grey margin. Scroll down, hold **Shift**, click
+the last row number (30). Right-click in the blue and choose
+**Delete rows 3 - 30**.
+
+**Row 2 is still there, still full of data.** That is correct — leave it.
+
+---
+
+#### Step 3 — Published: clear row 2 by hand, in two pieces
+
+**First piece.** Click cell **`A2`**, hold **Shift**, click cell **`H2`**.
+Eight cells are selected. Press **Delete**.
+
+**Second piece.** Click cell **`K2`**, hold **Shift**, click cell **`L2`**.
+Press **Delete**.
+
+⚠ **Do not touch `I2` or `J2`.** Skipping straight from H to K is the whole
+point of doing it in two pieces.
+
+---
+
+#### Step 4 — Published: confirm the formulas are alive
+
+Click **`I2`** and look at the formula bar at the top. **You should see a long
+formula beginning `=ARRAYFORMULA(`.** Click **`J2`** and check the same.
+
+- **Both show a formula** — good, carry on.
+- **Either is empty** — you caught it. Open `apps-script/SHEET-FORMULAS.md`,
+  find the Published helper columns, and paste `I2` then `J2` back.
+
+---
+
+#### Step 5 — Form responses: the same three moves
+
+Click the **Form responses 1** tab.
+
+1. Find the **last row with anything in it** and write the number down.
+2. Click row **3**, Shift-click the last row, right-click, **Delete rows**.
+3. Clear row 2 in two pieces: **`A2` to `I2`**, press Delete; then **`M2`**
+   on its own, press Delete.
+4. Check **`J2`**, **`K2`** and **`L2`** each still show `=ARRAYFORMULA(` in
+   the formula bar.
+
+⚠ **`M2` is the `action` column and it must be emptied along with the rest.**
+That is safe here *because the data rows are going too* — with no responses left
+there is nothing for the system to re-publish.
+
+---
+
+#### Step 6 — While you are in row 2, fix the verdict formula
+
+**Do this now, because you are already in the right place and it is one paste.**
+
+Click **`L2`** on Form responses and compare what the formula bar shows against
+the `L2` formula in `apps-script/SHEET-FORMULAS.md`.
+
+- **If it matches** — nothing to do.
+- **If it differs, paste the one from that file over it.** An older version had
+  a fault that made it report somebody was already on the site when they were
+  not.
+
+**Why now and not later:** nothing reads this column except you, so it cannot
+break the list either way — but a wrong verdict on the first real submission is
+exactly the moment it would mislead you most.
+
+---
+
+#### Step 7 — Check the data validation on column M is gone
+
+Still on Form responses, click the **`M`** column heading, then
+**Data → Data validation**. **If a rule is listed, remove it.**
+
+That rule only allowed the words `Publish`, `Add to T0xx` and `Reject`, and the
+system writes plain sentences there. While it is in place the `action` column
+stays blank and you lose the record of what happened to each submission.
+
+---
+
+#### Step 8 — ⚠ THE MENU ITEM YOU MUST NEVER TOUCH
+
+In the **Village list** menu, the first item reads
+**"Publish any responses not yet on the list"**.
+
+**Never click it.** After a reset the list *is* empty, so its wording sounds
+exactly like what you want — and it would put every old response back and then
+tell you it had "Added 29 new people to the list."
+
+**You will not need it again.** New submissions publish themselves, and the
+automatic five-minute check catches anything missed.
+
+---
+
+#### Step 9 — Wait five minutes, then look at the site
+
+Publishing to the website takes about five minutes.
+
+Open **`https://dunchitrader-collab.github.io/?x=1`** — the `?x=1` makes sure
+you are not seeing a saved copy.
 
 **What you should see:**
 
@@ -246,59 +293,56 @@ not looking at a saved copy in your phone's memory.
 > If you know a good tradesperson, you can add them using the button at the
 > bottom of this page.
 
-**That is the correct result.** It is a calm, plain message with the "add
-someone" button still working underneath it — not an error.
+**That is correct.** A calm message, with the "add someone" button still
+working underneath.
 
-**If instead you see "The list is being updated"**, the header row in row 1 was
-deleted. Put it back: the eight column names are listed in section 1 of this
-document, in order, starting in cell `A1`.
-
----
-
-#### Step 6 — Check nothing has come back
-
-Wait ten minutes, then look at the **Published** tab again.
-
-**It should still have no rows below the header.** If rows have appeared, the
-`action` column on Form responses was cleared, or the backfill menu item was
-clicked. Nothing is broken and nothing is lost — set the new rows' `status` to
-`hidden` and they will drop off the site again.
+**If you see "The list is being updated" instead**, row 1 was deleted. Put the
+eight column names back in row 1 — they are listed in section 1 of this
+document, in order, starting at `A1`.
 
 ---
 
-#### Step 7 — Seed the real people through the form
+#### Step 10 — Ten minutes later, check nothing came back
 
-**Add real tradespeople using the form itself, not by typing into the
-spreadsheet.** That way each one goes through the same route a villager would
-use, which proves the route as well as filling the list.
+Look at **Published** again. **It should still be empty below the header.**
 
-Your first real person will be **`T001`**, and numbering runs on from there.
-Verified 2026-09-21 by running the real publishing code against an emptied tab.
+If rows have appeared, the backfill menu item was clicked. Nothing is lost —
+set those rows' `status` to `hidden` and they will drop off the site.
+
+---
+
+#### Step 11 — Seed the real people through the form
+
+**Ask your testers to submit the real tradespeople through the form**, not by
+typing into the spreadsheet. Each one then travels the same route a villager
+would, which proves the route as well as filling the list.
+
+**The first real person will be `T001`**, and numbering runs on from there.
 
 ---
 
 #### Why this is safe, and when it would not be
 
-The standing rule on this project is **"hide, never delete"**, and its reason is
-sound: ids are handed out by taking the highest one already on the list and
-adding one. **Delete the highest id and the next submission takes that number
-back** — inheriting any recommendation still filed against the old holder.
+Ids are handed out by taking the highest one already on the list and adding one.
+**Delete the highest id and the next submission takes that number back**,
+inheriting any recommendation still filed against the old holder. That is why
+the standing rule is "hide, never delete".
 
-**A full clear escapes that, and this is the whole argument:** if *nothing*
-survives, there is nothing left to inherit a reused id. The list restarts at
-`T001` with an empty sheet behind it, and every id is fresh.
-
-**The dangerous case is the PARTIAL delete**, and it is worth being clear about
-because it looks so similar:
+**A full clear escapes that, and this is the whole argument: if nothing
+survives, there is nothing left to inherit a reused id.**
 
 | What you do | Safe? | Why |
 |---|---|---|
-| Delete **every** data row | **Yes** | Nothing survives; ids restart at `T001` cleanly |
-| Delete **some** rows, including the highest id | **NO** | The next submission reuses that id and inherits the old holder's recommendations |
-| Set rows to `hidden` | **Yes, always** | Nothing is removed, so no id can be reused |
+| Clear **every** data row on **both** tabs | **Yes** | Nothing survives; ids restart at `T001` |
+| Delete **some** rows, including the highest id | **NO** | The next submission reuses that id |
+| Set rows to `hidden` | **Yes, always** | Nothing is removed, so no id is freed |
 
-**So: all of it, or none of it.** If you later want to take a few people off the
-list, go back to hiding them.
+**So: all of it, or none of it.** To take a few people off later, hide them.
+
+**Clearing the Form responses rows as well is what makes this safer than
+clearing Published alone.** With the responses gone there is nothing for that
+first menu item to put back, so the trap in step 8 cannot fire at all.
+
 
 ### Removing the four test people before launch
 

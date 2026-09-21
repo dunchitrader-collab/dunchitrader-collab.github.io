@@ -5,13 +5,13 @@ server: none — static hosting on GitHub Pages
 environment: production
 owner: dunchitrader@gmail.com
 handover-format-version: 2
-last-updated: 2026-09-21T09:16:32Z
+last-updated: 2026-09-21T09:26:45Z
 status: active
 ---
 
 # LAYER 1 — CURRENT TRUTH
 
-**Last updated: 2026-09-21T09:16:32Z** ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
+**Last updated: 2026-09-21T09:26:45Z** ~~2026-09-21T09:16:32Z~~ ~~2026-09-21T08:05:27Z~~ ~~2026-09-21T07:23:59Z~~ ~~2026-09-21T06:08:30Z~~ ~~2026-09-21T05:58:10Z~~ ~~2026-09-19T21:40:59Z~~ ~~2026-09-19T21:31:25Z~~ ~~2026-09-19T20:34:32Z~~ ~~2026-09-19T20:24:20Z~~ ~~2026-09-19T18:44:11Z~~ ~~2026-09-19T17:30:52Z~~ ~~2026-09-19T17:19:01Z~~ ~~2026-09-19T16:07:57Z~~ ~~2026-09-19T16:04:42Z~~ ~~2026-09-19T15:55:48Z~~ ~~2026-09-19T15:44:39Z~~ ~~2026-09-19T14:02:06Z~~ ~~2026-09-19T13:43:10Z~~ ~~2026-09-19T13:35:54Z~~ ~~2026-09-19T12:21:07Z~~ ~~2026-09-19T11:31:46Z~~ ~~2026-09-18T21:10:23Z~~
 
 *If removing anything from this layer, it must first exist in the Decision Log with a dated entry explaining why it was removed. Moving content out of this file is treated the same as deleting it.*
 
@@ -68,6 +68,29 @@ ACTIVE — build started 2026-09-18. **The site now shows real tradespeople from
 **⚠ THE TRAP, AND IT IS A ONE-CLICK TRAP.** The `action` column genuinely protects against the sweep — twelve sweeps of an emptied tab brought **nothing** back. But **"Publish any responses not yet on the list"**, the FIRST item in the Owner's Village list menu, **ignores the `action` column entirely**: one click republished all 29 and reported *"Added 29 new people to the list."* **After a clear, that menu item's wording describes exactly what he would want and does exactly what he must not do.** Recorded as a `[GOTCHA]` in Layer 3.
 
 **The procedure is written, click by click, in [PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md`** under *"Starting the list completely clean"*. **No session may run it — it is his action on his own sheet.**
+
+**2026-09-21T09:26:45Z — THE OWNER HAS RULED D7a-VCWL-21092026: CLEAR BOTH TABS. His words: *"I am going to do D7a. It feels cleaner"*, and of the hidden rows *"Surely it is just messy noise?"***
+
+**Both tabs are cleared so they agree, ids restart at `T001`, and the testers re-submit real tradespeople through the form.** He ruled it knowing it overturns his own `D7-6G7f-19092026`; Claude.ai put that to him before he answered.
+
+**THE SUPERSESSION IS NARROW. `D7-6G7f-19092026` IS NOT REPEALED** — hide-never-delete remains correct and binding for every **partial** removal, because deleting the highest id frees it for reuse. **A total clear escapes that for the opposite reason: nothing survives to inherit a reused id.** Also superseded for the same narrow case: the carried-forward convention *"never delete rows from Form responses"*.
+
+**⚠ THE PREVIOUS SESSION'S RECOMMENDATION WAS WRONG AND THE OWNER'S RULING IS SAFER.** Prompt 2758 advised leaving the Form responses rows in place and documenting the backfill menu item as a residual risk. **Measured side by side this session:**
+
+| Shape | 12 sweeps | One click of *"Publish any responses not yet on the list"* |
+|---|---|---|
+| Rows **LEFT** (2758's advice) | 0 — held | **6 returned.** Trap live forever |
+| Rows **CLEARED** (D7a) | 0 — held | **0.** *"There are no form responses yet."* |
+
+**Clearing the responses DISARMS the trap instead of documenting it.** Proven end to end: after the reset a new submission publishes as **`T001`, `active`**, action line written back.
+
+**⚠ A REAL DEFECT IN THE PREVIOUS PROCEDURE IS FIXED.** It said delete rows then check `I2`/`J2` survived — **but `I2`/`J2` ARE in row 2**, so the check came after the destruction. **Every delete now starts at ROW 3**, and row 2 is cleared by hand in two pieces skipping the formula cells (`A2:H2` then `K2:L2` on Published; `A2:I2` then `M2` on Form responses). **The same trap exists on Form responses, whose `J2`/`K2`/`L2` verdict formulas are also in row 2**, and both are now stated.
+
+**THE `L2` VERDICT FORMULA IS FOLDED INTO THE RESET AS STEP 6, and is NOT a blocker.** Established: **no code reads the `verdict` column** — zero matches in `Publish.gs` logic, `Code.gs` and `app.js`. It is an at-a-glance aid for the Owner alone, so a wrong version cannot corrupt the list or the site. It is folded in because he will already have `L2` open. **His 2026-09-19 words — *"I have now pasted the correct code. And it seems to work"* — suggest he already has the corrected version**, so the step is compare-then-paste-if-different.
+
+**Build plan row `2.1` Approach and sub-task text AMENDED; its STATUS is untouched and still `new`** — it closes on his sighting of a clean list, not on the ruling. Validator exit 0, 9 sub-tasks, position unchanged at **0/32**.
+
+**THE PROCEDURE IS IN [PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md`** under *"Starting the list completely clean — the full reset"*, eleven steps. **No session may run it — it is his action on his own sheet.**
 
 **THERE ARE NOW TWO LIVE PLANS IN THIS REPO [VERIFIED 2026-09-21].** Row `5.1` — the inheritance walk — left the launch plan on the Owner's ruling **D3c-VCWL-21092026** and is now **`1.1` of `PLAN-DUNCHI-INHERITANCE-2026-09-21`** at [PATH] `docs/BUILD-PLAN-dunchi-inheritance.md`, **0 of 9 effort, 0 of 1 row.**
 
@@ -1162,7 +1185,22 @@ Diagnosis: at 320px with 200% zoom, compare `.sizer` `scrollWidth` against `clie
 
 *The 2026-09-19 queue follows below this section, under its own original heading, unchanged except where an item has been closed in place.*
 
-**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — gates seeding, which gates launch | AWAITING THE OWNER'S RULING, not a task**
+**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — the last thing before the village is told | COMPUTER, about fifteen minutes**
+
+**RUN THE FULL RESET.** The Owner has ruled **D7a-VCWL-21092026** and the procedure is written click-by-click in [PATH] `docs/PROCESS-seeding-and-launch-dunchi-trader.md` under *"Starting the list completely clean — the full reset"*. **It is his action on his own sheet; no session may run it.**
+
+**The four things most likely to go wrong, in order:**
+
+1. **Deleting row 2.** His formulas live there — `I2`/`J2` on Published, `J2`/`K2`/`L2` on Form responses. **Every delete starts at row 3**; row 2 is cleared by hand in two pieces that skip the formula cells.
+2. **Clicking "Publish any responses not yet on the list".** After the reset it would have nothing to republish — but only because the response rows went too. **Still never click it.**
+3. **Deleting row 1.** The header is load-bearing: with it the site shows *"Nobody on the list just yet"*; without it, *"The list is being updated"*, which reads as broken.
+4. **Leaving the data-validation rule on column `M`.** Not dangerous, but the `action` column stays blank and he loses the record of what happened to each submission.
+
+**What good looks like:** Published empty below the header, the site showing *"Nobody on the list just yet"* on a cache-busted load, nothing back ten minutes later, and the first re-submitted tradesperson arriving as **`T001`, `active`**.
+
+---
+
+~~**[OUTSTANDING] 2026-09-21 | ⚠ CRITICAL | Blocking: YES — gates seeding, which gates launch | AWAITING THE OWNER'S RULING, not a task**~~ **RESOLVED 2026-09-21T09:26:45Z — he ruled D7a-VCWL-21092026, recorded in Layer 5. The question below is preserved as it stood when it was put to him.**
 
 **OPEN QUESTION: may the Published tab be cleared completely?** The Owner has asked to; his own standing ruling **D7-6G7f-19092026 (HIDE, NEVER DELETE)** says no. **Both cannot stand and he has not yet ruled.**
 
@@ -2512,6 +2550,51 @@ V1 is **closed and archived** at [PATH] `docs/archive/BUILD-PLAN-dunchi-trader-P
 **What was NOT done, deliberately:** build plan row 2.1 is untouched and still reads `new` with its original *"Set status to hidden, never delete"* Approach; no Layer 1 supersession marker was written against D7; and nothing was written to the Owner's spreadsheet. **If he rules yes, a later session amends the row and records the supersession.**
 
 **[PATTERN CANDIDATE: a-rule-and-its-exception-are-usually-two-cases-not-a-contradiction]** D7 and the Owner's request looked like a head-on conflict. Separating *partial* from *total* showed both correct over disjoint domains, and the resolution preserved the rule rather than repealing it. **Worth reaching for before overturning any standing rule: ask what case it was written for, and whether the new request is actually that case.**
+
+---
+
+### 2026-09-21 — D7a: the Owner rules for a complete reset, and it is SAFER than what the previous session recommended
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+
+**[DECISION] `D7a-VCWL-21092026` — the Owner's ruling, verbatim:**
+
+> ***"I am going to do D7a. It feels cleaner"***
+
+**And of the hidden rows, when they were questioned:**
+
+> ***"Surely it is just messy noise?"***
+
+**What he ruled:** clear the data rows on **Published** AND the test rows on **Form responses**, so both tabs agree and ids restart at `T001`. The testers will then re-submit real tradespeople **through the form**, rather than data being copied out and re-entered by hand.
+
+**He ruled it knowing what it overturns.** Claude.ai put the conflict to him explicitly before he answered. **This is a knowing supersession, not an oversight.**
+
+**[DECISION] THE SUPERSESSION IS NARROW, AND D7 IS NOT REPEALED.** `D7-6G7f-19092026` — *hide, never delete* — **remains correct and binding for every partial removal.** Its reasoning is untouched: deleting the highest id while lower ids survive frees that number for reuse, and the next submission inherits recommendations filed against the old holder. **A total clear escapes that for the opposite reason — nothing survives to inherit a reused id.** The two rules govern disjoint cases and both now stand.
+
+**Amended in the build plan, status deliberately NOT touched:** row `2.1`'s Approach column moves from *"Set status to hidden, never delete"* to *"Complete clear sanctioned by D7a; partial removal still means hiding"*, and its sub-task text carries the supersession with the Owner's words. **Row 2.1 stays `new`** — it closes on his sighting of a clean list, not on the ruling. Validator re-run at exit 0, 9 sub-tasks, position unchanged at 0/32.
+
+**[DECISION] A SECOND RULE IS ALSO SUPERSEDED, and it is named because it would otherwise be missed.** The carried-forward constraints paragraph in Layer 6 records *"never delete rows from Form responses (standing rule established this session)"* — a session convention rather than a D-numbered ruling. **D7a overturns it for the same narrow case.** It continues to govern partial removal from that tab.
+
+**[FINDING] THE PREVIOUS SESSION'S RECOMMENDATION WAS WRONG, AND THE OWNER'S RULING IS THE SAFER OPTION.** Prompt 2758 recommended leaving the Form responses rows in place, because their filled `action` cells stop the sweep republishing them, and it recorded the backfill menu item as a **residual risk to be documented**. **Measured this session, side by side:**
+
+| Shape | 12 sweeps | One click of *"Publish any responses not yet on the list"* |
+|---|---|---|
+| Response rows **LEFT** (2758's advice) | 0 rows — held | **6 rows returned.** The trap stays live forever |
+| Response rows **CLEARED** (D7a) | 0 rows — held | **0 rows.** Alert reads *"There are no form responses yet."* |
+
+**Clearing the response rows DISARMS the trap rather than documenting it.** A guard that depends on nobody ever clicking a menu item is weaker than having nothing for that item to act on. **The Owner's instinct — "it feels cleaner" — was right for a reason he did not have to articulate.**
+
+**[FINDING] The reset is proven end to end.** After clearing both tabs, a new submission through the form publishes as **`T001`, `active`**, with its action line written back to the response row. No path throws on an empty responses tab (`values.length < 2` guard).
+
+**[DECISION] The procedure's row-2 ordering was a REAL defect and is rewritten, not patched.** The first version told the Owner to *delete rows and then check whether `I2`/`J2` survived* — but `I2`/`J2` **are in row 2**, so by the time he checked they would already be gone. **A procedure that says destroy-then-verify will destroy.** Every delete now starts at **row 3**, and row 2 is cleared by hand in two pieces that skip the formula cells: `A2:H2` then `K2:L2` on Published, `A2:I2` then `M2` on Form responses. **The same trap exists on Form responses, whose `J2`/`K2`/`L2` verdict formulas are also in row 2**, and it is now stated for both tabs.
+
+**[DECISION] The corrected `L2` verdict formula is folded into the reset as step 6, rather than left as a separate job.** Owner action 12 from the 2026-09-19 close-down has been outstanding since. **Established this session: no code reads the `verdict` column** — zero matches in `Publish.gs`'s logic, `Code.gs` and `app.js`. It is an at-a-glance aid for the Owner alone, so a wrong version **cannot** corrupt the list or the site. **It is therefore not a blocker for the reset.** It is folded in because he will already have `L2` open, and because a wrong verdict on the *first real submission* is the moment it would mislead him most. **His 2026-09-19 report — *"I have now pasted the correct code. And it seems to work"* — suggests he already has the corrected version**, so the step says compare-then-paste-if-different rather than assuming he needs it.
+
+**Alternatives considered.** Making the reset depend on the L2 paste — rejected: nothing reads the column, so it cannot block. Leaving L2 as a separate outstanding action — rejected: it needs the same cell in the same trip, and splitting it invites a second visit that never happens. Changing `backfillPublished` to consult the `action` column — rejected again, for the reason recorded on 2026-09-21 earlier: a genuinely-failed response has a blank action cell precisely when the publisher never ran.
+
+**[PATTERN CANDIDATE: disarm-beats-document]** 2758 found a one-click trap and mitigated it with a warning. The Owner's ruling removed the fuel instead. **Where a hazard depends on state you can delete, deleting the state beats documenting the hazard** — a warning must be read every time, a removed precondition works even when nobody reads anything.
+
+**[PATTERN CANDIDATE: a-procedure-that-verifies-after-destroying-is-not-a-procedure]** *"Delete X, then check Y survived"* is a defect whenever Y lives inside X. The ordering must make destruction impossible, not detectable.
 
 ---
 
@@ -6672,5 +6755,101 @@ The test responses are harmless where they sit **as long as their `action` cells
 **The one-click trap is the substantive finding of this session** — the first item in his own menu would undo the whole clear and report it as a success.
 
 ⚠ **NOTHING IS DECIDED.** Build plan row 2.1 is untouched and still reads *"Set status to hidden, never delete"*. No supersession is recorded against D7. Nothing was written to the Owner's spreadsheet, `Code.gs` was not touched, and nothing was redeployed.
+
+Working tree clean. Both remotes level.
+
+---
+
+### 2026-09-21T09:31:20Z — D7a recorded: the Owner's ruling is safer than what the previous session advised
+
+**Source:** Claude Code
+**Started:** 2026-09-21T09:24:05Z
+
+**Conversation reference:** https://claude.ai/cowork/cse_01YAn7KvGsK7cVxRppsZVCWL
+**Repos touched this session:** dunchi-trader; dunchitrader-collab/dunchitrader-collab.github.io (push of existing commits only)
+
+**Prompt received:** *(preserved in the Claude.ai conversation above. It carried the Owner's verbatim ruling, the instruction to record it per this session's own 2758 follow-on, and two ambiguities to resolve — row 2 versus the formulas, and the uninstalled `L2` verdict formula. Both are answered in the Layer 5 decision for this date.)*
+
+**What was done:**
+
+**The prescribed staleness check ran first**, as the 2758 follow-on required: `GITHUB_TOKEN= git fetch collab main && GITHUB_TOKEN= git diff FETCH_HEAD..HEAD --stat -- apps-script/` → **no output, exit 0.** The live repo's `apps-script/` is byte-identical to local; the Owner's copy-source is current. HEAD `8b27c6d`, tree clean — **did not differ from the prompt.**
+
+**1. THE RULING IS RECORDED.** `D7a-VCWL-21092026` in Layer 5 with both verbatim quotations, what it overturns, and that he ruled knowing it.
+
+**2. THE SUPERSESSION IS MARKED NARROW.** `D7-6G7f-19092026` is **not repealed** — it governs every partial removal, and its reasoning is untouched. A second rule is also superseded and is named so it is not missed: the carried-forward convention *"never delete rows from Form responses"*, which was a session convention rather than a D-numbered ruling.
+
+**3. BUILD PLAN ROW 2.1 AMENDED, STATUS UNTOUCHED.** Approach: *"Set status to hidden, never delete"* → *"Complete clear sanctioned by D7a; partial removal still means hiding"*. The sub-task text carries the supersession with his words and the measured evidence. **Status stays `new`**, as instructed — it closes on his sighting. **§3.10 validator re-run: exit 0, 9 sub-tasks, 0/32 — position unchanged.**
+
+**4. THE CORRECTION TO HIS RULING — PUT TO HIM, AND THE ANSWER IS THAT HE IS RIGHT.** The prompt asked which of two conflicting positions is correct, and told me not to silently follow either. **Measured side by side against the real code:**
+
+| Shape | 12 sweeps | One backfill click |
+|---|---|---|
+| Response rows **LEFT** — what 2758 recommended | 0 rows | **6 rows returned** |
+| Response rows **CLEARED** — D7a | 0 rows | **0 rows**, *"There are no form responses yet."* |
+
+**2758 was wrong.** It treated the filled `action` cells as sufficient and logged the backfill menu item as a residual risk to be documented. **Clearing the rows disarms the trap instead** — a guard that depends on nobody clicking a menu item is weaker than having nothing for that item to act on. **His ruling is the safer option and this session says so plainly rather than splitting the difference.**
+
+**Also established:** nothing else breaks. `responsesSheet` still resolves an emptied tab, the `values.length < 2` guard means no path throws, and a new submission after the reset publishes as **`T001`, `active`** with its action line written back.
+
+**5. AMBIGUITY ONE — ROW 2. This was a real defect in my own previous procedure and it is rewritten, not patched.** The earlier version said delete rows and *then* check `I2`/`J2` survived — **but `I2`/`J2` are in row 2.** The check came after the destruction.
+
+**The one-sentence answer, now stated in the procedure itself:** *every delete starts at row 3, and row 2's data cells are cleared by hand in two pieces that skip the formula cells.* On Published that is `A2:H2` then `K2:L2`; on **Form responses**, whose `J2`/`K2`/`L2` verdict formulas are in row 2 for exactly the same reason, it is `A2:I2` then `M2`.
+
+**6. AMBIGUITY TWO — THE `L2` VERDICT FORMULA. It matters, but it is NOT a blocker, and it is folded in as step 6.** Established by search: **no code reads the `verdict` column** — zero matches in `Publish.gs`'s logic, in `Code.gs`, and in `app.js`. It is an at-a-glance aid for the Owner alone, so a defective version **cannot** corrupt the list, the feed or the site.
+
+**Evaluated against an emptied Published using the committed verdict harness's own models:** with the list empty, the constant-id defect (`verdictV2`) and the fixed version **both read `NEW`** — the defect only manifests when there are rows to look up. The older self-match defect (`verdictV1`) would read **`"ALREADY ON SITE — row 2"`** on an empty list, which is visibly absurd and he would spot it at once.
+
+**So it is folded into the reset rather than left separate**, because he will already have `L2` open and a wrong verdict on the *first real submission* is when it would mislead him most. **His 2026-09-19 words — *"I have now pasted the correct code. And it seems to work"* — suggest he already has the corrected version**, so the step reads compare-then-paste-if-different rather than assuming he needs it.
+
+**Testing performed:**
+
+| # | What was tested | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | **Prescribed staleness check** | clean | **no output, exit 0 — copy-source current** | PASS |
+| 2 | Repo matches prompt HEAD | `8b27c6d`, clean | did not differ | PASS |
+| 3 | Baseline all suites | green | **248 passed, 0 failed** | PASS |
+| 4 | D7a shape: 12 sweeps after clearing both tabs | 0 rows | **0 rows** | PASS |
+| 5 | **D7a shape: one backfill click** | nothing to republish | **0 rows**, *"There are no form responses yet."* | PASS |
+| 6 | 2758 shape: 12 sweeps, rows left | 0 rows | 0 rows — held | PASS |
+| 7 | **2758 shape: one backfill click** | the residual risk | **6 rows returned** — 2758's advice leaves the trap live | PASS |
+| 8 | Delete-from-row-3 shape (formula spill row survives) | ignored safely | sweep completed, 0 rows; backfill skipped it | PASS |
+| 9 | New submission after the reset | publishes cleanly | **`T001`, `active`**, action line written | PASS |
+| 10 | Empty responses tab throws nowhere | no throw | no throw (`values.length < 2`) | PASS |
+| 11 | **Does any code read `verdict`?** | establish | **zero matches** in `Publish.gs` logic, `Code.gs`, `app.js` | PASS |
+| 12 | Verdict versions against an EMPTY Published | establish | fixed and constant-id both `NEW`; self-match reads *"ALREADY ON SITE — row 2"* | PASS |
+| 13 | Form responses formula cells located | which row | **`J2`/`K2`/`L2` — row 2**, same trap as Published | PASS |
+| 14 | Nine new checks committed as regression tests | pass | **84 passed in that suite** | PASS |
+| 15 | Full regression | no regression | **257 passed, 0 failed** (248→257) | PASS |
+| 16 | **§3.10 build-plan validator after amending 2.1** | exit 0, 9 sub-tasks | **exit 0, 9 sub-tasks, 0/32** | PASS |
+| 17 | **Row 2.1 status unchanged** | still `new` | still `new`; only Approach and text changed | PASS |
+| 18 | Unsafe "delete then check" ordering removed | zero occurrences | zero; every delete starts at row 3 | PASS |
+| 19 | §3.6 headings / timestamps / Layer 7 | pass | additions only; both stamps `09:26:45Z`; 6 layers | PASS |
+| 20 | Owner's sheet untouched | nothing | all tests use stubs | PASS |
+| 21 | `Code.gs` untouched, nothing redeployed | unmodified | unmodified | PASS |
+
+**What was not tested:**
+
+- **NOTHING RAN INSIDE GOOGLE AND NOTHING WAS WRITTEN TO THE OWNER'S SHEET.** All measurement is the real `Publish.gs` and the committed verdict harness executed in Node against stubs.
+- **⚠ WHICH `L2` VERSION IS ACTUALLY IN HIS SHEET IS UNKNOWN.** The inference that he has the corrected one rests on his 2026-09-19 report, which is **REPORTED**, not measured. The procedure therefore has him compare rather than assume — which is correct whichever version he holds.
+- **The data-validation rule on column `M` has still never been read** — inside his account.
+- **His actual row counts are unknown.** The procedure has him read the last row number off the screen rather than naming one.
+- **The site's positive render path was not re-confirmed this session.** The empty-state results are carried from 2758's measurement; this session added no new `app.js` evidence.
+- **The reset itself has not been walked** — it is his action, and the procedure has never been executed by anyone.
+
+**Commits:**
+
+- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+
+**Finished:** 2026-09-21T09:31:20Z
+
+**End state:**
+
+**The ruling is recorded, the supersession is narrow, and the plan row carries it without its status moving.** `D7-6G7f-19092026` still governs every partial removal; `D7a-VCWL-21092026` governs the complete clear.
+
+**The correction was put to him and the answer is that he was right** — clearing the response rows disarms the backfill trap that the previous session could only document. **257 checks pass across four suites**, nine of them new and asserting that side-by-side difference as a fact.
+
+**Both ambiguities are closed:** every delete starts at row 3 with row 2 cleared by hand in two pieces, on both tabs; and the `L2` paste is folded in as step 6, established as worth doing but not a blocker because nothing reads the column.
+
+⚠ **NOTHING IS RUN.** The reset is the Owner's action. Build plan row 2.1 is still `new`. Nothing was written to his spreadsheet, `Code.gs` was not touched, nothing was redeployed.
 
 Working tree clean. Both remotes level.
