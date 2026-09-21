@@ -6468,7 +6468,8 @@ Working tree clean. Remote level.
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `04e9b54` — `fix: a refused phone no longer disables the duplicate check` — `rowIndexForUnusablePhone()` and its two call sites, the negative controls reproducing the runaway, and the Layer 1/3/4/5 records plus this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10).
+- **Pushed to `collab`** (`dunchitrader-collab/dunchitrader-collab.github.io`, branch `main`): `0f7c3ec..` this session's HEAD. **No commit was authored in that repo** — existing commits were moved so the Owner's copy-source stops being stale.
 
 **Finished:** 2026-09-21T08:12:05Z
 
