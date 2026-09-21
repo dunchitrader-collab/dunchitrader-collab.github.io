@@ -7825,7 +7825,7 @@ Working tree clean. Both remotes level.
 
 **Commits:**
 
-- UNRESOLVED — replaced with the real SHA by the follow-up commit (rule 1.10)
+- `66aa2c0` — `docs: close rows 6.5 and 6.6 — the plan moves 12/36 to 16/36 (44.4%)` — the two row closures and their satellite dates, row 6.3's narrowed caveat, and the Layer 1/4/5 records plus this entry. **Resolved to a real SHA by a follow-up commit rather than left as a placeholder** (rule 1.10). ⚠ **NO CODE FILE WAS TOUCHED** — `Publish.gs`, `Code.gs`, `app.js`, `SHEET-FORMULAS.md` and every test file are unmodified; this was a plan update and nothing else.
 
 **Finished:** 2026-09-21T11:32:10Z
 
